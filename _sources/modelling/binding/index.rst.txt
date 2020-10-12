@@ -5,7 +5,7 @@ Binding models
 
 The following binding models are presented in dynamic binding mode.
 By replacing all occurrences of :math:`\mathrm{d}q / \mathrm{d}t` with :math:`0`, quasi-stationary (rapid-equlibrium) binding mode is achieved.
-In quasi-stationary binding it is assumed that ad- and desorption take place on a much faster time scale than the other transport processes such that bead liquid phase :math:`c_{p,i}` (or bulk liquid phase :math:`c_i` for certain unit operation models) are always in equilibrium with the solid phase :math:`q_i`.
+In quasi-stationary binding, it is assumed that ad- and desorption take place on a much faster time scale than the other transport processes such that bead liquid phase :math:`c_{p,i}` (or bulk liquid phase :math:`c_i` for certain unit operation models) are always in equilibrium with the solid phase :math:`q_i`.
 
 **Equilibrium constants:** For the quasi-stationary binding mode, adsorption and desorption rate are no longer separate entities.
 Instead, the quotient :math:`k_{\text{eq}} = k_a / k_d` of adsorption and desorption coefficient is the relevant parameter as shown for the linear binding model (see Section :ref:`linear_model`):
@@ -76,7 +76,7 @@ The models also differ in whether a mobile phase modifier (e.g., salt) is suppor
    * - Binding model
      - Competitive
      - Mobile phase modifier
-     - External fucntion
+     - External function
      - Multi-state
    * - :ref:`linear_model`
      - ×
@@ -94,6 +94,11 @@ The models also differ in whether a mobile phase modifier (e.g., salt) is suppor
      - ✓
      - ×
    * - :ref:`steric_mass_action_model`
+     - ✓
+     - ✓
+     - ✓
+     - ×
+   * - :ref:`generalized_ion_exchange_model`
      - ✓
      - ✓
      - ✓

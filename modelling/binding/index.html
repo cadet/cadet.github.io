@@ -1,10 +1,9 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Binding models &#8212; CADET</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -13,7 +12,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/language_data.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -109,7 +108,7 @@
 <span id="id1"></span><h1>Binding models<a class="headerlink" href="#binding-models" title="Permalink to this headline">¶</a></h1>
 <p>The following binding models are presented in dynamic binding mode.
 By replacing all occurrences of <span class="math notranslate nohighlight">\(\mathrm{d}q / \mathrm{d}t\)</span> with <span class="math notranslate nohighlight">\(0\)</span>, quasi-stationary (rapid-equlibrium) binding mode is achieved.
-In quasi-stationary binding it is assumed that ad- and desorption take place on a much faster time scale than the other transport processes such that bead liquid phase <span class="math notranslate nohighlight">\(c_{p,i}\)</span> (or bulk liquid phase <span class="math notranslate nohighlight">\(c_i\)</span> for certain unit operation models) are always in equilibrium with the solid phase <span class="math notranslate nohighlight">\(q_i\)</span>.</p>
+In quasi-stationary binding, it is assumed that ad- and desorption take place on a much faster time scale than the other transport processes such that bead liquid phase <span class="math notranslate nohighlight">\(c_{p,i}\)</span> (or bulk liquid phase <span class="math notranslate nohighlight">\(c_i\)</span> for certain unit operation models) are always in equilibrium with the solid phase <span class="math notranslate nohighlight">\(q_i\)</span>.</p>
 <p><strong>Equilibrium constants:</strong> For the quasi-stationary binding mode, adsorption and desorption rate are no longer separate entities.
 Instead, the quotient <span class="math notranslate nohighlight">\(k_{\text{eq}} = k_a / k_d\)</span> of adsorption and desorption coefficient is the relevant parameter as shown for the linear binding model (see Section <a class="reference internal" href="linear.html#linear-model"><span class="std std-ref">Linear</span></a>):</p>
 <div class="math notranslate nohighlight">
@@ -165,7 +164,7 @@ The models also differ in whether a mobile phase modifier (e.g., salt) is suppor
 <tr class="row-odd"><th class="head"><p>Binding model</p></th>
 <th class="head"><p>Competitive</p></th>
 <th class="head"><p>Mobile phase modifier</p></th>
-<th class="head"><p>External fucntion</p></th>
+<th class="head"><p>External function</p></th>
 <th class="head"><p>Multi-state</p></th>
 </tr>
 </thead>
@@ -194,61 +193,67 @@ The models also differ in whether a mobile phase modifier (e.g., salt) is suppor
 <td><p>✓</p></td>
 <td><p>×</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="self_association.html#self-association-model"><span class="std std-ref">Self Association</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generalized_ion_exchange.html#generalized-ion-exchange-model"><span class="std std-ref">Generalized Ion Exchange</span></a></p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>
 <td><p>×</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="mobile_phase_modulator_langmuir.html#mobile-phase-modulator-langmuir-model"><span class="std std-ref">Mobile Phase Modulator Langmuir</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="self_association.html#self-association-model"><span class="std std-ref">Self Association</span></a></p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>
 <td><p>×</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="extended_mobile_phase_modulator_langmuir.html#extended-mobile-phase-modulator-langmuir-model"><span class="std std-ref">Extended Mobile Phase Modulator Langmuir</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="mobile_phase_modulator_langmuir.html#mobile-phase-modulator-langmuir-model"><span class="std std-ref">Mobile Phase Modulator Langmuir</span></a></p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>
 <td><p>×</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="kumar_langmuir.html#kumar-langmuir-model"><span class="std std-ref">Kumar-Langmuir</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="extended_mobile_phase_modulator_langmuir.html#extended-mobile-phase-modulator-langmuir-model"><span class="std std-ref">Extended Mobile Phase Modulator Langmuir</span></a></p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>
 <td><p>×</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="saska.html#saska-model"><span class="std std-ref">Saska</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="kumar_langmuir.html#kumar-langmuir-model"><span class="std std-ref">Kumar-Langmuir</span></a></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="saska.html#saska-model"><span class="std std-ref">Saska</span></a></p></td>
 <td><p>×</p></td>
 <td><p>×</p></td>
 <td><p>✓</p></td>
 <td><p>×</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="multi_component_bi_langmuir.html#multi-component-bi-langmuir-model"><span class="std std-ref">Multi Component Bi-Langmuir</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="multi_component_bi_langmuir.html#multi-component-bi-langmuir-model"><span class="std std-ref">Multi Component Bi-Langmuir</span></a></p></td>
 <td><p>✓</p></td>
 <td><p>×</p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="multi_component_spreading.html#multi-component-spreading-model"><span class="std std-ref">Multi Component Spreading</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="multi_component_spreading.html#multi-component-spreading-model"><span class="std std-ref">Multi Component Spreading</span></a></p></td>
 <td><p>✓</p></td>
 <td><p>×</p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="multi_state_steric_mass_action.html#multi-state-steric-mass-action-model"><span class="std std-ref">Multi-State Steric Mass Action</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="multi_state_steric_mass_action.html#multi-state-steric-mass-action-model"><span class="std std-ref">Multi-State Steric Mass Action</span></a></p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="simplified_multi_state_steric_mass_action.html#simplified-multi-state-steric-mass-action-model"><span class="std std-ref">Simplified Multi-State Steric Mass Action</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="simplified_multi_state_steric_mass_action.html#simplified-multi-state-steric-mass-action-model"><span class="std std-ref">Simplified Multi-State Steric Mass Action</span></a></p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>
 <td><p>×</p></td>
 <td><p>✓</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="bi_steric_mass_action.html#bi-steric-mass-action-model"><span class="std std-ref">Bi Steric Mass Action</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="bi_steric_mass_action.html#bi-steric-mass-action-model"><span class="std std-ref">Bi Steric Mass Action</span></a></p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>
 <td><p>✓</p></td>

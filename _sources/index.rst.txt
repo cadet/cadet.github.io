@@ -13,7 +13,7 @@ Features
 * Fast and accurate solution of the partial differential algebraic equations (PDAE) based on the finite volume method and the WENO scheme
 * Computation of derivatives with respect to model parameters by a forward sensitivity approach combined with algorithmic differentiation (AD)
 * Shared memory parallelization using Intel TBB
-* Native MATLAB interface (MEX) with many examples for rapid development
+* Native Matlab interface (MEX) with many examples for rapid development
 * Modular design allows for easy experimenting with the code (e.g., adding a new binding model or unit operation)
 * Supports XML and HDF5 as data formats
 * Multi-platform: Works on Windows, Linux, and Mac OS X
@@ -27,6 +27,12 @@ To cite CADET please use the following publication:
 * Püttmann, A.; Schnittert, S.; Leweke, S.; von Lieres, E.: `Utilizing algorithmic differentiation to efficiently compute chromatograms and parameter sensitivities <http://doi.org/10.1016/j.ces.2015.08.050>`_, Chemical Engineering Science, 139 (2016), 152–162.
 * Püttmann, A.; Schnittert, S.; Naumann, U.; von Lieres, E.: `Fast and accurate parameter sensitivities for the general rate model of column liquid chromatography <http://doi.org/10.1016/j.compchemeng.2013.04.021>`_, Computers and Chemical Engineering 56,13 (2013), 46-57.
 * von Lieres, E.; Andersson, J.: `A fast and accurate solver for the general rate model of column liquid chromatography <http://doi.org/10.1016/j.compchemeng.2010.03.008>`_, Computers and Chemical Engineering 34,8 (2010), 1180–1191.
+
+Note
+----
+This Github account was formerly home to another project named CADET by the Fachhochschule Salzburg.
+Because their project has been inactive for some time, they have kindly agreed to transfer the ownership of the CADET account to us. 
+For people looking for the old project, it can now be found here: https://github.com/cadet-salzburg.
 
 .. toctree::
     :maxdepth: 3

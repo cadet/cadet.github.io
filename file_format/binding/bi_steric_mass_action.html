@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bi Steric Mass Action &#8212; CADET</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Generalized Ion Exchange" href="generalized_ion_exchange.html" />
+    <link rel="prev" title="Binding models" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/cadet_logo.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=modsim&repo=cadet&type=fork&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">File format specifications</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../input_group.html">Input Group</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../system.html">System of unit operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../unit_operations/index.html">Unit Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flux_reconstruction.html">Flux reconstruction methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Binding models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reactions.html">Reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../return_data.html">Return data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensitivities.html">Parameter Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../solver.html">Solver Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../output_group.html">Output Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta_group.html">Meta Group</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="bi-steric-mass-action">
+<span id="bi-steric-mass-action-config"></span><h1>Bi Steric Mass Action<a class="headerlink" href="#bi-steric-mass-action" title="Permalink to this headline">¶</a></h1>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></dt><dd><p>Selects kinetic or quasi-stationary adsorption mode: 1 = kinetic, 0 =
+quasi-stationary. If a single value is given, the mode is set for all
+bound states. Otherwise, the adsorption mode is set for each bound
+state separately.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 29%" />
+<col style="width: 48%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> {0,1}</p></td>
+<td><p><strong>Length:</strong> 1/NTOTALBND</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">BISMA_KA</span></code></dt><dd><p>Adsorption rate constants in state-major ordering</p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(m_{MP}^{3} m_{SP}^{-3} s^{-1}\)</span></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 29%" />
+<col style="width: 48%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
+<td><p><strong>Length:</strong> NSTATES <span class="math notranslate nohighlight">\(\cdot\)</span> NCOMP</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">BISMA_KD</span></code></dt><dd><p>Desorption rate constants in state-major ordering</p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(s^{-1}\)</span></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 29%" />
+<col style="width: 48%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
+<td><p><strong>Length:</strong> NSTATES <span class="math notranslate nohighlight">\(\cdot\)</span> NCOMP</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">BISMA_NU</span></code></dt><dd><p>Characteristic charges <span class="math notranslate nohighlight">\(\nu_{i,j}\)</span> of the <span class="math notranslate nohighlight">\(i\)</span>th protein
+with respect to the <span class="math notranslate nohighlight">\(j\)</span>th binding site type in state-major
+ordering</p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(s^{-1}\)</span></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 29%" />
+<col style="width: 48%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
+<td><p><strong>Length:</strong> NSTATES <span class="math notranslate nohighlight">\(\cdot\)</span> NCOMP</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">BISMA_SIGMA</span></code></dt><dd><p>Steric factors <span class="math notranslate nohighlight">\(\sigma_{i,j}\)</span> of the <span class="math notranslate nohighlight">\(i\)</span>th protein with
+respect to the <span class="math notranslate nohighlight">\(j\)</span>th binding site type in state-major
+ordering</p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(s^{-1}\)</span></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 29%" />
+<col style="width: 48%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
+<td><p><strong>Length:</strong> NSTATES <span class="math notranslate nohighlight">\(\cdot\)</span> NCOMP</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">BISMA_LAMBDA</span></code></dt><dd><p>Stationary phase capacity (monovalent salt counterions) of the
+different binding site types <span class="math notranslate nohighlight">\(\lambda_j\)</span></p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(mol m_{SP}^{-3}\)</span></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 33%" />
+<col style="width: 41%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
+<td><p><strong>Length:</strong> NSTATES</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">BISMA_REFC0</span></code></dt><dd><p>Reference liquid phase concentration for each binding site type or
+one value for all types (optional, defaults to <span class="math notranslate nohighlight">\(1.0\)</span>)</p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(mol m_{MP}^{-3}\)</span></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 33%" />
+<col style="width: 41%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\gt 0\)</span></p></td>
+<td><p><strong>Length:</strong> {1,NSTATES}</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">BISMA_REFQ</span></code></dt><dd><p>Reference solid phase concentration for each binding site type or one
+value for all types (optional, defaults to <span class="math notranslate nohighlight">\(1.0\)</span>)</p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(mol m_{SP}^{-3}\)</span></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 33%" />
+<col style="width: 41%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\gt 0\)</span></p></td>
+<td><p><strong>Length:</strong> {1,NSTATES}</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2008-2020.
+      
+      |
+      <a href="../../_sources/file_format/binding/bi_steric_mass_action.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

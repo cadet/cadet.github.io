@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Installation &#8212; CADET</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Build for Linux" href="build_linux.html" />
+    <link rel="prev" title="Getting started" href="index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/cadet_logo.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=modsim&repo=cadet&type=fork&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting started</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-binaries">Install binaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-from-source">Install from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-cadet-python">Install CADET-Python</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/breakthrough.html">CADET Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_format/index.html">File format specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="install-binaries">
+<h2>Install binaries<a class="headerlink" href="#install-binaries" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Download the latest <a class="reference external" href="https://github.com/modsim/CADET/releases">release</a> for your platform (currently only binaries for windows are provided).</p></li>
+<li><p>Unzip the archive to your destination directory</p></li>
+</ul>
+</div>
+<div class="section" id="install-from-source">
+<h2>Install from source<a class="headerlink" href="#install-from-source" title="Permalink to this headline">¶</a></h2>
+<p>See How to build CADET.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="build_linux.html">Build for Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_windows.html">Build for MS Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_osx.html">Build for OSX</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="install-cadet-python">
+<span id="cadet-python"></span><h2>Install CADET-Python<a class="headerlink" href="#install-cadet-python" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to create CADET simulations is to use the <a class="reference external" href="https://github.com/modsim/CADET-python">CADET-Python</a> interface.
+For this purpose, we recommend installing Anaconda.
+Anaconda is a high-performance scinetific installation of Python that includes many common packages needed for scientific and engineering work.
+Download the installer from their <a class="reference external" href="https://www.anaconda.com/">website</a> and run it for the local user.
+To install the <cite>CADET-Python</cite>, open an <cite>Anaconda Shell</cite> and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install -c immudzen cadet
+</pre></div>
+</div>
+<p>If you would also like to use <a class="reference external" href="https://github.com/modsim/CADET-Match">CADET-Match</a> for parameter estimation, also run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install -c immudzen cadetmatch
+</pre></div>
+</div>
+<p>To run our examples, we recommend also installing the following packages:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install jupyterlab scipy matplotlib gitpython
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2008-2020.
+      
+      |
+      <a href="../_sources/getting_started/installation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,48 @@
+Installation
+============
+
+Install binaries
+----------------
+- Download the latest `release <https://github.com/modsim/CADET/releases>`_ for your platform (currently only binaries for windows are provided).
+- Unzip the archive to your destination directory
+
+
+Install from source
+-------------------
+See How to build CADET.
+
+
+.. toctree::
+    :maxdepth: 1
+
+    build_linux
+    build_windows
+    build_osx
+
+.. _cadet_python:
+
+Install CADET-Python
+--------------------
+
+The easiest way to create CADET simulations is to use the `CADET-Python <https://github.com/modsim/CADET-python>`_ interface.
+For this purpose, we recommend installing Anaconda.
+Anaconda is a high-performance scinetific installation of Python that includes many common packages needed for scientific and engineering work.
+Download the installer from their `website <https://www.anaconda.com/>`_ and run it for the local user.
+To install the `CADET-Python`, open an `Anaconda Shell` and run:
+
+.. code-block:: bash
+
+    conda install -c immudzen cadet 
+
+If you would also like to use `CADET-Match <https://github.com/modsim/CADET-Match>`_ for parameter estimation, also run:
+
+.. code-block:: bash
+
+    conda install -c immudzen cadetmatch
+
+To run our examples, we recommend also installing the following packages:
+
+.. code-block:: bash
+
+    conda install jupyterlab scipy matplotlib gitpython
+

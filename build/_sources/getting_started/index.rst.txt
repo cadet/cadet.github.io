@@ -1,0 +1,14 @@
+.. _getting_started:
+
+Getting started
+===============
+
+.. toctree::
+   :maxdepth: 1
+
+   installation
+
+.. toctree::
+   :maxdepth: 1
+
+   tutorials/breakthrough

@@ -1,9 +1,0 @@
-.. _modelling:
-
-Modelling
-=========
-.. toctree::
-    networks
-    unit_operations/index
-    binding/index
-    reactions

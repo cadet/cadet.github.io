@@ -35,7 +35,7 @@ The connection variables :math:`c_{\text{con},n,k,i}` collect all inflows of com
     :label: NetworkConnection
 
     \begin{aligned}
-        c_{\text{con},n,k,i} &= \frac{\sum_{m=1}^{N_{\text{units}}} \sum_{\ell = 1}^{N_{\text{port},\text{out},n}} \sum_{j = 1}^{N_{\text{comp},m}} S_{(n,k,i),(m,\ell,j)} F_{m,\ell} c_{\text{out},m,\ell,j}}{\sum_{m=1}^{N_{\text{units}}} \sum_{\ell=1}^{N_{\text{port},\text{out},m}} \hat{S}_{(n,k),(m,\ell)} F_{m,\ell} }, 
+        c_{\text{con},n,k,i} &= \frac{\sum_{m=1}^{N_{\text{units}}} \sum_{\ell = 1}^{N_{\text{port},\text{out},n}} \sum_{j = 1}^{N_{\text{comp},m}} S_{(n,k,i),(m,\ell,j)} Q_{m,\ell} c_{\text{out},m,\ell,j}}{\sum_{m=1}^{N_{\text{units}}} \sum_{\ell=1}^{N_{\text{port},\text{out},m}} \hat{S}_{(n,k),(m,\ell)} Q_{m,\ell} }, 
     \end{aligned}
 
 where :math:`F_{m,\ell}` denotes the volumetric flow rate from outlet port :math:`\ell` of unit operation :math:`m`, :math:`S_{(n,k,i),(m,\ell,j)} \in \{0, 1\}` is a connection matrix indicating whether component :math:`i` at outlet port :math:`k` of unit operation :math:`n` is connected to component :math:`j` at inlet port :math:`\ell` of unit operation :math:`m`, and :math:`\hat{S}_{(n,k),(m,\ell)} \in \{0, 1\}` is another connection matrix indicating whether outlet port :math:`k` of unit operation :math:`n` is connected to inlet port :math:`\ell` of unit operation :math:`m`, that is
@@ -100,6 +100,24 @@ Hence, the one required (i.e., the first) entry must have a section index of :ma
 
 Note that the section index has to be monotonically increasing throughout the list of valve configurations.
 See Tables :ref:`FFModelSystemConnections` and :ref:`FFModelConnectionSwitch`.
+
+
+.. _MUOPNetworkDynamicFlowRates:
+
+Dynamic flow rates
+~~~~~~~~~~~~~~~~~~
+
+The volumetric flow rates may vary over time while the valve configuration is active.
+The rates are assumed to be cubic polynomials,
+
+.. math::
+
+      Q = Q_0 + Q_1(t - t_s) + Q_2(t-t_s)^2 + Q_3(t-t_s)^3,
+
+where $t_s$ is the beginning of the time section that triggers the valve switch.
+
+Note that the denominator in Eq. :eq:`NetworkConnection` must always be positive.
+That is, the flow rate coefficients have to be chosen such that the flow into every connected inlet port is strictly positive at all times.
 
 
 .. _MUOPNetworkLinearSolver:

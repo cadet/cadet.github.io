@@ -105,24 +105,24 @@ Group /input/model/connections/switch_XXX
 
    The flow rate is a cubic function of time,
 
-.. math::
+   .. math::
       Q = Q_0 + Q_1(t - t_s) + Q_2(t-t_s)^2 + Q_3(t-t_s)^3,
 
-   where :math:`t_s` is the beginning of the section that activates the switch (i.e., :math:`\texttt{SECTION\_TIMES}` at index :math:`\texttt{SECTION}`).
+   where :math:`t_s` is the beginning of the section that activates the switch (i.e., :math:`\texttt{SECTION_TIMES}` at index :math:`\texttt{SECTION}`).
 
-   The port indices are left out if :math:`\texttt{CONNECTIONS\_INCLUDE\_PORTS}` is set to :math:`0` and no unit operation with multiple ports is present in the system. If a unit operation with multiple ports is present, :math:`\texttt{CONNECTIONS\_INCLUDE\_PORTS}` is ignored and port indices are mandatory.  
+   The port indices are left out if :math:`\texttt{CONNECTIONS_INCLUDE_PORTS}` is set to :math:`0` and no unit operation with multiple ports is present in the system. If a unit operation with multiple ports is present, :math:`\texttt{CONNECTIONS_INCLUDE_PORTS}` is ignored and port indices are mandatory.  
 
-   The last three flow rate coefficients are left out if :math:`\texttt{CONNECTIONS\_INCLUDE\_DYNAMIC\_FLOW}` is set to :math:`0`.
-   Contrary to the constant coefficient, which has the parameter name :math:`\texttt{CONNECTION}`, the other coefficients are named :math:`\texttt{CONNECTION\_LIN}`, :math:`\texttt{CONNECTION\_QUAD}`, and :math:`\texttt{CONNECTION\_CUB}`, respectively.
+   The last three flow rate coefficients are left out if :math:`\texttt{CONNECTIONS_INCLUDE_DYNAMIC_FLOW}` is set to :math:`0`.
+   Contrary to the constant coefficient, which has the parameter name :math:`\texttt{CONNECTION}`, the other coefficients are named :math:`\texttt{CONNECTION_LIN}`, :math:`\texttt{CONNECTION_QUAD}`, and :math:`\texttt{CONNECTION_CUB}`, respectively.
 
    For addressing the flow rates as a parameter senstivity, the mapping is as follows:
 
-  - :math:`\texttt{SENS\_UNIT}` Unused, always set to :math:`-1` 
-  - :math:`\texttt{SENS\_BOUNDPHASE}` *UnitOpID from* 
-  - :math:`\texttt{SENS\_REACTION}` *UnitOpID to* 
-  - :math:`\texttt{SENS\_COMP}` *Port from* 
-  - :math:`\texttt{SENS\_PARTYPE}` *Port to* 
-  - :math:`\texttt{SENS\_SECTION}` :math:`\texttt{SECTION}` that activates the valve switch 
+  - :math:`\texttt{SENS_UNIT}` Unused, always set to :math:`-1` 
+  - :math:`\texttt{SENS_BOUNDPHASE}` *UnitOpID from* 
+  - :math:`\texttt{SENS_REACTION}` *UnitOpID to* 
+  - :math:`\texttt{SENS_COMP}` *Port from* 
+  - :math:`\texttt{SENS_PARTYPE}` *Port to* 
+  - :math:`\texttt{SENS_SECTION}` :math:`\texttt{SECTION}` that activates the valve switch 
    
    ================  ==========================  ============================================================
    **Type:** double  **Range:** :math:`\geq -1`  **Length:** :math:`\{5,7,8,10\} \cdot \texttt{NCONNECTIONS}`
@@ -130,8 +130,8 @@ Group /input/model/connections/switch_XXX
    
 .. _FFModelExternalSourceLinInterp:
 
-Group /input/model/externa/source_XXX - EXTFUN_TYPE = LINEAR_INTERP_DATA
-------------------------------------------------------------------------
+Group /input/model/external/source_XXX - EXTFUN_TYPE = LINEAR_INTERP_DATA
+-------------------------------------------------------------------------
 
 ``VELOCITY``
 
@@ -165,8 +165,8 @@ Group /input/model/externa/source_XXX - EXTFUN_TYPE = LINEAR_INTERP_DATA
 
 .. _FFModelExternalSourcePieceCubicPoly:
 
-Group /input/model/externa/source_XXX - EXTFUN_TYPE = PIECEWISE_CUBIC_POLY
---------------------------------------------------------------------------
+Group /input/model/external/source_XXX - EXTFUN_TYPE = PIECEWISE_CUBIC_POLY
+---------------------------------------------------------------------------
 
 ``VELOCITY``
 

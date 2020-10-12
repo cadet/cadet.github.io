@@ -28,7 +28,7 @@ The easiest way to create CADET simulations is to use the `CADET-Python <https:/
 For this purpose, we recommend installing Anaconda.
 Anaconda is a high-performance scinetific installation of Python that includes many common packages needed for scientific and engineering work.
 Download the installer from their `website <https://www.anaconda.com/>`_ and run it for the local user.
-To install the `CADET-Python`, open an `Anaconda Shell` and run:
+To install the ``CADET-Python``, open an `Anaconda Shell` and run:
 
 .. code-block:: bash
 

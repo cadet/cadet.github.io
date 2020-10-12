@@ -32,7 +32,7 @@ Group /input/return
    
 ``SPLIT_COMPONENTS_DATA``
 
-   Determines whether a joint dataset (matrix or tensor) for all components is created or if each component is put in a separate dataset (:math:`\texttt{XXX\_COMP\_000}`, :math:`\texttt{XXX\_COMP\_001}`, etc.) (optional, defaults to 1)
+   Determines whether a joint dataset (matrix or tensor) for all components is created or if each component is put in a separate dataset (:math:`\texttt{XXX_COMP_000}`, :math:`\texttt{XXX_COMP_001}`, etc.) (optional, defaults to 1)
    
    =============  ==========================
    **Type:** int  **Range:** :math:`\{0,1\}`
@@ -40,7 +40,7 @@ Group /input/return
    
 ``SPLIT_PORTS_DATA``
 
-   Determines whether a joint dataset (matrix or tensor) for all inlet/outlet ports is created or if each port is put in a separate dataset (:math:`\texttt{XXX\_PORT\_000}`, :math:`\texttt{XXX\_PORT\_001}`, etc.) (optional, defaults to 1)
+   Determines whether a joint dataset (matrix or tensor) for all inlet/outlet ports is created or if each port is put in a separate dataset (:math:`\texttt{XXX_PORT_000}`, :math:`\texttt{XXX_PORT_001}`, etc.) (optional, defaults to 1)
    
    =============  ==========================
    **Type:** int  **Range:** :math:`\{0,1\}`
@@ -48,7 +48,7 @@ Group /input/return
    
 ``SINGLE_AS_MULTI_PORT``
 
-   Determines whether single port unit operations are treated as multi port unit operations in the output naming scheme (i.e., :math:`\texttt{\_PORT\_XYZ\_}` is added to the name) (optional, defaults to 0)
+   Determines whether single port unit operations are treated as multi port unit operations in the output naming scheme (i.e., :math:`\texttt{_PORT_XYZ_}` is added to the name) (optional, defaults to 0)
    
    =============  ==========================
    **Type:** int  **Range:** :math:`\{0,1\}`

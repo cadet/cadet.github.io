@@ -272,24 +272,46 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">CONNECTIONS</span></code></p>
 <blockquote>
+<div><blockquote>
 <div><p>Matrix with list of connections in row-major storage. Columns are <em>UnitOpID from</em>, <em>UnitOpID to</em>, <em>Port from</em>, <em>Port to</em>, <em>Component from</em>, <em>Component to</em>, <em>volumetric flow rate</em>, <em>linear flow rate coefficient</em>, <em>quadratic flow rate coefficient</em>, <em>cubic flow rate coefficient</em>.
 If both port indices are <span class="math notranslate nohighlight">\(-1\)</span>, all ports are connected.
 If both component indices are <span class="math notranslate nohighlight">\(-1\)</span>, all components are connected.</p>
 <p>The flow rate is a cubic function of time,</p>
-</div></blockquote>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}Q = Q_0 + Q_1(t - t_s) + Q_2(t-t_s)^2 + Q_3(t-t_s)^3,\\ where :math:`t_s` is the beginning of the section that activates the switch (i.e., :math:`\texttt{SECTION\_TIMES}` at index :math:`\texttt{SECTION}`).\\ The port indices are left out if :math:`\texttt{CONNECTIONS\_INCLUDE\_PORTS}` is set to :math:`0` and no unit operation with multiple ports is present in the system. If a unit operation with multiple ports is present, :math:`\texttt{CONNECTIONS\_INCLUDE\_PORTS}` is ignored and port indices are mandatory.\\ The last three flow rate coefficients are left out if :math:`\texttt{CONNECTIONS\_INCLUDE\_DYNAMIC\_FLOW}` is set to :math:`0`.
- Contrary to the constant coefficient, which has the parameter name :math:`\texttt{CONNECTION}`, the other coefficients are named :math:`\texttt{CONNECTION\_LIN}`, :math:`\texttt{CONNECTION\_QUAD}`, and :math:`\texttt{CONNECTION\_CUB}`, respectively.\\ For addressing the flow rates as a parameter senstivity, the mapping is as follows:\\- :math:`\texttt{SENS\_UNIT}` Unused, always set to :math:`-1`
-- :math:`\texttt{SENS\_BOUNDPHASE}` *UnitOpID from*
-- :math:`\texttt{SENS\_REACTION}` *UnitOpID to*
-- :math:`\texttt{SENS\_COMP}` *Port from*
-- :math:`\texttt{SENS\_PARTYPE}` *Port to*
-- :math:`\texttt{SENS\_SECTION}` :math:`\texttt{SECTION}` that activates the valve switch\\ ================  ==========================  ============================================================
- **Type:** double  **Range:** :math:`\geq -1`  **Length:** :math:`\{5,7,8,10\} \cdot \texttt{NCONNECTIONS}`
- ================  ==========================  ============================================================\end{aligned}\end{align} \]</div>
+\[Q = Q_0 + Q_1(t - t_s) + Q_2(t-t_s)^2 + Q_3(t-t_s)^3,\]</div>
+<p>where <span class="math notranslate nohighlight">\(t_s\)</span> is the beginning of the section that activates the switch (i.e., <span class="math notranslate nohighlight">\(\texttt{SECTION_TIMES}\)</span> at index <span class="math notranslate nohighlight">\(\texttt{SECTION}\)</span>).</p>
+<p>The port indices are left out if <span class="math notranslate nohighlight">\(\texttt{CONNECTIONS_INCLUDE_PORTS}\)</span> is set to <span class="math notranslate nohighlight">\(0\)</span> and no unit operation with multiple ports is present in the system. If a unit operation with multiple ports is present, <span class="math notranslate nohighlight">\(\texttt{CONNECTIONS_INCLUDE_PORTS}\)</span> is ignored and port indices are mandatory.</p>
+<p>The last three flow rate coefficients are left out if <span class="math notranslate nohighlight">\(\texttt{CONNECTIONS_INCLUDE_DYNAMIC_FLOW}\)</span> is set to <span class="math notranslate nohighlight">\(0\)</span>.
+Contrary to the constant coefficient, which has the parameter name <span class="math notranslate nohighlight">\(\texttt{CONNECTION}\)</span>, the other coefficients are named <span class="math notranslate nohighlight">\(\texttt{CONNECTION_LIN}\)</span>, <span class="math notranslate nohighlight">\(\texttt{CONNECTION_QUAD}\)</span>, and <span class="math notranslate nohighlight">\(\texttt{CONNECTION_CUB}\)</span>, respectively.</p>
+<p>For addressing the flow rates as a parameter senstivity, the mapping is as follows:</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\texttt{SENS_UNIT}\)</span> Unused, always set to <span class="math notranslate nohighlight">\(-1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{SENS_BOUNDPHASE}\)</span> <em>UnitOpID from</em></p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{SENS_REACTION}\)</span> <em>UnitOpID to</em></p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{SENS_COMP}\)</span> <em>Port from</em></p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{SENS_PARTYPE}\)</span> <em>Port to</em></p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{SENS_SECTION}\)</span> <span class="math notranslate nohighlight">\(\texttt{SECTION}\)</span> that activates the valve switch</p></li>
+</ul>
+<blockquote>
+<div><table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 25%" />
+<col style="width: 59%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq -1\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\{5,7,8,10\} \cdot \texttt{NCONNECTIONS}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
 </div>
-<div class="section" id="group-input-model-externa-source-xxx-extfun-type-linear-interp-data">
-<span id="ffmodelexternalsourcelininterp"></span><h2>Group /input/model/externa/source_XXX - EXTFUN_TYPE = LINEAR_INTERP_DATA<a class="headerlink" href="#group-input-model-externa-source-xxx-extfun-type-linear-interp-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="group-input-model-external-source-xxx-extfun-type-linear-interp-data">
+<span id="ffmodelexternalsourcelininterp"></span><h2>Group /input/model/external/source_XXX - EXTFUN_TYPE = LINEAR_INTERP_DATA<a class="headerlink" href="#group-input-model-external-source-xxx-extfun-type-linear-interp-data" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
 <blockquote>
 <div><p>Velocity of the external profile in positive column axial direction</p>
@@ -345,8 +367,8 @@ If both component indices are <span class="math notranslate nohighlight">\(-1\)<
 </dd>
 </dl>
 </div>
-<div class="section" id="group-input-model-externa-source-xxx-extfun-type-piecewise-cubic-poly">
-<span id="ffmodelexternalsourcepiececubicpoly"></span><h2>Group /input/model/externa/source_XXX - EXTFUN_TYPE = PIECEWISE_CUBIC_POLY<a class="headerlink" href="#group-input-model-externa-source-xxx-extfun-type-piecewise-cubic-poly" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="group-input-model-external-source-xxx-extfun-type-piecewise-cubic-poly">
+<span id="ffmodelexternalsourcepiececubicpoly"></span><h2>Group /input/model/external/source_XXX - EXTFUN_TYPE = PIECEWISE_CUBIC_POLY<a class="headerlink" href="#group-input-model-external-source-xxx-extfun-type-piecewise-cubic-poly" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
 <blockquote>
 <div><p>Velocity of the external profile in positive column axial direction</p>

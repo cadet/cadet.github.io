@@ -114,7 +114,7 @@ The rates are assumed to be cubic polynomials,
 
       Q = Q_0 + Q_1(t - t_s) + Q_2(t-t_s)^2 + Q_3(t-t_s)^3,
 
-where $t_s$ is the beginning of the time section that triggers the valve switch.
+where :math:`t_s` is the beginning of the time section that triggers the valve switch.
 
 Note that the denominator in Eq. :eq:`NetworkConnection` must always be positive.
 That is, the flow rate coefficients have to be chosen such that the flow into every connected inlet port is strictly positive at all times.

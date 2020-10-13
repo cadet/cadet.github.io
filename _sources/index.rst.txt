@@ -16,6 +16,8 @@
 .. image:: https://img.shields.io/appveyor/ci/sleweke/cadet/master.svg?logo=appveyor&maxAge=3600svg=true
    :target: https://ci.appveyor.com/project/sleweke/cadet
 
+|
+
 CADET
 =====
 
@@ -78,7 +80,7 @@ To cite CADET please use the following publication:
     modelling/index
     simulation/index
     interface/index
-    examples/index
+    .. examples/index
     license
     zbibliography
 

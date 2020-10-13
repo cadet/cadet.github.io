@@ -16,6 +16,8 @@
 .. image:: https://img.shields.io/appveyor/ci/sleweke/cadet/master.svg?logo=appveyor&maxAge=3600svg=true
    :target: https://ci.appveyor.com/project/sleweke/cadet
 
+CADET
+=====
 
 The Chromatography Analysis and Design Toolkit (CADET) is developed at the Institute of Bio- and Geosciences 1 (IBG-1) of Forschungszentrum Jülich (FZJ) under supervision of Dr. Eric von Lieres.
 The core of the CADET software is a fast and accurate solver for the General Rate Model (GRM) of packed bed liquid chromatography.

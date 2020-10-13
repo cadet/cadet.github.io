@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <title>CADET Introduction &#8212; CADET</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -16,7 +16,7 @@
     <link rel="shortcut icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Simulation" href="../../simulation/index.html" />
+    <link rel="next" title="Modelling" href="../../modelling/index.html" />
     <link rel="prev" title="Build for OSX" href="../build_osx.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -29,12 +29,7 @@
     
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="../../index.html">
-    <img class="logo" src="../../_static/cadet_logo.png" alt="Logo"/>
-    
-  </a>
-</p>
+<h1 class="logo"><a href="../../index.html">CADET</a></h1>
 
 
 
@@ -65,9 +60,9 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modelling/index.html">Modelling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../file_format/index.html">File format specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
@@ -109,11 +104,11 @@
 </div>
 <p>For this purpose, we use <a class="reference internal" href="../installation.html#cadet-python"><span class="std std-ref">CADET-Python</span></a>, a file based frontend for CADET.
 CADET still must be downloaded (or built from source) as explained in the <a class="reference internal" href="../installation.html#installation"><span class="std std-ref">installation guide</span></a>.
-The Python frontend almost exactly maps to the documented <a class="reference internal" href="../../file_format/index.html#file-format"><span class="std std-ref">CADET file format</span></a> except that all dataset names are lowercase.
+The Python frontend almost exactly maps to the documented <a class="reference internal" href="../../interface/index.html#file-format"><span class="std std-ref">CADET file format</span></a> except that all dataset names are lowercase.
 This simplifies using the frontend.
 The package includes a <code class="docutils literal notranslate"><span class="pre">Cadet</span></code> class which serves as a generic HDF5 frontend.</p>
 <p>As an example, we consider setting the external porosity for the column model (<code class="docutils literal notranslate"><span class="pre">unit_001</span></code>).
-From <a class="reference internal" href="../../file_format/unit_operations/general_rate_model.html#general-rate-model-config"><span class="std std-ref">file format</span></a>, the path for this is <code class="docutils literal notranslate"><span class="pre">/input/model/unit_001/COL_POROSITY</span></code>.
+From <a class="reference internal" href="../../interface/unit_operations/general_rate_model.html#general-rate-model-config"><span class="std std-ref">file format</span></a>, the path for this is <code class="docutils literal notranslate"><span class="pre">/input/model/unit_001/COL_POROSITY</span></code>.
 In the Python frontend, this becomes:</p>
 <div class="highlight-Python3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">Cadet</span><span class="p">()</span>
 <span class="n">sim</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_001</span><span class="o">.</span><span class="n">col_porosity</span> <span class="o">=</span> <span class="mf">0.33</span>
@@ -132,7 +127,7 @@ It is located in the <code class="docutils literal notranslate"><span class="pre
 </pre></div>
 </div>
 <p>To create the model and specify its parameters, we create an instance of the <code class="docutils literal notranslate"><span class="pre">Cadet</span></code> class.
-In the <code class="docutils literal notranslate"><span class="pre">root</span></code> attribute of this object, the parameter structure is defined as described in the <a class="reference internal" href="../../file_format/introduction.html#ffintroduction"><span class="std std-ref">file format reference</span></a>.
+In the <code class="docutils literal notranslate"><span class="pre">root</span></code> attribute of this object, the parameter structure is defined as described in the <a class="reference internal" href="../../interface/introduction.html#ffintroduction"><span class="std std-ref">file format reference</span></a>.
 It is implemented as a <code class="docutils literal notranslate"><span class="pre">Dict</span></code> of the <a class="reference external" href="https://github.com/mewwts/addict"><code class="docutils literal notranslate"><span class="pre">addict</span></code> package</a>.
 This allows for creating arbitrary nested dictionaries using dot-notation.</p>
 <div class="admonition warning">
@@ -152,7 +147,7 @@ This can cause problems later on, when the simulator is run.</p>
 </pre></div>
 </div>
 <p>The available models are listed in the <a class="reference internal" href="../../modelling/unit_operations/index.html#unit-operation-models"><span class="std std-ref">unit operation chapter</span></a>.
-The units of the different parameters and quantities are given in the corresponding <a class="reference internal" href="../../file_format/unit_operations/index.html#unit-operation-config"><span class="std std-ref">file format</span></a> of the respective unit operation.</p>
+The units of the different parameters and quantities are given in the corresponding <a class="reference internal" href="../../interface/unit_operations/index.html#unit-operation-config"><span class="std std-ref">file format</span></a> of the respective unit operation.</p>
 <div class="section" id="inlet-model">
 <h3>Inlet Model<a class="headerlink" href="#inlet-model" title="Permalink to this headline">¶</a></h3>
 <p>In CADET, the <code class="docutils literal notranslate"><span class="pre">INLET</span></code> pseudo unit operation serves as a source for the system and is used to create arbitary concentration profiles as boundary conditions.
@@ -170,7 +165,7 @@ Later, we will define the polynomials, when we look at time sections.</p>
 <p>We now add a second unit operation, the column model.
 For the <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#general-rate-model-model"><span class="std std-ref">general rate model model</span></a>, we set the <code class="docutils literal notranslate"><span class="pre">unit_type</span></code> parameter of the corresponding unit operation model to <code class="docutils literal notranslate"><span class="pre">GENERAL_RATE_MODEL</span></code>.
 In this group, we set the parameters related to transport and column geometry.
-For a more detailed description of the parameters and their units, see the <a class="reference internal" href="../../file_format/unit_operations/general_rate_model.html#general-rate-model-config"><span class="std std-ref">corresponding file format</span></a>.</p>
+For a more detailed description of the parameters and their units, see the <a class="reference internal" href="../../interface/unit_operations/general_rate_model.html#general-rate-model-config"><span class="std std-ref">corresponding file format</span></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_001</span><span class="o">.</span><span class="n">unit_type</span> <span class="o">=</span> <span class="s1">&#39;GENERAL_RATE_MODEL&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_001</span><span class="o">.</span><span class="n">ncomp</span> <span class="o">=</span> <span class="mi">1</span>
 
@@ -196,7 +191,7 @@ The available models are listed in the <a class="reference internal" href="../..
 <p>For the <a class="reference internal" href="../../modelling/binding/multi_component_langmuir.html#multi-component-langmuir-model"><span class="std std-ref">Langmuir model</span></a>, we set the <code class="docutils literal notranslate"><span class="pre">adsorption_model</span></code> parameter of the corresponding unit operation model to <code class="docutils literal notranslate"><span class="pre">MULTI_COMPONENT_LANGMUIR</span></code>.
 Then, we decide if we want to use the <a class="reference internal" href="../../modelling/binding/index.html#binding-models"><span class="std std-ref">rapid-equilibrium assumption</span></a> in the binding model (<code class="docutils literal notranslate"><span class="pre">is_kinetic</span> <span class="pre">=</span> <span class="pre">False</span></code>), which is not the case here (dynamic binding).
 Finally, the parameters of the binding model have to be set for each component (they are vectors of length <code class="docutils literal notranslate"><span class="pre">n_components</span></code>).
-They are described in the <a class="reference internal" href="../../file_format/binding/multi_component_langmuir.html#multi-component-langmuir-config"><span class="std std-ref">corresponding file format specification</span></a>.
+They are described in the <a class="reference internal" href="../../interface/binding/multi_component_langmuir.html#multi-component-langmuir-config"><span class="std std-ref">corresponding file format specification</span></a>.
 In case of the Langmuir model, we have to specify the parameters <code class="docutils literal notranslate"><span class="pre">kA</span></code>, <code class="docutils literal notranslate"><span class="pre">kD</span></code>, and <code class="docutils literal notranslate"><span class="pre">qMAX</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_001</span><span class="o">.</span><span class="n">adsorption_model</span> <span class="o">=</span> <span class="s1">&#39;MULTI_COMPONENT_LANGMUIR&#39;</span>
 <span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_001</span><span class="o">.</span><span class="n">adsorption</span><span class="o">.</span><span class="n">is_kinetic</span> <span class="o">=</span> <span class="kc">True</span>    <span class="c1"># Kinetic binding</span>
@@ -270,7 +265,7 @@ Finally, we set some other options for the discretization, which usually do not 
 <div class="section" id="time-sections">
 <h3>Time Sections<a class="headerlink" href="#time-sections" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="../../simulation/index.html#simtimesectionstransitions"><span class="std std-ref">Time sections</span></a> are used to specify changes of parameter values during the simulation.
-A section typically corresponds to an operating step (load, wash, elute etc.), but can also be used to indicate changes in connectivity, or even discontinuities of <a class="reference internal" href="../../file_format/introduction.html#section-dependent-parameters"><span class="std std-ref">model parameters</span></a>.</p>
+A section typically corresponds to an operating step (load, wash, elute etc.), but can also be used to indicate changes in connectivity, or even discontinuities of <a class="reference internal" href="../../interface/introduction.html#section-dependent-parameters"><span class="std std-ref">model parameters</span></a>.</p>
 <p>In the <code class="docutils literal notranslate"><span class="pre">/input/solver/sections/</span></code> group, <code class="docutils literal notranslate"><span class="pre">nsec</span></code> denotes the number of sections.
 The start and end times of a section are given in the <code class="docutils literal notranslate"><span class="pre">section_times</span></code> vector.
 It should always start at <code class="docutils literal notranslate"><span class="pre">0.0</span></code> and contains <code class="docutils literal notranslate"><span class="pre">nsec</span> <span class="pre">+</span> <span class="pre">1</span></code> values, that is, the <code class="docutils literal notranslate"><span class="pre">i</span></code>th section goes from <code class="docutils literal notranslate"><span class="pre">section_times[i]</span></code> to <code class="docutils literal notranslate"><span class="pre">section_times[i+1]</span></code>.</p>
@@ -315,7 +310,7 @@ Moreover, we have to specify the section in which the specified connectivity sho
 <p class="admonition-title">Note</p>
 <p>Since CADET version 4.1, the flow rates can also be defined with piecewise cubic polynomials.
 Also, for the 2D General rate model inlet ports need to be speciefied.
-For more information on the parameters, see the <a class="reference internal" href="../../file_format/system.html#ffmodelsystemconnections"><span class="std std-ref">file format specification</span></a>.</p>
+For more information on the parameters, see the <a class="reference internal" href="../../interface/system.html#ffmodelsystemconnections"><span class="std std-ref">file format specification</span></a>.</p>
 </div>
 <p>In this case, we connect all components of <code class="docutils literal notranslate"><span class="pre">unit_000</span></code> to <code class="docutils literal notranslate"><span class="pre">unit_001</span></code>, and from <code class="docutils literal notranslate"><span class="pre">unit_001</span></code> to <code class="docutils literal notranslate"><span class="pre">unit_002</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">nswitches</span> <span class="o">=</span> <span class="mi">1</span>
@@ -356,7 +351,7 @@ Usually, these only need to be adapted in special cases.</p>
 <p>Of these options, the most interesting ones are <code class="docutils literal notranslate"><span class="pre">time_integrator.abstol</span></code> and <code class="docutils literal notranslate"><span class="pre">time_integrator.reltol</span></code>, which control the errors during time integration, and <code class="docutils literal notranslate"><span class="pre">nthreads</span></code>, which sets the number of CPU cores CADET is allowed to use.</p>
 <p>Second, we have to specify which results we want CADET to return.
 For this, we have to specify the <code class="docutils literal notranslate"><span class="pre">/input/return/</span></code> group.
-For more information, see the <a class="reference internal" href="../../file_format/return_data.html#return"><span class="std std-ref">file format specification</span></a>.</p>
+For more information, see the <a class="reference internal" href="../../interface/return_data.html#return"><span class="std std-ref">file format specification</span></a>.</p>
 <p>In this example, we want to write the concentration profile of the inlet and outlet of each unit operation.
 In addition, we are interested in the concentration in the interstitial volume (bulk volume) of the column.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Return data</span>
@@ -398,7 +393,7 @@ We check if the simulation has completed successfully and load the results.</p>
 <div class="section" id="plotting-the-results">
 <h2>4. Plotting the Results<a class="headerlink" href="#plotting-the-results" title="Permalink to this headline">¶</a></h2>
 <p>The data is stored in the <code class="docutils literal notranslate"><span class="pre">/output/</span></code> group of the <code class="docutils literal notranslate"><span class="pre">Cadet</span></code> object.
-The structure and format of the data is described in the <a class="reference internal" href="../../file_format/output_group.html#ffoutput"><span class="std std-ref">file format specification</span></a>.
+The structure and format of the data is described in the <a class="reference internal" href="../../interface/output_group.html#ffoutput"><span class="std std-ref">file format specification</span></a>.
 Finally, we plot the concentration signal at the outlet of the column.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Simulation &#8212; CADET</title>
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -16,8 +16,8 @@
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Modelling" href="../modelling/index.html" />
-    <link rel="prev" title="CADET Introduction" href="../getting_started/tutorials/breakthrough.html" />
+    <link rel="next" title="Interface specifications" href="../interface/index.html" />
+    <link rel="prev" title="Networks of unit operations" href="../modelling/networks.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -29,12 +29,7 @@
     
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="../index.html">
-    <img class="logo" src="../_static/cadet_logo.png" alt="Logo"/>
-    
-  </a>
-</p>
+<h1 class="logo"><a href="../index.html">CADET</a></h1>
 
 
 
@@ -53,6 +48,7 @@
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Simulation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#time-sections-and-transitions">Time sections and transitions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#time-section-specification">Time section specification</a></li>
@@ -70,8 +66,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../file_format/index.html">File format specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
@@ -104,9 +99,9 @@ Each time step requires the solution of a nonlinear algebraic system of equation
 Since chromatographic systems can exhibit strong nonlinearity and stiff systems, the Jacobian of the equation system is always updated (i.e., an “exact” Newton method is used).</p>
 <div class="figure align-default" id="id5">
 <span id="simflowchart"></span><img alt="../_images/time_integration.png" src="../_images/time_integration.png" />
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">General time integration procedure</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">General time integration procedure</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
-<p>The general control flow of a simulation is shown in <a class="reference internal" href="#simflowchart"><span class="std std-numref">Fig. 1</span></a>.
+<p>The general control flow of a simulation is shown in <a class="reference internal" href="#simflowchart"><span class="std std-numref">Fig. 4</span></a>.
 Some aspects of the tasks involved are discussed below.</p>
 <div class="section" id="time-sections-and-transitions">
 <span id="simtimesectionstransitions"></span><h2>Time sections and transitions<a class="headerlink" href="#time-sections-and-transitions" title="Permalink to this headline">¶</a></h2>
@@ -116,17 +111,17 @@ Some aspects of the tasks involved are discussed below.</p>
         t_0 &lt; t_1 &lt; \dots &lt; t_i &lt; t_{i+1} &lt; \dots &lt; t_{\text{end}}.
 \end{aligned}\]</div>
 <p>Time sections are used for various purposes, for example, for defining piecewise polynomials used as inlet profiles or external function, for changing operating conditions such as flow rates, or for changing the connectivity in a network of unit operations.
-A sequence of (one or more) time sections with smooth transitions is called a time slice (see <a class="reference internal" href="#simtimesections"><span class="std std-numref">Fig. 2</span></a>).</p>
+A sequence of (one or more) time sections with smooth transitions is called a time slice (see <a class="reference internal" href="#simtimesections"><span class="std std-numref">Fig. 5</span></a>).</p>
 <p>A transition from one section to the next can either be smooth or discontinuous.
 On smooth transitions, the time integrator can just step over the section transition.
 Contrary to smooth transitions, a discontinuous transition requires some extra work in resetting the time integrator and finding consistent initial conditions for the next time slice.</p>
 <div class="figure align-default" id="id6">
 <span id="simtimesections"></span><img alt="../_images/sections1.png" src="../_images/sections1.png" />
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Time sections, time slices, and transitions between them</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Time sections, time slices, and transitions between them</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="time-section-specification">
 <span id="simtimesectionsspecification"></span><h3>Time section specification<a class="headerlink" href="#time-section-specification" title="Permalink to this headline">¶</a></h3>
-<p>Time sections are specified by an array (<code class="docutils literal notranslate"><span class="pre">SECTION_TIMES</span></code>, see Tab. <a class="reference internal" href="../file_format/solver.html#ffsolversections"><span class="std std-ref">Group /solver/sections</span></a>) which contains the <span class="math notranslate nohighlight">\(t_i\)</span> that denote the start- and endpoint of a time section <span class="math notranslate nohighlight">\(\left[t_i, t_{i+1}\right]\)</span>.
+<p>Time sections are specified by an array (<code class="docutils literal notranslate"><span class="pre">SECTION_TIMES</span></code>, see Tab. <a class="reference internal" href="../interface/solver.html#ffsolversections"><span class="std std-ref">Group /solver/sections</span></a>) which contains the <span class="math notranslate nohighlight">\(t_i\)</span> that denote the start- and endpoint of a time section <span class="math notranslate nohighlight">\(\left[t_i, t_{i+1}\right]\)</span>.
 This means, that the array contains <span class="math notranslate nohighlight">\(n+1\)</span> values if there are <span class="math notranslate nohighlight">\(n\)</span> sections.
 The smoothness of a section transition is indicated by the array <code class="docutils literal notranslate"><span class="pre">SECTION_CONTINUITY</span></code>, which contains <span class="math notranslate nohighlight">\(n-1\)</span> elements if there are <span class="math notranslate nohighlight">\(n\)</span> sections.</p>
 </div>
@@ -168,7 +163,7 @@ Thus, consistent initial conditions <span class="math notranslate nohighlight">\
 \end{aligned}\end{split}\]</div>
 <p>The last equation, which determines <span class="math notranslate nohighlight">\(\dot{y}_{\mathcal{I}_a}\)</span>, arises from taking the total derivative with respect to time <span class="math notranslate nohighlight">\(t\)</span> of the second equation.</p>
 <p>Concluding, a nonlinear algebraic equation system has to be solved in order to compute consistent initial conditions.
-The error in the solution of these systems is controlled by the <code class="docutils literal notranslate"><span class="pre">ALGTOL</span></code> setting (see Tab. <a class="reference internal" href="../file_format/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>).</p>
+The error in the solution of these systems is controlled by the <code class="docutils literal notranslate"><span class="pre">ALGTOL</span></code> setting (see Tab. <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>).</p>
 </div>
 <div class="section" id="time-stepping">
 <span id="simtimeintegration"></span><h2>Time stepping<a class="headerlink" href="#time-stepping" title="Permalink to this headline">¶</a></h2>
@@ -186,7 +181,7 @@ The error in the solution of these systems is controlled by the <code class="doc
 The IDAS time integrator adaptively changes the step size <span class="math notranslate nohighlight">\({\Delta t_\tau = t_\tau-t_{\tau-1}}\)</span> and order <span class="math notranslate nohighlight">\(1 \le q_{\tau} \le 5\)</span> in each time step and automatically determines the corresponding coefficients <span class="math notranslate nohighlight">\(\alpha_{\tau,i}\)</span>.
 This <em>ansatz</em> is inserted into the DAE and the resulting nonlinear algebraic equation system is solved for <span class="math notranslate nohighlight">\(y_{\tau} = y\left( t_\tau \right)\)</span> using a Newton method.</p>
 <div class="math notranslate nohighlight" id="equation-bdfnonlinsystem">
-<span class="eqno">(1)<a class="headerlink" href="#equation-bdfnonlinsystem" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(19)<a class="headerlink" href="#equation-bdfnonlinsystem" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
     H(y_\tau) = F\left(t_\tau,y_\tau,\frac{1}{\Delta t_\tau} \,\sum_{i=0}^{q_\tau}{\alpha_{\tau,i} \, y_{\tau-i}}, p\right) = 0
 \end{aligned}\]</div>
 <p>This requires (possibly many) solutions of linear equation systems involving the Jacobian of <span class="math notranslate nohighlight">\(H\)</span> given by</p>
@@ -202,16 +197,16 @@ The much simpler Jacobian <span class="math notranslate nohighlight">\(\partial 
 <div class="section" id="adaptivity">
 <span id="simtimeintegrationadaptivity"></span><h3>Adaptivity<a class="headerlink" href="#adaptivity" title="Permalink to this headline">¶</a></h3>
 <p>The BDF order <span class="math notranslate nohighlight">\(q_{\tau}\)</span> and size of the time step <span class="math notranslate nohighlight">\(t_\tau\)</span> are chosen such that the error bounds are satisfied with minimal work.
-Equation <a class="reference internal" href="#equation-bdfnonlinsystem">1</a> is solved with a Newton iteration using very few iterations (<code class="docutils literal notranslate"><span class="pre">MAX_NEWTON_ITER</span></code> from Table <a class="reference internal" href="../file_format/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>) since the starting point is assumed to be close to the solution as the time steps are small.
+Equation <a class="reference internal" href="#equation-bdfnonlinsystem">19</a> is solved with a Newton iteration using very few iterations (<code class="docutils literal notranslate"><span class="pre">MAX_NEWTON_ITER</span></code> from Table <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>) since the starting point is assumed to be close to the solution as the time steps are small.
 If the solution of the Newton iteration does not pass the <em>convergence test</em>, the step size <span class="math notranslate nohighlight">\(t_\tau\)</span> is reduced and the Newton iteration is tried again.
 This may happen at most <code class="docutils literal notranslate"><span class="pre">MAX_CONVTEST_FAIL</span></code> times, otherwise time integration is aborted with failure.
 Having a solution of the Newton iteration at hand, a <em>local truncation error test</em> is performed which controls the error of the BDF method.
-If this test fails, step size <span class="math notranslate nohighlight">\(t_\tau\)</span> and order <span class="math notranslate nohighlight">\(q_{\tau}\)</span> are adapted and the process restarts with solving the nonlinear system Eq. <a class="reference internal" href="#equation-bdfnonlinsystem">1</a>.
+If this test fails, step size <span class="math notranslate nohighlight">\(t_\tau\)</span> and order <span class="math notranslate nohighlight">\(q_{\tau}\)</span> are adapted and the process restarts with solving the nonlinear system Eq. <a class="reference internal" href="#equation-bdfnonlinsystem">19</a>.
 The error test may be failed at most <code class="docutils literal notranslate"><span class="pre">MAX_ERRTEST_FAIL</span></code> times before time integration is aborted with failure.</p>
 <p>Error bounds for the local truncation error test are specified by an absolute tolerance (<code class="docutils literal notranslate"><span class="pre">ABSTOL</span></code>) and a relative tolerance (<code class="docutils literal notranslate"><span class="pre">RELTOL</span></code>).
 Note that the relative tolerance only works for non-zero values, whereas zero values are accounted for by the absolute tolerance.
 For example, a relative tolerance of <span class="math notranslate nohighlight">\(10^{-4}\)</span> and absolute tolerance of <span class="math notranslate nohighlight">\(10^{-8}\)</span> requests <span class="math notranslate nohighlight">\(3\)</span> significant digits (correct digits after the comma in scientific notation) and considers all numbers with magnitude smaller than <span class="math notranslate nohighlight">\(10^{-8}\)</span> as <span class="math notranslate nohighlight">\(0\)</span>.</p>
-<p>The size of the first time step in a time slice is given by <code class="docutils literal notranslate"><span class="pre">INIT_STEP_SIZE</span></code> from Table <a class="reference internal" href="../file_format/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>.
+<p>The size of the first time step in a time slice is given by <code class="docutils literal notranslate"><span class="pre">INIT_STEP_SIZE</span></code> from Table <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>.
 If a simulation fails on the first time step, it might help to reduce the initial step size.
 It can also help to increase the error tolerances, at the cost of imprecise results over the whole course of the simulation.</p>
 <p>It can happen that due to severe stiffness or ill-posed models a simulation may exceed its computational budget given by the maximum number of time steps (per time slice) <code class="docutils literal notranslate"><span class="pre">MAX_STEPS</span></code>.
@@ -236,16 +231,16 @@ The CADET simulator implements the forward sensitivity approach which creates a 
 \end{aligned}\end{split}\]</div>
 <p>These linear DAEs depend on the solution <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(\dot{y}\)</span> of the original DAE system.
 Consequently, the sensitivity systems are solved together with the original DAE system in a staggered approach <a class="bibtex reference internal" href="../zbibliography.html#feehery1997" id="id3">[19]</a>.</p>
-<p>After the nonlinear Eq. <a class="reference internal" href="#equation-bdfnonlinsystem">1</a> has been successfully solved using Newton iteration (i.e., it has passed the convergence test), each sensitivity is solved using the same Newton iteration.
+<p>After the nonlinear Eq. <a class="reference internal" href="#equation-bdfnonlinsystem">19</a> has been successfully solved using Newton iteration (i.e., it has passed the convergence test), each sensitivity is solved using the same Newton iteration.
 If direct linear solvers were used, this iteration would convergence with a single iteration as there is no nonlinearity.
-The Newton method for the sensitivities performs at most <code class="docutils literal notranslate"><span class="pre">MAX_NEWTON_ITER_SENS</span></code> (see Table <a class="reference internal" href="../file_format/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>) iterations.
+The Newton method for the sensitivities performs at most <code class="docutils literal notranslate"><span class="pre">MAX_NEWTON_ITER_SENS</span></code> (see Table <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>) iterations.
 Assuming the convergence test has passed for each sensitivity, the local truncation error test is performed for the full set of variables (i.e., original system and sensitivities).
 The sensitivities can be excluded from the local truncation error test by setting <code class="docutils literal notranslate"><span class="pre">ERRORTEST_SENS</span></code> appropriately.
 Note that time integration step size is always affected by sensitivities due to possible convergence test failures.</p>
 <p>While the Jacobians <span class="math notranslate nohighlight">\(\partial F / \partial y\)</span> and <span class="math notranslate nohighlight">\(\partial F / \partial \dot{y}\)</span> can be computed either analytically or via AD, the last term <span class="math notranslate nohighlight">\(\partial F / \partial p\)</span> is always computed by AD.
 In fact, the terms <span class="math notranslate nohighlight">\(\partial F / \partial y\)</span> and <span class="math notranslate nohighlight">\(\partial F / \partial p\)</span> can be computed by one AD-enabled evaluation of <span class="math notranslate nohighlight">\(F\)</span> using the vector mode with appropriate seed vectors <a class="bibtex reference internal" href="../zbibliography.html#puttmann2016" id="id4">[20]</a>.</p>
 <p>A parameter sensitivity is specified by identifying the involved parameters, which can be more than one (see below).
-Parameters are identified by name and multiple indices, which may not all be used (see Tab. <a class="reference internal" href="../file_format/sensitivities.html#ffsensitivityparam"><span class="std std-ref">Group /input/sensitivity/param_XXX</span></a>). Indices that are not used for identification (e.g., flow rate is independent of bound phase or component) are set to <span class="math notranslate nohighlight">\(-1\)</span>. All other indices are zero-based.</p>
+Parameters are identified by name and multiple indices, which may not all be used (see Tab. <a class="reference internal" href="../interface/sensitivities.html#ffsensitivityparam"><span class="std std-ref">Group /input/sensitivity/param_XXX</span></a>). Indices that are not used for identification (e.g., flow rate is independent of bound phase or component) are set to <span class="math notranslate nohighlight">\(-1\)</span>. All other indices are zero-based.</p>
 <p>Note that the sensitivity systems need to be consistently initialized, too.
 However, since only linear systems are involved, no nonlinear equation system has to be solved and the procedure is much simpler computationally.</p>
 <div class="section" id="joint-parameters">
@@ -267,7 +262,7 @@ Hence, the DAE residual function <span class="math notranslate nohighlight">\(F\
 \[\begin{aligned}
     \frac{\partial F}{\partial p} = \frac{\partial F}{\partial p_1} \alpha_1 + \dots + \frac{\partial F}{\partial p_n} \alpha_n.
 \end{aligned}\]</div>
-<p>In order to use this functionality, all parameters involved have to be specified in a single sensitivity instance (<code class="docutils literal notranslate"><span class="pre">param_XXX</span></code> group, see Tables <a class="reference internal" href="../file_format/sensitivities.html#ffsensitivity"><span class="std std-ref">Group /input/sensitivity</span></a> and <cite>FFSensitivityParam</cite>) by using arrays for the name and indices instead of scalar values.
+<p>In order to use this functionality, all parameters involved have to be specified in a single sensitivity instance (<code class="docutils literal notranslate"><span class="pre">param_XXX</span></code> group, see Tables <a class="reference internal" href="../interface/sensitivities.html#ffsensitivity"><span class="std std-ref">Group /input/sensitivity</span></a> and <cite>FFSensitivityParam</cite>) by using arrays for the name and indices instead of scalar values.
 The coefficients <span class="math notranslate nohighlight">\(\alpha_i\)</span> are provided in the <code class="docutils literal notranslate"><span class="pre">SENS_FACTOR</span></code> vector.</p>
 <p>A simple example for a situation, which benefits from having a single meta parameter, would be a chain of unit operations in a network in which the sensitivity with respect to the flow rate is to be computed.
 Instead of computing the sensitivity with respect to each single flow rate and fusing them together in a postprocessing step, a meta parameter that maps to all flow rates can be introduced.</p>

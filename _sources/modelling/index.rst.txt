@@ -3,7 +3,7 @@
 Modelling
 =========
 .. toctree::
-    networks
     unit_operations/index
     binding/index
     reactions
+    networks

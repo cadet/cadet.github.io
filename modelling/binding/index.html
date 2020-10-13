@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Binding models &#8212; CADET</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -29,12 +29,7 @@
     
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="../../index.html">
-    <img class="logo" src="../../_static/cadet_logo.png" alt="Logo"/>
-    
-  </a>
-</p>
+<h1 class="logo"><a href="../../index.html">CADET</a></h1>
 
 
 
@@ -53,9 +48,7 @@
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Binding models</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="bi_steric_mass_action.html">Bi Steric Mass Action</a></li>
@@ -77,9 +70,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../reactions.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../file_format/index.html">File format specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
@@ -146,7 +141,7 @@ Note that the parameter units have to be adapted to the unit of the external pro
 <p>Each parameter of the externally dependent binding model can depend on a different external source.
 The 0-based indices of the external source for each parameter is given in the dataset <code class="docutils literal notranslate"><span class="pre">EXTFUN</span></code>.
 By assigning only one index to <code class="docutils literal notranslate"><span class="pre">EXTFUN</span></code>, all parameters use the same source.
-The ordering of the parameters in <code class="docutils literal notranslate"><span class="pre">EXTFUN</span></code> is given by the ordering in the file format specification in Section <a class="reference internal" href="../../file_format/binding/index.html#ffadsorption"><span class="std std-ref">Binding models</span></a>.</p>
+The ordering of the parameters in <code class="docutils literal notranslate"><span class="pre">EXTFUN</span></code> is given by the ordering in the file format specification in Section <a class="reference internal" href="../../interface/binding/index.html#ffadsorption"><span class="std std-ref">Binding models</span></a>.</p>
 <p><strong>Binding model feature matrix:</strong> A short comparison of the most prominent binding model features is given in <a class="reference internal" href="#mbfeaturematrix"><span class="std std-numref">Table 3</span></a>.
 The implemented binding models can be divided into two main classes: Single-state and multi-state binding.
 While single-state models only have one bound state per component (or less), multi-state models provide multiple (possibly different) bound states for each component, which may correspond to different binding orientations or binding site types.

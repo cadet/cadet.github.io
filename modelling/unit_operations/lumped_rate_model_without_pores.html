@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Lumped rate model without pores (LRM) &#8212; CADET</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -29,12 +29,7 @@
     
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="../../index.html">
-    <img class="logo" src="../../_static/cadet_logo.png" alt="Logo"/>
-    
-  </a>
-</p>
+<h1 class="logo"><a href="../../index.html">CADET</a></h1>
 
 
 
@@ -53,9 +48,7 @@
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Unit operation models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="2d_general_rate_model.html">Two Dimensional General rate model (GRM2D)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cstr.html">Continuous stirred tank reactor model (CSTR)</a></li>
@@ -68,9 +61,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reactions.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../file_format/index.html">File format specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
@@ -100,7 +95,7 @@
 <p>The lumped rate model without pores <a class="bibtex reference internal" href="../../zbibliography.html#guiochon2006" id="id1">[4]</a><a class="bibtex reference internal" href="../../zbibliography.html#felinger2004" id="id2">[13]</a> deviates from the lumped rate model with pores (see Section <a class="reference internal" href="lumped_rate_model_with_pores.html#lumped-rate-model-with-pores-model"><span class="std std-ref">Lumped rate model with pores (LRMP)</span></a>) by neglecting pores completely.
 The particle phase <span class="math notranslate nohighlight">\(c^p\)</span> is removed and the porosity <span class="math notranslate nohighlight">\(\varepsilon_t\)</span> is taken as total porosity</p>
 <div class="math notranslate nohighlight" id="equation-totalporosity">
-<span class="eqno">(18)<a class="headerlink" href="#equation-totalporosity" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(15)<a class="headerlink" href="#equation-totalporosity" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
     \varepsilon_t = \varepsilon_c + \left( 1 - \varepsilon_c \right) \varepsilon_p.
 \end{aligned}\]</div>
 <p>The phase ratio is denoted by <span class="math notranslate nohighlight">\(\beta_t = \varepsilon_t / (1 - \varepsilon_t)\)</span> accordingly.
@@ -129,7 +124,7 @@ The equations are complemented by Danckwerts boundary conditions <a class="bibte
 \end{aligned}\]</div>
 <p>Note that by setting <span class="math notranslate nohighlight">\(\varepsilon_t = 1\)</span>, removing all bound states by setting <span class="math notranslate nohighlight">\(N_{\text{bnd},i} = 0\)</span> for all components <span class="math notranslate nohighlight">\(i\)</span>, and applying no binding model, a dispersive plug flow reactor (DPFR) is obtained.
 For the specification of flow rate and direction, the same holds as for the general rate model (see Section <a class="reference internal" href="general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>).</p>
-<p>For information on model parameters see <a class="reference internal" href="../../file_format/unit_operations/lumped_rate_model_without_pores.html#lumpded-rate-model-without-pores-config"><span class="std std-ref">Lumped Rate Model Without Pores</span></a>.</p>
+<p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/lumped_rate_model_without_pores.html#lumpded-rate-model-without-pores-config"><span class="std std-ref">Lumped Rate Model Without Pores</span></a>.</p>
 </div>
 
 

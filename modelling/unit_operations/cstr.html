@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Continuous stirred tank reactor model (CSTR) &#8212; CADET</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -29,12 +29,7 @@
     
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="../../index.html">
-    <img class="logo" src="../../_static/cadet_logo.png" alt="Logo"/>
-    
-  </a>
-</p>
+<h1 class="logo"><a href="../../index.html">CADET</a></h1>
 
 
 
@@ -53,9 +48,7 @@
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Unit operation models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="2d_general_rate_model.html">Two Dimensional General rate model (GRM2D)</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Continuous stirred tank reactor model (CSTR)</a></li>
@@ -68,9 +61,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reactions.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../file_format/index.html">File format specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
@@ -120,7 +115,7 @@ When combined with a binding model, it can be used to model batch uptake experim
 Thus, setting <span class="math notranslate nohighlight">\(\varepsilon = 1\)</span>, removing all bound states by setting <span class="math notranslate nohighlight">\(N_{\text{bnd},j,i} = 0\)</span> for all components <span class="math notranslate nohighlight">\(i\)</span> and particle types <span class="math notranslate nohighlight">\(j\)</span>, and applying no binding model results in a simple tank.
 The additional parameter <span class="math notranslate nohighlight">\(F_{\text{filter}}\)</span>, which denotes the flow rate of pure liquid (without any components) out of the tank, can be used to model a filtering unit.</p>
 <p>Note that it is the user’s duty to make sure that the volume of the CSTR does not fall below 0. If it does, the simulation may fail to run or may produce unreasonable (e.g., unphysical) results.</p>
-<p>See <a class="reference internal" href="../../file_format/unit_operations/cstr.html#cstr-config"><span class="std std-ref">Continuous stirred tank reactor model</span></a>.</p>
+<p>See <a class="reference internal" href="../../interface/unit_operations/cstr.html#cstr-config"><span class="std std-ref">Continuous stirred tank reactor model</span></a>.</p>
 </div>
 
 

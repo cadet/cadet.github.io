@@ -39,9 +39,9 @@ For people looking for the old project, it can now be found here: https://github
     :hidden:
 
     getting_started/index
-    simulation/index
     modelling/index
-    file_format/index
+    simulation/index
+    interface/index
     examples/index
     license
     zbibliography

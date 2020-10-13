@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <title>CADET Overview &#8212; CADET</title>
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -27,12 +27,7 @@
     
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="../index.html">
-    <img class="logo" src="../_static/cadet_logo.png" alt="Logo"/>
-    
-  </a>
-</p>
+<h1 class="logo"><a href="../index.html">CADET</a></h1>
 
 
 
@@ -51,9 +46,9 @@
 <h3>Navigation</h3>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="index.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../file_format/index.html">File format specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
@@ -106,13 +101,13 @@ sim.filename = “/path/to/where/you/want/the/file.hdf5” sim.save()
 </div>
 <div class="section" id="define-adsorption-and-reaction-paramters">
 <h2>Define adsorption and reaction paramters<a class="headerlink" href="#define-adsorption-and-reaction-paramters" title="Permalink to this headline">¶</a></h2>
-<p>See also: <a class="reference internal" href="../modelling/binding/index.html#binding-models"><span class="std std-ref">Binding models</span></a>, and <a class="reference internal" href="../file_format/binding/index.html#ffadsorption"><span class="std std-ref">Binding models</span></a></p>
-<p>See also: <a class="reference internal" href="../modelling/reactions.html#reaction-models"><span class="std std-ref">Reaction models</span></a>, and <a class="reference internal" href="../file_format/reactions.html#ffreaction"><span class="std std-ref">Reaction models</span></a></p>
+<p>See also: <a class="reference internal" href="../modelling/binding/index.html#binding-models"><span class="std std-ref">Binding models</span></a>, and <a class="reference internal" href="../interface/binding/index.html#ffadsorption"><span class="std std-ref">Binding models</span></a></p>
+<p>See also: <a class="reference internal" href="../modelling/reactions.html#reaction-models"><span class="std std-ref">Reaction models</span></a>, and <a class="reference internal" href="../interface/reactions.html#ffreaction"><span class="std std-ref">Reaction models</span></a></p>
 </div>
 <div class="section" id="setup-connections-and-switches">
 <h2>Setup connections and switches<a class="headerlink" href="#setup-connections-and-switches" title="Permalink to this headline">¶</a></h2>
 <p>See also: <a class="reference internal" href="../simulation/index.html#simulation"><span class="std std-ref">Simulation</span></a>, and <a class="reference internal" href="../modelling/networks.html#networks"><span class="std std-ref">Networks of unit operations</span></a>,</p>
-<p>See Tables <a class="reference internal" href="../file_format/system.html#ffmodelsystemconnections"><span class="std std-ref">Group /input/model/connections</span></a> and <a class="reference internal" href="../file_format/system.html#ffmodelconnectionswitch"><span class="std std-ref">Group /input/model/connections/switch_XXX</span></a>.</p>
+<p>See Tables <a class="reference internal" href="../interface/system.html#ffmodelsystemconnections"><span class="std std-ref">Group /input/model/connections</span></a> and <a class="reference internal" href="../interface/system.html#ffmodelconnectionswitch"><span class="std std-ref">Group /input/model/connections/switch_XXX</span></a>.</p>
 <img alt="../_images/sections.png" src="../_images/sections.png" />
 </div>
 <div class="section" id="configure-solver">

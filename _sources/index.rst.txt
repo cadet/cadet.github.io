@@ -1,11 +1,29 @@
 .. _contents:
 
-CADET
-=====
+.. image:: _static/cadet_logo.png
+
+|
+
+.. image:: https://img.shields.io/github/release/modsim/cadet.svg
+   :target: https://github.com/modsim/CADET/releases
+
+.. image:: https://img.shields.io/github/downloads/modsim/cadet/latest/total.svg
+   :target: https://github.com/modsim/CADET/releases
+
+.. image:: https://img.shields.io/travis/modsim/CADET/master.svg?logo=travis&maxAge=3600)
+   :target: https://travis-ci.org/modsim/CADET
+
+.. image:: https://img.shields.io/appveyor/ci/sleweke/cadet/master.svg?logo=appveyor&maxAge=3600svg=true
+   :target: https://ci.appveyor.com/project/sleweke/cadet
+
 
 The Chromatography Analysis and Design Toolkit (CADET) is developed at the Institute of Bio- and Geosciences 1 (IBG-1) of Forschungszentrum Jülich (FZJ) under supervision of Dr. Eric von Lieres.
 The core of the CADET software is a fast and accurate solver for the General Rate Model (GRM) of packed bed liquid chromatography.
 The CADET solver covers a wide range of GRM variants, combining different transport and binding models with state-of-the-art mathematical algorithms and scientific computing techniques.
+
+- **Forum:** https://forum.cadet-web.de
+- **Source:** https://github.com/modsim/cadet
+
 
 Features
 --------
@@ -18,6 +36,28 @@ Features
 * Supports XML and HDF5 as data formats
 * Multi-platform: Works on Windows, Linux, and Mac OS X
 
+Online Simulator
+----------------
+
+Try CADET in the browser using the `online simulator web service <http://www.cadet-web.de>`_.
+
+
+Ongoing Development
+-------------------
+
+Since CADET is actively developed, do not expect a stable API. Breaking changes and extensive restructuring may occur in any commit and release. For non-developers, it is recommended to upgrade from release to release instead of always working with the most recent commit.
+
+Bugs
+----
+
+Please report any bugs that you find `here <https://github.com/modsim/cadet/issues>`_. Or, even better, fork the repository on `GitHub <https://github.com/modsim/cadet>`_ and create a pull request (PR) with the fix. 
+
+Donations
+---------
+
+`Donations <https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FCQ2M89558ZAG>`_ for helping to host, maintain, and further develop the CADET project are highly appreciated.
+
+
 Citing
 ------
 
@@ -27,12 +67,6 @@ To cite CADET please use the following publication:
 * Püttmann, A.; Schnittert, S.; Leweke, S.; von Lieres, E.: `Utilizing algorithmic differentiation to efficiently compute chromatograms and parameter sensitivities <http://doi.org/10.1016/j.ces.2015.08.050>`_, Chemical Engineering Science, 139 (2016), 152–162.
 * Püttmann, A.; Schnittert, S.; Naumann, U.; von Lieres, E.: `Fast and accurate parameter sensitivities for the general rate model of column liquid chromatography <http://doi.org/10.1016/j.compchemeng.2013.04.021>`_, Computers and Chemical Engineering 56,13 (2013), 46-57.
 * von Lieres, E.; Andersson, J.: `A fast and accurate solver for the general rate model of column liquid chromatography <http://doi.org/10.1016/j.compchemeng.2010.03.008>`_, Computers and Chemical Engineering 34,8 (2010), 1180–1191.
-
-Note
-----
-This Github account was formerly home to another project named CADET by the Fachhochschule Salzburg.
-Because their project has been inactive for some time, they have kindly agreed to transfer the ownership of the CADET account to us. 
-For people looking for the old project, it can now be found here: https://github.com/cadet-salzburg.
 
 .. toctree::
     :maxdepth: 3

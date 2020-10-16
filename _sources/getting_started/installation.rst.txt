@@ -83,7 +83,8 @@ To run our examples, we recommend to install these additional packages:
 
 .. code-block:: bash
 
-    conda install jupyterlab scipy matplotlib gitpython
+    conda install numpy scipy matplotlib gitpython jupyterlab ipywidgets
+    conda install -c conda-forge jupyter_contrib_nbextensions jupyter_nbextensions_configurator
 
 Install CADET-MI
 ^^^^^^^^^^^^^^^^

@@ -17,12 +17,6 @@ is given in :numref:`table_features_unit_operations`.
      - Film diffusion
      - Particle geometries
      - Multiple particle types
-   * - :ref:`2d_general_rate_model_model`
-     - ✓
-     - ✓
-     - ✓
-     - ✓
-     - ✓
    * - :ref:`general_rate_model_model`
      - ×
      - ✓
@@ -41,6 +35,12 @@ is given in :numref:`table_features_unit_operations`.
      - ×
      - ×
      - ×
+   * - :ref:`2d_general_rate_model_model`
+     - ✓
+     - ✓
+     - ✓
+     - ✓
+     - ✓
    * - :ref:`cstr_model`
      - ×
      - ×
@@ -56,4 +56,10 @@ Moreover, the pseudo unit operations :ref:`inlet_model`, and :ref:`outlet_model`
     :hidden:
     :glob:
 
-    *
+    general_rate_model
+    lumped_rate_model_without_pores
+    lumped_rate_model_with_pores
+    2d_general_rate_model
+    cstr
+    inlet
+    outlet

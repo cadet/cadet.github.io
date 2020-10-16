@@ -112,6 +112,22 @@ For this purpose, we recommend installing <a class="reference external" href="ht
 Anaconda is a high-performance scientific distribution of Python that includes many common packages needed for scientific and engineering work.
 Download the installer from their <a class="reference external" href="https://www.anaconda.com/">website</a> and run it for the local user.
 To install <code class="docutils literal notranslate"><span class="pre">CADET-Python</span></code>, open an <cite>Anaconda Shell</cite> and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install numpy scipy matplotlib gitpython jupyterlab ipywidgets
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge jupyter_contrib_nbextensions jupyter_nbextensions_configurator
+</pre></div>
+</div>
+<p>Moreover, we need to allow some additional channels for installing CADET-Python:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda config --add channels anaconda-fusion
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda config --add channels conda-forge
+</pre></div>
+</div>
+<p>Then, to install CADET-Python run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install -c immudzen cadet
 </pre></div>
 </div>

@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Continuous stirred tank reactor model (CSTR)" href="cstr.html" />
-    <link rel="prev" title="Unit operation models" href="index.html" />
+    <link rel="prev" title="Lumped rate model with pores (LRMP)" href="lumped_rate_model_with_pores.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -43,12 +43,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Unit operation models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="general_rate_model.html">General rate model (GRM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_without_pores.html">Lumped rate model without pores (LRM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_with_pores.html">Lumped rate model with pores (LRMP)</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Two Dimensional General rate model (GRM2D)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cstr.html">Continuous stirred tank reactor model (CSTR)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="general_rate_model.html">General rate model (GRM)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="inlet.html">Inlet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_with_pores.html">Lumped rate model with pores (LRMP)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_without_pores.html">Lumped rate model without pores (LRM)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="outlet.html">Outlet</a></li>
 </ul>
 </li>
@@ -87,9 +87,9 @@
 <p>The general rate model as introduced in Section <a class="reference internal" href="general_rate_model.html#general-rate-model-model"><span class="std std-ref">General rate model (GRM)</span></a> assumes homogeneity in the cross sections of the column.
 This allows to consider transport along the axial dimension only.
 However, due to packing irregularity and inhomogeneous flow at the inlet (i.e., frits), this assumption may be a crude approximation.
-This model can be improved by introducing a radial coordinate <span class="math notranslate nohighlight">\(\rho \in [0, R]\)</span>, where <span class="math notranslate nohighlight">\(R\)</span> is the column radius, in the interstitial volume Eq. <a class="reference internal" href="general_rate_model.html#equation-modelcolumn">6</a>:</p>
+This model can be improved by introducing a radial coordinate <span class="math notranslate nohighlight">\(\rho \in [0, R]\)</span>, where <span class="math notranslate nohighlight">\(R\)</span> is the column radius, in the interstitial volume Eq. <a class="reference internal" href="general_rate_model.html#equation-modelcolumn">1</a>:</p>
 <div class="math notranslate nohighlight" id="equation-modelcolumn2d">
-<span class="eqno">(1)<a class="headerlink" href="#equation-modelcolumn2d" title="Permalink to this equation">¶</a></span>\[\begin{split}     \varepsilon_c \frac{\partial c^l_i}{\partial t} = &amp;-\varepsilon_c u \frac{\partial c^l_i}{\partial z} + \varepsilon_c D_{\text{ax},i} \frac{\partial^2 c^l_i}{\partial z^2} + \frac{1}{\rho} \frac{\partial}{\partial \rho} \left( \rho D_{\text{rad},i} \frac{\partial}{\partial \rho} \left( \varepsilon_c c^l_i \right) \right) \\
+<span class="eqno">(11)<a class="headerlink" href="#equation-modelcolumn2d" title="Permalink to this equation">¶</a></span>\[\begin{split}     \varepsilon_c \frac{\partial c^l_i}{\partial t} = &amp;-\varepsilon_c u \frac{\partial c^l_i}{\partial z} + \varepsilon_c D_{\text{ax},i} \frac{\partial^2 c^l_i}{\partial z^2} + \frac{1}{\rho} \frac{\partial}{\partial \rho} \left( \rho D_{\text{rad},i} \frac{\partial}{\partial \rho} \left( \varepsilon_c c^l_i \right) \right) \\
  &amp;- \left(1 - \varepsilon_c\right) \sum_j d_j \frac{ 3 k_{f,j,i} }{r_{p,j}} \left[ c^l_i - c^p_{j,i}(\cdot, \cdot, \cdot, r_{p,j}) \right] + \varepsilon_c f_{\text{react},i}^l\left(c^l\right).\end{split}\]</div>
 <p>Here,</p>
 <blockquote>
@@ -105,26 +105,26 @@ Additionally, the porosity <span class="math notranslate nohighlight">\(\varepsi
 For simplicity, it is assumed that the parameters are piecewise constant, that is, the range <span class="math notranslate nohighlight">\([0, R]\)</span> is divided into disjoint zones in which all parameters are constant.
 These zones are used for radial discretization and can be supplied to the simulator.
 Continuous dependence of the parameters can be realized by piecewise constant approximation.</p>
-<p>The Danckwerts boundary conditions at the column in- and outlet, Eq. <a class="reference internal" href="general_rate_model.html#equation-bcinlet">8</a> and <a class="reference internal" href="general_rate_model.html#equation-bcoutlet">7</a>, are modified to account for the radial coordinate:</p>
+<p>The Danckwerts boundary conditions at the column in- and outlet, Eq. <a class="reference internal" href="general_rate_model.html#equation-bcinlet">3</a> and <a class="reference internal" href="general_rate_model.html#equation-bcoutlet">2</a>, are modified to account for the radial coordinate:</p>
 <div class="math notranslate nohighlight" id="equation-bcinlet2d">
-<span class="eqno">(2)<a class="headerlink" href="#equation-bcinlet2d" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(12)<a class="headerlink" href="#equation-bcinlet2d" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
     u(\rho) c_{\text{in},i}(t,\rho) &amp;= u(\rho) c^l_i(t,0,\rho) - D_{\text{ax},i}(\rho) \frac{\partial c^l_i}{\partial z}(t, 0, \rho) &amp; \forall t &gt; 0, \rho \in (0,R),
 \end{aligned}\]</div>
 <div class="math notranslate nohighlight" id="equation-bcoutlet2d">
-<span class="eqno">(3)<a class="headerlink" href="#equation-bcoutlet2d" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(13)<a class="headerlink" href="#equation-bcoutlet2d" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
     \frac{\partial c^l_i}{\partial z}(t, L, \rho) &amp;= 0 &amp; \forall t &gt; 0, \rho \in (0,R).
 \end{aligned}\]</div>
 <p>Conditions for the radial direction are added:</p>
 <div class="math notranslate nohighlight" id="equation-bcradial2dinner">
-<span class="eqno">(4)<a class="headerlink" href="#equation-bcradial2dinner" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(14)<a class="headerlink" href="#equation-bcradial2dinner" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
     \frac{\partial{c^l_i}}{\partial \rho}(\cdot, \cdot, 0) &amp;= 0,  \\
 \end{aligned}\end{split}\]</div>
 <div class="math notranslate nohighlight" id="equation-bcradial2douter">
-<span class="eqno">(5)<a class="headerlink" href="#equation-bcradial2douter" title="Permalink to this equation">¶</a></span>\[ \begin{aligned}
+<span class="eqno">(15)<a class="headerlink" href="#equation-bcradial2douter" title="Permalink to this equation">¶</a></span>\[ \begin{aligned}
      \frac{\partial{c^l_i}}{\partial \rho}(\cdot, \cdot, R) &amp;= 0.
  \end{aligned}\]</div>
-<p>While the inner condition Eq.<a class="reference internal" href="#equation-bcradial2dinner">4</a> represents symmetry at the column center, the outer condition Eq. <a class="reference internal" href="#equation-bcradial2douter">5</a> is a no-flux condition.</p>
-<p>Using the inlet boundary condition Eq. <a class="reference internal" href="#equation-bcinlet2d">2</a>, each radial zone is equipped with its own inlet and outlet port.
+<p>While the inner condition Eq.<a class="reference internal" href="#equation-bcradial2dinner">14</a> represents symmetry at the column center, the outer condition Eq. <a class="reference internal" href="#equation-bcradial2douter">15</a> is a no-flux condition.</p>
+<p>Using the inlet boundary condition Eq. <a class="reference internal" href="#equation-bcinlet2d">12</a>, each radial zone is equipped with its own inlet and outlet port.
 That is, this unit operation has as many inlet and outlet ports as it has radial zones (parameter <code class="docutils literal notranslate"><span class="pre">NRAD</span></code> in the <code class="docutils literal notranslate"><span class="pre">discretization</span></code> group).
 This allows each radial zone to have its own inlet profile, which enables modeling of flow distribution in the frits by sending the feed through varying hold-up volumes before injecting it into a radial zone.</p>
 <div class="section" id="specification-of-flow-rate-velocity-and-direction">

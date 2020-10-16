@@ -16,8 +16,8 @@
     <link rel="shortcut icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Outlet" href="outlet.html" />
-    <link rel="prev" title="Lumped rate model with pores (LRMP)" href="lumped_rate_model_with_pores.html" />
+    <link rel="next" title="Lumped rate model with pores (LRMP)" href="lumped_rate_model_with_pores.html" />
+    <link rel="prev" title="General rate model (GRM)" href="general_rate_model.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -43,12 +43,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Unit operation models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="general_rate_model.html">General rate model (GRM)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Lumped rate model without pores (LRM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_with_pores.html">Lumped rate model with pores (LRMP)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="2d_general_rate_model.html">Two Dimensional General rate model (GRM2D)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cstr.html">Continuous stirred tank reactor model (CSTR)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="general_rate_model.html">General rate model (GRM)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="inlet.html">Inlet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_with_pores.html">Lumped rate model with pores (LRMP)</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Lumped rate model without pores (LRM)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="outlet.html">Outlet</a></li>
 </ul>
 </li>
@@ -87,7 +87,7 @@
 <p>The lumped rate model without pores <a class="bibtex reference internal" href="../../zbibliography.html#guiochon2006" id="id1">[4]</a><a class="bibtex reference internal" href="../../zbibliography.html#felinger2004" id="id2">[13]</a> deviates from the lumped rate model with pores (see Section <a class="reference internal" href="lumped_rate_model_with_pores.html#lumped-rate-model-with-pores-model"><span class="std std-ref">Lumped rate model with pores (LRMP)</span></a>) by neglecting pores completely.
 The particle phase <span class="math notranslate nohighlight">\(c^p\)</span> is removed and the porosity <span class="math notranslate nohighlight">\(\varepsilon_t\)</span> is taken as total porosity</p>
 <div class="math notranslate nohighlight" id="equation-totalporosity">
-<span class="eqno">(15)<a class="headerlink" href="#equation-totalporosity" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(10)<a class="headerlink" href="#equation-totalporosity" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
     \varepsilon_t = \varepsilon_c + \left( 1 - \varepsilon_c \right) \varepsilon_p.
 \end{aligned}\]</div>
 <p>The phase ratio is denoted by <span class="math notranslate nohighlight">\(\beta_t = \varepsilon_t / (1 - \varepsilon_t)\)</span> accordingly.

@@ -45,26 +45,11 @@ Anaconda is a high-performance scientific distribution of Python that includes m
 Download the installer from their `website <https://www.anaconda.com/>`_ and run it for the local user.
 To install ``CADET-Python``, open an `Anaconda Shell` and run:
 
-.. code-block:: bash
-
-    conda install numpy scipy matplotlib gitpython jupyterlab ipywidgets
-
-and 
-
-.. code-block:: bash
-
-    conda install -c conda-forge jupyter_contrib_nbextensions jupyter_nbextensions_configurator
-
 Moreover, we need to allow some additional channels for installing CADET-Python:
 
 .. code-block:: bash
 
     conda config --add channels anaconda-fusion
-
-and
-
-.. code-block:: bash
-
     conda config --add channels conda-forge
 
 Then, to install CADET-Python run:

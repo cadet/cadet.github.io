@@ -45,6 +45,13 @@ Anaconda is a high-performance scientific distribution of Python that includes m
 Download the installer from their `website <https://www.anaconda.com/>`_ and run it for the local user.
 To install ``CADET-Python``, open an `Anaconda Shell` and run:
 
+To run our examples, we recommend to install these additional packages:
+
+.. code-block:: bash
+
+    conda install numpy scipy matplotlib gitpython jupyterlab ipywidgets
+    conda install -c conda-forge jupyter_contrib_nbextensions jupyter_nbextensions_configurator
+
 Moreover, we need to allow some additional channels for installing CADET-Python:
 
 .. code-block:: bash
@@ -64,12 +71,6 @@ If you would also like to use `CADET-Match <https://github.com/modsim/CADET-Matc
 
     conda install -c immudzen cadetmatch
 
-To run our examples, we recommend to install these additional packages:
-
-.. code-block:: bash
-
-    conda install numpy scipy matplotlib gitpython jupyterlab ipywidgets
-    conda install -c conda-forge jupyter_contrib_nbextensions jupyter_nbextensions_configurator
 
 Install CADET-MI
 ^^^^^^^^^^^^^^^^

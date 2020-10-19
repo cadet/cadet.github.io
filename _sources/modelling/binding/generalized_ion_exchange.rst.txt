@@ -36,4 +36,4 @@ The dependence of the parameters on :math:`c_{p,0}` and :math:`c_{p,1}` is given
 The concept of reference concentrations (:math:`c_{\text{ref}}` and :math:`q_{\text{ref}}`) is explained in the respective paragraph in Section :ref:`reference_concentrations`.
 
 
-See :ref:`generalized_ion_exchange_config`.
+For more information on model parameters required to define in CADET file format, see :ref:`generalized_ion_exchange_config`.

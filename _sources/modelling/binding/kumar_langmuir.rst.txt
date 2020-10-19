@@ -24,4 +24,4 @@ Here, :math:`k_{a,i}` is the frequency or pre-exponential factor, :math:`k_{\tex
 The characteristic charge :math:`\nu` of the protein is taken into account by the power law.  
 
 
-See :ref:`kumar_langmuir_config`.
+For more information on model parameters required to define in CADET file format, see :ref:`kumar_langmuir_config`.

@@ -13,4 +13,4 @@ All components compete for the same binding sites.
     \end{aligned}
 
 
-See :ref:`multi_component_langmuir_config`.
+For more information on model parameters required to define in CADET file format, see :ref:`multi_component_langmuir_config`.

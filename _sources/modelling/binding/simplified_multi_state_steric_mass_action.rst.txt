@@ -26,4 +26,4 @@ For all :math:`i = 1,\dots,N_{\text{comp}} - 1` and :math:`j,\ell = 0,\dots,M_i 
 Note that the characteristic charge :math:`\nu_{i,j}` has to be monotonically non-decreasing in the second index :math:`j` and all other rates and the steric factor :math:`\sigma_{i,j}` have to be non-negative.
 
 
-See :ref:`simplified_multi_state_steric_mass_action_config`.
+For more information on model parameters required to define in CADET file format, see :ref:`simplified_multi_state_steric_mass_action_config`.

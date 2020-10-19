@@ -25,4 +25,4 @@ is used if salt has one bound state, or salt can be used without a bound state.
 The parameter :math:`\gamma` describes the hydrophobicity and :math:`\beta` the ion-exchange characteristics.
 
 
-See :ref:`mobile_phase_modulator_langmuir_config`.
+For more information on model parameters required to define in CADET file format, see :ref:`mobile_phase_modulator_langmuir_config`.

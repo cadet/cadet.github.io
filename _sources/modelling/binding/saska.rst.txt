@@ -13,4 +13,4 @@ The quadratic term allows to take interactions of liquid phase components into a
     \end{aligned}
 
 
-See :ref:`saska_config`.
+For more information on model parameters required to define in CADET file format, see :ref:`saska_config`.

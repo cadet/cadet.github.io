@@ -15,4 +15,4 @@ In case of the Anti-Langmuir (:math:`p_j = -1`) it is the other way around (isot
     \end{aligned}
 
 
-See :ref:`multi_component_anti_langmuir_config`.
+For more information on model parameters required to define in CADET file format, see :ref:`multi_component_anti_langmuir_config`.

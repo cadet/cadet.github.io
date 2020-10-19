@@ -36,4 +36,4 @@ which also compensates for the missing equation for :math:`\frac{\mathrm{d} q_0}
 The concept of reference concentrations (:math:`c_{\text{ref}}` and :math:`q_{\text{ref}}`) is explained in the respective paragraph in Section :ref:`reference_concentrations`.
 
 
-See :ref:`steric_mass_action_config`.
+For more information on model parameters required to define in CADET file format, see :ref:`steric_mass_action_config`.

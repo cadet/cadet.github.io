@@ -19,4 +19,4 @@ Originally, the Bi-Langmuir model is limited to two different binding site types
 Here, the model has been extended to arbitrary many binding site types.
 
 
-See :ref:`multi_component_bi_langmuir_config`.
+For more information on model parameters required to define in CADET file format, see :ref:`multi_component_bi_langmuir_config`.

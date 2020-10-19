@@ -17,4 +17,4 @@ For all components :math:`i = 0, \dots, N_{\text{comp}} - 1` the equations are g
     \end{aligned}
 
 
-See :ref:`multi_component_spreading_config`.
+For more information on model parameters required to define in CADET file format, see :ref:`multi_component_spreading_config`.

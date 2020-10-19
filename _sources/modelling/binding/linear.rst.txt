@@ -12,4 +12,4 @@ A linear binding model, which is often employed for low concentrations or in ana
     \end{aligned}
 
 
-See :ref:`linear_config`.
+For more information on model parameters required to define in CADET file format, see :ref:`linear_config`.

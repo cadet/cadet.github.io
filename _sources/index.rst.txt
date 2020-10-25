@@ -83,5 +83,6 @@ To cite CADET please use the following publication:
     .. examples/index
     license
     zbibliography
+    Legal notice <https://www.fz-juelich.de/portal/EN/Service/LegalNotice/_node.html>
 
 

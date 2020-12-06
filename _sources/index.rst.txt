@@ -28,7 +28,7 @@ The resulting models are solved with state-of-the-art mathematical algorithms an
 
 - **Forum:** https://forum.cadet-web.de
 - **Source:** https://github.com/modsim/cadet
-
+- **Demo:** http://cadet-web.de
 
 Features
 --------
@@ -40,11 +40,6 @@ Features
 * Support of HDF5 and XML data formats
 * Flexible and extensible through modular design
 * Works on Windows, Linux, and Mac OS X
-
-Online Simulator
-----------------
-
-Try CADET in the browser using the `online simulator web service <http://www.cadet-web.de>`_.
 
 
 Ongoing Development

@@ -234,7 +234,8 @@ Two dimensional general rate model
    
 ``PORE_ACCESSIBILITY``
 
-   Pore accessibility factor of each component in each particle type (optional, defaults to 1)
+   Pore accessibility factor of each component in each particle type (optional, defaults to 1).
+   Note: Should not be used in combination with any binding model!
    
    ================  =========================  =============================================================
    **Type:** double  **Range:** :math:`(0, 1]`  **Length:** see :math:`\texttt{PORE_ACCESSIBILITY_MULTIPLEX}`

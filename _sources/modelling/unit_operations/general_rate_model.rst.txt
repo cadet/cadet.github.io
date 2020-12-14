@@ -212,8 +212,11 @@ The other extreme is given by molecules so large that they cannot enter any pore
 Note that :math:`F_{\text{acc},j,i} = 0` is not allowed in a simulation, which can be circumvented by setting :math:`k_{f,j,i} = 0`.
 
 By default, :math:`F_{\text{acc},j,i} = 1` for all components :math:`i` and all particle types :math:`j`, which disables size exclusion chromatography.
+
+It is important to note that in the presence of size exlusion effects, the saturation capacity (e.g., :math:`q_{\text{max}}` of Langmuir-type binding models) will differ for solutes with different accessible porosity values.
+However, this leads to inconsistencies in the equations which account for the full pore volume fraction :math:`\varepsilon_{p,j}`.
+For this reason, SEC should only be modelled without binding models!
 In order to simulate pure SEC, binding is disabled by setting :math:`N_{\text{bnd},i} = 0` for all components :math:`i` and applying no binding model.
-If adsorption is present, it is important to note that any saturation capacity (e.g., :math:`q_{\text{max}}` of Langmuir-type binding models) is subject to the full pore volume fraction :math:`\varepsilon_{p,j}`.
 
 Note that multiple particle types can also be used to aid in modeling size exclusion effects, see Section :ref:`MUOPGRMMultiParticleTypes`.
 

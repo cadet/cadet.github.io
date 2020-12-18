@@ -329,7 +329,7 @@ Group /input/model/unit_XXX/discretization - UNIT_TYPE - GENERAL_RATE_MODEL
 
 ``PAR_GEOM``
 
-   Specifies the particle geometry for all or each particle type. Valid values are `\texttt{SPHERE}`, `\texttt{CYLINDER}`, `\texttt{SLAB}`. Optional, defaults to `\texttt{SPHERE}`.
+   Specifies the particle geometry for all or each particle type. Valid values are :math:`\texttt{SPHERE}`, :math:`\texttt{CYLINDER}`, :math:`\texttt{SLAB}`. Optional, defaults to :math:`\texttt{SPHERE}`.
    
    ================  =================================================
    **Type:** string  **Length:** :math:`1` / :math:`\texttt{NPARTYPE}`

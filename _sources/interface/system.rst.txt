@@ -40,7 +40,7 @@ Group /input/model
    
 ``INIT_STATE_SENSYDOT_XXX``
 
-   Initial full state vector of the :math:`/texttt{XXX}` th sensitivity system (optional, unit operation specific initial data is ignored)
+   Initial full state vector of the :math:`\texttt{XXX}` th sensitivity system (optional, unit operation specific initial data is ignored)
    
    ================  ==================================
    **Type:** double  **Length:** :math:`\texttt{NDOF}`

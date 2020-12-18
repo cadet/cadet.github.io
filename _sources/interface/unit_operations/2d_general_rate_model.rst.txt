@@ -383,6 +383,14 @@ Two dimensional general rate model
    **Type:** int  **Range:** :math:`\geq 0`  **Length:** :math:`\texttt{NCOMP} / \texttt{NPARTYPE} \cdot \texttt{NCOMP}`
    =============  =========================  ==========================================================================
    
+``PAR_GEOM``
+
+   Specifies the particle geometry for all or each particle type. Valid values are `\texttt{SPHERE}`, `\texttt{CYLINDER}`, `\texttt{SLAB}`. Optional, defaults to `\texttt{SPHERE}`.
+   
+   ================  =================================================
+   **Type:** string  **Length:** :math:`1` / :math:`\texttt{NPARTYPE}`
+   ================  =================================================
+   
 ``RADIAL_DISC_TYPE``
 
    Specifies the radial discretization scheme. Valid values are :math:`\texttt{EQUIDISTANT}`, :math:`\texttt{EQUIVOLUME}`, and :math:`\texttt{USER_DEFINED}`.

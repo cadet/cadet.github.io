@@ -223,6 +223,32 @@ Reaction terms in liquid and solid phase are collected in <span class="math notr
 <p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Binding with multiple bound states</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </div>
 <p>See Table <a class="reference internal" href="../../interface/unit_operations/general_rate_model.html#general-rate-model-config"><span class="std std-ref">General Rate Model</span></a>.</p>
+<div class="section" id="particle-geometry">
+<span id="muopgrmparticlegeometry"></span><h2>Particle Geometry<a class="headerlink" href="#particle-geometry" title="Permalink to this headline">¶</a></h2>
+<p>In the model above, spherical particles are considered.
+Other supported particle forms are cylinders and slabs.
+For cylinders, it is assumed that molecules can only enter through the lateral surface (i.e., the caps are sealed).
+Slabs are assumed to have two large sides such that molecules enter through the two large faces (i.e., the remaining four small faces are sealed).</p>
+<p>All particle forms support core-shell beads that have an impermeable core.
+The particles are characterized by their (outer) “radius” <span class="math notranslate nohighlight">\(r_{p,j}\)</span> and their (inner) core “radius” <span class="math notranslate nohighlight">\(r_{c,j} \in [0, r_{p,j})\)</span>.
+See <a class="reference internal" href="#modelgrmparticlegeometries"><span class="std std-numref">Fig. 4</span></a>.</p>
+<div class="figure align-default" id="id14">
+<span id="modelgrmparticlegeometries"></span><img alt="modelling/unit_operations/column_particle_geometries.png" src="modelling/unit_operations/column_particle_geometries.png" />
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Particle geometries</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</div>
+<p>For cylinders, the factor $3 / r_{p,j}$ in eqref{eq:ModelColumn} changes to $2 / r_{p,j}$ and the diffusion operator in <code class="xref std std-numref docutils literal notranslate"><span class="pre">ModelBead</span></code> and <code class="xref std std-numref docutils literal notranslate"><span class="pre">DynBinding</span></code> changes as
+.. math:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">begin</span><span class="p">{</span><span class="n">align</span><span class="o">*</span><span class="p">}</span>
+    \<span class="n">left</span><span class="p">[</span>\<span class="n">frac</span><span class="p">{</span>\<span class="n">partial</span><span class="o">^</span><span class="mi">2</span><span class="p">}{</span>\<span class="n">partial</span> <span class="n">r</span><span class="o">^</span><span class="mi">2</span><span class="p">}</span> <span class="o">+</span> \<span class="n">frac</span><span class="p">{</span><span class="mi">2</span><span class="p">}{</span><span class="n">r</span><span class="p">}</span> \<span class="n">frac</span><span class="p">{</span>\<span class="n">partial</span> <span class="p">}{</span>\<span class="n">partial</span> <span class="n">r</span><span class="p">}</span> \<span class="n">right</span><span class="p">]</span> \<span class="n">quad</span> \<span class="n">rightarrow</span> \<span class="n">quad</span> \<span class="n">left</span><span class="p">[</span>\<span class="n">frac</span><span class="p">{</span>\<span class="n">partial</span><span class="o">^</span><span class="mi">2</span><span class="p">}{</span>\<span class="n">partial</span> <span class="n">r</span><span class="o">^</span><span class="mi">2</span><span class="p">}</span> <span class="o">+</span> \<span class="n">frac</span><span class="p">{</span><span class="mi">1</span><span class="p">}{</span><span class="n">r</span><span class="p">}</span> \<span class="n">frac</span><span class="p">{</span>\<span class="n">partial</span> <span class="p">}{</span>\<span class="n">partial</span> <span class="n">r</span><span class="p">}</span> \<span class="n">right</span><span class="p">]</span><span class="o">.</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">align</span><span class="o">*</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>For slabs, the factor $3 / r_{p,j}$ in (see <code class="xref std std-numref docutils literal notranslate"><span class="pre">ModelColumn</span></code>)} changes to <span class="math notranslate nohighlight">\(1 / r_{p,j}\)</span> and the diffusion operator in <code class="xref std std-numref docutils literal notranslate"><span class="pre">ModelBead</span></code> and <code class="xref std std-numref docutils literal notranslate"><span class="pre">DynBinding</span></code> changes as</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+    \left[\frac{\partial^2}{\partial r^2} + \frac{2}{r} \frac{\partial }{\partial r} \right] \quad \rightarrow \quad \frac{\partial^2}{\partial r^2}.
+\end{align*}\]</div>
+</div>
 <div class="section" id="multiple-particle-types">
 <span id="muopgrmmultiparticletypes"></span><h2>Multiple particle types<a class="headerlink" href="#multiple-particle-types" title="Permalink to this headline">¶</a></h2>
 <p>A particle type has its own set of mass transfer parameters <span class="math notranslate nohighlight">\(\varepsilon_{p,j}\)</span>, <span class="math notranslate nohighlight">\(D_{p,j}\)</span>, <span class="math notranslate nohighlight">\(D_{s,j}\)</span>, etc (see Eq. <a class="reference internal" href="#equation-modelbead">4</a>) and its own binding model <span class="math notranslate nohighlight">\(f_{\mathrm{ads}}\)</span> (including a possibly differing number of bound states).

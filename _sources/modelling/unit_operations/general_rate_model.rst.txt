@@ -170,6 +170,38 @@ By default, the following initial conditions are applied for all :math:`z \in [0
 See Table :ref:`general_rate_model_config`.
 
 
+.. _MUOPGRMParticleGeometry:
+
+Particle Geometry
+^^^^^^^^^^^^^^^^^
+
+In the model above, spherical particles are considered.
+Other supported particle forms are cylinders and slabs.
+For cylinders, it is assumed that molecules can only enter through the lateral surface (i.e., the caps are sealed).
+Slabs are assumed to have two large sides such that molecules enter through the two large faces (i.e., the remaining four small faces are sealed).
+
+All particle forms support core-shell beads that have an impermeable core.
+The particles are characterized by their (outer) "radius" :math:`r_{p,j}` and their (inner) core "radius" :math:`r_{c,j} \in [0, r_{p,j})`.
+See :numref:`ModelGRMParticleGeometries`.
+
+.. _ModelGRMParticleGeometries:
+.. figure:: column_particle_geometries.png
+
+	Particle geometries
+
+For cylinders, the factor $3 / r_{p,j}$ in \eqref{eq:ModelColumn} changes to $2 / r_{p,j}$ and the diffusion operator in :numref:`ModelBead` and :numref:`DynBinding` changes as
+.. math::
+    \begin{align*}
+        \left[\frac{\partial^2}{\partial r^2} + \frac{2}{r} \frac{\partial }{\partial r} \right] \quad \rightarrow \quad \left[\frac{\partial^2}{\partial r^2} + \frac{1}{r} \frac{\partial }{\partial r} \right].
+    \end{align*}
+    
+For slabs, the factor $3 / r_{p,j}$ in (see :numref:`ModelColumn`)} changes to :math:`1 / r_{p,j}` and the diffusion operator in :numref:`ModelBead` and :numref:`DynBinding` changes as
+
+.. math::
+    \begin{align*}
+        \left[\frac{\partial^2}{\partial r^2} + \frac{2}{r} \frac{\partial }{\partial r} \right] \quad \rightarrow \quad \frac{\partial^2}{\partial r^2}.
+    \end{align*}
+
 .. _MUOPGRMMultiParticleTypes:
 
 Multiple particle types

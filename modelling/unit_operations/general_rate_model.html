@@ -236,18 +236,16 @@ See <a class="reference internal" href="#modelgrmparticlegeometries"><span class
 <span id="modelgrmparticlegeometries"></span><img alt="../../_images/column_particle_geometries.png" src="../../_images/column_particle_geometries.png" />
 <p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Particle geometries</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </div>
-<p>For cylinders, the factor $3 / r_{p,j}$ in eqref{eq:ModelColumn} changes to $2 / r_{p,j}$ and the diffusion operator in <a class="reference internal" href="#equation-modelbead">4</a> and <a class="reference internal" href="#equation-dynbinding">6</a> changes as
-.. math:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">begin</span><span class="p">{</span><span class="n">align</span><span class="o">*</span><span class="p">}</span>
-    \<span class="n">left</span><span class="p">[</span>\<span class="n">frac</span><span class="p">{</span>\<span class="n">partial</span><span class="o">^</span><span class="mi">2</span><span class="p">}{</span>\<span class="n">partial</span> <span class="n">r</span><span class="o">^</span><span class="mi">2</span><span class="p">}</span> <span class="o">+</span> \<span class="n">frac</span><span class="p">{</span><span class="mi">2</span><span class="p">}{</span><span class="n">r</span><span class="p">}</span> \<span class="n">frac</span><span class="p">{</span>\<span class="n">partial</span> <span class="p">}{</span>\<span class="n">partial</span> <span class="n">r</span><span class="p">}</span> \<span class="n">right</span><span class="p">]</span> \<span class="n">quad</span> \<span class="n">rightarrow</span> \<span class="n">quad</span> \<span class="n">left</span><span class="p">[</span>\<span class="n">frac</span><span class="p">{</span>\<span class="n">partial</span><span class="o">^</span><span class="mi">2</span><span class="p">}{</span>\<span class="n">partial</span> <span class="n">r</span><span class="o">^</span><span class="mi">2</span><span class="p">}</span> <span class="o">+</span> \<span class="n">frac</span><span class="p">{</span><span class="mi">1</span><span class="p">}{</span><span class="n">r</span><span class="p">}</span> \<span class="n">frac</span><span class="p">{</span>\<span class="n">partial</span> <span class="p">}{</span>\<span class="n">partial</span> <span class="n">r</span><span class="p">}</span> \<span class="n">right</span><span class="p">]</span><span class="o">.</span>
-\<span class="n">end</span><span class="p">{</span><span class="n">align</span><span class="o">*</span><span class="p">}</span>
-</pre></div>
-</div>
-<p>For slabs, the factor $3 / r_{p,j}$ in (see <a class="reference internal" href="#equation-modelcolumn">1</a>)} changes to <span class="math notranslate nohighlight">\(1 / r_{p,j}\)</span> and the diffusion operator in <a class="reference internal" href="#equation-modelbead">4</a> and <a class="reference internal" href="#equation-dynbinding">6</a> changes as</p>
+<p>For cylinders, the factor <span class="math notranslate nohighlight">\(3 / r_{p,j}\)</span> in Eq. (<a class="reference internal" href="#equation-modelcolumn">1</a>) changes to <span class="math notranslate nohighlight">\(2 / r_{p,j}\)</span> and the diffusion operator in Eq. (<a class="reference internal" href="#equation-modelbead">4</a>) and Eq. (<a class="reference internal" href="#equation-dynbinding">6</a>) changes as</p>
 <div class="math notranslate nohighlight">
-\[\begin{align*}
+\[\begin{aligned}
+    \left[\frac{\partial^2}{\partial r^2} + \frac{2}{r} \frac{\partial }{\partial r} \right] \quad \rightarrow \quad \left[\frac{\partial^2}{\partial r^2} + \frac{1}{r} \frac{\partial }{\partial r} \right].
+\end{aligned}\]</div>
+<p>For slabs, the factor <span class="math notranslate nohighlight">\(3 / r_{p,j}\)</span> in (see Eq. (<a class="reference internal" href="#equation-modelcolumn">1</a>)) changes to <span class="math notranslate nohighlight">\(1 / r_{p,j}\)</span> and the diffusion operator in Eq. (<a class="reference internal" href="#equation-modelbead">4</a>) and Eq. (<a class="reference internal" href="#equation-dynbinding">6</a>) changes as</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
     \left[\frac{\partial^2}{\partial r^2} + \frac{2}{r} \frac{\partial }{\partial r} \right] \quad \rightarrow \quad \frac{\partial^2}{\partial r^2}.
-\end{align*}\]</div>
+\end{aligned}\]</div>
 </div>
 <div class="section" id="multiple-particle-types">
 <span id="muopgrmmultiparticletypes"></span><h2>Multiple particle types<a class="headerlink" href="#multiple-particle-types" title="Permalink to this headline">¶</a></h2>

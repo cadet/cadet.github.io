@@ -189,15 +189,17 @@ See :numref:`ModelGRMParticleGeometries`.
 
 	Particle geometries
 
-For cylinders, the factor $3 / r_{p,j}$ in \eqref{eq:ModelColumn} changes to $2 / r_{p,j}$ and the diffusion operator in :numref:`ModelBead` and :numref:`DynBinding` changes as
+For cylinders, the factor $3 / r_{p,j}$ in \eqref{eq:ModelColumn} changes to $2 / r_{p,j}$ and the diffusion operator in :eq:`ModelBead` and :eq:`DynBinding` changes as
 .. math::
+
     \begin{align*}
         \left[\frac{\partial^2}{\partial r^2} + \frac{2}{r} \frac{\partial }{\partial r} \right] \quad \rightarrow \quad \left[\frac{\partial^2}{\partial r^2} + \frac{1}{r} \frac{\partial }{\partial r} \right].
     \end{align*}
     
-For slabs, the factor $3 / r_{p,j}$ in (see :numref:`ModelColumn`)} changes to :math:`1 / r_{p,j}` and the diffusion operator in :numref:`ModelBead` and :numref:`DynBinding` changes as
+For slabs, the factor $3 / r_{p,j}$ in (see :eq:`ModelColumn`)} changes to :math:`1 / r_{p,j}` and the diffusion operator in :eq:`ModelBead` and :eq:`DynBinding` changes as
 
 .. math::
+
     \begin{align*}
         \left[\frac{\partial^2}{\partial r^2} + \frac{2}{r} \frac{\partial }{\partial r} \right] \quad \rightarrow \quad \frac{\partial^2}{\partial r^2}.
     \end{align*}

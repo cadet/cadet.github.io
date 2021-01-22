@@ -302,7 +302,7 @@ Two dimensional general rate model
    
 ``VELOCITY``
 
-   Indicates flow direction in each radial zone (forward if value is positive, backward if value is negative), see Section~\ref{par:MUOPGRMflow2D}).  In case of a spatially inhomogeneous setting, the :math:`\texttt{SENS_PARTYPE}` field is used for indexing the radial cell when specifying parameter sensitivities.
+   Indicates flow direction in each radial zone (forward if value is positive, backward if value is negative), see Section :ref:`MUOPGRMflow2D`).  In case of a spatially inhomogeneous setting, the :math:`\texttt{SENS_PARTYPE}` field is used for indexing the radial cell when specifying parameter sensitivities.
    
    ================  =============================  ===================================================
    **Type:** double  **Range:** :math:`\mathbb{R}`  **Length:** see :math:`\texttt{VELOCITY_MULTIPLEX}`

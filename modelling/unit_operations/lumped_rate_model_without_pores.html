@@ -86,7 +86,7 @@
             
   <div class="section" id="lumped-rate-model-without-pores-lrm">
 <span id="lumped-rate-model-without-pores-model"></span><h1>Lumped rate model without pores (LRM)<a class="headerlink" href="#lumped-rate-model-without-pores-lrm" title="Permalink to this headline">¶</a></h1>
-<p>The lumped rate model without pores <span class="bibtex" id="id1">[Guiochon2006]</span><span class="bibtex" id="id2">[Felinger2004]</span> deviates from the lumped rate model with pores (see Section <a class="reference internal" href="lumped_rate_model_with_pores.html#lumped-rate-model-with-pores-model"><span class="std std-ref">Lumped rate model with pores (LRMP)</span></a>) by neglecting pores completely.
+<p>The lumped rate model without pores <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id6"><span>3</span></a>,<a class="reference internal" href="../../zbibliography.html#id8"><span>4</span></a>]</span> deviates from the lumped rate model with pores (see Section <a class="reference internal" href="lumped_rate_model_with_pores.html#lumped-rate-model-with-pores-model"><span class="std std-ref">Lumped rate model with pores (LRMP)</span></a>) by neglecting pores completely.
 The particle phase <span class="math notranslate nohighlight">\(c^p\)</span> is removed and the porosity <span class="math notranslate nohighlight">\(\varepsilon_t\)</span> is taken as total porosity</p>
 <div class="math notranslate nohighlight" id="equation-totalporosity">
 <span class="eqno">(10)<a class="headerlink" href="#equation-totalporosity" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
@@ -99,7 +99,7 @@ The model equations are given by</p>
     \frac{\partial c^l_i}{\partial t} + \frac{1}{\beta_t} \frac{\partial}{\partial t} \sum_{m_i} c^s_{i,m_i} &amp;= -u \frac{\partial c^l_i}{\partial z} + D_{\text{ax},i} \frac{\partial^2 c^l_i}{\partial z^2} + f_{\text{react},i}^l\left( c^l, c^s \right) + \frac{1}{\beta_t} f_{\text{react},i}^s\left( c^l, c^s \right),
 \end{aligned}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\beta_t = \varepsilon_t / (1 - \varepsilon_t)\)</span> denotes the (total) phase ratio.
-The equations are complemented by Danckwerts boundary conditions <span class="bibtex" id="id3">[Danckwerts1953]</span></p>
+The equations are complemented by Danckwerts boundary conditions <span id="id2">[<a class="reference internal" href="../../zbibliography.html#id7"><span>8</span></a>]</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
     u c_{\text{in},i}(t) &amp;= u c^l_i(t,0) - D_{\text{ax},i} \frac{\partial c^l_i}{\partial z}(t, 0) &amp; \forall t &gt; 0,\\
@@ -129,7 +129,7 @@ For the specification of flow rate and direction, the same holds as for the gene
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2020.
+      &copy;2008-2021.
       
       |
       <a href="../../_sources/modelling/unit_operations/lumped_rate_model_without_pores.rst.txt"

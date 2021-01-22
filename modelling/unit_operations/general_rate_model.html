@@ -86,7 +86,7 @@
             
   <div class="section" id="general-rate-model-grm">
 <span id="general-rate-model-model"></span><h1>General rate model (GRM)<a class="headerlink" href="#general-rate-model-grm" title="Permalink to this headline">¶</a></h1>
-<p>The general rate model is the most comprehensive model of mass transfer in column liquid chromatography, when only the axial coordinate in the column and the radial coordinate in the beads are considered <span class="bibtex" id="id1">[Kucera1965]</span><span class="bibtex" id="id2">[Gu1995]</span><span class="bibtex" id="id3">[Guiochon2006]</span><span class="bibtex" id="id4">[Felinger2004]</span>.</p>
+<p>The general rate model is the most comprehensive model of mass transfer in column liquid chromatography, when only the axial coordinate in the column and the radial coordinate in the beads are considered <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id27"><span>1</span></a>,<a class="reference internal" href="../../zbibliography.html#id5"><span>2</span></a>,<a class="reference internal" href="../../zbibliography.html#id6"><span>3</span></a>,<a class="reference internal" href="../../zbibliography.html#id8"><span>4</span></a>]</span>.</p>
 <p>The main assumptions are:</p>
 <ul class="simple">
 <li><p>The cross sections of the column are homogenous in terms of interstitial volume, fluid flow, and distribution of components.
@@ -94,8 +94,8 @@ Thus, only one spatial coordinate in axial direction is needed and radial transp
 <li><p>The bead radii <span class="math notranslate nohighlight">\(r_{p}\)</span> are much smaller than the column radius <span class="math notranslate nohighlight">\(r_c\)</span> and the column length <span class="math notranslate nohighlight">\(L\)</span>.
 Therefore, the beads can be seen as continuously distributed inside the column (i.e., at each point there is interstitial and bead volume).</p></li>
 </ul>
-<span id="table-features"></span><table class="colwidths-given docutils align-default" id="id10">
-<caption><span class="caption-number">Table 2 </span><span class="caption-text">Variables and unknowns</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
+<span id="table-features"></span><table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Variables and unknowns</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 30%" />
@@ -154,11 +154,11 @@ Therefore, the beads can be seen as continuously distributed inside the column (
 </tr>
 </tbody>
 </table>
-<div class="figure align-default" id="id11">
+<div class="figure align-default" id="id6">
 <span id="modelgrmcolumn"></span><img alt="../../_images/column_bulk_model.png" src="../../_images/column_bulk_model.png" />
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Column bulk model</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Column bulk model</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
-<p>The GRM describes transport of solute molecules through the interstitial column volume by convective flow, band broadening caused by axial dispersion, mass transfer resistance through a stagnant film around the beads, pore (and surface) diffusion in the porous beads <span class="bibtex" id="id5">[Ma1996]</span><span class="bibtex" id="id6">[Schneider1968a]</span><span class="bibtex" id="id7">[Miyabe2007]</span>, and adsorption to the inner bead surfaces.</p>
+<p>The GRM describes transport of solute molecules through the interstitial column volume by convective flow, band broadening caused by axial dispersion, mass transfer resistance through a stagnant film around the beads, pore (and surface) diffusion in the porous beads <span id="id2">[<a class="reference internal" href="../../zbibliography.html#id24"><span>5</span></a>,<a class="reference internal" href="../../zbibliography.html#id23"><span>6</span></a>,<a class="reference internal" href="../../zbibliography.html#id25"><span>7</span></a>]</span>, and adsorption to the inner bead surfaces.</p>
 <p>Consider a column of length <span class="math notranslate nohighlight">\(L&gt;0\)</span> filled with spherical beads of (possibly) multiple types with radius <span class="math notranslate nohighlight">\(r_{p,j} \ll L\)</span> (see <a class="reference internal" href="#modelgrmcolumn"><span class="std std-numref">Fig. 1</span></a>), where <span class="math notranslate nohighlight">\(j\)</span> is the particle type index. The mass balance in the interstitial column volume is described by</p>
 <div class="math notranslate nohighlight" id="equation-modelcolumn">
 <span class="eqno">(1)<a class="headerlink" href="#equation-modelcolumn" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
@@ -167,7 +167,7 @@ Therefore, the beads can be seen as continuously distributed inside the column (
 \end{aligned}\end{split}\]</div>
 <p>Here, <span class="math notranslate nohighlight">\(c^l_i\colon \left[0, T_{\text{end}}\right] \times [0, L] \rightarrow \mathbb{R}^{\geq 0}\)</span> denotes the concentration in the interstitial column volume, <span class="math notranslate nohighlight">\(c^p_{j,i}\colon \left[0, T_{\text{end}}\right] \times [0, L] \times [r_{c,j}, r_{p,j}] \rightarrow \mathbb{R}^{\geq 0}\)</span> the liquid phase concentration in the beads, <span class="math notranslate nohighlight">\(k_{f,j,i}\)</span> the film diffusion coefficient, <span class="math notranslate nohighlight">\(D_{\text{ax},i}\)</span> the dispersion coefficient, <span class="math notranslate nohighlight">\(u\)</span> the interstitial velocity, <span class="math notranslate nohighlight">\(d_j\)</span> the volume fraction of particle type <span class="math notranslate nohighlight">\(j\)</span>, and <span class="math notranslate nohighlight">\(\beta_c = \varepsilon_c / (1 - \varepsilon_c)\)</span> the column phase ratio, where <span class="math notranslate nohighlight">\(\varepsilon_c\)</span> is the column porosity (ratio of interstitial volume to total column volume).
 If reactions are considered, the term <span class="math notranslate nohighlight">\(f_{\text{react},i}^l\left(c^l\right)\)</span> represents the net change of concentration <span class="math notranslate nohighlight">\(c_i\)</span> due to reactions involving component <span class="math notranslate nohighlight">\(i\)</span>.</p>
-<p>Danckwerts boundary conditions <span class="bibtex" id="id8">[Danckwerts1953]</span> are applied to inlet and outlet of the column:</p>
+<p>Danckwerts boundary conditions <span id="id3">[<a class="reference internal" href="../../zbibliography.html#id7"><span>8</span></a>]</span> are applied to inlet and outlet of the column:</p>
 <div class="math notranslate nohighlight" id="equation-bcoutlet">
 <span class="eqno">(2)<a class="headerlink" href="#equation-bcoutlet" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
     u c_{\text{in},i}(t) &amp;= u c^l_i(t,0) - D_{\text{ax},i} \frac{\partial c^l_i}{\partial z}(t, 0) &amp; \forall t &gt; 0,
@@ -214,13 +214,13 @@ Reaction terms in liquid and solid phase are collected in <span class="math notr
 <span class="eqno">(9)<a class="headerlink" href="#equation-initialconditions" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
     c^l_i(0, z) &amp;= 0, &amp; c^p_{j,i}(0, z, r) &amp;= 0, &amp; c^s_{j,i,m_{j,i}}(0,z,r) &amp;= 0.
 \end{aligned}\]</div>
-<div class="figure align-default" id="id12">
+<div class="figure align-default" id="id7">
 <span id="modelgrmbead"></span><img alt="../../_images/column_bead_model.png" src="../../_images/column_bead_model.png" />
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Column bead model</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Column bead model</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure align-default" id="id13">
+<div class="figure align-default" id="id8">
 <span id="modelgrmstates"></span><a class="reference internal image-reference" href="../../_images/multiple_bound_states.png"><img alt="../../_images/multiple_bound_states.png" src="../../_images/multiple_bound_states.png" style="width: 340.0px; height: 268.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Binding with multiple bound states</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Binding with multiple bound states</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <p>See Table <a class="reference internal" href="../../interface/unit_operations/general_rate_model.html#general-rate-model-config"><span class="std std-ref">General Rate Model</span></a>.</p>
 <div class="section" id="particle-geometry">
@@ -232,9 +232,9 @@ Slabs are assumed to have two large sides such that molecules enter through the 
 <p>All particle forms support core-shell beads that have an impermeable core.
 The particles are characterized by their (outer) “radius” <span class="math notranslate nohighlight">\(r_{p,j}\)</span> and their (inner) core “radius” <span class="math notranslate nohighlight">\(r_{c,j} \in [0, r_{p,j})\)</span>.
 See <a class="reference internal" href="#modelgrmparticlegeometries"><span class="std std-numref">Fig. 4</span></a>.</p>
-<div class="figure align-default" id="id14">
+<div class="figure align-default" id="id9">
 <span id="modelgrmparticlegeometries"></span><img alt="../../_images/column_particle_geometries.png" src="../../_images/column_particle_geometries.png" />
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Particle geometries</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Particle geometries</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 <p>For cylinders, the factor <span class="math notranslate nohighlight">\(3 / r_{p,j}\)</span> in Eq. (<a class="reference internal" href="#equation-modelcolumn">1</a>) changes to <span class="math notranslate nohighlight">\(2 / r_{p,j}\)</span> and the diffusion operator in Eq. (<a class="reference internal" href="#equation-modelbead">4</a>) and Eq. (<a class="reference internal" href="#equation-dynbinding">6</a>) changes as</p>
 <div class="math notranslate nohighlight">
@@ -263,7 +263,7 @@ This allows, for example, the placement of smaller particles near the frits.</p>
 </div>
 <div class="section" id="size-exclusion-chromatography">
 <span id="muopgrmsizeexclusion"></span><h2>Size exclusion chromatography<a class="headerlink" href="#size-exclusion-chromatography" title="Permalink to this headline">¶</a></h2>
-<p>The general rate model can be used to simulate size exclusion chromatography (SEC) <span class="bibtex" id="id9">[Gu1995]</span>.
+<p>The general rate model can be used to simulate size exclusion chromatography (SEC) <span id="id4">[<a class="reference internal" href="../../zbibliography.html#id5"><span>2</span></a>]</span>.
 The particle porosity <span class="math notranslate nohighlight">\(\varepsilon_{p,j}\)</span> on the mobile phase side of the transport equations is replaced by a component-dependent accessible porosity</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
@@ -310,7 +310,7 @@ Note that in case of reversed flow, the chromatogram is returned at the unit ope
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2020.
+      &copy;2008-2021.
       
       |
       <a href="../../_sources/modelling/unit_operations/general_rate_model.rst.txt"

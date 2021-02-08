@@ -40,7 +40,7 @@ Multi Component Anti-Langmuir
 **Unit:** :math:`mol m_{SP}^{-3}`
 
 ===================  =========================  ==================================
-**Type:** double     **Range:** {-1,1}          **Length:** NCOMP
+**Type:** double     **Range:** :math:`\gt 0`   **Length:** NCOMP
 ===================  =========================  ================================== 
 
 ``MCAL_ANTILANGMUIR``
@@ -49,5 +49,5 @@ Multi Component Anti-Langmuir
 **Unit:** :math:`mol m_{SP}^{-3}`
 
 ===================  =========================  ==================================
-**Type:** double     **Range:** :math:`\ge 0`   **Length:** NCOMP
+**Type:** double     **Range:** {-1,1}          **Length:** NCOMP
 ===================  =========================  ================================== 

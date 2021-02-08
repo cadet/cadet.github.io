@@ -274,7 +274,7 @@ Note that without the bulk porosity :math:`\varepsilon_c`, the superficial veloc
 
 The direction of flow inside the unit operation is governed by the sign of the interstitial velocity :math:`u`.
 A positive sign results in (standard) forward flow, whereas a negative sign reverses the flow direction.
-Note that in case of reversed flow, the chromatogram is returned at the unit operation’s *inlet*, which may not be returned from simulation by default.
+Note that in case of reversed flow, the chromatogram is returned at the unit operation’s `INLET`, which may not be returned from simulation by default.
 
 The final behavior is controlled by the interplay of cross section area and interstitial velocity:
 

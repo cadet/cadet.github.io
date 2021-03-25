@@ -86,7 +86,7 @@
             
   <div class="section" id="general-rate-model-grm">
 <span id="general-rate-model-model"></span><h1>General rate model (GRM)<a class="headerlink" href="#general-rate-model-grm" title="Permalink to this headline">¶</a></h1>
-<p>The general rate model is the most comprehensive model of mass transfer in column liquid chromatography, when only the axial coordinate in the column and the radial coordinate in the beads are considered <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id27"><span>1</span></a>,<a class="reference internal" href="../../zbibliography.html#id5"><span>2</span></a>,<a class="reference internal" href="../../zbibliography.html#id6"><span>3</span></a>,<a class="reference internal" href="../../zbibliography.html#id8"><span>4</span></a>]</span>.</p>
+<p>The general rate model is the most comprehensive model of mass transfer in column liquid chromatography, when only the axial coordinate in the column and the radial coordinate in the beads are considered <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id27">1</a>, <a class="reference internal" href="../../zbibliography.html#id5">2</a>, <a class="reference internal" href="../../zbibliography.html#id6">3</a>, <a class="reference internal" href="../../zbibliography.html#id8">4</a>]</span>.</p>
 <p>The main assumptions are:</p>
 <ul class="simple">
 <li><p>The cross sections of the column are homogenous in terms of interstitial volume, fluid flow, and distribution of components.
@@ -158,7 +158,7 @@ Therefore, the beads can be seen as continuously distributed inside the column (
 <span id="modelgrmcolumn"></span><img alt="../../_images/column_bulk_model.png" src="../../_images/column_bulk_model.png" />
 <p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Column bulk model</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
-<p>The GRM describes transport of solute molecules through the interstitial column volume by convective flow, band broadening caused by axial dispersion, mass transfer resistance through a stagnant film around the beads, pore (and surface) diffusion in the porous beads <span id="id2">[<a class="reference internal" href="../../zbibliography.html#id24"><span>5</span></a>,<a class="reference internal" href="../../zbibliography.html#id23"><span>6</span></a>,<a class="reference internal" href="../../zbibliography.html#id25"><span>7</span></a>]</span>, and adsorption to the inner bead surfaces.</p>
+<p>The GRM describes transport of solute molecules through the interstitial column volume by convective flow, band broadening caused by axial dispersion, mass transfer resistance through a stagnant film around the beads, pore (and surface) diffusion in the porous beads <span id="id2">[<a class="reference internal" href="../../zbibliography.html#id24">5</a>, <a class="reference internal" href="../../zbibliography.html#id23">6</a>, <a class="reference internal" href="../../zbibliography.html#id25">7</a>]</span>, and adsorption to the inner bead surfaces.</p>
 <p>Consider a column of length <span class="math notranslate nohighlight">\(L&gt;0\)</span> filled with spherical beads of (possibly) multiple types with radius <span class="math notranslate nohighlight">\(r_{p,j} \ll L\)</span> (see <a class="reference internal" href="#modelgrmcolumn"><span class="std std-numref">Fig. 1</span></a>), where <span class="math notranslate nohighlight">\(j\)</span> is the particle type index. The mass balance in the interstitial column volume is described by</p>
 <div class="math notranslate nohighlight" id="equation-modelcolumn">
 <span class="eqno">(1)<a class="headerlink" href="#equation-modelcolumn" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{aligned}
@@ -167,7 +167,7 @@ Therefore, the beads can be seen as continuously distributed inside the column (
 \end{aligned}\end{split}\]</div>
 <p>Here, <span class="math notranslate nohighlight">\(c^l_i\colon \left[0, T_{\text{end}}\right] \times [0, L] \rightarrow \mathbb{R}^{\geq 0}\)</span> denotes the concentration in the interstitial column volume, <span class="math notranslate nohighlight">\(c^p_{j,i}\colon \left[0, T_{\text{end}}\right] \times [0, L] \times [r_{c,j}, r_{p,j}] \rightarrow \mathbb{R}^{\geq 0}\)</span> the liquid phase concentration in the beads, <span class="math notranslate nohighlight">\(k_{f,j,i}\)</span> the film diffusion coefficient, <span class="math notranslate nohighlight">\(D_{\text{ax},i}\)</span> the dispersion coefficient, <span class="math notranslate nohighlight">\(u\)</span> the interstitial velocity, <span class="math notranslate nohighlight">\(d_j\)</span> the volume fraction of particle type <span class="math notranslate nohighlight">\(j\)</span>, and <span class="math notranslate nohighlight">\(\beta_c = \varepsilon_c / (1 - \varepsilon_c)\)</span> the column phase ratio, where <span class="math notranslate nohighlight">\(\varepsilon_c\)</span> is the column porosity (ratio of interstitial volume to total column volume).
 If reactions are considered, the term <span class="math notranslate nohighlight">\(f_{\text{react},i}^l\left(c^l\right)\)</span> represents the net change of concentration <span class="math notranslate nohighlight">\(c_i\)</span> due to reactions involving component <span class="math notranslate nohighlight">\(i\)</span>.</p>
-<p>Danckwerts boundary conditions <span id="id3">[<a class="reference internal" href="../../zbibliography.html#id7"><span>8</span></a>]</span> are applied to inlet and outlet of the column:</p>
+<p>Danckwerts boundary conditions <span id="id3">[<a class="reference internal" href="../../zbibliography.html#id7">8</a>]</span> are applied to inlet and outlet of the column:</p>
 <div class="math notranslate nohighlight" id="equation-bcoutlet">
 <span class="eqno">(2)<a class="headerlink" href="#equation-bcoutlet" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
     u c_{\text{in},i}(t) &amp;= u c^l_i(t,0) - D_{\text{ax},i} \frac{\partial c^l_i}{\partial z}(t, 0) &amp; \forall t &gt; 0,
@@ -263,7 +263,7 @@ This allows, for example, the placement of smaller particles near the frits.</p>
 </div>
 <div class="section" id="size-exclusion-chromatography">
 <span id="muopgrmsizeexclusion"></span><h2>Size exclusion chromatography<a class="headerlink" href="#size-exclusion-chromatography" title="Permalink to this headline">¶</a></h2>
-<p>The general rate model can be used to simulate size exclusion chromatography (SEC) <span id="id4">[<a class="reference internal" href="../../zbibliography.html#id5"><span>2</span></a>]</span>.
+<p>The general rate model can be used to simulate size exclusion chromatography (SEC) <span id="id4">[<a class="reference internal" href="../../zbibliography.html#id5">2</a>]</span>.
 The particle porosity <span class="math notranslate nohighlight">\(\varepsilon_{p,j}\)</span> on the mobile phase side of the transport equations is replaced by a component-dependent accessible porosity</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}

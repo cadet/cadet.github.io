@@ -19,7 +19,7 @@ Generalized Ion Exchange
 ``GIEX_KA``
    Base value of adsorption rate constant
 
-**Unit:** :math:`m_{MP}^{3} m_{SP}^{-3} s^{-1}`
+**Unit:** :math:`m_{MP}^{3}~m_{SP}^{-3}~s^{-1}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\ge 0`   **Length:** NCOMP
@@ -152,7 +152,7 @@ Generalized Ion Exchange
    Stationary phase capacity (monovalent salt counterions); The total
    number of binding sites available on the resin surface
 
-**Unit:** :math:`mol m_{SP}^{-3}`
+**Unit:** :math:`mol~m_{SP}^{-3}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\ge 0`   **Length:** 1
@@ -162,7 +162,7 @@ Generalized Ion Exchange
    Reference liquid phase concentration (optional, defaults to
    :math:`1.0`)
 
-**Unit:** :math:`mol m_{MP}^{-3}`
+**Unit:** :math:`mol~m_{MP}^{-3}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\gt 0`   **Length:** 1
@@ -172,7 +172,7 @@ Generalized Ion Exchange
    Reference solid phase concentration (optional, defaults to
    :math:`1.0`)
 
-**Unit:** :math:`mol m_{SP}^{-3}`
+**Unit:** :math:`mol~m_{SP}^{-3}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\gt 0`   **Length:** 1

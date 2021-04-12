@@ -13,7 +13,7 @@ Extended Mobile Phase Modulator Langmuir
    state separately.
 
 ===================  =========================  =========================================
-**Type:** int        **Range:** {0,1}           **Length:** 1/NTOTALBND
+j*Type:** int        **Range:** {0,1}           **Length:** 1/NTOTALBND
 ===================  =========================  =========================================
 
 ``EMPM_COMP_MODE``
@@ -32,7 +32,7 @@ Extended Mobile Phase Modulator Langmuir
 ``EMPM_KA``
    Adsorption rate constants
 
-**Unit:** :math:`m_{MP}^3 mol^{-1}s^{-1}`
+**Unit:** :math:`m_{MP}^3~mol^{-1}~s^{-1}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\ge 0`   **Length:** NCOMP
@@ -41,7 +41,7 @@ Extended Mobile Phase Modulator Langmuir
 ``EMPM_KD``
    Desorption rate constants
 
-**Unit:** :math:`m_{MP}^{3\beta} mol^{-\beta} s^{-1}`
+**Unit:** :math:`m_{MP}^{3\beta}~mol^{-\beta}~s^{-1}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\ge 0`   **Length:** NCOMP
@@ -51,7 +51,7 @@ Extended Mobile Phase Modulator Langmuir
    Maximum adsorption capacities
 
 
-**Unit:** :math:`mol m_{SP}^{-3}`
+**Unit:** :math:`mol~m_{SP}^{-3}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\ge 0`   **Length:** NCOMP
@@ -60,7 +60,7 @@ Extended Mobile Phase Modulator Langmuir
 ``EMPM_BETA``
    Parameters describing the ion-exchange characteristics (IEX)
 
-**Unit:** :math:`mol m_{SP}^{-3}`
+**Unit:** :math:`mol~m_{SP}^{-3}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\ge 0`   **Length:** NCOMP

@@ -19,7 +19,7 @@ Steric Mass Action
 ``SMA_KA``
    Adsorption rate constants
 
-**Unit:** :math:`m_{MP}^3 m_{SP}^{-3}s^{-1}`
+**Unit:** :math:`m_{MP}^3~m_{SP}^{-3}~s^{-1}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\ge 0`   **Length:** NCOMP
@@ -56,8 +56,7 @@ Steric Mass Action
    Stationary phase capacity (monovalent salt counterions); The total
    number of binding sites available on the resin surface
 
-
-**Unit:** :math:`mol m_{SP}^{-3}`
+**Unit:** :math:`mol~m_{SP}^{-3}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\ge 0`   **Length:** 1
@@ -68,7 +67,7 @@ Steric Mass Action
    :math:`1.0`)
 
 
-**Unit:** :math:`mol m_{MP}^{-3}`
+**Unit:** :math:`mol~m_{MP}^{-3}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\gt 0`   **Length:** 1
@@ -79,7 +78,7 @@ Steric Mass Action
    :math:`1.0`)
 
 
-**Unit:** :math:`mol m_{SP}^{-3}`
+**Unit:** :math:`mol~m_{SP}^{-3}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\gt 0`   **Length:** 1

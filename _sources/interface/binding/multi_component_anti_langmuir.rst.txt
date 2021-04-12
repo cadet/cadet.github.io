@@ -19,7 +19,7 @@ Multi Component Anti-Langmuir
 ``MCAL_KA``
    Adsorption rate constants
 
-**Unit:** :math:`m_{MP}^3 m_{SP}^{-3}s^{-1}`
+**Unit:** :math:`m_{MP}^3~mol^{-1}~s^{-1}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\ge 0`   **Length:** NCOMP
@@ -37,7 +37,7 @@ Multi Component Anti-Langmuir
 ``MCAL_QMAX``
    Maximum adsorption capacities
 
-**Unit:** :math:`mol m_{SP}^{-3}`
+**Unit:** :math:`mol~m_{SP}^{-3}`
 
 ===================  =========================  ==================================
 **Type:** double     **Range:** :math:`\gt 0`   **Length:** NCOMP
@@ -46,7 +46,7 @@ Multi Component Anti-Langmuir
 ``MCAL_ANTILANGMUIR``
    Anti-Langmuir coefficients (optional)
 
-**Unit:** :math:`mol m_{SP}^{-3}`
+**Unit:** :math:`mol~m_{SP}^{-3}`
 
 ===================  =========================  ==================================
 **Type:** double     **Range:** {-1,1}          **Length:** NCOMP

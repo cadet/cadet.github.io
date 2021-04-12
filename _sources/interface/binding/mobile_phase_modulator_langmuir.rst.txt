@@ -19,7 +19,7 @@ Mobile Phase Modulator Langmuir
 ``MPM_KA``
    Adsorption rate constants
 
-**Unit:** :math:`m_{MP}^3 mol^{-1}s^{-1}`
+**Unit:** :math:`m_{MP}^3~mol^{-1}~s^{-1}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\ge 0`   **Length:** NCOMP
@@ -28,7 +28,7 @@ Mobile Phase Modulator Langmuir
 ``MPM_KD``
    Desorption rate constants
 
-**Unit:** :math:`m_{MP}^{3\beta} mol^{-\beta} s^{-1}`
+**Unit:** :math:`m_{MP}^{3\beta}~mol^{-\beta}~s^{-1}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\ge 0`   **Length:** NCOMP
@@ -38,7 +38,7 @@ Mobile Phase Modulator Langmuir
    Maximum adsorption capacities
 
 
-**Unit:** :math:`mol m_{SP}^{-3}`
+**Unit:** :math:`mol~m_{SP}^{-3}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\ge 0`   **Length:** NCOMP
@@ -47,7 +47,7 @@ Mobile Phase Modulator Langmuir
 ``MPM_BETA``
    Parameters describing the ion-exchange characteristics (IEX)
 
-**Unit:** :math:`mol m_{SP}^{-3}`
+**Unit:** :math:`mol~m_{SP}^{-3}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\ge 0`   **Length:** NCOMP

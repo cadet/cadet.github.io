@@ -19,7 +19,7 @@ Self Association
 ``SAI_KA1``
    Adsorption rate constants
 
-**Unit:** :math:`m_{MP}^3 m_{SP}^{-3}s^{-1}`
+**Unit:** :math:`m_{MP}^3~m_{SP}^{-3}~s^{-1}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\ge 0`   **Length:** NCOMP
@@ -28,7 +28,7 @@ Self Association
 ``SAI_KA2``
    Adsorption rate constants
 
-**Unit:** :math:`m_{MP}^6 m_{SP}^{-6}s^{-1}`
+**Unit:** :math:`m_{MP}^6~m_{SP}^{-3}~mol^{-1}~s^{-1}`
 
 ===================  =========================  =========================================
 **Type:** double     **Range:** :math:`\ge 0`   **Length:** NCOMP

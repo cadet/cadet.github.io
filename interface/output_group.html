@@ -48,6 +48,7 @@
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input_group.html">Input Group</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Output Group</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#group-output">Group /output</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#group-output-solution">Group /output/solution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#group-output-solution-unit-xxx">Group /output/solution/unit_XXX</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#group-output-sensitivity-param-xxx-unit-yyy">Group /output/sensitivity/param_XXX/unit_YYY</a></li>
@@ -83,9 +84,9 @@
             
   <div class="section" id="output-group">
 <span id="ffoutput"></span><h1>Output Group<a class="headerlink" href="#output-group" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="group-output-solution">
-<h2>Group /output/solution<a class="headerlink" href="#group-output-solution" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">LAST_STATE</span></code></p>
+<div class="section" id="group-output">
+<h2>Group /output<a class="headerlink" href="#group-output" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">LAST_STATE_Y</span></code></p>
 <blockquote>
 <div><p>Full state vector at the last time point of the time integrator if <span class="math notranslate nohighlight">\(\texttt{WRITE_SOLUTION_LAST}\)</span> in <span class="math notranslate nohighlight">\(\texttt{/input/return}\)</span> is enabled</p>
 <p><strong>Type:</strong> double</p>
@@ -105,6 +106,9 @@
 <div><p>Full time derivative state vector of the <code class="docutils literal notranslate"><span class="pre">XXX</span></code> th sensitivity system at the last time point of the time integrator if <span class="math notranslate nohighlight">\(\texttt{WRITE_SENS_LAST}\)</span> in <span class="math notranslate nohighlight">\(\texttt{/input/return}\)</span> is enabled</p>
 <p><strong>Type:</strong> double</p>
 </div></blockquote>
+</div>
+<div class="section" id="group-output-solution">
+<h2>Group /output/solution<a class="headerlink" href="#group-output-solution" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">SOLUTION_TIMES</span></code></p>
 <blockquote>
 <div><p>Time points at which the solution is written if <span class="math notranslate nohighlight">\(\texttt{WRITE_SOLUTION_TIMES}\)</span> in <span class="math notranslate nohighlight">\(\texttt{/input/return}\)</span> is enabled</p>

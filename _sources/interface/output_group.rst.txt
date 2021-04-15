@@ -3,10 +3,10 @@
 Output Group
 ===============
 
-Group /output/solution
-----------------------
+Group /output
+-------------
 
-``LAST_STATE``
+``LAST_STATE_Y``
 
    Full state vector at the last time point of the time integrator if :math:`\texttt{WRITE_SOLUTION_LAST}` in :math:`\texttt{/input/return}` is enabled
    
@@ -30,6 +30,8 @@ Group /output/solution
    
    **Type:** double
    
+Group /output/solution
+----------------------
 
 ``SOLUTION_TIMES``
 

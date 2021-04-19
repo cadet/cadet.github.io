@@ -3,7 +3,7 @@
 Multi Component Anti-Langmuir
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Group /input/model/unit_XXX/adsorption – ADSORPTION_MODEL = MULTI_COMPONENT_ANTI_LANGMUIR**
+**Group /input/model/unit_XXX/adsorption – ADSORPTION_MODEL = MULTI_COMPONENT_ANTILANGMUIR**
 
 
 ``IS_KINETIC``

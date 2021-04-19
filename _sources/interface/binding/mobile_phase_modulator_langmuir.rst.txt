@@ -3,7 +3,7 @@
 Mobile Phase Modulator Langmuir
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Group /input/model/unit_XXX/adsorption – ADSORPTION_MODEL = MOBILE_PHASE_MODULATOR_LANGMUIR**
+**Group /input/model/unit_XXX/adsorption – ADSORPTION_MODEL = MOBILE_PHASE_MODULATOR**
 
 
 ``IS_KINETIC``

@@ -3,7 +3,7 @@
 Extended Mobile Phase Modulator Langmuir
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Group /input/model/unit_XXX/adsorption – ADSORPTION_MODEL = EXTENDED_MOBILE_PHASE_MODULATOR_LANGMUIR**
+**Group /input/model/unit_XXX/adsorption – ADSORPTION_MODEL = EXTENDED_MOBILE_PHASE_MODULATOR**
 
 
 ``IS_KINETIC``
@@ -13,7 +13,7 @@ Extended Mobile Phase Modulator Langmuir
    state separately.
 
 ===================  =========================  =========================================
-j*Type:** int        **Range:** {0,1}           **Length:** 1/NTOTALBND
+**Type:** int        **Range:** {0,1}           **Length:** 1/NTOTALBND
 ===================  =========================  =========================================
 
 ``EMPM_COMP_MODE``

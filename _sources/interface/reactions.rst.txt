@@ -144,9 +144,9 @@ Group /input/model/unit_XXX/reaction - REACTION_MODEL = MASS_ACTION_LAW
 
    Forward solid phase modifier exponent matrix of particle liquid phase reactions as :math:`\texttt{NTOTALBND} \times \texttt{NREACT}` matrix in row-major storage (optional, defaults to all 0)
    
-   ================  ========================================================
-   **Type:** double  **Length:** :math:`\texttt{NCOMP} \cdot \texttt{NREACT}`
-   ================  ========================================================
+   ================  ============================================================
+   **Type:** double  **Length:** :math:`\texttt{NTOTALBND} \cdot \texttt{NREACT}`
+   ================  ============================================================
    
 ``MAL_EXPONENTS_LIQUID_BWD_MODSOLID``
 

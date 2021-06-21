@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Miscellaneous &#8212; CADET-Match</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/configuration/misc.html" />
+    <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Running" href="../cli/index.html" />
+    <link rel="prev" title="Graphing" href="graphing.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET-Match</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Install</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic_config.html">Basic setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="experiments.html">Experiments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scores.html">Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html">Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error.html">Error Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphing.html">Graphing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+<h3>Releases</h3>
+<ul>
+        <li><a href="../../v0.6.50/configuration/misc.html">v0.6.50</a></li>
+        <li><a href="../../v0.7.0/configuration/misc.html">v0.7.0</a></li>
+        <li><a href="../../v0.7.1/configuration/misc.html">v0.7.1</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+        <li><a href="misc.html">master</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+  <section id="miscellaneous">
+<h1>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this headline">¶</a></h1>
+<p>Most of these settings don’t really fit with anything else and they should only be set when needed.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 5%" />
+<col style="width: 8%" />
+<col style="width: 5%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Values</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>fullTrainingData</p></td>
+<td><p>Integer</p></td>
+<td><p>0</p></td>
+<td><p>No</p></td>
+<td><p>This causes CADETMatch to store ALL results of all simulations for machine learning. This can require many gigabytes of storage.</p></td>
+</tr>
+<tr class="row-odd"><td><p>dynamicTolerance</p></td>
+<td><p>Boolean</p></td>
+<td><p>False</p></td>
+<td><p>No</p></td>
+<td><p>Automatically adapt the tolerance of the simulation based on search method requirements.</p></td>
+</tr>
+<tr class="row-even"><td><p>abstolFactor</p></td>
+<td><p>Float</p></td>
+<td><p>1e-3</p></td>
+<td><p>No</p></td>
+<td><p>Set absTol for most searching to max(abstolFactor*smalltest_peak, abstolFactorGradMax*largest_peak)</p></td>
+</tr>
+<tr class="row-odd"><td><p>abstolFactorGrad</p></td>
+<td><p>Float</p></td>
+<td><p>1e-7</p></td>
+<td><p>No</p></td>
+<td><p>Set absTol for gradient descent to max(abstolFactorGrad*smalltest_peak, abstolFactorGradMax*largest_peak)</p></td>
+</tr>
+<tr class="row-even"><td><p>abstolFactorGradMax</p></td>
+<td><p>Float</p></td>
+<td><p>1e-10</p></td>
+<td><p>No</p></td>
+<td><p>Set absTol for gradient descent to max(abstolFactorGrad*smalltest_peak, abstolFactorGradMax*largest_peak)</p></td>
+</tr>
+<tr class="row-odd"><td><p>connectionNumberEntries</p></td>
+<td><p>Integer</p></td>
+<td><p>5</p></td>
+<td><p>No</p></td>
+<td><p>Set the length of each entry for the connections matrix</p></td>
+</tr>
+<tr class="row-even"><td><p>gradVector</p></td>
+<td><p>Boolean</p></td>
+<td><p>False</p></td>
+<td><p>No</p></td>
+<td><p>If gradVector is set to False gradient descent uses the vector of metrics for minimization. If set to True it uses the smoothed chromatogram data</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2017-2021.
+      
+      |
+      <a href="../_sources/configuration/misc.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

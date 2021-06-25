@@ -3,4 +3,7 @@
   <sitemap>
 	  <loc>https://cadet.github.io/master/sitemap.xml</loc>
   </sitemap>
+  <sitemap>
+	  <loc>https://cadet.github.io/CADET-Match/master/sitemap.xml</loc>
+  </sitemap>
 </sitemapindex>

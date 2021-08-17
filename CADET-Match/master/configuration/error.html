@@ -66,7 +66,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -77,6 +77,7 @@
         <li><a href="../../v0.6.50/configuration/error.html">v0.6.50</a></li>
         <li><a href="../../v0.7.0/configuration/error.html">v0.7.0</a></li>
         <li><a href="../../v0.7.1/configuration/error.html">v0.7.1</a></li>
+        <li><a href="../../v0.8.0/configuration/error.html">v0.8.0</a></li>
 </ul>
 <h3>Branches</h3>
 <ul>
@@ -96,7 +97,7 @@
   <strong>
     
     You're reading the documentation for a development version.
-    For the latest released version, please have a look at <a href="../../v0.7.1/configuration/error.html">v0.7.1</a>.
+    For the latest released version, please have a look at <a href="../../v0.8.0/configuration/error.html">v0.8.0</a>.
     
   </strong>
 </p>
@@ -104,8 +105,8 @@
 
   <section id="error-modeling">
 <h1>Error Modeling<a class="headerlink" href="#error-modeling" title="Permalink to this headline">¶</a></h1>
-<p>CADETMatch includes error modeling and parameter estimation.
-Error modeling in CADETMatch is based on using a fitted simulation and creating an error model by manipulations to the fitted simulation.
+<p>CADET-Match includes error modeling and parameter estimation.
+Error modeling in CADET-Match is based on using a fitted simulation and creating an error model by manipulations to the fitted simulation.
 Error modeling uses MCMC and can be a slow process which requires a lot of computing time.
 Some simple problems can be solved in a few hours on a powerful desktop and others can take weeks on a powerful server.</p>
 <p><a class="reference internal" href="search.html#mcmc-search"><span class="std std-ref">MCMC</span></a> search settings.</p>

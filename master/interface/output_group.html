@@ -72,7 +72,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -310,6 +310,18 @@
 <blockquote>
 <div><p>Component <code class="docutils literal notranslate"><span class="pre">YYY</span></code> at inlet port <code class="docutils literal notranslate"><span class="pre">XXX</span></code> of the solution time derivative of the unit operation. Only present if <span class="math notranslate nohighlight">\(\texttt{SPLIT_COMPONENTS_DATA}\)</span> and <span class="math notranslate nohighlight">\(\texttt{SPLIT_PORTS_DATA}\)</span> are enabled, and the unit operation has multiple inlet ports. If the unit operation only has a single port, the field is created if <span class="math notranslate nohighlight">\(\texttt{SINGLE_AS_MULTI_PORT}\)</span> is enabled.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{IV}}^{-3}\,\mathrm{s}^{-1}\)</span></p>
+<p><strong>Type:</strong> double</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">LAST_STATE_Y</span></code></p>
+<blockquote>
+<div><p>State vector of this unit at the last time point of the time integrator if <span class="math notranslate nohighlight">\(\texttt{WRITE_SOLUTION_LAST_UNIT}\)</span> in <span class="math notranslate nohighlight">\(\texttt{/input/return/unit_XXX}\)</span> is enabled.
+Note that the vector includes the dedicated inlet DOFs at the beginning (length: <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPORT}\)</span>).</p>
+<p><strong>Type:</strong> double</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">LAST_STATE_YDOT</span></code></p>
+<blockquote>
+<div><p>Time derivative state vector of this unit at the last time point of the time integrator if <span class="math notranslate nohighlight">\(\texttt{WRITE_SOLUTION_LAST_UNIT}\)</span> in <span class="math notranslate nohighlight">\(\texttt{/input/return/unit_XXX}\)</span> is enabled.
+Note that the vector includes the dedicated inlet DOFs at the beginning (length: <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPORT}\)</span>).</p>
 <p><strong>Type:</strong> double</p>
 </div></blockquote>
 </section>

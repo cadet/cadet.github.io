@@ -66,7 +66,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -77,6 +77,7 @@
         <li><a href="../../v0.6.50/configuration/index.html">v0.6.50</a></li>
         <li><a href="../../v0.7.0/configuration/index.html">v0.7.0</a></li>
         <li><a href="../../v0.7.1/configuration/index.html">v0.7.1</a></li>
+        <li><a href="../../v0.8.0/configuration/index.html">v0.8.0</a></li>
 </ul>
 <h3>Branches</h3>
 <ul>
@@ -96,7 +97,7 @@
   <strong>
     
     You're reading the documentation for a development version.
-    For the latest released version, please have a look at <a href="../../v0.7.1/configuration/index.html">v0.7.1</a>.
+    For the latest released version, please have a look at <a href="../../v0.8.0/configuration/index.html">v0.8.0</a>.
     
   </strong>
 </p>
@@ -104,8 +105,8 @@
 
   <section id="configuration">
 <span id="id1"></span><h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
-<p>CADETMatch uses a JSON based configuration file format.
-CADETMatch uses <a class="reference external" href="https://github.com/linjackson78/jstyleson">jstyleson</a> to support JSON with comments.
+<p>CADET-Match uses a JSON based configuration file format.
+CADET-Match uses <a class="reference external" href="https://github.com/linjackson78/jstyleson">jstyleson</a> to support JSON with comments.
 You can programatically create the JSON in Python using nested dictionaries or <a class="reference external" href="https://github.com/mewwts/addict">addict</a> and then convert to JSON.</p>
 <p>Ususally, the configuration has to include:</p>
 <ul class="simple">
@@ -152,6 +153,7 @@ For more information, see also the examples.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="search.html">Search</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="search.html#unsga3">UNSGA3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="search.html#nsga3">NSGA3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="search.html#multistart">Multistart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="search.html#graphspace">GraphSpace</a></li>

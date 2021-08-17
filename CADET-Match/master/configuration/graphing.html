@@ -66,7 +66,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -77,6 +77,7 @@
         <li><a href="../../v0.6.50/configuration/graphing.html">v0.6.50</a></li>
         <li><a href="../../v0.7.0/configuration/graphing.html">v0.7.0</a></li>
         <li><a href="../../v0.7.1/configuration/graphing.html">v0.7.1</a></li>
+        <li><a href="../../v0.8.0/configuration/graphing.html">v0.8.0</a></li>
 </ul>
 <h3>Branches</h3>
 <ul>
@@ -96,7 +97,7 @@
   <strong>
     
     You're reading the documentation for a development version.
-    For the latest released version, please have a look at <a href="../../v0.7.1/configuration/graphing.html">v0.7.1</a>.
+    For the latest released version, please have a look at <a href="../../v0.8.0/configuration/graphing.html">v0.8.0</a>.
     
   </strong>
 </p>
@@ -104,7 +105,7 @@
 
   <section id="graphing">
 <h1>Graphing<a class="headerlink" href="#graphing" title="Permalink to this headline">¶</a></h1>
-<p>Graphing in CADETMatch is done asyncronously from the normal running however it still takes computing time to generate the graphs.
+<p>Graphing in CADET-Match is done asyncronously from the normal running however it still takes computing time to generate the graphs.
 There is a tradeoff between how frequently graphs are generated to see the progress and how much progress is slowed by generating the graphs.
 Graphs are generated at the end of a generation/step during estimation/error modeling.
 If the time in seconds since the last time graphs where generated at the end of a step than the specified time then the graphs are generated again and the time is reset.</p>

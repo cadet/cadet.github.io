@@ -17,7 +17,7 @@
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="CADETMatch Examples" href="examples.html" />
+    <link rel="next" title="CADET-Match Examples" href="examples.html" />
     <link rel="prev" title="Miscellaneous" href="../configuration/misc.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -50,8 +50,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Running</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#starting-a-match">Starting a match</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#generate-graphs-using-6-cores">Generate graphs using 6 cores</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#running-cadetmatch-remotely">Running CADETMatch remotely</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="examples.html">CADETMatch Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-cadet-match-remotely">Running CADET-Match remotely</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples.html">CADET-Match Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -64,7 +64,7 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -75,6 +75,7 @@
         <li><a href="../../v0.6.50/cli/index.html">v0.6.50</a></li>
         <li><a href="../../v0.7.0/cli/index.html">v0.7.0</a></li>
         <li><a href="../../v0.7.1/cli/index.html">v0.7.1</a></li>
+        <li><a href="../../v0.8.0/cli/index.html">v0.8.0</a></li>
 </ul>
 <h3>Branches</h3>
 <ul>
@@ -94,7 +95,7 @@
   <strong>
     
     You're reading the documentation for a development version.
-    For the latest released version, please have a look at <a href="../../v0.7.1/cli/index.html">v0.7.1</a>.
+    For the latest released version, please have a look at <a href="../../v0.8.0/cli/index.html">v0.8.0</a>.
     
   </strong>
 </p>
@@ -102,8 +103,8 @@
 
   <section id="running">
 <h1>Running<a class="headerlink" href="#running" title="Permalink to this headline">¶</a></h1>
-<p>CADETMatch is designed to be used through a command line interface. It is also possible to use CADETMatch using Jupyter notebooks but this
-is not recommended for normal usage. CADETMatch has automatic checkpointing and if matching is interrupted it will resume from the last step
+<p>CADET-Match is designed to be used through a command line interface. It is also possible to use CADET-Match using Jupyter notebooks but this
+is not recommended for normal usage. CADET-Match has automatic checkpointing and if matching is interrupted it will resume from the last step
 completed.</p>
 <p>These commands can be run from the Windows command line or from any Linux command line. These commands can also be run through cluster
 control software.</p>
@@ -112,7 +113,7 @@ control software.</p>
 <p><code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">&lt;int</span> <span class="pre">number</span> <span class="pre">of</span> <span class="pre">parallel</span> <span class="pre">processes</span> <span class="pre">to</span> <span class="pre">use&gt;</span></code> If -n is omitted one process will be created for each core on the machine.</p>
 <p><code class="docutils literal notranslate"><span class="pre">--match</span></code> Start parameter estimation or error modeling</p>
 <p><code class="docutils literal notranslate"><span class="pre">--generate_map</span></code> Find the maximum a posteriori for an MCMC run</p>
-<p>The following options are for genering graphs. CADETMatch generates graphs automatically periodically but these commands
+<p>The following options are for genering graphs. CADET-Match generates graphs automatically periodically but these commands
 can be used to generate graphs immediately. These commands should be safe to run while matching is proceeding but they
 may fail if the required data has not been generated yet.</p>
 <p><code class="docutils literal notranslate"><span class="pre">--generate_corner</span></code> Generate corner graphs for MCMC</p>
@@ -133,10 +134,10 @@ may fail if the required data has not been generated yet.</p>
 </pre></div>
 </div>
 </section>
-<section id="running-cadetmatch-remotely">
-<h2>Running CADETMatch remotely<a class="headerlink" href="#running-cadetmatch-remotely" title="Permalink to this headline">¶</a></h2>
-<p>The most common way CADETMatch is used is by logging into a server with SSH and starting a matching session.
-These matches can take hours to days to complete and the following command allows CADETMatch to keep running
+<section id="running-cadet-match-remotely">
+<h2>Running CADET-Match remotely<a class="headerlink" href="#running-cadet-match-remotely" title="Permalink to this headline">¶</a></h2>
+<p>The most common way CADET-Match is used is by logging into a server with SSH and starting a matching session.
+These matches can take hours to days to complete and the following command allows CADET-Match to keep running
 once you logout.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nohup python -m CADETMatch --match --json &lt;path to connfiguration file&gt; <span class="p">&amp;</span>
 </pre></div>

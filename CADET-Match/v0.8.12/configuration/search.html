@@ -1,0 +1,664 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Search &#8212; CADET-Match</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/configuration/search.html" />
+    <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Error Modeling" href="error.html" />
+    <link rel="prev" title="Transform" href="transform.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+    <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/configuration/search.html"/>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET-Match</a></h1>
+
+
+
+<p class="blurb">CADET Parameter estimation engine</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Install</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic_config.html">Basic setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="experiments.html">Experiments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scores.html">Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html">Transform</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#unsga3">UNSGA3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nsga3">NSGA3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multistart">Multistart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#graphspace">GraphSpace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mcmc">MCMC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#altscore">AltScore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gradient">Gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scoretest">ScoreTest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="error.html">Error Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphing.html">Graphing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+<h3>Releases</h3>
+<ul>
+        <li><a href="../../v0.6.50/configuration/search.html">v0.6.50</a></li>
+        <li><a href="../../v0.7.0/configuration/search.html">v0.7.0</a></li>
+        <li><a href="../../v0.7.1/configuration/search.html">v0.7.1</a></li>
+        <li><a href="../../v0.8.0/configuration/search.html">v0.8.0</a></li>
+        <li><a href="../../v0.8.10/configuration/search.html">v0.8.10</a></li>
+        <li><a href="search.html">v0.8.12</a></li>
+        <li><a href="../../v0.8.7/configuration/search.html">v0.8.7</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+        <li><a href="../../master/configuration/search.html">master</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+  <section id="search">
+<h1>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h1>
+<p>CADET-Match uses a number of different search strategies for parameter estimation.
+Parameters that are common to more than one search method will be repeated.
+The choice of search strategy is set by using searchMethod.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 7%" />
+<col style="width: 10%" />
+<col style="width: 6%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Values</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>searchMethod</p></td>
+<td><p>String</p></td>
+<td><p>UNSGA3</p></td>
+<td><p>No</p></td>
+<td><p>Select the search method to use. (UNSGA3, NSGA3, Multistart, GraphSpace, MCMC, AltScore, Gradient, ScoreTest)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Most of the search strategies are population based and capable of running in parallel.</p>
+<section id="unsga3">
+<h2>UNSGA3<a class="headerlink" href="#unsga3" title="Permalink to this headline">¶</a></h2>
+<p>UNSGA3 is a genetic algorithm designed for high-dimensional problems. <a class="reference external" href="https://pymoo.org/algorithms/unsga3.html">UNSGA3</a> from pymoo is used.</p>
+<p>The difference between UNSGA3 and NSGA3 is that UNSGA3 uses a tournament selection to bread the best members instead
+of random mating. In almost all cases UNSGA3 will converge faster and to a better optimum. NSGA3 is mostly retained for backwards
+compatibility.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 5%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Values</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>population</p></td>
+<td><p>Integer</p></td>
+<td><p>100</p></td>
+<td><p>No</p></td>
+<td><p>Set the population size per parameter estimated.</p></td>
+</tr>
+<tr class="row-odd"><td><p>generations</p></td>
+<td><p>Integer</p></td>
+<td><p>1000</p></td>
+<td><p>No</p></td>
+<td><p>Set the max number of generations to population size * generations.</p></td>
+</tr>
+<tr class="row-even"><td><p>sobolGeneration</p></td>
+<td><p>Boolean</p></td>
+<td><p>True</p></td>
+<td><p>No</p></td>
+<td><p>Use a sobol sequence to generate the initial population instead of random initialization</p></td>
+</tr>
+<tr class="row-odd"><td><p>stallGenerations</p></td>
+<td><p>Integer</p></td>
+<td><p>10</p></td>
+<td><p>No</p></td>
+<td><p>Terminate optimization after this many generations without progress</p></td>
+</tr>
+<tr class="row-even"><td><p>stopAverage</p></td>
+<td><p>Float</p></td>
+<td><p>0.0</p></td>
+<td><p>No</p></td>
+<td><p>Stop searching when the average value of all metrics is less than or equal to this value</p></td>
+</tr>
+<tr class="row-odd"><td><p>stopBest</p></td>
+<td><p>Float</p></td>
+<td><p>0.0</p></td>
+<td><p>No</p></td>
+<td><p>Stop searching when the highest metric is less than or equal to this value</p></td>
+</tr>
+<tr class="row-even"><td><p>stopRMSE</p></td>
+<td><p>Float</p></td>
+<td><p>0.0</p></td>
+<td><p>No</p></td>
+<td><p>Stop when the Root Mean Square Error is less than or equal to this value</p></td>
+</tr>
+<tr class="row-odd"><td><p>gradCheck</p></td>
+<td><p>Float</p></td>
+<td><p>0.0</p></td>
+<td><p>No</p></td>
+<td><p>If the geometric mean of the metrics drop below this value run gradient descent to refine the value</p></td>
+</tr>
+<tr class="row-even"><td><p>finalGradRefinement</p></td>
+<td><p>Boolean</p></td>
+<td><p>False</p></td>
+<td><p>No</p></td>
+<td><p>Take the final pareto front and refine it with gradient descent</p></td>
+</tr>
+<tr class="row-odd"><td><p>gradFineStop</p></td>
+<td><p>Float</p></td>
+<td><p>1e-14</p></td>
+<td><p>No</p></td>
+<td><p>set xtol of scipy.optimize.least_squares</p></td>
+</tr>
+<tr class="row-even"><td><p>localRefine</p></td>
+<td><p>String</p></td>
+<td><p>gradient</p></td>
+<td><p>No</p></td>
+<td><p>Can be gradient or powell</p></td>
+</tr>
+<tr class="row-odd"><td><p>continueMCMC</p></td>
+<td><p>Boolean</p></td>
+<td><p>False</p></td>
+<td><p>No</p></td>
+<td><p>Once search finishes start MCMC and carry over useful information automatically</p></td>
+</tr>
+<tr class="row-even"><td><p>seeds</p></td>
+<td><p>List</p></td>
+<td><p>None</p></td>
+<td><p>No</p></td>
+<td><p>Optimization can be seeded with specific values to test</p></td>
+</tr>
+<tr class="row-odd"><td><p>MultiObjectiveSSE</p></td>
+<td><p>Boolean</p></td>
+<td><p>False</p></td>
+<td><p>No</p></td>
+<td><p>If set to true SSE objectives are split apart and turned into a multi-objective system. This is useful for multiple experiments.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="nsga3">
+<h2>NSGA3<a class="headerlink" href="#nsga3" title="Permalink to this headline">¶</a></h2>
+<p>NSGA3 is a genetic algorithm designed for high-dimensional problems. <a class="reference external" href="https://pymoo.org/algorithms/nsga3.html">NSGA3</a> from pymoo is used. In most cases UNSGA3 should be used
+and NSGA3 is retained for backwards compatibility.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 5%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Values</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>population</p></td>
+<td><p>Integer</p></td>
+<td><p>100</p></td>
+<td><p>No</p></td>
+<td><p>Set the population size per parameter estimated.</p></td>
+</tr>
+<tr class="row-odd"><td><p>generations</p></td>
+<td><p>Integer</p></td>
+<td><p>1000</p></td>
+<td><p>No</p></td>
+<td><p>Set the max number of generations to population size * generations.</p></td>
+</tr>
+<tr class="row-even"><td><p>sobolGeneration</p></td>
+<td><p>Boolean</p></td>
+<td><p>True</p></td>
+<td><p>No</p></td>
+<td><p>Use a sobol sequence to generate the initial population instead of random initialization</p></td>
+</tr>
+<tr class="row-odd"><td><p>stallGenerations</p></td>
+<td><p>Integer</p></td>
+<td><p>10</p></td>
+<td><p>No</p></td>
+<td><p>Terminate optimization after this many generations without progress</p></td>
+</tr>
+<tr class="row-even"><td><p>stopAverage</p></td>
+<td><p>Float</p></td>
+<td><p>0.0</p></td>
+<td><p>No</p></td>
+<td><p>Stop searching when the average value of all metrics is less than or equal to this value</p></td>
+</tr>
+<tr class="row-odd"><td><p>stopBest</p></td>
+<td><p>Float</p></td>
+<td><p>0.0</p></td>
+<td><p>No</p></td>
+<td><p>Stop searching when the highest metric is less than or equal to this value</p></td>
+</tr>
+<tr class="row-even"><td><p>stopRMSE</p></td>
+<td><p>Float</p></td>
+<td><p>0.0</p></td>
+<td><p>No</p></td>
+<td><p>Stop when the Root Mean Square Error is less than or equal to this value</p></td>
+</tr>
+<tr class="row-odd"><td><p>gradCheck</p></td>
+<td><p>Float</p></td>
+<td><p>0.0</p></td>
+<td><p>No</p></td>
+<td><p>If the geometric mean of the metrics drop below this value run gradient descent to refine the value</p></td>
+</tr>
+<tr class="row-even"><td><p>finalGradRefinement</p></td>
+<td><p>Boolean</p></td>
+<td><p>False</p></td>
+<td><p>No</p></td>
+<td><p>Take the final pareto front and refine it with gradient descent</p></td>
+</tr>
+<tr class="row-odd"><td><p>gradFineStop</p></td>
+<td><p>Float</p></td>
+<td><p>1e-14</p></td>
+<td><p>No</p></td>
+<td><p>set xtol of scipy.optimize.least_squares</p></td>
+</tr>
+<tr class="row-even"><td><p>localRefine</p></td>
+<td><p>String</p></td>
+<td><p>gradient</p></td>
+<td><p>No</p></td>
+<td><p>Can be gradient or powell</p></td>
+</tr>
+<tr class="row-odd"><td><p>continueMCMC</p></td>
+<td><p>Boolean</p></td>
+<td><p>False</p></td>
+<td><p>No</p></td>
+<td><p>Once search finishes start MCMC and carry over useful information automatically</p></td>
+</tr>
+<tr class="row-even"><td><p>seeds</p></td>
+<td><p>List</p></td>
+<td><p>None</p></td>
+<td><p>No</p></td>
+<td><p>Optimization can be seeded with specific values to test</p></td>
+</tr>
+<tr class="row-odd"><td><p>MultiObjectiveSSE</p></td>
+<td><p>Boolean</p></td>
+<td><p>False</p></td>
+<td><p>No</p></td>
+<td><p>If set to true SSE objectives are split apart and turned into a multi-objective system. This is useful for multiple experiments.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="multistart">
+<h2>Multistart<a class="headerlink" href="#multistart" title="Permalink to this headline">¶</a></h2>
+<p>This is a simple MultiStart gradient descent search.
+If your problem is known to be solveable with gradient descent this can be a good search choice.
+While this search algorithm can be used as a precursor for MCMC that is not recomended.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 5%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Values</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>population</p></td>
+<td><p>Integer</p></td>
+<td><p>100</p></td>
+<td><p>No</p></td>
+<td><p>Set the population size per parameter estimated.</p></td>
+</tr>
+<tr class="row-odd"><td><p>sobolGeneration</p></td>
+<td><p>Boolean</p></td>
+<td><p>True</p></td>
+<td><p>No</p></td>
+<td><p>Use a sobol sequence to generate the initial population instead of random initialization</p></td>
+</tr>
+<tr class="row-even"><td><p>gradFineStop</p></td>
+<td><p>Float</p></td>
+<td><p>1e-14</p></td>
+<td><p>No</p></td>
+<td><p>set xtol of scipy.optimize.least_squares</p></td>
+</tr>
+<tr class="row-odd"><td><p>localRefine</p></td>
+<td><p>String</p></td>
+<td><p>gradient</p></td>
+<td><p>No</p></td>
+<td><p>Can be gradient or powell</p></td>
+</tr>
+<tr class="row-even"><td><p>continueMCMC</p></td>
+<td><p>Boolean</p></td>
+<td><p>False</p></td>
+<td><p>No</p></td>
+<td><p>Once search finishes start MCMC and carry over useful information automatically</p></td>
+</tr>
+<tr class="row-odd"><td><p>seeds</p></td>
+<td><p>List</p></td>
+<td><p>None</p></td>
+<td><p>No</p></td>
+<td><p>Optimization can be seeded with specific values to test</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="graphspace">
+<h2>GraphSpace<a class="headerlink" href="#graphspace" title="Permalink to this headline">¶</a></h2>
+<p>The purpose of GraphSpace is to create a map of your problem.
+It is designed to be used with an extremely large population and it will just evaluate the goal, generate graphs and terminate.
+It will not actually optimize.
+What it does tell you is what variable ranges are reasonable to optimize in.
+This is a good first step for any new problem where the ranges of the parameters is extremely large and the viable ranges are unknown.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 5%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Values</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>population</p></td>
+<td><p>Integer</p></td>
+<td><p>100</p></td>
+<td><p>No</p></td>
+<td><p>Set the population size per parameter estimated.</p></td>
+</tr>
+<tr class="row-odd"><td><p>sobolGeneration</p></td>
+<td><p>Boolean</p></td>
+<td><p>True</p></td>
+<td><p>No</p></td>
+<td><p>Use a sobol sequence to generate the initial population instead of random initialization</p></td>
+</tr>
+<tr class="row-even"><td><p>gradFineStop</p></td>
+<td><p>Float</p></td>
+<td><p>1e-14</p></td>
+<td><p>No</p></td>
+<td><p>set xtol of scipy.optimize.least_squares</p></td>
+</tr>
+<tr class="row-odd"><td><p>localRefine</p></td>
+<td><p>String</p></td>
+<td><p>gradient</p></td>
+<td><p>No</p></td>
+<td><p>Can be gradient or powell</p></td>
+</tr>
+<tr class="row-even"><td><p>continueMCMC</p></td>
+<td><p>Boolean</p></td>
+<td><p>False</p></td>
+<td><p>No</p></td>
+<td><p>Once search finishes start MCMC and carry over useful information automatically</p></td>
+</tr>
+<tr class="row-odd"><td><p>seeds</p></td>
+<td><p>List</p></td>
+<td><p>None</p></td>
+<td><p>No</p></td>
+<td><p>Optimization can be seeded with specific values to test</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mcmc">
+<span id="mcmc-search"></span><h2>MCMC<a class="headerlink" href="#mcmc" title="Permalink to this headline">¶</a></h2>
+<p>MCMC is used for error modeling.
+It is highly suggested that NSGA3 is used with continueMCMC.
+MCMC is not an optimization algorithm and should not be used as one.
+In order to run an error model is also required.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 6%" />
+<col style="width: 8%" />
+<col style="width: 5%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Values</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MCMCpopulation</p></td>
+<td><p>Integer</p></td>
+<td><p>population</p></td>
+<td><p>No</p></td>
+<td><p>Set the population size per parameter estimated.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MCMCpopulationSet</p></td>
+<td><p>Integer</p></td>
+<td><p>None</p></td>
+<td><p>No</p></td>
+<td><p>Set the total population size (overrides MCMCpopulation)</p></td>
+</tr>
+<tr class="row-even"><td><p>mcmc_h5</p></td>
+<td><p>Path</p></td>
+<td><p>None</p></td>
+<td><p>No</p></td>
+<td><p>This is the path to the mcmc.h5 file generated in a previous MCMC run to use as a prior.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PreviousResults</p></td>
+<td><p>Path</p></td>
+<td><p>None</p></td>
+<td><p>No*</p></td>
+<td><p>MCMC is not an optimization algorithm and should not be directly run. Use NSGA3 and continueMCMC True and this will be auto set.</p></td>
+</tr>
+<tr class="row-even"><td><p>MCMCTauMult</p></td>
+<td><p>Integer</p></td>
+<td><p>50</p></td>
+<td><p>No</p></td>
+<td><p>MCMC runs until the chain length/integrated autocorrelation time &lt; MCMCTauMult+2 (2 for burn in)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="altscore">
+<h2>AltScore<a class="headerlink" href="#altscore" title="Permalink to this headline">¶</a></h2>
+<p>AltScore is very rarely used.
+What it allows is reading another completed result and will just re-evaluate the entries of the pareto front with a different goal and report the results.
+This can be useful for goal design to see the impact of combining different scores and if that would make the problem easier or harder to optimize.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 6%" />
+<col style="width: 8%" />
+<col style="width: 5%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Values</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PreviousResults</p></td>
+<td><p>Path</p></td>
+<td><p>None</p></td>
+<td><p>Yes</p></td>
+<td><p>Look at the previous results and reevaluate the pareto front with a different goal (useful to see the impact of different scores)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gradient">
+<h2>Gradient<a class="headerlink" href="#gradient" title="Permalink to this headline">¶</a></h2>
+<p>This is a simple test search algorithm that reads seeds and runs gradient descent from them.
+This search algorithm has little practical usage and requires good starting points.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 5%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Values</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>gradFineStop</p></td>
+<td><p>Float</p></td>
+<td><p>1e-14</p></td>
+<td><p>No</p></td>
+<td><p>set xtol of scipy.optimize.least_squares</p></td>
+</tr>
+<tr class="row-odd"><td><p>localRefine</p></td>
+<td><p>String</p></td>
+<td><p>gradient</p></td>
+<td><p>No</p></td>
+<td><p>Can be gradient or powell</p></td>
+</tr>
+<tr class="row-even"><td><p>seeds</p></td>
+<td><p>List</p></td>
+<td><p>None</p></td>
+<td><p>Yes</p></td>
+<td><p>Optimization can be seeded with specific values to test</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="scoretest">
+<h2>ScoreTest<a class="headerlink" href="#scoretest" title="Permalink to this headline">¶</a></h2>
+<p>This is the simplest of all the systems and just designed for testing goals.
+Given one or more seeds they are simulated, scored and results returned.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 6%" />
+<col style="width: 9%" />
+<col style="width: 5%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Values</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>seeds</p></td>
+<td><p>List</p></td>
+<td><p>None</p></td>
+<td><p>Yes</p></td>
+<td><p>Optimization can be seeded with specific values to test</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2017-2021.
+      
+      |
+      <a href="../_sources/configuration/search.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

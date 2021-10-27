@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>CADET-Match Examples &#8212; CADET-Match</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/cli/examples.html" />
+    <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="License" href="../license.html" />
+    <link rel="prev" title="Running" href="index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+    <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/cli/examples.html"/>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET-Match</a></h1>
+
+
+
+<p class="blurb">CADET Parameter estimation engine</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Running</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#starting-a-match">Starting a match</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#generate-graphs-using-6-cores">Generate graphs using 6 cores</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#running-cadet-match-remotely">Running CADET-Match remotely</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">CADET-Match Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+<h3>Releases</h3>
+<ul>
+        <li><a href="../../v0.6.50/cli/examples.html">v0.6.50</a></li>
+        <li><a href="../../v0.7.0/cli/examples.html">v0.7.0</a></li>
+        <li><a href="../../v0.7.1/cli/examples.html">v0.7.1</a></li>
+        <li><a href="../../v0.8.0/cli/examples.html">v0.8.0</a></li>
+        <li><a href="../../v0.8.10/cli/examples.html">v0.8.10</a></li>
+        <li><a href="../../v0.8.12/cli/examples.html">v0.8.12</a></li>
+        <li><a href="examples.html">v0.8.13</a></li>
+        <li><a href="../../v0.8.7/cli/examples.html">v0.8.7</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+        <li><a href="../../master/cli/examples.html">master</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+  <section id="cadet-match-examples">
+<h1>CADET-Match Examples<a class="headerlink" href="#cadet-match-examples" title="Permalink to this headline">¶</a></h1>
+<section id="generating-examples-and-running-them">
+<h2>Generating Examples and running them<a class="headerlink" href="#generating-examples-and-running-them" title="Permalink to this headline">¶</a></h2>
+<p>CADET-Match can generate a complete set of examples and run them. This can be used to verify that all features used in CADET-Match
+are working correctly on your installation and to see how to run CADET-Match in various situations. The examples include variable transforms,
+search strategies, and search stratgies. Depending on the hardware available running the complete set of examples can hours to days.</p>
+</section>
+<section id="generate-examples">
+<h2>Generate examples<a class="headerlink" href="#generate-examples" title="Permalink to this headline">¶</a></h2>
+<p>The examples can be generated in any directory you need and only the path to the directory and path to the version of CADET you want to use
+needs to be supplied. You can have multiple example directories that are run with different versions of CADET to verify a new installation is
+working correctly.</p>
+<p>The examples generated can all be run individually and the files used as a template to make your own matches. There are examples for every feature in
+CADET-Match.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m CADETMatch --generate_examples &lt;example directory&gt; --cadet_examples &lt;path to cadet binary or library&gt;
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--example_population</span> <span class="pre">&lt;integer&gt;</span></code>   can be added to set the population per parameter</p>
+<p><code class="docutils literal notranslate"><span class="pre">--example_mcmc_population</span> <span class="pre">&lt;integer&gt;</span></code> can be added to set the MCMC population</p>
+</section>
+<section id="run-examples">
+<h2>Run examples<a class="headerlink" href="#run-examples" title="Permalink to this headline">¶</a></h2>
+<p>This will run all the examples and could take hours to days to run depending on the available computing power. It is not recommended to run
+this on a laptop.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m CADETMatch --run_examples &lt;example directory&gt;
+</pre></div>
+</div>
+</section>
+<section id="clean-examples">
+<h2>Clean examples<a class="headerlink" href="#clean-examples" title="Permalink to this headline">¶</a></h2>
+<p>This command will clean all the results from the examples and return them to a clean state so that the examples can be run again. This
+is especially useful if there is a problem with the CADET install and it needed to be rebuilt.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m CADETMatch --clean_examples &lt;example directory&gt;
+</pre></div>
+</div>
+</section>
+<section id="results-examples">
+<h2>Results examples<a class="headerlink" href="#results-examples" title="Permalink to this headline">¶</a></h2>
+<p>This command processes all of the run examples and creates a text report of the best matches from every test.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m CADETMatch --results_examples &lt;example directory&gt;
+</pre></div>
+</div>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2017-2021.
+      
+      |
+      <a href="../_sources/cli/examples.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,216 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Experiments &#8212; CADET-Match</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/configuration/experiments.html" />
+    <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Scores" href="scores.html" />
+    <link rel="prev" title="Basic setup" href="basic_config.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+    <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/configuration/experiments.html"/>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET-Match</a></h1>
+
+
+
+<p class="blurb">CADET Parameter estimation engine</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../install/index.html">Install</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic_config.html">Basic setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Experiments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scores.html">Scores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html">Transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error.html">Error Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphing.html">Graphing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cli/index.html">Running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+<h3>Releases</h3>
+<ul>
+        <li><a href="../../v0.6.50/configuration/experiments.html">v0.6.50</a></li>
+        <li><a href="../../v0.7.0/configuration/experiments.html">v0.7.0</a></li>
+        <li><a href="../../v0.7.1/configuration/experiments.html">v0.7.1</a></li>
+        <li><a href="../../v0.8.0/configuration/experiments.html">v0.8.0</a></li>
+        <li><a href="../../v0.8.10/configuration/experiments.html">v0.8.10</a></li>
+        <li><a href="../../v0.8.12/configuration/experiments.html">v0.8.12</a></li>
+        <li><a href="experiments.html">v0.8.13</a></li>
+        <li><a href="../../v0.8.7/configuration/experiments.html">v0.8.7</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+        <li><a href="../../master/configuration/experiments.html">master</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+  <section id="experiments">
+<h1>Experiments<a class="headerlink" href="#experiments" title="Permalink to this headline">¶</a></h1>
+<p>CADET-Match supports one or more experiments with one or more components.
+The basic structure is shown below.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="nt">&quot;experiments&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+
+    <span class="p">},</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The csv file is used for all scores unless a specific feature has its own csv file.
+The csv file needs to have two columns.
+The first is the time in seconds and the second is the concentration in mols/m^3.</p>
+<p>Output path is the path to where the output is stored in CADET.
+If a list is given instead of a single path then all the outputs specified are added together.
+This simplifies dealing with fractionation data where often a sum signal and fractionation data is available.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 9%" />
+<col style="width: 10%" />
+<col style="width: 6%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Values</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>String</p></td>
+<td><p>None</p></td>
+<td><p>Yes</p></td>
+<td><p>Name of experiment, each name must be unique</p></td>
+</tr>
+<tr class="row-odd"><td><p>csv</p></td>
+<td><p>Path</p></td>
+<td><p>None</p></td>
+<td><p>Yes</p></td>
+<td><p>This is the path to the csv file to match against.</p></td>
+</tr>
+<tr class="row-even"><td><p>HDF5</p></td>
+<td><p>Path</p></td>
+<td><p>None</p></td>
+<td><p>Yes</p></td>
+<td><p>Path to a runnable HDF5 simulation</p></td>
+</tr>
+<tr class="row-odd"><td><p>output_path</p></td>
+<td><p>Path or List</p></td>
+<td><p>None</p></td>
+<td><p>Yes</p></td>
+<td><p>Path or list of paths to the output data to match against</p></td>
+</tr>
+<tr class="row-even"><td><p>scores</p></td>
+<td><p>List</p></td>
+<td><p>None</p></td>
+<td><p>Yes</p></td>
+<td><p>List of scores to use</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;experiments&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dextran1&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;csv&quot;</span><span class="p">:</span> <span class="s2">&quot;dextran1.csv&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;HDF5&quot;</span><span class="p">:</span> <span class="s2">&quot;dextran1.h5&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;output_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/output/solution/unit_002/SOLUTION_OUTLET_COMP_000&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;scores&quot;</span><span class="p">:</span> <span class="p">[</span>
+
+                <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;dextran2&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;csv&quot;</span><span class="p">:</span> <span class="s2">&quot;dextran2.csv&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;HDF5&quot;</span><span class="p">:</span> <span class="s2">&quot;dextran2.h5&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;output_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/output/solution/unit_002/SOLUTION_OUTLET_COMP_000&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;scores&quot;</span><span class="p">:</span> <span class="p">[</span>
+
+                <span class="p">]</span>
+        <span class="p">}</span>
+        <span class="p">],</span>
+</pre></div>
+</div>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2017-2021.
+      
+      |
+      <a href="../_sources/configuration/experiments.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

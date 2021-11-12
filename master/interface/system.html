@@ -13,7 +13,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/system.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -564,7 +564,7 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">LINEAR_SOLUTION_MODE</span></code></p>
 <blockquote>
-<div><p>Determines whether the system of models is solved in parallel (1) or sequentially (2). A sequential solution is only possible for systems without cyclic connections. The setting can be chosen automatically (0) based on a heuristic (less than 6 unit operations and acyclic network selects sequential mode). Optional, defaults to automatic (0).</p>
+<div><p>Determines whether the system of models is solved in parallel (1) or sequentially (2). A sequential solution is only possible for systems without cyclic connections. The setting can be chosen automatically (0) based on a heuristic (less than 25 unit operations and acyclic network selects sequential mode). Optional, defaults to automatic (0).</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 23%" />

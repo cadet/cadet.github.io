@@ -13,7 +13,7 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/unit_operations/2d_general_rate_model.html" />
     <link rel="shortcut icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -532,7 +532,7 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">PAR_CORERADIUS</span></code></p>
 <blockquote>
-<div><p>Particle core radius of all particle types or for each particle type (optional, defaults to <span class="math notranslate nohighlight">\(\SI{0}{\metre}\)</span>)</p>
+<div><p>Particle core radius of all particle types or for each particle type (optional, defaults to <span class="math notranslate nohighlight">\(0~m\)</span>)</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
 <table class="docutils align-default">
 <colgroup>
@@ -640,7 +640,7 @@ Note: Should not be used in combination with any binding model!</p>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION</span></code></p>
 <blockquote>
-<div><p>Particle surface diffusion coefficients of each bound state of each component in each particle type (optional, defaults to all SI{0}{squaremetreof{SP}persecond})</p>
+<div><p>Particle surface diffusion coefficients of each bound state of each component in each particle type (optional, defaults to all <span class="math notranslate nohighlight">\(0~m_{SP}^2 s^{-1}\)</span>)</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}_{\mathrm{SP}}^{2}\,\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
 <colgroup>
@@ -771,6 +771,8 @@ Note: Should not be used in combination with any binding model!</p>
 </table>
 </div></blockquote>
 </div></blockquote>
+<section id="group-input-model-unit-xxx-discretization-unit-type-general-rate-model-2d">
+<h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE - GENERAL_RATE_MODEL_2D<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-general-rate-model-2d" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NCOL</span></code></p>
 <blockquote>
 <div><p>Number of axial column discretization cells</p>
@@ -975,9 +977,11 @@ Note: Should not be used in combination with any binding model!</p>
 <div><blockquote>
 <div><p>Linear solver used for the sparse column bulk block. This field is optional, the best available method is selected (i.e., sparse direct solver if possible).  Valid values are:</p>
 </div></blockquote>
-<p>.exttt{DENSE}] Converts the sparse matrix into a banded matrix and uses regular LAPACK. Slow and memory intensive, but always available.
-.exttt{UMFPACK}] Uses the UMFPACK sparse direct solver (LU decomposition) from SuiteSparse. Fast, but has to be enabled when compiling and requires UMFPACK library.
-.exttt{SUPERLU}] Uses the SuperLU sparse direct solver (LU decomposition). Fast, but has to be enabled when compiling and requires SuperLU library.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\texttt{DENSE}\)</span> Converts the sparse matrix into a banded matrix and uses regular LAPACK. Slow and memory intensive, but always available.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{UMFPACK}\)</span> Uses the UMFPACK sparse direct solver (LU decomposition) from SuiteSparse. Fast, but has to be enabled when compiling and requires UMFPACK library.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{SUPERLU}\)</span> Uses the SuperLU sparse direct solver (LU decomposition). Fast, but has to be enabled when compiling and requires SuperLU library.</p></li>
+</ul>
 <blockquote>
 <div><table class="docutils align-default">
 <colgroup>
@@ -1079,6 +1083,8 @@ Note: Should not be used in combination with any binding model!</p>
 </tbody>
 </table>
 </div></blockquote>
+<p>For further discretization parameters, see also <a class="reference internal" href="../flux_reconstruction.html#flux-restruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a>, and <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
+</section>
 </section>
 
 

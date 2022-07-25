@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Scores &#8212; CADET-Match</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,6 +12,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/configuration/scores.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
@@ -85,7 +86,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
         <li><a href="../../v0.6.50/configuration/scores.html">v0.6.50</a></li>
@@ -95,6 +96,8 @@
         <li><a href="../../v0.8.10/configuration/scores.html">v0.8.10</a></li>
         <li><a href="../../v0.8.12/configuration/scores.html">v0.8.12</a></li>
         <li><a href="../../v0.8.13/configuration/scores.html">v0.8.13</a></li>
+        <li><a href="../../v0.8.14/configuration/scores.html">v0.8.14</a></li>
+        <li><a href="../../v0.8.15/configuration/scores.html">v0.8.15</a></li>
         <li><a href="scores.html">v0.8.7</a></li>
 </ul>
 <h3>Branches</h3>
@@ -115,30 +118,30 @@
   <strong>
     
     You're reading an old version of this documentation.
-    For the latest released version, please have a look at <a href="../../v0.8.13/configuration/scores.html">v0.8.13</a>.
+    For the latest released version, please have a look at <a href="../../v0.8.15/configuration/scores.html">v0.8.15</a>.
     
   </strong>
 </p>
 
 
   <section id="scores">
-<h1>Scores<a class="headerlink" href="#scores" title="Permalink to this headline">¶</a></h1>
+<h1>Scores<a class="headerlink" href="#scores" title="Permalink to this heading">¶</a></h1>
 <p>CADET-Match has many scores available.
 Each score is designed to solve a particular type of problem.
 The most common ones will be covered first.
 There are a few additional ones available in the code that are retained for backwards compatibility that will not be covered and their usage is not recomended.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="nt">&quot;scores&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-    <span class="p">},</span>
-    <span class="p">{</span>
-    <span class="p">}</span>
-<span class="p">],</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="nt">&quot;scores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">],</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <section id="common">
-<h2>Common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h2>
+<h2>Common<a class="headerlink" href="#common" title="Permalink to this heading">¶</a></h2>
 <p>A few things are common to nearly all the scores.</p>
 <p>Almost all of them support slicing where a start and stop time can be given and the score will only look in that time slice.
 This is really useful if you know that a certain component corresponds to a particular peak.</p>
@@ -153,7 +156,7 @@ Setting decay to 1 gives an immediate penalty and setting decay to 0 gives a red
 It is recomended to use decay = 1 when estimating porosity and setting decay = 0 for most other estimations.</p>
 </section>
 <section id="sum-of-squared-error-scores">
-<h2>Sum of squared error scores<a class="headerlink" href="#sum-of-squared-error-scores" title="Permalink to this headline">¶</a></h2>
+<h2>Sum of squared error scores<a class="headerlink" href="#sum-of-squared-error-scores" title="Permalink to this heading">¶</a></h2>
 <p>Sum of squared errors is a common metric used in optimization but it caused problems with chromatography.
 Between issues like pump delays and small flow rate variations there is a tendency for the peaks to shift.
 A narrowly shifting peak is a particular problem for SSE and it causes the score to favor the peak being in the right place even if the shape is far from correct.
@@ -163,19 +166,12 @@ This is due to numerical issues.</p>
 <p>SSE based scores can’t be used for error modeling.</p>
 </section>
 <section id="shape">
-<h2>Shape<a class="headerlink" href="#shape" title="Permalink to this headline">¶</a></h2>
+<h2>Shape<a class="headerlink" href="#shape" title="Permalink to this heading">¶</a></h2>
 <p>Shape is the most general purpose score for fitting.
 It looks at the similarity of the shape between synthetic and experimental data.
 The score prioritizes the shape being accurate over the shape eluting at exactly the right time.
 The shape is dictated by the physics of the reaction while the position can shift slightly due to things like pump delays.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 9%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 64%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -229,27 +225,20 @@ The shape is dictated by the physics of the reaction while the position can shif
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;main_peak&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Shape&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span>
-    <span class="nt">&quot;stop&quot;</span><span class="p">:</span> <span class="mf">300.0</span>
-    <span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;main_peak&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Shape&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="shape-front">
-<h2>Shape Front<a class="headerlink" href="#shape-front" title="Permalink to this headline">¶</a></h2>
+<h2>Shape Front<a class="headerlink" href="#shape-front" title="Permalink to this heading">¶</a></h2>
 <p>Shape front is a modification of the shape score that only looks at the front of a peak.
 This is especially important with breakthrough curves where the back of the peak may not even exist.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 9%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 64%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -315,27 +304,20 @@ This is especially important with breakthrough curves where the back of the peak
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;peak_front&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ShapeFront&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;min_percent&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
-    <span class="nt">&quot;max_percent&quot;</span><span class="p">:</span> <span class="mf">0.95</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak_front&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ShapeFront&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;min_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;max_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="shape-back">
-<h2>Shape Back<a class="headerlink" href="#shape-back" title="Permalink to this headline">¶</a></h2>
+<h2>Shape Back<a class="headerlink" href="#shape-back" title="Permalink to this heading">¶</a></h2>
 <p>Shape back is a modification of the shape score that only looks at the back of a peak.
 This is often used when a system starts saturated and there is no front side of the peak and only a back side exists.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 9%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 64%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -401,29 +383,22 @@ This is often used when a system starts saturated and there is no front side of 
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;peak_back&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ShapeBack&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
-    <span class="nt">&quot;stop&quot;</span><span class="p">:</span> <span class="mi">600</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak_back&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ShapeBack&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="sse">
-<h2>SSE<a class="headerlink" href="#sse" title="Permalink to this headline">¶</a></h2>
+<h2>SSE<a class="headerlink" href="#sse" title="Permalink to this heading">¶</a></h2>
 <p>SSE is sum of squared errors and this is a typical score used in optimization.
 In chromatography the pulses are narrow and have a tendency to shift position which makes this a hard score to optimize with.
 For some problems this score may work but in general it is not advised.</p>
 <p>This score can’t be used with error modeling.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 9%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 64%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -465,28 +440,21 @@ For some problems this score may work but in general it is not advised.</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;peak&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;SSE&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
-    <span class="nt">&quot;stop&quot;</span><span class="p">:</span> <span class="mi">600</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SSE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="dextran-shape">
-<h2>Dextran Shape<a class="headerlink" href="#dextran-shape" title="Permalink to this headline">¶</a></h2>
+<h2>Dextran Shape<a class="headerlink" href="#dextran-shape" title="Permalink to this heading">¶</a></h2>
 <p>Dextran shape is a special score designed to deal with the non-idealities of Dextran in a column.
 It can be used with any non-ideal molecule where only part of the front of the peak can be used.
 It automatically isolates as much of the front of peak and uses as much of the front of the peak as possible.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 9%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 64%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -528,25 +496,18 @@ It automatically isolates as much of the front of peak and uses as much of the f
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;peak&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;DextranShape&quot;</span><span class="p">,</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DextranShape&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="dextran-sse">
-<h2>Dextran SSE<a class="headerlink" href="#dextran-sse" title="Permalink to this headline">¶</a></h2>
+<h2>Dextran SSE<a class="headerlink" href="#dextran-sse" title="Permalink to this heading">¶</a></h2>
 <p>Dextran SSE is uses the same slicing as Dextran shape but uses SSE instead of similarity metrics it used some of squared errors.</p>
 <p>This score can’t be used with error modeling.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 9%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 64%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -588,15 +549,15 @@ It automatically isolates as much of the front of peak and uses as much of the f
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;peak&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;DextranSSE&quot;</span><span class="p">,</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DextranSSE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="fractionation-slide">
-<h2>Fractionation Slide<a class="headerlink" href="#fractionation-slide" title="Permalink to this headline">¶</a></h2>
+<h2>Fractionation Slide<a class="headerlink" href="#fractionation-slide" title="Permalink to this heading">¶</a></h2>
 <p>This score is used for fractionation.
 It requires an additional csv file with the fractionation data.</p>
 <p>The fractionation files has 3 or more columns and it is easier to explain the the example below.
@@ -607,12 +568,6 @@ The times don’t have to be continuous and can have gaps.</p>
 If there is no data for a sample in a particular fraction the entry can be left blank and it will be handled.</p>
 <p>In the case below 3 samples are collected from 400-450s, 450-500s, and 500-550s on component 0 and component 1.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 21%" />
-<col style="width: 29%" />
-<col style="width: 36%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Start</p></th>
 <th class="head"><p>Stop</p></th>
@@ -639,13 +594,6 @@ If there is no data for a sample in a particular fraction the entry can be left 
 </tbody>
 </table>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 9%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 64%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -699,27 +647,20 @@ If there is no data for a sample in a particular fraction the entry can be left 
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;fractionation&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fractionationSlide&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;unit_name&quot;</span><span class="p">:</span> <span class="s2">&quot;unit_002&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;fraction_csv&quot;</span><span class="p">:</span> <span class="s2">&quot;frac.csv&quot;</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionation&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionationSlide&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;unit_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unit_002&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;fraction_csv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;frac.csv&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="fractionation-sse">
-<h2>Fractionation SSE<a class="headerlink" href="#fractionation-sse" title="Permalink to this headline">¶</a></h2>
+<h2>Fractionation SSE<a class="headerlink" href="#fractionation-sse" title="Permalink to this heading">¶</a></h2>
 <p>Fractionation based score using SSE and was written for testing purpose in a paper and is not generally recomended.</p>
 <p>This score can’t be used with error modeling.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 9%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 64%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -773,29 +714,22 @@ If there is no data for a sample in a particular fraction the entry can be left 
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;fractionation&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fractionationSSE&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;unit_name&quot;</span><span class="p">:</span> <span class="s2">&quot;unit_002&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;fraction_csv&quot;</span><span class="p">:</span> <span class="s2">&quot;frac.csv&quot;</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionation&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionationSSE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;unit_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unit_002&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;fraction_csv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;frac.csv&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="ceiling">
-<h2>Ceiling<a class="headerlink" href="#ceiling" title="Permalink to this headline">¶</a></h2>
+<h2>Ceiling<a class="headerlink" href="#ceiling" title="Permalink to this heading">¶</a></h2>
 <p>Ceiling is a special case score.
 It is almost always used with start and stop and is used to ensure nothing is above the defined value in the selected interval.
 On some experimental systems that are running very close to overload a fit can be obtained that has a large amount of material coming off during loading.
 This can be used as a restriction for that effect.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 9%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 64%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -843,18 +777,18 @@ This can be used as a restriction for that effect.</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;limit&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Ceiling&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;max_value&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
-    <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="nt">&quot;stop&quot;</span><span class="p">:</span> <span class="mi">100</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;limit&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ceiling&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;max_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="other">
-<h2>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h2>
+<h2>Other<a class="headerlink" href="#other" title="Permalink to this heading">¶</a></h2>
 <p>There are a few other scores that exist.</p>
 <p>AbsoluteTime and AbsoluteHeight are used by error modeling and can’t be used for parameter estimation.
 When continueMCMC=1 is set these scores are automatically added when needed.
@@ -872,7 +806,7 @@ It is not advisable to add these by hand.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2017-2021.
+      &copy;2017-2022.
       
       |
       <a href="../_sources/configuration/scores.rst.txt"

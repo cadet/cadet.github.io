@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Output Group &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/output_group.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -77,7 +78,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="output_group.html">v4.3.0</a></li>
@@ -98,9 +99,9 @@
 
 
   <section id="output-group">
-<span id="ffoutput"></span><h1>Output Group<a class="headerlink" href="#output-group" title="Permalink to this headline">¶</a></h1>
+<span id="ffoutput"></span><h1>Output Group<a class="headerlink" href="#output-group" title="Permalink to this heading">¶</a></h1>
 <section id="group-output">
-<h2>Group /output<a class="headerlink" href="#group-output" title="Permalink to this headline">¶</a></h2>
+<h2>Group /output<a class="headerlink" href="#group-output" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">LAST_STATE_Y</span></code></p>
 <blockquote>
 <div><p>Full state vector at the last time point of the time integrator if <span class="math notranslate nohighlight">\(\texttt{WRITE_SOLUTION_LAST}\)</span> in <span class="math notranslate nohighlight">\(\texttt{/input/return}\)</span> is enabled</p>
@@ -123,7 +124,7 @@
 </div></blockquote>
 </section>
 <section id="group-output-solution">
-<h2>Group /output/solution<a class="headerlink" href="#group-output-solution" title="Permalink to this headline">¶</a></h2>
+<h2>Group /output/solution<a class="headerlink" href="#group-output-solution" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">SOLUTION_TIMES</span></code></p>
 <blockquote>
 <div><p>Time points at which the solution is written if <span class="math notranslate nohighlight">\(\texttt{WRITE_SOLUTION_TIMES}\)</span> in <span class="math notranslate nohighlight">\(\texttt{/input/return}\)</span> is enabled</p>
@@ -132,7 +133,7 @@
 </div></blockquote>
 </section>
 <section id="group-output-solution-unit-xxx">
-<h2>Group /output/solution/unit_XXX<a class="headerlink" href="#group-output-solution-unit-xxx" title="Permalink to this headline">¶</a></h2>
+<h2>Group /output/solution/unit_XXX<a class="headerlink" href="#group-output-solution-unit-xxx" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">SOLUTION_BULK</span></code></p>
 <blockquote>
 <div><p>Interstitial solution as <span class="math notranslate nohighlight">\(n_{\text{Time}} \times \texttt{UNITOPORDERING}\)</span> tensor in row-major storage</p>
@@ -327,7 +328,7 @@ Note that the vector includes the dedicated inlet DOFs at the beginning (length:
 </div></blockquote>
 </section>
 <section id="group-output-sensitivity-param-xxx-unit-yyy">
-<h2>Group /output/sensitivity/param_XXX/unit_YYY<a class="headerlink" href="#group-output-sensitivity-param-xxx-unit-yyy" title="Permalink to this headline">¶</a></h2>
+<h2>Group /output/sensitivity/param_XXX/unit_YYY<a class="headerlink" href="#group-output-sensitivity-param-xxx-unit-yyy" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">SENS_BULK</span></code></p>
 <blockquote>
 <div><p>Interstitial sensitivity as <span class="math notranslate nohighlight">\(n_{\text{Time}} \times \texttt{UNITOPORDERING}\)</span> tensor in row-major storage</p>
@@ -510,16 +511,12 @@ Note that the vector includes the dedicated inlet DOFs at the beginning (length:
 </div></blockquote>
 </section>
 <section id="output-coordinates-unit-xxx">
-<h2>/output/coordinates/unit_XXX<a class="headerlink" href="#output-coordinates-unit-xxx" title="Permalink to this headline">¶</a></h2>
+<h2>/output/coordinates/unit_XXX<a class="headerlink" href="#output-coordinates-unit-xxx" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">AXIAL_COORDINATES</span></code></p>
 <blockquote>
 <div><p>Axial coordinates of the bulk discretization nodes</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOL}\)</span></p></td>
@@ -532,10 +529,6 @@ Note that the vector includes the dedicated inlet DOFs at the beginning (length:
 <div><p>Radial coordinates of the bulk discretization nodes (only for 2D unit operations)</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NRAD}\)</span></p></td>
@@ -548,10 +541,6 @@ Note that the vector includes the dedicated inlet DOFs at the beginning (length:
 <div><p>Coordinates of the particle discretization nodes in particles of type <code class="docutils literal notranslate"><span class="pre">XXX</span></code></p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NPAR}\)</span></p></td>
@@ -571,7 +560,7 @@ Note that the vector includes the dedicated inlet DOFs at the beginning (length:
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../_sources/interface/output_group.rst.txt"

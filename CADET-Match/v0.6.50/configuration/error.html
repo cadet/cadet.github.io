@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Error Modeling &#8212; CADET-Match</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,6 +12,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/configuration/error.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
@@ -71,7 +72,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
         <li><a href="error.html">v0.6.50</a></li>
@@ -81,6 +82,8 @@
         <li><a href="../../v0.8.10/configuration/error.html">v0.8.10</a></li>
         <li><a href="../../v0.8.12/configuration/error.html">v0.8.12</a></li>
         <li><a href="../../v0.8.13/configuration/error.html">v0.8.13</a></li>
+        <li><a href="../../v0.8.14/configuration/error.html">v0.8.14</a></li>
+        <li><a href="../../v0.8.15/configuration/error.html">v0.8.15</a></li>
         <li><a href="../../v0.8.7/configuration/error.html">v0.8.7</a></li>
 </ul>
 <h3>Branches</h3>
@@ -101,14 +104,14 @@
   <strong>
     
     You're reading an old version of this documentation.
-    For the latest released version, please have a look at <a href="../../v0.8.13/configuration/error.html">v0.8.13</a>.
+    For the latest released version, please have a look at <a href="../../v0.8.15/configuration/error.html">v0.8.15</a>.
     
   </strong>
 </p>
 
 
   <section id="error-modeling">
-<h1>Error Modeling<a class="headerlink" href="#error-modeling" title="Permalink to this headline">¶</a></h1>
+<h1>Error Modeling<a class="headerlink" href="#error-modeling" title="Permalink to this heading">¶</a></h1>
 <p>CADETMatch includes error modeling and parameter estimation.
 Error modeling in CADETMatch is based on using a fitted simulation and creating an error model by manipulations to the fitted simulation.
 Error modeling uses MCMC and can be a slow process which requires a lot of computing time.
@@ -132,13 +135,6 @@ Setting the mean to 0 disables this error.</p>
 Both of the errors sources are the same length as the chromatogram.
 UV noise norm almost always has a mean value of 1.0 and UV noise almost always has a mean noise of 0.0 since they are the multiplicative and additive identities respectively.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 9%" />
-<col style="width: 6%" />
-<col style="width: 62%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -192,18 +188,18 @@ UV noise norm almost always has a mean value of 1.0 and UV noise almost always h
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;errorModel&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-                <span class="nt">&quot;file_path&quot;</span><span class="p">:</span> <span class="s2">&quot;non.h5&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;experimental_csv&quot;</span><span class="p">:</span> <span class="s2">&quot;non.csv&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;units&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-                <span class="nt">&quot;delay&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span>
-                <span class="nt">&quot;flow&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">],</span>
-                <span class="nt">&quot;load&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">],</span>
-                <span class="nt">&quot;uv_noise_norm&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">]</span>
-        <span class="p">}</span>
-<span class="p">],</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;errorModel&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;file_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;non.h5&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;experimental_csv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;non.csv&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;main&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;units&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;delay&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;load&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;uv_noise_norm&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="p">],</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -217,7 +213,7 @@ UV noise norm almost always has a mean value of 1.0 and UV noise almost always h
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2017-2021.
+      &copy;2017-2022.
       
       |
       <a href="../_sources/configuration/error.rst.txt"

@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Steric Mass Action &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/modelling/binding/steric_mass_action.html" />
     <link rel="shortcut icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -76,7 +77,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="steric_mass_action.html">v4.3.0</a></li>
@@ -97,7 +98,7 @@
 
 
   <section id="steric-mass-action">
-<span id="steric-mass-action-model"></span><h1>Steric Mass Action<a class="headerlink" href="#steric-mass-action" title="Permalink to this headline">¶</a></h1>
+<span id="steric-mass-action-model"></span><h1>Steric Mass Action<a class="headerlink" href="#steric-mass-action" title="Permalink to this heading">¶</a></h1>
 <p>The steric mass action model takes charges of the molecules into account <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id15" title="Clayton A. Brooks and Steven M. Cramer. Steric mass-action ion exchange: Displacement profiles and induced salt gradients. AIChE Journal, 38(12):1969–1978, December 1992. URL: http://doi.wiley.com/10.1002/aic.690381212, doi:10.1002/aic.690381212.">17</a>]</span> and is, thus, often used in ion-exchange chromatography.
 Each component has a characteristic charge <span class="math notranslate nohighlight">\(\nu\)</span> that determines the number of available binding sites <span class="math notranslate nohighlight">\(\Lambda\)</span> (ionic capacity) used up by a molecule.
 Due to the molecule’s shape, some additional binding sites (steric shielding factor <span class="math notranslate nohighlight">\(\sigma\)</span>) may be shielded from other molecules and are not available for binding.</p>
@@ -131,7 +132,7 @@ In turn, the number of bound counter ions <span class="math notranslate nohighli
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../../_sources/modelling/binding/steric_mass_action.rst.txt"

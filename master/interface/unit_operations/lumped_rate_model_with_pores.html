@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Lumped rate model with pores &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/unit_operations/lumped_rate_model_with_pores.html" />
     <link rel="shortcut icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -81,7 +82,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="../../../v4.3.0/interface/unit_operations/lumped_rate_model_with_pores.html">v4.3.0</a></li>
@@ -111,17 +112,12 @@
 
 
   <section id="lumped-rate-model-with-pores">
-<span id="lumpded-rate-model-with-pores-config"></span><h1>Lumped rate model with pores<a class="headerlink" href="#lumped-rate-model-with-pores" title="Permalink to this headline">¶</a></h1>
+<span id="lumpded-rate-model-with-pores-config"></span><h1>Lumped rate model with pores<a class="headerlink" href="#lumped-rate-model-with-pores" title="Permalink to this heading">¶</a></h1>
 <section id="group-input-model-unit-xxx-unit-type-lumped-rate-model-with-pores">
-<h2>Group /input/model/unit_XXX - UNIT_TYPE = LUMPED_RATE_MODEL_WITH_PORES<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-lumped-rate-model-with-pores" title="Permalink to this headline">¶</a></h2>
+<h2>Group /input/model/unit_XXX - UNIT_TYPE = LUMPED_RATE_MODEL_WITH_PORES<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-lumped-rate-model-with-pores" title="Permalink to this heading">¶</a></h2>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">UNIT_TYPE</span></code></dt><dd><p>Specifies the type of unit operation model</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 66%" />
-<col style="width: 15%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{LUMPED_RATE_MODEL_WITH_PORES}\)</span></p></td>
@@ -132,11 +128,6 @@
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">NCOMP</span></code></dt><dd><p>Number of chemical components in the chromatographic medium</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -147,11 +138,6 @@
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">ADSORPTION_MODEL</span></code></dt><dd><p>Specifies the type of binding model of each particle type (or of all particle types if length is <span class="math notranslate nohighlight">\(1\)</span>)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 42%" />
-<col style="width: 41%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> See Section <a class="reference internal" href="../binding/index.html#ffadsorption"><span class="std std-ref">Binding models</span></a></p></td>
@@ -162,11 +148,6 @@
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">ADSORPTION_MODEL_MULTIPLEX</span></code></dt><dd><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL}\)</span>. If set to <span class="math notranslate nohighlight">\(0\)</span>, each particle type has a different binding model and the length of <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NPARTYPE}\)</span>. If set to <span class="math notranslate nohighlight">\(1\)</span>, all particle types share the same binding model and the length of <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL}\)</span> is <span class="math notranslate nohighlight">\(1\)</span>.  This field is optional and inferred from the length of <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL}\)</span> if left out.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 51%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
@@ -177,11 +158,6 @@
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">REACTION_MODEL_BULK</span></code></dt><dd><p>Specifies the type of reaction model of the bulk volume. The model is configured in the subgroup <span class="math notranslate nohighlight">\(\texttt{reaction_bulk}\)</span>.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 26%" />
-<col style="width: 52%" />
-<col style="width: 21%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> See <a class="reference internal" href="../reactions.html#ffreaction"><span class="std std-ref">Reaction models</span></a></p></td>
@@ -192,11 +168,6 @@
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">REACTION_MODEL_PARTICLES</span></code></dt><dd><p>Specifies the type of reaction model of each particle type (or of all particle types if length is <span class="math notranslate nohighlight">\(1\)</span>). The model is configured in the subgroup <span class="math notranslate nohighlight">\(\texttt{reaction_particle}\)</span>, or <span class="math notranslate nohighlight">\(\texttt{reaction_particle_XXX}\)</span> in case of disabled multiplexing.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 38%" />
-<col style="width: 47%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> See Section <a class="reference internal" href="../reactions.html#ffreaction"><span class="std std-ref">Reaction models</span></a></p></td>
@@ -207,11 +178,6 @@
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">REACTION_MODEL_PARTICLES_MULTIPLEX</span></code></dt><dd><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{REACTION_MODEL_PARTICLES}\)</span>. If set to <span class="math notranslate nohighlight">\(0\)</span>, each particle type has a different reaction model and the length of <span class="math notranslate nohighlight">\(\texttt{REACTION_MODEL_PARTICLES}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NPARTYPE}\)</span>. If set to <span class="math notranslate nohighlight">\(1\)</span>, all particle types share the same reaction model and the length of <span class="math notranslate nohighlight">\(\texttt{REACTION_MODEL_PARTICLES}\)</span> is <span class="math notranslate nohighlight">\(1\)</span>.  This field is optional and inferred from the length of <span class="math notranslate nohighlight">\(\texttt{REACTION_MODEL_PARTICLES}\)</span> if left out.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 51%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
@@ -223,11 +189,6 @@
 <dt><code class="docutils literal notranslate"><span class="pre">INIT_C</span></code></dt><dd><p>Initial concentrations for each component in the bulk mobile phase</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{IV}}^{-3}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 33%" />
-<col style="width: 45%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -239,11 +200,6 @@
 <dt><code class="docutils literal notranslate"><span class="pre">INIT_CP</span></code></dt><dd><p>Initial concentrations for each component in the bead liquid phase (optional, <span class="math notranslate nohighlight">\(\texttt{INIT_C}\)</span> is used if left out). The length of this field can be <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span> (same values for each particle type) or <span class="math notranslate nohighlight">\(\texttt{NPARTYPE} \cdot \texttt{NCOMP}\)</span>  Values for each particle type can only be given when <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL_MULTIPLEX}\)</span> is <span class="math notranslate nohighlight">\(0\)</span>. The ordering is type-major.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{MP}}^{-3}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 14%" />
-<col style="width: 22%" />
-<col style="width: 65%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -255,10 +211,6 @@
 <dt><code class="docutils literal notranslate"><span class="pre">INIT_Q</span></code></dt><dd><p>Initial concentrations for each bound state of each component in the bead solid phase. If <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL_MULTIPLEX}\)</span> is <span class="math notranslate nohighlight">\(0\)</span>, values for each particle type are required in type-component-major ordering (length is <span class="math notranslate nohighlight">\(\texttt{NTOTALBND}\)</span>). If <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL_MULTIPLEX}\)</span> is <span class="math notranslate nohighlight">\(1\)</span>, values for one particle type are required in component-major ordering (length is <span class="math notranslate nohighlight">\(\sum_{i = 0}^{\texttt{NCOMP} - 1} \texttt{NBND}_i\)</span>).</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{SP}}^{-3}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 39%" />
-<col style="width: 61%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -269,11 +221,6 @@
 <dt><code class="docutils literal notranslate"><span class="pre">INIT_STATE</span></code></dt><dd><p>Full state vector for initialization (optional, <span class="math notranslate nohighlight">\(\texttt{INIT_C}\)</span>, <span class="math notranslate nohighlight">\(\texttt{INIT_CP}\)</span>, and <span class="math notranslate nohighlight">\(\texttt{INIT_Q}\)</span> will be ignored; if length is <span class="math notranslate nohighlight">\(2\texttt{NDOF}\)</span>, then the second half is used for time derivatives)</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(various\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 31%" />
-<col style="width: 53%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
@@ -285,11 +232,6 @@
 <dt><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION</span></code></dt><dd><p>Axial dispersion coefficient</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}_{\mathrm{IV}}^{2}\,\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 26%" />
-<col style="width: 58%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -309,11 +251,6 @@
 </ol>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 57%" />
-<col style="width: 21%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 3 \}\)</span></p></td>
@@ -326,11 +263,6 @@
 <dt><code class="docutils literal notranslate"><span class="pre">COL_LENGTH</span></code></dt><dd><p>Column length</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 43%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
@@ -344,11 +276,6 @@
 <blockquote>
 <div><p>Column porosity</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 45%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\((0,1]\)</span></p></td>
@@ -362,11 +289,6 @@
 <div><p>Film diffusion coefficients for each component of each particle type</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\,\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 26%" />
-<col style="width: 58%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -388,11 +310,6 @@
 </ol>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 57%" />
-<col style="width: 21%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 3 \}\)</span></p></td>
@@ -406,11 +323,6 @@
 <blockquote>
 <div><p>Particle porosity of all particle types or for each particle type</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 30%" />
-<col style="width: 51%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\((0,1]\)</span></p></td>
@@ -424,11 +336,6 @@
 <div><p>Particle radius of all particle types or for each particle type</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 27%" />
-<col style="width: 53%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt;0\)</span></p></td>
@@ -442,11 +349,6 @@
 <div><p>Pore accessibility factor of each component in each particle type (optional, defaults to <span class="math notranslate nohighlight">\(1\)</span>).
 Note: Should not be used in combination with any binding model!</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 25%" />
-<col style="width: 60%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\((0, 1]\)</span></p></td>
@@ -467,11 +369,6 @@ Note: Should not be used in combination with any binding model!</p>
 </ol>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 57%" />
-<col style="width: 21%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 3 \}\)</span></p></td>
@@ -484,11 +381,6 @@ Note: Should not be used in combination with any binding model!</p>
 <dt><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></dt><dd><p>Interstitial velocity of the mobile phase (optional if <span class="math notranslate nohighlight">\(\texttt{CROSS_SECTION_AREA}\)</span> is present, see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>)</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\,\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 35%" />
-<col style="width: 45%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
@@ -503,11 +395,6 @@ Note: Should not be used in combination with any binding model!</p>
 <div><p>Cross section area of the column (optional if <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is present, see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>)</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}^{2}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 42%" />
-<col style="width: 26%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt;0\)</span></p></td>
@@ -520,11 +407,6 @@ Note: Should not be used in combination with any binding model!</p>
 <blockquote>
 <div><p>Volume fractions of the particle types. The volume fractions can be set for all axial cells together or for each individual axial cell. For each cell, the volume fractions have to sum to <span class="math notranslate nohighlight">\(1\)</span>. In case of a spatially inhomogeneous setting, the data is expected in cell-major ordering and the <span class="math notranslate nohighlight">\(\texttt{SENS_SECTION}\)</span> field is used for indexing the axial cell when specifying parameter sensitivities.  This field is optional in case of only one particle type.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 19%" />
-<col style="width: 68%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\([0,1]\)</span></p></td>
@@ -535,16 +417,11 @@ Note: Should not be used in combination with any binding model!</p>
 </div></blockquote>
 </section>
 <section id="group-input-model-unit-xxx-discretization-unit-type-lumped-rate-model-with-pores">
-<h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE = LUMPED_RATE_MODEL_WITH_PORES<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-lumped-rate-model-with-pores" title="Permalink to this headline">¶</a></h2>
+<h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE = LUMPED_RATE_MODEL_WITH_PORES<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-lumped-rate-model-with-pores" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NCOL</span></code></p>
 <blockquote>
 <div><p>Number of axial column discretization cells</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -557,11 +434,6 @@ Note: Should not be used in combination with any binding model!</p>
 <blockquote>
 <div><p>Number of particle types. Optional, inferred from the length of <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span> if left out.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -574,11 +446,6 @@ Note: Should not be used in combination with any binding model!</p>
 <blockquote>
 <div><p>Number of bound states for each component in each particle type in type-major ordering</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 22%" />
-<col style="width: 66%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -591,10 +458,6 @@ Note: Should not be used in combination with any binding model!</p>
 <blockquote>
 <div><p>Specifies the particle geometry for all or each particle type. Valid values are <span class="math notranslate nohighlight">\(\texttt{SPHERE}\)</span>, <span class="math notranslate nohighlight">\(\texttt{CYLINDER}\)</span>, <span class="math notranslate nohighlight">\(\texttt{SLAB}\)</span>. Optional, defaults to <span class="math notranslate nohighlight">\(\texttt{SPHERE}\)</span>.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 75%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span> / <span class="math notranslate nohighlight">\(\texttt{NPARTYPE}\)</span></p></td>
@@ -606,11 +469,6 @@ Note: Should not be used in combination with any binding model!</p>
 <blockquote>
 <div><p>Determines whether analytically computed Jacobian matrix (faster) is used (value is <span class="math notranslate nohighlight">\(1\)</span>) instead of Jacobians generated by algorithmic differentiation (slower, value is <span class="math notranslate nohighlight">\(0\)</span>)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 51%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
@@ -623,11 +481,6 @@ Note: Should not be used in combination with any binding model!</p>
 <blockquote>
 <div><p>Type of reconstruction method for fluxes</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 26%" />
-<col style="width: 52%" />
-<col style="width: 21%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{WENO}\)</span></p></td>
@@ -640,11 +493,6 @@ Note: Should not be used in combination with any binding model!</p>
 <blockquote>
 <div><p>Type of Gram-Schmidt orthogonalization, see IDAS guide Section~4.5.7.3, p.~41f. A value of <span class="math notranslate nohighlight">\(0\)</span> enables classical Gram-Schmidt, a value of 1 uses modified Gram-Schmidt.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 51%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
@@ -657,11 +505,6 @@ Note: Should not be used in combination with any binding model!</p>
 <blockquote>
 <div><p>Defines the size of the Krylov subspace in the iterative linear GMRES solver (0: <span class="math notranslate nohighlight">\(\texttt{MAX_KRYLOV} = \texttt{NCOL} \cdot \texttt{NCOMP} \cdot \texttt{NPARTYPE}\)</span>)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 78%" />
-<col style="width: 11%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, \texttt{NCOL} \cdot \texttt{NCOMP} \cdot \texttt{NPARTYPE} \}\)</span></p></td>
@@ -674,11 +517,6 @@ Note: Should not be used in combination with any binding model!</p>
 <blockquote>
 <div><p>Maximum number of restarts in the GMRES algorithm. If lack of memory is not an issue, better use a larger Krylov space than restarts.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -691,11 +529,6 @@ Note: Should not be used in combination with any binding model!</p>
 <blockquote>
 <div><p>Schur safety factor; Influences the tradeoff between linear iterations and nonlinear error control; see IDAS guide Section~2.1 and 5.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 46%" />
-<col style="width: 24%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -717,7 +550,7 @@ Note: Should not be used in combination with any binding model!</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../../_sources/interface/unit_operations/lumped_rate_model_with_pores.rst.txt"

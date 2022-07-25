@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Simulation &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/simulation/index.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -80,7 +81,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="../../v4.3.0/simulation/index.html">v4.3.0</a></li>
@@ -110,7 +111,7 @@
 
 
   <section id="simulation">
-<span id="id1"></span><h1>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Simulation<a class="headerlink" href="#simulation" title="Permalink to this heading">¶</a></h1>
 <p>This chapter gives an overview of the simulation process and the different steps involved.</p>
 <p>CADET uses a backward-differentiation-formula (BDF) time discretization as implemented by the IDAS solver from SUNDIALS <span id="id2">[<a class="reference internal" href="../zbibliography.html#id21" title="Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear and differential/algebraic equation solvers. ACM Transactions on Mathematical Software, 31(3):363–396, September 2005. URL: http://portal.acm.org/citation.cfm?doid=1089014.1089020, doi:10.1145/1089014.1089020.">18</a>]</span>.
 Each time step requires the solution of a nonlinear algebraic system of equations is performed by a Newton method.
@@ -124,7 +125,7 @@ Since chromatographic systems can exhibit strong nonlinearity and stiff systems,
 <p>The general control flow of a simulation is shown in <a class="reference internal" href="#simflowchart"><span class="std std-numref">Fig. 5</span></a>.
 Some aspects of the tasks involved are discussed below.</p>
 <section id="time-sections-and-transitions">
-<span id="simtimesectionstransitions"></span><h2>Time sections and transitions<a class="headerlink" href="#time-sections-and-transitions" title="Permalink to this headline">¶</a></h2>
+<span id="simtimesectionstransitions"></span><h2>Time sections and transitions<a class="headerlink" href="#time-sections-and-transitions" title="Permalink to this heading">¶</a></h2>
 <p>The timespan <span class="math notranslate nohighlight">\(\left[t_0, t_{\text{end}}\right]\)</span> of the simulation can be divided into multiple time sections <span class="math notranslate nohighlight">\(\left[t_i, t_{i+1}\right]\)</span> with</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
@@ -142,14 +143,14 @@ Contrary to smooth transitions, a discontinuous transition requires some extra w
 </figcaption>
 </figure>
 <section id="time-section-specification">
-<span id="simtimesectionsspecification"></span><h3>Time section specification<a class="headerlink" href="#time-section-specification" title="Permalink to this headline">¶</a></h3>
+<span id="simtimesectionsspecification"></span><h3>Time section specification<a class="headerlink" href="#time-section-specification" title="Permalink to this heading">¶</a></h3>
 <p>Time sections are specified by an array (<code class="docutils literal notranslate"><span class="pre">SECTION_TIMES</span></code>, see Tab. <a class="reference internal" href="../interface/solver.html#ffsolversections"><span class="std std-ref">Group /solver/sections</span></a>) which contains the <span class="math notranslate nohighlight">\(t_i\)</span> that denote the start- and endpoint of a time section <span class="math notranslate nohighlight">\(\left[t_i, t_{i+1}\right]\)</span>.
 This means, that the array contains <span class="math notranslate nohighlight">\(n+1\)</span> values if there are <span class="math notranslate nohighlight">\(n\)</span> sections.
 The smoothness of a section transition is indicated by the array <code class="docutils literal notranslate"><span class="pre">SECTION_CONTINUITY</span></code>, which contains <span class="math notranslate nohighlight">\(n-1\)</span> elements if there are <span class="math notranslate nohighlight">\(n\)</span> sections.</p>
 </section>
 </section>
 <section id="setup">
-<span id="simsetup"></span><h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<span id="simsetup"></span><h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">¶</a></h2>
 <p>In the setup phase, the model specification is checked and data structures are prepared for the simulation.
 The simulation can be run multiple times with different initial conditions, which also allows to continue a simulation.
 However, the model structure must not change after this point.
@@ -157,7 +158,7 @@ This means, the different model and submodel types (e.g., unit operation model, 
 <p>This assumption allows an accelerated simulation as there is no memory allocation performed during time integration.</p>
 </section>
 <section id="consistent-initialization">
-<span id="simconsistentinit"></span><h2>Consistent initialization<a class="headerlink" href="#consistent-initialization" title="Permalink to this headline">¶</a></h2>
+<span id="simconsistentinit"></span><h2>Consistent initialization<a class="headerlink" href="#consistent-initialization" title="Permalink to this heading">¶</a></h2>
 <p>At the beginning of the simulation and on discontinuous section transitions, consistent initial conditions have to be computed.
 In CADET, the general differential-algebraic equation (DAE)</p>
 <div class="math notranslate nohighlight">
@@ -188,7 +189,7 @@ Thus, consistent initial conditions <span class="math notranslate nohighlight">\
 The error in the solution of these systems is controlled by the <code class="docutils literal notranslate"><span class="pre">ALGTOL</span></code> setting (see Tab. <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>).</p>
 </section>
 <section id="time-stepping">
-<span id="simtimeintegration"></span><h2>Time stepping<a class="headerlink" href="#time-stepping" title="Permalink to this headline">¶</a></h2>
+<span id="simtimeintegration"></span><h2>Time stepping<a class="headerlink" href="#time-stepping" title="Permalink to this heading">¶</a></h2>
 <p>Given the general differential-algebraic equation</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
@@ -217,7 +218,7 @@ However, the implementation of the analytic Jacobian can be time consuming and c
 As a remedy, CADET offers to compute the complicated Jacobian <span class="math notranslate nohighlight">\(\partial F / \partial y\)</span> automatically by automatic differentiation (AD).
 The much simpler Jacobian <span class="math notranslate nohighlight">\(\partial F / \partial \dot{y}\)</span> has to be implemented manually.</p>
 <section id="adaptivity">
-<span id="simtimeintegrationadaptivity"></span><h3>Adaptivity<a class="headerlink" href="#adaptivity" title="Permalink to this headline">¶</a></h3>
+<span id="simtimeintegrationadaptivity"></span><h3>Adaptivity<a class="headerlink" href="#adaptivity" title="Permalink to this heading">¶</a></h3>
 <p>The BDF order <span class="math notranslate nohighlight">\(q_{\tau}\)</span> and size of the time step <span class="math notranslate nohighlight">\(t_\tau\)</span> are chosen such that the error bounds are satisfied with minimal work.
 Equation <a class="reference internal" href="#equation-bdfnonlinsystem">19</a> is solved with a Newton iteration using very few iterations (<code class="docutils literal notranslate"><span class="pre">MAX_NEWTON_ITER</span></code> from Table <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>) since the starting point is assumed to be close to the solution as the time steps are small.
 If the solution of the Newton iteration does not pass the <em>convergence test</em>, the step size <span class="math notranslate nohighlight">\(t_\tau\)</span> is reduced and the Newton iteration is tried again.
@@ -243,7 +244,7 @@ This is particularly relevant for problems with steep fronts as a low spatial re
 </section>
 </section>
 <section id="parameter-sensitivities">
-<span id="simparamsens"></span><h2>Parameter sensitivities<a class="headerlink" href="#parameter-sensitivities" title="Permalink to this headline">¶</a></h2>
+<span id="simparamsens"></span><h2>Parameter sensitivities<a class="headerlink" href="#parameter-sensitivities" title="Permalink to this heading">¶</a></h2>
 <p>Parameter sensitivities <span class="math notranslate nohighlight">\(s = \partial y / \partial p\)</span> of a solution <span class="math notranslate nohighlight">\(y\)</span> to the DAE with respect to some parameter <span class="math notranslate nohighlight">\(p\)</span> are required for various tasks, for example, parameter estimation, process design, and process analysis.
 The CADET simulator implements the forward sensitivity approach which creates a linear companion DAE for each sensitive parameter</p>
 <div class="math notranslate nohighlight">
@@ -266,7 +267,7 @@ Parameters are identified by name and multiple indices, which may not all be use
 <p>Note that the sensitivity systems need to be consistently initialized, too.
 However, since only linear systems are involved, no nonlinear equation system has to be solved and the procedure is much simpler computationally.</p>
 <section id="joint-parameters">
-<span id="simparamsensjointparams"></span><h3>Joint parameters<a class="headerlink" href="#joint-parameters" title="Permalink to this headline">¶</a></h3>
+<span id="simparamsensjointparams"></span><h3>Joint parameters<a class="headerlink" href="#joint-parameters" title="Permalink to this heading">¶</a></h3>
 <p>The use of AD also enables support of meta parameters or joint parameters.
 Consider the situation in which several parameters <span class="math notranslate nohighlight">\(p_1, p_2, \dots, p_n\)</span> depend (linearly) on a single meta parameter <span class="math notranslate nohighlight">\(p\)</span></p>
 <div class="math notranslate nohighlight">
@@ -306,7 +307,7 @@ Instead of computing the sensitivity with respect to each single flow rate and f
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../_sources/simulation/index.rst.txt"

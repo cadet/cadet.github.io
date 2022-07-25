@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Multi Component Bi-Langmuir &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/binding/multi_component_bi_langmuir.html" />
     <link rel="shortcut icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -81,7 +82,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="../../../v4.3.0/interface/binding/multi_component_bi_langmuir.html">v4.3.0</a></li>
@@ -111,7 +112,7 @@
 
 
   <section id="multi-component-bi-langmuir">
-<span id="multi-component-bi-langmuir-config"></span><h1>Multi Component Bi-Langmuir<a class="headerlink" href="#multi-component-bi-langmuir" title="Permalink to this headline">¶</a></h1>
+<span id="multi-component-bi-langmuir-config"></span><h1>Multi Component Bi-Langmuir<a class="headerlink" href="#multi-component-bi-langmuir" title="Permalink to this heading">¶</a></h1>
 <p><strong>Group /input/model/unit_XXX/adsorption – ADSORPTION_MODEL = MULTI_COMPONENT_BILANGMUIR</strong></p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></dt><dd><p>Selects kinetic or quasi-stationary adsorption mode: 1 = kinetic, 0 =
@@ -121,11 +122,6 @@ state separately.</p>
 </dd>
 </dl>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 29%" />
-<col style="width: 48%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> {0,1}</p></td>
@@ -139,15 +135,10 @@ state separately.</p>
 </dl>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(m_{MP}^3~mol^{-1}~s^{-1}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 29%" />
-<col style="width: 48%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
-<td><p><strong>Length:</strong> NCOMP</p></td>
+<td><p><strong>Length:</strong> NSTATES <span class="math notranslate nohighlight">\(\cdot\)</span> NCOMP</p></td>
 </tr>
 </tbody>
 </table>
@@ -157,15 +148,10 @@ state separately.</p>
 </dl>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(s^{-1}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 29%" />
-<col style="width: 48%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
-<td><p><strong>Length:</strong> NCOMP</p></td>
+<td><p><strong>Length:</strong> NSTATES <span class="math notranslate nohighlight">\(\cdot\)</span> NCOMP</p></td>
 </tr>
 </tbody>
 </table>
@@ -175,15 +161,10 @@ state separately.</p>
 </dl>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(mol~m_{SP}^{-3}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 29%" />
-<col style="width: 48%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\gt 0\)</span></p></td>
-<td><p><strong>Length:</strong> NCOMP</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
+<td><p><strong>Length:</strong> NSTATES <span class="math notranslate nohighlight">\(\cdot\)</span> NCOMP</p></td>
 </tr>
 </tbody>
 </table>
@@ -198,7 +179,7 @@ state separately.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../../_sources/interface/binding/multi_component_bi_langmuir.rst.txt"

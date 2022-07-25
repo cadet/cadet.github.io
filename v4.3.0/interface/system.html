@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>System of unit operations &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/system.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -81,7 +82,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="system.html">v4.3.0</a></li>
@@ -102,18 +103,13 @@
 
 
   <section id="system-of-unit-operations">
-<span id="ffmodelsystem"></span><h1>System of unit operations<a class="headerlink" href="#system-of-unit-operations" title="Permalink to this headline">¶</a></h1>
+<span id="ffmodelsystem"></span><h1>System of unit operations<a class="headerlink" href="#system-of-unit-operations" title="Permalink to this heading">¶</a></h1>
 <section id="group-input-model">
-<h2>Group /input/model<a class="headerlink" href="#group-input-model" title="Permalink to this headline">¶</a></h2>
+<h2>Group /input/model<a class="headerlink" href="#group-input-model" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NUNITS</span></code></p>
 <blockquote>
 <div><p>Number of unit operations in the system</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -126,11 +122,6 @@
 <blockquote>
 <div><p>Initial full state vector (optional, unit operation specific initial data is ignored)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -143,10 +134,6 @@
 <blockquote>
 <div><p>Initial full time derivative state vector (optional, unit operation specific initial data is ignored)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NDOF}\)</span></p></td>
@@ -158,10 +145,6 @@
 <blockquote>
 <div><p>Number of unit operations in the system</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NDOF}\)</span></p></td>
@@ -173,10 +156,6 @@
 <blockquote>
 <div><p>Initial full state vector of the <span class="math notranslate nohighlight">\(\texttt{XXX}\)</span> th sensitivity system (optional, unit operation specific initial data is ignored)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NDOF}\)</span></p></td>
@@ -188,10 +167,6 @@
 <blockquote>
 <div><p>Initial full time derivative state vector of the <span class="math notranslate nohighlight">\(\texttt{XXX}\)</span> th sensitivity system (optional, unit operation specific initial data is ignored)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NDOF}\)</span></p></td>
@@ -201,16 +176,11 @@
 </div></blockquote>
 </section>
 <section id="group-input-model-connections">
-<span id="ffmodelsystemconnections"></span><h2>Group /input/model/connections<a class="headerlink" href="#group-input-model-connections" title="Permalink to this headline">¶</a></h2>
+<span id="ffmodelsystemconnections"></span><h2>Group /input/model/connections<a class="headerlink" href="#group-input-model-connections" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NSWITCHES</span></code></p>
 <blockquote>
 <div><p>Number of valve switches</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -223,11 +193,6 @@
 <blockquote>
 <div><p>Determines whether the <span class="math notranslate nohighlight">\(\texttt{CONNECTIONS}\)</span> table includes ports (<span class="math notranslate nohighlight">\(1\)</span>) or not (<span class="math notranslate nohighlight">\(0\)</span>). Optional, defaults to 0 unless a unit operation model with multiple ports is present.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 52%" />
-<col style="width: 24%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{ 0,1 \}\)</span></p></td>
@@ -240,11 +205,6 @@
 <blockquote>
 <div><p>Determines whether the <span class="math notranslate nohighlight">\(\texttt{CONNECTIONS}\)</span> table includes linear, quadratic, and cubic flow rate coefficients (1) or not (0). Optional, defaults to 0.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 52%" />
-<col style="width: 24%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{ 0,1 \}\)</span></p></td>
@@ -255,16 +215,11 @@
 </div></blockquote>
 </section>
 <section id="group-input-model-connections-switch-xxx">
-<span id="ffmodelconnectionswitch"></span><h2>Group /input/model/connections/switch_XXX<a class="headerlink" href="#group-input-model-connections-switch-xxx" title="Permalink to this headline">¶</a></h2>
+<span id="ffmodelconnectionswitch"></span><h2>Group /input/model/connections/switch_XXX<a class="headerlink" href="#group-input-model-connections-switch-xxx" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">SECTION</span></code></p>
 <blockquote>
 <div><p>Index of the section that activates this connection set</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -298,11 +253,6 @@ Contrary to the constant coefficient, which has the parameter name <span class="
 </ul>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 25%" />
-<col style="width: 59%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq -1\)</span></p></td>
@@ -314,18 +264,13 @@ Contrary to the constant coefficient, which has the parameter name <span class="
 </div></blockquote>
 </section>
 <section id="group-input-model-external-source-xxx-extfun-type-linear-interp-data">
-<span id="ffmodelexternalsourcelininterp"></span><h2>Group /input/model/external/source_XXX - EXTFUN_TYPE = LINEAR_INTERP_DATA<a class="headerlink" href="#group-input-model-external-source-xxx-extfun-type-linear-interp-data" title="Permalink to this headline">¶</a></h2>
+<span id="ffmodelexternalsourcelininterp"></span><h2>Group /input/model/external/source_XXX - EXTFUN_TYPE = LINEAR_INTERP_DATA<a class="headerlink" href="#group-input-model-external-source-xxx-extfun-type-linear-interp-data" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
 <blockquote>
 <div><p>Velocity of the external profile in positive column axial direction.
 The velocity is normalized to a column with length 1, hence the unit <span class="math notranslate nohighlight">\(\mathrm{s}^{-1}\)</span>.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 46%" />
-<col style="width: 24%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -339,11 +284,6 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 <div><p>Function values <span class="math notranslate nohighlight">\(T\)</span> at the data points</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\([\mathrm{Ext}]\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 44%" />
-<col style="width: 32%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
@@ -356,11 +296,6 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 <dt><code class="docutils literal notranslate"><span class="pre">TIME</span></code></dt><dd><p>Time of the data points</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 32%" />
-<col style="width: 49%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0.0\)</span></p></td>
@@ -372,18 +307,13 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 </dl>
 </section>
 <section id="group-input-model-external-source-xxx-extfun-type-piecewise-cubic-poly">
-<span id="ffmodelexternalsourcepiececubicpoly"></span><h2>Group /input/model/external/source_XXX - EXTFUN_TYPE = PIECEWISE_CUBIC_POLY<a class="headerlink" href="#group-input-model-external-source-xxx-extfun-type-piecewise-cubic-poly" title="Permalink to this headline">¶</a></h2>
+<span id="ffmodelexternalsourcepiececubicpoly"></span><h2>Group /input/model/external/source_XXX - EXTFUN_TYPE = PIECEWISE_CUBIC_POLY<a class="headerlink" href="#group-input-model-external-source-xxx-extfun-type-piecewise-cubic-poly" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
 <blockquote>
 <div><p>Velocity of the external profile in positive column axial direction.
 The velocity is normalized to a column with length 1, hence the unit <span class="math notranslate nohighlight">\(\mathrm{s}^{-1}\)</span>.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 46%" />
-<col style="width: 24%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -397,11 +327,6 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 <div><p>Constant coefficients of piecewise cubic polynomial</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\([\mathrm{Ext}]\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 44%" />
-<col style="width: 32%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
@@ -415,11 +340,6 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 <div><p>Linear coefficients of piecewise cubic polynomial</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\([\mathrm{Ext}]\,\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 31%" />
-<col style="width: 52%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
@@ -433,11 +353,6 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 <div><p>Quadratic coefficients of piecewise cubic polynomial</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\([\mathrm{Ext}]\,\mathrm{s}^{-2}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 31%" />
-<col style="width: 52%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
@@ -451,11 +366,6 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 <div><p>Cubic coefficients of piecewise cubic polynomial</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\([\mathrm{Ext}]\,\mathrm{s}^{-3}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 31%" />
-<col style="width: 52%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
@@ -469,11 +379,6 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 <div><p>Simulation times at which a new piece begins (breaks of the piecewise polynomial)</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 32%" />
-<col style="width: 49%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0.0\)</span></p></td>
@@ -484,16 +389,11 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 </div></blockquote>
 </section>
 <section id="group-input-model-solver">
-<span id="ffmodelsolver"></span><h2>Group /input/model/solver<a class="headerlink" href="#group-input-model-solver" title="Permalink to this headline">¶</a></h2>
+<span id="ffmodelsolver"></span><h2>Group /input/model/solver<a class="headerlink" href="#group-input-model-solver" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">GS_TYPE</span></code></p>
 <blockquote>
 <div><p>Type of Gram-Schmidt orthogonalization, see IDAS guide Section~4.5.7.3, p.~41f. A value of <span class="math notranslate nohighlight">\(0\)</span> enables classical Gram-Schmidt, a value of 1 uses modified Gram-Schmidt.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 51%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
@@ -506,11 +406,6 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 <blockquote>
 <div><p>Defines the size of the Krylov subspace in the iterative linear GMRES solver (0: <span class="math notranslate nohighlight">\(\texttt{MAX_KRYLOV} = \texttt{NDOF}\)</span>)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 64%" />
-<col style="width: 18%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, \texttt{NDOF}\}\)</span></p></td>
@@ -523,11 +418,6 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 <blockquote>
 <div><p>Maximum number of restarts in the GMRES algorithm. If lack of memory is not an issue, better use a larger Krylov space than restarts.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -540,11 +430,6 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 <blockquote>
 <div><p>Schur safety factor; Influences the tradeoff between linear iterations and nonlinear error control; see IDAS guide Section~2.1 and 5.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 46%" />
-<col style="width: 24%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -557,11 +442,6 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 <blockquote>
 <div><p>Determines whether the system of models is solved in parallel (1) or sequentially (2). A sequential solution is only possible for systems without cyclic connections. The setting can be chosen automatically (0) based on a heuristic (less than 6 unit operations and acyclic network selects sequential mode). Optional, defaults to automatic (0).</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 54%" />
-<col style="width: 23%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{ 0,1,2 \}\)</span></p></td>
@@ -582,7 +462,7 @@ The velocity is normalized to a column with length 1, hence the unit <span class
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../_sources/interface/system.rst.txt"

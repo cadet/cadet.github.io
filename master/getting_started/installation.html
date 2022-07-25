@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Installation &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,6 +12,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/getting_started/installation.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
@@ -71,7 +72,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="../../v4.3.0/getting_started/installation.html">v4.3.0</a></li>
@@ -101,14 +102,14 @@
 
 
   <section id="installation">
-<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h1>
 <p>A CADET installation consists of two parts: The CADET core simulator and a frontend.</p>
 <section id="install-cadet-core-simulator">
-<h2>Install CADET core simulator<a class="headerlink" href="#install-cadet-core-simulator" title="Permalink to this headline">¶</a></h2>
+<h2>Install CADET core simulator<a class="headerlink" href="#install-cadet-core-simulator" title="Permalink to this heading">¶</a></h2>
 <p>The core simulator can be compiled from source, or you can download pre-built binaries.
 If you want to extend or modify CADET (e.g., add a custom binding model), you will need to build CADET from source.</p>
 <section id="install-pre-built-binaries">
-<h3>Install pre-built binaries<a class="headerlink" href="#install-pre-built-binaries" title="Permalink to this headline">¶</a></h3>
+<h3>Install pre-built binaries<a class="headerlink" href="#install-pre-built-binaries" title="Permalink to this heading">¶</a></h3>
 <p>CADET can be installed via conda from the <code class="docutils literal notranslate"><span class="pre">conda-forge</span> <span class="pre">channel</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">cadet</span></code></p>
 <p>This requires a working <a class="reference external" href="https://docs.anaconda.com/anaconda/install/index.html">conda installation</a>.</p>
@@ -116,7 +117,7 @@ If you want to extend or modify CADET (e.g., add a custom binding model), you wi
 <p><code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">cadet</span></code></p>
 </section>
 <section id="install-from-source">
-<h3>Install from source<a class="headerlink" href="#install-from-source" title="Permalink to this headline">¶</a></h3>
+<h3>Install from source<a class="headerlink" href="#install-from-source" title="Permalink to this heading">¶</a></h3>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="build_linux.html">Build for Linux</a></li>
@@ -127,12 +128,12 @@ If you want to extend or modify CADET (e.g., add a custom binding model), you wi
 </section>
 </section>
 <section id="install-a-frontend">
-<span id="cadet-python"></span><h2>Install a frontend<a class="headerlink" href="#install-a-frontend" title="Permalink to this headline">¶</a></h2>
+<span id="cadet-python"></span><h2>Install a frontend<a class="headerlink" href="#install-a-frontend" title="Permalink to this heading">¶</a></h2>
 <p>As of now, a MATLAB and a Python frontend are provided.
 In general, we recommend to use the Python frontend.
 Note that the MATLAB interface is no longer actively developed and will be deprecated in a later version.</p>
 <section id="install-cadet-python">
-<h3>Install CADET-Python<a class="headerlink" href="#install-cadet-python" title="Permalink to this headline">¶</a></h3>
+<h3>Install CADET-Python<a class="headerlink" href="#install-cadet-python" title="Permalink to this heading">¶</a></h3>
 <p>The easiest way to create CADET simulations is to use the <a class="reference external" href="https://github.com/modsim/CADET-python">CADET-Python</a> frontend.
 For this purpose, we recommend installing <a class="reference external" href="https://www.anaconda.com/">Anaconda</a>.
 Anaconda is a high-performance scientific distribution of Python that includes many common packages needed for scientific and engineering work.
@@ -147,7 +148,7 @@ Download the installer from their <a class="reference external" href="https://ww
 </div>
 </section>
 <section id="install-cadet-mi">
-<h3>Install CADET-MI<a class="headerlink" href="#install-cadet-mi" title="Permalink to this headline">¶</a></h3>
+<h3>Install CADET-MI<a class="headerlink" href="#install-cadet-mi" title="Permalink to this heading">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Note that the MATLAB interface is no longer actively developed and will be deprecated in a later version.</p>
@@ -167,7 +168,7 @@ Run MATLAB and call <code class="docutils literal notranslate"><span class="pre"
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../_sources/getting_started/installation.rst.txt"

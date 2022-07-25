@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Graphing &#8212; CADET-Match</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,6 +12,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/configuration/graphing.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
@@ -71,7 +72,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
         <li><a href="../../v0.6.50/configuration/graphing.html">v0.6.50</a></li>
@@ -81,6 +82,8 @@
         <li><a href="../../v0.8.10/configuration/graphing.html">v0.8.10</a></li>
         <li><a href="graphing.html">v0.8.12</a></li>
         <li><a href="../../v0.8.13/configuration/graphing.html">v0.8.13</a></li>
+        <li><a href="../../v0.8.14/configuration/graphing.html">v0.8.14</a></li>
+        <li><a href="../../v0.8.15/configuration/graphing.html">v0.8.15</a></li>
         <li><a href="../../v0.8.7/configuration/graphing.html">v0.8.7</a></li>
 </ul>
 <h3>Branches</h3>
@@ -101,27 +104,20 @@
   <strong>
     
     You're reading an old version of this documentation.
-    For the latest released version, please have a look at <a href="../../v0.8.13/configuration/graphing.html">v0.8.13</a>.
+    For the latest released version, please have a look at <a href="../../v0.8.15/configuration/graphing.html">v0.8.15</a>.
     
   </strong>
 </p>
 
 
   <section id="graphing">
-<h1>Graphing<a class="headerlink" href="#graphing" title="Permalink to this headline">¶</a></h1>
+<h1>Graphing<a class="headerlink" href="#graphing" title="Permalink to this heading">¶</a></h1>
 <p>Graphing in CADET-Match is done asyncronously from the normal running however it still takes computing time to generate the graphs.
 There is a tradeoff between how frequently graphs are generated to see the progress and how much progress is slowed by generating the graphs.
 Graphs are generated at the end of a generation/step during estimation/error modeling.
 If the time in seconds since the last time graphs where generated at the end of a step than the specified time then the graphs are generated again and the time is reset.</p>
 <p>All times are in seconds.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 7%" />
-<col style="width: 10%" />
-<col style="width: 7%" />
-<col style="width: 63%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -156,7 +152,7 @@ If the time in seconds since the last time graphs where generated at the end of 
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2017-2021.
+      &copy;2017-2022.
       
       |
       <a href="../_sources/configuration/graphing.rst.txt"

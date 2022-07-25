@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Reaction models &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/reactions.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -81,7 +82,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="reactions.html">v4.3.0</a></li>
@@ -102,9 +103,9 @@
 
 
   <section id="reaction-models">
-<span id="ffreaction"></span><h1>Reaction models<a class="headerlink" href="#reaction-models" title="Permalink to this headline">¶</a></h1>
+<span id="ffreaction"></span><h1>Reaction models<a class="headerlink" href="#reaction-models" title="Permalink to this heading">¶</a></h1>
 <section id="externally-dependent-reaction-models">
-<h2>Externally dependent reaction models<a class="headerlink" href="#externally-dependent-reaction-models" title="Permalink to this headline">¶</a></h2>
+<h2>Externally dependent reaction models<a class="headerlink" href="#externally-dependent-reaction-models" title="Permalink to this heading">¶</a></h2>
 <p>Some reaction models have a variant that can use external sources as specified <a class="reference internal" href="system.html#ffmodelexternalsourcelininterp"><span class="std std-ref">/input/model/external/</span></a> (also see Section <a class="reference internal" href="../modelling/reactions.html#dependence-on-external-function-react"><span class="std std-ref">Dependence on external function</span></a>).
 For the sake of brevity, only the standard variant of those reaction models is specified below.
 In order to obtain the format for the externally dependent variant, first replace the reaction model name <code class="docutils literal notranslate"><span class="pre">XXX</span></code> by <code class="docutils literal notranslate"><span class="pre">EXT_XXX</span></code>.
@@ -121,7 +122,7 @@ However, if only one index is passed in <code class="docutils literal notranslat
 This is caused by not taking into account the derivative of the external profile with respect to column position.</p>
 </section>
 <section id="multiple-particle-types">
-<span id="multiple-particle-types-reactions"></span><h2>Multiple particle types<a class="headerlink" href="#multiple-particle-types" title="Permalink to this headline">¶</a></h2>
+<span id="multiple-particle-types-reactions"></span><h2>Multiple particle types<a class="headerlink" href="#multiple-particle-types" title="Permalink to this heading">¶</a></h2>
 <p>The group that contains the parameters of a reaction model in unit operation with index <code class="docutils literal notranslate"><span class="pre">XXX</span></code> reads <code class="docutils literal notranslate"><span class="pre">/input/model/unit_XXX/reaction_particle</span></code>.
 This is valid for models with a single particle type.
 If a model has multiple particle types, it may have a different reaction model in each type.
@@ -130,16 +131,11 @@ The parameters are then placed in the group <code class="docutils literal notran
 This group also takes precedence over a possibly existing <code class="docutils literal notranslate"><span class="pre">/input/model/unit_XXX/adsorption_particle</span></code> group.</p>
 </section>
 <section id="group-input-model-unit-xxx-reaction-reaction-model-mass-action-law">
-<span id="ffreactionmassactionlaw"></span><h2>Group /input/model/unit_XXX/reaction - REACTION_MODEL = MASS_ACTION_LAW<a class="headerlink" href="#group-input-model-unit-xxx-reaction-reaction-model-mass-action-law" title="Permalink to this headline">¶</a></h2>
+<span id="ffreactionmassactionlaw"></span><h2>Group /input/model/unit_XXX/reaction - REACTION_MODEL = MASS_ACTION_LAW<a class="headerlink" href="#group-input-model-unit-xxx-reaction-reaction-model-mass-action-law" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">MAL_KFWD_BULK</span></code></p>
 <blockquote>
 <div><p>Forward rate constants for bulk volume reactions (available for external functions)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 33%" />
-<col style="width: 46%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -152,11 +148,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Backward rate constants for bulk volume reactions (available for external functions)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 33%" />
-<col style="width: 46%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -169,11 +160,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Forward rate constants for particle liquid phase reactions (available for external functions)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 33%" />
-<col style="width: 46%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -186,11 +172,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Backward rate constants for particle liquid phase reactions (available for external functions)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 33%" />
-<col style="width: 46%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -203,11 +184,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Forward rate constants for particle solid phase reactions (available for external functions)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 33%" />
-<col style="width: 46%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -220,11 +196,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Backward rate constants for particle solid phase reactions (available for external functions)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 33%" />
-<col style="width: 46%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -237,10 +208,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Stoichiometric matrix of bulk volume reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 78%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
@@ -252,10 +219,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Forward exponent matrix of bulk volume reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, calculated from <span class="math notranslate nohighlight">\(\texttt{MAL_STOICHIOMETRY_BULK}\)</span> by default)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 78%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
@@ -267,10 +230,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Backward exponent matrix of bulk volume reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, calculated from <span class="math notranslate nohighlight">\(\texttt{MAL_STOICHIOMETRY_BULK}\)</span> by default)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 78%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
@@ -282,10 +241,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Stoichiometric matrix of particle liquid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 78%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
@@ -297,10 +252,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Forward exponent matrix of particle liquid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, calculated from <span class="math notranslate nohighlight">\(\texttt{MAL_STOICHIOMETRY_LIQUID}\)</span> by default)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 78%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
@@ -312,10 +263,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Backward exponent matrix of particle liquid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, calculated from <span class="math notranslate nohighlight">\(\texttt{MAL_STOICHIOMETRY_LIQUID}\)</span> by default)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 78%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
@@ -327,10 +274,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Forward solid phase modifier exponent matrix of particle liquid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, defaults to all 0)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 79%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \cdot \texttt{NREACT}\)</span></p></td>
@@ -342,10 +285,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Backward solid phase modifier exponent matrix of particle liquid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, defaults to all 0)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 79%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \cdot \texttt{NREACT}\)</span></p></td>
@@ -357,10 +296,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Stoichiometric matrix of particle solid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \times \texttt{NREACT}\)</span> matrix in row-major storage</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 79%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \cdot \texttt{NREACT}\)</span></p></td>
@@ -372,10 +307,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Forward exponent matrix of particle solid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, calculated from <span class="math notranslate nohighlight">\(\texttt{MAL_STOICHIOMETRY_SOLID}\)</span> by default)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 79%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \cdot \texttt{NREACT}\)</span></p></td>
@@ -387,10 +318,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Backward exponent matrix of particle solid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, calculated from <span class="math notranslate nohighlight">\(\texttt{MAL_STOICHIOMETRY_SOLID}\)</span> by default)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 79%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \cdot \texttt{NREACT}\)</span></p></td>
@@ -402,10 +329,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Forward liquid phase modifier exponent matrix of particle solid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, defaults to all 0)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 78%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
@@ -417,10 +340,6 @@ This group also takes precedence over a possibly existing <code class="docutils 
 <blockquote>
 <div><p>Backward liquid phase modifier exponent matrix of particle solid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, defaults to all 0)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 78%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
@@ -440,7 +359,7 @@ This group also takes precedence over a possibly existing <code class="docutils 
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../_sources/interface/reactions.rst.txt"

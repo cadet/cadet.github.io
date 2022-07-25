@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Running &#8212; CADET-Match</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,6 +12,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/cli/index.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
@@ -69,7 +70,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
         <li><a href="../../v0.6.50/cli/index.html">v0.6.50</a></li>
@@ -79,6 +80,8 @@
         <li><a href="../../v0.8.10/cli/index.html">v0.8.10</a></li>
         <li><a href="../../v0.8.12/cli/index.html">v0.8.12</a></li>
         <li><a href="../../v0.8.13/cli/index.html">v0.8.13</a></li>
+        <li><a href="../../v0.8.14/cli/index.html">v0.8.14</a></li>
+        <li><a href="../../v0.8.15/cli/index.html">v0.8.15</a></li>
         <li><a href="index.html">v0.8.7</a></li>
 </ul>
 <h3>Branches</h3>
@@ -99,14 +102,14 @@
   <strong>
     
     You're reading an old version of this documentation.
-    For the latest released version, please have a look at <a href="../../v0.8.13/cli/index.html">v0.8.13</a>.
+    For the latest released version, please have a look at <a href="../../v0.8.15/cli/index.html">v0.8.15</a>.
     
   </strong>
 </p>
 
 
   <section id="running">
-<h1>Running<a class="headerlink" href="#running" title="Permalink to this headline">¶</a></h1>
+<h1>Running<a class="headerlink" href="#running" title="Permalink to this heading">¶</a></h1>
 <p>CADET-Match is designed to be used through a command line interface. It is also possible to use CADET-Match using Jupyter notebooks but this
 is not recommended for normal usage. CADET-Match has automatic checkpointing and if matching is interrupted it will resume from the last step
 completed.</p>
@@ -127,19 +130,19 @@ may fail if the required data has not been generated yet.</p>
 <p><code class="docutils literal notranslate"><span class="pre">--generate_mcmc_plot_tube</span></code> Generate MCMC plot tubes (probability plots of chromatograms based on MCMC posterior)</p>
 <p><code class="docutils literal notranslate"><span class="pre">--generate_mcmc_mixing</span></code> Generate MCMC mixing graphs</p>
 <section id="starting-a-match">
-<h2>Starting a match<a class="headerlink" href="#starting-a-match" title="Permalink to this headline">¶</a></h2>
+<h2>Starting a match<a class="headerlink" href="#starting-a-match" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m CADETMatch --match --json &lt;path to connfiguration file&gt;
 </pre></div>
 </div>
 </section>
 <section id="generate-graphs-using-6-cores">
-<h2>Generate graphs using 6 cores<a class="headerlink" href="#generate-graphs-using-6-cores" title="Permalink to this headline">¶</a></h2>
+<h2>Generate graphs using 6 cores<a class="headerlink" href="#generate-graphs-using-6-cores" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m CADETMatch --generate_graphs --json &lt;path to connfiguration file&gt; -n <span class="m">6</span>
 </pre></div>
 </div>
 </section>
 <section id="running-cadet-match-remotely">
-<h2>Running CADET-Match remotely<a class="headerlink" href="#running-cadet-match-remotely" title="Permalink to this headline">¶</a></h2>
+<h2>Running CADET-Match remotely<a class="headerlink" href="#running-cadet-match-remotely" title="Permalink to this heading">¶</a></h2>
 <p>The most common way CADET-Match is used is by logging into a server with SSH and starting a matching session.
 These matches can take hours to days to complete and the following command allows CADET-Match to keep running
 once you logout.</p>
@@ -160,7 +163,7 @@ once you logout.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2017-2021.
+      &copy;2017-2022.
       
       |
       <a href="../_sources/cli/index.rst.txt"

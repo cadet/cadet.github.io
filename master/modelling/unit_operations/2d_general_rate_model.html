@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Two Dimensional General rate model (GRM2D) &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/modelling/unit_operations/2d_general_rate_model.html" />
     <link rel="shortcut icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -79,7 +80,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="../../../v4.3.0/modelling/unit_operations/2d_general_rate_model.html">v4.3.0</a></li>
@@ -109,7 +110,7 @@
 
 
   <section id="two-dimensional-general-rate-model-grm2d">
-<span id="d-general-rate-model-model"></span><h1>Two Dimensional General rate model (GRM2D)<a class="headerlink" href="#two-dimensional-general-rate-model-grm2d" title="Permalink to this headline">¶</a></h1>
+<span id="d-general-rate-model-model"></span><h1>Two Dimensional General rate model (GRM2D)<a class="headerlink" href="#two-dimensional-general-rate-model-grm2d" title="Permalink to this heading">¶</a></h1>
 <p>The general rate model as introduced in Section <a class="reference internal" href="general_rate_model.html#general-rate-model-model"><span class="std std-ref">General rate model (GRM)</span></a> assumes homogeneity in the cross sections of the column.
 This allows to consider transport along the axial dimension only.
 However, due to packing irregularity and inhomogeneous flow at the inlet (i.e., frits), this assumption may be a crude approximation.
@@ -154,7 +155,7 @@ Continuous dependence of the parameters can be realized by piecewise constant ap
 That is, this unit operation has as many inlet and outlet ports as it has radial zones (parameter <code class="docutils literal notranslate"><span class="pre">NRAD</span></code> in the <code class="docutils literal notranslate"><span class="pre">discretization</span></code> group).
 This allows each radial zone to have its own inlet profile, which enables modeling of flow distribution in the frits by sending the feed through varying hold-up volumes before injecting it into a radial zone.</p>
 <section id="specification-of-flow-rate-velocity-and-direction">
-<span id="muopgrmflow2d"></span><h2>Specification of flow rate / velocity and direction<a class="headerlink" href="#specification-of-flow-rate-velocity-and-direction" title="Permalink to this headline">¶</a></h2>
+<span id="muopgrmflow2d"></span><h2>Specification of flow rate / velocity and direction<a class="headerlink" href="#specification-of-flow-rate-velocity-and-direction" title="Permalink to this heading">¶</a></h2>
 <p>Since the column radius <span class="math notranslate nohighlight">\(R\)</span> and the zones <span class="math notranslate nohighlight">\((\rho_k, \rho_{k+1})\)</span>, <span class="math notranslate nohighlight">\(k = 0, \dots, N_{\text{rad}} - 1\)</span>, are known, the interstitial velocities <span class="math notranslate nohighlight">\(u_k\)</span> are inferred from the volumetric flow rates via</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
@@ -179,7 +180,7 @@ The velocity parameter only determines the flow direction.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../../_sources/modelling/unit_operations/2d_general_rate_model.rst.txt"

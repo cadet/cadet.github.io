@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Inlet &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/unit_operations/inlet.html" />
     <link rel="shortcut icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -81,7 +82,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="../../../v4.3.0/interface/unit_operations/inlet.html">v4.3.0</a></li>
@@ -111,18 +112,13 @@
 
 
   <section id="inlet">
-<span id="inlet-config"></span><h1>Inlet<a class="headerlink" href="#inlet" title="Permalink to this headline">¶</a></h1>
+<span id="inlet-config"></span><h1>Inlet<a class="headerlink" href="#inlet" title="Permalink to this heading">¶</a></h1>
 <section id="group-input-model-unit-xxx-unit-type-inlet">
-<h2>Group /input/model/unit_XXX - UNIT-TYPE = INLET<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-inlet" title="Permalink to this headline">¶</a></h2>
+<h2>Group /input/model/unit_XXX - UNIT-TYPE = INLET<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-inlet" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">UNIT_TYPE</span></code></p>
 <blockquote>
 <div><p>Specifies the type of unit operation model</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 26%" />
-<col style="width: 53%" />
-<col style="width: 21%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{INLET}\)</span></p></td>
@@ -135,11 +131,6 @@
 <blockquote>
 <div><p>Number of chemical components in the chromatographic medium</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -152,11 +143,6 @@
 <blockquote>
 <div><p>Specifies the type of inlet profile</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 62%" />
-<col style="width: 17%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{PIECEWISE_CUBIC_POLY}\)</span></p></td>
@@ -167,17 +153,12 @@
 </div></blockquote>
 </section>
 <section id="group-input-model-unit-xxx-sec-xxx">
-<h2>Group /input/model/unit_XXX/sec_XXX<a class="headerlink" href="#group-input-model-unit-xxx-sec-xxx" title="Permalink to this headline">¶</a></h2>
+<h2>Group /input/model/unit_XXX/sec_XXX<a class="headerlink" href="#group-input-model-unit-xxx-sec-xxx" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">CONST_COEFF</span></code></p>
 <blockquote>
 <div><p>Constant coefficients for inlet concentrations</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{IV}}^{-3}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 37%" />
-<col style="width: 43%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
@@ -191,11 +172,6 @@
 <div><p>Linear coefficients for inlet concentrations</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{IV}}^{-3}\,\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 37%" />
-<col style="width: 43%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
@@ -209,11 +185,6 @@
 <div><p>Quadratic coefficients for inlet concentrations</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{IV}}^{-3}\,\mathrm{s}^{-2}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 37%" />
-<col style="width: 43%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
@@ -227,11 +198,6 @@
 <div><p>Cubic coefficients for inlet concentrations</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{IV}}^{-3}\,\mathrm{s}^{-3}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 37%" />
-<col style="width: 43%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
@@ -252,7 +218,7 @@
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../../_sources/interface/unit_operations/inlet.rst.txt"

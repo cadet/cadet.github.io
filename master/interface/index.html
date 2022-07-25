@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Interface specifications &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,6 +12,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/index.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
@@ -69,7 +70,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="../../v4.3.0/interface/index.html">v4.3.0</a></li>
@@ -99,18 +100,18 @@
 
 
   <section id="interface-specifications">
-<span id="file-format"></span><h1>Interface specifications<a class="headerlink" href="#interface-specifications" title="Permalink to this headline">¶</a></h1>
+<span id="file-format"></span><h1>Interface specifications<a class="headerlink" href="#interface-specifications" title="Permalink to this heading">¶</a></h1>
 <p>The CADET framework is designed to work on a file format structured into groups and datasets.
 This concept may be implemented by different file formats.
 At the moment, CADET natively supports HDF5 and XML as file formats.
 The choice is not limited to those two formats but can be extended as needed.
 In this section the general layout and structure of the file format is described.</p>
-<div class="topic">
+<aside class="topic">
 <p class="topic-title">File format versions</p>
 <p>The file format may change and evolve over time as new features are added to the simulator.
 This manual describes the most recent file format version that is also set as default value in <code class="docutils literal notranslate"><span class="pre">/meta/FILE_FORMAT</span></code> (see Tab. <a class="reference internal" href="meta_group.html#ffmeta"><span class="std std-ref">Meta Group</span></a>).
 The simulator assumes that the input file uses the most recent format version and does not update old files to the current standard.</p>
-</div>
+</aside>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
@@ -200,7 +201,7 @@ The simulator assumes that the input file uses the most recent format version an
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../_sources/interface/index.rst.txt"

@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Binding models &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/modelling/binding/index.html" />
     <link rel="shortcut icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -76,7 +77,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="../../../v4.3.0/modelling/binding/index.html">v4.3.0</a></li>
@@ -106,12 +107,12 @@
 
 
   <section id="binding-models">
-<span id="id1"></span><h1>Binding models<a class="headerlink" href="#binding-models" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Binding models<a class="headerlink" href="#binding-models" title="Permalink to this heading">¶</a></h1>
 <p>The following binding models are presented in dynamic binding mode.
 By replacing all occurrences of <span class="math notranslate nohighlight">\(\mathrm{d}q / \mathrm{d}t\)</span> with <span class="math notranslate nohighlight">\(0\)</span>, quasi-stationary (rapid-equlibrium) binding mode is achieved.
 In quasi-stationary binding, it is assumed that ad- and desorption take place on a much faster time scale than the other transport processes such that bead liquid phase <span class="math notranslate nohighlight">\(c_{p,i}\)</span> (or bulk liquid phase <span class="math notranslate nohighlight">\(c_i\)</span> for certain unit operation models) are always in equilibrium with the solid phase <span class="math notranslate nohighlight">\(q_i\)</span>.</p>
 <section id="equilibrium-constants">
-<h2>Equilibrium constants<a class="headerlink" href="#equilibrium-constants" title="Permalink to this headline">¶</a></h2>
+<h2>Equilibrium constants<a class="headerlink" href="#equilibrium-constants" title="Permalink to this heading">¶</a></h2>
 <p>For the quasi-stationary binding mode, adsorption and desorption rate are no longer separate entities.
 Instead, the quotient <span class="math notranslate nohighlight">\(k_{\text{eq}} = k_a / k_d\)</span> of adsorption and desorption coefficient is the relevant parameter as shown for the linear binding model (see Section <a class="reference internal" href="linear.html#linear-model"><span class="std std-ref">Linear</span></a>):</p>
 <div class="math notranslate nohighlight">
@@ -137,7 +138,7 @@ While in quasi-stationary binding mode this is prevented by using the technique 
 \end{aligned}\end{split}\]</div>
 </section>
 <section id="reference-concentrations">
-<span id="id2"></span><h2>Reference concentrations<a class="headerlink" href="#reference-concentrations" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>Reference concentrations<a class="headerlink" href="#reference-concentrations" title="Permalink to this heading">¶</a></h2>
 <p>Some binding models use reference concentrations <span class="math notranslate nohighlight">\(c_{\text{ref}}\)</span> and <span class="math notranslate nohighlight">\(q_{\text{ref}}\)</span> of the mobile phase modulator (e.g., salt) in the particle liquid and solid phase, respectively.
 The reference values are mainly used for normalizing adsorption and desorption rates, but also for other parameters that appear with those concentrations.
 They amount to a simple parameter transformation that is exemplified at one equation of the steric mass action binding model</p>
@@ -167,7 +168,7 @@ Using the parameter transformation</p>
 Note that setting the reference concentrations to <span class="math notranslate nohighlight">\(1.0\)</span> each results in the original binding model.</p>
 </section>
 <section id="dependence-on-external-function">
-<span id="dependence-on-external-function-bind"></span><h2>Dependence on external function<a class="headerlink" href="#dependence-on-external-function" title="Permalink to this headline">¶</a></h2>
+<span id="dependence-on-external-function-bind"></span><h2>Dependence on external function<a class="headerlink" href="#dependence-on-external-function" title="Permalink to this heading">¶</a></h2>
 <p>A binding model may depend on an external function or profile <span class="math notranslate nohighlight">\(T\colon \left[ 0, T_{\text{end}}\right] \times [0, L] \to \mathbb{R}\)</span>, where <span class="math notranslate nohighlight">\(L\)</span> denotes the physical length of the unit operation, or <span class="math notranslate nohighlight">\(T\colon \left[0, T_{\text{end}}\right] \to \mathbb{R}\)</span> if the unit operation model has no axial length.
 By using an external profile, it is possible to account for effects that are not directly modeled in CADET (e.g., temperature).
 The dependence of each parameter is modeled by a polynomial of third degree. For example, the adsorption rate <span class="math notranslate nohighlight">\(k_a\)</span> is really given by</p>
@@ -185,19 +186,19 @@ By assigning only one index to <code class="docutils literal notranslate"><span 
 The ordering of the parameters in <code class="docutils literal notranslate"><span class="pre">EXTFUN</span></code> is given by the ordering in the file format specification in Section <a class="reference internal" href="../../interface/binding/index.html#ffadsorption"><span class="std std-ref">Binding models</span></a>.</p>
 </section>
 <section id="binding-model-feature-matrix">
-<span id="binding-model-feature"></span><h2>Binding model feature matrix<a class="headerlink" href="#binding-model-feature-matrix" title="Permalink to this headline">¶</a></h2>
+<span id="binding-model-feature"></span><h2>Binding model feature matrix<a class="headerlink" href="#binding-model-feature-matrix" title="Permalink to this heading">¶</a></h2>
 <p>A short comparison of the most prominent binding model features is given in <a class="reference internal" href="#mbfeaturematrix"><span class="std std-numref">Table 3</span></a>.
 The implemented binding models can be divided into two main classes: Single-state and multi-state binding.
 While single-state models only have one bound state per component (or less), multi-state models provide multiple (possibly different) bound states for each component, which may correspond to different binding orientations or binding site types.
 The models also differ in whether a mobile phase modifier (e.g., salt) is supported to modulate the binding behavior.</p>
-<span id="mbfeaturematrix"></span><table class="colwidths-given docutils align-default" id="id3">
+<span id="mbfeaturematrix"></span><table class="docutils align-default" id="id3">
 <caption><span class="caption-number">Table 3 </span><span class="caption-text">Supported features of the different binding models</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 30%" />
-<col style="width: 15%" />
-<col style="width: 25%" />
-<col style="width: 15%" />
-<col style="width: 15%" />
+<col style="width: 30.0%" />
+<col style="width: 15.0%" />
+<col style="width: 25.0%" />
+<col style="width: 15.0%" />
+<col style="width: 15.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Binding model</p></th>
@@ -314,7 +315,7 @@ The models also differ in whether a mobile phase modifier (e.g., salt) is suppor
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../../_sources/modelling/binding/index.rst.txt"

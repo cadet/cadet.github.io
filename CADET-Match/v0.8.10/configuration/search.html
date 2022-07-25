@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Search &#8212; CADET-Match</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,6 +12,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/configuration/search.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
@@ -81,7 +82,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
         <li><a href="../../v0.6.50/configuration/search.html">v0.6.50</a></li>
@@ -91,6 +92,8 @@
         <li><a href="search.html">v0.8.10</a></li>
         <li><a href="../../v0.8.12/configuration/search.html">v0.8.12</a></li>
         <li><a href="../../v0.8.13/configuration/search.html">v0.8.13</a></li>
+        <li><a href="../../v0.8.14/configuration/search.html">v0.8.14</a></li>
+        <li><a href="../../v0.8.15/configuration/search.html">v0.8.15</a></li>
         <li><a href="../../v0.8.7/configuration/search.html">v0.8.7</a></li>
 </ul>
 <h3>Branches</h3>
@@ -111,25 +114,18 @@
   <strong>
     
     You're reading an old version of this documentation.
-    For the latest released version, please have a look at <a href="../../v0.8.13/configuration/search.html">v0.8.13</a>.
+    For the latest released version, please have a look at <a href="../../v0.8.15/configuration/search.html">v0.8.15</a>.
     
   </strong>
 </p>
 
 
   <section id="search">
-<h1>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h1>
+<h1>Search<a class="headerlink" href="#search" title="Permalink to this heading">¶</a></h1>
 <p>CADET-Match uses a number of different search strategies for parameter estimation.
 Parameters that are common to more than one search method will be repeated.
 The choice of search strategy is set by using searchMethod.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 7%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 67%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -149,19 +145,12 @@ The choice of search strategy is set by using searchMethod.</p>
 </table>
 <p>Most of the search strategies are population based and capable of running in parallel.</p>
 <section id="unsga3">
-<h2>UNSGA3<a class="headerlink" href="#unsga3" title="Permalink to this headline">¶</a></h2>
+<h2>UNSGA3<a class="headerlink" href="#unsga3" title="Permalink to this heading">¶</a></h2>
 <p>UNSGA3 is a genetic algorithm designed for high-dimensional problems. <a class="reference external" href="https://pymoo.org/algorithms/unsga3.html">UNSGA3</a> from pymoo is used.</p>
 <p>The difference between UNSGA3 and NSGA3 is that UNSGA3 uses a tournament selection to bread the best members instead
 of random mating. In almost all cases UNSGA3 will converge faster and to a better optimum. NSGA3 is mostly retained for backwards
 compatibility.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 9%" />
-<col style="width: 5%" />
-<col style="width: 70%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -259,17 +248,10 @@ compatibility.</p>
 </table>
 </section>
 <section id="nsga3">
-<h2>NSGA3<a class="headerlink" href="#nsga3" title="Permalink to this headline">¶</a></h2>
+<h2>NSGA3<a class="headerlink" href="#nsga3" title="Permalink to this heading">¶</a></h2>
 <p>NSGA3 is a genetic algorithm designed for high-dimensional problems. <a class="reference external" href="https://pymoo.org/algorithms/nsga3.html">NSGA3</a> from pymoo is used. In most cases UNSGA3 should be used
 and NSGA3 is retained for backwards compatibility.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 9%" />
-<col style="width: 5%" />
-<col style="width: 70%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -367,18 +349,11 @@ and NSGA3 is retained for backwards compatibility.</p>
 </table>
 </section>
 <section id="multistart">
-<h2>Multistart<a class="headerlink" href="#multistart" title="Permalink to this headline">¶</a></h2>
+<h2>Multistart<a class="headerlink" href="#multistart" title="Permalink to this heading">¶</a></h2>
 <p>This is a simple MultiStart gradient descent search.
 If your problem is known to be solveable with gradient descent this can be a good search choice.
 While this search algorithm can be used as a precursor for MCMC that is not recomended.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 9%" />
-<col style="width: 5%" />
-<col style="width: 70%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -428,20 +403,13 @@ While this search algorithm can be used as a precursor for MCMC that is not reco
 </table>
 </section>
 <section id="graphspace">
-<h2>GraphSpace<a class="headerlink" href="#graphspace" title="Permalink to this headline">¶</a></h2>
+<h2>GraphSpace<a class="headerlink" href="#graphspace" title="Permalink to this heading">¶</a></h2>
 <p>The purpose of GraphSpace is to create a map of your problem.
 It is designed to be used with an extremely large population and it will just evaluate the goal, generate graphs and terminate.
 It will not actually optimize.
 What it does tell you is what variable ranges are reasonable to optimize in.
 This is a good first step for any new problem where the ranges of the parameters is extremely large and the viable ranges are unknown.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 9%" />
-<col style="width: 5%" />
-<col style="width: 70%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -491,19 +459,12 @@ This is a good first step for any new problem where the ranges of the parameters
 </table>
 </section>
 <section id="mcmc">
-<span id="mcmc-search"></span><h2>MCMC<a class="headerlink" href="#mcmc" title="Permalink to this headline">¶</a></h2>
+<span id="mcmc-search"></span><h2>MCMC<a class="headerlink" href="#mcmc" title="Permalink to this heading">¶</a></h2>
 <p>MCMC is used for error modeling.
 It is highly suggested that NSGA3 is used with continueMCMC.
 MCMC is not an optimization algorithm and should not be used as one.
 In order to run an error model is also required.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 8%" />
-<col style="width: 5%" />
-<col style="width: 70%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -547,18 +508,11 @@ In order to run an error model is also required.</p>
 </table>
 </section>
 <section id="altscore">
-<h2>AltScore<a class="headerlink" href="#altscore" title="Permalink to this headline">¶</a></h2>
+<h2>AltScore<a class="headerlink" href="#altscore" title="Permalink to this heading">¶</a></h2>
 <p>AltScore is very rarely used.
 What it allows is reading another completed result and will just re-evaluate the entries of the pareto front with a different goal and report the results.
 This can be useful for goal design to see the impact of combining different scores and if that would make the problem easier or harder to optimize.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 8%" />
-<col style="width: 5%" />
-<col style="width: 70%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -578,17 +532,10 @@ This can be useful for goal design to see the impact of combining different scor
 </table>
 </section>
 <section id="gradient">
-<h2>Gradient<a class="headerlink" href="#gradient" title="Permalink to this headline">¶</a></h2>
+<h2>Gradient<a class="headerlink" href="#gradient" title="Permalink to this heading">¶</a></h2>
 <p>This is a simple test search algorithm that reads seeds and runs gradient descent from them.
 This search algorithm has little practical usage and requires good starting points.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 9%" />
-<col style="width: 5%" />
-<col style="width: 70%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -620,17 +567,10 @@ This search algorithm has little practical usage and requires good starting poin
 </table>
 </section>
 <section id="scoretest">
-<h2>ScoreTest<a class="headerlink" href="#scoretest" title="Permalink to this headline">¶</a></h2>
+<h2>ScoreTest<a class="headerlink" href="#scoretest" title="Permalink to this heading">¶</a></h2>
 <p>This is the simplest of all the systems and just designed for testing goals.
 Given one or more seeds they are simulated, scored and results returned.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 9%" />
-<col style="width: 5%" />
-<col style="width: 70%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -660,7 +600,7 @@ Given one or more seeds they are simulated, scored and results returned.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2017-2021.
+      &copy;2017-2022.
       
       |
       <a href="../_sources/configuration/search.rst.txt"

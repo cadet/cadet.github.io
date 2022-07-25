@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Nonlinear solver for consistent initialization &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/consistent_initialization.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -81,7 +82,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="consistent_initialization.html">v4.3.0</a></li>
@@ -102,17 +103,13 @@
 
 
   <section id="nonlinear-solver-for-consistent-initialization">
-<span id="non-consistency-solver-parameters"></span><h1>Nonlinear solver for consistent initialization<a class="headerlink" href="#nonlinear-solver-for-consistent-initialization" title="Permalink to this headline">¶</a></h1>
+<span id="non-consistency-solver-parameters"></span><h1>Nonlinear solver for consistent initialization<a class="headerlink" href="#nonlinear-solver-for-consistent-initialization" title="Permalink to this heading">¶</a></h1>
 <section id="group-input-model-unit-xxx-discretization-consistency-solver-nonlinear-consistency-solver-paramters">
-<h2>Group /input/model/unit_XXX/discretization/consistency_solver - Nonlinear consistency solver paramters<a class="headerlink" href="#group-input-model-unit-xxx-discretization-consistency-solver-nonlinear-consistency-solver-paramters" title="Permalink to this headline">¶</a></h2>
+<h2>Group /input/model/unit_XXX/discretization/consistency_solver - Nonlinear consistency solver paramters<a class="headerlink" href="#group-input-model-unit-xxx-discretization-consistency-solver-nonlinear-consistency-solver-paramters" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">SOLVER_NAME</span></code></p>
 <p>Name of the solver. Available solvers are <code class="docutils literal notranslate"><span class="pre">LEVMAR</span></code>, <code class="docutils literal notranslate"><span class="pre">ATRN_RES</span></code>, <code class="docutils literal notranslate"><span class="pre">ATRN_ERR</span></code>, and <code class="docutils literal notranslate"><span class="pre">COMPOSITE</span></code>.</p>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 44%" />
-<col style="width: 56%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span></p></td>
@@ -124,11 +121,6 @@
 <p>Initial damping factor (default is <span class="math notranslate nohighlight">\(0.01\)</span>)</p>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 37%" />
-<col style="width: 43%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
@@ -141,11 +133,6 @@
 <p>Minimal damping factor (default is <span class="math notranslate nohighlight">\(0.0001\)</span>; ignored by <code class="docutils literal notranslate"><span class="pre">LEVMAR</span></code>)</p>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 37%" />
-<col style="width: 43%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
@@ -158,10 +145,6 @@
 <p>Vector with names of solvers for the composite solver (only required for composite solver). See <code class="docutils literal notranslate"><span class="pre">SOLVER_NAME</span></code> for available solvers.</p>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 41%" />
-<col style="width: 59%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\gt 1\)</span></p></td>
@@ -181,7 +164,7 @@
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../_sources/interface/consistent_initialization.rst.txt"

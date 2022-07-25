@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Build for OSX &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,6 +12,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/getting_started/build_osx.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
@@ -71,7 +72,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="../../v4.3.0/getting_started/build_osx.html">v4.3.0</a></li>
@@ -101,9 +102,9 @@
 
 
   <section id="build-for-osx">
-<span id="build-osx"></span><h1>Build for OSX<a class="headerlink" href="#build-for-osx" title="Permalink to this headline">¶</a></h1>
+<span id="build-osx"></span><h1>Build for OSX<a class="headerlink" href="#build-for-osx" title="Permalink to this heading">¶</a></h1>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>CMake (&gt;= 3.12.0)</p></li>
 <li><p>GCC &gt;= 5.0 or Clang &gt;= 3.4</p></li>
@@ -129,9 +130,9 @@ package manager such as <a class="reference external" href="http://brew.sh/">Hom
 system compiler (Clang).</p>
 </section>
 <section id="build-dependencies">
-<h2>Build dependencies<a class="headerlink" href="#build-dependencies" title="Permalink to this headline">¶</a></h2>
+<h2>Build dependencies<a class="headerlink" href="#build-dependencies" title="Permalink to this heading">¶</a></h2>
 <section id="hdf5">
-<h3>HDF5<a class="headerlink" href="#hdf5" title="Permalink to this headline">¶</a></h3>
+<h3>HDF5<a class="headerlink" href="#hdf5" title="Permalink to this heading">¶</a></h3>
 <p>You can either build HDF5 yourself or rely on the <code class="docutils literal notranslate"><span class="pre">hdf5</span></code> package of
 <a class="reference external" href="http://brew.sh/">Homebrew</a>.</p>
 <p>Obtain HDF5 from Homebrew: * Open a terminal and execute
@@ -145,7 +146,7 @@ terminal and change to the unzipped directory * Execute
 <code class="docutils literal notranslate"><span class="pre">&lt;ROOT&gt;/Libs/hdf5</span></code> such that you have <code class="docutils literal notranslate"><span class="pre">&lt;ROOT&gt;/Libs/hdf5/lib</span></code></p>
 </section>
 <section id="sundials">
-<h3>SUNDIALS<a class="headerlink" href="#sundials" title="Permalink to this headline">¶</a></h3>
+<h3>SUNDIALS<a class="headerlink" href="#sundials" title="Permalink to this heading">¶</a></h3>
 <p>You can either build SUNDIALS yourself or rely on the <code class="docutils literal notranslate"><span class="pre">sundials</span></code>
 package of <a class="reference external" href="http://brew.sh/">Homebrew</a>. Note that a version &lt;= 3.2.1
 is required whereas the current version provided by Homebrew is &gt;=
@@ -164,14 +165,14 @@ Execute
 <code class="docutils literal notranslate"><span class="pre">sundialsbuild</span></code>)</p>
 </section>
 <section id="lapack">
-<h3>LAPACK<a class="headerlink" href="#lapack" title="Permalink to this headline">¶</a></h3>
+<h3>LAPACK<a class="headerlink" href="#lapack" title="Permalink to this heading">¶</a></h3>
 <p>You can either use the native LAPACK implementation provided by Mac OS X
 (vecLib, Accelerate) or install the freely available <a class="reference external" href="https://software.intel.com/sites/campaigns/nest/">Intel
 MKL</a> which is very
 fast and probably faster than Accelerate.</p>
 </section>
 <section id="superlu">
-<h3>SuperLU<a class="headerlink" href="#superlu" title="Permalink to this headline">¶</a></h3>
+<h3>SuperLU<a class="headerlink" href="#superlu" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Download SuperLU source from <a class="reference external" href="https://github.com/xiaoyeli/superlu">https://github.com/xiaoyeli/superlu</a></p></li>
 <li><p>Unzip</p></li>
@@ -186,7 +187,7 @@ directory</p></li>
 </ul>
 </section>
 <section id="umfpack">
-<h3>UMFPACK<a class="headerlink" href="#umfpack" title="Permalink to this headline">¶</a></h3>
+<h3>UMFPACK<a class="headerlink" href="#umfpack" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Download SuiteSparse source from
 <a class="reference external" href="http://faculty.cse.tamu.edu/davis/suitesparse.html">http://faculty.cse.tamu.edu/davis/suitesparse.html</a></p></li>
@@ -201,7 +202,7 @@ if you want to manually select the compiler</p></li>
 </section>
 </section>
 <section id="build-cadet">
-<h2>Build CADET<a class="headerlink" href="#build-cadet" title="Permalink to this headline">¶</a></h2>
+<h2>Build CADET<a class="headerlink" href="#build-cadet" title="Permalink to this heading">¶</a></h2>
 <ul>
 <li><p>Download release of CADET or checkout from git</p></li>
 <li><p>Place the source in <code class="docutils literal notranslate"><span class="pre">&lt;ROOT&gt;/code</span></code> and create the directory
@@ -243,7 +244,7 @@ if you want to manually select the compiler</p></li>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../_sources/getting_started/build_osx.rst.txt"

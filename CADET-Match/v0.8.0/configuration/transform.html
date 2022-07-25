@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Transform &#8212; CADET-Match</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,6 +12,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/configuration/transform.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
@@ -84,7 +85,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
         <li><a href="../../v0.6.50/configuration/transform.html">v0.6.50</a></li>
@@ -94,6 +95,8 @@
         <li><a href="../../v0.8.10/configuration/transform.html">v0.8.10</a></li>
         <li><a href="../../v0.8.12/configuration/transform.html">v0.8.12</a></li>
         <li><a href="../../v0.8.13/configuration/transform.html">v0.8.13</a></li>
+        <li><a href="../../v0.8.14/configuration/transform.html">v0.8.14</a></li>
+        <li><a href="../../v0.8.15/configuration/transform.html">v0.8.15</a></li>
         <li><a href="../../v0.8.7/configuration/transform.html">v0.8.7</a></li>
 </ul>
 <h3>Branches</h3>
@@ -114,30 +117,30 @@
   <strong>
     
     You're reading an old version of this documentation.
-    For the latest released version, please have a look at <a href="../../v0.8.13/configuration/transform.html">v0.8.13</a>.
+    For the latest released version, please have a look at <a href="../../v0.8.15/configuration/transform.html">v0.8.15</a>.
     
   </strong>
 </p>
 
 
   <section id="transform">
-<h1>Transform<a class="headerlink" href="#transform" title="Permalink to this headline">¶</a></h1>
+<h1>Transform<a class="headerlink" href="#transform" title="Permalink to this heading">¶</a></h1>
 <p>CADET-Match has many variable transforms available.
 The most common ones will be covered first.
 There are a few additional ones available in the code that are retained for backwards compatibility that will not be covered and their usage is not recomended.</p>
 <p>Each parameter for parameter estimation or error modeling must be listed in the parameters list and a transform selected.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;parameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <section id="indexing">
-<h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">¶</a></h2>
+<h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this heading">¶</a></h2>
 <p>An index is used when you want to directly index into the arrays to modify, this is very rarely used and mostly comes up with the MultiState SMA rates between states.
 All transforms use the same method for indexing.</p>
 <p>You either need to specific component and bound or specify index.
@@ -150,18 +153,11 @@ Index at position n: index=n</p>
 <p>Independent of component or bound state would be component=-1 bound=-1.</p>
 </section>
 <section id="auto">
-<h2>Auto<a class="headerlink" href="#auto" title="Permalink to this headline">¶</a></h2>
+<h2>Auto<a class="headerlink" href="#auto" title="Permalink to this heading">¶</a></h2>
 <p>Auto is the most common transform.
 This transform will convert from the upper and lower boundary to a range of 0 to 1 for the search algorithm.
 It will automatically switch between a linear and a log transform as needed for search performance.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 7%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -221,29 +217,22 @@ It will automatically switch between a linear and a log transform as needed for 
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;transform&quot;</span><span class="p">:</span> <span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;component&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="nt">&quot;bound&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_001/adsorption/SMA_NU&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;min&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="nt">&quot;max&quot;</span><span class="p">:</span> <span class="mi">50</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;transform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;auto&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;component&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;bound&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_001/adsorption/SMA_NU&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;min&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;max&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="auto-inverse">
-<h2>Auto Inverse<a class="headerlink" href="#auto-inverse" title="Permalink to this headline">¶</a></h2>
+<h2>Auto Inverse<a class="headerlink" href="#auto-inverse" title="Permalink to this heading">¶</a></h2>
 <p>Auto-inverse works like auto except it transforms used 1/variable.
 This transform was designed to deal with coupling of film diffusion and pore diffusion and improves optimization.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 7%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -303,32 +292,25 @@ This transform was designed to deal with coupling of film diffusion and pore dif
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;transform&quot;</span><span class="p">:</span> <span class="s2">&quot;auto_inverse&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;component&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-    <span class="nt">&quot;bound&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_001/FILM_DIFFUSION&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;min&quot;</span><span class="p">:</span> <span class="mf">1e-9</span><span class="p">,</span>
-    <span class="nt">&quot;max&quot;</span><span class="p">:</span> <span class="mf">1e-5</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;transform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;auto_inverse&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;component&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;bound&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_001/FILM_DIFFUSION&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;min&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1e-9</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;max&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1e-5</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="auto-keq">
-<h2>Auto kEQ<a class="headerlink" href="#auto-keq" title="Permalink to this headline">¶</a></h2>
+<h2>Auto kEQ<a class="headerlink" href="#auto-keq" title="Permalink to this heading">¶</a></h2>
 <p>This transforms convert from kA and kD to kA and kEQ with all the other properties of auto.
 In reality kA and kD are coupled and this allows the search algorithm to see the coupling.
 There are also some fits where kA and kD are fast enough that a system is effectively in rapid equilibrium.
 Without this transform a large number of kA and kD values will be found with equally good results.
 With this transform kEQ will have a definite value and there will be a large range of kA values which provides more understanding for the problem.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 7%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -400,34 +382,27 @@ With this transform kEQ will have a definite value and there will be a large ran
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;transform&quot;</span><span class="p">:</span> <span class="s2">&quot;auto_keq&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;component&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="nt">&quot;bound&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;/input/model/unit_001/adsorption/LIN_KA&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;/input/model/unit_001/adsorption/LIN_KD&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;minKA&quot;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span>
-    <span class="nt">&quot;maxKA&quot;</span><span class="p">:</span> <span class="mf">1e8</span><span class="p">,</span>
-    <span class="nt">&quot;minKEQ&quot;</span><span class="p">:</span> <span class="mf">1e-4</span><span class="p">,</span>
-    <span class="nt">&quot;maxKEQ&quot;</span><span class="p">:</span> <span class="mf">1e4</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;transform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;auto_keq&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;component&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;bound&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;/input/model/unit_001/adsorption/LIN_KA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;/input/model/unit_001/adsorption/LIN_KD&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;minKA&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1e-8</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;maxKA&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1e8</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;minKEQ&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1e-4</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;maxKEQ&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1e4</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="norm-add">
-<h2>Norm Add<a class="headerlink" href="#norm-add" title="Permalink to this headline">¶</a></h2>
+<h2>Norm Add<a class="headerlink" href="#norm-add" title="Permalink to this heading">¶</a></h2>
 <p>This transform allows another parameter to be read and a fixed or variable value added to it and assigned to a second variable.
 For example if you are optimizing the charge nu for SMA with a few different charge variants you may not know all the charge variants but you know they are all close together and so you can estimate one and then use norm_add for the others to require they are close.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 7%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -505,32 +480,25 @@ For example if you are optimizing the charge nu for SMA with a few different cha
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;transform&quot;</span><span class="p">:</span> <span class="s2">&quot;norm_add&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;locationFrom&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_001/COL_POROSITY&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;componentFrom&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-    <span class="nt">&quot;boundFrom&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-    <span class="nt">&quot;locationTo&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_001/PAR_POROSITY&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;componentTo&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-    <span class="nt">&quot;boundTo&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-    <span class="nt">&quot;min&quot;</span><span class="p">:</span> <span class="mf">-0.1</span><span class="p">,</span>
-    <span class="nt">&quot;max&quot;</span><span class="p">:</span> <span class="mf">0.1</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;transform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;norm_add&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;locationFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_001/COL_POROSITY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;componentFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;boundFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;locationTo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_001/PAR_POROSITY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;componentTo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;boundTo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;min&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;max&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="norm-mult">
-<h2>Norm Mult<a class="headerlink" href="#norm-mult" title="Permalink to this headline">¶</a></h2>
+<h2>Norm Mult<a class="headerlink" href="#norm-mult" title="Permalink to this heading">¶</a></h2>
 <p>This transform allows another parameter to be read and a fixed or variable value multiplied to it and assigned to a second variable.
 For instance if you are estimating the shielding factor sigma for a monomer and also need to estimate it for a dimer you can estimated sigma for the monomer normally and then specify that the dimer is approximately twice as large.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 7%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -608,33 +576,26 @@ For instance if you are estimating the shielding factor sigma for a monomer and 
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-        <span class="nt">&quot;transform&quot;</span><span class="p">:</span> <span class="s2">&quot;norm_add&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;locationFrom&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_001/COL_POROSITY&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;componentFrom&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-        <span class="nt">&quot;boundFrom&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-        <span class="nt">&quot;locationTo&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_001/PAR_POROSITY&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;componentTo&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-        <span class="nt">&quot;boundTo&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-        <span class="nt">&quot;min&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
-        <span class="nt">&quot;max&quot;</span><span class="p">:</span> <span class="mf">1.5</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;transform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;norm_add&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;locationFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_001/COL_POROSITY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;componentFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;boundFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;locationTo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_001/PAR_POROSITY&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;componentTo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;boundTo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;min&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;max&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.5</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="set-value">
-<h2>Set Value<a class="headerlink" href="#set-value" title="Permalink to this headline">¶</a></h2>
+<h2>Set Value<a class="headerlink" href="#set-value" title="Permalink to this heading">¶</a></h2>
 <p>This transform copies a value from another estimated value.
 One of the common usage cases is when estimating the axial dispersion of the tubing.
 It can be a good assumption that the axial dispersion is the same in the tubing leading to the column and the tubing leaving it so with this one of them is estimated and the value copied to the other one so fewer values need to be estimated.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 7%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -700,30 +661,23 @@ It can be a good assumption that the axial dispersion is the same in the tubing 
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-        <span class="nt">&quot;transform&quot;</span><span class="p">:</span> <span class="s2">&quot;set_value&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;locationFrom&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_000/sec_000/CONST_COEFF&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;componentFrom&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;boundFrom&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;locationTo&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_000/sec_000/CONST_COEFF&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;componentTo&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nt">&quot;boundTo&quot;</span><span class="p">:</span> <span class="mi">0</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;transform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;set_value&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;locationFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_000/sec_000/CONST_COEFF&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;componentFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;boundFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;locationTo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_000/sec_000/CONST_COEFF&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;componentTo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;boundTo&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="sum">
-<h2>Sum<a class="headerlink" href="#sum" title="Permalink to this headline">¶</a></h2>
+<h2>Sum<a class="headerlink" href="#sum" title="Permalink to this heading">¶</a></h2>
 <p>This transform reads two values and assigns it to a 3rd value.
 This was created for a situation where the volume of two CSTRs where estimated and a 3rd CSTR needed to have a volume equal to the sum of the first two.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 7%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -813,34 +767,27 @@ This was created for a situation where the volume of two CSTRs where estimated a
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-        <span class="nt">&quot;transform&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;location1&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_001/INIT_VOLUME&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;component1&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-        <span class="nt">&quot;bound1&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-        <span class="nt">&quot;location2&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_003/INIT_VOLUME&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;component2&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-        <span class="nt">&quot;bound2&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-        <span class="nt">&quot;locationSum&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_004/INIT_VOLUME&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;componentSum&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-        <span class="nt">&quot;boundSum&quot;</span><span class="p">:</span> <span class="mi">-1</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;transform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sum&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;location1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_001/INIT_VOLUME&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;component1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;bound1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;location2&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_003/INIT_VOLUME&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;component2&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;bound2&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;locationSum&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_004/INIT_VOLUME&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;componentSum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;boundSum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="norm-diameter">
-<h2>Norm Diameter<a class="headerlink" href="#norm-diameter" title="Permalink to this headline">¶</a></h2>
+<h2>Norm Diameter<a class="headerlink" href="#norm-diameter" title="Permalink to this heading">¶</a></h2>
 <p>CADET uses the cross sectional area of the column and tubing and measuring this precisely can be difficult.
 It is often much simpler to measure the diameter and provide a small search range and then allow this transform to convert that to the area.
 This assumes circular tubing and uses Area = pi*d^2/4.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 7%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -894,30 +841,23 @@ This assumes circular tubing and uses Area = pi*d^2/4.</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-        <span class="nt">&quot;transform&quot;</span><span class="p">:</span> <span class="s2">&quot;norm_diameter&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_001/CROSS_SECTION_AREA&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;min&quot;</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span>
-        <span class="nt">&quot;max&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-        <span class="nt">&quot;component&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-        <span class="nt">&quot;bound&quot;</span><span class="p">:</span> <span class="mi">-1</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;transform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;norm_diameter&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_001/CROSS_SECTION_AREA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;min&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;max&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;component&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;bound&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="norm-volume-length">
-<h2>Norm Volume Length<a class="headerlink" href="#norm-volume-length" title="Permalink to this headline">¶</a></h2>
+<h2>Norm Volume Length<a class="headerlink" href="#norm-volume-length" title="Permalink to this heading">¶</a></h2>
 <p>When estimating the size of a Disperive Plug Flow Reactor needed to model a piece of tubing it is normal to estimate the dispersion, area and length.
 This works but can be problematic to estimate and get a realistic estimate due to the degrees of freedom.
 Finding the volume of the tube and the length of the tube is much easier to do accurately and this makes it a much better transform to work with.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 7%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -989,31 +929,24 @@ Finding the volume of the tube and the length of the tube is much easier to do a
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-        <span class="nt">&quot;transform&quot;</span><span class="p">:</span> <span class="s2">&quot;norm_volume_length&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;area_location&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_001/CROSS_SECTION_AREA&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;length_location&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_001/COL_LENGTH&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;minVolume&quot;</span><span class="p">:</span> <span class="mf">1e-06</span><span class="p">,</span>
-        <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">0.0001</span><span class="p">,</span>
-        <span class="nt">&quot;minLength&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
-        <span class="nt">&quot;maxLength&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
-        <span class="nt">&quot;component&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-        <span class="nt">&quot;bound&quot;</span><span class="p">:</span> <span class="mi">-1</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;transform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;norm_volume_length&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;area_location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_001/CROSS_SECTION_AREA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;length_location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_001/COL_LENGTH&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;minVolume&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1e-06</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0001</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;minLength&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;maxLength&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;component&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;bound&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="norm-volume-area">
-<h2>Norm Volume Area<a class="headerlink" href="#norm-volume-area" title="Permalink to this headline">¶</a></h2>
+<h2>Norm Volume Area<a class="headerlink" href="#norm-volume-area" title="Permalink to this heading">¶</a></h2>
 <p>This transform works like the volume length transform except it uses volume an area and should only be used if it is easier to estimate the cross sectional area of the tubing than its length.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 7%" />
-<col style="width: 10%" />
-<col style="width: 6%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Key</p></th>
 <th class="head"><p>Values</p></th>
@@ -1085,17 +1018,17 @@ Finding the volume of the tube and the length of the tube is much easier to do a
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-        <span class="nt">&quot;transform&quot;</span><span class="p">:</span> <span class="s2">&quot;norm_volume_area&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;area_location&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_001/CROSS_SECTION_AREA&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;length_location&quot;</span><span class="p">:</span> <span class="s2">&quot;/input/model/unit_001/COL_LENGTH&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;minVolume&quot;</span><span class="p">:</span> <span class="mf">1e-06</span><span class="p">,</span>
-        <span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span> <span class="mf">0.0001</span><span class="p">,</span>
-        <span class="nt">&quot;minArea&quot;</span><span class="p">:</span> <span class="mf">1e-05</span><span class="p">,</span>
-        <span class="nt">&quot;maxArea&quot;</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span>
-        <span class="nt">&quot;component&quot;</span><span class="p">:</span> <span class="mi">-1</span><span class="p">,</span>
-        <span class="nt">&quot;bound&quot;</span><span class="p">:</span> <span class="mi">-1</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;transform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;norm_volume_area&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;area_location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_001/CROSS_SECTION_AREA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;length_location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/input/model/unit_001/COL_LENGTH&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;minVolume&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1e-06</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;maxVolume&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0001</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;minArea&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1e-05</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;maxArea&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;component&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;bound&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -1110,7 +1043,7 @@ Finding the volume of the tube and the length of the tube is much easier to do a
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2017-2021.
+      &copy;2017-2022.
       
       |
       <a href="../_sources/configuration/transform.rst.txt"

@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Lumped Rate Model Without Pores &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/unit_operations/lumped_rate_model_without_pores.html" />
     <link rel="shortcut icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -81,7 +82,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="lumped_rate_model_without_pores.html">v4.3.0</a></li>
@@ -102,18 +103,13 @@
 
 
   <section id="lumped-rate-model-without-pores">
-<span id="lumpded-rate-model-without-pores-config"></span><h1>Lumped Rate Model Without Pores<a class="headerlink" href="#lumped-rate-model-without-pores" title="Permalink to this headline">¶</a></h1>
+<span id="lumpded-rate-model-without-pores-config"></span><h1>Lumped Rate Model Without Pores<a class="headerlink" href="#lumped-rate-model-without-pores" title="Permalink to this heading">¶</a></h1>
 <section id="group-input-model-unit-xxx-unit-type-lumped-rate-model-without-pores">
-<h2>Group /input/model/unit_XXX - UNIT_TYPE = LUMPED_RATE_MODEL_WITHOUT_PORES<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-lumped-rate-model-without-pores" title="Permalink to this headline">¶</a></h2>
+<h2>Group /input/model/unit_XXX - UNIT_TYPE = LUMPED_RATE_MODEL_WITHOUT_PORES<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-lumped-rate-model-without-pores" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">UNIT_TYPE</span></code></p>
 <blockquote>
 <div><p>Specifies the type of unit operation model</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 67%" />
-<col style="width: 15%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{LUMPED_RATE_MODEL_WITHOUT_PORES}\)</span></p></td>
@@ -126,11 +122,6 @@
 <blockquote>
 <div><p>Number of chemical components in the chromatographic medium</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -143,11 +134,6 @@
 <blockquote>
 <div><p>Specifies the type of binding model</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 59%" />
-<col style="width: 18%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> See Section <a class="reference internal" href="../binding/index.html#ffadsorption"><span class="std std-ref">Binding models</span></a></p></td>
@@ -160,11 +146,6 @@
 <blockquote>
 <div><p>Specifies the type of reaction model of the combined bulk and particle volume. The model is configured in the subgroup <span class="math notranslate nohighlight">\(\texttt{reaction}\)</span>.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 58%" />
-<col style="width: 19%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> See Section <a class="reference internal" href="../reactions.html#ffreaction"><span class="std std-ref">Reaction models</span></a></p></td>
@@ -178,11 +159,6 @@
 <div><p>Initial concentrations for each component in the bulk mobile phase</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{IV}}^{-3}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 33%" />
-<col style="width: 46%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -196,11 +172,6 @@
 <div><p>Initial concentrations for each bound state of each component in the bead solid phase in component-major ordering</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{SP}}^{-3}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 31%" />
-<col style="width: 49%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -214,11 +185,6 @@
 <div><p>Full state vector for initialization (optional, <span class="math notranslate nohighlight">\(\texttt{INIT_C}\)</span> and <span class="math notranslate nohighlight">\(\texttt{INIT_Q}\)</span> will be ignored; if length is <span class="math notranslate nohighlight">\(2\texttt{NDOF}\)</span>, then the second half is used for time derivatives)</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(various\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 30%" />
-<col style="width: 53%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
@@ -232,11 +198,6 @@
 <div><p>Axial dispersion coefficient</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}_{\mathrm{IV}}^{2}\,\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 26%" />
-<col style="width: 58%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -258,11 +219,6 @@
 </ol>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 57%" />
-<col style="width: 21%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 3 \}\)</span></p></td>
@@ -277,11 +233,6 @@
 <div><p>Column length</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 43%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
@@ -294,11 +245,6 @@
 <blockquote>
 <div><p>Total porosity</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 45%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\([0,1]\)</span></p></td>
@@ -312,11 +258,6 @@
 <div><p>Interstitial velocity of the mobile phase (optional if <span class="math notranslate nohighlight">\(\texttt{CROSS_SECTION_AREA}\)</span> is present, see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>)</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\,\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 35%" />
-<col style="width: 46%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
@@ -330,11 +271,6 @@
 <div><p>Cross section area of the column (optional if <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is present, see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>)</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}^{2}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 42%" />
-<col style="width: 26%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt;0\)</span></p></td>
@@ -345,16 +281,11 @@
 </div></blockquote>
 </section>
 <section id="group-input-model-unit-xxx-discretization-unit-type-lumped-rate-model-without-pores">
-<h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE = LUMPED_RATE_MODEL_WITHOUT_PORES<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-lumped-rate-model-without-pores" title="Permalink to this headline">¶</a></h2>
+<h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE = LUMPED_RATE_MODEL_WITHOUT_PORES<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-lumped-rate-model-without-pores" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NCOL</span></code></p>
 <blockquote>
 <div><p>Number of axial column discretization cells</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -367,11 +298,6 @@
 <blockquote>
 <div><p>Number of bound states for each component</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 35%" />
-<col style="width: 47%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -384,11 +310,6 @@
 <blockquote>
 <div><p>Determines whether analytically computed Jacobian matrix (faster) is used (value is 1) instead of Jacobians generated by algorithmic differentiation (slower, value is 0)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 51%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
@@ -401,11 +322,6 @@
 <blockquote>
 <div><p>Type of reconstruction method for fluxes</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 26%" />
-<col style="width: 52%" />
-<col style="width: 21%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{WENO}\)</span></p></td>
@@ -426,7 +342,7 @@
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../../_sources/interface/unit_operations/lumped_rate_model_without_pores.rst.txt"

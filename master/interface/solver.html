@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Solver Configuration &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/solver.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -81,7 +82,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="../../v4.3.0/interface/solver.html">v4.3.0</a></li>
@@ -111,18 +112,13 @@
 
 
   <section id="solver-configuration">
-<span id="solver"></span><h1>Solver Configuration<a class="headerlink" href="#solver-configuration" title="Permalink to this headline">¶</a></h1>
+<span id="solver"></span><h1>Solver Configuration<a class="headerlink" href="#solver-configuration" title="Permalink to this heading">¶</a></h1>
 <section id="group-input-solver">
-<h2>Group /input/solver<a class="headerlink" href="#group-input-solver" title="Permalink to this headline">¶</a></h2>
+<h2>Group /input/solver<a class="headerlink" href="#group-input-solver" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NTHREADS</span></code></p>
 <blockquote>
 <div><p>Number of used threads</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -136,11 +132,6 @@
 <div><p>Vector with timepoints at which the solution is evaluated</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 26%" />
-<col style="width: 40%" />
-<col style="width: 34%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -166,11 +157,6 @@
 </ol>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 57%" />
-<col style="width: 21%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{ 0, \dots, 7\}\)</span></p></td>
@@ -197,11 +183,6 @@
 </ol>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 57%" />
-<col style="width: 21%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{ 0, \dots, 7\}\)</span></p></td>
@@ -213,16 +194,11 @@
 </div></blockquote>
 </section>
 <section id="group-solver-time-integrator">
-<span id="ffsolvertime"></span><h2>Group /solver/time_integrator<a class="headerlink" href="#group-solver-time-integrator" title="Permalink to this headline">¶</a></h2>
+<span id="ffsolvertime"></span><h2>Group /solver/time_integrator<a class="headerlink" href="#group-solver-time-integrator" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">ABSTOL</span></code></p>
 <blockquote>
 <div><p>Absolute tolerance in the solution of the original system</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 43%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
@@ -235,11 +211,6 @@
 <blockquote>
 <div><p>Relative tolerance in the solution of the original system</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 46%" />
-<col style="width: 24%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -252,11 +223,6 @@
 <blockquote>
 <div><p>Tolerance in the solution of the nonlinear consistency equations</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 43%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
@@ -269,11 +235,6 @@
 <blockquote>
 <div><p>Relative tolerance in the solution of the sensitivity systems</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 46%" />
-<col style="width: 24%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -287,11 +248,6 @@
 <div><p>Initial time integrator step size for each section or one value for all sections (0.0: IDAS default value), see IDAS guide 4.5, p.36f.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 32%" />
-<col style="width: 47%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -304,11 +260,6 @@
 <blockquote>
 <div><p>Maximum number of timesteps taken by IDAS (0: IDAS default = 500), see IDAS guide Sec.~4.5</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -322,11 +273,6 @@
 <div><p>Maximum size of timesteps taken by IDAS (optional, defaults to unlimited 0.0), see IDAS guide Sec.~4.5</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 30%" />
-<col style="width: 46%" />
-<col style="width: 24%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -339,11 +285,6 @@
 <blockquote>
 <div><p>Determines whether (forward) sensitivities take part in local error test (optional, defaults to 1)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 50%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -356,11 +297,6 @@
 <blockquote>
 <div><p>Maximum number of Newton iterations in time step (optional, defaults to 3)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -373,11 +309,6 @@
 <blockquote>
 <div><p>Maximum number of local error test failures in time step (optional, defaults to 7)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -390,11 +321,6 @@
 <blockquote>
 <div><p>Maximum number of Newton convergence test failures (optional, defaults to 10)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -407,11 +333,6 @@
 <blockquote>
 <div><p>Maximum number of Newton iterations in forward sensitivity time step (optional, defaults to 3)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -422,16 +343,11 @@
 </div></blockquote>
 </section>
 <section id="group-solver-sections">
-<span id="ffsolversections"></span><h2>Group /solver/sections<a class="headerlink" href="#group-solver-sections" title="Permalink to this headline">¶</a></h2>
+<span id="ffsolversections"></span><h2>Group /solver/sections<a class="headerlink" href="#group-solver-sections" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NSEC</span></code></p>
 <blockquote>
 <div><p>Number of sections</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 49%" />
-<col style="width: 25%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -445,11 +361,6 @@
 <div><p>Simulation times at which the model changes or behaves discontinously; including start and end times</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 33%" />
-<col style="width: 46%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -462,11 +373,6 @@
 <blockquote>
 <div><p>Continuity indicator for each section transition: 0 (discontinuous) or 1 (continuous).</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 35%" />
-<col style="width: 47%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -487,7 +393,7 @@
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../_sources/interface/solver.rst.txt"

@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>General rate model (GRM) &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/modelling/unit_operations/general_rate_model.html" />
     <link rel="shortcut icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -79,7 +80,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="../../../v4.3.0/modelling/unit_operations/general_rate_model.html">v4.3.0</a></li>
@@ -109,7 +110,7 @@
 
 
   <section id="general-rate-model-grm">
-<span id="general-rate-model-model"></span><h1>General rate model (GRM)<a class="headerlink" href="#general-rate-model-grm" title="Permalink to this headline">¶</a></h1>
+<span id="general-rate-model-model"></span><h1>General rate model (GRM)<a class="headerlink" href="#general-rate-model-grm" title="Permalink to this heading">¶</a></h1>
 <p>The general rate model is the most comprehensive model of mass transfer in column liquid chromatography, when only the axial coordinate in the column and the radial coordinate in the beads are considered <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id27" title="Eugene Kučera. Contribution to the theory of chromatography. Journal of Chromatography, 19:237–248, January 1965. URL: http://linkinghub.elsevier.com/retrieve/pii/S0021967301994579, doi:10.1016/S0021-9673(01)99457-9.">1</a>, <a class="reference internal" href="../../zbibliography.html#id5" title="Tingyue Gu. Mathematical Modeling and Scale-up of Liquid Chromatography. Springer Berlin Heidelberg, Berlin, Heidelberg, 1995. ISBN 978-3-642-79543-5. URL: http://link.springer.com/10.1007/978-3-642-79541-1, doi:10.1007/978-3-642-79541-1.">2</a>, <a class="reference internal" href="../../zbibliography.html#id6" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, Amsterdam, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>, <a class="reference internal" href="../../zbibliography.html#id8" title="A. Felinger and G. Guiochon. Comparison of the Kinetic Models of Linear Chromatography. Chromatographia, 60(S1):175–180, May 2004. URL: http://springerlink.metapress.com/openurl.asp?genre=article{\&amp;}id=doi:10.1365/s10337-004-0288-7, doi:10.1365/s10337-004-0288-7.">4</a>]</span>.</p>
 <p>The main assumptions are:</p>
 <ul class="simple">
@@ -118,12 +119,12 @@ Thus, only one spatial coordinate in axial direction is needed and radial transp
 <li><p>The bead radii <span class="math notranslate nohighlight">\(r_{p}\)</span> are much smaller than the column radius <span class="math notranslate nohighlight">\(r_c\)</span> and the column length <span class="math notranslate nohighlight">\(L\)</span>.
 Therefore, the beads can be seen as continuously distributed inside the column (i.e., at each point there is interstitial and bead volume).</p></li>
 </ul>
-<span id="table-features"></span><table class="colwidths-given docutils align-default" id="id5">
+<span id="table-features"></span><table class="docutils align-default" id="id5">
 <caption><span class="caption-number">Table 2 </span><span class="caption-text">Variables and unknowns</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 20%" />
-<col style="width: 30%" />
-<col style="width: 50%" />
+<col style="width: 20.0%" />
+<col style="width: 30.0%" />
+<col style="width: 50.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Variable</p></th>
@@ -254,7 +255,7 @@ Reaction terms in liquid and solid phase are collected in <span class="math notr
 </figure>
 <p>See Table <a class="reference internal" href="../../interface/unit_operations/general_rate_model.html#general-rate-model-config"><span class="std std-ref">General Rate Model</span></a>.</p>
 <section id="particle-geometry">
-<span id="muopgrmparticlegeometry"></span><h2>Particle Geometry<a class="headerlink" href="#particle-geometry" title="Permalink to this headline">¶</a></h2>
+<span id="muopgrmparticlegeometry"></span><h2>Particle Geometry<a class="headerlink" href="#particle-geometry" title="Permalink to this heading">¶</a></h2>
 <p>In the model above, spherical particles are considered.
 Other supported particle forms are cylinders and slabs.
 For cylinders, it is assumed that molecules can only enter through the lateral surface (i.e., the caps are sealed).
@@ -280,7 +281,7 @@ See <a class="reference internal" href="#modelgrmparticlegeometries"><span class
 \end{aligned}\]</div>
 </section>
 <section id="multiple-particle-types">
-<span id="muopgrmmultiparticletypes"></span><h2>Multiple particle types<a class="headerlink" href="#multiple-particle-types" title="Permalink to this headline">¶</a></h2>
+<span id="muopgrmmultiparticletypes"></span><h2>Multiple particle types<a class="headerlink" href="#multiple-particle-types" title="Permalink to this heading">¶</a></h2>
 <p>A particle type has its own set of mass transfer parameters <span class="math notranslate nohighlight">\(\varepsilon_{p,j}\)</span>, <span class="math notranslate nohighlight">\(D_{p,j}\)</span>, <span class="math notranslate nohighlight">\(D_{s,j}\)</span>, etc (see Eq. <a class="reference internal" href="#equation-modelbead">4</a>) and its own binding model <span class="math notranslate nohighlight">\(f_{\mathrm{ads}}\)</span> (including a possibly differing number of bound states).
 This allows, for example, modeling of particle size distributions or potential applications with differently functionalized beads (e.g., immobilized enzymes).</p>
 <p>The distribution of the particle types is governed by their volume fractions <span class="math notranslate nohighlight">\(d_j\)</span> in Eq.
@@ -294,7 +295,7 @@ In the latter case, the user can specify a set of volume fractions for each disc
 This allows, for example, the placement of smaller particles near the frits.</p>
 </section>
 <section id="size-exclusion-chromatography">
-<span id="muopgrmsizeexclusion"></span><h2>Size exclusion chromatography<a class="headerlink" href="#size-exclusion-chromatography" title="Permalink to this headline">¶</a></h2>
+<span id="muopgrmsizeexclusion"></span><h2>Size exclusion chromatography<a class="headerlink" href="#size-exclusion-chromatography" title="Permalink to this heading">¶</a></h2>
 <p>The general rate model can be used to simulate size exclusion chromatography (SEC) <span id="id4">[<a class="reference internal" href="../../zbibliography.html#id5" title="Tingyue Gu. Mathematical Modeling and Scale-up of Liquid Chromatography. Springer Berlin Heidelberg, Berlin, Heidelberg, 1995. ISBN 978-3-642-79543-5. URL: http://link.springer.com/10.1007/978-3-642-79541-1, doi:10.1007/978-3-642-79541-1.">2</a>]</span>.
 The particle porosity <span class="math notranslate nohighlight">\(\varepsilon_{p,j}\)</span> on the mobile phase side of the transport equations is replaced by a component-dependent accessible porosity</p>
 <div class="math notranslate nohighlight">
@@ -313,7 +314,7 @@ In order to simulate pure SEC, binding is disabled by setting <span class="math 
 <p>Note that multiple particle types can also be used to aid in modeling size exclusion effects, see Section <a class="reference internal" href="#muopgrmmultiparticletypes"><span class="std std-ref">Multiple particle types</span></a>.</p>
 </section>
 <section id="specification-of-flow-rate-velocity-and-direction">
-<span id="muopgrmflow"></span><h2>Specification of flow rate / velocity and direction<a class="headerlink" href="#specification-of-flow-rate-velocity-and-direction" title="Permalink to this headline">¶</a></h2>
+<span id="muopgrmflow"></span><h2>Specification of flow rate / velocity and direction<a class="headerlink" href="#specification-of-flow-rate-velocity-and-direction" title="Permalink to this heading">¶</a></h2>
 <p>Since volumetric flow rates are specified for each network connection, the unit operation can infer its interstitial velocity via</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
@@ -343,7 +344,7 @@ Note that in case of reversed flow, the chromatogram is returned at the unit ope
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../../_sources/modelling/unit_operations/general_rate_model.rst.txt"

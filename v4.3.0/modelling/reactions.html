@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Reaction models &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/modelling/reactions.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -75,7 +76,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="reactions.html">v4.3.0</a></li>
@@ -96,11 +97,11 @@
 
 
   <section id="reaction-models">
-<span id="id1"></span><h1>Reaction models<a class="headerlink" href="#reaction-models" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Reaction models<a class="headerlink" href="#reaction-models" title="Permalink to this heading">¶</a></h1>
 <p>Reaction models describe the (net) fluxes <span class="math notranslate nohighlight">\(f_{\mathrm{react}}\)</span> of a
 reaction mechanism. The most common mechanism is the mass action law.</p>
 <section id="mass-action-law">
-<span id="mrmassactionlaw"></span><h2>Mass action law<a class="headerlink" href="#mass-action-law" title="Permalink to this headline">¶</a></h2>
+<span id="mrmassactionlaw"></span><h2>Mass action law<a class="headerlink" href="#mass-action-law" title="Permalink to this heading">¶</a></h2>
 <p>The mass action law reaction model is suitable for most reactions.
 Note that the concentrations are directly used for calculating the fluxes.
 Hence, the model only holds for dilute solutions under the assumption of a well-stirred reaction vessel.
@@ -149,7 +150,7 @@ The corresponding exponent matrices <span class="math notranslate nohighlight">\
 <p>Whereas the exponent matrices <span class="math notranslate nohighlight">\(E^{s}_{\mathrm{fwd}}, E^{s}_{\mathrm{bwd}} \in \mathbb{R}^{(\sum_i N_{\mathrm{bnd},i}) \times N_{\mathrm{react}}}\)</span> are initialized based on the stoichiometric matrix <span class="math notranslate nohighlight">\(S^{s} \in \mathbb{R}^{(\sum_i N_{\mathrm{bnd},i}) \times N_{\mathrm{react}}}\)</span>, see Eq. <a class="reference internal" href="#equation-mrmassactionlawexpmatdefault">16</a>, the exponent matrices <span class="math notranslate nohighlight">\(E^{sp}_{\mathrm{fwd}}, E^{sp}_{\mathrm{bwd}}\)</span> of the modifier terms default to <span class="math notranslate nohighlight">\(0\)</span>.</p>
 </section>
 <section id="correlation-of-forward-and-backward-rate-constants">
-<h2>Correlation of forward- and backward rate constants<a class="headerlink" href="#correlation-of-forward-and-backward-rate-constants" title="Permalink to this headline">¶</a></h2>
+<h2>Correlation of forward- and backward rate constants<a class="headerlink" href="#correlation-of-forward-and-backward-rate-constants" title="Permalink to this heading">¶</a></h2>
 <p>Note that forward rate constant <span class="math notranslate nohighlight">\(k_{\mathrm{fwd},i}\)</span> and backward
 rate constant <span class="math notranslate nohighlight">\(k_{\mathrm{bwd},i}\)</span> of reaction <span class="math notranslate nohighlight">\(i\)</span> are
 linearly correlated due to the form of the equilibrium constant
@@ -174,7 +175,7 @@ The parameters can be decoupled by reparameterization:</p>
 \end{aligned}\end{split}\]</div>
 </section>
 <section id="dependence-on-external-function">
-<span id="dependence-on-external-function-react"></span><h2>Dependence on external function<a class="headerlink" href="#dependence-on-external-function" title="Permalink to this headline">¶</a></h2>
+<span id="dependence-on-external-function-react"></span><h2>Dependence on external function<a class="headerlink" href="#dependence-on-external-function" title="Permalink to this heading">¶</a></h2>
 <p>A reaction model may depend on an external function or profile <span class="math notranslate nohighlight">\(T\colon \left[ 0, T_{\mathrm{end}}\right] \times [0, L] \to \mathbb{R}\)</span>, where <span class="math notranslate nohighlight">\(L\)</span> denotes the physical length of the unit operation, or <span class="math notranslate nohighlight">\(T\colon \left[0, T_{\mathrm{end}}\right] \to \mathbb{R}\)</span> if the unit operation model has no axial length.
 By using an external profile, it is possible to account for effects that are not directly modeled in CADET (e.g., temperature).
 The dependence of each parameter is modeled by a polynomial of third degree.
@@ -204,7 +205,7 @@ The ordering of the parameters in <code class="docutils literal notranslate"><sp
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../_sources/modelling/reactions.rst.txt"

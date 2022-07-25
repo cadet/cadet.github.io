@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Return data &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
@@ -12,8 +12,9 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/return_data.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -81,7 +82,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
   <li><a href="../../v4.3.0/interface/return_data.html">v4.3.0</a></li>
@@ -111,17 +112,13 @@
 
 
   <section id="return-data">
-<span id="return"></span><h1>Return data<a class="headerlink" href="#return-data" title="Permalink to this headline">¶</a></h1>
+<span id="return"></span><h1>Return data<a class="headerlink" href="#return-data" title="Permalink to this heading">¶</a></h1>
 <section id="group-input-return">
-<h2>Group /input/return<a class="headerlink" href="#group-input-return" title="Permalink to this headline">¶</a></h2>
+<h2>Group /input/return<a class="headerlink" href="#group-input-return" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">WRITE_SOLUTION_TIMES</span></code></p>
 <blockquote>
 <div><p>Write times at which a solution was produced (optional, defaults to 1)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -133,10 +130,6 @@
 <blockquote>
 <div><p>Write full solution state vector at last time point (optional, defaults to 0)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -148,10 +141,6 @@
 <blockquote>
 <div><p>Write full sensitivity state vectors at last time point (optional, defaults to 0)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -163,10 +152,6 @@
 <blockquote>
 <div><p>Determines whether a joint dataset (matrix or tensor) for all components is created or if each component is put in a separate dataset (<span class="math notranslate nohighlight">\(\texttt{XXX_COMP_000}\)</span>, <span class="math notranslate nohighlight">\(\texttt{XXX_COMP_001}\)</span>, etc.) (optional, defaults to 1)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -178,10 +163,6 @@
 <blockquote>
 <div><p>Determines whether a joint dataset (matrix or tensor) for all inlet/outlet ports is created or if each port is put in a separate dataset (<span class="math notranslate nohighlight">\(\texttt{XXX_PORT_000}\)</span>, <span class="math notranslate nohighlight">\(\texttt{XXX_PORT_001}\)</span>, etc.) (optional, defaults to 1)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -193,10 +174,6 @@
 <blockquote>
 <div><p>Determines whether single port unit operations are treated as multi port unit operations in the output naming scheme (i.e., <span class="math notranslate nohighlight">\(\texttt{_PORT_XYZ_}\)</span> is added to the name) (optional, defaults to 0)</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -206,15 +183,11 @@
 </div></blockquote>
 </section>
 <section id="group-input-return-unit-xxx">
-<h2>Group /input/return/unit_XXX<a class="headerlink" href="#group-input-return-unit-xxx" title="Permalink to this headline">¶</a></h2>
+<h2>Group /input/return/unit_XXX<a class="headerlink" href="#group-input-return-unit-xxx" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">WRITE_COORDINATES</span></code></p>
 <blockquote>
 <div><p>Write coordinates of discretization nodes</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -226,10 +199,6 @@
 <blockquote>
 <div><p>Write solutions at unit operation inlet <span class="math notranslate nohighlight">\(c^l_i(t,0)\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -241,10 +210,6 @@
 <blockquote>
 <div><p>Write solutions at unit operation outlet (chromatograms) <span class="math notranslate nohighlight">\(c^l_i(t,L)\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -256,10 +221,6 @@
 <blockquote>
 <div><p>Write solutions of the bulk volume <span class="math notranslate nohighlight">\(c^l_i\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -271,10 +232,6 @@
 <blockquote>
 <div><p>Write solutions of the particle mobile phase <span class="math notranslate nohighlight">\(c^p_{j,i}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -286,10 +243,6 @@
 <blockquote>
 <div><p>Write solutions of the solid phase <span class="math notranslate nohighlight">\(c^s_{j,i,m_{j,i}}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -301,10 +254,6 @@
 <blockquote>
 <div><p>Write solutions of the bead fluxes <span class="math notranslate nohighlight">\(j_{f,i}\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -316,10 +265,6 @@
 <blockquote>
 <div><p>Write solutions of the volume V</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -331,10 +276,6 @@
 <blockquote>
 <div><p>Write solution time derivatives at unit operation inlet <span class="math notranslate nohighlight">\(\partial c^l_i(t,0) / \partial t\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -346,10 +287,6 @@
 <blockquote>
 <div><p>Write solution time derivatives at unit operation outlet (chromatograms) <span class="math notranslate nohighlight">\(\partial c^l_i(t,L) / \partial t\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -361,10 +298,6 @@
 <blockquote>
 <div><p>Write solution time derivatives of the bulk volume <span class="math notranslate nohighlight">\(\partial c^l_i / \partial t\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -376,10 +309,6 @@
 <blockquote>
 <div><p>Write solution time derivatives of the particle mobile phase <span class="math notranslate nohighlight">\(\partial c^p_{j,i} / \partial t\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -391,10 +320,6 @@
 <blockquote>
 <div><p>Write solution time derivatives of the solid phase <span class="math notranslate nohighlight">\(\partial c^s_{j,i,m_{j,i}} / \partial t\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -406,10 +331,6 @@
 <blockquote>
 <div><p>Write solution time derivatives of the bead fluxes <span class="math notranslate nohighlight">\(\partial j_{f,i} / \partial t\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -421,10 +342,6 @@
 <blockquote>
 <div><p>Write solution time derivatives of the volume <span class="math notranslate nohighlight">\(\partial V / \partial t\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -436,10 +353,6 @@
 <blockquote>
 <div><p>Write sensitivities at unit operation inlet <span class="math notranslate nohighlight">\(\partial c^l_i(t,0) / \partial p\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -451,10 +364,6 @@
 <blockquote>
 <div><p>Write sensitivities at unit operation outlet (chromatograms) <span class="math notranslate nohighlight">\(\partial c^l_i(t,L) / \partial p\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -466,10 +375,6 @@
 <blockquote>
 <div><p>Write sensitivities of the bulk volume <span class="math notranslate nohighlight">\(\partial c^l_i / \partial p\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -481,10 +386,6 @@
 <blockquote>
 <div><p>Write sensitivities of the particle mobile phase <span class="math notranslate nohighlight">\(\partial c^p_{j,i} / \partial p\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -496,10 +397,6 @@
 <blockquote>
 <div><p>Write sensitivities of the solid phase <span class="math notranslate nohighlight">\(\partial c^s_{j,i,m_{j,i}} / \partial p\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -511,10 +408,6 @@
 <blockquote>
 <div><p>Write sensitivities of the bead fluxes <span class="math notranslate nohighlight">\(\partial j_{f,i} / \partial p\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -526,10 +419,6 @@
 <blockquote>
 <div><p>Write sensitivities of the volume <span class="math notranslate nohighlight">\(\partial V / \partial p\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -541,10 +430,6 @@
 <blockquote>
 <div><p>Write sensitivity time derivatives at unit operation inlet <span class="math notranslate nohighlight">\(\partial^2 c^l_i(t,0) / (\partial p, \partial t)\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -556,10 +441,6 @@
 <blockquote>
 <div><p>Write sensitivity time derivatives at unit operation outlet (chromatograms) <span class="math notranslate nohighlight">\(\partial^2 c^l_i(t,L) / (\partial p, \partial t)\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -571,10 +452,6 @@
 <blockquote>
 <div><p>Write sensitivity time derivatives of the bulk volume <span class="math notranslate nohighlight">\(\partial^2 c^l_i / (\partial p, \partial t)\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -586,10 +463,6 @@
 <blockquote>
 <div><p>Write sensitivity time derivatives of the particle mobile phase <span class="math notranslate nohighlight">\(\partial^2 c^p_{j,i} / (\partial p, \partial t)\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -601,10 +474,6 @@
 <blockquote>
 <div><p>Write sensitivity time derivatives of the solid phase <span class="math notranslate nohighlight">\(\partial^2 c^s_{j,i,m_{j,i}} / (\partial p, \partial t)\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -616,10 +485,6 @@
 <blockquote>
 <div><p>Write sensitivity time derivatives of the bead fluxes <span class="math notranslate nohighlight">\(\partial^2 j_{f,i} / (\partial p, \partial t)\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -631,10 +496,6 @@
 <blockquote>
 <div><p>Write sensitivity time derivatives of the volume <span class="math notranslate nohighlight">\(\partial^2 V / (\partial p, \partial t)\)</span></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -646,10 +507,6 @@
 <blockquote>
 <div><p>Write solution state vector of this unit at last time point</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 67%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -669,7 +526,7 @@
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2021.
+      &copy;2008-2022.
       
       |
       <a href="../_sources/interface/return_data.rst.txt"

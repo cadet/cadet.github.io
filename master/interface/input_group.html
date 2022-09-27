@@ -14,6 +14,7 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/input_group.html" />
     <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -52,10 +53,10 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Input Group</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="system.html">System of unit operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/index.html">Unit Operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="flux_reconstruction.html">Flux reconstruction methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="binding/index.html">Binding models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="reactions.html">Reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flux_reconstruction.html">Flux reconstruction methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="return_data.html">Return data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sensitivities.html">Parameter Sensitivities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="solver.html">Solver Configuration</a></li>
@@ -124,22 +125,15 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="unit_operations/index.html">Unit Operations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="unit_operations/2d_general_rate_model.html">Two dimensional general rate model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="unit_operations/2d_general_rate_model.html#group-input-model-unit-xxx-discretization-unit-type-general-rate-model-2d">Group /input/model/unit_XXX/discretization - UNIT_TYPE - GENERAL_RATE_MODEL_2D</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="unit_operations/cstr.html">Continuous stirred tank reactor model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="unit_operations/cstr.html#group-input-model-unit-xxx-unit-type-cstr">Group /input/model/unit_XXX - UNIT_TYPE = CSTR</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="unit_operations/general_rate_model.html">General Rate Model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="unit_operations/general_rate_model.html#group-input-model-unit-xxx-unit-type-general-rate-model">Group /input/model/unit_XXX - UNIT_TYPE - GENERAL_RATE_MODEL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="unit_operations/general_rate_model.html#group-input-model-unit-xxx-discretization-unit-type-general-rate-model">Group /input/model/unit_XXX/discretization - UNIT_TYPE - GENERAL_RATE_MODEL</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="unit_operations/inlet.html">Inlet</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/inlet.html#group-input-model-unit-xxx-unit-type-inlet">Group /input/model/unit_XXX - UNIT-TYPE = INLET</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/inlet.html#group-input-model-unit-xxx-sec-xxx">Group /input/model/unit_XXX/sec_XXX</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="unit_operations/outlet.html">Outlet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit_operations/general_rate_model.html">General Rate Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="unit_operations/general_rate_model.html#group-input-model-unit-xxx-unit-type-general-rate-model">Group /input/model/unit_XXX - UNIT_TYPE - GENERAL_RATE_MODEL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit_operations/general_rate_model.html#group-input-model-unit-xxx-discretization-unit-type-general-rate-model">Group /input/model/unit_XXX/discretization - UNIT_TYPE - GENERAL_RATE_MODEL</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="unit_operations/lumped_rate_model_with_pores.html">Lumped rate model with pores</a><ul>
@@ -152,36 +146,35 @@
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/lumped_rate_model_without_pores.html#group-input-model-unit-xxx-discretization-unit-type-lumped-rate-model-without-pores">Group /input/model/unit_XXX/discretization - UNIT_TYPE = LUMPED_RATE_MODEL_WITHOUT_PORES</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="unit_operations/outlet.html">Outlet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit_operations/2d_general_rate_model.html">Two dimensional general rate model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="unit_operations/2d_general_rate_model.html#group-input-model-unit-xxx-discretization-unit-type-general-rate-model-2d">Group /input/model/unit_XXX/discretization - UNIT_TYPE - GENERAL_RATE_MODEL_2D</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="flux_reconstruction.html">Flux reconstruction methods</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="flux_reconstruction.html#group-input-model-unit-xxx-discretization-weno-weno-parameters">Group /input/model/unit_XXX/discretization/weno - WENO Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unit_operations/cstr.html">Continuous stirred tank reactor model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="unit_operations/cstr.html#group-input-model-unit-xxx-unit-type-cstr">Group /input/model/unit_XXX - UNIT_TYPE = CSTR</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="consistent_initialization.html">Nonlinear solver for consistent initialization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="consistent_initialization.html#group-input-model-unit-xxx-discretization-consistency-solver-nonlinear-consistency-solver-paramters">Group /input/model/unit_XXX/discretization/consistency_solver - Nonlinear consistency solver paramters</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="binding/index.html">Binding models</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="binding/index.html#externally-dependent-binding-models">Externally dependent binding models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="binding/index.html#non-binding-components">Non-binding components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="binding/index.html#multiple-particle-types">Multiple particle types</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="binding/bi_steric_mass_action.html">Bi Steric Mass Action</a></li>
-<li class="toctree-l3"><a class="reference internal" href="binding/extended_mobile_phase_modulator_langmuir.html">Extended Mobile Phase Modulator Langmuir</a></li>
-<li class="toctree-l3"><a class="reference internal" href="binding/generalized_ion_exchange.html">Generalized Ion Exchange</a></li>
-<li class="toctree-l3"><a class="reference internal" href="binding/kumar_langmuir.html">Kumar-Langmuir</a></li>
 <li class="toctree-l3"><a class="reference internal" href="binding/linear.html">Linear</a></li>
-<li class="toctree-l3"><a class="reference internal" href="binding/mobile_phase_modulator_langmuir.html">Mobile Phase Modulator Langmuir</a></li>
-<li class="toctree-l3"><a class="reference internal" href="binding/multi_component_anti_langmuir.html">Multi Component Anti-Langmuir</a></li>
-<li class="toctree-l3"><a class="reference internal" href="binding/multi_component_bi_langmuir.html">Multi Component Bi-Langmuir</a></li>
 <li class="toctree-l3"><a class="reference internal" href="binding/multi_component_langmuir.html">Multi Component Langmuir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binding/multi_component_bi_langmuir.html">Multi Component Bi-Langmuir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binding/multi_component_anti_langmuir.html">Multi Component Anti-Langmuir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binding/mobile_phase_modulator_langmuir.html">Mobile Phase Modulator Langmuir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binding/extended_mobile_phase_modulator_langmuir.html">Extended Mobile Phase Modulator Langmuir</a></li>
 <li class="toctree-l3"><a class="reference internal" href="binding/multi_component_spreading.html">Multi Component Spreading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binding/steric_mass_action.html">Steric Mass Action</a></li>
 <li class="toctree-l3"><a class="reference internal" href="binding/multi_state_steric_mass_action.html">Multi-State Steric Mass Action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binding/simplified_multi_state_steric_mass_action.html">Simplified Multi-State Steric Mass Action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binding/bi_steric_mass_action.html">Bi Steric Mass Action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binding/generalized_ion_exchange.html">Generalized Ion Exchange</a></li>
 <li class="toctree-l3"><a class="reference internal" href="binding/saska.html">Saska</a></li>
 <li class="toctree-l3"><a class="reference internal" href="binding/self_association.html">Self Association</a></li>
-<li class="toctree-l3"><a class="reference internal" href="binding/simplified_multi_state_steric_mass_action.html">Simplified Multi-State Steric Mass Action</a></li>
-<li class="toctree-l3"><a class="reference internal" href="binding/steric_mass_action.html">Steric Mass Action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binding/kumar_langmuir.html">Kumar-Langmuir</a></li>
 </ul>
 </li>
 </ul>
@@ -190,6 +183,14 @@
 <li class="toctree-l2"><a class="reference internal" href="reactions.html#externally-dependent-reaction-models">Externally dependent reaction models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reactions.html#multiple-particle-types">Multiple particle types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reactions.html#group-input-model-unit-xxx-reaction-reaction-model-mass-action-law">Group /input/model/unit_XXX/reaction - REACTION_MODEL = MASS_ACTION_LAW</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="flux_reconstruction.html">Flux reconstruction methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="flux_reconstruction.html#group-input-model-unit-xxx-discretization-weno-weno-parameters">Group /input/model/unit_XXX/discretization/weno - WENO Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="consistent_initialization.html">Nonlinear solver for consistent initialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="consistent_initialization.html#group-input-model-unit-xxx-discretization-consistency-solver-nonlinear-consistency-solver-paramters">Group /input/model/unit_XXX/discretization/consistency_solver - Nonlinear consistency solver paramters</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="return_data.html">Return data</a><ul>

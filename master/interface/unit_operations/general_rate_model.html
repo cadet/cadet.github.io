@@ -14,13 +14,14 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/unit_operations/general_rate_model.html" />
     <link rel="shortcut icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Inlet" href="inlet.html" />
-    <link rel="prev" title="Continuous stirred tank reactor model" href="cstr.html" />
+    <link rel="next" title="Lumped rate model with pores" href="lumped_rate_model_with_pores.html" />
+    <link rel="prev" title="Outlet" href="outlet.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -53,10 +54,10 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../input_group.html">Input Group</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../system.html">System of unit operations</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">Unit Operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../flux_reconstruction.html">Flux reconstruction methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reactions.html">Reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flux_reconstruction.html">Flux reconstruction methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../return_data.html">Return data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sensitivities.html">Parameter Sensitivities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../solver.html">Solver Configuration</a></li>
@@ -390,13 +391,11 @@ Note: Should not be used in combination with any binding model!</p>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">PORE_ACCESSIBILITY_MULTIPLEX</span></code></p>
 <blockquote>
-<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is treated as component-, type-, and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span>.  Valid modes are:</p>
-<ol class="arabic simple" start="0">
-<li><p>Component-dependent, type-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span></p></li>
-<li><p>Component-dependent, type-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
-<li><p>Component-dependent, type-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPARTYPE}\)</span>; ordering is type-major</p></li>
-<li><p>Component-dependent, type-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPARTYPE} \cdot \texttt{NSEC}\)</span>; ordering is section-type-major</p></li>
-</ol>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is treated as component-, type-, and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span>. Valid modes are:
+0. Component-dependent, type-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span>
+1. Component-dependent, type-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major
+2. Component-dependent, type-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPARTYPE}\)</span>; ordering is type-major
+3. Component-dependent, type-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPARTYPE} \cdot \texttt{NSEC}\)</span>; ordering is section-type-major</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -421,7 +420,7 @@ Note: Should not be used in combination with any binding model!</p>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">PAR_DIFFUSION_MULTIPLEX</span></code></p>
 <blockquote>
-<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION}\)</span> is treated as component-, type-, and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION}\)</span>.  Valid modes are:</p>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION}\)</span> is treated as component-, type-, and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION}\)</span>. Valid modes are:</p>
 <ol class="arabic simple" start="0">
 <li><p>Component-dependent, type-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span></p></li>
 <li><p>Component-dependent, type-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
@@ -440,10 +439,8 @@ Note: Should not be used in combination with any binding model!</p>
 <p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION</span></code></p>
 <blockquote>
 <div><p>Particle surface diffusion coefficients of each bound state of each component in each particle type (optional, defaults to all 0 <span class="math notranslate nohighlight">\(\mathrm{m}_{\mathrm{SP}}^{2}\,\mathrm{s}^{-1}\)</span>)</p>
-</div></blockquote>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}_{\mathrm{SP}}^{2}\,\mathrm{s}^{-1}\)</span></p>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -452,27 +449,212 @@ Note: Should not be used in combination with any binding model!</p>
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_MULTIPLEX</span></code></p>
-<blockquote>
-<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> is treated as component-, type-, and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span>.  Valid modes are:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_MULTIPLEX</span></code></dt><dd><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> is treated as component-, type-, and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span>. Valid modes are:</p>
 <ol class="arabic simple" start="0">
 <li><p>Component-dependent, type-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NBND}\)</span>; ordering is component-major</p></li>
 <li><p>Component-dependent, type-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NBND} \cdot \texttt{NSEC}\)</span>; ordering is section-component-major</p></li>
 <li><p>Component-dependent, type-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NTOTALBND}\)</span>; ordering is type-component-major</p></li>
 <li><p>Component-dependent, type-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \cdot \texttt{NSEC}\)</span>; ordering is section-type-component-major</p></li>
 </ol>
-<table class="docutils align-default">
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_MULTIPLEX</span></code></dt><dd><table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 3 \}\)</span></p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{ 0, \dots, 3 \}\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>
 </table>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_DEP</span></code></p>
+<blockquote>
+<div><p>Parameter dependence of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span>. Valid dependencies are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\texttt{NONE}\)</span> Original parameter is used unmodified.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_EXPONENTIAL}\)</span> Original parameter is modified by exponential law of liquid phase salt concentration.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_POWER}\)</span> Original parameter is modified by power law of liquid phase salt concentration.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span> Original parameter is modified by colloidal binding affinity based on liquid phase salt concentration.</p></li>
+</ul>
+<p>Optional: If left out, no parameter dependence is assumed and the original surface diffusion coefficients are used unmodified.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1 / \texttt{NPARTYPE}\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div></blockquote>
-<dl>
-<dt><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></dt><dd><p>Interstitial velocity of the mobile phase (optional if <span class="math notranslate nohighlight">\(\texttt{CROSS_SECTION_AREA}\)</span> is present, see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>)</p>
-<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\,\mathrm{s}^{-1}\)</span></p>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_EXPFACTOR</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p1}\)</span> in exponential law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} p_{1, i, m} exp \left(p_{2, i, m} c_{0}^{p} \right)\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_EXPONENTIAL}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_EXPARGMULT</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p2}\)</span> in exponential law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} p_{1, i, m} exp \left(p_{2, i, m} c_{0}^{p} \right)\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_EXPONENTIAL}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_POWFACTOR</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p1}\)</span> in power law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} p_{1, i, m} \left( c_{0}^{p} \right)^{p_{2, i, m}}\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_POWER}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_POWEXP</span></code></p>
+<blockquote>
+<div><p>Fjactor <span class="math notranslate nohighlight">\(\texttt{p2}\)</span> in power law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} p_{1, i, m} \left( c_{0}^{p} \right)^{p_{2, i, m}}\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_POWER}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_LOGKEQFACTOR</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p1}\)</span> in colloidal affinity law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
+<span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_LOGKEQEXP</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p2}\)</span> in colloidal affinity law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
+<span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_LOGKEQCONST</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p3}\)</span> in colloidal affinity law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
+<span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_POWFACTOR</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p4}\)</span> in colloidal affinity law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
+<span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_POWEXP</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p5}\)</span> in colloidal affinity law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
+<span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_EXPFACTOR</span></code>
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
+<span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_POWEXP</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p5}\)</span> in colloidal affinity law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
+<span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
+<blockquote>
+<div><p>Interstitial velocity of the mobile phase (optional if <span class="math notranslate nohighlight">\(\texttt{CROSS_SECTION_AREA}\)</span> is present, see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>)
+<strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\,\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -481,12 +663,11 @@ Note: Should not be used in combination with any binding model!</p>
 </tr>
 </tbody>
 </table>
-</dd>
-</dl>
+</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">CROSS_SECTION_AREA</span></code></p>
 <blockquote>
-<div><p>Cross section area of the column (optional if <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is present, see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>)</p>
-<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}^{2}\)</span></p>
+<div><p>Cross section area of the column (optional if <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is present, see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>)
+<strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}^{2}\)</span></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -631,7 +812,7 @@ Note: Should not be used in combination with any binding model!</p>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">GS_TYPE</span></code></p>
 <blockquote>
-<div><p>Type of Gram-Schmidt orthogonalization, see IDAS guide Section~4.5.7.3, p.~41f. A value of <span class="math notranslate nohighlight">\(0\)</span> enables classical Gram-Schmidt, a value of 1 uses modified Gram-Schmidt.</p>
+<div><p>Type of Gram-Schmidt orthogonalization, see IDAS guide Section 4.5.7.3, p. 41f. A value of <span class="math notranslate nohighlight">\(0\)</span> enables classical Gram-Schmidt, a value of 1 uses modified Gram-Schmidt.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>

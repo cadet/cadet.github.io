@@ -201,16 +201,21 @@ For the latter, please refer to the corresponding sections in the previous chapt
 </table>
 </section>
 <section id="ordering-of-multi-dimensional-data">
-<h2>Ordering of multi dimensional data<a class="headerlink" href="#ordering-of-multi-dimensional-data" title="Permalink to this heading">¶</a></h2>
+<span id="ordering-multi-dimensional-data"></span><h2>Ordering of multi dimensional data<a class="headerlink" href="#ordering-of-multi-dimensional-data" title="Permalink to this heading">¶</a></h2>
 <p>Some model parameters, especially in certain binding models, require multi dimensional data.
 Since CADET only reads one dimensional arrays, the layout of the data has to be specified (i.e., the way how the data is linearized in memory).
 The term “<em>xyz</em>-major” means that the index corresponding to <em>xyz</em> changes the slowest.</p>
-<p>For instance, suppose a model with <span class="math notranslate nohighlight">\(2\)</span> components and <span class="math notranslate nohighlight">\(3\)</span> bound states has a “component-major” dataset.
-Then, the requested matrix is stored in memory such that all bound states are listed for each component (i.e., the component index changes the slowest and the bound state index the fastest):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">comp0bnd0</span><span class="p">,</span> <span class="n">comp0bnd1</span><span class="p">,</span> <span class="n">comp0bnd2</span><span class="p">,</span> <span class="n">comp1bnd0</span><span class="p">,</span> <span class="n">comp1bnd1</span><span class="p">,</span> <span class="n">comp1bnd2</span><span class="o">.</span>
+<p>For instance, suppose a model with <span class="math notranslate nohighlight">\(2\)</span> components and <span class="math notranslate nohighlight">\(3\)</span> bound states has a “state-major” dataset.
+Then, the requested matrix is stored in memory such that all components are listed for each bound state (i.e., the bound state index changes the slowest and the component index the fastest):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">comp0bnd0</span><span class="p">,</span> <span class="n">comp1bnd0</span><span class="p">,</span> <span class="n">comp0bnd1</span><span class="p">,</span> <span class="n">comp1bnd1</span><span class="p">,</span> <span class="n">comp0bnd2</span><span class="p">,</span> <span class="n">comp1bnd2</span>
 </pre></div>
 </div>
-<p>This linear array can be represented as a <span class="math notranslate nohighlight">\(2 \times 3\)</span> matrix in “row-major” storage format, or a <span class="math notranslate nohighlight">\(3 \times 2\)</span> matrix in “column-major” ordering.</p>
+<p>This linear array can also be represented as a <span class="math notranslate nohighlight">\(3 \times 2\)</span> matrix in “row-major” storage format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">comp0bnd0</span><span class="p">,</span> <span class="n">comp1bnd0</span>
+<span class="n">comp0bnd1</span><span class="p">,</span> <span class="n">comp1bnd1</span>
+<span class="n">comp0bnd2</span><span class="p">,</span> <span class="n">comp1bnd2</span>
+</pre></div>
+</div>
 </section>
 <section id="section-dependent-model-parameters">
 <span id="section-dependent-parameters"></span><h2>Section dependent model parameters<a class="headerlink" href="#section-dependent-model-parameters" title="Permalink to this heading">¶</a></h2>

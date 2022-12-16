@@ -20,7 +20,7 @@
     <link rel="shortcut icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Multi Component Langmuir" href="multi_component_langmuir.html" />
+    <link rel="next" title="Multi Component Bi-Langmuir LDF" href="multi_component_bi_langmuir_ldf.html" />
     <link rel="prev" title="Multi Component Anti-Langmuir" href="multi_component_anti_langmuir.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -51,6 +51,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Binding models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="index.html#equilibrium-constants">Equilibrium constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#linear-driving-force-ldf">Linear Driving Force (LDF)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#reference-concentrations">Reference concentrations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature-matrix">Binding model feature matrix</a></li>
@@ -109,7 +110,7 @@
 
   <section id="multi-component-bi-langmuir">
 <span id="multi-component-bi-langmuir-model"></span><h1>Multi Component Bi-Langmuir<a class="headerlink" href="#multi-component-bi-langmuir" title="Permalink to this heading">¶</a></h1>
-<p>The multi component Bi-Langmuir model <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id6" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, Amsterdam, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>]</span> adds <span class="math notranslate nohighlight">\(M - 1\)</span> <em>additional</em> types of binding sites <span class="math notranslate nohighlight">\(q_{i,j}\)</span> (<span class="math notranslate nohighlight">\(0 \leq j \leq M - 1\)</span>) to the Langmuir model (see Section <a class="reference internal" href="multi_component_langmuir.html#multi-component-langmuir-model"><span class="std std-ref">Multi Component Langmuir</span></a>) without allowing an exchange between the different sites <span class="math notranslate nohighlight">\(q_{i,j}\)</span> and <span class="math notranslate nohighlight">\(q_{i,k}\)</span> (<span class="math notranslate nohighlight">\(k \neq j\)</span>).
+<p>The multi component Bi-Langmuir model <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id6" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, Amsterdam, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>]</span> adds <span class="math notranslate nohighlight">\(M - 1\)</span> additional types of binding sites <span class="math notranslate nohighlight">\(q_{i,j}\)</span> (<span class="math notranslate nohighlight">\(0 \leq j \leq M - 1\)</span>) to the Langmuir model (see Section <a class="reference internal" href="multi_component_langmuir.html#multi-component-langmuir-model"><span class="std std-ref">Multi Component Langmuir</span></a>) without allowing an exchange between the different sites <span class="math notranslate nohighlight">\(q_{i,j}\)</span> and <span class="math notranslate nohighlight">\(q_{i,k}\)</span> (<span class="math notranslate nohighlight">\(k \neq j\)</span>).
 Therefore, there are no competitivity effects between the different types of binding sites and they have independent capacities.</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}

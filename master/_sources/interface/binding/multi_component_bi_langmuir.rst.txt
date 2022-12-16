@@ -13,11 +13,11 @@ Multi Component Bi-Langmuir
    state separately.
 
 ===================  =========================  =========================================
-**Type:** int        **Range:** {0,1}  		**Length:** 1/NTOTALBND
+**Type:** int        **Range:** {0,1}           **Length:** 1/NTOTALBND
 ===================  =========================  =========================================
 
 ``MCBL_KA``
-   Adsorption rate constants in state-major ordering
+   Adsorption rate constants in state-major ordering (see :ref:`ordering_multi_dimensional_data`)
 
 **Unit:** :math:`m_{MP}^3~mol^{-1}~s^{-1}`
 

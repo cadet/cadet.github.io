@@ -51,6 +51,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Binding models</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#equilibrium-constants">Equilibrium constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linear-driving-force-ldf">Linear Driving Force (LDF)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reference-concentrations">Reference concentrations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dependence-on-external-function">Dependence on external function</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#binding-model-feature-matrix">Binding model feature matrix</a></li>
@@ -138,6 +139,28 @@ While in quasi-stationary binding mode this is prevented by using the technique 
     F\left( k_{\text{eq},i}, k_{d,i} \right) = \begin{pmatrix} k_{\text{eq},i} k_{d,i} \\ k_{d,i} \end{pmatrix} \text{ with Jacobian } J_F\left( k_{\text{eq},i}, k_{d,i} \right) = \begin{pmatrix} k_{d,i} &amp; k_{\text{eq},i} \\ 0 &amp; 1 \end{pmatrix}.
 \end{aligned}\end{split}\]</div>
 </section>
+<section id="linear-driving-force-ldf">
+<span id="ldf-model"></span><h2>Linear Driving Force (LDF)<a class="headerlink" href="#linear-driving-force-ldf" title="Permalink to this heading">¶</a></h2>
+<p>Some authors use the linear driving force (LDF) approximation instead of the native kinetic form of an isotherm.
+All three approaches are equivalent in rapid equilibrium (<code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span> <span class="pre">=</span> <span class="pre">0</span></code>) but not equivalent when binding kinetics are considered (<code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span> <span class="pre">=</span> <span class="pre">1</span></code>).</p>
+<ol class="arabic simple">
+<li><p>In the native approach, <span class="math notranslate nohighlight">\(\frac{dq}{dt}\)</span> is an explicit funtion of <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(q\)</span>. For example <span class="math notranslate nohighlight">\(\frac{dq}{dt}=k_a c (q_m - q)-k_d q\)</span> in the Langmuir model.</p></li>
+</ol>
+<p>2. A linear driving force approximation is based on the equilibrium concentration <span class="math notranslate nohighlight">\(q^*\)</span> for given <span class="math notranslate nohighlight">\(c\)</span>.
+For example <span class="math notranslate nohighlight">\(q^*= \frac{q_m k_{eq} c}{1 + k_{eq} c}\)</span> in the Langmuir model.
+Here, <span class="math notranslate nohighlight">\(\frac{dq}{dt}\)</span> is proportional to the actual difference from equilibrium, i.e. <span class="math notranslate nohighlight">\(\frac{dq}{dt} = k_{kin}(q^*-q)\)</span>.
+Note that, the sign of <span class="math notranslate nohighlight">\(\frac{dq}{dt}\)</span> causes the resulting flux to act towards the equilibrium.
+In CADET, this approach is denoted by <code class="docutils literal notranslate"><span class="pre">LDF</span></code>, for example in <code class="docutils literal notranslate"><span class="pre">MULTI_COMPONENT_LANGMUIR_LDF</span></code>.</p>
+<p>3. An alterniative linear driving force approximation is based on the equilibrium concentration <span class="math notranslate nohighlight">\(c^*\)</span> for given <span class="math notranslate nohighlight">\(q\)</span>.
+For example <span class="math notranslate nohighlight">\(c^*=\frac{q}{k_{eq} \left(q_{m}-q\right)}\)</span> in the Langmuir model.
+Here, <span class="math notranslate nohighlight">\(\frac{dq}{dt}\)</span> is proportional to the actual difference from equilibrium concentrations, i.e. <span class="math notranslate nohighlight">\(\frac{dq}{dt} = k_{kin}(c-c^*)\)</span>.
+Note that, the sign of <span class="math notranslate nohighlight">\(\frac{dq}{dt}\)</span> causes the resulting flux to act towards the equilibrium.
+In CADET, this approach is denoted by <code class="docutils literal notranslate"><span class="pre">LDF_LIQUID_PHASE</span></code>, for example in <code class="docutils literal notranslate"><span class="pre">MULTI_COMPONENT_LANGMUIR_LDF_LIQUID_PHASE</span></code>.</p>
+<p>In both LDF examples, the original rate constants <span class="math notranslate nohighlight">\(k_a\)</span> and <span class="math notranslate nohighlight">\(k_d\)</span> are replaced by the equilibrium contant <span class="math notranslate nohighlight">\(k_{eq}=\frac{k_a}{k_d}\)</span>.
+The linear driving force approximations are based on a new kinetic constant, <span class="math notranslate nohighlight">\(k_{kin}\)</span>.</p>
+<p>Note that some isotherms, such as the Freundlich model, don’t have a native representation in the above sense.
+LDF versions are availabe for some but not all binding models implemented in CADET.</p>
+</section>
 <section id="reference-concentrations">
 <span id="id2"></span><h2>Reference concentrations<a class="headerlink" href="#reference-concentrations" title="Permalink to this heading">¶</a></h2>
 <p>Some binding models use reference concentrations <span class="math notranslate nohighlight">\(c_{\text{ref}}\)</span> and <span class="math notranslate nohighlight">\(q_{\text{ref}}\)</span> of the mobile phase modulator (e.g., salt) in the particle liquid and solid phase, respectively.
@@ -216,55 +239,79 @@ The models also differ in whether a mobile phase modifier (e.g., salt) is suppor
 <td><p>✓</p></td>
 <td><p>×</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="multi_component_langmuir.html#multi-component-langmuir-model"><span class="std std-ref">Multi Component Langmuir</span></a></p></td>
-<td><p>✓</p></td>
-<td><p>×</p></td>
-<td><p>✓</p></td>
-<td><p>×</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="multi_component_anti_langmuir.html#multi-component-anti-langmuir-model"><span class="std std-ref">Multi Component Anti-Langmuir</span></a></p></td>
-<td><p>✓</p></td>
-<td><p>×</p></td>
-<td><p>✓</p></td>
-<td><p>×</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="steric_mass_action.html#steric-mass-action-model"><span class="std std-ref">Steric Mass Action</span></a></p></td>
-<td><p>✓</p></td>
-<td><p>✓</p></td>
-<td><p>✓</p></td>
-<td><p>×</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generalized_ion_exchange.html#generalized-ion-exchange-model"><span class="std std-ref">Generalized Ion Exchange</span></a></p></td>
-<td><p>✓</p></td>
-<td><p>✓</p></td>
-<td><p>✓</p></td>
-<td><p>×</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="self_association.html#self-association-model"><span class="std std-ref">Self Association</span></a></p></td>
-<td><p>✓</p></td>
-<td><p>✓</p></td>
-<td><p>✓</p></td>
-<td><p>×</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="mobile_phase_modulator_langmuir.html#mobile-phase-modulator-langmuir-model"><span class="std std-ref">Mobile Phase Modulator Langmuir</span></a></p></td>
-<td><p>✓</p></td>
-<td><p>✓</p></td>
-<td><p>✓</p></td>
-<td><p>×</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="extended_mobile_phase_modulator_langmuir.html#extended-mobile-phase-modulator-langmuir-model"><span class="std std-ref">Extended Mobile Phase Modulator Langmuir</span></a></p></td>
-<td><p>✓</p></td>
-<td><p>✓</p></td>
-<td><p>✓</p></td>
-<td><p>×</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="saska.html#saska-model"><span class="std std-ref">Saska</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="freundlich_ldf.html#freundlich-ldf-model"><span class="std std-ref">Freundlich LDF</span></a></p></td>
 <td><p>×</p></td>
 <td><p>×</p></td>
 <td><p>✓</p></td>
 <td><p>×</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="multi_component_bi_langmuir.html#multi-component-bi-langmuir-model"><span class="std std-ref">Multi Component Bi-Langmuir</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="multi_component_langmuir.html#multi-component-langmuir-model"><span class="std std-ref">Multi Component Langmuir</span></a></p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="multi_component_langmuir_ldf.html#multi-component-langmuir-model-ldf"><span class="std std-ref">Multi Component Langmuir LDF</span></a></p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="multi_component_langmuir_ldf_liquid_phase.html#multi-component-langmuir-model-ldf-liquid-phase"><span class="std std-ref">Multi Component Langmuir LDF Liquid Phase</span></a></p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="multi_component_anti_langmuir.html#multi-component-anti-langmuir-model"><span class="std std-ref">Multi Component Anti-Langmuir</span></a></p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="steric_mass_action.html#steric-mass-action-model"><span class="std std-ref">Steric Mass Action</span></a></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generalized_ion_exchange.html#generalized-ion-exchange-model"><span class="std std-ref">Generalized Ion Exchange</span></a></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="self_association.html#self-association-model"><span class="std std-ref">Self Association</span></a></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="mobile_phase_modulator_langmuir.html#mobile-phase-modulator-langmuir-model"><span class="std std-ref">Mobile Phase Modulator Langmuir</span></a></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="extended_mobile_phase_modulator_langmuir.html#extended-mobile-phase-modulator-langmuir-model"><span class="std std-ref">Extended Mobile Phase Modulator Langmuir</span></a></p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="saska.html#saska-model"><span class="std std-ref">Saska</span></a></p></td>
+<td><p>×</p></td>
+<td><p>×</p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="multi_component_bi_langmuir.html#multi-component-bi-langmuir-model"><span class="std std-ref">Multi Component Bi-Langmuir</span></a></p></td>
+<td><p>✓</p></td>
+<td><p>×</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="multi_component_bi_langmuir_ldf.html#multi-component-bi-langmuir-model-ldf"><span class="std std-ref">Multi Component Bi-Langmuir LDF</span></a></p></td>
 <td><p>✓</p></td>
 <td><p>×</p></td>
 <td><p>✓</p></td>

@@ -10,13 +10,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/cli/examples.html" />
-    <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
+    <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="License" href="../license.html" />
@@ -83,6 +80,7 @@
         <li><a href="../../v0.8.13/cli/examples.html">v0.8.13</a></li>
         <li><a href="../../v0.8.14/cli/examples.html">v0.8.14</a></li>
         <li><a href="../../v0.8.15/cli/examples.html">v0.8.15</a></li>
+        <li><a href="../../v0.8.16/cli/examples.html">v0.8.16</a></li>
         <li><a href="examples.html">v0.8.7</a></li>
 </ul>
 <h3>Branches</h3>
@@ -103,7 +101,7 @@
   <strong>
     
     You're reading an old version of this documentation.
-    For the latest released version, please have a look at <a href="../../v0.8.15/cli/examples.html">v0.8.15</a>.
+    For the latest released version, please have a look at <a href="../../v0.8.16/cli/examples.html">v0.8.16</a>.
     
   </strong>
 </p>
@@ -124,7 +122,7 @@ needs to be supplied. You can have multiple example directories that are run wit
 working correctly.</p>
 <p>The examples generated can all be run individually and the files used as a template to make your own matches. There are examples for every feature in
 CADET-Match.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m CADETMatch --generate_examples &lt;example directory&gt; --cadet_examples &lt;path to cadet binary or library&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>CADETMatch<span class="w"> </span>--generate_examples<span class="w"> </span>&lt;example<span class="w"> </span>directory&gt;<span class="w"> </span>--cadet_examples<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>cadet<span class="w"> </span>binary<span class="w"> </span>or<span class="w"> </span>library&gt;
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">--example_population</span> <span class="pre">&lt;integer&gt;</span></code>   can be added to set the population per parameter</p>
@@ -134,7 +132,7 @@ CADET-Match.</p>
 <h2>Run examples<a class="headerlink" href="#run-examples" title="Permalink to this heading">¶</a></h2>
 <p>This will run all the examples and could take hours to days to run depending on the available computing power. It is not recommended to run
 this on a laptop.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m CADETMatch --run_examples &lt;example directory&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>CADETMatch<span class="w"> </span>--run_examples<span class="w"> </span>&lt;example<span class="w"> </span>directory&gt;
 </pre></div>
 </div>
 </section>
@@ -142,14 +140,14 @@ this on a laptop.</p>
 <h2>Clean examples<a class="headerlink" href="#clean-examples" title="Permalink to this heading">¶</a></h2>
 <p>This command will clean all the results from the examples and return them to a clean state so that the examples can be run again. This
 is especially useful if there is a problem with the CADET install and it needed to be rebuilt.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m CADETMatch --clean_examples &lt;example directory&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>CADETMatch<span class="w"> </span>--clean_examples<span class="w"> </span>&lt;example<span class="w"> </span>directory&gt;
 </pre></div>
 </div>
 </section>
 <section id="results-examples">
 <h2>Results examples<a class="headerlink" href="#results-examples" title="Permalink to this heading">¶</a></h2>
 <p>This command processes all of the run examples and creates a text report of the best matches from every test.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m CADETMatch --results_examples &lt;example directory&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>CADETMatch<span class="w"> </span>--results_examples<span class="w"> </span>&lt;example<span class="w"> </span>directory&gt;
 </pre></div>
 </div>
 </section>
@@ -164,7 +162,7 @@ is especially useful if there is a problem with the CADET install and it needed 
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2017-2022.
+      &copy;2017-2023.
       
       |
       <a href="../_sources/cli/examples.rst.txt"

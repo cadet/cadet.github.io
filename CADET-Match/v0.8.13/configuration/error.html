@@ -10,13 +10,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/configuration/error.html" />
-    <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
+    <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Graphing" href="graphing.html" />
@@ -85,6 +82,7 @@
         <li><a href="error.html">v0.8.13</a></li>
         <li><a href="../../v0.8.14/configuration/error.html">v0.8.14</a></li>
         <li><a href="../../v0.8.15/configuration/error.html">v0.8.15</a></li>
+        <li><a href="../../v0.8.16/configuration/error.html">v0.8.16</a></li>
         <li><a href="../../v0.8.7/configuration/error.html">v0.8.7</a></li>
 </ul>
 <h3>Branches</h3>
@@ -105,7 +103,7 @@
   <strong>
     
     You're reading an old version of this documentation.
-    For the latest released version, please have a look at <a href="../../v0.8.15/configuration/error.html">v0.8.15</a>.
+    For the latest released version, please have a look at <a href="../../v0.8.16/configuration/error.html">v0.8.16</a>.
     
   </strong>
 </p>
@@ -189,18 +187,18 @@ UV noise norm almost always has a mean value of 1.0 and UV noise almost always h
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;errorModel&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;file_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;non.h5&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;experimental_csv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;non.csv&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;main&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;units&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;delay&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">],</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">],</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;load&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">],</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;uv_noise_norm&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="p">],</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;errorModel&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;file_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;non.h5&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;experimental_csv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;non.csv&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;units&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;delay&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;flow&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;load&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">],</span>
+<span class="w">                </span><span class="nt">&quot;uv_noise_norm&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.001</span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="p">],</span>
 </pre></div>
 </div>
 </section>
@@ -214,7 +212,7 @@ UV noise norm almost always has a mean value of 1.0 and UV noise almost always h
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2017-2022.
+      &copy;2017-2023.
       
       |
       <a href="../_sources/configuration/error.rst.txt"

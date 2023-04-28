@@ -10,13 +10,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/cli/index.html" />
-    <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
+    <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CADETMatch Examples" href="examples.html" />
@@ -83,6 +80,7 @@
         <li><a href="../../v0.8.13/cli/index.html">v0.8.13</a></li>
         <li><a href="../../v0.8.14/cli/index.html">v0.8.14</a></li>
         <li><a href="../../v0.8.15/cli/index.html">v0.8.15</a></li>
+        <li><a href="../../v0.8.16/cli/index.html">v0.8.16</a></li>
         <li><a href="../../v0.8.7/cli/index.html">v0.8.7</a></li>
 </ul>
 <h3>Branches</h3>
@@ -103,7 +101,7 @@
   <strong>
     
     You're reading an old version of this documentation.
-    For the latest released version, please have a look at <a href="../../v0.8.15/cli/index.html">v0.8.15</a>.
+    For the latest released version, please have a look at <a href="../../v0.8.16/cli/index.html">v0.8.16</a>.
     
   </strong>
 </p>
@@ -132,13 +130,13 @@ may fail if the required data has not been generated yet.</p>
 <p><code class="docutils literal notranslate"><span class="pre">--generate_mcmc_mixing</span></code> Generate MCMC mixing graphs</p>
 <section id="starting-a-match">
 <h2>Starting a match<a class="headerlink" href="#starting-a-match" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m CADETMatch --match --json &lt;path to connfiguration file&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>CADETMatch<span class="w"> </span>--match<span class="w"> </span>--json<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>connfiguration<span class="w"> </span>file&gt;
 </pre></div>
 </div>
 </section>
 <section id="generate-graphs-using-6-cores">
 <h2>Generate graphs using 6 cores<a class="headerlink" href="#generate-graphs-using-6-cores" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m CADETMatch --generate_graphs --json &lt;path to connfiguration file&gt; -n <span class="m">6</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>CADETMatch<span class="w"> </span>--generate_graphs<span class="w"> </span>--json<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>connfiguration<span class="w"> </span>file&gt;<span class="w"> </span>-n<span class="w"> </span><span class="m">6</span>
 </pre></div>
 </div>
 </section>
@@ -147,7 +145,7 @@ may fail if the required data has not been generated yet.</p>
 <p>The most common way CADETMatch is used is by logging into a server with SSH and starting a matching session.
 These matches can take hours to days to complete and the following command allows CADETMatch to keep running
 once you logout.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nohup python -m CADETMatch --match --json &lt;path to connfiguration file&gt; <span class="p">&amp;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nohup<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>CADETMatch<span class="w"> </span>--match<span class="w"> </span>--json<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>connfiguration<span class="w"> </span>file&gt;<span class="w"> </span><span class="p">&amp;</span>
 </pre></div>
 </div>
 <div class="toctree-wrapper compound">
@@ -164,7 +162,7 @@ once you logout.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2017-2022.
+      &copy;2017-2023.
       
       |
       <a href="../_sources/cli/index.rst.txt"

@@ -10,13 +10,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/configuration/experiments.html" />
-    <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
+    <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Scores" href="scores.html" />
@@ -85,6 +82,7 @@
         <li><a href="experiments.html">v0.8.13</a></li>
         <li><a href="../../v0.8.14/configuration/experiments.html">v0.8.14</a></li>
         <li><a href="../../v0.8.15/configuration/experiments.html">v0.8.15</a></li>
+        <li><a href="../../v0.8.16/configuration/experiments.html">v0.8.16</a></li>
         <li><a href="../../v0.8.7/configuration/experiments.html">v0.8.7</a></li>
 </ul>
 <h3>Branches</h3>
@@ -105,7 +103,7 @@
   <strong>
     
     You're reading an old version of this documentation.
-    For the latest released version, please have a look at <a href="../../v0.8.15/configuration/experiments.html">v0.8.15</a>.
+    For the latest released version, please have a look at <a href="../../v0.8.16/configuration/experiments.html">v0.8.16</a>.
     
   </strong>
 </p>
@@ -115,16 +113,16 @@
 <h1>Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">¶</a></h1>
 <p>CADET-Match supports one or more experiments with one or more components.
 The basic structure is shown below.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="nt">&quot;experiments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="nt">&quot;experiments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
 
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">],</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">],</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>The csv file is used for all scores unless a specific feature has its own csv file.
@@ -175,26 +173,26 @@ This simplifies dealing with fractionation data where often a sum signal and fra
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;experiments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dextran1&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;csv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dextran1.csv&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;HDF5&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dextran1.h5&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;output_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/output/solution/unit_002/SOLUTION_OUTLET_COMP_000&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;scores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;experiments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dextran1&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;csv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dextran1.csv&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;HDF5&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dextran1.h5&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;output_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/output/solution/unit_002/SOLUTION_OUTLET_COMP_000&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;scores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 
-<span class="w">                </span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dextran2&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;csv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dextran2.csv&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;HDF5&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dextran2.h5&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;output_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/output/solution/unit_002/SOLUTION_OUTLET_COMP_000&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">                </span><span class="nt">&quot;scores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dextran2&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;csv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dextran2.csv&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;HDF5&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dextran2.h5&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;output_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/output/solution/unit_002/SOLUTION_OUTLET_COMP_000&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;scores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 
-<span class="w">                </span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">                </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
 </pre></div>
 </div>
 </section>
@@ -208,7 +206,7 @@ This simplifies dealing with fractionation data where often a sum signal and fra
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2017-2022.
+      &copy;2017-2023.
       
       |
       <a href="../_sources/configuration/experiments.rst.txt"

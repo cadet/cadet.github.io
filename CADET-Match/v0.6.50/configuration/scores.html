@@ -10,13 +10,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/configuration/scores.html" />
-    <link rel="shortcut icon" href="../_static/cadet_icon.png"/>
+    <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Transform" href="transform.html" />
@@ -99,6 +96,7 @@
         <li><a href="../../v0.8.13/configuration/scores.html">v0.8.13</a></li>
         <li><a href="../../v0.8.14/configuration/scores.html">v0.8.14</a></li>
         <li><a href="../../v0.8.15/configuration/scores.html">v0.8.15</a></li>
+        <li><a href="../../v0.8.16/configuration/scores.html">v0.8.16</a></li>
         <li><a href="../../v0.8.7/configuration/scores.html">v0.8.7</a></li>
 </ul>
 <h3>Branches</h3>
@@ -119,7 +117,7 @@
   <strong>
     
     You're reading an old version of this documentation.
-    For the latest released version, please have a look at <a href="../../v0.8.15/configuration/scores.html">v0.8.15</a>.
+    For the latest released version, please have a look at <a href="../../v0.8.16/configuration/scores.html">v0.8.16</a>.
     
   </strong>
 </p>
@@ -131,14 +129,14 @@
 Each score is designed to solve a particular type of problem.
 The most common ones will be covered first.
 There are a few additional ones available in the code that are retained for backwards compatibility that will not be covered and their usage is not recomended.</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="nt">&quot;scores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">],</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="nt">&quot;scores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">],</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <section id="common">
@@ -226,12 +224,12 @@ The shape is dictated by the physics of the reaction while the position can shif
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;main_peak&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Shape&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;main_peak&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Shape&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span>
+<span class="w">    </span><span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -305,12 +303,12 @@ This is especially important with breakthrough curves where the back of the peak
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak_front&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ShapeFront&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;min_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;max_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak_front&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ShapeFront&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;min_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;max_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -384,12 +382,12 @@ This is often used when a system starts saturated and there is no front side of 
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak_back&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ShapeBack&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak_back&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ShapeBack&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -441,12 +439,12 @@ For some problems this score may work but in general it is not advised.</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SSE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SSE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -497,10 +495,10 @@ It automatically isolates as much of the front of peak and uses as much of the f
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DextranShape&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DextranShape&quot;</span><span class="p">,</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -550,10 +548,10 @@ It automatically isolates as much of the front of peak and uses as much of the f
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DextranSSE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DextranSSE&quot;</span><span class="p">,</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -648,12 +646,12 @@ If there is no data for a sample in a particular fraction the entry can be left 
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionation&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionationSlide&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;unit_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unit_002&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;fraction_csv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;frac.csv&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionation&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionationSlide&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;unit_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unit_002&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;fraction_csv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;frac.csv&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -715,12 +713,12 @@ If there is no data for a sample in a particular fraction the entry can be left 
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionation&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionationSSE&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;unit_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unit_002&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;fraction_csv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;frac.csv&quot;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionation&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionationSSE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;unit_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unit_002&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;fraction_csv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;frac.csv&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -778,13 +776,13 @@ This can be used as a restriction for that effect.</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;limit&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ceiling&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;max_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;limit&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ceiling&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;max_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -807,7 +805,7 @@ It is not advisable to add these by hand.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2017-2022.
+      &copy;2017-2023.
       
       |
       <a href="../_sources/configuration/scores.rst.txt"

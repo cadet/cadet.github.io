@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,9 +8,9 @@
     <title>CADET Introduction &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=795b792b" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/getting_started/tutorials/breakthrough.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
@@ -96,7 +96,7 @@
 
 
   <section id="cadet-introduction">
-<h1>CADET Introduction<a class="headerlink" href="#cadet-introduction" title="Permalink to this heading">¶</a></h1>
+<h1>CADET Introduction<a class="headerlink" href="#cadet-introduction" title="Link to this heading">¶</a></h1>
 <dl class="simple">
 <dt>Performing a forward simulation comprises several steps:</dt><dd><ul class="simple">
 <li><p>Setting up the model including all parameters and discretization options</p></li>
@@ -123,7 +123,7 @@ In the Python frontend, this becomes:</p>
 </pre></div>
 </div>
 <section id="preliminary-steps">
-<h2>0. Preliminary Steps<a class="headerlink" href="#preliminary-steps" title="Permalink to this heading">¶</a></h2>
+<h2>0. Preliminary Steps<a class="headerlink" href="#preliminary-steps" title="Link to this heading">¶</a></h2>
 <p>First, we need to import some libraries and specify the location of the <code class="docutils literal notranslate"><span class="pre">cadet-cli</span></code> executable (core simulator).
 It is located in the <code class="docutils literal notranslate"><span class="pre">bin</span></code> folder where CADET was installed.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -148,7 +148,7 @@ This can cause problems later on, when the simulator is run.</p>
 </div>
 </section>
 <section id="setting-up-the-model">
-<h2>1. Setting Up the Model<a class="headerlink" href="#setting-up-the-model" title="Permalink to this heading">¶</a></h2>
+<h2>1. Setting Up the Model<a class="headerlink" href="#setting-up-the-model" title="Link to this heading">¶</a></h2>
 <p>Although the order of the parameter specification does not matter, it is reasonable to first specify the number of unit operations before we select the models and define the parameters.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">nunits</span> <span class="o">=</span> <span class="mi">3</span>
 </pre></div>
@@ -156,7 +156,7 @@ This can cause problems later on, when the simulator is run.</p>
 <p>The available models are listed in the <a class="reference internal" href="../../modelling/unit_operations/index.html#unit-operation-models"><span class="std std-ref">unit operation chapter</span></a>.
 The units of the different parameters and quantities are given in the corresponding <a class="reference internal" href="../../interface/unit_operations/index.html#unit-operation-config"><span class="std std-ref">file format</span></a> of the respective unit operation.</p>
 <section id="inlet-model">
-<h3>Inlet Model<a class="headerlink" href="#inlet-model" title="Permalink to this heading">¶</a></h3>
+<h3>Inlet Model<a class="headerlink" href="#inlet-model" title="Link to this heading">¶</a></h3>
 <p>In CADET, the <code class="docutils literal notranslate"><span class="pre">INLET</span></code> pseudo unit operation serves as a source for the system and is used to create arbitary concentration profiles as boundary conditions.
 First, we define an <code class="docutils literal notranslate"><span class="pre">INLET</span></code> as the first unit operation by adding the field <code class="docutils literal notranslate"><span class="pre">unit_000</span></code> in the <code class="docutils literal notranslate"><span class="pre">/input/model/</span></code> group.
 The concentration profile is described using a piecewise cubic polynomial (cubic spline in the continuous case) for each component, where the pieces are given by the time sections.
@@ -168,7 +168,7 @@ Later, we will define the polynomials, when we look at time sections.</p>
 </div>
 </section>
 <section id="general-rate-model">
-<h3>General Rate Model<a class="headerlink" href="#general-rate-model" title="Permalink to this heading">¶</a></h3>
+<h3>General Rate Model<a class="headerlink" href="#general-rate-model" title="Link to this heading">¶</a></h3>
 <p>We now add a second unit operation, the column model.
 For the <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#general-rate-model-model"><span class="std std-ref">general rate model model</span></a>, we set the <code class="docutils literal notranslate"><span class="pre">unit_type</span></code> parameter of the corresponding unit operation model to <code class="docutils literal notranslate"><span class="pre">GENERAL_RATE_MODEL</span></code>.
 In this group, we set the parameters related to transport and column geometry.
@@ -192,7 +192,7 @@ For a more detailed description of the parameters and their units, see the <a cl
 </div>
 <p>Note that film, particle, and surface diffusion are all component-specific, that is, they are vectors of length <code class="docutils literal notranslate"><span class="pre">n_components</span></code>.</p>
 <section id="adsorption-model">
-<h4>Adsorption Model<a class="headerlink" href="#adsorption-model" title="Permalink to this heading">¶</a></h4>
+<h4>Adsorption Model<a class="headerlink" href="#adsorption-model" title="Link to this heading">¶</a></h4>
 <p>Every column model can be equipped with an adsorption model.
 The available models are listed in the <a class="reference internal" href="../../modelling/binding/index.html#binding-models"><span class="std std-ref">binding model chapter</span></a>.</p>
 <p>For the <a class="reference internal" href="../../modelling/binding/multi_component_langmuir.html#multi-component-langmuir-model"><span class="std std-ref">Langmuir model</span></a>, we set the <code class="docutils literal notranslate"><span class="pre">adsorption_model</span></code> parameter of the corresponding unit operation model to <code class="docutils literal notranslate"><span class="pre">MULTI_COMPONENT_LANGMUIR</span></code>.
@@ -209,7 +209,7 @@ In case of the Langmuir model, we have to specify the parameters <code class="do
 </div>
 </section>
 <section id="initial-conditions">
-<h4>Initial Conditions<a class="headerlink" href="#initial-conditions" title="Permalink to this heading">¶</a></h4>
+<h4>Initial Conditions<a class="headerlink" href="#initial-conditions" title="Link to this heading">¶</a></h4>
 <p>Next, we specify the initial conditions (concentration of the components in the mobile and stationary phases) for the column.
 These concentrations are entered as vectors, where each entry gives the concentration for the corresponding component.
 In this example, we start with an empty column.</p>
@@ -219,7 +219,7 @@ In this example, we start with an empty column.</p>
 </div>
 </section>
 <section id="setting-up-the-discretization">
-<h4>Setting up the Discretization<a class="headerlink" href="#setting-up-the-discretization" title="Permalink to this heading">¶</a></h4>
+<h4>Setting up the Discretization<a class="headerlink" href="#setting-up-the-discretization" title="Link to this heading">¶</a></h4>
 <p>There are several options for adapting the spatial discretization of the PDE model.
 However, the two most important ones are the number of grid cells in the column (axial direction) and the particles, which are also set in this example.
 We choose <code class="docutils literal notranslate"><span class="pre">20</span></code> axial cells in the column <code class="docutils literal notranslate"><span class="pre">ncol</span></code> and <code class="docutils literal notranslate"><span class="pre">5</span></code> radial cells in the particle <code class="docutils literal notranslate"><span class="pre">npar</span></code>.</p>
@@ -255,7 +255,7 @@ Finally, we set some other options for the discretization, which usually do not 
 </section>
 </section>
 <section id="outlet-model">
-<h3>Outlet Model<a class="headerlink" href="#outlet-model" title="Permalink to this heading">¶</a></h3>
+<h3>Outlet Model<a class="headerlink" href="#outlet-model" title="Link to this heading">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">OUTLET</span></code> is another pseudo unit operation that serves as sink for the system.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -268,9 +268,9 @@ Finally, we set some other options for the discretization, which usually do not 
 </section>
 </section>
 <section id="setting-up-time-sections-and-connections">
-<h2>2. Setting up Time Sections and Connections<a class="headerlink" href="#setting-up-time-sections-and-connections" title="Permalink to this heading">¶</a></h2>
+<h2>2. Setting up Time Sections and Connections<a class="headerlink" href="#setting-up-time-sections-and-connections" title="Link to this heading">¶</a></h2>
 <section id="time-sections">
-<h3>Time Sections<a class="headerlink" href="#time-sections" title="Permalink to this heading">¶</a></h3>
+<h3>Time Sections<a class="headerlink" href="#time-sections" title="Link to this heading">¶</a></h3>
 <p><a class="reference internal" href="../../simulation/index.html#simtimesectionstransitions"><span class="std std-ref">Time sections</span></a> are used to specify changes of parameter values during the simulation.
 A section typically corresponds to an operating step (load, wash, elute etc.), but can also be used to indicate changes in connectivity, or even discontinuities of <a class="reference internal" href="../../interface/introduction.html#section-dependent-parameters"><span class="std std-ref">model parameters</span></a>.</p>
 <p>In the <code class="docutils literal notranslate"><span class="pre">/input/solver/sections/</span></code> group, <code class="docutils literal notranslate"><span class="pre">nsec</span></code> denotes the number of sections.
@@ -304,7 +304,7 @@ Note that for more components, a vector of coefficients needs to be specified.</
 </div>
 </section>
 <section id="system-connectivity">
-<h3>System Connectivity<a class="headerlink" href="#system-connectivity" title="Permalink to this heading">¶</a></h3>
+<h3>System Connectivity<a class="headerlink" href="#system-connectivity" title="Link to this heading">¶</a></h3>
 <p>In order to specify the <a class="reference internal" href="../../modelling/networks.html#networks"><span class="std std-ref">connectivity of the network</span></a>, we have to provide a list of connections.
 CADET requires that we append all connections to a long vector (i.e., if each connection is a row in a matrix, CADET wants this matrix in row-major storage).
 Moreover, we have to specify the section in which the specified connectivity should be applied.</p>
@@ -335,7 +335,7 @@ This restriction does not apply to a <a class="reference internal" href="../../m
 </section>
 </section>
 <section id="setting-up-the-simulator-and-running-the-simulation">
-<h2>3. Setting Up the Simulator and Running the Simulation<a class="headerlink" href="#setting-up-the-simulator-and-running-the-simulation" title="Permalink to this heading">¶</a></h2>
+<h2>3. Setting Up the Simulator and Running the Simulation<a class="headerlink" href="#setting-up-the-simulator-and-running-the-simulation" title="Link to this heading">¶</a></h2>
 <p>Before we can start the simulation, we have to specify some settings for the simulator.</p>
 <p>First, we set some options for the solver and the time integrator.
 Usually, these only need to be adapted in special cases.</p>
@@ -398,7 +398,7 @@ We check if the simulation has completed successfully and load the results.</p>
 </div>
 </section>
 <section id="plotting-the-results">
-<h2>4. Plotting the Results<a class="headerlink" href="#plotting-the-results" title="Permalink to this heading">¶</a></h2>
+<h2>4. Plotting the Results<a class="headerlink" href="#plotting-the-results" title="Link to this heading">¶</a></h2>
 <p>The data is stored in the <code class="docutils literal notranslate"><span class="pre">/output/</span></code> group of the <code class="docutils literal notranslate"><span class="pre">Cadet</span></code> object.
 The structure and format of the data is described in the <a class="reference internal" href="../../interface/output_group.html#ffoutput"><span class="std std-ref">file format specification</span></a>.
 Finally, we plot the concentration signal at the outlet of the column.</p>
@@ -415,7 +415,7 @@ Finally, we plot the concentration signal at the outlet of the column.</p>
 <img alt="../../_images/breakthrough_chromatogram.png" src="../../_images/breakthrough_chromatogram.png" />
 </section>
 <section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">¶</a></h2>
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Add a second inlet section from <code class="docutils literal notranslate"><span class="pre">10000</span></code> to <code class="docutils literal notranslate"><span class="pre">40000</span></code> seconds in which no sample is fed into the column (rectangular pulse).</p></li>
 <li><p>Increase the length of the column and the flow rate.</p></li>

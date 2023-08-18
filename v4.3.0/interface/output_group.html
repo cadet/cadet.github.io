@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,9 +8,9 @@
     <title>Output Group &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=795b792b" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/output_group.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
@@ -106,9 +106,9 @@
 
 
   <section id="output-group">
-<span id="ffoutput"></span><h1>Output Group<a class="headerlink" href="#output-group" title="Permalink to this heading">¶</a></h1>
+<span id="ffoutput"></span><h1>Output Group<a class="headerlink" href="#output-group" title="Link to this heading">¶</a></h1>
 <section id="group-output">
-<h2>Group /output<a class="headerlink" href="#group-output" title="Permalink to this heading">¶</a></h2>
+<h2>Group /output<a class="headerlink" href="#group-output" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">LAST_STATE_Y</span></code></p>
 <blockquote>
 <div><p>Full state vector at the last time point of the time integrator if <span class="math notranslate nohighlight">\(\texttt{WRITE_SOLUTION_LAST}\)</span> in <span class="math notranslate nohighlight">\(\texttt{/input/return}\)</span> is enabled</p>
@@ -131,7 +131,7 @@
 </div></blockquote>
 </section>
 <section id="group-output-solution">
-<h2>Group /output/solution<a class="headerlink" href="#group-output-solution" title="Permalink to this heading">¶</a></h2>
+<h2>Group /output/solution<a class="headerlink" href="#group-output-solution" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">SOLUTION_TIMES</span></code></p>
 <blockquote>
 <div><p>Time points at which the solution is written if <span class="math notranslate nohighlight">\(\texttt{WRITE_SOLUTION_TIMES}\)</span> in <span class="math notranslate nohighlight">\(\texttt{/input/return}\)</span> is enabled</p>
@@ -140,7 +140,7 @@
 </div></blockquote>
 </section>
 <section id="group-output-solution-unit-xxx">
-<h2>Group /output/solution/unit_XXX<a class="headerlink" href="#group-output-solution-unit-xxx" title="Permalink to this heading">¶</a></h2>
+<h2>Group /output/solution/unit_XXX<a class="headerlink" href="#group-output-solution-unit-xxx" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">SOLUTION_BULK</span></code></p>
 <blockquote>
 <div><p>Interstitial solution as <span class="math notranslate nohighlight">\(n_{\text{Time}} \times \texttt{UNITOPORDERING}\)</span> tensor in row-major storage</p>
@@ -335,7 +335,7 @@ Note that the vector includes the dedicated inlet DOFs at the beginning (length:
 </div></blockquote>
 </section>
 <section id="group-output-sensitivity-param-xxx-unit-yyy">
-<h2>Group /output/sensitivity/param_XXX/unit_YYY<a class="headerlink" href="#group-output-sensitivity-param-xxx-unit-yyy" title="Permalink to this heading">¶</a></h2>
+<h2>Group /output/sensitivity/param_XXX/unit_YYY<a class="headerlink" href="#group-output-sensitivity-param-xxx-unit-yyy" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">SENS_BULK</span></code></p>
 <blockquote>
 <div><p>Interstitial sensitivity as <span class="math notranslate nohighlight">\(n_{\text{Time}} \times \texttt{UNITOPORDERING}\)</span> tensor in row-major storage</p>
@@ -518,7 +518,7 @@ Note that the vector includes the dedicated inlet DOFs at the beginning (length:
 </div></blockquote>
 </section>
 <section id="output-coordinates-unit-xxx">
-<h2>/output/coordinates/unit_XXX<a class="headerlink" href="#output-coordinates-unit-xxx" title="Permalink to this heading">¶</a></h2>
+<h2>/output/coordinates/unit_XXX<a class="headerlink" href="#output-coordinates-unit-xxx" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">AXIAL_COORDINATES</span></code></p>
 <blockquote>
 <div><p>Axial coordinates of the bulk discretization nodes</p>

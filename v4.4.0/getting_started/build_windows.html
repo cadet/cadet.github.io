@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,9 +8,9 @@
     <title>Build for MS Windows &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=795b792b" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="canonical" href="https://cadet.github.io/master/getting_started/build_windows.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -91,9 +91,9 @@
 
 
   <section id="build-for-ms-windows">
-<span id="build-windows"></span><h1>Build for MS Windows<a class="headerlink" href="#build-for-ms-windows" title="Permalink to this heading">¶</a></h1>
+<span id="build-windows"></span><h1>Build for MS Windows<a class="headerlink" href="#build-for-ms-windows" title="Link to this heading">¶</a></h1>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">¶</a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>CMake (&gt;= 3.12.0)</p></li>
 <li><p>Microsoft Visual Studio 2015 (Community Edition, or better)</p></li>
@@ -120,9 +120,9 @@ In the following, we will use Visual Studio 2019 and CMake 3.17.0. We
 also assume that Intel MKL is installed.</p>
 </section>
 <section id="build-dependencies">
-<h2>Build dependencies<a class="headerlink" href="#build-dependencies" title="Permalink to this heading">¶</a></h2>
+<h2>Build dependencies<a class="headerlink" href="#build-dependencies" title="Link to this heading">¶</a></h2>
 <section id="hdf5">
-<h3>HDF5<a class="headerlink" href="#hdf5" title="Permalink to this heading">¶</a></h3>
+<h3>HDF5<a class="headerlink" href="#hdf5" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Make sure that no HDF5 libraries are installed (remove already
 existing HDF5 installations)</p></li>
@@ -138,7 +138,7 @@ spaces</p></li>
 </ul>
 </section>
 <section id="sundials">
-<h3>SUNDIALS<a class="headerlink" href="#sundials" title="Permalink to this heading">¶</a></h3>
+<h3>SUNDIALS<a class="headerlink" href="#sundials" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Download SUNDIALS source from
 <a class="reference external" href="http://computation.llnl.gov/projects/sundials/sundials-software">http://computation.llnl.gov/projects/sundials/sundials-software</a>
@@ -154,7 +154,7 @@ the unzipped directory</p></li>
 </ul>
 </section>
 <section id="lapack">
-<h3>LAPACK<a class="headerlink" href="#lapack" title="Permalink to this heading">¶</a></h3>
+<h3>LAPACK<a class="headerlink" href="#lapack" title="Link to this heading">¶</a></h3>
 <p>In the following, CLAPACK is built and used. You can also install the
 freely available <a class="reference external" href="https://software.intel.com/sites/campaigns/nest/">Intel
 MKL</a> which is very
@@ -178,7 +178,7 @@ the unzipped directory</p></li>
 </ul>
 </section>
 <section id="tbb">
-<h3>TBB<a class="headerlink" href="#tbb" title="Permalink to this heading">¶</a></h3>
+<h3>TBB<a class="headerlink" href="#tbb" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Download a release from <a class="reference external" href="https://github.com/oneapi-src/oneTBB/releases">https://github.com/oneapi-src/oneTBB/releases</a></p></li>
 <li><p>Unzip to <code class="docutils literal notranslate"><span class="pre">&lt;ROOT&gt;/Libs/tbb</span></code> such that you have
@@ -186,7 +186,7 @@ the unzipped directory</p></li>
 </ul>
 </section>
 <section id="suitesparse">
-<h3>SuiteSparse<a class="headerlink" href="#suitesparse" title="Permalink to this heading">¶</a></h3>
+<h3>SuiteSparse<a class="headerlink" href="#suitesparse" title="Link to this heading">¶</a></h3>
 <ul>
 <li><p>Download SuiteSparse source from
 <a class="reference external" href="http://faculty.cse.tamu.edu/davis/suitesparse.html">http://faculty.cse.tamu.edu/davis/suitesparse.html</a></p></li>
@@ -216,7 +216,7 @@ that contains both unzipped directories</p></li>
 </section>
 </section>
 <section id="build-cadet">
-<h2>Build CADET<a class="headerlink" href="#build-cadet" title="Permalink to this heading">¶</a></h2>
+<h2>Build CADET<a class="headerlink" href="#build-cadet" title="Link to this heading">¶</a></h2>
 <ul>
 <li><p>Download release of CADET or checkout from git</p></li>
 <li><p>Place the source in <code class="docutils literal notranslate"><span class="pre">&lt;ROOT&gt;\code</span></code> and create the directory

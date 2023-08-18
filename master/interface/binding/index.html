@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,9 +8,9 @@
     <title>Binding models &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=795b792b" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/binding/index.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
@@ -110,9 +110,9 @@
 
 
   <section id="binding-models">
-<span id="ffadsorption"></span><h1>Binding models<a class="headerlink" href="#binding-models" title="Permalink to this heading">¶</a></h1>
+<span id="ffadsorption"></span><h1>Binding models<a class="headerlink" href="#binding-models" title="Link to this heading">¶</a></h1>
 <section id="externally-dependent-binding-models">
-<h2>Externally dependent binding models<a class="headerlink" href="#externally-dependent-binding-models" title="Permalink to this heading">¶</a></h2>
+<h2>Externally dependent binding models<a class="headerlink" href="#externally-dependent-binding-models" title="Link to this heading">¶</a></h2>
 <p>Some binding models have a variant that can use external sources as specified in <a class="reference internal" href="../system.html#ffmodelexternalsourcelininterp"><span class="std std-ref">/input/model/external/</span></a> (also see Section <a class="reference internal" href="../../modelling/binding/index.html#dependence-on-external-function-bind"><span class="std std-ref">Dependence on external function</span></a> for more information, and Section <a class="reference internal" href="../../modelling/binding/index.html#binding-model-feature"><span class="std std-ref">Binding model feature matrix</span></a> on which binding models support this feature).
 For the sake of brevity, only the standard variant of those binding models is specified below.
 In order to obtain the format for the externally dependent variant, first replace the binding model name <code class="docutils literal notranslate"><span class="pre">XXX</span></code> by <code class="docutils literal notranslate"><span class="pre">EXT_XXX</span></code>.
@@ -129,13 +129,13 @@ However, if only one index is passed in <code class="docutils literal notranslat
 This is caused by not taking into account the derivative of the external profile with respect to column position.</p>
 </section>
 <section id="non-binding-components">
-<h2>Non-binding components<a class="headerlink" href="#non-binding-components" title="Permalink to this heading">¶</a></h2>
+<h2>Non-binding components<a class="headerlink" href="#non-binding-components" title="Link to this heading">¶</a></h2>
 <p>For binding models that do not support multiple bound states, many parameters can vary per component and their length is taken as <code class="docutils literal notranslate"><span class="pre">NCOMP</span></code>.
 However, these models still support non-binding components.
 In this case, the entries in their parameters that correspond to non-binding components are simply ignored.</p>
 </section>
 <section id="multiple-particle-types">
-<span id="multiple-particle-types-binding"></span><h2>Multiple particle types<a class="headerlink" href="#multiple-particle-types" title="Permalink to this heading">¶</a></h2>
+<span id="multiple-particle-types-binding"></span><h2>Multiple particle types<a class="headerlink" href="#multiple-particle-types" title="Link to this heading">¶</a></h2>
 <p>The group that contains the parameters of a binding model in unit operation with index <code class="docutils literal notranslate"><span class="pre">XXX</span></code> reads <code class="docutils literal notranslate"><span class="pre">/input/model/unit_XXX/adsorption</span></code>.
 This is valid for models with a single particle type.
 If a model has multiple particle types, it may have a different binding model in each type.

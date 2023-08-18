@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,9 +8,9 @@
     <title>Transform &#8212; CADET-Match</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=795b792b" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/configuration/transform.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -113,7 +113,7 @@
 
 
   <section id="transform">
-<h1>Transform<a class="headerlink" href="#transform" title="Permalink to this heading">¶</a></h1>
+<h1>Transform<a class="headerlink" href="#transform" title="Link to this heading">¶</a></h1>
 <p>CADET-Match has many variable transforms available.
 The most common ones will be covered first.
 There are a few additional ones available in the code that are retained for backwards compatibility that will not be covered and their usage is not recomended.</p>
@@ -129,7 +129,7 @@ There are a few additional ones available in the code that are retained for back
 </pre></div>
 </div>
 <section id="indexing">
-<h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this heading">¶</a></h2>
+<h2>Indexing<a class="headerlink" href="#indexing" title="Link to this heading">¶</a></h2>
 <p>An index is used when you want to directly index into the arrays to modify, this is very rarely used and mostly comes up with the MultiState SMA rates between states.
 All transforms use the same method for indexing.</p>
 <p>You either need to specific component and bound or specify index.
@@ -142,7 +142,7 @@ Index at position n: index=n</p>
 <p>Independent of component or bound state would be component=-1 bound=-1.</p>
 </section>
 <section id="auto">
-<h2>Auto<a class="headerlink" href="#auto" title="Permalink to this heading">¶</a></h2>
+<h2>Auto<a class="headerlink" href="#auto" title="Link to this heading">¶</a></h2>
 <p>Auto is the most common transform.
 This transform will convert from the upper and lower boundary to a range of 0 to 1 for the search algorithm.
 It will automatically switch between a linear and a log transform as needed for search performance.</p>
@@ -218,7 +218,7 @@ It will automatically switch between a linear and a log transform as needed for 
 </div>
 </section>
 <section id="auto-inverse">
-<h2>Auto Inverse<a class="headerlink" href="#auto-inverse" title="Permalink to this heading">¶</a></h2>
+<h2>Auto Inverse<a class="headerlink" href="#auto-inverse" title="Link to this heading">¶</a></h2>
 <p>Auto-inverse works like auto except it transforms used 1/variable.
 This transform was designed to deal with coupling of film diffusion and pore diffusion and improves optimization.</p>
 <table class="docutils align-default">
@@ -293,7 +293,7 @@ This transform was designed to deal with coupling of film diffusion and pore dif
 </div>
 </section>
 <section id="auto-keq">
-<h2>Auto kEQ<a class="headerlink" href="#auto-keq" title="Permalink to this heading">¶</a></h2>
+<h2>Auto kEQ<a class="headerlink" href="#auto-keq" title="Link to this heading">¶</a></h2>
 <p>This transforms convert from kA and kD to kA and kEQ with all the other properties of auto.
 In reality kA and kD are coupled and this allows the search algorithm to see the coupling.
 There are also some fits where kA and kD are fast enough that a system is effectively in rapid equilibrium.
@@ -388,7 +388,7 @@ With this transform kEQ will have a definite value and there will be a large ran
 </div>
 </section>
 <section id="norm-add">
-<h2>Norm Add<a class="headerlink" href="#norm-add" title="Permalink to this heading">¶</a></h2>
+<h2>Norm Add<a class="headerlink" href="#norm-add" title="Link to this heading">¶</a></h2>
 <p>This transform allows another parameter to be read and a fixed or variable value added to it and assigned to a second variable.
 For example if you are optimizing the charge nu for SMA with a few different charge variants you may not know all the charge variants but you know they are all close together and so you can estimate one and then use norm_add for the others to require they are close.</p>
 <table class="docutils align-default">
@@ -484,7 +484,7 @@ For example if you are optimizing the charge nu for SMA with a few different cha
 </div>
 </section>
 <section id="norm-mult">
-<h2>Norm Mult<a class="headerlink" href="#norm-mult" title="Permalink to this heading">¶</a></h2>
+<h2>Norm Mult<a class="headerlink" href="#norm-mult" title="Link to this heading">¶</a></h2>
 <p>This transform allows another parameter to be read and a fixed or variable value multiplied to it and assigned to a second variable.
 For instance if you are estimating the shielding factor sigma for a monomer and also need to estimate it for a dimer you can estimated sigma for the monomer normally and then specify that the dimer is approximately twice as large.</p>
 <table class="docutils align-default">
@@ -580,7 +580,7 @@ For instance if you are estimating the shielding factor sigma for a monomer and 
 </div>
 </section>
 <section id="set-value">
-<h2>Set Value<a class="headerlink" href="#set-value" title="Permalink to this heading">¶</a></h2>
+<h2>Set Value<a class="headerlink" href="#set-value" title="Link to this heading">¶</a></h2>
 <p>This transform copies a value from another estimated value.
 One of the common usage cases is when estimating the axial dispersion of the tubing.
 It can be a good assumption that the axial dispersion is the same in the tubing leading to the column and the tubing leaving it so with this one of them is estimated and the value copied to the other one so fewer values need to be estimated.</p>
@@ -663,7 +663,7 @@ It can be a good assumption that the axial dispersion is the same in the tubing 
 </div>
 </section>
 <section id="sum">
-<h2>Sum<a class="headerlink" href="#sum" title="Permalink to this heading">¶</a></h2>
+<h2>Sum<a class="headerlink" href="#sum" title="Link to this heading">¶</a></h2>
 <p>This transform reads two values and assigns it to a 3rd value.
 This was created for a situation where the volume of two CSTRs where estimated and a 3rd CSTR needed to have a volume equal to the sum of the first two.</p>
 <table class="docutils align-default">
@@ -772,7 +772,7 @@ This was created for a situation where the volume of two CSTRs where estimated a
 </div>
 </section>
 <section id="norm-diameter">
-<h2>Norm Diameter<a class="headerlink" href="#norm-diameter" title="Permalink to this heading">¶</a></h2>
+<h2>Norm Diameter<a class="headerlink" href="#norm-diameter" title="Link to this heading">¶</a></h2>
 <p>CADET uses the cross sectional area of the column and tubing and measuring this precisely can be difficult.
 It is often much simpler to measure the diameter and provide a small search range and then allow this transform to convert that to the area.
 This assumes circular tubing and uses Area = pi*d^2/4.</p>
@@ -842,7 +842,7 @@ This assumes circular tubing and uses Area = pi*d^2/4.</p>
 </div>
 </section>
 <section id="norm-volume-length">
-<h2>Norm Volume Length<a class="headerlink" href="#norm-volume-length" title="Permalink to this heading">¶</a></h2>
+<h2>Norm Volume Length<a class="headerlink" href="#norm-volume-length" title="Link to this heading">¶</a></h2>
 <p>When estimating the size of a Disperive Plug Flow Reactor needed to model a piece of tubing it is normal to estimate the dispersion, area and length.
 This works but can be problematic to estimate and get a realistic estimate due to the degrees of freedom.
 Finding the volume of the tube and the length of the tube is much easier to do accurately and this makes it a much better transform to work with.</p>
@@ -933,7 +933,7 @@ Finding the volume of the tube and the length of the tube is much easier to do a
 </div>
 </section>
 <section id="norm-volume-area">
-<h2>Norm Volume Area<a class="headerlink" href="#norm-volume-area" title="Permalink to this heading">¶</a></h2>
+<h2>Norm Volume Area<a class="headerlink" href="#norm-volume-area" title="Link to this heading">¶</a></h2>
 <p>This transform works like the volume length transform except it uses volume an area and should only be used if it is easier to estimate the cross sectional area of the tubing than its length.</p>
 <table class="docutils align-default">
 <thead>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,9 +8,9 @@
     <title>Multi Component Bi-Langmuir &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=795b792b" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/modelling/binding/multi_component_bi_langmuir.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
@@ -97,7 +97,7 @@
 
 
   <section id="multi-component-bi-langmuir">
-<span id="multi-component-bi-langmuir-model"></span><h1>Multi Component Bi-Langmuir<a class="headerlink" href="#multi-component-bi-langmuir" title="Permalink to this heading">¶</a></h1>
+<span id="multi-component-bi-langmuir-model"></span><h1>Multi Component Bi-Langmuir<a class="headerlink" href="#multi-component-bi-langmuir" title="Link to this heading">¶</a></h1>
 <p>The multi component Bi-Langmuir model <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id6" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, Amsterdam, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>]</span> adds <span class="math notranslate nohighlight">\(M - 1\)</span> additional types of binding sites <span class="math notranslate nohighlight">\(q_{i,j}\)</span> (<span class="math notranslate nohighlight">\(0 \leq j \leq M - 1\)</span>) to the Langmuir model (see Section <a class="reference internal" href="multi_component_langmuir.html#multi-component-langmuir-model"><span class="std std-ref">Multi Component Langmuir</span></a>) without allowing an exchange between the different sites <span class="math notranslate nohighlight">\(q_{i,j}\)</span> and <span class="math notranslate nohighlight">\(q_{i,k}\)</span> (<span class="math notranslate nohighlight">\(k \neq j\)</span>).
 Therefore, there are no competitivity effects between the different types of binding sites and they have independent capacities.</p>
 <div class="math notranslate nohighlight">

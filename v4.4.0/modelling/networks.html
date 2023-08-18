@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,9 +8,9 @@
     <title>Networks of unit operations &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=795b792b" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/modelling/networks.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
@@ -96,7 +96,7 @@
 
 
   <section id="networks-of-unit-operations">
-<span id="networks"></span><h1>Networks of unit operations<a class="headerlink" href="#networks-of-unit-operations" title="Permalink to this heading">¶</a></h1>
+<span id="networks"></span><h1>Networks of unit operations<a class="headerlink" href="#networks-of-unit-operations" title="Link to this heading">¶</a></h1>
 <p>Unit operation models can be composed into a network or graph, in which a node represents a unit operation and an edge denotes a connection between two unit operations.
 When utilized to full extent, this allows the simulation of complicated setups and processes (e.g., SMB, MCSGP).
 A more simple use case is the addition of plug flows and stirred tanks up- and downstream of a column in order to account for dead volume and additional dispersion from the tubing.</p>
@@ -112,13 +112,13 @@ In general, the mass balance at a unit operation has to be closed, except for un
 <p>The network of unit operations uses “connection”-variables <span class="math notranslate nohighlight">\(c_{\text{con}}\)</span> to connect the different unit operation ports with each other.
 The inlet port variables <span class="math notranslate nohighlight">\(c_{\text{in},n,k}\)</span> of unit operation <span class="math notranslate nohighlight">\(n\)</span> are attached to <span class="math notranslate nohighlight">\(c_{\text{con},n}\)</span> via</p>
 <div class="math notranslate nohighlight" id="equation-networkinletconnection">
-<span class="eqno">(17)<a class="headerlink" href="#equation-networkinletconnection" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(17)<a class="headerlink" href="#equation-networkinletconnection" title="Link to this equation">¶</a></span>\[\begin{aligned}
     c_{\text{in},n,k,i} &amp;= c_{\text{con},n,k,i}, \qquad k = 1, \dots, N_{\text{port},\text{in},n},\quad i = 1, \dots, N_{\text{comp},n}.
 \end{aligned}\]</div>
 <p>While <span class="math notranslate nohighlight">\(N_{\text{port},\text{in},n}\)</span> denotes the number of inlet ports of unit operation <span class="math notranslate nohighlight">\(n\)</span>, the number of outlet ports is given by <span class="math notranslate nohighlight">\(N_{\text{port},\text{out},n}\)</span>.
 The connection variables <span class="math notranslate nohighlight">\(c_{\text{con},n,k,i}\)</span> collect all inflows of component <span class="math notranslate nohighlight">\(i\)</span> into port <span class="math notranslate nohighlight">\(k\)</span> of unit operation <span class="math notranslate nohighlight">\(n\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-networkconnection">
-<span class="eqno">(18)<a class="headerlink" href="#equation-networkconnection" title="Permalink to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(18)<a class="headerlink" href="#equation-networkconnection" title="Link to this equation">¶</a></span>\[\begin{aligned}
     c_{\text{con},n,k,i} &amp;= \frac{\sum_{m=1}^{N_{\text{units}}} \sum_{\ell = 1}^{N_{\text{port},\text{out},n}} \sum_{j = 1}^{N_{\text{comp},m}} S_{(n,k,i),(m,\ell,j)} Q_{m,\ell} c_{\text{out},m,\ell,j}}{\sum_{m=1}^{N_{\text{units}}} \sum_{\ell=1}^{N_{\text{port},\text{out},m}} \hat{S}_{(n,k),(m,\ell)} Q_{m,\ell} },
 \end{aligned}\]</div>
 <p>where <span class="math notranslate nohighlight">\(F_{m,\ell}\)</span> denotes the volumetric flow rate from outlet port <span class="math notranslate nohighlight">\(\ell\)</span> of unit operation <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(S_{(n,k,i),(m,\ell,j)} \in \{0, 1\}\)</span> is a connection matrix indicating whether component <span class="math notranslate nohighlight">\(i\)</span> at outlet port <span class="math notranslate nohighlight">\(k\)</span> of unit operation <span class="math notranslate nohighlight">\(n\)</span> is connected to component <span class="math notranslate nohighlight">\(j\)</span> at inlet port <span class="math notranslate nohighlight">\(\ell\)</span> of unit operation <span class="math notranslate nohighlight">\(m\)</span>, and <span class="math notranslate nohighlight">\(\hat{S}_{(n,k),(m,\ell)} \in \{0, 1\}\)</span> is another connection matrix indicating whether outlet port <span class="math notranslate nohighlight">\(k\)</span> of unit operation <span class="math notranslate nohighlight">\(n\)</span> is connected to inlet port <span class="math notranslate nohighlight">\(\ell\)</span> of unit operation <span class="math notranslate nohighlight">\(m\)</span>, that is</p>
@@ -131,7 +131,7 @@ The connection variables <span class="math notranslate nohighlight">\(c_{\text{c
 <p>Note that for each unit operation the number of inlet ports may be different from the number of outlet ports.
 Hence, the mass balance of a single unit operation is taken with respect to all its ports combined.</p>
 <section id="specification-of-network-connections">
-<span id="muopnetworkconfig"></span><h2>Specification of network connections<a class="headerlink" href="#specification-of-network-connections" title="Permalink to this heading">¶</a></h2>
+<span id="muopnetworkconfig"></span><h2>Specification of network connections<a class="headerlink" href="#specification-of-network-connections" title="Link to this heading">¶</a></h2>
 <p>The connections between the different unit operations in the network are specified by a table.
 There are two table formats:</p>
 <ul class="simple">
@@ -158,7 +158,7 @@ Consequently, there can only be one flow rate for a connection between two unit 
 <p>The connection table is expected in row-major storage format (i.e., the rows are appended to one long array).</p>
 </section>
 <section id="valve-switches">
-<span id="muopnetworkvalveswitches"></span><h2>Valve switches<a class="headerlink" href="#valve-switches" title="Permalink to this heading">¶</a></h2>
+<span id="muopnetworkvalveswitches"></span><h2>Valve switches<a class="headerlink" href="#valve-switches" title="Link to this heading">¶</a></h2>
 <p>The connectivity of the network can only change on a discontinuous section transition.
 Such a transition with changing connectivity is referred to as valve switch and the connectivity itself as valve configuration.</p>
 <p>A list of valve configurations with at least one entry is required.
@@ -169,7 +169,7 @@ Hence, the one required (i.e., the first) entry must have a section index of <sp
 See Tables <a class="reference internal" href="../interface/system.html#ffmodelsystemconnections"><span class="std std-ref">Group /input/model/connections</span></a> and <a class="reference internal" href="../interface/system.html#ffmodelconnectionswitch"><span class="std std-ref">Group /input/model/connections/switch_XXX</span></a>.</p>
 </section>
 <section id="dynamic-flow-rates">
-<span id="muopnetworkdynamicflowrates"></span><h2>Dynamic flow rates<a class="headerlink" href="#dynamic-flow-rates" title="Permalink to this heading">¶</a></h2>
+<span id="muopnetworkdynamicflowrates"></span><h2>Dynamic flow rates<a class="headerlink" href="#dynamic-flow-rates" title="Link to this heading">¶</a></h2>
 <p>The volumetric flow rates may vary over time while the valve configuration is active.
 The rates are assumed to be cubic polynomials,</p>
 <div class="math notranslate nohighlight">
@@ -179,7 +179,7 @@ The rates are assumed to be cubic polynomials,</p>
 That is, the flow rate coefficients have to be chosen such that the flow into every connected inlet port is strictly positive at all times.</p>
 </section>
 <section id="solution-of-the-linear-systems">
-<span id="muopnetworklinearsolver"></span><h2>Solution of the linear systems<a class="headerlink" href="#solution-of-the-linear-systems" title="Permalink to this heading">¶</a></h2>
+<span id="muopnetworklinearsolver"></span><h2>Solution of the linear systems<a class="headerlink" href="#solution-of-the-linear-systems" title="Link to this heading">¶</a></h2>
 <p>Each time step in the simulation requires the solution of a nonlinear system Eq. <a class="reference internal" href="../simulation/index.html#equation-bdfnonlinsystem">19</a> (see Sec. <a class="reference internal" href="../simulation/index.html#simtimeintegration"><span class="std std-ref">Time stepping</span></a>).
 The nonlinear problem is solved by a Newton iteration, which, in turn, requires the solution of a linear system that essentially consists of the Jacobians of the unit operations and some coupling matrices from Eqs. <a class="reference internal" href="#equation-networkinletconnection">17</a> and <a class="reference internal" href="#equation-networkconnection">18</a>.</p>
 <p>These linear systems are either solved in parallel or sequentially. The parallel method first solves each unit operation (in parallel) to compute the solution at its outlet.

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,9 +8,9 @@
     <title>Scores &#8212; CADET-Match</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=795b792b" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="canonical" href="https://cadet.github.io/CADET-Match/master/configuration/scores.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -114,7 +114,7 @@
 
 
   <section id="scores">
-<h1>Scores<a class="headerlink" href="#scores" title="Permalink to this heading">¶</a></h1>
+<h1>Scores<a class="headerlink" href="#scores" title="Link to this heading">¶</a></h1>
 <p>CADET-Match has many scores available.
 Each score is designed to solve a particular type of problem.
 The most common ones will be covered first.
@@ -130,7 +130,7 @@ There are a few additional ones available in the code that are retained for back
 </pre></div>
 </div>
 <section id="common">
-<h2>Common<a class="headerlink" href="#common" title="Permalink to this heading">¶</a></h2>
+<h2>Common<a class="headerlink" href="#common" title="Link to this heading">¶</a></h2>
 <p>A few things are common to nearly all the scores.</p>
 <p>Almost all of them support slicing where a start and stop time can be given and the score will only look in that time slice.
 This is really useful if you know that a certain component corresponds to a particular peak.</p>
@@ -145,7 +145,7 @@ Setting decay to 1 gives an immediate penalty and setting decay to 0 gives a red
 It is recomended to use decay = 1 when estimating porosity and setting decay = 0 for most other estimations.</p>
 </section>
 <section id="sum-of-squared-error-scores">
-<h2>Sum of squared error scores<a class="headerlink" href="#sum-of-squared-error-scores" title="Permalink to this heading">¶</a></h2>
+<h2>Sum of squared error scores<a class="headerlink" href="#sum-of-squared-error-scores" title="Link to this heading">¶</a></h2>
 <p>Sum of squared errors is a common metric used in optimization but it caused problems with chromatography.
 Between issues like pump delays and small flow rate variations there is a tendency for the peaks to shift.
 A narrowly shifting peak is a particular problem for SSE and it causes the score to favor the peak being in the right place even if the shape is far from correct.
@@ -155,7 +155,7 @@ This is due to numerical issues.</p>
 <p>SSE based scores can’t be used for error modeling.</p>
 </section>
 <section id="shape">
-<h2>Shape<a class="headerlink" href="#shape" title="Permalink to this heading">¶</a></h2>
+<h2>Shape<a class="headerlink" href="#shape" title="Link to this heading">¶</a></h2>
 <p>Shape is the most general purpose score for fitting.
 It looks at the similarity of the shape between synthetic and experimental data.
 The score prioritizes the shape being accurate over the shape eluting at exactly the right time.
@@ -224,7 +224,7 @@ The shape is dictated by the physics of the reaction while the position can shif
 </div>
 </section>
 <section id="shape-front">
-<h2>Shape Front<a class="headerlink" href="#shape-front" title="Permalink to this heading">¶</a></h2>
+<h2>Shape Front<a class="headerlink" href="#shape-front" title="Link to this heading">¶</a></h2>
 <p>Shape front is a modification of the shape score that only looks at the front of a peak.
 This is especially important with breakthrough curves where the back of the peak may not even exist.</p>
 <table class="docutils align-default">
@@ -303,7 +303,7 @@ This is especially important with breakthrough curves where the back of the peak
 </div>
 </section>
 <section id="shape-back">
-<h2>Shape Back<a class="headerlink" href="#shape-back" title="Permalink to this heading">¶</a></h2>
+<h2>Shape Back<a class="headerlink" href="#shape-back" title="Link to this heading">¶</a></h2>
 <p>Shape back is a modification of the shape score that only looks at the back of a peak.
 This is often used when a system starts saturated and there is no front side of the peak and only a back side exists.</p>
 <table class="docutils align-default">
@@ -382,7 +382,7 @@ This is often used when a system starts saturated and there is no front side of 
 </div>
 </section>
 <section id="sse">
-<h2>SSE<a class="headerlink" href="#sse" title="Permalink to this heading">¶</a></h2>
+<h2>SSE<a class="headerlink" href="#sse" title="Link to this heading">¶</a></h2>
 <p>SSE is sum of squared errors and this is a typical score used in optimization.
 In chromatography the pulses are narrow and have a tendency to shift position which makes this a hard score to optimize with.
 For some problems this score may work but in general it is not advised.</p>
@@ -439,7 +439,7 @@ For some problems this score may work but in general it is not advised.</p>
 </div>
 </section>
 <section id="dextran-shape">
-<h2>Dextran Shape<a class="headerlink" href="#dextran-shape" title="Permalink to this heading">¶</a></h2>
+<h2>Dextran Shape<a class="headerlink" href="#dextran-shape" title="Link to this heading">¶</a></h2>
 <p>Dextran shape is a special score designed to deal with the non-idealities of Dextran in a column.
 It can be used with any non-ideal molecule where only part of the front of the peak can be used.
 It automatically isolates as much of the front of peak and uses as much of the front of the peak as possible.</p>
@@ -493,7 +493,7 @@ It automatically isolates as much of the front of peak and uses as much of the f
 </div>
 </section>
 <section id="dextran-sse">
-<h2>Dextran SSE<a class="headerlink" href="#dextran-sse" title="Permalink to this heading">¶</a></h2>
+<h2>Dextran SSE<a class="headerlink" href="#dextran-sse" title="Link to this heading">¶</a></h2>
 <p>Dextran SSE is uses the same slicing as Dextran shape but uses SSE instead of similarity metrics it used some of squared errors.</p>
 <p>This score can’t be used with error modeling.</p>
 <table class="docutils align-default">
@@ -546,7 +546,7 @@ It automatically isolates as much of the front of peak and uses as much of the f
 </div>
 </section>
 <section id="fractionation-slide">
-<h2>Fractionation Slide<a class="headerlink" href="#fractionation-slide" title="Permalink to this heading">¶</a></h2>
+<h2>Fractionation Slide<a class="headerlink" href="#fractionation-slide" title="Link to this heading">¶</a></h2>
 <p>This score is used for fractionation.
 It requires an additional csv file with the fractionation data.</p>
 <p>The fractionation files has 3 or more columns and it is easier to explain the the example below.
@@ -646,7 +646,7 @@ If there is no data for a sample in a particular fraction the entry can be left 
 </div>
 </section>
 <section id="fractionation-sse">
-<h2>Fractionation SSE<a class="headerlink" href="#fractionation-sse" title="Permalink to this heading">¶</a></h2>
+<h2>Fractionation SSE<a class="headerlink" href="#fractionation-sse" title="Link to this heading">¶</a></h2>
 <p>Fractionation based score using SSE and was written for testing purpose in a paper and is not generally recomended.</p>
 <p>This score can’t be used with error modeling.</p>
 <table class="docutils align-default">
@@ -713,7 +713,7 @@ If there is no data for a sample in a particular fraction the entry can be left 
 </div>
 </section>
 <section id="ceiling">
-<h2>Ceiling<a class="headerlink" href="#ceiling" title="Permalink to this heading">¶</a></h2>
+<h2>Ceiling<a class="headerlink" href="#ceiling" title="Link to this heading">¶</a></h2>
 <p>Ceiling is a special case score.
 It is almost always used with start and stop and is used to ensure nothing is above the defined value in the selected interval.
 On some experimental systems that are running very close to overload a fit can be obtained that has a large amount of material coming off during loading.
@@ -777,7 +777,7 @@ This can be used as a restriction for that effect.</p>
 </div>
 </section>
 <section id="other">
-<h2>Other<a class="headerlink" href="#other" title="Permalink to this heading">¶</a></h2>
+<h2>Other<a class="headerlink" href="#other" title="Link to this heading">¶</a></h2>
 <p>There are a few other scores that exist.</p>
 <p>AbsoluteTime and AbsoluteHeight are used by error modeling and can’t be used for parameter estimation.
 When continueMCMC=1 is set these scores are automatically added when needed.

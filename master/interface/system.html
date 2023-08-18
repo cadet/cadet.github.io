@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,9 +8,9 @@
     <title>System of unit operations &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=795b792b" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/system.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
@@ -110,9 +110,9 @@
 
 
   <section id="system-of-unit-operations">
-<span id="ffmodelsystem"></span><h1>System of unit operations<a class="headerlink" href="#system-of-unit-operations" title="Permalink to this heading">¶</a></h1>
+<span id="ffmodelsystem"></span><h1>System of unit operations<a class="headerlink" href="#system-of-unit-operations" title="Link to this heading">¶</a></h1>
 <section id="group-input-model">
-<h2>Group /input/model<a class="headerlink" href="#group-input-model" title="Permalink to this heading">¶</a></h2>
+<h2>Group /input/model<a class="headerlink" href="#group-input-model" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NUNITS</span></code></p>
 <blockquote>
 <div><p>Number of unit operations in the system</p>
@@ -183,7 +183,7 @@
 </div></blockquote>
 </section>
 <section id="group-input-model-connections">
-<span id="ffmodelsystemconnections"></span><h2>Group /input/model/connections<a class="headerlink" href="#group-input-model-connections" title="Permalink to this heading">¶</a></h2>
+<span id="ffmodelsystemconnections"></span><h2>Group /input/model/connections<a class="headerlink" href="#group-input-model-connections" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NSWITCHES</span></code></p>
 <blockquote>
 <div><p>Number of valve switches</p>
@@ -222,7 +222,7 @@
 </div></blockquote>
 </section>
 <section id="group-input-model-connections-switch-xxx">
-<span id="ffmodelconnectionswitch"></span><h2>Group /input/model/connections/switch_XXX<a class="headerlink" href="#group-input-model-connections-switch-xxx" title="Permalink to this heading">¶</a></h2>
+<span id="ffmodelconnectionswitch"></span><h2>Group /input/model/connections/switch_XXX<a class="headerlink" href="#group-input-model-connections-switch-xxx" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">SECTION</span></code></p>
 <blockquote>
 <div><p>Index of the section that activates this connection set</p>
@@ -271,7 +271,7 @@ Contrary to the constant coefficient, which has the parameter name <span class="
 </div></blockquote>
 </section>
 <section id="group-input-model-external-source-xxx-extfun-type-linear-interp-data">
-<span id="ffmodelexternalsourcelininterp"></span><h2>Group /input/model/external/source_XXX - EXTFUN_TYPE = LINEAR_INTERP_DATA<a class="headerlink" href="#group-input-model-external-source-xxx-extfun-type-linear-interp-data" title="Permalink to this heading">¶</a></h2>
+<span id="ffmodelexternalsourcelininterp"></span><h2>Group /input/model/external/source_XXX - EXTFUN_TYPE = LINEAR_INTERP_DATA<a class="headerlink" href="#group-input-model-external-source-xxx-extfun-type-linear-interp-data" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
 <blockquote>
 <div><p>Velocity of the external profile in positive column axial direction.
@@ -314,7 +314,7 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 </dl>
 </section>
 <section id="group-input-model-external-source-xxx-extfun-type-piecewise-cubic-poly">
-<span id="ffmodelexternalsourcepiececubicpoly"></span><h2>Group /input/model/external/source_XXX - EXTFUN_TYPE = PIECEWISE_CUBIC_POLY<a class="headerlink" href="#group-input-model-external-source-xxx-extfun-type-piecewise-cubic-poly" title="Permalink to this heading">¶</a></h2>
+<span id="ffmodelexternalsourcepiececubicpoly"></span><h2>Group /input/model/external/source_XXX - EXTFUN_TYPE = PIECEWISE_CUBIC_POLY<a class="headerlink" href="#group-input-model-external-source-xxx-extfun-type-piecewise-cubic-poly" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
 <blockquote>
 <div><p>Velocity of the external profile in positive column axial direction.
@@ -396,7 +396,7 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 </div></blockquote>
 </section>
 <section id="group-input-model-solver">
-<span id="ffmodelsolver"></span><h2>Group /input/model/solver<a class="headerlink" href="#group-input-model-solver" title="Permalink to this heading">¶</a></h2>
+<span id="ffmodelsolver"></span><h2>Group /input/model/solver<a class="headerlink" href="#group-input-model-solver" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">GS_TYPE</span></code></p>
 <blockquote>
 <div><p>Type of Gram-Schmidt orthogonalization, see IDAS guide Section~4.5.7.3, p.~41f. A value of <span class="math notranslate nohighlight">\(0\)</span> enables classical Gram-Schmidt, a value of 1 uses modified Gram-Schmidt.</p>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,9 +8,9 @@
     <title>Introduction &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=795b792b" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/introduction.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
@@ -105,9 +105,9 @@
 
 
   <section id="introduction">
-<span id="ffintroduction"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
+<span id="ffintroduction"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h1>
 <section id="global-structure">
-<h2>Global structure<a class="headerlink" href="#global-structure" title="Permalink to this heading">¶</a></h2>
+<h2>Global structure<a class="headerlink" href="#global-structure" title="Link to this heading">¶</a></h2>
 <p>The global structure (see <a class="reference internal" href="#ffrootfig"><span class="std std-numref">Fig. 7</span></a>) is divided into three parts: <code class="docutils literal notranslate"><span class="pre">input</span></code>, <code class="docutils literal notranslate"><span class="pre">output</span></code>, and <code class="docutils literal notranslate"><span class="pre">meta</span></code>.
 Every valid CADET file needs an <code class="docutils literal notranslate"><span class="pre">input</span></code> group (see <a class="reference internal" href="#ffinputfig"><span class="std std-numref">Fig. 8</span></a>) which contains all relevant information for simulating a model.
 It does not need an <code class="docutils literal notranslate"><span class="pre">output</span></code> (see <a class="reference internal" href="#ffoutputfig"><span class="std std-numref">Fig. 10</span></a>) or <code class="docutils literal notranslate"><span class="pre">meta</span></code> (see <a class="reference internal" href="#ffrootfig"><span class="std std-numref">Fig. 7</span></a>) group, since those are created when results are written.
@@ -120,30 +120,30 @@ For the latter, please refer to the corresponding sections in the previous chapt
 <figure class="align-default" id="id1">
 <span id="ffrootfig"></span><img alt="../_images/file_format_structure.png" src="../_images/file_format_structure.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Structure of the groups in the root group of the file format</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Structure of the groups in the root group of the file format</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <span id="ffinputfig"></span><img alt="../_images/file_format_input.png" src="../_images/file_format_input.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">High-level structure of the groups in the input part of the file format</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">High-level structure of the groups in the input part of the file format</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id3">
 <span id="ffmodelunitopcolumnfig"></span><img alt="../_images/file_format_input_model_unit.png" src="../_images/file_format_input_model_unit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Structure of the groups in a column unit operation (/input/model group)</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Structure of the groups in a column unit operation (/input/model group)</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
 <span id="ffoutputfig"></span><img alt="../_images/file_format_output.png" src="../_images/file_format_output.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Structure of the groups in the output part of the file format</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Structure of the groups in the output part of the file format</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="notation-and-identifiers">
-<h2>Notation and identifiers<a class="headerlink" href="#notation-and-identifiers" title="Permalink to this heading">¶</a></h2>
+<h2>Notation and identifiers<a class="headerlink" href="#notation-and-identifiers" title="Link to this heading">¶</a></h2>
 <p>Reference volumes are denoted by subscripts:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(m_{IV}^{3}\)</span> Interstitial volume</p></li>
@@ -153,7 +153,7 @@ For the latter, please refer to the corresponding sections in the previous chapt
 <p>Common notation and identifiers that are used in the subsequent description are listed in
 <a class="reference internal" href="#table-notation-identifiers"><span class="std std-numref">Table 4</span></a>.</p>
 <span id="table-notation-identifiers"></span><table class="docutils align-default" id="id5">
-<caption><span class="caption-number">Table 4 </span><span class="caption-text">Common notation and identifiers used in the file format description</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">Common notation and identifiers used in the file format description</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 30.0%" />
 <col style="width: 70.0%" />
@@ -198,7 +198,7 @@ For the latter, please refer to the corresponding sections in the previous chapt
 </table>
 </section>
 <section id="ordering-of-multi-dimensional-data">
-<h2>Ordering of multi dimensional data<a class="headerlink" href="#ordering-of-multi-dimensional-data" title="Permalink to this heading">¶</a></h2>
+<h2>Ordering of multi dimensional data<a class="headerlink" href="#ordering-of-multi-dimensional-data" title="Link to this heading">¶</a></h2>
 <p>Some model parameters, especially in certain binding models, require multi dimensional data.
 Since CADET only reads one dimensional arrays, the layout of the data has to be specified (i.e., the way how the data is linearized in memory).
 The term “<em>xyz</em>-major” means that the index corresponding to <em>xyz</em> changes the slowest.</p>
@@ -210,7 +210,7 @@ Then, the requested matrix is stored in memory such that all bound states are li
 <p>This linear array can be represented as a <span class="math notranslate nohighlight">\(2 \times 3\)</span> matrix in “row-major” storage format, or a <span class="math notranslate nohighlight">\(3 \times 2\)</span> matrix in “column-major” ordering.</p>
 </section>
 <section id="section-dependent-model-parameters">
-<span id="section-dependent-parameters"></span><h2>Section dependent model parameters<a class="headerlink" href="#section-dependent-model-parameters" title="Permalink to this heading">¶</a></h2>
+<span id="section-dependent-parameters"></span><h2>Section dependent model parameters<a class="headerlink" href="#section-dependent-model-parameters" title="Link to this heading">¶</a></h2>
 <p>Some model parameters (see <a class="reference internal" href="#section-dependent-datasets"><span class="std std-numref">Table 5</span></a>) can be assigned different values for each section.
 For example, the velocity a column is operated with could differ in the load, wash, and elution phases.
 Section dependency is recognized by specifying the appropriate number of values for the parameters (see <em>Length</em> column in the following tables).
@@ -218,7 +218,7 @@ If a parameter depends on both the component and the section, the ordering is se
 <p>For instance, the <em>Length</em> field of the parameter <code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code> reads <span class="math notranslate nohighlight">\(1 / NSEC\)</span> which means that it is not recognized as section dependent if only <span class="math notranslate nohighlight">\(1\)</span> value (scalar) is passed. However, if <code class="docutils literal notranslate"><span class="pre">NSEC</span></code> many values (vector) are present, it will be treated as section dependent.</p>
 <p>Note that all components of component dependent datasets have to be section dependent (e.g., you cannot have a section dependency on component <span class="math notranslate nohighlight">\(2\)</span> only while the other components are not section dependent).</p>
 <span id="section-dependent-datasets"></span><table class="docutils align-default" id="id6">
-<caption><span class="caption-number">Table 5 </span><span class="caption-text">Section dependent datasets in the 1D unit operation models (<code class="docutils literal notranslate"><span class="pre">/input/model/unit_XXX</span> <span class="pre">group</span></code>)</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Section dependent datasets in the 1D unit operation models (<code class="docutils literal notranslate"><span class="pre">/input/model/unit_XXX</span> <span class="pre">group</span></code>)</span><a class="headerlink" href="#id6" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 40.0%" />
 <col style="width: 30.0%" />

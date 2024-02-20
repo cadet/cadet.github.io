@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Parameter Sensitivities &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=795b792b" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/interface/sensitivities.html" />
+    <link rel="icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Solver Configuration" href="solver.html" />
+    <link rel="prev" title="Return data" href="return_data.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Interface specifications</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="input_group.html">Input Group</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="system.html">System of unit operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit_operations/index.html">Unit Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binding/index.html">Binding models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reactions.html">Reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flux_reconstruction.html">Flux reconstruction methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="return_data.html">Return data</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Parameter Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solver.html">Solver Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="output_group.html">Output Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_group.html">Meta Group</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/portal/EN/Service/LegalNotice/_node.html">Legal notice</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+  <section id="parameter-sensitivities">
+<span id="sensitivity"></span><h1>Parameter Sensitivities<a class="headerlink" href="#parameter-sensitivities" title="Link to this heading">¶</a></h1>
+<section id="group-input-sensitivity">
+<span id="ffsensitivity"></span><h2>Group /input/sensitivity<a class="headerlink" href="#group-input-sensitivity" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">NSENS</span></code></p>
+<blockquote>
+<div><p>Number of sensitivities to be computed</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">SENS_METHOD</span></code></p>
+<blockquote>
+<div><p>Method used for computation of sensitivities (algorithmic differentiation)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{ad1}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="group-input-sensitivity-param-xxx">
+<span id="ffsensitivityparam"></span><h2>Group /input/sensitivity/param_XXX<a class="headerlink" href="#group-input-sensitivity-param-xxx" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">SENS_UNIT</span></code></p>
+<blockquote>
+<div><p>Unit operation index</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">SENS_NAME</span></code></p>
+<blockquote>
+<div><p>Name of the parameter</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">SENS_COMP</span></code></p>
+<blockquote>
+<div><p>Component index (<span class="math notranslate nohighlight">\(-1\)</span> if parameter is independent of components)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq -1\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">SENS_PARTYPE</span></code></p>
+<blockquote>
+<div><p>Particle type index (<span class="math notranslate nohighlight">\(-1\)</span> if parameter is independent of particle types)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq -1\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">SENS_REACTION</span></code></p>
+<blockquote>
+<div><p>Reaction index (<span class="math notranslate nohighlight">\(-1\)</span> if parameter is independent of reactions)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq -1\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">SENS_BOUNDPHASE</span></code></p>
+<blockquote>
+<div><p>Bound phase index (<span class="math notranslate nohighlight">\(-1\)</span> if parameter is independent of bound phases)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq -1\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">SENS_SECTION</span></code></p>
+<blockquote>
+<div><p>Section index (<span class="math notranslate nohighlight">\(-1\)</span> if parameter is independent of sections)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq -1\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">SENS_ABSTOL</span></code></p>
+<blockquote>
+<div><p>Absolute tolerance used in the computation of the sensitivities (optional). Rule of thumb: <span class="math notranslate nohighlight">\(\texttt{ABSTOL} / \texttt{PARAM_VALUE}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0.0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">SENS_FACTOR</span></code></p>
+<blockquote>
+<div><p>Linear factor of the combined sensitivity (optional, taken as <span class="math notranslate nohighlight">\(1.0\)</span> if left out)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2024.
+      
+      |
+      <a href="../_sources/interface/sensitivities.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

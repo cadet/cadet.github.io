@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Build for MS Windows &#8212; CADET</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=795b792b" />
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
@@ -18,8 +18,9 @@
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   <div class="document">
@@ -94,7 +95,7 @@
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>Microsoft Visual Studio 2022 (Community Edition, or better)</p></li>
+<li><p>Microsoft Visual Studio <strong>2022</strong> (Community Edition, or better)</p></li>
 <li><p>Intel OneAPI MKL</p></li>
 <li><p>Optional: Git</p></li>
 <li><p>Optional but not generally recommended*: Intel OneAPI TBB</p></li>
@@ -140,7 +141,7 @@ the <a class="reference external" href="https://www.intel.com/content/www/us/en/
 <h2>Optional:  clink<a class="headerlink" href="#optional-clink" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Clink provides text completion, history, and line-editing to Windows Command Prompt</p></li>
-<li><p>Download the <a class="reference external" href="https://mridgers.github.io/clink/">clink installer exe</a> and install clink.</p></li>
+<li><p>Download the <a class="reference external" href="https://github.com/chrisant996/clink">clink installer exe</a> and install clink.</p></li>
 </ul>
 </section>
 <section id="prepare-cadet-code">
@@ -154,8 +155,20 @@ the <a class="reference external" href="https://www.intel.com/content/www/us/en/
 <li><p>Create the directories <code class="docutils literal notranslate"><span class="pre">CADET\build</span></code> and <code class="docutils literal notranslate"><span class="pre">CADET\install</span></code></p></li>
 </ul>
 </section>
-<section id="build-cadet">
-<h2>Build CADET<a class="headerlink" href="#build-cadet" title="Link to this heading">¶</a></h2>
+<section id="build-cadet-in-visual-studio">
+<h2>Build CADET in Visual Studio<a class="headerlink" href="#build-cadet-in-visual-studio" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Open Visual Studio and open the <code class="docutils literal notranslate"><span class="pre">CADET</span></code> folder</p></li>
+<li><p>At the top, where it says <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>, select <code class="docutils literal notranslate"><span class="pre">RELEASE</span></code> instead</p></li>
+<li><p>Wait for <code class="docutils literal notranslate"><span class="pre">vcpkg</span></code> to install all the dependencies. The first time this is done on your PC it can take ~15-30 minutes</p></li>
+<li><p>Wait for <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">generation</span></code> to finish (see <code class="docutils literal notranslate"><span class="pre">output</span></code> window)</p></li>
+<li><p>From the status bar at the top select <code class="docutils literal notranslate"><span class="pre">Build</span></code>, <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">all</span></code></p></li>
+<li><p>Once that finishes, select <code class="docutils literal notranslate"><span class="pre">Build</span></code>, <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">CadetFramework</span></code></p></li>
+<li><p>The binaries will be located in <code class="docutils literal notranslate"><span class="pre">CADET\install\RELEASE\bin</span></code></p></li>
+</ul>
+</section>
+<section id="build-cadet-from-the-command-line">
+<h2>Build CADET from the command line<a class="headerlink" href="#build-cadet-from-the-command-line" title="Link to this heading">¶</a></h2>
 <ul>
 <li><p>Open Visual Studio and select “continue without code”</p></li>
 <li><p>Navigate to “Tools” - “Command Line” and open either a “Developer Command Prompt” or “Developer PowerShell”</p></li>
@@ -224,7 +237,7 @@ This raises error messages that are not raised from a cmd or PowerShell window.<
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2023.
+      &#169;2008-2024.
       
       |
       <a href="../_sources/getting_started/build_windows.rst.txt"

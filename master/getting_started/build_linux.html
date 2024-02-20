@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Build for Linux &#8212; CADET</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=795b792b" />
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
@@ -18,8 +18,9 @@
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  
 
   </head><body>
   <div class="document">
@@ -112,10 +113,9 @@ recent version.</p>
 <section id="install-dependencies">
 <h2>Install dependencies<a class="headerlink" href="#install-dependencies" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">cmake</span> <span class="n">libhdf5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libtbb</span><span class="o">-</span><span class="n">dev</span> <span class="n">libsuperlu</span><span class="o">-</span><span class="n">dev</span> <span class="n">libeigen3</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">cmake</span> <span class="n">libhdf5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libsuperlu</span><span class="o">-</span><span class="n">dev</span> <span class="n">libeigen3</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
-<p>sudo apt -y install build-essential libhdf5-dev libsuperlu-dev libeigen3-dev intel-mkl</p>
 <section id="lapack">
 <h3>LAPACK<a class="headerlink" href="#lapack" title="Link to this heading">¶</a></h3>
 <p>You can either use a LAPACK implementation provided by your distribution or install the freely available Intel MKL</p>
@@ -124,7 +124,7 @@ recent version.</p>
 </pre></div>
 </div>
 <p>for distro defaults run</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo apt -y install liblapack3 liblapack-dev libblas3 libblas-dev`
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">liblapack3</span> <span class="n">liblapack</span><span class="o">-</span><span class="n">dev</span> <span class="n">libblas3</span> <span class="n">libblas</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
 </section>
@@ -157,7 +157,7 @@ recent version.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &copy;2008-2023.
+      &#169;2008-2024.
       
       |
       <a href="../_sources/getting_started/build_linux.rst.txt"

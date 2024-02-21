@@ -116,13 +116,11 @@
 <h2>Group /input/model/unit_XXX/discretization/weno - WENO Parameters<a class="headerlink" href="#group-input-model-unit-xxx-discretization-weno-weno-parameters" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">BOUNDARY_MODEL</span></code></p>
 <blockquote>
-<div><p>Boundary model type:</p>
-<ol class="arabic simple" start="0">
-<li><p>Lower WENO order (stable)</p></li>
-<li><p>Zero weights (unstable for small <span class="math notranslate nohighlight">\(D_{\mathrm{ax}}\)</span>)</p></li>
-<li><p>Zero weights for <span class="math notranslate nohighlight">\(p \neq 0\)</span> (stable?)</p></li>
-<li><p>Large ghost points</p></li>
-</ol>
+<div><p>Boundary model type:
+0. Lower WENO order (stable)
+1. Zero weights (unstable for small <span class="math notranslate nohighlight">\(D_{\mathrm{ax}}\)</span>)
+2. Zero weights for <span class="math notranslate nohighlight">\(p \neq 0\)</span> (stable?)
+3. Large ghost points</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -137,8 +135,8 @@
 <div><p>WENO <span class="math notranslate nohighlight">\(\varepsilon\)</span></p>
 <table class="docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> :math:<a href="#id1"><span class="problematic" id="id2">`</span></a>qe 0`</p></td>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 3\}\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>

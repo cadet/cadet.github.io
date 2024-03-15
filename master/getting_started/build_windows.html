@@ -112,7 +112,6 @@ unless you know your simulations are large enough to benefit from it.</p>
 |    - include
 |    - [...]
 |    - build
-|    - install
 </pre><p>Note that the version numbers of the files and packages below are subject to change and will not always reflect the most
 recent version.</p>
 </section>
@@ -159,12 +158,18 @@ the <a class="reference external" href="https://www.intel.com/content/www/us/en/
 <h2>Build CADET in Visual Studio<a class="headerlink" href="#build-cadet-in-visual-studio" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Open Visual Studio and open the <code class="docutils literal notranslate"><span class="pre">CADET</span></code> folder</p></li>
-<li><p>At the top, where it says <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>, select <code class="docutils literal notranslate"><span class="pre">RELEASE</span></code> instead</p></li>
+<li><p>Navigate to “Tools” - “Command Line” and open either a “Developer Command Prompt” or “Developer PowerShell”</p></li>
+<li><p>Execute the following command:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">vcpkg</span> <span class="pre">integrate</span> <span class="pre">install</span></code> (this only needs to be run <em>once</em> per PC and will require admin privileges)</p></li>
+</ul>
+</li>
+<li><p>At the top, where it says <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>, select <code class="docutils literal notranslate"><span class="pre">aRELEASE</span></code> instead</p></li>
 <li><p>Wait for <code class="docutils literal notranslate"><span class="pre">vcpkg</span></code> to install all the dependencies. The first time this is done on your PC it can take ~15-30 minutes</p></li>
 <li><p>Wait for <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">generation</span></code> to finish (see <code class="docutils literal notranslate"><span class="pre">output</span></code> window)</p></li>
 <li><p>From the status bar at the top select <code class="docutils literal notranslate"><span class="pre">Build</span></code>, <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">all</span></code></p></li>
 <li><p>Once that finishes, select <code class="docutils literal notranslate"><span class="pre">Build</span></code>, <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">CadetFramework</span></code></p></li>
-<li><p>The binaries will be located in <code class="docutils literal notranslate"><span class="pre">CADET\install\RELEASE\bin</span></code></p></li>
+<li><p>The binaries will be located in <code class="docutils literal notranslate"><span class="pre">CADET\out\install\aRELEASE\bin</span></code></p></li>
 </ul>
 </section>
 <section id="build-cadet-from-the-command-line">
@@ -178,11 +183,11 @@ the <a class="reference external" href="https://www.intel.com/content/www/us/en/
 <li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">CADET\build</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">vcpkg</span> <span class="pre">integrate</span> <span class="pre">install</span></code> (this only needs to be run <em>once</em> and will require admin privileges)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">MKLROOT=&quot;C:/Program</span> <span class="pre">Files</span> <span class="pre">(x86)/Intel/oneAPI/mkl/latest&quot;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=..\install</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">17</span> <span class="pre">2022&quot;</span> <span class="pre">-A</span> <span class="pre">x64</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span> <span class="pre">-DCMAKE_TOOLCHAIN_FILE=&quot;%VCPKG_ROOT%/scripts/buildsystems/vcpkg.cmake&quot;</span> <span class="pre">-DVCPKG_TARGET_TRIPLET=x64-windows-static</span> <span class="pre">-DENABLE_STATIC_LINK_LAPACK=ON</span> <span class="pre">-DENABLE_STATIC_LINK_DEPS=ON</span> <span class="pre">-DBLA_VENDOR=Intel10_64lp_seq</span> <span class="pre">--fresh</span> <span class="pre">../</span></code></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=..\out\install\aRELEASE</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">17</span> <span class="pre">2022&quot;</span> <span class="pre">-A</span> <span class="pre">x64</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span> <span class="pre">-DCMAKE_TOOLCHAIN_FILE=&quot;%VCPKG_ROOT%/scripts/buildsystems/vcpkg.cmake&quot;</span> <span class="pre">-DVCPKG_TARGET_TRIPLET=x64-windows-static</span> <span class="pre">-DENABLE_STATIC_LINK_LAPACK=ON</span> <span class="pre">-DENABLE_STATIC_LINK_DEPS=ON</span> <span class="pre">-DBLA_VENDOR=Intel10_64lp_seq</span> <span class="pre">--fresh</span> <span class="pre">../</span></code></p>
 <ul>
 <li><p>If you want to use parallelization and have installed TBB, instead
 execute <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">TBBROOT=&quot;C:/Program</span> <span class="pre">Files</span> <span class="pre">(x86)/Intel/oneAPI/tbb/latest&quot;</span></code> and</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=..\install</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">17</span> <span class="pre">2022&quot;</span> <span class="pre">-A</span> <span class="pre">x64</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span> <span class="pre">-DCMAKE_TOOLCHAIN_FILE=&quot;%VCPKG_ROOT%/scripts/buildsystems/vcpkg.cmake&quot;</span> <span class="pre">-DVCPKG_TARGET_TRIPLET=x64-windows-static</span> <span class="pre">-DENABLE_STATIC_LINK_LAPACK=ON</span> <span class="pre">-DENABLE_STATIC_LINK_DEPS=ON</span> <span class="pre">-DBLA_VENDOR=Intel10_64lp</span> <span class="pre">--fresh</span> <span class="pre">../</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=..\out\install\aRELEASE</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">17</span> <span class="pre">2022&quot;</span> <span class="pre">-A</span> <span class="pre">x64</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span> <span class="pre">-DCMAKE_TOOLCHAIN_FILE=&quot;%VCPKG_ROOT%/scripts/buildsystems/vcpkg.cmake&quot;</span> <span class="pre">-DVCPKG_TARGET_TRIPLET=x64-windows-static</span> <span class="pre">-DENABLE_STATIC_LINK_LAPACK=ON</span> <span class="pre">-DENABLE_STATIC_LINK_DEPS=ON</span> <span class="pre">-DBLA_VENDOR=Intel10_64lp</span> <span class="pre">--fresh</span> <span class="pre">../</span></code></p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">msbuild.exe</span> <span class="pre">INSTALL.vcxproj</span> <span class="pre">/p:Configuration=Release;Platform=x64</span></code></p></li>
@@ -193,7 +198,7 @@ execute <code class="docutils literal notranslate"><span class="pre">set</span> 
 <li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">CADET\build</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">vcpkg</span> <span class="pre">integrate</span> <span class="pre">install</span></code> (this only needs to be run <em>once</em> and will require admin privileges)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">$ENV:MKLROOT</span> <span class="pre">=</span> <span class="pre">&quot;C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)\Intel\oneAPI\mkl\latest&quot;</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=&quot;..\install&quot;</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">17</span> <span class="pre">2022&quot;</span> <span class="pre">-A</span> <span class="pre">x64</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span> <span class="pre">-DCMAKE_TOOLCHAIN_FILE=&quot;$ENV:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake&quot;</span> <span class="pre">-DVCPKG_TARGET_TRIPLET=x64-windows-static</span> <span class="pre">-DENABLE_STATIC_LINK_LAPACK=ON</span> <span class="pre">-DENABLE_STATIC_LINK_DEPS=ON</span> <span class="pre">-DBLA_VENDOR=Intel10_64lp_seq</span> <span class="pre">&quot;../&quot;</span> <span class="pre">--fresh</span></code></p>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=&quot;..\out\install\aRELEASE&quot;</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">17</span> <span class="pre">2022&quot;</span> <span class="pre">-A</span> <span class="pre">x64</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span> <span class="pre">-DCMAKE_TOOLCHAIN_FILE=&quot;$ENV:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake&quot;</span> <span class="pre">-DVCPKG_TARGET_TRIPLET=x64-windows-static</span> <span class="pre">-DENABLE_STATIC_LINK_LAPACK=ON</span> <span class="pre">-DENABLE_STATIC_LINK_DEPS=ON</span> <span class="pre">-DBLA_VENDOR=Intel10_64lp_seq</span> <span class="pre">&quot;../&quot;</span> <span class="pre">--fresh</span></code></p>
 <ul>
 <li><dl class="simple">
 <dt>If you want to use parallelization and have installed TBB, instead</dt><dd><p>execute <code class="docutils literal notranslate"><span class="pre">$ENV:TBBROOT</span> <span class="pre">=</span> <span class="pre">&quot;C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)\Intel\oneAPI\tbb\latest&quot;</span></code></p>
@@ -201,19 +206,19 @@ execute <code class="docutils literal notranslate"><span class="pre">set</span> 
 </dl>
 <p>and</p>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=&quot;..\install&quot;</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">17</span> <span class="pre">2022&quot;</span> <span class="pre">-A</span> <span class="pre">x64</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span> <span class="pre">-DCMAKE_TOOLCHAIN_FILE=&quot;$ENV:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake&quot;</span> <span class="pre">-DVCPKG_TARGET_TRIPLET=x64-windows-static</span> <span class="pre">-DENABLE_STATIC_LINK_LAPACK=ON</span> <span class="pre">-DENABLE_STATIC_LINK_DEPS=ON</span> <span class="pre">-DBLA_VENDOR=Intel10_64lp</span> <span class="pre">&quot;../&quot;</span> <span class="pre">--fresh</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=&quot;..\out\install\aRELEASE&quot;</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">17</span> <span class="pre">2022&quot;</span> <span class="pre">-A</span> <span class="pre">x64</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span> <span class="pre">-DCMAKE_TOOLCHAIN_FILE=&quot;$ENV:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake&quot;</span> <span class="pre">-DVCPKG_TARGET_TRIPLET=x64-windows-static</span> <span class="pre">-DENABLE_STATIC_LINK_LAPACK=ON</span> <span class="pre">-DENABLE_STATIC_LINK_DEPS=ON</span> <span class="pre">-DBLA_VENDOR=Intel10_64lp</span> <span class="pre">&quot;../&quot;</span> <span class="pre">--fresh</span></code></p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">msbuild.exe</span> <span class="pre">INSTALL.vcxproj</span> <span class="pre">/p:Configuration=&quot;Release;Platform=x64&quot;</span></code></p></li>
 </ul>
 </li>
-<li><p>The binaries will be located in <code class="docutils literal notranslate"><span class="pre">CADET\install\bin</span></code></p></li>
+<li><p>The binaries will be located in <code class="docutils literal notranslate"><span class="pre">CADET\out\install\aRELEASE\bin</span></code></p></li>
 </ul>
 </section>
 <section id="test-build-results">
 <h2>Test build results<a class="headerlink" href="#test-build-results" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>Navigate to the install location <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">CADET\install\bin</span></code></p></li>
+<li><p>Navigate to the install location <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">CADET\out\install\aRELEASE\bin</span></code></p></li>
 <li><p>Run:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">cadet-cli.exe</span> <span class="pre">--version</span></code></p></li>

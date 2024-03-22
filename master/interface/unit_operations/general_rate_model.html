@@ -163,6 +163,18 @@
 </tbody>
 </table>
 </div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">NBOUND</span></code></p>
+<blockquote>
+<div><p>Number of bound states for each component in each particle type in type-major ordering</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span> / <span class="math notranslate nohighlight">\(\texttt{NPARTYPE} \cdot \texttt{NCOMP}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">REACTION_MODEL_BULK</span></code></p>
 <blockquote>
 <div><p>Specifies the type of reaction model of the bulk volume. The model is configured in the subgroup <span class="math notranslate nohighlight">\(\texttt{reaction_bulk}\)</span>.</p>
@@ -676,6 +688,29 @@ Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDI
 </tbody>
 </table>
 </div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">NPARTYPE</span></code></p>
+<blockquote>
+<div><p>Number of particle types. Optional, inferred from the length of <span class="math notranslate nohighlight">\(\texttt{NPAR}\)</span> or <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span> if left out.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_GEOM</span></code></p>
+<blockquote>
+<div><p>Specifies the particle geometry for all or each particle type. Valid values are <span class="math notranslate nohighlight">\(\texttt{SPHERE}\)</span>, <span class="math notranslate nohighlight">\(\texttt{CYLINDER}\)</span>, <span class="math notranslate nohighlight">\(\texttt{SLAB}\)</span>. Optional, defaults to <span class="math notranslate nohighlight">\(\texttt{SPHERE}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span> / <span class="math notranslate nohighlight">\(\texttt{NPARTYPE}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">PAR_TYPE_VOLFRAC</span></code></p>
 <blockquote>
 <div><p>Volume fractions of the particle types. The volume fractions can be set for all axial cells together or for each individual axial cell. For each cell, the volume fractions have to sum to <span class="math notranslate nohighlight">\(1\)</span>. In case of a spatially inhomogeneous setting, the data is expected in cell-major ordering and the <span class="math notranslate nohighlight">\(\texttt{SENS_SECTION}\)</span> field is used for indexing the axial cell when specifying parameter sensitivities.  This field is optional in case of only one particle type.</p>
@@ -703,18 +738,6 @@ Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDI
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">NPARTYPE</span></code></p>
-<blockquote>
-<div><p>Number of particle types. Optional, inferred from the length of <span class="math notranslate nohighlight">\(\texttt{NPAR}\)</span> or <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span> if left out.</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
-<td><p><strong>Length:</strong> 1</p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">NPAR</span></code></p>
 <blockquote>
 <div><p>Number of particle (radial) discretization cells for each particle type</p>
@@ -722,29 +745,6 @@ Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDI
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span> / <span class="math notranslate nohighlight">\(\texttt{NPARTYPE}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">NBOUND</span></code></p>
-<blockquote>
-<div><p>Number of bound states for each component in each particle type in type-major ordering</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span> / <span class="math notranslate nohighlight">\(\texttt{NPARTYPE} \cdot \texttt{NCOMP}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">PAR_GEOM</span></code></p>
-<blockquote>
-<div><p>Specifies the particle geometry for all or each particle type. Valid values are <span class="math notranslate nohighlight">\(\texttt{SPHERE}\)</span>, <span class="math notranslate nohighlight">\(\texttt{CYLINDER}\)</span>, <span class="math notranslate nohighlight">\(\texttt{SLAB}\)</span>. Optional, defaults to <span class="math notranslate nohighlight">\(\texttt{SPHERE}\)</span>.</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span> / <span class="math notranslate nohighlight">\(\texttt{NPARTYPE}\)</span></p></td>
 </tr>
 </tbody>

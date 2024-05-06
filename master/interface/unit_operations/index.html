@@ -9,8 +9,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=795b792b" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/interface/unit_operations/index.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -57,6 +58,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../return_data.html">Return data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sensitivities.html">Parameter Sensitivities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../solver.html">Solver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../parameter_dependencies.html">Parameter Dependencies</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../output_group.html">Output Group</a></li>
@@ -70,7 +72,7 @@
 </ul>
 
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
@@ -78,7 +80,7 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
@@ -124,17 +126,29 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="general_rate_model.html">General Rate Model</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="general_rate_model.html#group-input-model-unit-xxx-unit-type-general-rate-model">Group /input/model/unit_XXX - UNIT_TYPE - GENERAL_RATE_MODEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_rate_model.html#discretization-methods">Discretization Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="general_rate_model.html#group-input-model-unit-xxx-discretization-unit-type-general-rate-model">Group /input/model/unit_XXX/discretization - UNIT_TYPE - GENERAL_RATE_MODEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_rate_model.html#finite-volumes-default">Finite Volumes (Default)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_rate_model.html#group-input-model-unit-xxx-discretization-unit-type-general-rate-model-dg">Group /input/model/unit_XXX/discretization - UNIT_TYPE - GENERAL_RATE_MODEL_DG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general_rate_model.html#discontinuous-galerkin">Discontinuous Galerkin</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="lumped_rate_model_with_pores.html">Lumped rate model with pores</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="lumped_rate_model_with_pores.html#group-input-model-unit-xxx-unit-type-lumped-rate-model-with-pores">Group /input/model/unit_XXX - UNIT_TYPE = LUMPED_RATE_MODEL_WITH_PORES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lumped_rate_model_with_pores.html#discretization-methods">Discretization Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lumped_rate_model_with_pores.html#group-input-model-unit-xxx-discretization-unit-type-lumped-rate-model-with-pores">Group /input/model/unit_XXX/discretization - UNIT_TYPE = LUMPED_RATE_MODEL_WITH_PORES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lumped_rate_model_with_pores.html#finite-volumes-default">Finite Volumes (Default)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lumped_rate_model_with_pores.html#group-input-model-unit-xxx-discretization-unit-type-lumped-rate-model-with-pores-dg">Group /input/model/unit_XXX/discretization - UNIT_TYPE = LUMPED_RATE_MODEL_WITH_PORES_DG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lumped_rate_model_with_pores.html#discontinuous-galerkin">Discontinuous Galerkin</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="lumped_rate_model_without_pores.html">Lumped Rate Model Without Pores</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="lumped_rate_model_without_pores.html#group-input-model-unit-xxx-unit-type-lumped-rate-model-without-pores">Group /input/model/unit_XXX - UNIT_TYPE = LUMPED_RATE_MODEL_WITHOUT_PORES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lumped_rate_model_without_pores.html#discretization-methods">Discretization Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lumped_rate_model_without_pores.html#group-input-model-unit-xxx-discretization-unit-type-lumped-rate-model-without-pores">Group /input/model/unit_XXX/discretization - UNIT_TYPE = LUMPED_RATE_MODEL_WITHOUT_PORES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lumped_rate_model_without_pores.html#finite-volumes-default">Finite Volumes (Default)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lumped_rate_model_without_pores.html#group-input-model-unit-xxx-discretization-unit-type-lumped-rate-model-without-pores-dg">Group /input/model/unit_XXX/discretization - UNIT_TYPE = LUMPED_RATE_MODEL_WITHOUT_PORES_DG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lumped_rate_model_without_pores.html#discontinuous-galerkin">Discontinuous Galerkin</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="2d_general_rate_model.html">Two dimensional general rate model</a><ul>
@@ -144,6 +158,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="cstr.html">Continuous stirred tank reactor model</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="cstr.html#group-input-model-unit-xxx-unit-type-cstr">Group /input/model/unit_XXX - UNIT_TYPE = CSTR</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="radial_flow_models.html">Radial FLow Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="radial_flow_models.html#group-input-model-unit-xxx-unit-type-radial-general-rate-model">Group /input/model/unit_XXX - UNIT_TYPE - RADIAL_GENERAL_RATE_MODEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="radial_flow_models.html#group-input-model-unit-xxx-discretization-unit-type-radial-general-rate-model">Group /input/model/unit_XXX/discretization - UNIT_TYPE - RADIAL_GENERAL_RATE_MODEL</a></li>
 </ul>
 </li>
 </ul>

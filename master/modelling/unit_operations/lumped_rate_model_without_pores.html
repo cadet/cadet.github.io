@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=795b792b" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/modelling/unit_operations/lumped_rate_model_without_pores.html" />
@@ -69,7 +69,7 @@
 </ul>
 
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
@@ -77,7 +77,7 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
@@ -113,7 +113,7 @@
 <p>The lumped rate model without pores <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id6" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, Amsterdam, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>, <a class="reference internal" href="../../zbibliography.html#id8" title="A. Felinger and G. Guiochon. Comparison of the Kinetic Models of Linear Chromatography. Chromatographia, 60(S1):175–180, May 2004. URL: http://springerlink.metapress.com/openurl.asp?genre=article{\&amp;}id=doi:10.1365/s10337-004-0288-7, doi:10.1365/s10337-004-0288-7.">4</a>]</span> deviates from the lumped rate model with pores (see Section <a class="reference internal" href="lumped_rate_model_with_pores.html#lumped-rate-model-with-pores-model"><span class="std std-ref">Lumped rate model with pores (LRMP)</span></a>) by neglecting pores completely.
 The particle phase <span class="math notranslate nohighlight">\(c^p\)</span> is removed and the porosity <span class="math notranslate nohighlight">\(\varepsilon_t\)</span> is taken as total porosity</p>
 <div class="math notranslate nohighlight" id="equation-totalporosity">
-<span class="eqno">(10)<a class="headerlink" href="#equation-totalporosity" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(13)<a class="headerlink" href="#equation-totalporosity" title="Link to this equation">¶</a></span>\[\begin{aligned}
     \varepsilon_t = \varepsilon_c + \left( 1 - \varepsilon_c \right) \varepsilon_p.
 \end{aligned}\]</div>
 <p>The phase ratio is denoted by <span class="math notranslate nohighlight">\(\beta_t = \varepsilon_t / (1 - \varepsilon_t)\)</span> accordingly.
@@ -143,6 +143,32 @@ The equations are complemented by Danckwerts boundary conditions <span id="id2">
 <p>Note that by setting <span class="math notranslate nohighlight">\(\varepsilon_t = 1\)</span>, removing all bound states by setting <span class="math notranslate nohighlight">\(N_{\text{bnd},i} = 0\)</span> for all components <span class="math notranslate nohighlight">\(i\)</span>, and applying no binding model, a dispersive plug flow reactor (DPFR) is obtained.
 For the specification of flow rate and direction, the same holds as for the general rate model (see Section <a class="reference internal" href="general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>).</p>
 <p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/lumped_rate_model_without_pores.html#lumped-rate-model-without-pores-config"><span class="std std-ref">Lumped Rate Model Without Pores</span></a>.</p>
+<section id="radial-flow-lrm">
+<h2>Radial flow LRM<a class="headerlink" href="#radial-flow-lrm" title="Link to this heading">¶</a></h2>
+<p>The radial flow LRM describes transport of solute molecules through the interstitial column volume by radial convective flow, band broadening caused by radial dispersion, and adsorption to the bead surfaces.</p>
+<p>The main assumptions are:</p>
+<ul class="simple">
+<li><p>The shells of the column are homogenous in terms of interstitial volume, fluid flow, and distribution of components.
+Thus, only one spatial coordinate in radial direction <span class="math notranslate nohighlight">\(\rho\)</span> is needed and axial transport is neglected in the column bulk volume.</p></li>
+<li><p>The bead radii <span class="math notranslate nohighlight">\(r_{p}\)</span> are much smaller than the column radius <span class="math notranslate nohighlight">\(\mathrm{P}-\mathrm{P}_c\)</span>, with <span class="math notranslate nohighlight">\(\mathrm{P}\)</span> and <span class="math notranslate nohighlight">\(\mathrm{P}_c\)</span> being the inner and outer column radius respectively, and the column length <span class="math notranslate nohighlight">\(L\)</span>.
+Therefore, the beads can be seen as continuously distributed inside the column (i.e., at each point there is interstitial and bead volume).</p></li>
+<li><p>The fluids are incompressible, i.e. the velocity field <span class="math notranslate nohighlight">\(\mathrm{V} \colon \mathbb{R}^3 \to \mathbb{R}^3\)</span> submits to <span class="math notranslate nohighlight">\(\operatorname{div}\left( \mathrm{V} \right) \equiv 0\)</span>.
+That is, the volumetric flow rate at the inner and outer column radius are the same.</p></li>
+</ul>
+<p>Consider a hollow (double walled) column with inner column diameter <span class="math notranslate nohighlight">\(\mathrm{P}_c&gt;0\)</span> and outer diameter <span class="math notranslate nohighlight">\(\mathrm{P}&gt;\mathrm{P}_c\)</span>, filled with spherical beads. The mass balance in the interstitial column volume is described by</p>
+<div class="math notranslate nohighlight" id="equation-modelradialcolumn">
+<span class="eqno">(14)<a class="headerlink" href="#equation-modelradialcolumn" title="Link to this equation">¶</a></span>\[\begin{aligned}
+    \frac{\partial c^l_i}{\partial t} + \frac{1}{\beta_t} \frac{\partial}{\partial t} \sum_{m_i} c^s_{i,m_i} &amp;= -\frac{u}{\rho} \frac{\partial c^l_i}{\partial \rho} + D_{\text{rad},i} \frac{1}{\rho} \frac{\partial}{\partial \rho}  \left( \rho \frac{\partial c^l_i}{\partial \rho} \right) + f_{\text{react},i}^l\left( c^l, c^s \right) + \frac{1}{\beta_t} f_{\text{react},i}^s\left( c^l, c^s \right),
+\end{aligned}\]</div>
+<p>The equations are complemented by Danckwerts boundary conditions <span id="id3">[<a class="reference internal" href="../../zbibliography.html#id7" title="P.V. Danckwerts. Continuous flow systems: Distribution of residence times. Chemical Engineering Science, 2(1):1–13, February 1953. URL: http://linkinghub.elsevier.com/retrieve/pii/0009250953800011, doi:10.1016/0009-2509(53)80001-1.">8</a>]</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    u c_{\text{in},i}(t) &amp;= u c^l_i(t,0) - D_{\text{rad},i} \frac{\partial c^l_i}{\partial \rho}(t, 0) &amp; \forall t &gt; 0,\\
+    \frac{\partial c^l_i}{\partial \rho}(t, \mathrm{P}) &amp;= 0 &amp; \forall t &gt; 0.
+\end{aligned}\end{split}\]</div>
+<p>The complementing binding equations are described by the same equations as for the axial LRM.</p>
+<p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/radial_flow_models.html#radial-flow-models-config"><span class="std std-ref">Radial FLow Models</span></a> in addition to <a class="reference internal" href="../../interface/unit_operations/lumped_rate_model_without_pores.html#lumped-rate-model-without-pores-config"><span class="std std-ref">Lumped Rate Model Without Pores</span></a>.</p>
+</section>
 </section>
 
 

@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=795b792b" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/modelling/unit_operations/lumped_rate_model_with_pores.html" />
@@ -69,7 +69,7 @@
 </ul>
 
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
@@ -77,7 +77,7 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
 <h3>Releases</h3>
 <ul>
@@ -117,8 +117,8 @@ Hence, the model equations are given by</p>
 \[\begin{aligned}
     \frac{\partial c^l_i}{\partial t} &amp;= -u \frac{\partial c^l_i}{\partial z} + D_{\text{ax},i} \frac{\partial^2 c^l_i}{\partial z^2} - \frac{1}{\beta_c} \sum_{j} d_j \frac{3}{r_{p,j}} k_{f,j,i}\left[ c^l_i - c^p_{j,i} \right] + f_{\text{react},i}^l\left(c^l\right),
 \end{aligned}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-modelparticlelrmp">
+<span class="eqno">(15)<a class="headerlink" href="#equation-modelparticlelrmp" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
     \frac{\partial c^p_{j,i}}{\partial t} + \frac{1 - \varepsilon_{p,j}}{F_{\text{acc},j,i} \varepsilon_{p,j}} \frac{\partial}{\partial t} \sum_{m_{j,i}} c^s_{j,i,m_{j,i}} &amp;= \frac{3}{F_{\text{acc},j,i} \varepsilon_{p,j} r_{p,j}}k_{f,j,i}\left[ c^l_i - c^p_{j,i} \right] \\
     &amp;+ f_{\text{react},j,i}^p\left( c_j^p, c_j^s \right) + \frac{1 - \varepsilon_{p,j}}{F_{\text{acc},j,i} \varepsilon_{p,j}} f_{\text{react},j,i}^s\left( c_j^p, c_j^s \right)
 \end{aligned}\end{split}\]</div>
@@ -144,6 +144,32 @@ The equations are complemented by Danckwerts boundary conditions <span id="id2">
 This model can also be used to simulate <a class="reference internal" href="general_rate_model.html#muopgrmsizeexclusion"><span class="std std-ref">Size exclusion chromatography</span></a>.
 For the specification of flow rate and direction, the same holds as for the general rate model (see Section <a class="reference internal" href="general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>).</p>
 <p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/lumped_rate_model_with_pores.html#lumped-rate-model-with-pores-config"><span class="std std-ref">Lumped rate model with pores</span></a>.</p>
+<section id="radial-flow-lrmp">
+<h2>Radial flow LRMP<a class="headerlink" href="#radial-flow-lrmp" title="Link to this heading">¶</a></h2>
+<p>The radial flow LRMP describes transport of solute molecules through the interstitial column volume by radial convective flow, band broadening caused by radial dispersion, mass transfer resistance through a stagnant film around the beads, and adsorption to the inner bead surfaces.</p>
+<p>The main assumptions are:</p>
+<ul class="simple">
+<li><p>The shells of the column are homogenous in terms of interstitial volume, fluid flow, and distribution of components.
+Thus, only one spatial coordinate in radial direction <span class="math notranslate nohighlight">\(\rho\)</span> is needed and axial transport is neglected in the column bulk volume.</p></li>
+<li><p>The bead radii <span class="math notranslate nohighlight">\(r_{p}\)</span> are much smaller than the column radius <span class="math notranslate nohighlight">\(\mathrm{P}-\mathrm{P}_c\)</span>, with <span class="math notranslate nohighlight">\(\mathrm{P}\)</span> and <span class="math notranslate nohighlight">\(\mathrm{P}_c\)</span> being the inner and outer column radius respectively, and the column length <span class="math notranslate nohighlight">\(L\)</span>.
+Therefore, the beads can be seen as continuously distributed inside the column (i.e., at each point there is interstitial and bead volume).</p></li>
+<li><p>The fluids are incompressible, i.e. the velocity field <span class="math notranslate nohighlight">\(\mathrm{V} \colon \mathbb{R}^3 \to \mathbb{R}^3\)</span> submits to <span class="math notranslate nohighlight">\(\operatorname{div}\left( \mathrm{V} \right) \equiv 0\)</span>.
+That is, the volumetric flow rate at the inner and outer column radius are the same.</p></li>
+</ul>
+<p>Consider a hollow (double walled) column with inner column diameter <span class="math notranslate nohighlight">\(\mathrm{P}_c&gt;0\)</span> and outer diameter <span class="math notranslate nohighlight">\(\mathrm{P}&gt;\mathrm{P}_c\)</span>, filled with spherical beads of (possibly) multiple types with radius <span class="math notranslate nohighlight">\(r_{p,j} \ll L\)</span> (see <a class="reference internal" href="general_rate_model.html#modelgrmcolumn"><span class="std std-numref">Fig. 1</span></a>), where <span class="math notranslate nohighlight">\(j\)</span> is the particle type index. The mass balance in the interstitial column volume is described by</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \frac{\partial c^l_i}{\partial t} &amp;= -\frac{u}{\rho} \frac{\partial c^l_i}{\partial \rho} + D_{\text{rad},i} \frac{1}{\rho} \frac{\partial}{\partial \rho} \left( \rho \frac{\partial c^l_i}{\partial \rho} \right) - \frac{1}{\beta_c} \sum_{j} d_j \frac{3}{r_{p,j}} k_{f,j,i}\left[ c^l_i - c^p_{j,i} \right] + f_{\text{react},i}^l\left(c^l\right),
+\end{aligned}\]</div>
+<p>The equations are complemented by Eq. <span class="xref std std-ref">ModelParticleLRMP</span> and the Danckwerts boundary conditions <span id="id3">[<a class="reference internal" href="../../zbibliography.html#id7" title="P.V. Danckwerts. Continuous flow systems: Distribution of residence times. Chemical Engineering Science, 2(1):1–13, February 1953. URL: http://linkinghub.elsevier.com/retrieve/pii/0009250953800011, doi:10.1016/0009-2509(53)80001-1.">8</a>]</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    u c_{\text{in},i}(t) &amp;= u c^l_i(t,0) - D_{\text{rad},i} \frac{\partial c^l_i}{\partial \rho}(t, 0) &amp; \forall t &gt; 0,\\
+    \frac{\partial c^l_i}{\partial \rho}(t, \mathrm{P}) &amp;= 0 &amp; \forall t &gt; 0.
+\end{aligned}\end{split}\]</div>
+<p>The complementing binding equations are described by the same equations as for the axial LRMP.</p>
+<p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/radial_flow_models.html#radial-flow-models-config"><span class="std std-ref">Radial FLow Models</span></a> in addition to <a class="reference internal" href="../../interface/unit_operations/lumped_rate_model_with_pores.html#lumped-rate-model-with-pores-config"><span class="std std-ref">Lumped rate model with pores</span></a>.</p>
+</section>
 </section>
 
 

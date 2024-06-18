@@ -53,6 +53,7 @@
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/index.html">Unit Operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="binding/index.html">Binding models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="reactions.html">Reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_discretization_methods.html">Spatial discretization methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="flux_reconstruction.html">Flux reconstruction methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="return_data.html">Return data</a></li>
@@ -136,28 +137,24 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="unit_operations/general_rate_model.html">General Rate Model</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/general_rate_model.html#group-input-model-unit-xxx-unit-type-general-rate-model">Group /input/model/unit_XXX - UNIT_TYPE - GENERAL_RATE_MODEL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="unit_operations/general_rate_model.html#discretization-methods">Discretization Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/general_rate_model.html#group-input-model-unit-xxx-discretization-unit-type-general-rate-model">Group /input/model/unit_XXX/discretization - UNIT_TYPE - GENERAL_RATE_MODEL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit_operations/general_rate_model.html#spatial-discretization-numerical-methods">Spatial discretization - Numerical Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/general_rate_model.html#finite-volumes-default">Finite Volumes (Default)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="unit_operations/general_rate_model.html#group-input-model-unit-xxx-discretization-unit-type-general-rate-model-dg">Group /input/model/unit_XXX/discretization - UNIT_TYPE - GENERAL_RATE_MODEL_DG</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/general_rate_model.html#discontinuous-galerkin">Discontinuous Galerkin</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="unit_operations/lumped_rate_model_with_pores.html">Lumped rate model with pores</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/lumped_rate_model_with_pores.html#group-input-model-unit-xxx-unit-type-lumped-rate-model-with-pores">Group /input/model/unit_XXX - UNIT_TYPE = LUMPED_RATE_MODEL_WITH_PORES</a></li>
-<li class="toctree-l3"><a class="reference internal" href="unit_operations/lumped_rate_model_with_pores.html#discretization-methods">Discretization Methods</a></li>
-<li class="toctree-l3"><a class="reference internal" href="unit_operations/lumped_rate_model_with_pores.html#group-input-model-unit-xxx-discretization-unit-type-lumped-rate-model-with-pores">Group /input/model/unit_XXX/discretization - UNIT_TYPE = LUMPED_RATE_MODEL_WITH_PORES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit_operations/lumped_rate_model_with_pores.html#spatial-discretization-numerical-methods">Spatial discretization - Numerical Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/lumped_rate_model_with_pores.html#finite-volumes-default">Finite Volumes (Default)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="unit_operations/lumped_rate_model_with_pores.html#group-input-model-unit-xxx-discretization-unit-type-lumped-rate-model-with-pores-dg">Group /input/model/unit_XXX/discretization - UNIT_TYPE = LUMPED_RATE_MODEL_WITH_PORES_DG</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/lumped_rate_model_with_pores.html#discontinuous-galerkin">Discontinuous Galerkin</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="unit_operations/lumped_rate_model_without_pores.html">Lumped Rate Model Without Pores</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/lumped_rate_model_without_pores.html#group-input-model-unit-xxx-unit-type-lumped-rate-model-without-pores">Group /input/model/unit_XXX - UNIT_TYPE = LUMPED_RATE_MODEL_WITHOUT_PORES</a></li>
-<li class="toctree-l3"><a class="reference internal" href="unit_operations/lumped_rate_model_without_pores.html#discretization-methods">Discretization Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/lumped_rate_model_without_pores.html#group-input-model-unit-xxx-discretization-unit-type-lumped-rate-model-without-pores">Group /input/model/unit_XXX/discretization - UNIT_TYPE = LUMPED_RATE_MODEL_WITHOUT_PORES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit_operations/lumped_rate_model_without_pores.html#spatial-discretization-numerical-methods">Spatial discretization - Numerical Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/lumped_rate_model_without_pores.html#finite-volumes-default">Finite Volumes (Default)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="unit_operations/lumped_rate_model_without_pores.html#group-input-model-unit-xxx-discretization-unit-type-lumped-rate-model-without-pores-dg">Group /input/model/unit_XXX/discretization - UNIT_TYPE = LUMPED_RATE_MODEL_WITHOUT_PORES_DG</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/lumped_rate_model_without_pores.html#discontinuous-galerkin">Discontinuous Galerkin</a></li>
 </ul>
 </li>
@@ -209,6 +206,17 @@
 <li class="toctree-l2"><a class="reference internal" href="reactions.html#externally-dependent-reaction-models">Externally dependent reaction models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reactions.html#multiple-particle-types">Multiple particle types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reactions.html#group-input-model-unit-xxx-reaction-reaction-model-mass-action-law">Group /input/model/unit_XXX/reaction - REACTION_MODEL = MASS_ACTION_LAW</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="spatial_discretization_methods.html">Spatial discretization methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#group-input-model-unit-xxx-discretization-spatial-method-details-on-the-methods">Group /input/model/unit_XXX/discretization/SPATIAL_METHOD - Details on the methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#discrete-system-size">Discrete system size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#order-of-convergence">Order of convergence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#smooth-solutions">Smooth solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#recommendations-on-the-choice-of-spatial-discretization-methods">Recommendations on the choice of spatial discretization methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#recommendations-on-dg-discretization-parameters">Recommendations on DG discretization parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#refinement-strategy">Refinement strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#note-on-dg-solution-vector">Note on DG solution vector</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="flux_reconstruction.html">Flux reconstruction methods</a><ul>

@@ -600,7 +600,8 @@ For further information on the choice of discretization methods and their parame
 </tr>
 </tbody>
 </table>
-<p>For further discretization parameters, see also <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
+<p>When using the DG method for the LRMP, we recommend specifying <code class="docutils literal notranslate"><span class="pre">USE_MODIFIED_NEWTON</span> <span class="pre">=</span> <span class="pre">1</span></code> in <a class="reference internal" href="../solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>, i.e. to use the modified Newton method to solve the linear system within the time integrator.
+For further discretization parameters, see also <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
 </div></blockquote>
 </section>
 </section>

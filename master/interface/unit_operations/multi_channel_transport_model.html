@@ -16,6 +16,8 @@
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Binding models" href="../binding/index.html" />
+    <link rel="prev" title="Radial Flow Models" href="radial_flow_models.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -40,11 +42,30 @@
 
 
 <h3>Navigation</h3>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modelling/index.html">Modelling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Interface specifications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Interface specifications</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../input_group.html">Input Group</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../system.html">System of unit operations</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Unit Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reactions.html">Reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spatial_discretization_methods.html">Spatial discretization methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flux_reconstruction.html">Flux reconstruction methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../return_data.html">Return data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensitivities.html">Parameter Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../solver.html">Solver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../parameter_dependencies.html">Parameter Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../output_group.html">Output Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta_group.html">Meta Group</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
@@ -93,6 +114,9 @@
 
   <section id="multichannel-transport-model-mct-model">
 <span id="multi-channel-transport-model-config"></span><h1>Multichannel Transport model (MCT model)<a class="headerlink" href="#multichannel-transport-model-mct-model" title="Link to this heading">¶</a></h1>
+<section id="group-input-model-unit-xxx-unit-type-multi-channel-transport">
+<h2>Group /input/model/unit_XXX - UNIT_TYPE = MULTI_CHANNEL_TRANSPORT<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-multi-channel-transport" title="Link to this heading">¶</a></h2>
+<p>For information on model equations, refer to <a class="reference internal" href="../../modelling/unit_operations/multi_channel_transport_model.html#multi-channel-transport-model-model"><span class="std std-ref">Multichannel Transport model (MCT model)</span></a>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">UNIT_TYPE</span></code></p>
 <blockquote>
 <div><p>Specifies the type of unit operation model</p>
@@ -264,18 +288,6 @@ e^k_{N1} &amp; \dots &amp; e^k_{N(N-1)} &amp; 0
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">NCOL</span></code></p>
-<blockquote>
-<div><p>Number of axial column discretization cells</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
-<td><p><strong>Length:</strong> 1</p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">NCHANNEL</span></code></p>
 <blockquote>
 <div><p>Number of channels <span class="math notranslate nohighlight">\(ij\)</span></p>
@@ -302,6 +314,9 @@ e^k_{N1} &amp; \dots &amp; e^k_{N(N-1)} &amp; 0
 </tbody>
 </table>
 </div></blockquote>
+</section>
+<section id="group-input-model-unit-xxx-discretization-unit-type-multi-channel-transport">
+<h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE = MULTI_CHANNEL_TRANSPORT<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-multi-channel-transport" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">USE_ANALYTIC_JACOBIAN</span></code></p>
 <blockquote>
 <div><p>Determines whether analytically computed Jacobian matrix (faster) is used (value is 1) instead of Jacobians generated by algorithmic differentiation (slower, value is 0)</p>
@@ -309,6 +324,18 @@ e^k_{N1} &amp; \dots &amp; e^k_{N(N-1)} &amp; 0
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">NCOL</span></code></p>
+<blockquote>
+<div><p>Number of axial column discretization cells</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>
@@ -337,7 +364,7 @@ e^k_{N1} &amp; \dots &amp; e^k_{N(N-1)} &amp; 0
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">RECONSTRUCTION</span></code></p>
 <blockquote>
-<div><p>Type of reconstruction method for fluxes</p>
+<div><p>Type of reconstruction method for FV fluxes</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
@@ -347,6 +374,8 @@ e^k_{N1} &amp; \dots &amp; e^k_{N(N-1)} &amp; 0
 </tbody>
 </table>
 </div></blockquote>
+<p>For further discretization parameters, see also <a class="reference internal" href="../flux_reconstruction.html#flux-restruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific)), and <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
+</section>
 </section>
 
 

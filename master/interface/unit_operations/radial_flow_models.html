@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Radial FLow Models &#8212; CADET</title>
+    <title>Radial Flow Models &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=795b792b" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
@@ -16,7 +16,7 @@
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Binding models" href="../binding/index.html" />
+    <link rel="next" title="Multichannel Transport model (MCT model)" href="multi_channel_transport_model.html" />
     <link rel="prev" title="Continuous stirred tank reactor model" href="cstr.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -113,7 +113,7 @@
 
 
   <section id="radial-flow-models">
-<span id="radial-flow-models-config"></span><h1>Radial FLow Models<a class="headerlink" href="#radial-flow-models" title="Link to this heading">¶</a></h1>
+<span id="radial-flow-models-config"></span><h1>Radial Flow Models<a class="headerlink" href="#radial-flow-models" title="Link to this heading">¶</a></h1>
 <p>Radial flow models are available for the LRM, LRMP and GRM.
 The configurations specified here complement the description for the respective model, i.e. please additionally refer to <a class="reference internal" href="lumped_rate_model_without_pores.html#lumped-rate-model-without-pores-config"><span class="std std-ref">Lumped Rate Model Without Pores</span></a> or <a class="reference internal" href="lumped_rate_model_with_pores.html#lumped-rate-model-with-pores-config"><span class="std std-ref">Lumped rate model with pores</span></a> or <a class="reference internal" href="general_rate_model.html#general-rate-model-config"><span class="std std-ref">General Rate Model</span></a>, respectively.
 If input variables are described in both files, then only the description provided here applies for radial flow models.</p>
@@ -121,7 +121,7 @@ If input variables are described in both files, then only the description provid
 In this document, we specify the unit type as the radial GRM, but the LRM and LRMP are also available and the changes to input variables are the same for all three models.</p>
 <section id="group-input-model-unit-xxx-unit-type-radial-general-rate-model">
 <h2>Group /input/model/unit_XXX - UNIT_TYPE - RADIAL_GENERAL_RATE_MODEL<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-radial-general-rate-model" title="Link to this heading">¶</a></h2>
-<p>For information on model equations, refer to <span class="xref std std-ref">lumped_rate_model_without_pores</span> or <span class="xref std std-ref">lumped_rate_model_with_pores</span> or <span class="xref std std-ref">general_rate_model</span>, respectively.</p>
+<p>For information on model equations, refer to <a class="reference internal" href="../../modelling/unit_operations/lumped_rate_model_without_pores.html#lumped-rate-model-without-pores-model"><span class="std std-ref">Lumped rate model without pores (LRM)</span></a> or <a class="reference internal" href="../../modelling/unit_operations/lumped_rate_model_with_pores.html#lumped-rate-model-with-pores-model"><span class="std std-ref">Lumped rate model with pores (LRMP)</span></a> or <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#general-rate-model-model"><span class="std std-ref">General rate model (GRM)</span></a>, respectively.</p>
 <p><code class="docutils literal notranslate"><span class="pre">UNIT_TYPE</span></code></p>
 <blockquote>
 <div><p>Specifies the type of unit operation model</p>
@@ -136,7 +136,7 @@ In this document, we specify the unit type as the radial GRM, but the LRM and LR
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION</span></code></p>
 <blockquote>
-<div><p>?Radial dispersion coefficient</p>
+<div><p>Radial dispersion coefficient</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}_{\mathrm{IV}}^{2}\,\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
 <tbody>

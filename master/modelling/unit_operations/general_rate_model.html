@@ -161,7 +161,7 @@ Therefore, the beads can be seen as continuously distributed inside the column (
 <td><p><span class="math notranslate nohighlight">\(\left[r_{c,j}, r_{p,j}\right]\)</span></p></td>
 <td><p>Generic bead radial coordinate</p></td>
 </tr>
-<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(c^l_{i}(t,z)\)</span></p></td>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(c^\ell_{i}(t,z)\)</span></p></td>
 <td><p><span class="math notranslate nohighlight">\(\left[0, T_{\text{end}}\right] \times [0, L]\)</span></p></td>
 <td><p>Interstitial concentration of the <span class="math notranslate nohighlight">\(i\)</span>th component</p></td>
 </tr>
@@ -189,19 +189,19 @@ Therefore, the beads can be seen as continuously distributed inside the column (
 <p>Consider a column of length <span class="math notranslate nohighlight">\(L&gt;0\)</span> filled with spherical beads of (possibly) multiple types with radius <span class="math notranslate nohighlight">\(r_{p,j} \ll L\)</span> (see <a class="reference internal" href="#modelgrmcolumn"><span class="std std-numref">Fig. 1</span></a>), where <span class="math notranslate nohighlight">\(j\)</span> is the particle type index. The mass balance in the interstitial column volume is described by</p>
 <div class="math notranslate nohighlight" id="equation-modelcolumn">
 <span class="eqno">(1)<a class="headerlink" href="#equation-modelcolumn" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
-    \frac{\partial c^l_i}{\partial t} = -u \frac{\partial c^l_i}{\partial z} + D_{\text{ax},i} \frac{\partial^2 c^l_i}{\partial z^2} &amp;- \frac{1}{\beta_c} \sum_j d_j \frac{3}{r_{p,j}} k_{f,j,i} \left[ c^l_i - c^p_{j,i}(\cdot, \cdot, r_{p,j}) \right] \\
-    &amp;+ f_{\text{react},i}^l\left(c^l\right).
+    \frac{\partial c^\ell_i}{\partial t} = -u \frac{\partial c^\ell_i}{\partial z} + D_{\text{ax},i} \frac{\partial^2 c^\ell_i}{\partial z^2} &amp;- \frac{1}{\beta_c} \sum_j d_j \frac{3}{r_{p,j}} k_{f,j,i} \left[ c^\ell_i - c^p_{j,i}(\cdot, \cdot, r_{p,j}) \right] \\
+    &amp;+ f_{\text{react},i}^\ell\left(c^\ell\right).
 \end{aligned}\end{split}\]</div>
-<p>Here, <span class="math notranslate nohighlight">\(c^l_i\colon \left[0, T_{\text{end}}\right] \times [0, L] \rightarrow \mathbb{R}^{\geq 0}\)</span> denotes the concentration in the interstitial column volume, <span class="math notranslate nohighlight">\(c^p_{j,i}\colon \left[0, T_{\text{end}}\right] \times [0, L] \times [r_{c,j}, r_{p,j}] \rightarrow \mathbb{R}^{\geq 0}\)</span> the liquid phase concentration in the beads, <span class="math notranslate nohighlight">\(k_{f,j,i}\)</span> the film diffusion coefficient, <span class="math notranslate nohighlight">\(D_{\text{ax},i}\)</span> the dispersion coefficient, <span class="math notranslate nohighlight">\(u\)</span> the interstitial velocity, <span class="math notranslate nohighlight">\(d_j\)</span> the volume fraction of particle type <span class="math notranslate nohighlight">\(j\)</span>, and <span class="math notranslate nohighlight">\(\beta_c = \varepsilon_c / (1 - \varepsilon_c)\)</span> the column phase ratio, where <span class="math notranslate nohighlight">\(\varepsilon_c\)</span> is the column porosity (ratio of interstitial volume to total column volume).
-If reactions are considered, the term <span class="math notranslate nohighlight">\(f_{\text{react},i}^l\left(c^l\right)\)</span> represents the net change of concentration <span class="math notranslate nohighlight">\(c_i\)</span> due to reactions involving component <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>Here, <span class="math notranslate nohighlight">\(c^\ell_i\colon \left[0, T_{\text{end}}\right] \times [0, L] \rightarrow \mathbb{R}^{\geq 0}\)</span> denotes the concentration in the interstitial column volume, <span class="math notranslate nohighlight">\(c^p_{j,i}\colon \left[0, T_{\text{end}}\right] \times [0, L] \times [r_{c,j}, r_{p,j}] \rightarrow \mathbb{R}^{\geq 0}\)</span> the liquid phase concentration in the beads, <span class="math notranslate nohighlight">\(k_{f,j,i}\)</span> the film diffusion coefficient, <span class="math notranslate nohighlight">\(D_{\text{ax},i}\)</span> the dispersion coefficient, <span class="math notranslate nohighlight">\(u\)</span> the interstitial velocity, <span class="math notranslate nohighlight">\(d_j\)</span> the volume fraction of particle type <span class="math notranslate nohighlight">\(j\)</span>, and <span class="math notranslate nohighlight">\(\beta_c = \varepsilon_c / (1 - \varepsilon_c)\)</span> the column phase ratio, where <span class="math notranslate nohighlight">\(\varepsilon_c\)</span> is the column porosity (ratio of interstitial volume to total column volume).
+If reactions are considered, the term <span class="math notranslate nohighlight">\(f_{\text{react},i}^\ell\left(c^\ell\right)\)</span> represents the net change of concentration <span class="math notranslate nohighlight">\(c_i\)</span> due to reactions involving component <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <p>Danckwerts boundary conditions <span id="id3">[<a class="reference internal" href="../../zbibliography.html#id7" title="P.V. Danckwerts. Continuous flow systems: Distribution of residence times. Chemical Engineering Science, 2(1):1–13, February 1953. URL: http://linkinghub.elsevier.com/retrieve/pii/0009250953800011, doi:10.1016/0009-2509(53)80001-1.">8</a>]</span> are applied to inlet and outlet of the column:</p>
 <div class="math notranslate nohighlight" id="equation-bcoutlet">
 <span class="eqno">(11)<a class="headerlink" href="#equation-bcoutlet" title="Link to this equation">¶</a></span>\[\begin{aligned}
-    u c_{\text{in},i}(t) &amp;= u c^l_i(t,0) - D_{\text{ax},i} \frac{\partial c^l_i}{\partial z}(t, 0) &amp; \forall t &gt; 0,
+    u c_{\text{in},i}(t) &amp;= u c^\ell_i(t,0) - D_{\text{ax},i} \frac{\partial c^\ell_i}{\partial z}(t, 0) &amp; \forall t &gt; 0,
 \end{aligned}\]</div>
 <div class="math notranslate nohighlight" id="equation-bcinlet">
 <span class="eqno">(12)<a class="headerlink" href="#equation-bcinlet" title="Link to this equation">¶</a></span>\[\begin{aligned}
-    \frac{\partial c^l_i}{\partial z}(t, L) &amp;= 0 &amp; \forall t &gt; 0.
+    \frac{\partial c^\ell_i}{\partial z}(t, L) &amp;= 0 &amp; \forall t &gt; 0.
 \end{aligned}\]</div>
 <p>Note that the outlet boundary condition Eq. <a class="reference internal" href="#equation-bcoutlet">11</a> is also known as “do nothing” or natural outflow condition.</p>
 <p>In the liquid phase of the porous beads (see <a class="reference internal" href="#modelgrmcolumn"><span class="std std-numref">Fig. 1</span></a>) the mass balance is given by</p>
@@ -229,7 +229,7 @@ Reaction terms in liquid and solid phase are collected in <span class="math notr
 <p>The boundary conditions of the bead model the film diffusion and are given for all <span class="math notranslate nohighlight">\({t \in (0,\infty)}\)</span> and <span class="math notranslate nohighlight">\(z \in [0,L]\)</span> by</p>
 <div class="math notranslate nohighlight" id="equation-bcbeadin">
 <span class="eqno">(7)<a class="headerlink" href="#equation-bcbeadin" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
-    k_{f,j,i}\left[ c^l_i - c^p_{j,i}(\cdot, \cdot, r_{p,j}) \right] &amp;= F_{\text{acc},j,i} \varepsilon_{p,j} D_{p,j,i} \frac{\partial c^p_{j,i}}{\partial r}(\cdot, \cdot, r_{p,j}) \\
+    k_{f,j,i}\left[ c^\ell_i - c^p_{j,i}(\cdot, \cdot, r_{p,j}) \right] &amp;= F_{\text{acc},j,i} \varepsilon_{p,j} D_{p,j,i} \frac{\partial c^p_{j,i}}{\partial r}(\cdot, \cdot, r_{p,j}) \\
     &amp;+ \left( 1 - \varepsilon_{p,j}\right) D_{s,j,i} \sum_{m_{j,i}} \frac{\partial c^s_{j,i,m_{j,i}}}{\partial r}(\cdot, \cdot, r_{p,j}),
 \end{aligned}\end{split}\]</div>
 <div class="math notranslate nohighlight" id="equation-bcbeadcenter">
@@ -239,7 +239,7 @@ Reaction terms in liquid and solid phase are collected in <span class="math notr
 <p>By default, the following initial conditions are applied for all <span class="math notranslate nohighlight">\(z \in [0,L]\)</span> and <span class="math notranslate nohighlight">\(r \in \left[r_{c,j}, r_{p,j}\right]\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-initialconditions">
 <span class="eqno">(9)<a class="headerlink" href="#equation-initialconditions" title="Link to this equation">¶</a></span>\[\begin{aligned}
-    c^l_i(0, z) &amp;= 0, &amp; c^p_{j,i}(0, z, r) &amp;= 0, &amp; c^s_{j,i,m_{j,i}}(0,z,r) &amp;= 0.
+    c^\ell_i(0, z) &amp;= 0, &amp; c^p_{j,i}(0, z, r) &amp;= 0, &amp; c^s_{j,i,m_{j,i}}(0,z,r) &amp;= 0.
 \end{aligned}\]</div>
 <figure class="align-default" id="id9">
 <span id="modelgrmbead"></span><img alt="../../_images/column_bead_model.png" src="../../_images/column_bead_model.png" />
@@ -354,23 +354,23 @@ That is, the volumetric flow rate at the inner and outer column radius are the s
 <p>Consider a hollow (double walled) column with inner column diameter <span class="math notranslate nohighlight">\(\mathrm{P}_c&gt;0\)</span> and outer diameter <span class="math notranslate nohighlight">\(\mathrm{P}&gt;\mathrm{P}_c\)</span>, filled with spherical beads of (possibly) multiple types with radius <span class="math notranslate nohighlight">\(r_{p,j} \ll L\)</span> (see <a class="reference internal" href="#modelgrmcolumn"><span class="std std-numref">Fig. 1</span></a>), where <span class="math notranslate nohighlight">\(j\)</span> is the particle type index. The mass balance in the interstitial column volume is described by</p>
 <div class="math notranslate nohighlight" id="equation-modelradialcolumn">
 <span class="eqno">(10)<a class="headerlink" href="#equation-modelradialcolumn" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
-    \frac{\partial c^l_i}{\partial t} = -\frac{u}{\rho} \frac{\partial c^l_i}{\partial \rho} + D_{\text{rad},i} \frac{1}{\rho} \frac{\partial}{\partial \rho} \left(\rho \frac{\partial c^l_i}{\partial \rho} \right) &amp;- \frac{1}{\beta_c} \sum_j d_j \frac{3}{r_{p,j}} k_{f,j,i} \left[ c^l_i - c^p_{j,i}(\cdot, \cdot, r_{p,j}) \right] \\
-    &amp;+ f_{\text{react},i}^l\left(c^l\right).
+    \frac{\partial c^\ell_i}{\partial t} = -\frac{u}{\rho} \frac{\partial c^\ell_i}{\partial \rho} + D_{\text{rad},i} \frac{1}{\rho} \frac{\partial}{\partial \rho} \left(\rho \frac{\partial c^\ell_i}{\partial \rho} \right) &amp;- \frac{1}{\beta_c} \sum_j d_j \frac{3}{r_{p,j}} k_{f,j,i} \left[ c^\ell_i - c^p_{j,i}(\cdot, \cdot, r_{p,j}) \right] \\
+    &amp;+ f_{\text{react},i}^\ell\left(c^\ell\right).
 \end{aligned}\end{split}\]</div>
-<p>Here, <span class="math notranslate nohighlight">\(c^l_i\colon \left[0, T_{\text{end}}\right] \times [\mathrm{P}_c, \mathrm{P}] \rightarrow \mathbb{R}^{\geq 0}\)</span> denotes the concentration in the interstitial column volume, <span class="math notranslate nohighlight">\(c^p_{j,i}\colon \left[0, T_{\text{end}}\right] \times [P_c, P] \times [r_{c,j}, r_{p,j}] \rightarrow \mathbb{R}^{\geq 0}\)</span> the liquid phase concentration in the beads, <span class="math notranslate nohighlight">\(k_{f,j,i}\)</span> the film diffusion coefficient, <span class="math notranslate nohighlight">\(D_{\text{rad},i}\)</span> the dispersion coefficient, <span class="math notranslate nohighlight">\(u\)</span> the interstitial velocity, <span class="math notranslate nohighlight">\(d_j\)</span> the volume fraction of particle type <span class="math notranslate nohighlight">\(j\)</span>, and <span class="math notranslate nohighlight">\(\beta_c = \varepsilon_c / (1 - \varepsilon_c)\)</span> the column phase ratio, where <span class="math notranslate nohighlight">\(\varepsilon_c\)</span> is the column porosity (ratio of interstitial volume to total column volume).
-If reactions are considered, the term <span class="math notranslate nohighlight">\(f_{\text{react},i}^l\left(c^l\right)\)</span> represents the net change of concentration <span class="math notranslate nohighlight">\(c_i\)</span> due to reactions involving component <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>Here, <span class="math notranslate nohighlight">\(c^\ell_i\colon \left[0, T_{\text{end}}\right] \times [\mathrm{P}_c, \mathrm{P}] \rightarrow \mathbb{R}^{\geq 0}\)</span> denotes the concentration in the interstitial column volume, <span class="math notranslate nohighlight">\(c^p_{j,i}\colon \left[0, T_{\text{end}}\right] \times [P_c, P] \times [r_{c,j}, r_{p,j}] \rightarrow \mathbb{R}^{\geq 0}\)</span> the liquid phase concentration in the beads, <span class="math notranslate nohighlight">\(k_{f,j,i}\)</span> the film diffusion coefficient, <span class="math notranslate nohighlight">\(D_{\text{rad},i}\)</span> the dispersion coefficient, <span class="math notranslate nohighlight">\(u\)</span> the interstitial velocity, <span class="math notranslate nohighlight">\(d_j\)</span> the volume fraction of particle type <span class="math notranslate nohighlight">\(j\)</span>, and <span class="math notranslate nohighlight">\(\beta_c = \varepsilon_c / (1 - \varepsilon_c)\)</span> the column phase ratio, where <span class="math notranslate nohighlight">\(\varepsilon_c\)</span> is the column porosity (ratio of interstitial volume to total column volume).
+If reactions are considered, the term <span class="math notranslate nohighlight">\(f_{\text{react},i}^\ell\left(c^\ell\right)\)</span> represents the net change of concentration <span class="math notranslate nohighlight">\(c_i\)</span> due to reactions involving component <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <p>Danckwerts boundary conditions <span id="id6">[<a class="reference internal" href="../../zbibliography.html#id7" title="P.V. Danckwerts. Continuous flow systems: Distribution of residence times. Chemical Engineering Science, 2(1):1–13, February 1953. URL: http://linkinghub.elsevier.com/retrieve/pii/0009250953800011, doi:10.1016/0009-2509(53)80001-1.">8</a>]</span> are applied to inlet and outlet of the column:</p>
 <div class="math notranslate nohighlight" id="equation-bcoutlet">
 <span class="eqno">(11)<a class="headerlink" href="#equation-bcoutlet" title="Link to this equation">¶</a></span>\[\begin{aligned}
-    u c_{\text{in},i}(t) &amp;= u c^l_i(t,0) - D_{\text{rad},i} \frac{\partial c^l_i}{\partial \rho}(t, 0) &amp; \forall t &gt; 0,
+    u c_{\text{in},i}(t) &amp;= u c^\ell_i(t,0) - D_{\text{rad},i} \frac{\partial c^\ell_i}{\partial \rho}(t, 0) &amp; \forall t &gt; 0,
 \end{aligned}\]</div>
 <div class="math notranslate nohighlight" id="equation-bcinlet">
 <span class="eqno">(12)<a class="headerlink" href="#equation-bcinlet" title="Link to this equation">¶</a></span>\[\begin{aligned}
-    \frac{\partial c^l_i}{\partial \rho}(t, \mathrm{P}) &amp;= 0 &amp; \forall t &gt; 0.
+    \frac{\partial c^\ell_i}{\partial \rho}(t, \mathrm{P}) &amp;= 0 &amp; \forall t &gt; 0.
 \end{aligned}\]</div>
 <p>Note that the outlet boundary condition Eq. <a class="reference internal" href="#equation-bcoutlet">11</a> is also known as “do nothing” or natural outflow condition.</p>
 <p>The complementing mass transport and binding equations for the liquid and solid phases of the porous beads are described by the same equations as for the axial GRM.</p>
-<p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/radial_flow_models.html#radial-flow-models-config"><span class="std std-ref">Radial FLow Models</span></a> in addition to <a class="reference internal" href="../../interface/unit_operations/general_rate_model.html#general-rate-model-config"><span class="std std-ref">General Rate Model</span></a>.</p>
+<p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/radial_flow_models.html#radial-flow-models-config"><span class="std std-ref">Radial Flow Models</span></a> in addition to <a class="reference internal" href="../../interface/unit_operations/general_rate_model.html#general-rate-model-config"><span class="std std-ref">General Rate Model</span></a>.</p>
 </section>
 </section>
 

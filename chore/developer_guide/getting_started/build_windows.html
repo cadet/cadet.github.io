@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Build for MS Windows &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=795b792b" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/getting_started/build_windows.html" />
+    <link rel="icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/portal/EN/Service/LegalNotice/_node.html">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/getting_started/build_windows.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/getting_started/build_windows.html">v4.4.0</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../../master/getting_started/build_windows.html">master</a></li>
+  <li><a href="build_windows.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+<p>
+  <strong>
+    
+    You're reading the documentation for a development version.
+    For the latest released version, please have a look at <a href="../../../v4.4.0/getting_started/build_windows.html">v4.4.0</a>.
+    
+  </strong>
+</p>
+
+
+  <section id="build-for-ms-windows">
+<span id="build-windows"></span><h1>Build for MS Windows<a class="headerlink" href="#build-for-ms-windows" title="Link to this heading">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## Prerequisites
+
+* Microsoft Visual Studio **2022** (Community Edition, or better)
+* Intel OneAPI MKL
+* Optional: Git
+* Optional but not generally recommended*: Intel OneAPI TBB
+
+*For most use-cases it is more efficient to parallelize by running multiple CADET simulations instead 
+of parallelizing within one CADET simulation. Including the parallelization code in CADET can lead to performance
+losses, even if parallelization within CADET is not used. 
+Therefore, we recommend not including the parallelization library TBB 
+unless you know your simulations are large enough to benefit from it.
+
+Assumed directory structure:
+
+&lt;pre&gt;
+|- CADET
+|    - src
+|    - include
+|    - [...]
+|    - build
+&lt;/pre&gt;
+
+Note that the version numbers of the files and packages below are subject to change and will not always reflect the most
+recent version.
+
+
+## Visual Studio:
+We are using Visual Studio because it is the easiest way to install all required tools, compilers etc. in one step.
+
+- Download [MS Visual Studio](https://visualstudio.microsoft.com/de/downloads/)
+- Install Visual Studio with the workload &quot;Desktop Developments with C++&quot;
+
+## Intel oneAPI Base Toolkit
+
+- Download
+  the [Intel oneAPI Base Toolkit online installer](https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html?operatingsystem=window&amp;distributions=webdownload&amp;options=online).
+- During the installation, select &quot;Custom Installation&quot; and deselect everything except for:
+    - Intel® oneAPI Math Kernel Library (MKL)
+    - optional*: Intel® oneAPI Threading Building Blocks (TBB)
+
+## Optional:  clink
+
+- Clink provides text completion, history, and line-editing to Windows Command Prompt
+- Download the [clink installer exe](https://github.com/chrisant996/clink) and install clink.
+
+## Prepare CADET code
+
+- Clone the CADET source code into a `CADET` folder: 
+  - `git clone https://github.com/modsim/CADET.git CADET`
+- Create the directories `CADET\build` and `CADET\install`
+
+## Build CADET in Visual Studio
+
+- Open Visual Studio and open the `CADET` folder
+- Navigate to &quot;Tools&quot; - &quot;Command Line&quot; and open either a &quot;Developer Command Prompt&quot; or &quot;Developer PowerShell&quot;
+- Execute the following command:
+    - `vcpkg integrate install` (this only needs to be run _once_ per PC and will require admin privileges)
+- At the top, where it says `DEBUG`, select `aRELEASE` instead
+- Wait for `vcpkg` to install all the dependencies. The first time this is done on your PC it can take ~15-30 minutes
+- Wait for `cmake generation` to finish (see `output` window)
+- From the status bar at the top select `Build`, `Build all`
+- Once that finishes, select `Build`, `Install CadetFramework`
+- The binaries will be located in `CADET\out\install\aRELEASE\bin`
+
+
+## Build CADET from the command line
+
+- Open Visual Studio and select &quot;continue without code&quot;
+- Navigate to &quot;Tools&quot; - &quot;Command Line&quot; and open either a &quot;Developer Command Prompt&quot; or &quot;Developer PowerShell&quot;
+- Execute the following commands:
+- For Command Prompt:
+    - `cd CADET\build`
+    - `vcpkg integrate install` (this only needs to be run _once_ and will require admin privileges)
+    - `set MKLROOT=&quot;C:/Program Files (x86)/Intel/oneAPI/mkl/latest&quot;`
+    - `cmake -DCMAKE_INSTALL_PREFIX=..\out\install\aRELEASE -G &quot;Visual Studio 17 2022&quot; -A x64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=&quot;%VCPKG_ROOT%/scripts/buildsystems/vcpkg.cmake&quot; -DVCPKG_TARGET_TRIPLET=x64-windows-static -DENABLE_STATIC_LINK_LAPACK=ON -DENABLE_STATIC_LINK_DEPS=ON -DBLA_VENDOR=Intel10_64lp_seq --fresh ../`
+        - If you want to use parallelization and have installed TBB, instead
+          execute `set TBBROOT=&quot;C:/Program Files (x86)/Intel/oneAPI/tbb/latest&quot;` and
+        - `cmake -DCMAKE_INSTALL_PREFIX=..\out\install\aRELEASE -G &quot;Visual Studio 17 2022&quot; -A x64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=&quot;%VCPKG_ROOT%/scripts/buildsystems/vcpkg.cmake&quot; -DVCPKG_TARGET_TRIPLET=x64-windows-static -DENABLE_STATIC_LINK_LAPACK=ON -DENABLE_STATIC_LINK_DEPS=ON -DBLA_VENDOR=Intel10_64lp --fresh ../`
+    - `msbuild.exe INSTALL.vcxproj /p:Configuration=Release;Platform=x64`
+  
+- For PowerShell:
+    - `cd CADET\build`
+    - `vcpkg integrate install` (this only needs to be run _once_ and will require admin privileges)
+    - `$ENV:MKLROOT = &quot;C:\Program Files (x86)\Intel\oneAPI\mkl\latest&quot;`
+    - `cmake -DCMAKE_INSTALL_PREFIX=&quot;..\out\install\aRELEASE&quot; -G &quot;Visual Studio 17 2022&quot; -A x64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=&quot;$ENV:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake&quot; -DVCPKG_TARGET_TRIPLET=x64-windows-static -DENABLE_STATIC_LINK_LAPACK=ON -DENABLE_STATIC_LINK_DEPS=ON -DBLA_VENDOR=Intel10_64lp_seq &quot;../&quot; --fresh`
+      - If you want to use parallelization and have installed TBB, instead
+           execute `$ENV:TBBROOT = &quot;C:\Program Files (x86)\Intel\oneAPI\tbb\latest&quot;`
+      and 
+      - `cmake -DCMAKE_INSTALL_PREFIX=&quot;..\out\install\aRELEASE&quot; -G &quot;Visual Studio 17 2022&quot; -A x64 -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=&quot;$ENV:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake&quot; -DVCPKG_TARGET_TRIPLET=x64-windows-static -DENABLE_STATIC_LINK_LAPACK=ON -DENABLE_STATIC_LINK_DEPS=ON -DBLA_VENDOR=Intel10_64lp &quot;../&quot; --fresh`
+    - `msbuild.exe INSTALL.vcxproj /p:Configuration=&quot;Release;Platform=x64&quot;`
+- The binaries will be located in `CADET\out\install\aRELEASE\bin`
+
+## Test build results
+- Navigate to the install location `cd CADET\out\install\aRELEASE\bin`
+- Run:
+  - `cadet-cli.exe --version`
+  - `createLWE.exe`
+  - `cadet-cli.exe LWE.h5`
+- And confirm the output of the LWE.h5 by opening it in HDF5view or loading it in CADET-Process.
+- If you get no printed return from the first command, run cadet-cli.exe by double-clicking it in the file explorer.
+This raises error messages that are not raised from a cmd or PowerShell window.
+</pre></div>
+</div>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2024.
+      
+      |
+      <a href="../_sources/getting_started/build_windows.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Build for OSX &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=795b792b" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/getting_started/build_osx.html" />
+    <link rel="icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/portal/EN/Service/LegalNotice/_node.html">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/getting_started/build_osx.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/getting_started/build_osx.html">v4.4.0</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../../master/getting_started/build_osx.html">master</a></li>
+  <li><a href="build_osx.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+<p>
+  <strong>
+    
+    You're reading the documentation for a development version.
+    For the latest released version, please have a look at <a href="../../../v4.4.0/getting_started/build_osx.html">v4.4.0</a>.
+    
+  </strong>
+</p>
+
+
+  <section id="build-for-osx">
+<span id="build-osx"></span><h1>Build for OSX<a class="headerlink" href="#build-for-osx" title="Link to this heading">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## Prerequisites
+
+* CMake (&gt;= 3.12.0)
+* GCC &gt;= 7.0, Clang &gt;= 3.9, or Intel C++ 18.0
+* Optional: Git
+
+Assumed directory structure:
+
+&lt;pre&gt;
+|- CADET
+|    - src
+|    - include
+|    - [...]
+|    - build
+|    - install
+&lt;/pre&gt;
+
+Note that the version numbers of the files and packages below are subject to change and will not always reflect the most recent version.
+
+Also note that you have to use the same compiler for all packages. This is especially important if some of the packages are installed via a package manager such as [Homebrew](http://brew.sh/) which uses the system compiler (Clang).
+
+## Build dependencies
+
+```
+brew update &gt; /dev/null || true
+brew install cmake --without-docs
+brew install hdf5
+brew install tbb
+brew install eigen
+```
+
+### LAPACK
+
+You can either use the native LAPACK implementation provided by Mac OS X (vecLib, Accelerate) 
+or install the freely available [Intel MKL](https://software.intel.com/sites/campaigns/nest/) which is very fast and probably faster than Accelerate.
+
+## Build CADET
+
+- Clone the CADET source code `git clone https://github.com/modsim/CADET.git CADET`
+- Create the directories `CADET/build` and `CADET/install`
+
+* If using Intel MKL, execute `export MKLROOT=/opt/intel/mkl`
+* Using standard LAPACK: Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;&lt;ROOT&gt;/install&quot; ../`
+ 
+    Using MKL (sequential): Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;&lt;ROOT&gt;/install&quot; -DBLA_VENDOR=Intel10_64lp_seq ../`
+ 
+    Using MKL (parallel): Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;&lt;ROOT&gt;/install&quot; -DBLA_VENDOR=Intel10_64lp ../`
+* Execute `make`
+* Execute `make install`
+
+</pre></div>
+</div>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2024.
+      
+      |
+      <a href="../_sources/getting_started/build_osx.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

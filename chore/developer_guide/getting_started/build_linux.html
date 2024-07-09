@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Build for Linux &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=795b792b" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/getting_started/build_linux.html" />
+    <link rel="icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/portal/EN/Service/LegalNotice/_node.html">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/getting_started/build_linux.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/getting_started/build_linux.html">v4.4.0</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../../master/getting_started/build_linux.html">master</a></li>
+  <li><a href="build_linux.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+<p>
+  <strong>
+    
+    You're reading the documentation for a development version.
+    For the latest released version, please have a look at <a href="../../../v4.4.0/getting_started/build_linux.html">v4.4.0</a>.
+    
+  </strong>
+</p>
+
+
+  <section id="build-for-linux">
+<span id="build-linux"></span><h1>Build for Linux<a class="headerlink" href="#build-for-linux" title="Link to this heading">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## Prerequisites
+
+* CMake (&gt;= 3.12.0)
+* GCC &gt;= 7.0, Clang &gt;= 3.9, or Intel C++ 18.0
+* Optional: Git
+
+Assumed directory structure:
+
+&lt;pre&gt;
+|- CADET
+|    - src
+|    - include
+|    - [...]
+|    - build
+|    - install
+&lt;/pre&gt;
+
+Note that the version numbers of the files and packages below are subject to change and will not always reflect the most
+recent version.
+
+## Install dependencies
+
+```
+sudo apt-get update
+sudo apt -y install build-essential cmake libhdf5-dev libsuperlu-dev libeigen3-dev
+```
+
+### LAPACK
+
+You can either use a LAPACK implementation provided by your distribution or install the freely available Intel MKL
+
+for Intel run
+
+```
+sudo apt -y install intel-mkl
+```
+
+for distro defaults run
+
+```
+sudo apt -y install liblapack3 liblapack-dev libblas3 libblas-dev
+```
+
+## Build CADET
+
+- Clone the CADET source code `git clone https://github.com/modsim/CADET.git CADET`
+- Create the directories `CADET/build` and `CADET/install`
+
+- Open a terminal and change to `CADET/build`
+- If using MKL, execute `export MKLROOT=/opt/intel/mkl`
+- Using standard LAPACK: Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;../install&quot; ../`
+
+    - Using MKL (sequential): Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;../install&quot; -DBLA_VENDOR=Intel10_64lp_seq ../`
+
+    - Using MKL (parallel): Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;../install&quot; -DBLA_VENDOR=Intel10_64lp ../`
+
+- Execute `make`
+- Execute `make install`
+</pre></div>
+</div>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2024.
+      
+      |
+      <a href="../_sources/getting_started/build_linux.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

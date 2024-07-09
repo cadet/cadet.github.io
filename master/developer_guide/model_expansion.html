@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Model Expansion &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=795b792b" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/developer_guide/model_expansion.html" />
+    <link rel="icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CADET-Core debugging" href="debugging.html" />
+    <link rel="prev" title="Developer Guide" href="index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Developer Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Model Expansion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#binding-model">Binding Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unit-operation">Unit Operation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#publication">Publication</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">CADET-Core debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">CADET-Core testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/portal/EN/Service/LegalNotice/_node.html">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../v4.4.0/index.html">v4.4.0</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="model_expansion.html">master</a></li>
+  <li><a href="../../chore/developer_guide/developer_guide/model_expansion.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+<p>
+  <strong>
+    
+    You're reading the documentation for a development version.
+    For the latest released version, please have a look at <a href="../../v4.4.0/index.html">v4.4.0</a>.
+    
+  </strong>
+</p>
+
+
+  <section id="model-expansion">
+<span id="id1"></span><h1>Model Expansion<a class="headerlink" href="#model-expansion" title="Link to this heading">¶</a></h1>
+<section id="binding-model">
+<h2>Binding Model<a class="headerlink" href="#binding-model" title="Link to this heading">¶</a></h2>
+<p>New binding models can be implemented to extend the chromatography model family implemented in CADET-Core.
+For now, please refer to the <a class="reference external" href="https://forum.cadet-web.de/t/registration-implementation-and-testing-of-new-binding-model-in-cadet/533">forum post</a>.</p>
+</section>
+<section id="unit-operation">
+<h2>Unit Operation<a class="headerlink" href="#unit-operation" title="Link to this heading">¶</a></h2>
+<p>The easiest way to create a new unit operation in CADET-Core is to start from an existing unit operation (e.g. <code class="docutils literal notranslate"><span class="pre">src/libcadet/StirredTankModel</span></code>, but optimally the most similar one) and make adjustments from there.
+The first, model independent steps are:</p>
+<ol class="arabic simple">
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">NewModel.cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">NewModel.hpp</span></code> files in <code class="docutils literal notranslate"><span class="pre">src\libcadet\model</span></code> folder (copy and rename existing ones). Note that we’ll call the new model “NewModel” from here on, so make sure to substitute this with the actual name of your model.</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">${CMAKE_SOURCE_DIR}/src/libcadet/model/NewModel.cpp</span></code> to the <code class="docutils literal notranslate"><span class="pre">src/libcadet/CMakeLists.txt</span></code></p></li>
+<li><p>(Optional) In the root/CMakeLists.txt file, you can add a build option to make building your new model optional. This enables building CADET versions with and without the new extension. This can be done, e.g., when additional dependencies are required or when build time should be reduced. See e.g. <code class="docutils literal notranslate"><span class="pre">ENABLE_GRM_2D</span></code> or <code class="docutils literal notranslate"><span class="pre">ENABLE_DG</span></code>.</p></li>
+<li><p>Add new model to ModelBuilder (in ModelBuilderImpl.cpp, just like the other models are included):</p></li>
+<li><p>Rename everything to the new model
+a. Change the <code class="docutils literal notranslate"><span class="pre">identifier()</span></code> function in the <code class="docutils literal notranslate"><span class="pre">NewModel.hpp</span></code> to return a new unique model name (here: “NewModel”)
+b. Adjust the <code class="docutils literal notranslate"><span class="pre">registerNewModel()</span></code> function in the <code class="docutils literal notranslate"><span class="pre">NewModel.cpp</span></code> accordingly
+c. rename all functions, i.e. substitute the previous (copied) model name by your model name. Also do this for the header guards in the hpp file and the include in the cpp (essentially every occurrence of the old model name has to be changed).</p></li>
+<li><p>Try to build (and maybe even run) the new unit operation, which at this point is essentially still the same as the copied one, to make sure everything is set up correctly.</p></li>
+</ol>
+<p>You are now ready to implement your model in CADET-Core.
+Note that you will probably have to clean up a lot of things from the copied unit operation and that you also need to change the documentation comments to match your model and implementation.</p>
+<p>Most important functionality to be implemented:</p>
+<ol class="arabic simple">
+<li><p>configure(): Model configuration parameters are read from the .h5 file and exceptions are thrown if parameters are missing or have the wrong size or format. Furthermore, if required, implicitly given parameters are determined and memory is allocated.</p></li>
+<li><p>configureModelDiscretization(): Similar to the function above but treats the numerical discretization part.</p></li>
+<li><p>residualImpl(): Implements the residual formulation (i.e. function <span class="math notranslate nohighlight">\(F = 0\)</span>) of the equations. Triggers updates of the (possibly state dependent) system Jacobian.</p></li>
+<li><p>System Jacobian: Owned by the unit operation. Defined given by <span class="math notranslate nohighlight">\(J := \frac{\partial F}{\partial y} + \alpha \frac{\partial F}{\partial \dot{y}}\)</span>, i.e. both the state and state derivative Jacobian need to be implemented.</p></li>
+<li><p>Linear solve: Solves the system <span class="math notranslate nohighlight">\(J x = b\)</span> with given <span class="math notranslate nohighlight">\(b\)</span>.</p></li>
+<li><p>Algorithmic differentiation (AD):
+a. Parameter sensitivities: Use AD (active) type in the residual implementation, i.e. <code class="docutils literal notranslate"><span class="pre">ParamType</span></code> and <code class="docutils literal notranslate"><span class="pre">ResidualType</span></code> (template types).
+b. Jacobian calculation via AD (can be used to verify the analytical implementation): Use AD (active) type in the residual implementation, i.e. <code class="docutils literal notranslate"><span class="pre">StateType</span></code>. Additionally, you need to implement the following functions to enable the AD Jacobian: <code class="docutils literal notranslate"><span class="pre">requiredADdirs()</span></code>, <code class="docutils literal notranslate"><span class="pre">prepareADvectors</span></code>, <code class="docutils literal notranslate"><span class="pre">extractJacobianFromAD()</span></code>, <code class="docutils literal notranslate"><span class="pre">useAnalyticJacobian()</span></code>.</p></li>
+</ol>
+</section>
+<section id="publication">
+<h2>Publication<a class="headerlink" href="#publication" title="Link to this heading">¶</a></h2>
+<p>Many extensions of CADET-Core result in both software and paper publications.
+Over the years we have established standard procedures to ensure good quality of the publication, including research data management and reproducability of the results.
+An important part of the publication procedure on the software side is the implementation of tests:
+Every model or numerical extension made to CADET-Core has to be tested adequatly before it can be merged into the master branch.
+Even if your extension is not planned to become a contribution to the master branch, rigorous testing should still be implemented as it is essential to ensure confidence in your code.
+Please refer to the <span class="xref std std-ref">testing</span> section for more technical information on the implementation of tests in CADET-Core.</p>
+<p>We highly recommend reading the reference tests subsection in the <span class="xref std std-ref">testing</span> section before writing the paper, as the testing procedure that we describe strongly overlaps with the model/method validation part, which should be part of the publication.</p>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2024.
+      
+      |
+      <a href="../_sources/developer_guide/model_expansion.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

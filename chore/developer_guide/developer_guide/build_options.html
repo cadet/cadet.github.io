@@ -7,7 +7,7 @@
 
     <title>CADET build options &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=795b792b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2bcfc6fe" />
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
@@ -113,11 +113,11 @@ For builds on Linux and MacOs, the CMake command arguments must be specified fro
 <section id="cmakesettings-json">
 <h2>cmakeSettings.json<a class="headerlink" href="#cmakesettings-json" title="Link to this heading">¶</a></h2>
 <p>The cmakeSettings.json provides standard build configurations for a <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> build, a <code class="docutils literal notranslate"><span class="pre">RELEASE</span></code> build and a <code class="docutils literal notranslate"><span class="pre">RELEASE_with_Debug_Info</span></code> build.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> build compiles code suited for debuggin, i.e. the code is compiled such that every line of code is individually executed.
-This way, it is possible to go through the code line by line by setting breakpoints in an IDE such as MS Visual Studio.
+<p>The <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> build compiles code suited for debugging, i.e. the code is compiled such that every line of code is individually executed.
+This way, it is possible to go through the code line by line and to set breakpoints in an IDE such as MS Visual Studio.
 Additionally, the <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> build will print additional information during the simulation, such as the current step size and time point of the simulation.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">RELEASE</span></code> build compiles optimized code and should be used to actually use CADET for simulations.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">RELEASE_with_Debug_Info</span></code> build compiles optimized code but the debug information will still be printed.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">RELEASE_with_Debug_Info</span></code> build compiles optimized code but some debug information will still be printed.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">RELEASE_with_Tests</span></code> and <code class="docutils literal notranslate"><span class="pre">DEBUG_with_Test</span></code> build options additionally build the <code class="docutils literal notranslate"><span class="pre">testRunner</span></code>, which is required to run the integrated tests in <code class="docutils literal notranslate"><span class="pre">CADET-Core</span></code>.</p>
 </section>
 <section id="options">
@@ -128,8 +128,8 @@ Additionally, the <code class="docutils literal notranslate"><span class="pre">D
 <li><p><code class="docutils literal notranslate"><span class="pre">DENABLE_STATIC_LINK_LAPACK</span></code> Prefer static over dynamic linking of LAPACK and BLAS into the <code class="docutils literal notranslate"><span class="pre">CADET-Core</span></code> framework. Static linking incorporates all necessary libraries into the final executable at compile time, while dynamic linking loads libraries at runtime. Static linking produces larger executables that are less dependent on changes in the operating system. Dynamic linking allows for dynamic updates of underlying libraries and smaller compiled software.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DENABLE_STATIC_LINK_DEPS</span></code>: Prefer static over dynamic linking of dependencies into the <code class="docutils literal notranslate"><span class="pre">CADET-Core</span></code> framework.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DENABLE_STATIC_LINK_CLI</span></code>: Prefers static over dynamic linking for CADET CLI.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DENABLE_TESTS</span></code>: Build the <code class="docutils literal notranslate"><span class="pre">restRunner</span></code> to evaluate the integrated tests in <code class="docutils literal notranslate"><span class="pre">CADET-Core</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">DENABLE_ANALYTIC_JACOBIAN_CHECK</span></code>: Enable verification of analytical Jacobian by AD.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DENABLE_TESTS</span></code>: Build the <code class="docutils literal notranslate"><span class="pre">restRunner</span></code> executable to evaluate the integrated tests in <code class="docutils literal notranslate"><span class="pre">CADET-Core</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DENABLE_ANALYTIC_JACOBIAN_CHECK</span></code>: Computes both the analytical and AD Jacobian and compares them for testing purpose.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DENABLE_THREADING</span></code>: Enables multi-threading capabilities. Parallelized code will be compiled, using the TBB library. Note that the non-parallelized code is faster compared to the parallelized code when only one thread is being used. The number of threads is specified in the filed <code class="docutils literal notranslate"><span class="pre">N_THREADS</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DBLA_VENDOR</span></code>: Vendor for the BLAS &amp; LAPACK library. If unset, the system library will be used. By default on Windows we use the Intel OneApi library, specified with <code class="docutils literal notranslate"><span class="pre">Intel10_64lp_seq</span></code>. If a parallelized build is generated, this should be set to <code class="docutils literal notranslate"><span class="pre">Intel10_64lp</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DENABLE_LOGGING</span></code>: Enables logging functionality.</p></li>

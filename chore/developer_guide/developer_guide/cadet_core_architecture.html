@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>CADET-Core architecture &#8212; CADET</title>
+    <title>Software Architecture &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2bcfc6fe" />
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
@@ -48,7 +48,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Developer Guide</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="best_practices.html">Best practices in RSE</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CADET-Core architecture</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Software Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#features-and-capabilities">Features and Capabilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementation-details">Implementation Details</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="build_options.html">CADET build options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_expansion.html">Model Expansion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debugging.html">CADET-Core debugging</a></li>
@@ -102,9 +106,32 @@
 </p>
 
 
-  <section id="cadet-core-architecture">
-<h1>CADET-Core architecture<a class="headerlink" href="#cadet-core-architecture" title="Link to this heading">¶</a></h1>
-<p>A general overview of the object-oriented c++ implementation of CADET-Core.</p>
+  <section id="software-architecture">
+<h1>Software Architecture<a class="headerlink" href="#software-architecture" title="Link to this heading">¶</a></h1>
+<p>This section gives a general overview of the object-oriented c++ implementation of CADET-Core and is partially based on the Software Architecture chapter 3.2 in <a class="reference external" href="https://publications.rwth-aachen.de/record/840314">Samuel Lewekes PhD thesis</a>.</p>
+<p>The CADET-Core software is designed to be modular, extendable, maintainable and computationally efficient and robust.
+To promote these goals, CADET-Core is implemented in C++, a highly performant, object-oriented language that supports cross-platform compatibility.</p>
+<section id="features-and-capabilities">
+<h2>Features and Capabilities<a class="headerlink" href="#features-and-capabilities" title="Link to this heading">¶</a></h2>
+<p>CADET-Core</p>
+<ul class="simple">
+<li><p>Builds on Windows, Linux, MacOs</p></li>
+<li><p>Allows to easily add new frontends as the core simulator is implemented in the library <code class="docutils literal notranslate"><span class="pre">libcadet</span></code>, which can be called from different frontends.
+Currently, CADET-Core features the command line interface <code class="docutils literal notranslate"><span class="pre">cadet-cli</span></code> and CADET-Python, which includes a <code class="docutils literal notranslate"><span class="pre">Cadet</span></code> class that serves as a generic HDF5 frontend and calls the <code class="docutils literal notranslate"><span class="pre">cadet-cli</span></code> interface.
+The CADET-Process frontend is a separate software that wraps CADET-Python and supports additional functionality, as described in the <a class="reference external" href="https://cadet-process.readthedocs.io/en/latest/index.html">CADET-Process documentation</a>.
+The Matlab frontend was deprecated in <a class="reference external" href="https://github.com/cadet/CADET-Core/commits/4b34e0d5fcabee2ff84ff422acac75a6982d6df7/">commit 4b34e0d5</a> due to its maintenance overhead.</p></li>
+<li><p>Can compute parameter sensitivities via a custom Algorithmic Differentiation (AD) implementation. The AD infrastructure allows for easy extension of new models to support parameter sensitivities, as described in the AD section of the <a class="reference internal" href="model_expansion.html#model-expansion"><span class="std std-ref">Model Expansion</span></a> chapter.</p></li>
+<li><p>Allows arbitrary systems of unit operations, including cycles.</p></li>
+<li><p>Implements a method of lines approach to solve the model equations: Custom implementations of model equations and, if required, spatial discretization, is complemented by the well-established and publicly available time integration software library SUNDIALS.
+The IDAS solver of the <a class="reference external" href="https://sundials.readthedocs.io/en/latest/index.html">SUNDIALS software</a>, implements a variable order (up to fifth order) BDF with adaptive time stepping and has proven to be stable and robust.
+Additionally, IDAS supports the forward computation of parameter sensitivities, i.e. solves the sensitivity system as <a class="reference external" href="https://sundials.readthedocs.io/en/latest/idas/Mathematics_link.html#forward-sensitivity-analysis">described in their documentation</a>.</p></li>
+</ul>
+</section>
+<section id="implementation-details">
+<h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">¶</a></h2>
+<p>Classes and realationships
+Include figure 3.4 and/or 3.6 from Sams Diss</p>
+</section>
 </section>
 
 

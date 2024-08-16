@@ -94,58 +94,56 @@
 
   <section id="build-for-osx">
 <span id="build-osx"></span><h1>Build for OSX<a class="headerlink" href="#build-for-osx" title="Link to this heading">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>## Prerequisites
-
-* CMake (&gt;= 3.12.0)
-* GCC &gt;= 7.0, Clang &gt;= 3.9, or Intel C++ 18.0
-* Optional: Git
-
-Assumed directory structure:
-
-&lt;pre&gt;
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>CMake (&gt;= 3.12.0)</p></li>
+<li><p>GCC &gt;= 7.0, Clang &gt;= 3.9, or Intel C++ 18.0</p></li>
+<li><p>Optional: Git</p></li>
+</ul>
+<p>Assumed directory structure:</p>
+<pre>
 |- CADET
 |    - src
 |    - include
 |    - [...]
 |    - build
 |    - install
-&lt;/pre&gt;
-
-Note that the version numbers of the files and packages below are subject to change and will not always reflect the most recent version.
-
-Also note that you have to use the same compiler for all packages. This is especially important if some of the packages are installed via a package manager such as [Homebrew](http://brew.sh/) which uses the system compiler (Clang).
-
-## Build dependencies
-
-```
-brew update &gt; /dev/null || true
-brew install cmake --without-docs
-brew install hdf5
-brew install tbb
-brew install eigen
-```
-
-### LAPACK
-
-You can either use the native LAPACK implementation provided by Mac OS X (vecLib, Accelerate) 
-or install the freely available [Intel MKL](https://software.intel.com/sites/campaigns/nest/) which is very fast and probably faster than Accelerate.
-
-## Build CADET
-
-- Clone the CADET source code `git clone https://github.com/modsim/CADET.git CADET`
-- Create the directories `CADET/build` and `CADET/install`
-
-* If using Intel MKL, execute `export MKLROOT=/opt/intel/mkl`
-* Using standard LAPACK: Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;&lt;ROOT&gt;/install&quot; ../`
- 
-    Using MKL (sequential): Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;&lt;ROOT&gt;/install&quot; -DBLA_VENDOR=Intel10_64lp_seq ../`
- 
-    Using MKL (parallel): Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;&lt;ROOT&gt;/install&quot; -DBLA_VENDOR=Intel10_64lp ../`
-* Execute `make`
-* Execute `make install`
-
+</pre>
+<p>Note that the version numbers of the files and packages below are subject to change and will not always reflect the most recent version.</p>
+<p>Also note that you have to use the same compiler for all packages. This is especially important if some of the packages are installed via a package manager such as <a class="reference external" href="http://brew.sh/">Homebrew</a> which uses the system compiler (Clang).</p>
+</section>
+<section id="build-dependencies">
+<h2>Build dependencies<a class="headerlink" href="#build-dependencies" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">update</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="o">||</span> <span class="n">true</span>
+<span class="n">brew</span> <span class="n">install</span> <span class="n">cmake</span> <span class="o">--</span><span class="n">without</span><span class="o">-</span><span class="n">docs</span>
+<span class="n">brew</span> <span class="n">install</span> <span class="n">hdf5</span>
+<span class="n">brew</span> <span class="n">install</span> <span class="n">tbb</span>
+<span class="n">brew</span> <span class="n">install</span> <span class="n">eigen</span>
 </pre></div>
 </div>
+<section id="lapack">
+<h3>LAPACK<a class="headerlink" href="#lapack" title="Link to this heading">¶</a></h3>
+<p>You can either use the native LAPACK implementation provided by Mac OS X (vecLib, Accelerate)
+or install the freely available <a class="reference external" href="https://software.intel.com/sites/campaigns/nest/">Intel MKL</a> which is very fast and probably faster than Accelerate.</p>
+</section>
+</section>
+<section id="build-cadet">
+<h2>Build CADET<a class="headerlink" href="#build-cadet" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Clone the CADET source code <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/modsim/CADET.git</span> <span class="pre">CADET</span></code></p></li>
+<li><p>Create the directories <code class="docutils literal notranslate"><span class="pre">CADET/build</span></code> and <code class="docutils literal notranslate"><span class="pre">CADET/install</span></code></p></li>
+</ul>
+<ul>
+<li><p>If using Intel MKL, execute <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">MKLROOT=/opt/intel/mkl</span></code></p></li>
+<li><p>Using standard LAPACK: Execute <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=&quot;&lt;ROOT&gt;/install&quot;</span> <span class="pre">../</span></code></p>
+<p>Using MKL (sequential): Execute <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=&quot;&lt;ROOT&gt;/install&quot;</span> <span class="pre">-DBLA_VENDOR=Intel10_64lp_seq</span> <span class="pre">../</span></code></p>
+<p>Using MKL (parallel): Execute <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=&quot;&lt;ROOT&gt;/install&quot;</span> <span class="pre">-DBLA_VENDOR=Intel10_64lp</span> <span class="pre">../</span></code></p>
+</li>
+<li><p>Execute <code class="docutils literal notranslate"><span class="pre">make</span></code></p></li>
+<li><p>Execute <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code></p></li>
+</ul>
+</section>
 </section>
 
 

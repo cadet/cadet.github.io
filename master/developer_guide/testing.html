@@ -48,6 +48,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Developer Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cadet_core_architecture.html">Software Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_options.html">CADET build options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_expansion.html">Model Expansion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debugging.html">CADET-Core debugging</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">CADET-Core testing</a><ul>
@@ -161,7 +163,8 @@ We strongly emphasize that the procedure described here should be taken into con
 <p>We recommend using this procedure not only for the tests but also for the publication to make good standards regarding RDM.</p>
 <p>The general procedure how to add a reference test is as follows:</p>
 <p><strong>1. Define your model setup in CADET-Database:</strong>
-The easiest way to do this, is to translate your model h5 file to a json file and store it in the cadet-config folder.
+The easiest way to do this, is to clone the <a class="reference external" href="https://jugit.fz-juelich.de/IBG-1/ModSim/cadet/cadet-database">CADET-Database</a>, checkout the core_tests branch and store your model setup file as a json file in the cadet-config folder.
+You can create this json config file by translating the standard CADET h5 file to a json using python, see the utility/h5ToJson.py script for reference.
 Make sure to give your model setup a meaningful and unique name (follow the naming logic of other setups in that folder).
 Note that the return data should only specify the output required for the reference test, i.e. usually the outlet of a single unit.</p>
 <p><strong>2. Add a CADET-Reference script:</strong>

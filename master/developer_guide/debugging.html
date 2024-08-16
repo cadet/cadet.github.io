@@ -47,6 +47,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Developer Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cadet_core_architecture.html">Software Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_options.html">CADET build options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_expansion.html">Model Expansion</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">CADET-Core debugging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testing.html">CADET-Core testing</a></li>
@@ -102,7 +104,7 @@
   <section id="cadet-core-debugging">
 <h1>CADET-Core debugging<a class="headerlink" href="#cadet-core-debugging" title="Link to this heading">¶</a></h1>
 <p>We advice to use an IDE like MS Visual Studio to debug CADET-Core.</p>
-<p>If the debugger does not stop at a breakpoint even though it is set in the correct source file, this might be because a corresponding libcadet file was build and is being run. You can find these files under <cite>buildsrclibcadet</cite>. Alternatively, you can set a breakpoint in an early stage, e.g. in the driver file and manually step through the code.</p>
+<p>If the debugger does not stop at a breakpoint even though it is set in the correct source file, this might be because a corresponding libcadet file was build and is being run. You can find these files under <cite>build/src/libcadet</cite>. Alternatively, you can set a breakpoint in an early stage, e.g. in the driver file and manually step through the code.</p>
 <p>To run a specific simulation with the Visual Studio debugguer, you can add the launch.vs.json file provided here to the .vs folder</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.1&quot;</span><span class="p">,</span>

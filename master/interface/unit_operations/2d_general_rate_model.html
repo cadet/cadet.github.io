@@ -358,12 +358,25 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_RADIUS</span></code></p>
 <blockquote>
-<div><p>Column radius</p>
+<div><p>Column radius. This parameter is optional if <code class="docutils literal notranslate"><span class="pre">CROSS_SECTION_AREA</span></code> is provided.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CROSS_SECTION_AREA</span></code></p>
+<blockquote>
+<div><p>Cross section area of the column. This parameter is optional and will be ignored if <cite>COL_RADIUS</cite> is provided.</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}^{2}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt;0\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>

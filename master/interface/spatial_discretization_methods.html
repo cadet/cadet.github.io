@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Flux reconstruction methods" href="flux_reconstruction.html" />
-    <link rel="prev" title="Reaction models" href="reactions.html" />
+    <link rel="prev" title="Michaelis Menten kinetics" href="reaction/michaelis_menten_kinetics.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -52,7 +52,7 @@
 <li class="toctree-l3"><a class="reference internal" href="system.html">System of unit operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/index.html">Unit Operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="binding/index.html">Binding models</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reactions.html">Reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reaction/index.html">Reaction models</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Spatial discretization methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="flux_reconstruction.html">Flux reconstruction methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
@@ -150,7 +150,7 @@ Thus, the low-order method requires more DOFs and ultimately more compute time t
 <p>The theoretical order of convergence is an asymptotic property, however.
 Having the exact solution, we can compute an experimental order of convergence (EOC) via the formula</p>
 <div class="math notranslate nohighlight" id="equation-modelcolumn">
-<span class="eqno">(26)<a class="headerlink" href="#equation-modelcolumn" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(25)<a class="headerlink" href="#equation-modelcolumn" title="Link to this equation">¶</a></span>\[\begin{aligned}
     EOC_k = \frac{log(\varepsilon_{k+1} / \varepsilon_{k}) }{log(n_{k} / n_{k+1})},
 \end{aligned}\]</div>
 <p>with <span class="math notranslate nohighlight">\(\varepsilon_{k}\)</span> and <span class="math notranslate nohighlight">\(n_{k}\)</span> denoting some error norm and the degrees of freedom of the kth approximation.

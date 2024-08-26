@@ -111,9 +111,8 @@
 If you want to extend or modify CADET (e.g., add a custom binding model), you will need to build CADET from source.</p>
 <section id="install-pre-built-binaries">
 <h3>Install pre-built binaries<a class="headerlink" href="#install-pre-built-binaries" title="Link to this heading">¶</a></h3>
-<p>CADET can be installed via conda from the <code class="docutils literal notranslate"><span class="pre">conda-forge</span> <span class="pre">channel</span></code>.</p>
+<p>CADET can be installed via <a class="reference external" href="https://docs.anaconda.com/free/miniconda/">conda</a> from the <code class="docutils literal notranslate"><span class="pre">conda-forge</span> <span class="pre">channel</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">cadet</span></code></p>
-<p>This requires a working <a class="reference external" href="https://docs.anaconda.com/anaconda/install/index.html">conda installation</a>.</p>
 <p>Optionally, use <a class="reference external" href="https://github.com/mamba-org/mamba">mamba</a> which uses a faster dependency solver than <code class="docutils literal notranslate"><span class="pre">conda</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">cadet</span></code></p>
 </section>
@@ -127,20 +126,20 @@ If you want to extend or modify CADET (e.g., add a custom binding model), you wi
 </section>
 </section>
 <section id="install-a-frontend">
-<span id="cadet-python"></span><h2>Install a frontend<a class="headerlink" href="#install-a-frontend" title="Link to this heading">¶</a></h2>
-<p>As of now, only a Python frontend is provided.</p>
-<section id="install-cadet-python">
-<h3>Install CADET-Python<a class="headerlink" href="#install-cadet-python" title="Link to this heading">¶</a></h3>
-<p>The easiest way to create CADET simulations is to use the <a class="reference external" href="https://github.com/modsim/CADET-python">CADET-Python</a> frontend.
-For this purpose, we recommend installing <a class="reference external" href="https://www.anaconda.com/">Anaconda</a>.
-Anaconda is a high-performance scientific distribution of Python that includes many common packages needed for scientific and engineering work.
-Download the installer from their <a class="reference external" href="https://www.anaconda.com/">website</a> and run it for the local user.</p>
-<p>To install <code class="docutils literal notranslate"><span class="pre">CADET-Python</span></code>, open an <cite>Anaconda Shell</cite> and execute:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>cadet-python
+<span id="cadet-process"></span><h2>Install a frontend<a class="headerlink" href="#install-a-frontend" title="Link to this heading">¶</a></h2>
+<p>CADET provides a Python API, called <code class="docutils literal notranslate"><span class="pre">CADET-Python</span></code>, which can be used to set the model input according to the Interface specifications section.
+Setting up the model using <code class="docutils literal notranslate"><span class="pre">CADET-Python</span></code> can become very tedious, especially for systems, and is outdated now that an actual frontend is available:</p>
+<p>We recommend using the <code class="docutils literal notranslate"><span class="pre">CADET-Process</span></code> frontend, which facilitates modeling processes using an object oriented model builder.
+This interface layer provides convenient access to all model parameters in the system.
+It automatically checks validity of the parameter values and sets reasonable default values where possible.</p>
+<section id="install-cadet-process">
+<h3>Install CADET-Process<a class="headerlink" href="#install-cadet-process" title="Link to this heading">¶</a></h3>
+<p>To install <code class="docutils literal notranslate"><span class="pre">CADET-Process</span></code>, open an <cite>anaconda shell</cite> or <cite>mamba shell</cite> and execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>CADET-Process
 </pre></div>
 </div>
-<p>If you would also like to use <a class="reference external" href="https://github.com/modsim/CADET-Match">CADET-Match</a> for parameter estimation, run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>cadetmatch
+<p>If you want to use <code class="docutils literal notranslate"><span class="pre">CADET-Python</span></code>, open an <cite>anaconda shell</cite> or <cite>mamba shell</cite> and execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>CADET-Python
 </pre></div>
 </div>
 </section>

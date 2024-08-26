@@ -48,6 +48,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Developer Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html">CADET-Python Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cadet_core_architecture.html">Software Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="build_options.html">CADET build options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_expansion.html">Model Expansion</a></li>
@@ -108,7 +109,7 @@
 
 
   <section id="cadet-core-testing">
-<h1>CADET-Core testing<a class="headerlink" href="#cadet-core-testing" title="Link to this heading">¶</a></h1>
+<span id="testing"></span><h1>CADET-Core testing<a class="headerlink" href="#cadet-core-testing" title="Link to this heading">¶</a></h1>
 <section id="run-the-tests">
 <h2>Run the tests<a class="headerlink" href="#run-the-tests" title="Link to this heading">¶</a></h2>
 <p>If you want to run tests in CADET-Core you need to ensure that in the <cite>CMakeSettings.json</cite> file:</p>
@@ -141,7 +142,7 @@
 <p>}</p>
 </div></blockquote>
 <p>After building, you can find the testRunner.exe in <code class="docutils literal notranslate"><span class="pre">CADET-root/build/test/Release</span></code> or, when build in debug mode, in <code class="docutils literal notranslate"><span class="pre">CADET-root/build/test/Debug</span></code>.</p>
-<p>To debug specific tests (with flag [testHere]) from the Visual Studio IDE, you can add the following configuration to the launch.vs.json file mentioned in the <span class="xref std std-ref">debugging</span> section:</p>
+<p>To debug specific tests (with flag [testHere]) from the Visual Studio IDE, you can add the following configuration to the launch.vs.json file mentioned in the <a class="reference internal" href="debugging.html#debugging"><span class="std std-ref">CADET-Core debugging</span></a> section:</p>
 <p>Select the testRunner.exe in the startup item dropdown menu and you can start debugging tests with the specified flag.</p>
 </section>
 <section id="adding-tests-for-your-model">

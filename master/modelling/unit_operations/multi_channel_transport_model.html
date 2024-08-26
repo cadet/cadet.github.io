@@ -134,7 +134,7 @@ The equations are complemented by Danckwerts boundary conditions <span id="id3">
     u_l c^\ell_{\text{in},i,l}(t) &amp;= u_l c^\ell_{i,l}(t,0) - D_{\text{ax},i,l} \frac{\partial c^\ell_{i,l}}{\partial z}(t, 0) &amp; \forall t &gt; 0,\\
     \frac{\partial c^\ell_{i,l}}{\partial z}(t, L) &amp;= 0 &amp; \forall t &gt; 0.
 \end{aligned}\end{split}\]</div>
-<p>The MCT model describes <span class="math notranslate nohighlight">\(N_k\)</span> one-dimensional spatially parallel channels (see <a class="reference internal" href="#fig-model-class"><span class="std std-numref">Fig. 5</span></a>).
+<p>The MCT model describes <span class="math notranslate nohighlight">\(N_k\)</span> one-dimensional spatially parallel channels (see <a class="reference internal" href="#fig-model-class"><span class="std std-numref">Fig. 6</span></a>).
 In each channel <span class="math notranslate nohighlight">\(l\)</span>, molecules of different species <span class="math notranslate nohighlight">\(i\)</span>, represented by a liquid phase concentration <span class="math notranslate nohighlight">\(c^\ell_{i,l}\)</span>, can be transported with flux velocities <span class="math notranslate nohighlight">\(v_{i,l}\)</span> while undergoing axial diffusion: <span class="math notranslate nohighlight">\(D_{\text{ax},i,l}\)</span>.
 Molecules can be laterally exchanged between any pair of channels <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(k\)</span> with rate constant <span class="math notranslate nohighlight">\(e^i_{lk}\)</span>.
 We note that the exchange fluxes are computed from the exchange rates w.r.t. the source channel volume, that is, channels with the same exchange rate but different volume will produce differently large exchange fluxes.
@@ -144,15 +144,15 @@ If reactions are considered, the term <span class="math notranslate nohighlight"
 <figure class="align-default" id="id7">
 <span id="fig-model-class"></span><img alt="../../_images/multi_channel_transport_model_class.png" src="../../_images/multi_channel_transport_model_class.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Illustration of the Multichannel Transport model class and relevant parameters.
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Illustration of the Multichannel Transport model class and relevant parameters.
 Figure taken from Jonas Bühler et al. <span id="id4">[<a class="reference internal" href="../../zbibliography.html#id39" title="Jonas Bühler, Eric von Lieres, and Gregor Huber. A class of compartmental models for long-distance tracer transport in plants. Journal of Theoretical Biology, 341:131-142, 2014. URL: https://www.sciencedirect.com/science/article/pii/S0022519313004530, doi:https://doi.org/10.1016/j.jtbi.2013.09.023.">9</a>]</span>.</span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>The cross-section area <span class="math notranslate nohighlight">\(A_N\)</span> is individually specified for each channel (see <a class="reference internal" href="#fig-variable-areas"><span class="std std-numref">Fig. 6</span></a>). The MCT is agnostic to the shape of these cross sections, while their ratio determines the distribution of the volumetric flow.</p>
+<p>The cross-section area <span class="math notranslate nohighlight">\(A_N\)</span> is individually specified for each channel (see <a class="reference internal" href="#fig-variable-areas"><span class="std std-numref">Fig. 7</span></a>). The MCT is agnostic to the shape of these cross sections, while their ratio determines the distribution of the volumetric flow.</p>
 <figure class="align-default" id="id8">
 <span id="fig-variable-areas"></span><img alt="../../_images/mct_variable_areas.png" src="../../_images/mct_variable_areas.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Scheme of exemplary channels with different cross section areas and arbitrary exchange between channels.</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Scheme of exemplary channels with different cross section areas and arbitrary exchange between channels.</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="use-case-tracer-transport-in-plants">

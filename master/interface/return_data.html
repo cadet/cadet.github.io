@@ -131,7 +131,7 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">WRITE_SOLUTION_LAST</span></code></p>
 <blockquote>
-<div><p>Write full solution state vector at last time point (optional, defaults to 0)</p>
+<div><p>Write full solution state vector at last time point, including the state derivative vector (optional, defaults to 0)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -142,7 +142,7 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">WRITE_SENS_LAST</span></code></p>
 <blockquote>
-<div><p>Write full sensitivity state vectors at last time point (optional, defaults to 0)</p>
+<div><p>Write full sensitivity state vectors at last time point, including the state derivative vector (optional, defaults to 0)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -508,7 +508,18 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">WRITE_SOLUTION_LAST_UNIT</span></code></p>
 <blockquote>
-<div><p>Write solution state vector of this unit at last time point</p>
+<div><p>Write solution state vector of this unit at last time point, including the state derivative vector (optional, defaults to 0)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">WRITE_SENS_LAST_UNIT</span></code></p>
+<blockquote>
+<div><p>Write sensitivity state vector of this unit at last time point, including the state derivative vector (optional, defaults to 0)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>

@@ -115,25 +115,35 @@
 <span id="cstr-model"></span><h1>Continuous stirred tank reactor model (CSTR)<a class="headerlink" href="#continuous-stirred-tank-reactor-model-cstr" title="Link to this heading">¶</a></h1>
 <p>The continuous stirred tank reactor model is a basic building block in unit operation networks and often used to model holdup volume.
 When combined with a binding model, it can be used to model batch uptake experiments.</p>
-<p>Assuming that the fluid inside the tank is well-mixed and that the volume can vary, the governing equations are given by</p>
+<p>Assuming that the fluid inside the tank is well-mixed and that the liquid volume <span class="math notranslate nohighlight">\(V^{\ell}\)</span> can vary, the governing equations are given by</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
-    \frac{\mathrm{d}}{\mathrm{d}t} \left(\left[ c^\ell_i + \frac{1-\varepsilon}{\varepsilon} \sum_j d_j \sum_{m_{j,i}} c^s_{j,i,m_{j,i}} \right] V\right) &amp;= F_{\text{in}} c^\ell_{\text{in},i} - F_{\text{out}} c^\ell_i + V f_{\text{react},i}^l\left( c^\ell \right) \\
-&amp;+ V \frac{1-\varepsilon}{\varepsilon}\sum_j d_j f_{\text{react},j,i}^s\left( c^\ell, c_j^s \right),
+    \frac{\mathrm{d}}{\mathrm{d}t} (V^{\ell} c^\ell_i) + V^{s} \sum_j d_j \sum_{m_{j,i}}^{N_{\text{bnd},j,i}}  \frac{\mathrm{d}}{\mathrm{d}t} (c^s_{j,i,m_{j,i}}) &amp;= F_{\text{in}} c^\ell_{\text{in},i} - F_{\text{out}} c^\ell_i + V^{\ell} f_{\text{react},i}^l\left( c^\ell \right) \\
+    &amp;+V^{s}\sum_j d_j f_{\text{react},j,i}^s\left( c^\ell, c_j^s \right)
 \end{aligned}\end{split}\]</div>
-<p>which balances the mass, the binding equation</p>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(c^\ell_i\)</span> concentration of component <span class="math notranslate nohighlight">\(i\)</span> in the liquid phase.</p></li>
+<li><p><span class="math notranslate nohighlight">\(c^s_{j,i,m_{j,i}}\)</span> concentration of component <span class="math notranslate nohighlight">\(i\)</span> in the solid phase of particle type <span class="math notranslate nohighlight">\(j\)</span> and particle type <span class="math notranslate nohighlight">\(m_{j,i}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V^{\ell}\)</span> liquid volume in the tank.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V^{s}\)</span> solid volume in the tank.</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{\text{in}}\)</span> and <span class="math notranslate nohighlight">\(F_{\text{out}}\)</span> flow rates of liquid into and out of the tank.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_{\text{react},i}^l\left( c^\ell \right)\)</span> and <span class="math notranslate nohighlight">\(f_{\text{react},j,i}^s\left( c^\ell, c_j^s \right)\)</span> reaction rates of component <span class="math notranslate nohighlight">\(i\)</span> in the liquid and solid phase.</p></li>
+<li><p><span class="math notranslate nohighlight">\(d_j\)</span> volume fraction of the different solid volume in the tank.</p></li>
+</ul>
+<p>Depending on whether quasi-stationary or dynamic binding is used the binding behavior of <span class="math notranslate nohighlight">\(c_i^{\ell}\)</span> and <span class="math notranslate nohighlight">\(c^s_j\)</span> is described by</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
-    \text{quasi-stationary: }&amp; &amp; 0 &amp;= f_{\text{ads},j}\left( c^\ell, c^s_j\right), \\
-    \text{dynamic: }&amp; &amp; \frac{\partial c^s_j}{\partial t} &amp;= f_{\text{ads},j}\left( c^\ell, c^s_j\right) + f_{\text{react},j}^s\left( c^\ell, c_j^s \right),
+    \text{quasi-stationary: }&amp; &amp; 0 &amp;= f_{\text{ads},j}\left( c_i^\ell, c^s_j\right), \\
+    \text{dynamic: }&amp; &amp; \frac{\partial c^s_j}{\partial t} &amp;= f_{\text{ads},j}\left( c_i^\ell, c^s_j\right) + f_{\text{react},j}^s\left( c_i^\ell, c_j^s \right),
 \end{aligned}\end{split}\]</div>
-<p>depending on whether quasi-stationary or dynamic binding is used, and the evolution of volume</p>
+<p>where <span class="math notranslate nohighlight">\(f_{\text{ads},j}\)</span> is the adsorption rate in the solid phase of particle type <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<p>The evolution of volume of the liquid volume</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-    \frac{\mathrm{d}V}{\mathrm{d}t} &amp;= F_{\text{in}} - F_{\text{out}} - F_{\text{filter}}.
+   \frac{\mathrm{d}V^{\ell}}{\mathrm{d}t}= F_{\text{in}} - F_{\text{out}} - F_{\text{filter}}.
 \end{aligned}\]</div>
-<p>The porosity <span class="math notranslate nohighlight">\(\varepsilon\)</span> denotes the ratio of liquid phase volume to total tank volume.
-Thus, setting <span class="math notranslate nohighlight">\(\varepsilon = 1\)</span>, removing all bound states by setting <span class="math notranslate nohighlight">\(N_{\text{bnd},j,i} = 0\)</span> for all components <span class="math notranslate nohighlight">\(i\)</span> and particle types <span class="math notranslate nohighlight">\(j\)</span>, and applying no binding model results in a simple tank.
+<p>Removing all bound states by setting <span class="math notranslate nohighlight">\(N_{\text{bnd},j,i} = 0\)</span> for all components <span class="math notranslate nohighlight">\(i\)</span> and particle types <span class="math notranslate nohighlight">\(j\)</span>, and applying no binding model results in a simple tank.
 The additional parameter <span class="math notranslate nohighlight">\(F_{\text{filter}}\)</span>, which denotes the flow rate of pure liquid (without any components) out of the tank, can be used to model a filtering unit.</p>
 <p>Note that it is the user’s duty to make sure that the volume of the CSTR does not fall below 0. If it does, the simulation may fail to run or may produce unreasonable (e.g., unphysical) results.</p>
 <p>See <a class="reference internal" href="../../interface/unit_operations/cstr.html#cstr-config"><span class="std std-ref">Continuous stirred tank reactor model</span></a>.</p>

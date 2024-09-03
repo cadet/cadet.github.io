@@ -230,7 +230,7 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_VOLUME</span></code></p>
 <blockquote>
-<div><p>Initial tank volume</p>
+<div><p>Initial liquid volume</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}^{3}\)</span></p>
 <table class="docutils align-default">
 <tbody>
@@ -267,13 +267,14 @@
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">POROSITY</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">CONST_SOLID_VOLUME</span></code></p>
 <blockquote>
-<div><p>Porosity <span class="math notranslate nohighlight">\(\varepsilon\)</span> (defaults to 1)</p>
+<div><p>Volume of solid phase</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}^{3}\)</span> (defaults to 0)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\((0,1]\)</span></p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>

@@ -52,7 +52,7 @@
 <li class="toctree-l3"><a class="reference internal" href="system.html">System of unit operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/index.html">Unit Operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="binding/index.html">Binding models</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reactions.html">Reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reaction/index.html">Reaction models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="spatial_discretization_methods.html">Spatial discretization methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="flux_reconstruction.html">Flux reconstruction methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
@@ -131,7 +131,7 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">WRITE_SOLUTION_LAST</span></code></p>
 <blockquote>
-<div><p>Write full solution state vector at last time point (optional, defaults to 0)</p>
+<div><p>Write full solution state vector at last time point, including the state derivative vector (optional, defaults to 0)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -142,7 +142,7 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">WRITE_SENS_LAST</span></code></p>
 <blockquote>
-<div><p>Write full sensitivity state vectors at last time point (optional, defaults to 0)</p>
+<div><p>Write full sensitivity state vectors at last time point, including the state derivative vector (optional, defaults to 0)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -508,7 +508,18 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">WRITE_SOLUTION_LAST_UNIT</span></code></p>
 <blockquote>
-<div><p>Write solution state vector of this unit at last time point</p>
+<div><p>Write solution state vector of this unit at last time point, including the state derivative vector (optional, defaults to 0)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">WRITE_SENS_LAST_UNIT</span></code></p>
+<blockquote>
+<div><p>Write sensitivity state vector of this unit at last time point, including the state derivative vector (optional, defaults to 0)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>

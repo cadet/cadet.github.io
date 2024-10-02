@@ -16,7 +16,7 @@
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Software Architecture" href="cadet_core_architecture.html" />
+    <link rel="next" title="CADET-Python Introduction" href="cadet_python.html" />
     <link rel="prev" title="Meta Group" href="../interface/meta_group.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -48,6 +48,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html">CADET-Python Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cadet_core_architecture.html">Software Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="build_options.html">CADET build options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_expansion.html">Model Expansion</a></li>
@@ -112,12 +113,18 @@ For detailed guidance, you can e.g. refer to the <a class="reference external" h
 Since some developers may be new to collaborative software development using Git and GitHub, we specifically recommend consulting the <a class="reference external" href="https://rse-guidelines.readthedocs.io/en/latest/intro.html">Git RSE guide</a>.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="cadet_core_architecture.html">Software Architecture</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cadet_core_architecture.html#features-and-capabilities">Features and Capabilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cadet_core_architecture.html#implementation-details">Implementation Details</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cadet_core_architecture.html#unit-operation-submodel-assumption">Unit Operation submodel assumption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cadet_python.html">CADET-Python Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html#preliminary-steps">0. Preliminary Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html#setting-up-the-model">1. Setting Up the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html#setting-up-time-sections-and-connections">2. Setting up Time Sections and Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html#setting-up-the-simulator-and-running-the-simulation">3. Setting Up the Simulator and Running the Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html#plotting-the-results">4. Plotting the Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html#exercises">Exercises</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="cadet_core_architecture.html">Software Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cadet_core_architecture.html#features-and-capabilities">Features and Capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadet_core_architecture.html#implementation-details">Implementation Details</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="build_options.html">CADET build options</a><ul>
@@ -135,13 +142,7 @@ Since some developers may be new to collaborative software development using Git
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">CADET-Core debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testing.html">CADET-Core testing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="testing.html#run-the-tests">Run the tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="testing.html#adding-tests-for-your-model">Adding tests for your model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="testing.html#unit-tests">Unit tests</a></li>
-<li class="toctree-l3"><a class="reference internal" href="testing.html#numerical-reference-tests">Numerical reference tests</a></li>
-<li class="toctree-l3"><a class="reference internal" href="testing.html#manufactured-solution">Manufactured solution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="testing.html#implementation-procedure">Implementation procedure</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#adding-tests-for-your-model">Adding tests for your model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testing.html#maintenance-of-the-tests">Maintenance of the tests</a></li>
 </ul>
 </li>

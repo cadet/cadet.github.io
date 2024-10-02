@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CADET build options" href="build_options.html" />
-    <link rel="prev" title="Developer Guide" href="index.html" />
+    <link rel="prev" title="CADET-Python Introduction" href="cadet_python.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -48,6 +48,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Developer Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html">CADET-Python Introduction</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Software Architecture</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#features-and-capabilities">Features and Capabilities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#implementation-details">Implementation Details</a></li>
@@ -107,7 +108,7 @@
 
 
   <section id="software-architecture">
-<h1>Software Architecture<a class="headerlink" href="#software-architecture" title="Link to this heading">¶</a></h1>
+<span id="cadet-core-architecture"></span><h1>Software Architecture<a class="headerlink" href="#software-architecture" title="Link to this heading">¶</a></h1>
 <p>This section gives a general overview of the object-oriented c++ implementation of CADET-Core and is based on the Software Architecture chapter 3.2 in Samuel Lewekes PhD thesis <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <p>The CADET-Core software is designed to be modular, extendable, maintainable and computationally efficient and robust.
 To promote these goals, CADET-Core is implemented in C++, a highly performant, object-oriented language that supports cross-platform compatibility.</p>
@@ -129,12 +130,11 @@ Additionally, IDAS supports the forward computation of parameter sensitivities, 
 </section>
 <section id="implementation-details">
 <h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">¶</a></h2>
-<p>Classes and realationships
-Include figure 3.4 and/or 3.6 from Sams Diss</p>
+<p>Classes and realationships</p>
 <figure class="align-default" id="id4">
 <span id="libcadetclasses"></span><img alt="../_images/architecture_libcadet_classes.png" src="../_images/architecture_libcadet_classes.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Selected relationships of classes in <code class="docutils literal notranslate"><span class="pre">libcadet</span></code> <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Selected relationships of classes in <code class="docutils literal notranslate"><span class="pre">libcadet</span></code> <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <aside class="footnote-list brackets">
@@ -176,8 +176,8 @@ It also converts the volumetric flow rate to the interstitial velocity <span cla
 Defines functions for evaluating the binding rates <span class="math notranslate nohighlight">\(f_\text{ads,j}\left(c^p_j, c^s_j\right)\)</span> (as used in, e.g., the <a class="reference internal" href="../modelling/unit_operations/general_rate_model.html#general-rate-model-model"><span class="std std-ref">General rate model (GRM)</span></a>), according to some <a class="reference internal" href="../modelling/binding/index.html#binding-models"><span class="std std-ref">Binding models</span></a>. This interface fully encapsulates a binding model.
 If supported, binding model parameters may have a <a class="reference internal" href="../modelling/binding/index.html#dependence-on-external-function-bind"><span class="std std-ref">Dependence on external function</span></a>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">IDynamicReactionModel</span></code>
-Defines functions for evaluating the reaction rates <span class="math notranslate nohighlight">\(f_\text{react,i}\left( c \right)\)</span> (as used in, e.g., the <a class="reference internal" href="../modelling/unit_operations/general_rate_model.html#general-rate-model-model"><span class="std std-ref">General rate model (GRM)</span></a>), according to some <a class="reference internal" href="../modelling/reactions.html#reaction-models"><span class="std std-ref">Reaction models</span></a>.
-If supported, reaction model parameters may have a <a class="reference internal" href="../modelling/reactions.html#dependence-on-external-function-react"><span class="std std-ref">Dependence on external function</span></a>.</p>
+Defines functions for evaluating the reaction rates <span class="math notranslate nohighlight">\(f_\text{react,i}\left( c \right)\)</span> (as used in, e.g., the <a class="reference internal" href="../modelling/unit_operations/general_rate_model.html#general-rate-model-model"><span class="std std-ref">General rate model (GRM)</span></a>), according to some <a class="reference internal" href="../modelling/reaction/index.html#reaction-models"><span class="std std-ref">Reaction models</span></a>.
+If supported, reaction model parameters may have a <a class="reference internal" href="../modelling/reaction/index.html#dependence-on-external-function-react"><span class="std std-ref">Dependence on external function</span></a>.</p>
 <section id="unit-operation-submodel-assumption">
 <span id="unitoperationassumption"></span><h3>Unit Operation submodel assumption<a class="headerlink" href="#unit-operation-submodel-assumption" title="Link to this heading">¶</a></h3>
 <ul class="simple">

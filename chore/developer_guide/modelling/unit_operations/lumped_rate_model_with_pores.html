@@ -57,7 +57,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reactions.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
 </ul>
 </li>
@@ -159,7 +159,7 @@ Therefore, the beads can be seen as continuously distributed inside the column (
 <li><p>The fluids are incompressible, i.e. the velocity field <span class="math notranslate nohighlight">\(\mathrm{V} \colon \mathbb{R}^3 \to \mathbb{R}^3\)</span> submits to <span class="math notranslate nohighlight">\(\operatorname{div}\left( \mathrm{V} \right) \equiv 0\)</span>.
 That is, the volumetric flow rate at the inner and outer column radius are the same.</p></li>
 </ul>
-<p>Consider a hollow (double walled) column with inner column diameter <span class="math notranslate nohighlight">\(\mathrm{P}_c&gt;0\)</span> and outer diameter <span class="math notranslate nohighlight">\(\mathrm{P}&gt;\mathrm{P}_c\)</span>, filled with spherical beads of (possibly) multiple types with radius <span class="math notranslate nohighlight">\(r_{p,j} \ll L\)</span> (see <a class="reference internal" href="general_rate_model.html#modelgrmcolumn"><span class="std std-numref">Fig. 1</span></a>), where <span class="math notranslate nohighlight">\(j\)</span> is the particle type index. The mass balance in the interstitial column volume is described by</p>
+<p>Consider a hollow (double walled) column with inner column diameter <span class="math notranslate nohighlight">\(\mathrm{P}_c&gt;0\)</span> and outer diameter <span class="math notranslate nohighlight">\(\mathrm{P}&gt;\mathrm{P}_c\)</span>, filled with spherical beads of (possibly) multiple types with radius <span class="math notranslate nohighlight">\(r_{p,j} \ll L\)</span> (see <a class="reference internal" href="general_rate_model.html#modelgrmcolumn"><span class="std std-numref">Fig. 2</span></a>), where <span class="math notranslate nohighlight">\(j\)</span> is the particle type index. The mass balance in the interstitial column volume is described by</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
     \frac{\partial c^\ell_i}{\partial t} &amp;= -\frac{u}{\rho} \frac{\partial c^\ell_i}{\partial \rho} + D_{\text{rad},i} \frac{1}{\rho} \frac{\partial}{\partial \rho} \left( \rho \frac{\partial c^\ell_i}{\partial \rho} \right) - \frac{1}{\beta_c} \sum_{j} d_j \frac{3}{r_{p,j}} k_{f,j,i}\left[ c^\ell_i - c^p_{j,i} \right] + f_{\text{react},i}^\ell\left(c^\ell\right),

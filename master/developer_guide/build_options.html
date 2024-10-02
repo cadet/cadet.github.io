@@ -144,10 +144,16 @@ Additionally, the <code class="docutils literal notranslate"><span class="pre">D
 <li><p><code class="docutils literal notranslate"><span class="pre">DENABLE_PACKAGED_SUNDIALS</span></code>: Uses packaged SUNDIALS code.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DENABLE_IPO</span></code>: Enables interprocedural optimization if the compiler supports it.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">DCMAKE_INSTALL_RPATH_USE_LINK_PATH</span></code>: Adds paths to linker search and installed rpath.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DNUM_MAX_AD_DIRS</span></code>: Specifies the number of allowed AD directions (default value is 80). Increasing this value can decrease performance when AD is being used.</p></li>
 </ul>
 <p>The following build arguments are exclusive to builds on MS windows:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">DVCPKG_TARGET_TRIPLET</span></code>: We use <code class="docutils literal notranslate"><span class="pre">vcpkg</span></code> to manage our dependencies. This triplet specifies which version of the dependencies should be installed. It takes the form of <code class="docutils literal notranslate"><span class="pre">architecture-os-linking</span></code>, so <code class="docutils literal notranslate"><span class="pre">x64-windows-static</span></code> for our use cases.</p></li>
+</ul>
+<p>The following build arguments can only be used with the Clang or GCC compilers:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DENABLE_ASAN</span></code>: enables the address sanitizer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DENABLE_UBSAN</span></code>: enables the undefined behaviour sanitizer.</p></li>
 </ul>
 </section>
 </section>

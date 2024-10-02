@@ -120,10 +120,10 @@ Since chromatographic systems can exhibit strong nonlinearity and stiff systems,
 <figure class="align-default" id="id5">
 <span id="simflowchart"></span><img alt="../_images/time_integration.png" src="../_images/time_integration.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">General time integration procedure</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">General time integration procedure</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>The general control flow of a simulation is shown in <a class="reference internal" href="#simflowchart"><span class="std std-numref">Fig. 7</span></a>.
+<p>The general control flow of a simulation is shown in <a class="reference internal" href="#simflowchart"><span class="std std-numref">Fig. 8</span></a>.
 Some aspects of the tasks involved are discussed below.</p>
 <section id="time-sections-and-transitions">
 <span id="simtimesectionstransitions"></span><h2>Time sections and transitions<a class="headerlink" href="#time-sections-and-transitions" title="Link to this heading">¶</a></h2>
@@ -133,14 +133,14 @@ Some aspects of the tasks involved are discussed below.</p>
         t_0 &lt; t_1 &lt; \dots &lt; t_i &lt; t_{i+1} &lt; \dots &lt; t_{\text{end}}.
 \end{aligned}\]</div>
 <p>Time sections are used for various purposes, for example, for defining piecewise polynomials used as inlet profiles or external function, for changing operating conditions such as flow rates, or for changing the connectivity in a network of unit operations.
-A sequence of (one or more) time sections with smooth transitions is called a time slice (see <a class="reference internal" href="#simtimesections"><span class="std std-numref">Fig. 8</span></a>).</p>
+A sequence of (one or more) time sections with smooth transitions is called a time slice (see <a class="reference internal" href="#simtimesections"><span class="std std-numref">Fig. 9</span></a>).</p>
 <p>A transition from one section to the next can either be smooth or discontinuous.
 On smooth transitions, the time integrator can just step over the section transition.
 Contrary to smooth transitions, a discontinuous transition requires some extra work in resetting the time integrator and finding consistent initial conditions for the next time slice.</p>
 <figure class="align-default" id="id6">
-<span id="simtimesections"></span><img alt="../_images/sections1.png" src="../_images/sections1.png" />
+<span id="simtimesections"></span><img alt="../_images/sections.png" src="../_images/sections.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Time sections, time slices, and transitions between them</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Time sections, time slices, and transitions between them</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="time-section-specification">
@@ -205,7 +205,7 @@ The error in the solution of these systems is controlled by the <code class="doc
 The IDAS time integrator adaptively changes the step size <span class="math notranslate nohighlight">\({\Delta t_\tau = t_\tau-t_{\tau-1}}\)</span> and order <span class="math notranslate nohighlight">\(1 \le q_{\tau} \le 5\)</span> in each time step and automatically determines the corresponding coefficients <span class="math notranslate nohighlight">\(\alpha_{\tau,i}\)</span>.
 This <em>ansatz</em> is inserted into the DAE and the resulting nonlinear algebraic equation system is solved for <span class="math notranslate nohighlight">\(y_{\tau} = y\left( t_\tau \right)\)</span> using a Newton method.</p>
 <div class="math notranslate nohighlight" id="equation-bdfnonlinsystem">
-<span class="eqno">(25)<a class="headerlink" href="#equation-bdfnonlinsystem" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(24)<a class="headerlink" href="#equation-bdfnonlinsystem" title="Link to this equation">¶</a></span>\[\begin{aligned}
     H(y_\tau) = F\left(t_\tau,y_\tau,\frac{1}{\Delta t_\tau} \,\sum_{i=0}^{q_\tau}{\alpha_{\tau,i} \, y_{\tau-i}}, p\right) = 0
 \end{aligned}\]</div>
 <p>This requires (possibly many) solutions of linear equation systems involving the Jacobian of <span class="math notranslate nohighlight">\(H\)</span> given by</p>
@@ -221,11 +221,11 @@ The much simpler Jacobian <span class="math notranslate nohighlight">\(\partial 
 <section id="adaptivity">
 <span id="simtimeintegrationadaptivity"></span><h3>Adaptivity<a class="headerlink" href="#adaptivity" title="Link to this heading">¶</a></h3>
 <p>The BDF order <span class="math notranslate nohighlight">\(q_{\tau}\)</span> and size of the time step <span class="math notranslate nohighlight">\(t_\tau\)</span> are chosen such that the error bounds are satisfied with minimal work.
-Equation <a class="reference internal" href="#equation-bdfnonlinsystem">25</a> is solved with a Newton iteration using very few iterations (<code class="docutils literal notranslate"><span class="pre">MAX_NEWTON_ITER</span></code> from Table <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>) since the starting point is assumed to be close to the solution as the time steps are small.
+Equation <a class="reference internal" href="#equation-bdfnonlinsystem">24</a> is solved with a Newton iteration using very few iterations (<code class="docutils literal notranslate"><span class="pre">MAX_NEWTON_ITER</span></code> from Table <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>) since the starting point is assumed to be close to the solution as the time steps are small.
 If the solution of the Newton iteration does not pass the <em>convergence test</em>, the step size <span class="math notranslate nohighlight">\(t_\tau\)</span> is reduced and the Newton iteration is tried again.
 This may happen at most <code class="docutils literal notranslate"><span class="pre">MAX_CONVTEST_FAIL</span></code> times, otherwise time integration is aborted with failure.
 Having a solution of the Newton iteration at hand, a <em>local truncation error test</em> is performed which controls the error of the BDF method.
-If this test fails, step size <span class="math notranslate nohighlight">\(t_\tau\)</span> and order <span class="math notranslate nohighlight">\(q_{\tau}\)</span> are adapted and the process restarts with solving the nonlinear system Eq. <a class="reference internal" href="#equation-bdfnonlinsystem">25</a>.
+If this test fails, step size <span class="math notranslate nohighlight">\(t_\tau\)</span> and order <span class="math notranslate nohighlight">\(q_{\tau}\)</span> are adapted and the process restarts with solving the nonlinear system Eq. <a class="reference internal" href="#equation-bdfnonlinsystem">24</a>.
 The error test may be failed at most <code class="docutils literal notranslate"><span class="pre">MAX_ERRTEST_FAIL</span></code> times before time integration is aborted with failure.</p>
 <p>Error bounds for the local truncation error test are specified by an absolute tolerance (<code class="docutils literal notranslate"><span class="pre">ABSTOL</span></code>) and a relative tolerance (<code class="docutils literal notranslate"><span class="pre">RELTOL</span></code>).
 Note that the relative tolerance only works for non-zero values, whereas zero values are accounted for by the absolute tolerance.
@@ -255,7 +255,7 @@ The CADET simulator implements the forward sensitivity approach which creates a 
 \end{aligned}\end{split}\]</div>
 <p>These linear DAEs depend on the solution <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(\dot{y}\)</span> of the original DAE system.
 Consequently, the sensitivity systems are solved together with the original DAE system in a staggered approach <span id="id3">[<a class="reference internal" href="../zbibliography.html#id30" title="William F. Feehery, John E. Tolsma, and Paul I. Barton. Efficient sensitivity analysis of large-scale differential-algebraic systems. Applied Numerical Mathematics, 25(1):41–54, October 1997. URL: http://dl.acm.org/citation.cfm?id=264193.264573, doi:10.1016/S0168-9274(97)00050-0.">25</a>]</span>.</p>
-<p>After the nonlinear Eq. <a class="reference internal" href="#equation-bdfnonlinsystem">25</a> has been successfully solved using Newton iteration (i.e., it has passed the convergence test), each sensitivity is solved using the same Newton iteration.
+<p>After the nonlinear Eq. <a class="reference internal" href="#equation-bdfnonlinsystem">24</a> has been successfully solved using Newton iteration (i.e., it has passed the convergence test), each sensitivity is solved using the same Newton iteration.
 If direct linear solvers were used, this iteration would convergence with a single iteration as there is no nonlinearity.
 The Newton method for the sensitivities performs at most <code class="docutils literal notranslate"><span class="pre">MAX_NEWTON_ITER_SENS</span></code> (see Table <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>) iterations.
 Assuming the convergence test has passed for each sensitivity, the local truncation error test is performed for the full set of variables (i.e., original system and sensitivities).

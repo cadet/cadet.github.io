@@ -271,6 +271,7 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">EXCHANGE_MATRIX</span></code></p>
 <blockquote>
+<div><blockquote>
 <div><p>Exchange matrix</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}^{-1}\)</span></p>
 <p>Ordered list containing all exchange rates <span class="math notranslate nohighlight">\(e^k_{ij}\)</span> for component <span class="math notranslate nohighlight">\(k\)</span> from compartment <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(j\)</span> based on the exchange matrix <span class="math notranslate nohighlight">\(E^k\)</span>. The vector ordering is source channel - destination channel - component (i.e. i-j-k) major.</p>
@@ -281,7 +282,14 @@ e^k_{21} &amp; \ddots &amp; &amp; \vdots\\
 \vdots &amp; &amp; \ddots &amp; e^k_{(N-1)N}\\
 e^k_{N1} &amp; \dots &amp; e^k_{N(N-1)} &amp; 0
 \end{bmatrix}\end{split}\]</div>
-<table class="docutils align-default">
+<p>For addressing the exchange rates as a parameter senstivity, the mapping is as follows:</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\texttt{SENS_BOUNDPHASE}\)</span> <em>Channel from</em></p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{SENS_PARTYPE}\)</span> <em>Channel to</em></p></li>
+</ul>
+<blockquote>
+<div><table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\([0,1]\)</span></p></td>
@@ -289,6 +297,7 @@ e^k_{N1} &amp; \dots &amp; e^k_{N(N-1)} &amp; 0
 </tr>
 </tbody>
 </table>
+</div></blockquote>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">NCHANNEL</span></code></p>
 <blockquote>

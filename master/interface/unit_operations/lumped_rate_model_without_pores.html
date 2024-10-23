@@ -322,11 +322,11 @@
 </section>
 <section id="spatial-discretization-numerical-methods">
 <h2>Spatial discretization - Numerical Methods<a class="headerlink" href="#spatial-discretization-numerical-methods" title="Link to this heading">¶</a></h2>
-<p>CADET offers two spatial discretization methods: Finite Volumes (FV) and Discontinuous Galerkin (DG). Only the input fields for the chosen method need to be specified.
+<p>CADET offers two spatial discretization methods: Finite Volumes (FV) and Discontinuous Galerkin (DG). Each method has it’s own set of input fields.
 While both methods approximate the same solution to the same underlying model, they may differ in terms of computational performance.
-Generally, FV is more performant for solutions with steep gradients or discontinuities, while DG excels for rather smooth solutions.
-We note that DG is only faster in the sense that less spatial discrete points are required to achieve the same accuracy as FV. For the same number of discrete points, DG will be slower, but more accurate.
-For further information on the choice of discretization methods and their parameters, see <a class="reference internal" href="../spatial_discretization_methods.html#spatial-discretization-methods"><span class="std std-ref">Spatial discretization methods</span></a>.</p>
+With our currently implemented variants of FV and DG, FV perform better for solutions with steep gradients or discontinuities, while DG can be much faster for rather smooth solutions.
+For the same number of discrete points, DG will generally be slower but often more accurate.</p>
+<p>For further information on the choice of discretization methods and their parameters, see <a class="reference internal" href="../spatial_discretization_methods.html#spatial-discretization-methods"><span class="std std-ref">Spatial discretization methods</span></a>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">SPATIAL_METHOD</span></code></p>
 <blockquote>
 <div><p>Spatial discretization method. Optional, defaults to <span class="math notranslate nohighlight">\(\texttt{FV}\)</span></p>
@@ -366,7 +366,7 @@ For further information on the choice of discretization methods and their parame
 </tbody>
 </table>
 </div></blockquote>
-<p>For further discretization parameters, see also <a class="reference internal" href="../flux_reconstruction.html#flux-restruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific)), and <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
+<p>For further discretization parameters, see also <a class="reference internal" href="../flux_reconstruction.html#flux-reconstruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific)), and <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
 </section>
 <section id="discontinuous-galerkin">
 <h2>Discontinuous Galerkin<a class="headerlink" href="#discontinuous-galerkin" title="Link to this heading">¶</a></h2>

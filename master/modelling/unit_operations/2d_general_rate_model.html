@@ -118,7 +118,7 @@ This allows to consider transport along the axial dimension only.
 However, due to packing irregularity and inhomogeneous flow at the inlet (i.e., frits), this assumption may be a crude approximation.
 This model can be improved by introducing a radial coordinate <span class="math notranslate nohighlight">\(\rho \in [0, R]\)</span>, where <span class="math notranslate nohighlight">\(R\)</span> is the column radius, in the interstitial volume Eq. <a class="reference internal" href="general_rate_model.html#equation-modelcolumn">1</a>:</p>
 <div class="math notranslate nohighlight" id="equation-modelcolumn2d">
-<span class="eqno">(16)<a class="headerlink" href="#equation-modelcolumn2d" title="Link to this equation">¶</a></span>\[\begin{split}     \varepsilon_c \frac{\partial c^\ell_i}{\partial t} = &amp;-\varepsilon_c u \frac{\partial c^\ell_i}{\partial z} + \varepsilon_c D_{\text{ax},i} \frac{\partial^2 c^\ell_i}{\partial z^2} + \frac{1}{\rho} \frac{\partial}{\partial \rho} \left( \rho D_{\text{rad},i} \frac{\partial}{\partial \rho} \left( \varepsilon_c c^\ell_i \right) \right) \\
+<span class="eqno">(19)<a class="headerlink" href="#equation-modelcolumn2d" title="Link to this equation">¶</a></span>\[\begin{split}     \varepsilon_c \frac{\partial c^\ell_i}{\partial t} = &amp;-\varepsilon_c u \frac{\partial c^\ell_i}{\partial z} + \varepsilon_c D_{\text{ax},i} \frac{\partial^2 c^\ell_i}{\partial z^2} + \frac{1}{\rho} \frac{\partial}{\partial \rho} \left( \rho D_{\text{rad},i} \frac{\partial}{\partial \rho} \left( \varepsilon_c c^\ell_i \right) \right) \\
  &amp;- \left(1 - \varepsilon_c\right) \sum_j d_j \frac{ 3 k_{f,j,i} }{r_{p,j}} \left[ c^\ell_i - c^p_{j,i}(\cdot, \cdot, \cdot, r_{p,j}) \right] + \varepsilon_c f_{\text{react},i}^\ell\left(c^\ell\right).\end{split}\]</div>
 <p>Here,</p>
 <blockquote>
@@ -134,26 +134,26 @@ Additionally, the porosity <span class="math notranslate nohighlight">\(\varepsi
 For simplicity, it is assumed that the parameters are piecewise constant, that is, the range <span class="math notranslate nohighlight">\([0, R]\)</span> is divided into disjoint zones in which all parameters are constant.
 These zones are used for radial discretization and can be supplied to the simulator.
 Continuous dependence of the parameters can be realized by piecewise constant approximation.</p>
-<p>The Danckwerts boundary conditions at the column in- and outlet, Eq. <a class="reference internal" href="general_rate_model.html#equation-bcinlet">12</a> and <a class="reference internal" href="general_rate_model.html#equation-bcoutlet">11</a>, are modified to account for the radial coordinate:</p>
+<p>The Danckwerts boundary conditions at the column in- and outlet, Eq. <a class="reference internal" href="general_rate_model.html#equation-bcinlet">3</a> and <a class="reference internal" href="general_rate_model.html#equation-bcoutlet">2</a>, are modified to account for the radial coordinate:</p>
 <div class="math notranslate nohighlight" id="equation-bcinlet2d">
-<span class="eqno">(17)<a class="headerlink" href="#equation-bcinlet2d" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(20)<a class="headerlink" href="#equation-bcinlet2d" title="Link to this equation">¶</a></span>\[\begin{aligned}
     u(\rho) c_{\text{in},i}(t,\rho) &amp;= u(\rho) c^\ell_i(t,0,\rho) - D_{\text{ax},i}(\rho) \frac{\partial c^\ell_i}{\partial z}(t, 0, \rho) &amp; \forall t &gt; 0, \rho \in (0,R),
 \end{aligned}\]</div>
 <div class="math notranslate nohighlight" id="equation-bcoutlet2d">
-<span class="eqno">(18)<a class="headerlink" href="#equation-bcoutlet2d" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(21)<a class="headerlink" href="#equation-bcoutlet2d" title="Link to this equation">¶</a></span>\[\begin{aligned}
     \frac{\partial c^\ell_i}{\partial z}(t, L, \rho) &amp;= 0 &amp; \forall t &gt; 0, \rho \in (0,R).
 \end{aligned}\]</div>
 <p>Conditions for the radial direction are added:</p>
 <div class="math notranslate nohighlight" id="equation-bcradial2dinner">
-<span class="eqno">(19)<a class="headerlink" href="#equation-bcradial2dinner" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(22)<a class="headerlink" href="#equation-bcradial2dinner" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
     \frac{\partial{c^\ell_i}}{\partial \rho}(\cdot, \cdot, 0) &amp;= 0,  \\
 \end{aligned}\end{split}\]</div>
 <div class="math notranslate nohighlight" id="equation-bcradial2douter">
-<span class="eqno">(20)<a class="headerlink" href="#equation-bcradial2douter" title="Link to this equation">¶</a></span>\[ \begin{aligned}
+<span class="eqno">(23)<a class="headerlink" href="#equation-bcradial2douter" title="Link to this equation">¶</a></span>\[ \begin{aligned}
      \frac{\partial{c^\ell_i}}{\partial \rho}(\cdot, \cdot, R) &amp;= 0.
  \end{aligned}\]</div>
-<p>While the inner condition Eq.<a class="reference internal" href="#equation-bcradial2dinner">19</a> represents symmetry at the column center, the outer condition Eq. <a class="reference internal" href="#equation-bcradial2douter">20</a> is a no-flux condition.</p>
-<p>Using the inlet boundary condition Eq. <a class="reference internal" href="#equation-bcinlet2d">17</a>, each radial zone is equipped with its own inlet and outlet port.
+<p>While the inner condition Eq.<a class="reference internal" href="#equation-bcradial2dinner">22</a> represents symmetry at the column center, the outer condition Eq. <a class="reference internal" href="#equation-bcradial2douter">23</a> is a no-flux condition.</p>
+<p>Using the inlet boundary condition Eq. <a class="reference internal" href="#equation-bcinlet2d">20</a>, each radial zone is equipped with its own inlet and outlet port.
 That is, this unit operation has as many inlet and outlet ports as it has radial zones (parameter <code class="docutils literal notranslate"><span class="pre">NRAD</span></code> in the <code class="docutils literal notranslate"><span class="pre">discretization</span></code> group).
 This allows each radial zone to have its own inlet profile, which enables modeling of flow distribution in the frits by sending the feed through varying hold-up volumes before injecting it into a radial zone.</p>
 <section id="specification-of-flow-rate-velocity-and-direction">

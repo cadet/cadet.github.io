@@ -197,9 +197,144 @@ The following correlations can be used for all parameter-parameter dependencies,
 </section>
 <section id="parameter-state-dependencies">
 <h2>Parameter-State Dependencies<a class="headerlink" href="#parameter-state-dependencies" title="Link to this heading">¶</a></h2>
+<p>Currently, the dependence of surface diffusion on the particle liquid salt component is the only available parameter-state dependence.</p>
 <section id="id2">
 <h3>Group /input/model/unit_XXX<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
-<p>Parameter-State Dependencies are not fully implemented yet.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_DEP</span></code></p>
+<blockquote>
+<div><p>Parameter dependence of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> on the particle liquid salt component (i.e. component with index 0). Valid dependencies are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\texttt{NONE}\)</span> Original parameter is used unmodified.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_EXPONENTIAL}\)</span> Original parameter is modified by exponential law of liquid phase salt concentration.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_POWER}\)</span> Original parameter is modified by power law of liquid phase salt concentration.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span> Original parameter is modified by colloidal binding affinity based on liquid phase salt concentration.</p></li>
+</ul>
+<p>Optional: If left out, no parameter dependence is assumed and the original surface diffusion coefficients are used unmodified.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1 / \texttt{NPARTYPE}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_EXPFACTOR</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p1}\)</span> in exponential law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} p_{1, i, m} exp \left(p_{2, i, m} c_{0}^{p} \right)\)</span>, where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_EXPONENTIAL}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_EXPFACTOR</span></code>
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
+<span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_EXPARGMULT</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p2}\)</span> in exponential law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} p_{1, i, m} exp \left(p_{2, i, m} c_{0}^{p} \right)\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_EXPONENTIAL}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_POWFACTOR</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p1}\)</span> in power law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} p_{1, i, m} \left( c_{0}^{p} \right)^{p_{2, i, m}}\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_POWER}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_POWEXP</span></code></p>
+<blockquote>
+<div><p>Fjactor <span class="math notranslate nohighlight">\(\texttt{p2}\)</span> in power law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} p_{1, i, m} \left( c_{0}^{p} \right)^{p_{2, i, m}}\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_POWER}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_LOGKEQFACTOR</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p1}\)</span> in colloidal affinity law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
+<span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_LOGKEQEXP</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p2}\)</span> in colloidal affinity law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
+<span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_LOGKEQCONST</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p3}\)</span> in colloidal affinity law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
+<span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 </section>
 </section>
 </section>

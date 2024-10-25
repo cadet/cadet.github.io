@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Multi Component Bi-Langmuir LDF &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/modelling/binding/multi_component_bi_langmuir_ldf.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Multi Component Colloidal" href="multi_component_colloidal.html" />
+    <link rel="prev" title="Multi Component Bi-Langmuir" href="multi_component_bi_langmuir.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Binding models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#equilibrium-constants">Equilibrium constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#linear-driving-force-ldf">Linear Driving Force (LDF)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#reference-concentrations">Reference concentrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature-matrix">Binding model feature matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization.html">Population Balance Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/modelling/binding/multi_component_bi_langmuir_ldf.html">v4.4.0</a></li>
+  <li><a href="multi_component_bi_langmuir_ldf.html">v5.0.0</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../../master/modelling/binding/multi_component_bi_langmuir_ldf.html">master</a></li>
+  <li><a href="../../../chore/developer_guide/modelling/binding/multi_component_bi_langmuir_ldf.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+  <section id="multi-component-bi-langmuir-ldf">
+<span id="multi-component-bi-langmuir-ldf-model"></span><h1>Multi Component Bi-Langmuir LDF<a class="headerlink" href="#multi-component-bi-langmuir-ldf" title="Link to this heading">¶</a></h1>
+<p>This a linear driving force model variant of the <a class="reference internal" href="multi_component_bi_langmuir.html#multi-component-bi-langmuir-model"><span class="std std-ref">Multi Component Bi-Langmuir</span></a> model.
+It is based on the equilibrium concentration <span class="math notranslate nohighlight">\(q^*\)</span> for a given liquid phase concentration <span class="math notranslate nohighlight">\(c\)</span> (see also <a class="reference internal" href="index.html#ldf-model"><span class="std std-ref">Linear Driving Force (LDF)</span></a>).</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    q_{i,j}^*=\frac{q_{m,i,j} k_{eq,i,j} c_i}{1 + \sum_{k=1}^{N_{comp}}{k_{eq,k,j} c_k}} &amp;&amp; i = 0, \dots, N_{\text{comp}} - 1, \: j = 0, \dots, M - 1.%                (0 \leq i \leq N_{\text{comp}} - 1, \: 0 \leq j \leq M - 1).
+\end{aligned}\]</div>
+<p>For more information on model parameters required to define in CADET file format, see <a class="reference internal" href="../../interface/binding/multi_component_bi_langmuir_ldf.html#multi-component-bi-langmuir-ldf-config"><span class="std std-ref">Multi Component Bi-Langmuir LDF</span></a>.</p>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2024.
+      
+      |
+      <a href="../../_sources/modelling/binding/multi_component_bi_langmuir_ldf.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

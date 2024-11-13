@@ -124,6 +124,8 @@ Typical applications consider crystallization in a <a class="reference internal"
 Every particle size considered is treated as an individual component of the unit operation and the field <code class="docutils literal notranslate"><span class="pre">NCOMP</span></code> of that unit operation in which the crystallization happens, must be specified accordingly as <span class="math notranslate nohighlight">\(N_x + 2\)</span>.
 The two additional components account for the solute <span class="math notranslate nohighlight">\(c\)</span> and solubility <span class="math notranslate nohighlight">\(c_\text{eq}\)</span>.
 <em>That is, by setting the ``NCOMP`` field, you specify the number of FV cells for the internal coordinate.</em></p>
+<p>Note that the first component must be solute <span class="math notranslate nohighlight">\(c\)</span> and the last component must be the solubility <span class="math notranslate nohighlight">\(c_\text{eq}\)</span>.</p>
+<p>Example code to configure the PBM can be found in <a class="reference external" href="https://github.com/cadet/CADET-Verification/blob/main/src/test_cadet_core/crystallization.py">CADET-Verification</a> .</p>
 <section id="group-input-model-unit-xxx">
 <h2>Group /input/model/unit_XXX<a class="headerlink" href="#group-input-model-unit-xxx" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NCOMP</span></code></p>

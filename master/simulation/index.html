@@ -121,10 +121,10 @@ Since chromatographic systems can exhibit strong nonlinearity and stiff systems,
 <figure class="align-default" id="id5">
 <span id="simflowchart"></span><img alt="../_images/time_integration.png" src="../_images/time_integration.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">General time integration procedure</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">General time integration procedure</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>The general control flow of a simulation is shown in <a class="reference internal" href="#simflowchart"><span class="std std-numref">Fig. 8</span></a>.
+<p>The general control flow of a simulation is shown in <a class="reference internal" href="#simflowchart"><span class="std std-numref">Fig. 9</span></a>.
 Some aspects of the tasks involved are discussed below.</p>
 <section id="time-sections-and-transitions">
 <span id="simtimesectionstransitions"></span><h2>Time sections and transitions<a class="headerlink" href="#time-sections-and-transitions" title="Link to this heading">¶</a></h2>
@@ -134,14 +134,14 @@ Some aspects of the tasks involved are discussed below.</p>
         t_0 &lt; t_1 &lt; \dots &lt; t_i &lt; t_{i+1} &lt; \dots &lt; t_{\text{end}}.
 \end{aligned}\]</div>
 <p>Time sections are used for various purposes, for example, for defining piecewise polynomials used as inlet profiles or external function, for changing operating conditions such as flow rates, or for changing the connectivity in a network of unit operations.
-A sequence of (one or more) time sections with smooth transitions is called a time slice (see <a class="reference internal" href="#simtimesections"><span class="std std-numref">Fig. 9</span></a>).</p>
+A sequence of (one or more) time sections with smooth transitions is called a time slice (see <a class="reference internal" href="#simtimesections"><span class="std std-numref">Fig. 10</span></a>).</p>
 <p>A transition from one section to the next can either be smooth or discontinuous.
 On smooth transitions, the time integrator can just step over the section transition.
 Contrary to smooth transitions, a discontinuous transition requires some extra work in resetting the time integrator and finding consistent initial conditions for the next time slice.</p>
 <figure class="align-default" id="id6">
 <span id="simtimesections"></span><img alt="../_images/sections.png" src="../_images/sections.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Time sections, time slices, and transitions between them</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Time sections, time slices, and transitions between them</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="time-section-specification">

@@ -103,7 +103,7 @@
   <strong>
     
     You're reading the documentation for a development version.
-    For the latest released version, please have a look at <a href="../../v5.0.0/developer_guide/release_new_version.html">v5.0.0</a>.
+    For the latest released version, please have a look at <a href="../../v5.0.1/developer_guide/release_new_version.html">v5.0.1</a>.
     
   </strong>
 </p>
@@ -134,7 +134,7 @@ To this end, you can refer to the performance benchmark templates in CADET-Refer
 <li><p>Create a version bump commit, which will be the target commit for the release.
 The bump commit contains:</p>
 <ul class="simple">
-<li><p>Update of the version number in the <cite>version.txt</cite> and in the zenodo.json</p></li>
+<li><p>Update of the version number in the <cite>version.txt</cite>, <cite>zenodo.json</cite>, <cite>cadet.hpp</cite> and cadet.doxyfile, compare to last <cite>bump version</cite> commit</p></li>
 <li><p>Update of the authors list if needed: CONTRIBUTING.md and zenodo.json</p></li>
 <li><p>Update of the copyright (years)</p></li>
 <li><p>Update of the file format if needed</p></li>
@@ -151,7 +151,6 @@ The bump commit contains:</p>
 <li><p>Updated: Improvements to documentation, minor tweaks, or other updates that don’t fit into the other categories.</p></li>
 </ul>
 </li>
-<li><p>Attach the (zipped) source code.</p></li>
 </ul>
 </li>
 <li><p>Check success of zenodo archiving:</p>
@@ -165,7 +164,19 @@ The <a class="reference external" href="https://doi.org/10.5281/zenodo.8179015">
 <section id="release-of-binaries-on-conda-forge">
 <h2>Release of binaries on conda-forge<a class="headerlink" href="#release-of-binaries-on-conda-forge" title="Link to this heading">¶</a></h2>
 <p>To ensure CADET-Core is accessible to a broad community, it is available as a Python package on conda-forge.
-Other software, such as our Python interface, <cite>CADET-Python</cite>, and the frontend, <cite>CADET-Process</cite>, import this package.</p>
+Other software, such as our frontend, <cite>CADET-Process</cite>, and our Python interface, <cite>CADET-Python</cite>, import this package.</p>
+<ul class="simple">
+<li><p>go to github.com/conda-forge/cadet-feedstock</p></li>
+<li><p>create a new branch and open a PR:</p></li>
+<li><p>change the recipe/meta.yaml file:</p>
+<ul>
+<li><p>generate sha key via <code class="docutils literal notranslate"><span class="pre">curl</span> <span class="pre">-sL</span> <span class="pre">https://github.com/cadet/{{</span> <span class="pre">name</span> <span class="pre">}}/archive/refs/tags/v{{</span> <span class="pre">version</span> <span class="pre">}}.tar.gz</span> <span class="pre">|</span> <span class="pre">openssl</span> <span class="pre">sha256</span></code>, which requires open ssl und curl</p></li>
+<li><p>update version number and sha key</p></li>
+<li><p>set build number to zero (build: number: 0)</p></li>
+</ul>
+</li>
+<li><p>Upon opening the PR, a todo checklist is automatically generated. After solving the todos, comment <cite>&#64;conda-forge-admin, please rerender</cite> in the PR conversation. Automatic checks will be run and the bot will tell us the changes are fine. Then we can merge the PR, triggering the release on conda-forge.</p></li>
+</ul>
 </section>
 </section>
 

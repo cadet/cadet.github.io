@@ -52,14 +52,15 @@
 <li class="toctree-l3"><a class="reference internal" href="../system.html">System of unit operations</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">Unit Operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../population_balance_model.html">Population balance model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../spatial_discretization_methods.html">Spatial discretization methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../flux_reconstruction.html">Flux reconstruction methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../return_data.html">Return data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sensitivities.html">Parameter Sensitivities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../solver.html">Solver Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../parameter_dependencies.html">Parameter Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spatial_discretization_methods.html">Spatial discretization methods</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../output_group.html">Output Group</a></li>
@@ -70,7 +71,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/portal/EN/Service/LegalNotice/_node.html">Legal notice</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
 </ul>
 
 
@@ -89,6 +90,7 @@
   <li><a href="../../../../v4.3.0/interface/unit_operations/lumped_rate_model_without_pores.html">v4.3.0</a></li>
   <li><a href="../../../../v4.4.0/interface/unit_operations/lumped_rate_model_without_pores.html">v4.4.0</a></li>
   <li><a href="../../../../v5.0.0/interface/unit_operations/lumped_rate_model_without_pores.html">v5.0.0</a></li>
+  <li><a href="../../../../v5.0.1/interface/unit_operations/lumped_rate_model_without_pores.html">v5.0.1</a></li>
 </ul>
 <h3>Branches</h3>
 <ul>
@@ -323,11 +325,11 @@
 </section>
 <section id="spatial-discretization-numerical-methods">
 <h2>Spatial discretization - Numerical Methods<a class="headerlink" href="#spatial-discretization-numerical-methods" title="Link to this heading">¶</a></h2>
-<p>CADET offers two spatial discretization methods: Finite Volumes (FV) and Discontinuous Galerkin (DG). Only the input fields for the chosen method need to be specified.
+<p>CADET offers two spatial discretization methods: Finite Volumes (FV) and Discontinuous Galerkin (DG). Each method has it’s own set of input fields.
 While both methods approximate the same solution to the same underlying model, they may differ in terms of computational performance.
-Generally, FV is more performant for solutions with steep gradients or discontinuities, while DG excels for rather smooth solutions.
-We note that DG is only faster in the sense that less spatial discrete points are required to achieve the same accuracy as FV. For the same number of discrete points, DG will be slower, but more accurate.
-For further information on the choice of discretization methods and their parameters, see <a class="reference internal" href="../spatial_discretization_methods.html#spatial-discretization-methods"><span class="std std-ref">Spatial discretization methods</span></a>.</p>
+With our currently implemented variants of FV and DG, FV perform better for solutions with steep gradients or discontinuities, while DG can be much faster for rather smooth solutions.
+For the same number of discrete points, DG will generally be slower but often more accurate.</p>
+<p>For further information on the choice of discretization methods and their parameters, see <a class="reference internal" href="../spatial_discretization_methods.html#spatial-discretization-methods"><span class="std std-ref">Spatial discretization methods</span></a>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">SPATIAL_METHOD</span></code></p>
 <blockquote>
 <div><p>Spatial discretization method. Optional, defaults to <span class="math notranslate nohighlight">\(\texttt{FV}\)</span></p>
@@ -367,7 +369,7 @@ For further information on the choice of discretization methods and their parame
 </tbody>
 </table>
 </div></blockquote>
-<p>For further discretization parameters, see also <a class="reference internal" href="../flux_reconstruction.html#flux-restruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific)), and <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
+<p>For further discretization parameters, see also <a class="reference internal" href="../flux_reconstruction.html#flux-reconstruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific)), and <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
 </section>
 <section id="discontinuous-galerkin">
 <h2>Discontinuous Galerkin<a class="headerlink" href="#discontinuous-galerkin" title="Link to this heading">¶</a></h2>

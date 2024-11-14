@@ -59,6 +59,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization.html">Population Balance Models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
@@ -67,7 +68,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/portal/EN/Service/LegalNotice/_node.html">Legal notice</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
 </ul>
 
 
@@ -86,6 +87,7 @@
   <li><a href="../../../../v4.3.0/index.html">v4.3.0</a></li>
   <li><a href="../../../../v4.4.0/index.html">v4.4.0</a></li>
   <li><a href="../../../../v5.0.0/modelling/unit_operations/multi_channel_transport_model.html">v5.0.0</a></li>
+  <li><a href="../../../../v5.0.1/modelling/unit_operations/multi_channel_transport_model.html">v5.0.1</a></li>
 </ul>
 <h3>Branches</h3>
 <ul>
@@ -120,7 +122,7 @@ The model represents main functions of vascular transport pathways: axial transp
 <p>The same model equations arise in describing other biological and technical processes outside of the field of plant sciences, where solutes are transported and exchanged between spatially separated compartments, for example liquid-liquid chromatography (LLC). Here, components in a mixture are separated based on their interactions with two immiscible phases of a biphasic solvent system <span id="id2">[<a class="reference internal" href="../../zbibliography.html#id40" title="Raena Morley and Mirjana Minceva. Operating mode and parameter selection in liquid–liquid chromatography. Journal of Chromatography A, 1617:460479, 2020. URL: https://www.sciencedirect.com/science/article/pii/S0021967319308659, doi:https://doi.org/10.1016/j.chroma.2019.460479.">10</a>]</span>. The MCT model represents these phases by channels with respective transport and exchange properties. While the current implementation only covers linear driving forces for the exchange processes, the reaction module in CADET allows to add non-linear driving forces for the exchange processes and other chemical reactions in the channels.</p>
 <p>The MCT model equations are given for all channels <span class="math notranslate nohighlight">\(l \in \{1, \dots, N_k\}\)</span> and components <span class="math notranslate nohighlight">\(i \in \{1, \dots, N_c\}\)</span> by</p>
 <div class="math notranslate nohighlight" id="equation-modelmct">
-<span class="eqno">(21)<a class="headerlink" href="#equation-modelmct" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(24)<a class="headerlink" href="#equation-modelmct" title="Link to this equation">¶</a></span>\[\begin{aligned}
     \frac{\partial c_{i,l}^\ell}{\partial t}
     =
     - u_l \frac{\partial c_{i,l}^\ell}{\partial z}

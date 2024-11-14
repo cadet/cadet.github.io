@@ -54,12 +54,13 @@
 <li class="toctree-l2"><a class="reference internal" href="model_expansion.html">Model Expansion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debugging.html">CADET-Core debugging</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testing.html">CADET-Core testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_new_version.html">CADET-Core version release</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/portal/EN/Service/LegalNotice/_node.html">Legal notice</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
 </ul>
 
 
@@ -78,6 +79,7 @@
   <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
   <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
   <li><a href="../../../v5.0.0/developer_guide/index.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/developer_guide/index.html">v5.0.1</a></li>
 </ul>
 <h3>Branches</h3>
 <ul>
@@ -108,7 +110,7 @@
 <span id="id1"></span><h1>Developer Guide<a class="headerlink" href="#developer-guide" title="Link to this heading">¶</a></h1>
 <p>This developer guide is intended to help expand and maintain CADET-Core and is written to serve developers with diverse backgrounds.</p>
 <p>If you find any gaps or have suggestions for improvement, your input is valuable in refining our documentation for better comprehension by all developers.
-Please feel free to open an <a class="reference external" href="https://github.com/modsim/CADET/issues">issue on GitHub</a> or, even better, write a draft and create a pull request.</p>
+Please feel free to open an <a class="reference external" href="https://github.com/cadet/cadet-core/issues">issue on GitHub</a> or, even better, write a draft and create a pull request.</p>
 <p>When planning to extend or contribute to CADET-Core, please adhere to our notation style and research software engineering (RSE) best practices.
 For detailed guidance, you can e.g. refer to the <a class="reference external" href="https://rse-guidelines.readthedocs.io/en/latest/intro.html">RSE guidelines</a>.
 Since some developers may be new to collaborative software development using Git and GitHub, we specifically recommend consulting the <a class="reference external" href="https://rse-guidelines.readthedocs.io/en/latest/intro.html">Git RSE guide</a>.</p>
@@ -145,6 +147,11 @@ Since some developers may be new to collaborative software development using Git
 <li class="toctree-l2"><a class="reference internal" href="testing.html#run-the-tests">Run the tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testing.html#adding-tests-for-your-model">Adding tests for your model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="testing.html#maintenance-of-the-tests">Maintenance of the tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_new_version.html">CADET-Core version release</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_new_version.html#release-checklist">Release checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_new_version.html#release-of-binaries-on-conda-forge">Release of binaries on conda-forge</a></li>
 </ul>
 </li>
 </ul>

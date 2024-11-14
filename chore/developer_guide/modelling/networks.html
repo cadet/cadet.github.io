@@ -16,7 +16,7 @@
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Simulation" href="../simulation/index.html" />
+    <link rel="next" title="Population Balance Models" href="crystallization.html" />
     <link rel="prev" title="Reaction models" href="reaction/index.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -55,6 +55,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#solution-of-the-linear-systems">Solution of the linear systems</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="crystallization.html">Population Balance Models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
@@ -63,7 +64,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/portal/EN/Service/LegalNotice/_node.html">Legal notice</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
 </ul>
 
 
@@ -82,6 +83,7 @@
   <li><a href="../../../v4.3.0/modelling/networks.html">v4.3.0</a></li>
   <li><a href="../../../v4.4.0/modelling/networks.html">v4.4.0</a></li>
   <li><a href="../../../v5.0.0/modelling/networks.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/modelling/networks.html">v5.0.1</a></li>
 </ul>
 <h3>Branches</h3>
 <ul>
@@ -125,13 +127,13 @@ In general, the mass balance at a unit operation has to be closed, except for un
 <p>The network of unit operations uses “connection”-variables <span class="math notranslate nohighlight">\(c_{\text{con}}\)</span> to connect the different unit operation ports with each other.
 The inlet port variables <span class="math notranslate nohighlight">\(c_{\text{in},n,k}\)</span> of unit operation <span class="math notranslate nohighlight">\(n\)</span> are attached to <span class="math notranslate nohighlight">\(c_{\text{con},n}\)</span> via</p>
 <div class="math notranslate nohighlight" id="equation-networkinletconnection">
-<span class="eqno">(22)<a class="headerlink" href="#equation-networkinletconnection" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(25)<a class="headerlink" href="#equation-networkinletconnection" title="Link to this equation">¶</a></span>\[\begin{aligned}
     c_{\text{in},n,k,i} &amp;= c_{\text{con},n,k,i}, \qquad k = 1, \dots, N_{\text{port},\text{in},n},\quad i = 1, \dots, N_{\text{comp},n}.
 \end{aligned}\]</div>
 <p>While <span class="math notranslate nohighlight">\(N_{\text{port},\text{in},n}\)</span> denotes the number of inlet ports of unit operation <span class="math notranslate nohighlight">\(n\)</span>, the number of outlet ports is given by <span class="math notranslate nohighlight">\(N_{\text{port},\text{out},n}\)</span>.
 The connection variables <span class="math notranslate nohighlight">\(c_{\text{con},n,k,i}\)</span> collect all inflows of component <span class="math notranslate nohighlight">\(i\)</span> into port <span class="math notranslate nohighlight">\(k\)</span> of unit operation <span class="math notranslate nohighlight">\(n\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-networkconnection">
-<span class="eqno">(23)<a class="headerlink" href="#equation-networkconnection" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(26)<a class="headerlink" href="#equation-networkconnection" title="Link to this equation">¶</a></span>\[\begin{aligned}
     c_{\text{con},n,k,i} &amp;= \frac{\sum_{m=1}^{N_{\text{units}}} \sum_{\ell = 1}^{N_{\text{port},\text{out},n}} \sum_{j = 1}^{N_{\text{comp},m}} S_{(n,k,i),(m,\ell,j)} Q_{m,\ell} c_{\text{out},m,\ell,j}}{\sum_{m=1}^{N_{\text{units}}} \sum_{\ell=1}^{N_{\text{port},\text{out},m}} \hat{S}_{(n,k),(m,\ell)} Q_{m,\ell} },
 \end{aligned}\]</div>
 <p>where <span class="math notranslate nohighlight">\(F_{m,\ell}\)</span> denotes the volumetric flow rate from outlet port <span class="math notranslate nohighlight">\(\ell\)</span> of unit operation <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(S_{(n,k,i),(m,\ell,j)} \in \{0, 1\}\)</span> is a connection matrix indicating whether component <span class="math notranslate nohighlight">\(i\)</span> at outlet port <span class="math notranslate nohighlight">\(k\)</span> of unit operation <span class="math notranslate nohighlight">\(n\)</span> is connected to component <span class="math notranslate nohighlight">\(j\)</span> at inlet port <span class="math notranslate nohighlight">\(\ell\)</span> of unit operation <span class="math notranslate nohighlight">\(m\)</span>, and <span class="math notranslate nohighlight">\(\hat{S}_{(n,k),(m,\ell)} \in \{0, 1\}\)</span> is another connection matrix indicating whether outlet port <span class="math notranslate nohighlight">\(k\)</span> of unit operation <span class="math notranslate nohighlight">\(n\)</span> is connected to inlet port <span class="math notranslate nohighlight">\(\ell\)</span> of unit operation <span class="math notranslate nohighlight">\(m\)</span>, that is</p>
@@ -188,13 +190,13 @@ The rates are assumed to be cubic polynomials,</p>
 <div class="math notranslate nohighlight">
 \[Q = Q_0 + Q_1(t - t_s) + Q_2(t-t_s)^2 + Q_3(t-t_s)^3,\]</div>
 <p>where <span class="math notranslate nohighlight">\(t_s\)</span> is the beginning of the time section that triggers the valve switch.</p>
-<p>Note that the denominator in Eq. <a class="reference internal" href="#equation-networkconnection">23</a> must always be positive.
+<p>Note that the denominator in Eq. <a class="reference internal" href="#equation-networkconnection">26</a> must always be positive.
 That is, the flow rate coefficients have to be chosen such that the flow into every connected inlet port is strictly positive at all times.</p>
 </section>
 <section id="solution-of-the-linear-systems">
 <span id="muopnetworklinearsolver"></span><h2>Solution of the linear systems<a class="headerlink" href="#solution-of-the-linear-systems" title="Link to this heading">¶</a></h2>
-<p>Each time step in the simulation requires the solution of a nonlinear system Eq. <a class="reference internal" href="../simulation/index.html#equation-bdfnonlinsystem">24</a> (see Sec. <a class="reference internal" href="../simulation/index.html#simtimeintegration"><span class="std std-ref">Time stepping</span></a>).
-The nonlinear problem is solved by a Newton iteration, which, in turn, requires the solution of a linear system that essentially consists of the Jacobians of the unit operations and some coupling matrices from Eqs. <a class="reference internal" href="#equation-networkinletconnection">22</a> and <a class="reference internal" href="#equation-networkconnection">23</a>.</p>
+<p>Each time step in the simulation requires the solution of a nonlinear system Eq. <a class="reference internal" href="../simulation/index.html#equation-bdfnonlinsystem">29</a> (see Sec. <a class="reference internal" href="../simulation/index.html#simtimeintegration"><span class="std std-ref">Time stepping</span></a>).
+The nonlinear problem is solved by a Newton iteration, which, in turn, requires the solution of a linear system that essentially consists of the Jacobians of the unit operations and some coupling matrices from Eqs. <a class="reference internal" href="#equation-networkinletconnection">25</a> and <a class="reference internal" href="#equation-networkconnection">26</a>.</p>
 <p>These linear systems are either solved in parallel or sequentially. The parallel method first solves each unit operation (in parallel) to compute the solution at its outlet.
 Using these values, the inlets are adjusted and the unit operations are solved again.
 This is iterated until the system is fully solved.</p>

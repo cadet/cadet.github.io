@@ -59,6 +59,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization.html">Population Balance Models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
@@ -67,7 +68,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/portal/EN/Service/LegalNotice/_node.html">Legal notice</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
 </ul>
 
 
@@ -86,6 +87,7 @@
   <li><a href="../../../../v4.3.0/modelling/unit_operations/lumped_rate_model_with_pores.html">v4.3.0</a></li>
   <li><a href="../../../../v4.4.0/modelling/unit_operations/lumped_rate_model_with_pores.html">v4.4.0</a></li>
   <li><a href="../../../../v5.0.0/modelling/unit_operations/lumped_rate_model_with_pores.html">v5.0.0</a></li>
+  <li><a href="../../../../v5.0.1/modelling/unit_operations/lumped_rate_model_with_pores.html">v5.0.1</a></li>
 </ul>
 <h3>Branches</h3>
 <ul>
@@ -117,12 +119,12 @@
 <p>The lumped rate model with pores <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id6" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, Amsterdam, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>, <a class="reference internal" href="../../zbibliography.html#id8" title="A. Felinger and G. Guiochon. Comparison of the Kinetic Models of Linear Chromatography. Chromatographia, 60(S1):175–180, May 2004. URL: http://springerlink.metapress.com/openurl.asp?genre=article{\&amp;}id=doi:10.1365/s10337-004-0288-7, doi:10.1365/s10337-004-0288-7.">4</a>]</span> deviates from the general rate model (see Section <a class="reference internal" href="general_rate_model.html#general-rate-model-model"><span class="std std-ref">General rate model (GRM)</span></a>) by neglecting pore diffusion.
 The particle phase <span class="math notranslate nohighlight">\(c^p_j\)</span> is still there, but no mass transfer happens except for binding and film diffusion.
 Hence, the model equations are given by</p>
-<div class="math notranslate nohighlight">
-\[\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-modelcolumngrm">
+<span class="eqno">(16)<a class="headerlink" href="#equation-modelcolumngrm" title="Link to this equation">¶</a></span>\[\begin{aligned}
     \frac{\partial c^\ell_i}{\partial t} &amp;= -u \frac{\partial c^\ell_i}{\partial z} + D_{\text{ax},i} \frac{\partial^2 c^\ell_i}{\partial z^2} - \frac{1}{\beta_c} \sum_{j} d_j \frac{3}{r_{p,j}} k_{f,j,i}\left[ c^\ell_i - c^p_{j,i} \right] + f_{\text{react},i}^\ell\left(c^\ell\right),
 \end{aligned}\]</div>
 <div class="math notranslate nohighlight" id="equation-modelparticlelrmp">
-<span class="eqno">(15)<a class="headerlink" href="#equation-modelparticlelrmp" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(17)<a class="headerlink" href="#equation-modelparticlelrmp" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
     \frac{\partial c^p_{j,i}}{\partial t} + \frac{1 - \varepsilon_{p,j}}{F_{\text{acc},j,i} \varepsilon_{p,j}} \frac{\partial}{\partial t} \sum_{m_{j,i}} c^s_{j,i,m_{j,i}} &amp;= \frac{3}{F_{\text{acc},j,i} \varepsilon_{p,j} r_{p,j}}k_{f,j,i}\left[ c^\ell_i - c^p_{j,i} \right] \\
     &amp;+ f_{\text{react},j,i}^p\left( c_j^p, c_j^s \right) + \frac{1 - \varepsilon_{p,j}}{F_{\text{acc},j,i} \varepsilon_{p,j}} f_{\text{react},j,i}^s\left( c_j^p, c_j^s \right)
 \end{aligned}\end{split}\]</div>
@@ -161,11 +163,11 @@ Therefore, the beads can be seen as continuously distributed inside the column (
 That is, the volumetric flow rate at the inner and outer column radius are the same.</p></li>
 </ul>
 <p>Consider a hollow (double walled) column with inner column diameter <span class="math notranslate nohighlight">\(\mathrm{P}_c&gt;0\)</span> and outer diameter <span class="math notranslate nohighlight">\(\mathrm{P}&gt;\mathrm{P}_c\)</span>, filled with spherical beads of (possibly) multiple types with radius <span class="math notranslate nohighlight">\(r_{p,j} \ll L\)</span> (see <a class="reference internal" href="general_rate_model.html#modelgrmcolumn"><span class="std std-numref">Fig. 2</span></a>), where <span class="math notranslate nohighlight">\(j\)</span> is the particle type index. The mass balance in the interstitial column volume is described by</p>
-<div class="math notranslate nohighlight">
-\[\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-modelradialcolumngrm">
+<span class="eqno">(18)<a class="headerlink" href="#equation-modelradialcolumngrm" title="Link to this equation">¶</a></span>\[\begin{aligned}
     \frac{\partial c^\ell_i}{\partial t} &amp;= -\frac{u}{\rho} \frac{\partial c^\ell_i}{\partial \rho} + D_{\text{rad},i} \frac{1}{\rho} \frac{\partial}{\partial \rho} \left( \rho \frac{\partial c^\ell_i}{\partial \rho} \right) - \frac{1}{\beta_c} \sum_{j} d_j \frac{3}{r_{p,j}} k_{f,j,i}\left[ c^\ell_i - c^p_{j,i} \right] + f_{\text{react},i}^\ell\left(c^\ell\right),
 \end{aligned}\]</div>
-<p>The equations are complemented by Eq. <span class="xref std std-ref">ModelParticleLRMP</span> and the Danckwerts boundary conditions <span id="id3">[<a class="reference internal" href="../../zbibliography.html#id7" title="P.V. Danckwerts. Continuous flow systems: Distribution of residence times. Chemical Engineering Science, 2(1):1–13, February 1953. URL: http://linkinghub.elsevier.com/retrieve/pii/0009250953800011, doi:10.1016/0009-2509(53)80001-1.">8</a>]</span></p>
+<p>The equations are complemented by Eq. <a class="reference internal" href="#equation-modelparticlelrmp">17</a> and the Danckwerts boundary conditions <span id="id3">[<a class="reference internal" href="../../zbibliography.html#id7" title="P.V. Danckwerts. Continuous flow systems: Distribution of residence times. Chemical Engineering Science, 2(1):1–13, February 1953. URL: http://linkinghub.elsevier.com/retrieve/pii/0009250953800011, doi:10.1016/0009-2509(53)80001-1.">8</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
     u c_{\text{in},i}(t) &amp;= u c^\ell_i(t,0) - D_{\text{rad},i} \frac{\partial c^\ell_i}{\partial \rho}(t, 0) &amp; \forall t &gt; 0,\\

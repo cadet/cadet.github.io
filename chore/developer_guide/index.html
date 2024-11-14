@@ -50,7 +50,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zbibliography.html">Bibliography</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/portal/EN/Service/LegalNotice/_node.html">Legal notice</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
 </ul>
 
 
@@ -69,6 +69,7 @@
   <li><a href="../../v4.3.0/index.html">v4.3.0</a></li>
   <li><a href="../../v4.4.0/index.html">v4.4.0</a></li>
   <li><a href="../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../v5.0.1/index.html">v5.0.1</a></li>
 </ul>
 <h3>Branches</h3>
 <ul>
@@ -99,13 +100,15 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<a class="reference external image-reference" href="https://github.com/modsim/CADET/releases"><img alt="https://img.shields.io/github/release/modsim/cadet.svg" src="https://img.shields.io/github/release/modsim/cadet.svg" />
+<a class="reference external image-reference" href="https://github.com/cadet/cadet-core/releases"><img alt="https://img.shields.io/github/release/cadet/cadet-core.svg" src="https://img.shields.io/github/release/cadet/cadet-core.svg" />
 </a>
-<a class="reference external image-reference" href="https://github.com/modsim/CADET/actions/workflows/ci.yml?query=branch%3Amaster"><img alt="https://github.com/modsim/CADET/actions/workflows/ci.yml/badge.svg?branch=master" src="https://github.com/modsim/CADET/actions/workflows/ci.yml/badge.svg?branch=master" />
+<a class="reference external image-reference" href="https://github.com/cadet/cadet-core/actions/workflows/ci.yml?query=branch%3Amaster"><img alt="https://github.com/cadet/cadet-core/actions/workflows/ci.yml/badge.svg?branch=master" src="https://github.com/cadet/cadet-core/actions/workflows/ci.yml/badge.svg?branch=master" />
 </a>
 <a class="reference external image-reference" href="https://anaconda.org/conda-forge/cadet"><img alt="https://anaconda.org/conda-forge/cadet/badges/downloads.svg" src="https://anaconda.org/conda-forge/cadet/badges/downloads.svg" />
 </a>
 <a class="reference external image-reference" href="https://doi.org/10.5281/zenodo.8179015"><img alt="https://zenodo.org/badge/DOI/10.5281/zenodo.8179015.svg" src="https://zenodo.org/badge/DOI/10.5281/zenodo.8179015.svg" />
+</a>
+<a class="reference external image-reference" href="https://www.fz-juelich.de/en/rse/community-initiatives/jurse-code-of-the-month/october-2024"><img alt="https://img.shields.io/badge/JuRSE_Code_Pick-Oct_2024-blue.svg" src="https://img.shields.io/badge/JuRSE_Code_Pick-Oct_2024-blue.svg" />
 </a>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -119,7 +122,7 @@ CADET can handle arbitrary sequences and networks of unit operations, including 
 The resulting models are solved with state-of-the-art mathematical algorithms and scientific computing techniques.</p>
 <ul class="simple">
 <li><p><strong>Forum:</strong> <a class="reference external" href="https://forum.cadet-web.de">https://forum.cadet-web.de</a></p></li>
-<li><p><strong>Source:</strong> <a class="reference external" href="https://github.com/modsim/cadet">https://github.com/modsim/cadet</a></p></li>
+<li><p><strong>Source:</strong> <a class="reference external" href="https://github.com/cadet/cadet-core">https://github.com/cadet/cadet-core</a></p></li>
 <li><p><strong>Demo:</strong> <a class="reference external" href="http://cadet-web.de">http://cadet-web.de</a></p></li>
 <li><p><strong>Newsletter:</strong> <a class="reference external" href="https://cadet-web.de/newsletter/">https://cadet-web.de/newsletter/</a></p></li>
 </ul>
@@ -152,7 +155,7 @@ For non-developers, it is recommended to upgrade from release to release instead
 </section>
 <section id="bugs">
 <h2>Bugs<a class="headerlink" href="#bugs" title="Link to this heading">¶</a></h2>
-<p>Please report any bugs that you find <a class="reference external" href="https://github.com/modsim/cadet/issues">here</a>. Or, even better, fork the repository on <a class="reference external" href="https://github.com/modsim/cadet">GitHub</a> and create a pull request (PR) with the fix.</p>
+<p>Please report any bugs that you find <a class="reference external" href="https://github.com/cadet/cadet-core/issues">here</a>. Or, even better, fork the repository on <a class="reference external" href="https://github.com/cadet/cadet-core">GitHub</a> and create a pull request (PR) with the fix.</p>
 </section>
 <section id="donations">
 <h2>Donations<a class="headerlink" href="#donations" title="Link to this heading">¶</a></h2>
@@ -160,17 +163,27 @@ For non-developers, it is recommended to upgrade from release to release instead
 </section>
 <section id="citing">
 <h2>Citing<a class="headerlink" href="#citing" title="Link to this heading">¶</a></h2>
-<p>To cite CADET please use the following publication:</p>
+<p>The development of CADET has been a collaborative effort, with multiple dedicated individuals contributing their expertise to create a powerful and versatile open-source software tool.
+Countless hours of hard work have been invested to provide the scientific community with a valuable resource.
+As an open-source project, CADET relies on the support and recognition from users and researchers to thrive.
+Therefore, we kindly ask that any publications or projects leveraging the capabilities of CADET acknowledge its creators and their contributions by citing an adequate selection of our publications.</p>
+<p><strong>General:</strong></p>
 <ul class="simple">
-<li><p>Leweke, S.; von Lieres, E.: <a class="reference external" href="http://doi.org/10.1016/j.compchemeng.2018.02.025">Chromatography Analysis and Design Toolkit (CADET)</a>, Computers and Chemical Engineering 113 (2018), 274–294.</p></li>
-<li><p>Püttmann, A.; Schnittert, S.; Leweke, S.; von Lieres, E.: <a class="reference external" href="http://doi.org/10.1016/j.ces.2015.08.050">Utilizing algorithmic differentiation to efficiently compute chromatograms and parameter sensitivities</a>, Chemical Engineering Science, 139 (2016), 152–162.</p></li>
-<li><p>Püttmann, A.; Schnittert, S.; Naumann, U.; von Lieres, E.: <a class="reference external" href="http://doi.org/10.1016/j.compchemeng.2013.04.021">Fast and accurate parameter sensitivities for the general rate model of column liquid chromatography</a>, Computers and Chemical Engineering 56,13 (2013), 46-57.</p></li>
-<li><p>von Lieres, E.; Andersson, J.: <a class="reference external" href="http://doi.org/10.1016/j.compchemeng.2010.03.008">A fast and accurate solver for the general rate model of column liquid chromatography</a>, Computers and Chemical Engineering 34,8 (2010), 1180–1191.</p></li>
+<li><p>Leweke, S.; von Lieres, E.: <a class="reference external" href="https://doi.org/10.1016/j.compchemeng.2018.02.025">Chromatography Analysis and Design Toolkit (CADET)</a>, Computers and Chemical Engineering <strong>113</strong> (2018), 274–294.</p></li>
+<li><p>von Lieres, E.; Andersson, J.: <a class="reference external" href="https://doi.org/10.1016/j.compchemeng.2010.03.008">A fast and accurate solver for the general rate model of column liquid chromatography</a>, Computers and Chemical Engineering <strong>34,8</strong> (2010), 1180–1191.</p></li>
 </ul>
+<p><strong>Numerics:</strong></p>
+<ul class="simple">
+<li><p>Breuer, J. M.; Leweke, S.; Schmölder, J.; Gassner, G.; von Lieres, E.: <a class="reference external" href="https://doi.org/10.1016/j.compchemeng.2023.108340">Spatial discontinuous Galerkin spectral element method for a family of chromatography models in CADET</a>, Computers and Chemical Engineering <strong>177</strong> (2023), 108340.</p></li>
+<li><p>Leweke, S.; von Lieres, E.: <a class="reference external" href="http://dx.doi.org/10.1016/j.compchemeng.2015.09.009">Fast arbitrary order moments and arbitrary precision solution of the general rate model of column liquid chromatography with linear isotherm</a>, Computers and Chemical Engineering <strong>84</strong> (2016), 350–362.</p></li>
+<li><p>Püttmann, A.; Schnittert, S.; Naumann, U.; von Lieres, E.: <a class="reference external" href="http://dx.doi.org/10.1016/j.compchemeng.2013.04.021">Fast and accurate parameter sensitivities for the general rate model of column liquid chromatography</a>, Computers and Chemical Engineering <strong>56</strong> (2013), 46–57.</p></li>
+</ul>
+<p>Additionally, to ensure reproducibility of your work, we recommend citing the <a class="reference external" href="https://doi.org/10.5281/zenodo.8179015">zenodo doi</a> corresponding to the specific CADET release that you used.</p>
+<p>Selected applications that demonstrate the capabilities and use-cases of CADET are highlighted <a class="reference external" href="https://github.com/cadet/CADET-Core/tree/master/doc/publications.md">here</a>.</p>
 </section>
 <section id="acknowledgments">
 <h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">¶</a></h2>
-<p>Please refer to the <a class="reference external" href="https://github.com/modsim/CADET/blob/master/CONTRIBUTORS.md">list of contributors</a> who helped building and funding this project.</p>
+<p>Please refer to the <a class="reference external" href="https://github.com/cadet/cadet-core/blob/master/CONTRIBUTORS.md">list of contributors</a> who helped building and funding this project.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>

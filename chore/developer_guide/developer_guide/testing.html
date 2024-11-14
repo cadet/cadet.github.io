@@ -16,7 +16,7 @@
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="License" href="../license.html" />
+    <link rel="next" title="CADET-Core version release" href="release_new_version.html" />
     <link rel="prev" title="CADET-Core debugging" href="debugging.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -59,12 +59,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#maintenance-of-the-tests">Maintenance of the tests</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="release_new_version.html">CADET-Core version release</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/portal/EN/Service/LegalNotice/_node.html">Legal notice</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
 </ul>
 
 
@@ -83,6 +84,7 @@
   <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
   <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
   <li><a href="../../../v5.0.0/developer_guide/testing.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/developer_guide/testing.html">v5.0.1</a></li>
 </ul>
 <h3>Branches</h3>
 <ul>
@@ -154,14 +156,15 @@ Here, we distinguish between unit tests and numerical reference tests.</p>
 <h3>Unit tests<a class="headerlink" href="#unit-tests" title="Link to this heading">¶</a></h3>
 <p>Unit tests are designed to verify the correctness of individual units or components of code in isolation.
 Unit tests in CADET-Core typically encompass tests for the Jacobian implementation and consistent initialization of the model, which can be adapted from corresponding existing tests.
-We generally recommend testing every of your model individually.</p>
+Testing the Jacobian typically involves comparing the analytical Jacobian to the AD Jacobian to verify that the residual implementation is consistent to the analytical Jacobian.
+To this end, it might be necessary to increase the maximum number of AD directions for your test case, which can be done via the cmake argument <cite>NUM_MAX_AD_DIRS</cite>, as described in the <a class="reference internal" href="build_options.html#build-options"><span class="std std-ref">CADET build options</span></a>.</p>
 </section>
 <section id="numerical-reference-tests">
 <h3>Numerical reference tests<a class="headerlink" href="#numerical-reference-tests" title="Link to this heading">¶</a></h3>
 <p>Every major feature of the model or numerical method should be tested in a separate test case, preferably recreating examples from literature, including your own publication on the corresponding CADET extension.
 This section provides a guide on creating reference tests, including convergence tables and research data management (RDM).
 We strongly emphasize that the procedure described here should be taken into consideration not just as part of the software testing but also for method/model validation, especially when a paper publication is planned.</p>
-<p>We utilize <a class="reference external" href="https://jugit.fz-juelich.de/IBG-1/ModSim/cadet/cadet-database">CADET-Database</a> and <a class="reference external" href="https://jugit.fz-juelich.de/IBG-1/ModSim/cadet/cadet-reference/-/tree/CADET-Core_tests">CADET-Reference</a> to ensure reproducibility of the tests.</p>
+<p>We utilize <a class="reference external" href="https://jugit.fz-juelich.de/IBG-1/ModSim/cadet/cadet-database">CADET-Database</a> and <a class="reference external" href="https://github.com/cadet/CADET-Verification">CADET-Verification</a> to ensure reproducibility of the tests.</p>
 <p>We recommend using this procedure not only for the tests but also for the publication to make good standards regarding RDM.</p>
 <p>The general procedure how to add a reference test is as follows:</p>
 <p><strong>1. Define your model setup in CADET-Database:</strong>
@@ -169,14 +172,14 @@ The easiest way to do this, is to clone the <a class="reference external" href="
 You can create this json config file by translating the standard CADET h5 file to a json using python, see the utility/h5ToJson.py script for reference.
 Make sure to give your model setup a meaningful and unique name (follow the naming logic of other setups in that folder).
 Note that the return data should only specify the output required for the reference test, i.e. usually the outlet of a single unit.</p>
-<p><strong>2. Add a CADET-Reference script:</strong>
+<p><strong>2. Add a CADET-Verification script:</strong>
 This python script reads the model setup from CADET-Database and generates all the reference data that will be used in your tests.
 This includes a specific low resolution reference solution as well as convergence (EOC) tables computed using a high precision solution.
 If analytical solutions are available for the considered model, you should use that as the high precision solution.
 Otherwise, you additionally need to generate a very high resolution numerical reference solution, preferably with an accuracy of at least <span class="math notranslate nohighlight">\(\mathcal{L}_\text{inf} \approx 1e-8\)</span>.</p>
 <p><strong>3. Add numerical reference tests to CADET-Core:</strong>
-These tests should read the model setups previously defined in CADET-Database and run them with the same numerical specification as used to compute the reference solutions computed by the CADET-Reference script.
-The resulta are compared to the reference solution generated by CADET-Reference.
+These tests should read the model setups previously defined in CADET-Database and run them with the same numerical specification as used to compute the reference solutions computed by the CADET-Verification script.
+The resulta are compared to the reference solution generated by CADET-Verification.
 This type of tests ensures that the model is still functional and that the numerics for this model have not changed.
 Hence, every major feature of the model should be tested in a separete tests.
 This way, we make sure that ongoing CADET-Core development doesnt break the model and these tests should be included in the CI pipeline by adding the [CI] flag as described in the implementation procedure section.</p>
@@ -184,7 +187,7 @@ This way, we make sure that ongoing CADET-Core development doesnt break the mode
 These tests should be part of the paper publication which introduces the new model implemented in CADET-Core and can also be included in the CADET-Core tests.
 Verifying the experimental order of convergence (EOC) is widely considered the most rigorous and best scientific practice in model and method validation, which is why we recommend including the EOC tables in your publication.
 The convergence tests should not be added to the standard CI but only be rerun on release, i.e. by adding the [releaseCI] flag.
-Details on how to compute EOC tables can be found elsewhere, please also refer to the already implemented EOC tests in CADET-Reference.</p>
+Details on how to compute EOC tables can be found elsewhere, please also refer to the already implemented EOC tests in CADET-Verification.</p>
 </section>
 <section id="manufactured-solution">
 <h3>Manufactured solution<a class="headerlink" href="#manufactured-solution" title="Link to this heading">¶</a></h3>

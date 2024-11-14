@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Build for Linux &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/getting_started/build_linux.html" />
+    <link rel="icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../v4.3.0/getting_started/build_linux.html">v4.3.0</a></li>
+  <li><a href="../../v4.4.0/getting_started/build_linux.html">v4.4.0</a></li>
+  <li><a href="../../v5.0.0/getting_started/build_linux.html">v5.0.0</a></li>
+  <li><a href="build_linux.html">v5.0.1</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../master/getting_started/build_linux.html">master</a></li>
+  <li><a href="../../chore/developer_guide/getting_started/build_linux.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+<p>
+  <strong>
+    
+    You're reading an old version of this documentation.
+    For the latest released version, please have a look at <a href="../../v5.0.0/getting_started/build_linux.html">v5.0.0</a>.
+    
+  </strong>
+</p>
+
+
+  <section id="build-for-linux">
+<span id="build-linux"></span><h1>Build for Linux<a class="headerlink" href="#build-for-linux" title="Link to this heading">¶</a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>CMake (&gt;= 3.12.0)</p></li>
+<li><p>GCC &gt;= 7.0, Clang &gt;= 3.9, or Intel C++ 18.0</p></li>
+<li><p>Optional: Git</p></li>
+</ul>
+<p>Assumed directory structure:</p>
+<pre>
+|- CADET
+|    - src
+|    - include
+|    - [...]
+|    - build
+|    - install
+</pre>
+<p>Note that the version numbers of the files and packages below are subject to change and will not always reflect the most
+recent version.</p>
+</section>
+<section id="install-dependencies">
+<h2>Install dependencies<a class="headerlink" href="#install-dependencies" title="Link to this heading">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">cmake</span> <span class="n">libhdf5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libsuperlu</span><span class="o">-</span><span class="n">dev</span> <span class="n">libeigen3</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+<section id="lapack">
+<h3>LAPACK<a class="headerlink" href="#lapack" title="Link to this heading">¶</a></h3>
+<p>You can either use a LAPACK implementation provided by your distribution or install the freely available Intel MKL</p>
+<p>for Intel run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">intel</span><span class="o">-</span><span class="n">mkl</span>
+</pre></div>
+</div>
+<p>for distro defaults run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">liblapack3</span> <span class="n">liblapack</span><span class="o">-</span><span class="n">dev</span> <span class="n">libblas3</span> <span class="n">libblas</span><span class="o">-</span><span class="n">dev</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="build-cadet">
+<h2>Build CADET<a class="headerlink" href="#build-cadet" title="Link to this heading">¶</a></h2>
+<ul>
+<li><p>Clone the CADET source code <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/cadet/cadet-core.git</span> <span class="pre">CADET</span></code></p></li>
+<li><p>Create the directories <code class="docutils literal notranslate"><span class="pre">CADET/build</span></code> and <code class="docutils literal notranslate"><span class="pre">CADET/install</span></code></p></li>
+<li><p>Open a terminal and change to <code class="docutils literal notranslate"><span class="pre">CADET/build</span></code></p></li>
+<li><p>If using MKL, execute <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">MKLROOT=/opt/intel/mkl</span></code></p></li>
+<li><p>To compile:
+- Using standard LAPACK: Execute <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=&quot;../install&quot;</span> <span class="pre">../</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  - Using MKL (sequential): Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;../install&quot; -DBLA_VENDOR=Intel10_64lp_seq ../`
+
+  - Using MKL (parallel): Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;../install&quot; -DBLA_VENDOR=Intel10_64lp ../`
+</pre></div>
+</div>
+</li>
+<li><p>To build:
+- Execute <code class="docutils literal notranslate"><span class="pre">make</span></code></p></li>
+<li><p>To install:
+- Execute <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code></p></li>
+</ul>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2024.
+      
+      |
+      <a href="../_sources/getting_started/build_linux.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

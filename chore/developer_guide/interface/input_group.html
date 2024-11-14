@@ -52,14 +52,15 @@
 <li class="toctree-l3"><a class="reference internal" href="system.html">System of unit operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/index.html">Unit Operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="binding/index.html">Binding models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="population_balance_model.html">Population balance model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="reaction/index.html">Reaction models</a></li>
-<li class="toctree-l3"><a class="reference internal" href="spatial_discretization_methods.html">Spatial discretization methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="flux_reconstruction.html">Flux reconstruction methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="return_data.html">Return data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sensitivities.html">Parameter Sensitivities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="solver.html">Solver Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="parameter_dependencies.html">Parameter Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_discretization_methods.html">Spatial discretization methods</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="output_group.html">Output Group</a></li>
@@ -70,7 +71,7 @@
 <li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/portal/EN/Service/LegalNotice/_node.html">Legal notice</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
 </ul>
 
 
@@ -89,6 +90,7 @@
   <li><a href="../../../v4.3.0/interface/input_group.html">v4.3.0</a></li>
   <li><a href="../../../v4.4.0/interface/input_group.html">v4.4.0</a></li>
   <li><a href="../../../v5.0.0/interface/input_group.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/interface/input_group.html">v5.0.1</a></li>
 </ul>
 <h3>Branches</h3>
 <ul>
@@ -211,6 +213,11 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="population_balance_model.html">Population balance model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="population_balance_model.html#group-input-model-unit-xxx">Group /input/model/unit_XXX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="population_balance_model.html#group-input-model-unit-xxx-reaction-bulk-reaction-model-crystallization-unit-type-cstr">Group /input/model/unit_XXX/reaction_bulk - REACTION_MODEL = CRYSTALLIZATION - UNIT_TYPE = CSTR</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="reaction/index.html">Reaction models</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="reaction/mass_action_law.html">Mass Action Law</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reaction/michaelis_menten_kinetics.html">Michaelis Menten kinetics</a></li>
@@ -218,19 +225,9 @@
 <li class="toctree-l2"><a class="reference internal" href="reaction/index.html#multiple-particle-types">Multiple particle types</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="spatial_discretization_methods.html">Spatial discretization methods</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#group-input-model-unit-xxx-discretization-spatial-method-details-on-the-methods">Group /input/model/unit_XXX/discretization/SPATIAL_METHOD - Details on the methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#discrete-system-size">Discrete system size</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#order-of-convergence">Order of convergence</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#smooth-solutions">Smooth solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#recommendations-on-the-choice-of-spatial-discretization-methods">Recommendations on the choice of spatial discretization methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#recommendations-on-dg-discretization-parameters">Recommendations on DG discretization parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#refinement-strategy">Refinement strategy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#note-on-dg-solution-vector">Note on DG solution vector</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="flux_reconstruction.html">Flux reconstruction methods</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="flux_reconstruction.html#group-input-model-unit-xxx-discretization-weno-weno-parameters">Group /input/model/unit_XXX/discretization/weno - WENO Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flux_reconstruction.html#group-input-model-unit-xxx-discretization-reconstruction-weno">Group /input/model/unit_XXX/discretization/reconstruction = WENO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flux_reconstruction.html#group-input-model-unit-xxx-discretization-reconstruction-koren">Group /input/model/unit_XXX/discretization/reconstruction = KOREN</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="consistent_initialization.html">Nonlinear solver for consistent initialization</a><ul>
@@ -262,6 +259,17 @@
 <li class="toctree-l3"><a class="reference internal" href="parameter_dependencies.html#id2">Group /input/model/unit_XXX</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="spatial_discretization_methods.html">Spatial discretization methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#group-input-model-unit-xxx-discretization-spatial-method-details-on-the-methods">Group /input/model/unit_XXX/discretization/SPATIAL_METHOD - Details on the methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#discrete-system-size">Discrete system size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#order-of-convergence">Order of convergence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#smooth-solutions">Smooth solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#recommendations-on-the-choice-of-spatial-discretization-methods">Recommendations on the choice of spatial discretization methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#recommendations-on-dg-discretization-parameters">Recommendations on DG discretization parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#refinement-strategy">Refinement strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_discretization_methods.html#note-on-dg-solution-vector">Note on DG solution vector</a></li>
 </ul>
 </li>
 </ul>

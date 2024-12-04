@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Developer Guide &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/developer_guide/index.html" />
+    <link rel="icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CADET-Python Introduction" href="cadet_python.html" />
+    <link rel="prev" title="Meta Group" href="../interface/meta_group.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html">CADET-Python Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadet_core_architecture.html">Software Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_options.html">CADET build options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_expansion.html">Model Expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">CADET-Core debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">CADET-Core testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_new_version.html">CADET-Core version release</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../v5.0.0/developer_guide/index.html">v5.0.0</a></li>
+  <li><a href="../../v5.0.1/developer_guide/index.html">v5.0.1</a></li>
+  <li><a href="index.html">v5.0.2</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../master/developer_guide/index.html">master</a></li>
+  <li><a href="../../chore/developer_guide/developer_guide/index.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+  <section id="developer-guide">
+<span id="id1"></span><h1>Developer Guide<a class="headerlink" href="#developer-guide" title="Link to this heading">¶</a></h1>
+<p>This developer guide is intended to help expand and maintain CADET-Core and is written to serve developers with diverse backgrounds.</p>
+<p>If you find any gaps or have suggestions for improvement, your input is valuable in refining our documentation for better comprehension by all developers.
+Please feel free to open an <a class="reference external" href="https://github.com/cadet/cadet-core/issues">issue on GitHub</a> or, even better, write a draft and create a pull request.</p>
+<p>When planning to extend or contribute to CADET-Core, please adhere to our notation style and research software engineering (RSE) best practices.
+For detailed guidance, you can e.g. refer to the <a class="reference external" href="https://rse-guidelines.readthedocs.io/en/latest/intro.html">RSE guidelines</a>.
+Since some developers may be new to collaborative software development using Git and GitHub, we specifically recommend consulting the <a class="reference external" href="https://rse-guidelines.readthedocs.io/en/latest/intro.html">Git RSE guide</a>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cadet_python.html">CADET-Python Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html#preliminary-steps">0. Preliminary Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html#setting-up-the-model">1. Setting Up the Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html#setting-up-time-sections-and-connections">2. Setting up Time Sections and Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html#setting-up-the-simulator-and-running-the-simulation">3. Setting Up the Simulator and Running the Simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html#plotting-the-results">4. Plotting the Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cadet_core_architecture.html">Software Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cadet_core_architecture.html#features-and-capabilities">Features and Capabilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadet_core_architecture.html#implementation-details">Implementation Details</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="build_options.html">CADET build options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="build_options.html#cmakesettings-json">cmakeSettings.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_options.html#options">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model_expansion.html">Model Expansion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model_expansion.html#binding-model">Binding Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_expansion.html#unit-operation">Unit Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_expansion.html#testing-and-publication">Testing and Publication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_expansion.html#algorithmic-differentiation">Algorithmic differentiation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">CADET-Core debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">CADET-Core testing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#run-the-tests">Run the tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#adding-tests-for-your-model">Adding tests for your model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html#maintenance-of-the-tests">Maintenance of the tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_new_version.html">CADET-Core version release</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_new_version.html#release-checklist">Release checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_new_version.html#release-of-binaries-on-conda-forge">Release of binaries on conda-forge</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2024.
+      
+      |
+      <a href="../_sources/developer_guide/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -133,8 +133,7 @@ The release process can only be continued if the results are reasonable.</p>
 To this end, you can refer to the performance benchmark templates in CADET-Reference, e.g. the <a class="reference external" href="https://jugit.fz-juelich.de/IBG-1/ModSim/cadet/cadet-reference/-/tree/benchmark_modified_newton?ref_type=heads">benchmark for the modified Newton method</a></p></li>
 </ul>
 </li>
-<li><p>Create a version bump commit, which will be the target commit for the release.
-The bump commit contains:</p>
+<li><p>Open a PR and create a version bump commit <cite>Bump version to v?.?.?</cite>:</p>
 <ul class="simple">
 <li><p>Update of the version number in the <cite>version.txt</cite>, <cite>zenodo.json</cite>, <cite>cadet.hpp</cite> and cadet.doxyfile, compare to last <cite>bump version</cite> commit</p></li>
 <li><p>Update of the authors list if needed: CONTRIBUTING.md and zenodo.json</p></li>
@@ -142,7 +141,7 @@ The bump commit contains:</p>
 <li><p>Update of the file format if needed</p></li>
 </ul>
 </li>
-<li><p>Create the release on github <a class="reference external" href="https://github.com/cadet/CADET-Core/releases/new">here</a>.</p>
+<li><p>Merge the PR into master. Then, create the release on github <a class="reference external" href="https://github.com/cadet/CADET-Core/releases/new">here</a>:</p>
 <ul class="simple">
 <li><p>Add the version number according to the semantic versioning system as the tag and set the master branch as target.</p></li>
 <li><p>Add release notes with these categories:</p>

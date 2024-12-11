@@ -1,5 +1,5 @@
 .. _release_new_version:
 
 
-.. mdinclude:: ../../.github/ISSUE_TEMPLATE/release_checklist.md
+.. include:: ../../.github/ISSUE_TEMPLATE/release_checklist.md
 

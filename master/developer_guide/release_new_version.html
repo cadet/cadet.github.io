@@ -111,8 +111,12 @@
 </p>
 
 
-  <section id="cadet-core-release">
-<span id="release-new-version"></span><h1>CADET-Core release<a class="headerlink" href="#cadet-core-release" title="Link to this heading">¶</a></h1>
+  <p id="release-new-version">—
+name: Release checklist
+about: Make a release for this project</p>
+<p>—</p>
+<section id="cadet-core-release">
+<h1>CADET-Core release<a class="headerlink" href="#cadet-core-release" title="Link to this heading">¶</a></h1>
 <p>CADET-Core releases follow the <em>semantic versioning system</em>, which is documented [here](<a class="reference external" href="https://semver.org/">https://semver.org/</a>).</p>
 <p><strong>CADET-Core is released following the so-called *GitLab flow*:</strong>
 In GitLab flow, feature and hotfix branches contain work for new features and bug fixes which will be merged back into the master branch immediately when they’re finished, reviewed, and approved. The master branch is ready to be deployed, but not necessarily the source of truth for a new release: Each release has an associated release branch that is based off the master branch. Changes that are intended to be released are cherry-picked from master into the release branch. The release is made on the release branch. If desired, some release branches can be kept and maintained, which is currently not planned for the CADET-Core project.</p>

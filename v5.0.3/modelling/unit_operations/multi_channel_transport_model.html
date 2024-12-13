@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Multichannel Transport model (MCT model) &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/modelling/unit_operations/multi_channel_transport_model.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Continuous stirred tank reactor model (CSTR)" href="cstr.html" />
+    <link rel="prev" title="Two Dimensional General rate model (GRM2D)" href="2d_general_rate_model.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Unit operation models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="general_rate_model.html">General rate model (GRM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_without_pores.html">Lumped rate model without pores (LRM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_with_pores.html">Lumped rate model with pores (LRMP)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="2d_general_rate_model.html">Two Dimensional General rate model (GRM2D)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Multichannel Transport model (MCT model)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cstr.html">Continuous stirred tank reactor model (CSTR)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inlet.html">Inlet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="outlet.html">Outlet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization.html">Population Balance Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/modelling/unit_operations/multi_channel_transport_model.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/modelling/unit_operations/multi_channel_transport_model.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/modelling/unit_operations/multi_channel_transport_model.html">v5.0.2</a></li>
+  <li><a href="multi_channel_transport_model.html">v5.0.3</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../../master/modelling/unit_operations/multi_channel_transport_model.html">master</a></li>
+  <li><a href="../../../chore/developer_guide/modelling/unit_operations/multi_channel_transport_model.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+  <section id="multichannel-transport-model-mct-model">
+<span id="multi-channel-transport-model-model"></span><h1>Multichannel Transport model (MCT model)<a class="headerlink" href="#multichannel-transport-model-mct-model" title="Link to this heading">¶</a></h1>
+<p>The Multichannel Transport (MCT) model in CADET is based on a class of compartment models introduced by Jonas Bühler et al. <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id47" title="Jonas Bühler, Eric von Lieres, and Gregor Huber. A class of compartmental models for long-distance tracer transport in plants. Journal of Theoretical Biology, 341:131-142, 2014. URL: https://www.sciencedirect.com/science/article/pii/S0022519313004530, doi:https://doi.org/10.1016/j.jtbi.2013.09.023.">9</a>]</span>, which was originally developed in the field of plant sciences.
+There it is used to determine transport and storage parameters of radioactive labelled tracer molecules from positron emission tomography (PET) or magnetic resonance imaging (MRI) based experimental data.
+The model represents main functions of vascular transport pathways: axial transport of the tracer, diffusion in axial direction, lateral exchange between compartments and storage of tracer in compartments. Here, the axial direction represents the length of the stem of the plant and the lateral dimension its cross section. In the MCT context, the compartments of the model class are also referred to as channels.</p>
+<p>The same model equations arise in describing other biological and technical processes outside of the field of plant sciences, where solutes are transported and exchanged between spatially separated compartments, for example liquid-liquid chromatography (LLC). Here, components in a mixture are separated based on their interactions with two immiscible phases of a biphasic solvent system <span id="id2">[<a class="reference internal" href="../../zbibliography.html#id48" title="Raena Morley and Mirjana Minceva. Operating mode and parameter selection in liquid–liquid chromatography. Journal of Chromatography A, 1617:460479, 2020. URL: https://www.sciencedirect.com/science/article/pii/S0021967319308659, doi:https://doi.org/10.1016/j.chroma.2019.460479.">10</a>]</span>. The MCT model represents these phases by channels with respective transport and exchange properties. While the current implementation only covers linear driving forces for the exchange processes, the reaction module in CADET allows to add non-linear driving forces for the exchange processes and other chemical reactions in the channels.</p>
+<p>The MCT model equations are given for all channels <span class="math notranslate nohighlight">\(l \in \{1, \dots, N_k\}\)</span> and components <span class="math notranslate nohighlight">\(i \in \{1, \dots, N_c\}\)</span> by</p>
+<div class="math notranslate nohighlight" id="equation-modelmct">
+<span class="eqno">(24)<a class="headerlink" href="#equation-modelmct" title="Link to this equation">¶</a></span>\[\begin{aligned}
+    \frac{\partial c_{i,l}^\ell}{\partial t}
+    =
+    - u_l \frac{\partial c_{i,l}^\ell}{\partial z}
+    + D_{\text{ax},i,l} \frac{\partial^2 c_{i,l}^\ell}{\partial z^2}
+    + \sum_{k=1}^{N_k} e^i_{kl} c_{i,k}^\ell A_k / A_l - e^i_{lk} c_{i,l}^\ell
+    + f_{\text{react},i,l}\left( c^\ell_l \right),
+\end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(e^i_{lk}\)</span> denotes the exchange rate of component <span class="math notranslate nohighlight">\(i\)</span> from channel <span class="math notranslate nohighlight">\(l\)</span> to channel <span class="math notranslate nohighlight">\(k\)</span>, and <span class="math notranslate nohighlight">\(A_l\)</span> denotes the cross section area of channel <span class="math notranslate nohighlight">\(l\)</span>.
+The equations are complemented by Danckwerts boundary conditions <span id="id3">[<a class="reference internal" href="../../zbibliography.html#id20" title="P.V. Danckwerts. Continuous flow systems: Distribution of residence times. Chemical Engineering Science, 2(1):1–13, February 1953. URL: http://linkinghub.elsevier.com/retrieve/pii/0009250953800011, doi:10.1016/0009-2509(53)80001-1.">8</a>]</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    u_l c^\ell_{\text{in},i,l}(t) &amp;= u_l c^\ell_{i,l}(t,0) - D_{\text{ax},i,l} \frac{\partial c^\ell_{i,l}}{\partial z}(t, 0) &amp; \forall t &gt; 0,\\
+    \frac{\partial c^\ell_{i,l}}{\partial z}(t, L) &amp;= 0 &amp; \forall t &gt; 0.
+\end{aligned}\end{split}\]</div>
+<p>The MCT model describes <span class="math notranslate nohighlight">\(N_k\)</span> one-dimensional spatially parallel channels (see <a class="reference internal" href="#fig-model-class"><span class="std std-numref">Fig. 6</span></a>).
+In each channel <span class="math notranslate nohighlight">\(l\)</span>, molecules of different species <span class="math notranslate nohighlight">\(i\)</span>, represented by a liquid phase concentration <span class="math notranslate nohighlight">\(c^\ell_{i,l}\)</span>, can be transported with flux velocities <span class="math notranslate nohighlight">\(v_{i,l}\)</span> while undergoing axial diffusion: <span class="math notranslate nohighlight">\(D_{\text{ax},i,l}\)</span>.
+Molecules can be laterally exchanged between any pair of channels <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(k\)</span> with rate constant <span class="math notranslate nohighlight">\(e^i_{lk}\)</span>.
+We note that the exchange fluxes are computed from the exchange rates w.r.t. the source channel volume, that is, channels with the same exchange rate but different volume will produce differently large exchange fluxes.
+For further elaboration on this, please refer to the second use-case section below.
+If reactions are considered, the term <span class="math notranslate nohighlight">\(f_{\text{react},i,l}\left(c^\ell_l\right)\)</span> represents the net change of concentration <span class="math notranslate nohighlight">\(c^\ell_{il}\)</span> due to reactions in channel <span class="math notranslate nohighlight">\(l\)</span> involving component <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/multi_channel_transport_model.html#multi-channel-transport-model-config"><span class="std std-ref">Multichannel Transport model (MCT model)</span></a>.</p>
+<figure class="align-default" id="id7">
+<span id="fig-model-class"></span><img alt="../../_images/multi_channel_transport_model_class.png" src="../../_images/multi_channel_transport_model_class.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Illustration of the Multichannel Transport model class and relevant parameters.
+Figure taken from Jonas Bühler et al. <span id="id4">[<a class="reference internal" href="../../zbibliography.html#id47" title="Jonas Bühler, Eric von Lieres, and Gregor Huber. A class of compartmental models for long-distance tracer transport in plants. Journal of Theoretical Biology, 341:131-142, 2014. URL: https://www.sciencedirect.com/science/article/pii/S0022519313004530, doi:https://doi.org/10.1016/j.jtbi.2013.09.023.">9</a>]</span>.</span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The cross-section area <span class="math notranslate nohighlight">\(A_N\)</span> is individually specified for each channel (see <a class="reference internal" href="#fig-variable-areas"><span class="std std-numref">Fig. 7</span></a>). The MCT is agnostic to the shape of these cross sections, while their ratio determines the distribution of the volumetric flow.</p>
+<figure class="align-default" id="id8">
+<span id="fig-variable-areas"></span><img alt="../../_images/mct_variable_areas.png" src="../../_images/mct_variable_areas.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Scheme of exemplary channels with different cross section areas and arbitrary exchange between channels.</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="use-case-tracer-transport-in-plants">
+<h2>Use-case: Tracer transport in plants<a class="headerlink" href="#use-case-tracer-transport-in-plants" title="Link to this heading">¶</a></h2>
+<p>The MCT can be used to model tracer transport in plants, following Jonas Bühler et al. <span id="id5">[<a class="reference internal" href="../../zbibliography.html#id47" title="Jonas Bühler, Eric von Lieres, and Gregor Huber. A class of compartmental models for long-distance tracer transport in plants. Journal of Theoretical Biology, 341:131-142, 2014. URL: https://www.sciencedirect.com/science/article/pii/S0022519313004530, doi:https://doi.org/10.1016/j.jtbi.2013.09.023.">9</a>]</span>.
+There, the model class is defined by a system of partial differential equations:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \boldsymbol{\rho}(x,t)}{\partial t} = \left({A}^T-{V}\frac{\partial}{\partial x}+{D}\frac{\partial^2}{\partial x^2} \right){\boldsymbol{\rho}(x,t)}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\rho}=({\rho}_1 \dots {\rho}_N)^T\)</span> is the tracer density within each channel <span class="math notranslate nohighlight">\(N\)</span> at position <span class="math notranslate nohighlight">\(x\)</span> and time <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p>The coupling matrix <span class="math notranslate nohighlight">\(A\)</span> contains exchange rates <span class="math notranslate nohighlight">\(e_{lk}\)</span> describing the lateral tracer transport from channel <span class="math notranslate nohighlight">\(l\)</span> to channel <span class="math notranslate nohighlight">\(k\)</span>. All diagonal elements <span class="math notranslate nohighlight">\(e_{ll}\)</span> in the first term are zero indicating there is no tracer exchange of one channel with itself. The second term ensures mass conservation and removes exchanged tracer from each channel respectively, by subtracting the sum of all exchange rates of a row (and therefore channel) from the diagonal. The third term describes the decay of a radioactive tracer at a tracer specific rate <span class="math notranslate nohighlight">\(\lambda\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}A=\begin{bmatrix}
+0 &amp; e_{12} &amp; \dots &amp; e_{1N} \\
+e_{21} &amp; \ddots &amp; &amp; \vdots\\
+\vdots &amp; &amp; \ddots &amp; e_{(N-1)N}\\
+e_{N1} &amp; \dots &amp; e_{N(N-1)} &amp; 0
+\end{bmatrix}-
+\begin{bmatrix}
+{\sum_{k=1}^{N} e_{1k}} &amp;  &amp; 0 \\
+ &amp; \ddots &amp; \\
+ 0 &amp;  &amp; {\sum_{k=1}^{N} e_{Nk}}
+\end{bmatrix}-
+\lambda {I}\end{split}\]</div>
+<ul class="simple">
+<li><p>The diagonal matrix <span class="math notranslate nohighlight">\(V\)</span> contains the flux velocities <span class="math notranslate nohighlight">\(v_{l}\)</span> for each channel.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}V=\begin{bmatrix}
+v_1 &amp;  &amp; 0 \\
+ &amp; \ddots &amp; \\
+ 0 &amp;  &amp; v_N
+\end{bmatrix}\end{split}\]</div>
+<ul class="simple">
+<li><p>The diagolal matrix <span class="math notranslate nohighlight">\(D\)</span> contains the dispersion coefficients <span class="math notranslate nohighlight">\(d_{l}\)</span> for each channel.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}D=\begin{bmatrix}
+d_1 &amp;  &amp; 0 \\
+ &amp; \ddots &amp; \\
+ 0 &amp;  &amp; d_N
+\end{bmatrix}\end{split}\]</div>
+<p>All parameters can be zero to exclude the respective mechanism from the model.
+A chart of all resulting valid models of the model family can be found in Bühler et al. <span id="id6">[<a class="reference internal" href="../../zbibliography.html#id47" title="Jonas Bühler, Eric von Lieres, and Gregor Huber. A class of compartmental models for long-distance tracer transport in plants. Journal of Theoretical Biology, 341:131-142, 2014. URL: https://www.sciencedirect.com/science/article/pii/S0022519313004530, doi:https://doi.org/10.1016/j.jtbi.2013.09.023.">9</a>]</span>.</p>
+</section>
+<section id="use-case-lumped-rate-model-without-pores-and-linear-kinetic-binding">
+<h2>Use-case: Lumped Rate Model without pores and linear kinetic binding<a class="headerlink" href="#use-case-lumped-rate-model-without-pores-and-linear-kinetic-binding" title="Link to this heading">¶</a></h2>
+<p>The MCT can be used to model a LRM with linear binding, if specific parameters are chosen.
+To demonstrate this, we derive the LRM with linear binding equations from the MCT defined above.</p>
+<p>We consider the MCT with two channels, which are used to represent the liquid and solid phase of the LRM, and only take one component into account, for the sake of brevity.
+The channel volumes <span class="math notranslate nohighlight">\(V_1, V_2 &gt; 0\)</span> and cross section areas <span class="math notranslate nohighlight">\(A_1,A_2&gt;0\)</span> are chosen according to the total column porosity (here <span class="math notranslate nohighlight">\(\varepsilon_t \in (0,1)\)</span> of the LRM, i.e. e.g. <span class="math notranslate nohighlight">\(A_1 = \varepsilon_t A\)</span>, with <span class="math notranslate nohighlight">\(A\)</span> being the LRM column cross section area.
+We set the transport parameters of the second channel to zero, change notation for the concentrations, <span class="math notranslate nohighlight">\(c_{0,1}^\ell, c_{0,2}^\ell \rightarrow c^\ell, c^s\)</span>, and get</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{\partial c^\ell}{\partial t} = - u \frac{\partial c^\ell}{\partial z} + D_\text{ax} \frac{\partial^2 c^\ell}{\partial z^2} + e_{21}^0 c^s A_2 / A_1 - e_{12}^0 c^\ell,
+\\
+\frac{\partial c^s}{\partial t} = e_{12}^0 c^\ell A_1 / A_2 - e_{21}^0 c^s.\end{split}\]</div>
+<p>To model the linear binding, we define the exchange rates according to the adsorption and desorption rates and adjust for the channel volumes:
+Since the binding fluxes are computed from the binding rates w.r.t bead surface area (i.e. solid volume), we need to adjust the exchange rate from the first to the second channel accordingly; remember that exchange fluxes are computed based on exchange rates w.r.t channel (in this case liquid) volume.
+That is, we define <span class="math notranslate nohighlight">\(e_{12}^0 = k_a A_2 / A_1 = k_a \frac{1-\varepsilon_t}{\varepsilon_t}\)</span> and <span class="math notranslate nohighlight">\(e_{12}^0 = k_d\)</span> and get</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{\partial c^\ell}{\partial t} = - u \frac{\partial c^\ell}{\partial z} + D_\text{ax} \frac{\partial^2 c^\ell}{\partial z^2} + k_d A_2 / A_1 c^s - k_a A_2 / A_1 c^\ell,
+\\
+\frac{\partial c^s}{\partial t} = k_a c^\ell - k_d c^s.\end{split}\]</div>
+<p>Adding <span class="math notranslate nohighlight">\(\frac{1-\varepsilon_t}{\varepsilon_t}\)</span> times the second channel equation to the first channel equation, we get the standard formulation of the <a class="reference internal" href="lumped_rate_model_without_pores.html#lumped-rate-model-without-pores-model"><span class="std std-ref">Lumped rate model without pores (LRM)</span></a> with (kinetic) linear binding:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{\partial c^\ell}{\partial t} + \frac{1-\varepsilon_t}{\varepsilon_t} \frac{\partial c^s}{\partial t} = - u \frac{\partial c^\ell}{\partial z} + D_\text{ax} \frac{\partial^2 c^\ell}{\partial z^2},
+\\
+\frac{\partial c^s}{\partial t} = k_a c^\ell - k_d c^s.\end{split}\]</div>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2024.
+      
+      |
+      <a href="../../_sources/modelling/unit_operations/multi_channel_transport_model.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

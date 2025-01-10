@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>CADET Introduction &#8212; CADET</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
@@ -128,7 +128,7 @@ CADET still must be downloaded (or built from source) as explained in the <a cla
 <p>We first create a <code class="docutils literal notranslate"><span class="pre">ComponentSystem</span></code>.
 The <code class="docutils literal notranslate"><span class="pre">ComponentSystem</span></code> ensures that all parts of the process have the same number of components.
 Moreover, components can be named which automatically adds legends to the plot methods.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CADETProcess.processModel</span> <span class="kn">import</span> <span class="n">ComponentSystem</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CADETProcess.processModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">ComponentSystem</span>
 
 <span class="n">component_system</span> <span class="o">=</span> <span class="n">ComponentSystem</span><span class="p">()</span>
 <span class="n">component_system</span><span class="o">.</span><span class="n">add_component</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
@@ -139,7 +139,7 @@ Moreover, components can be named which automatically adds legends to the plot m
 <p>In CADET, the <code class="docutils literal notranslate"><span class="pre">Inlet</span></code> pseudo unit operation serves as a source for the system and is used to create arbitary concentration profiles as boundary conditions.
 The concentration profile is described using a piecewise cubic polynomial (cubic spline in the continuous case) for each component, where the pieces are given by the time sections.
 In this example we set a constant inlet concentration of 1 mM.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CADETProcess.processModel</span> <span class="kn">import</span> <span class="n">Inlet</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CADETProcess.processModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Inlet</span>
 
 <span class="n">inlet</span> <span class="o">=</span> <span class="n">Inlet</span><span class="p">(</span><span class="n">component_system</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;inlet&#39;</span><span class="p">)</span>
 <span class="n">inlet</span><span class="o">.</span><span class="n">flow_rate</span> <span class="o">=</span> <span class="mf">6.683738370512285e-8</span>  <span class="c1"># m^3 / s</span>
@@ -158,7 +158,7 @@ Then, we decide if we want to use the <a class="reference internal" href="../../
 Finally, the parameters of the binding model have to be set for each component (they are vectors of length <code class="docutils literal notranslate"><span class="pre">n_components</span></code>).
 All model parameters can be listed using the <code class="docutils literal notranslate"><span class="pre">parameters</span></code> attribute.
 In case of the Langmuir model, we have to specify the parameters <code class="docutils literal notranslate"><span class="pre">adsorption_rate</span></code>, <code class="docutils literal notranslate"><span class="pre">desorption_rate</span></code>, and <code class="docutils literal notranslate"><span class="pre">capacity</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CADETProcess.processModel</span> <span class="kn">import</span> <span class="n">Langmuir</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CADETProcess.processModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Langmuir</span>
 
 <span class="n">binding_model</span> <span class="o">=</span> <span class="n">Langmuir</span><span class="p">(</span><span class="n">component_system</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;binding_model&#39;</span><span class="p">)</span>
 <span class="n">binding_model</span><span class="o">.</span><span class="n">is_kinetic</span> <span class="o">=</span> <span class="kc">True</span>
@@ -173,7 +173,7 @@ In case of the Langmuir model, we have to specify the parameters <code class="do
 <p>We now add a second unit operation, the column model.
 For the <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#general-rate-model-model"><span class="std std-ref">general rate model model</span></a>, we use the <code class="docutils literal notranslate"><span class="pre">GeneralRateModel</span></code> class.
 In this class, we set the parameters related to transport and column geometry.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CADETProcess.processModel</span> <span class="kn">import</span> <span class="n">GeneralRateModel</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CADETProcess.processModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeneralRateModel</span>
 
 <span class="n">column</span> <span class="o">=</span> <span class="n">GeneralRateModel</span><span class="p">(</span><span class="n">component_system</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;column&#39;</span><span class="p">)</span>
 <span class="n">column</span><span class="o">.</span><span class="n">binding_model</span> <span class="o">=</span> <span class="n">binding_model</span>
@@ -208,7 +208,7 @@ In this example, we start with an empty column.</p>
 <p class="admonition-title">Note</p>
 <p>In this case, the outlet unit is actually not required. We could use the outlet concentration signal of the column model instead.</p>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CADETProcess.processModel</span> <span class="kn">import</span> <span class="n">Outlet</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CADETProcess.processModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Outlet</span>
 
 <span class="n">outlet</span> <span class="o">=</span> <span class="n">Outlet</span><span class="p">(</span><span class="n">component_system</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;outlet&#39;</span><span class="p">)</span>
 </pre></div>
@@ -220,7 +220,7 @@ In this example, we start with an empty column.</p>
 <p>The connectivity of unit operations is defined in the <code class="docutils literal notranslate"><span class="pre">FlowSheet</span></code> class.
 This class provides a directed graph structure that allows for the simple definition of configurations for multiple columns or reactor-separator networks, even when they are cyclic.
 We add the previously defined units to the flow sheet and add connections between them.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CADETProcess.processModel</span> <span class="kn">import</span> <span class="n">FlowSheet</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CADETProcess.processModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">FlowSheet</span>
 
 <span class="n">flow_sheet</span> <span class="o">=</span> <span class="n">FlowSheet</span><span class="p">(</span><span class="n">component_system</span><span class="p">)</span>
 
@@ -243,7 +243,7 @@ This restriction does not apply to a <a class="reference internal" href="../../m
 <p>The <code class="docutils literal notranslate"><span class="pre">Process</span></code> class is used to define dynamic changes of model parameters or flow sheet connections.
 This includes the duration of a simulation (<code class="docutils literal notranslate"><span class="pre">cycle_time</span></code>).
 To instantiate a <code class="docutils literal notranslate"><span class="pre">Process</span></code>, a <code class="docutils literal notranslate"><span class="pre">FlowSheet</span></code> needs to be passed as argument, as well as a string to name that process.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CADETProcess.processModel</span> <span class="kn">import</span> <span class="n">Process</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CADETProcess.processModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Process</span>
 
 <span class="n">process</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">flow_sheet</span><span class="p">,</span> <span class="s1">&#39;Langmuir Breakthrough&#39;</span><span class="p">)</span>
 <span class="n">process</span><span class="o">.</span><span class="n">cycle_time</span> <span class="o">=</span> <span class="mf">1000.0</span>
@@ -255,7 +255,7 @@ To instantiate a <code class="docutils literal notranslate"><span class="pre">Pr
 <h2>3. Setting Up the Simulator and Running the Simulation<a class="headerlink" href="#setting-up-the-simulator-and-running-the-simulation" title="Link to this heading">¶</a></h2>
 <p>To simulate a <code class="docutils literal notranslate"><span class="pre">Process</span></code>, a simulator needs to be configured.
 The simulator translates the <code class="docutils literal notranslate"><span class="pre">Process</span></code> configuration into the API of the corresponding simulator.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">CADETProcess.simulator</span> <span class="kn">import</span> <span class="n">Cadet</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CADETProcess.simulator</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cadet</span>
 
 <span class="n">process_simulator</span> <span class="o">=</span> <span class="n">Cadet</span><span class="p">()</span>
 
@@ -284,7 +284,7 @@ Finally, we plot the concentration signal at the outlet of the column.</p>
     <div class="clearer"></div>
   </div>
     <div class="footer">
-      &#169;2008-2024.
+      &#169;2008-2025.
       
       |
       <a href="../../_sources/getting_started/tutorials/breakthrough.rst.txt"

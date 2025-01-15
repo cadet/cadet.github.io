@@ -124,9 +124,10 @@ This variant of the model is based on the linear driving force approximation (se
 \end{aligned}\]</div>
 <p>No interaction between the components is considered when the model has multiple components.
 One of the limitation of this isotherm is the first order Jacobian <span class="math notranslate nohighlight">\(\left(\frac{dq^*}{dc_p}\right)\)</span> tends to infinity as <span class="math notranslate nohighlight">\(c_{p} \rightarrow 0\)</span> for <span class="math notranslate nohighlight">\(n&gt;1\)</span>.
-To address this issue an approximation of isotherm is considered near the origin.
-This approximation matches the isotherm in such a way that  <span class="math notranslate nohighlight">\(q=0\)</span> at <span class="math notranslate nohighlight">\(c_p=0\)</span> and also matches the first derivative of the isotherm at <span class="math notranslate nohighlight">\(c_p = \varepsilon\)</span>, where <span class="math notranslate nohighlight">\(\varepsilon\)</span> is a very small number, for example <span class="math notranslate nohighlight">\(1e-14\)</span>.
-The form of approximation and its derivative is given below for <span class="math notranslate nohighlight">\(c_p &lt; \varepsilon\)</span> and <span class="math notranslate nohighlight">\(n&gt;1\)</span>:</p>
+Additionally, the isotherm is undefined for <span class="math notranslate nohighlight">\(c_{p} &lt; 0\)</span> if <span class="math notranslate nohighlight">\(\frac{1}{n_i}\)</span> can be expressed as <span class="math notranslate nohighlight">\(\frac{p}{q}\)</span> with <span class="math notranslate nohighlight">\(p,q \in \mathbb{N}\)</span> where <span class="math notranslate nohighlight">\(q\)</span> is an even number.
+To address these issues an approximation of the isotherm is considered below a threshold concentration <span class="math notranslate nohighlight">\(c_p &lt; \varepsilon\)</span>.
+This approximation matches the isotherm in such a way that  <span class="math notranslate nohighlight">\(q=0\)</span> at <span class="math notranslate nohighlight">\(c_p=0\)</span> and also matches the value and the first derivative of the isotherm at <span class="math notranslate nohighlight">\(c_p = \varepsilon\)</span>, where <span class="math notranslate nohighlight">\(\varepsilon\)</span> is a very small number, for example <span class="math notranslate nohighlight">\(1e-14\)</span>.
+The form of approximation and its derivative is given below for <span class="math notranslate nohighlight">\(c_p &lt; \varepsilon\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}\begin{aligned}
         q^* = \alpha_0+\alpha_1 c+\alpha_2 c_p^2
@@ -143,7 +144,6 @@ The form of approximation and its derivative is given below for <span class="mat
         \alpha_2 = \frac{1-n}{n}k_f \varepsilon^{\frac{1-2 n}{n}}
 \end{aligned}\]</div>
 <p>This approximation can be used for any pore phase concentration <span class="math notranslate nohighlight">\(c_p &lt; \varepsilon\)</span> given <span class="math notranslate nohighlight">\(n&gt;1\)</span>.
-For the case, when <span class="math notranslate nohighlight">\(n \le 1\)</span> no special treatment near the origin is required.
 For more information on model parameters required to define in CADET file format, see <a class="reference internal" href="../../interface/binding/freundlich_ldf.html#freundlich-ldf-config"><span class="std std-ref">Freundlich LDF</span></a>.</p>
 </section>
 

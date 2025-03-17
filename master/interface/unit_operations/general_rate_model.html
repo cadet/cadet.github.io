@@ -412,11 +412,13 @@ Note: Should not be used in combination with any binding model!</p>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">PORE_ACCESSIBILITY_MULTIPLEX</span></code></p>
 <blockquote>
-<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is treated as component-, type-, and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span>. Valid modes are:
-0. Component-dependent, type-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span>
-1. Component-dependent, type-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major
-2. Component-dependent, type-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPARTYPE}\)</span>; ordering is type-major
-3. Component-dependent, type-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPARTYPE} \cdot \texttt{NSEC}\)</span>; ordering is section-type-major</p>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is treated as component-, type-, and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span>. Valid modes are:</p>
+<ol class="arabic simple" start="0">
+<li><p>Component-dependent, type-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span></p></li>
+<li><p>Component-dependent, type-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
+<li><p>Component-dependent, type-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPARTYPE}\)</span>; ordering is type-major</p></li>
+<li><p>Component-dependent, type-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPARTYPE} \cdot \texttt{NSEC}\)</span>; ordering is section-type-major</p></li>
+</ol>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -478,8 +480,7 @@ Note: Should not be used in combination with any binding model!</p>
 <li><p>Component-dependent, type-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NTOTALBND}\)</span>; ordering is type-component-major</p></li>
 <li><p>Component-dependent, type-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \cdot \texttt{NSEC}\)</span>; ordering is section-type-component-major</p></li>
 </ol>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_MULTIPLEX</span></code></dt><dd><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{ 0, \dots, 3 \}\)</span></p></td>

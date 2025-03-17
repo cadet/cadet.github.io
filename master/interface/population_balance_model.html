@@ -150,7 +150,7 @@ The two additional components account for the solute <span class="math notransla
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> String</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{ CRYSTALLIZATION \}\)</span></p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{ CRYSTALLIZATION \}\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>
@@ -330,8 +330,14 @@ The two additional components account for the solute <span class="math notransla
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">CRY_GROWTH_SCHEME_ORDER</span></code></p>
 <blockquote>
-<div><p>Defines the growth flux FV reconstruction scheme. It can only be <span class="math notranslate nohighlight">\(1\)</span>: upwind scheme; <span class="math notranslate nohighlight">\(2\)</span>: HR Koren scheme; <span class="math notranslate nohighlight">\(3\)</span>: WENO23 scheme; <span class="math notranslate nohighlight">\(4\)</span>: WENO35 scheme.
-We recommend using the HR Koren scheme, which showed to be the most performant in our benchmarks.</p>
+<div><p>Defines the growth flux FV reconstruction scheme. It can only be</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(1\)</span>: upwind scheme</p></li>
+<li><p><span class="math notranslate nohighlight">\(2\)</span>: HR Koren scheme</p></li>
+<li><p><span class="math notranslate nohighlight">\(3\)</span>: WENO23 scheme</p></li>
+<li><p><span class="math notranslate nohighlight">\(4\)</span>: WENO35 scheme.</p></li>
+</ul>
+<p>We recommend using the HR Koren scheme, which showed to be the most performant in our benchmarks.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>

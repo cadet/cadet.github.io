@@ -155,7 +155,7 @@ It is located in the <code class="docutils literal notranslate"><span class="pre
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">cadet</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cadet</span>
-<span class="n">Cadet</span><span class="o">.</span><span class="n">cadet_path</span> <span class="o">=</span> <span class="s1">&#39;/path/to/cadet-cli&#39;</span>
+<span class="n">Cadet</span><span class="o">.</span><span class="n">cadet_path</span> <span class="o">=</span> <span class="s1">&#39;/path/to/cadet-core/install/prefix&#39;</span> <span class="c1"># (e.g., &#39;/usr/local&#39;)</span>
 </pre></div>
 </div>
 <p>To create the model and specify its parameters, we create an instance of the <code class="docutils literal notranslate"><span class="pre">Cadet</span></code> class.
@@ -413,7 +413,7 @@ We check if the simulation has completed successfully and load the results.</p>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">return_code</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulation completed successfully&quot;</span><span class="p">)</span>
     <span class="n">model</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>   
 <span class="k">else</span><span class="p">:</span>

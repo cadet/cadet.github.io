@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>CADET Introduction &#8212; CADET</title>
+    <title>CADET User-Introduction &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
@@ -15,8 +15,8 @@
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Modelling" href="../../modelling/index.html" />
-    <link rel="prev" title="Installation" href="../installation.html" />
+    <link rel="next" title="CADET-Python Introduction" href="../../developer_guide/cadet_python.html" />
+    <link rel="prev" title="CADET Introduction" href="../introduction.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -43,11 +43,11 @@
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Getting started</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">CADET Introduction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#setting-up-the-model">1. Setting Up the Model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setting-up-the-simulator-and-running-the-simulation">3. Setting Up the Simulator and Running the Simulation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#plotting-the-results">4. Plotting the Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation_core.html">CADET-Core Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation_frontend.html">Frontend Installation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../introduction.html">CADET Introduction</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">CADET User-Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide/cadet_python.html">CADET-Python Introduction</a></li>
 </ul>
 </li>
 </ul>
@@ -108,30 +108,12 @@
 </p>
 
 
-  <section id="cadet-introduction">
-<h1>CADET Introduction<a class="headerlink" href="#cadet-introduction" title="Link to this heading">¶</a></h1>
-<dl class="simple">
-<dt>Performing a forward simulation comprises several steps:</dt><dd><ul class="simple">
-<li><p>Setting up the model including all parameters</p></li>
-<li><p>Defining connectivity and dynamic events</p></li>
-<li><p>Setting up the simulator and actually running the simulation</p></li>
-<li><p>Evaluating results (e.g., plotting)</p></li>
-</ul>
-</dd>
-</dl>
+  <section id="cadet-user-introduction">
+<h1>CADET User-Introduction<a class="headerlink" href="#cadet-user-introduction" title="Link to this heading">¶</a></h1>
 <p>In this tutorial, we will build a simple forward simulation with a breakthrough of one component using the following system:</p>
 <figure class="align-default">
 <img alt="../../_images/breakthrough_system.svg" src="../../_images/breakthrough_system.svg" />
 </figure>
-<p>For this purpose, we use <a class="reference external" href="https://cadet-process.readthedocs.io/">CADET-Process</a>, an object oriented Python frontend for CADET.
-CADET still must be downloaded (or built from source) as explained in the <a class="reference internal" href="../installation.html#installation"><span class="std std-ref">installation guide</span></a>.</p>
-<figure class="align-default" id="id2">
-<img alt="../../_images/cadet_architecture_overview.png" src="../../_images/cadet_architecture_overview.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Relations between CADET-Core, CADET-Python, and CADET-Process.</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
-<p>For more information on how to set up models using CADET-Python, a plain file based API for CADET, please refer to the <a class="reference internal" href="../../developer_guide/cadet_python.html#cadet-python"><span class="std std-ref">CADET-Python Introduction</span></a>.</p>
 <section id="setting-up-the-model">
 <h2>1. Setting Up the Model<a class="headerlink" href="#setting-up-the-model" title="Link to this heading">¶</a></h2>
 <p>We first create a <code class="docutils literal notranslate"><span class="pre">ComponentSystem</span></code>.

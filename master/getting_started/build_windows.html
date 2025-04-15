@@ -118,7 +118,6 @@ unless you know your simulations are large enough to benefit from it.</p>
 |    - src
 |    - include
 |    - [...]
-|    - build
 </pre>
 <p>Note that the version numbers of the files and packages below are subject to change and will not always reflect the most
 recent version.</p>
@@ -151,15 +150,14 @@ the <a class="reference external" href="https://www.intel.com/content/www/us/en/
 <li><p>Download the <a class="reference external" href="https://github.com/chrisant996/clink">clink installer exe</a> and install clink.</p></li>
 </ul>
 </section>
-<section id="prepare-cadet-code">
-<h2>Prepare CADET code<a class="headerlink" href="#prepare-cadet-code" title="Link to this heading">¶</a></h2>
+<section id="obtain-cadet-code">
+<h2>Obtain CADET code<a class="headerlink" href="#obtain-cadet-code" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Clone the CADET source code into a <code class="docutils literal notranslate"><span class="pre">CADET</span></code> folder:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/cadet/cadet-core.git</span> <span class="pre">CADET</span></code></p></li>
 </ul>
 </li>
-<li><p>Create the directories <code class="docutils literal notranslate"><span class="pre">CADET\build</span></code> and <code class="docutils literal notranslate"><span class="pre">CADET\install</span></code></p></li>
 </ul>
 </section>
 <section id="build-cadet-in-visual-studio">
@@ -188,6 +186,7 @@ the <a class="reference external" href="https://www.intel.com/content/www/us/en/
 <li><p>Execute the following commands:</p></li>
 <li><p>For Command Prompt:</p>
 <ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">not</span> <span class="pre">exist</span> <span class="pre">CADET\build</span> <span class="pre">mkdir</span> <span class="pre">CADET\build</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">CADET\build</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">vcpkg</span> <span class="pre">integrate</span> <span class="pre">install</span></code> (this only needs to be run <em>once</em> and will require admin privileges)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">MKLROOT=&quot;C:/Program</span> <span class="pre">Files</span> <span class="pre">(x86)/Intel/oneAPI/mkl/latest&quot;</span></code></p></li>
@@ -203,6 +202,7 @@ execute <code class="docutils literal notranslate"><span class="pre">set</span> 
 </li>
 <li><p>For PowerShell:</p>
 <ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(-Not(Test-Path</span> <span class="pre">CADET\build)){mkdir</span> <span class="pre">CADET\build}</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">CADET\build</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">vcpkg</span> <span class="pre">integrate</span> <span class="pre">install</span></code> (this only needs to be run <em>once</em> and will require admin privileges)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">$ENV:MKLROOT</span> <span class="pre">=</span> <span class="pre">&quot;C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)\Intel\oneAPI\mkl\latest&quot;</span></code></p></li>

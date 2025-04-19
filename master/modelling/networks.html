@@ -16,7 +16,7 @@
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Population Balance Models" href="crystallization.html" />
+    <link rel="next" title="Crystallization / Precipitation Models" href="crystallization/index.html" />
     <link rel="prev" title="Reaction models" href="reaction/index.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -55,7 +55,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#solution-of-the-linear-systems">Solution of the linear systems</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="crystallization.html">Population Balance Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crystallization/index.html">Crystallization / Precipitation Models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
@@ -198,7 +198,7 @@ That is, the flow rate coefficients have to be chosen such that the flow into ev
 </section>
 <section id="solution-of-the-linear-systems">
 <span id="muopnetworklinearsolver"></span><h2>Solution of the linear systems<a class="headerlink" href="#solution-of-the-linear-systems" title="Link to this heading">¶</a></h2>
-<p>Each time step in the simulation requires the solution of a nonlinear system Eq. <a class="reference internal" href="../simulation/index.html#equation-bdfnonlinsystem">29</a> (see Sec. <a class="reference internal" href="../simulation/index.html#simtimeintegration"><span class="std std-ref">Time stepping</span></a>).
+<p>Each time step in the simulation requires the solution of a nonlinear system Eq. <a class="reference internal" href="../simulation/index.html#equation-bdfnonlinsystem">27</a> (see Sec. <a class="reference internal" href="../simulation/index.html#simtimeintegration"><span class="std std-ref">Time stepping</span></a>).
 The nonlinear problem is solved by a Newton iteration, which, in turn, requires the solution of a linear system that essentially consists of the Jacobians of the unit operations and some coupling matrices from Eqs. <a class="reference internal" href="#equation-networkinletconnection">25</a> and <a class="reference internal" href="#equation-networkconnection">26</a>.</p>
 <p>These linear systems are either solved in parallel or sequentially. The parallel method first solves each unit operation (in parallel) to compute the solution at its outlet.
 Using these values, the inlets are adjusted and the unit operations are solved again.

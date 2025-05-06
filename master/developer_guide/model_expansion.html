@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CADET-Core debugging" href="debugging.html" />
-    <link rel="prev" title="CADET build options" href="build_options.html" />
+    <link rel="prev" title="CADET-Core build options" href="build_options.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -50,7 +50,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Developer Guide</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cadet_python.html">CADET-Python Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cadet_core_architecture.html">Software Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_options.html">CADET build options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_options.html">CADET-Core build options</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Model Expansion</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#binding-model">Binding Model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#unit-operation">Unit Operation</a></li>
@@ -130,35 +130,22 @@ Additionally, some models can be mimicked by or are even equivalent to already i
 <h2>Binding Model<a class="headerlink" href="#binding-model" title="Link to this heading">¶</a></h2>
 <p>An extensive description on how to add a new binding model to CADET-Core is given in a <a class="reference external" href="https://forum.cadet-web.de/t/registration-implementation-and-testing-of-new-binding-model-in-cadet/533">forum post</a>, where such an extension is described using the example of a Langmuir binding.
 A more concise description is given in the following:</p>
-<p>1.
-Use the <a class="reference external" href="https://github.com/cadet/CADET-Core/tree/master/doc/developer_guide/TemplateBinding.cpp">binding model template</a> to create a new binding model file in the CADET binding model source directory</p>
-<p><code class="docutils literal notranslate"><span class="pre">\src\libcadet\model\binding\YourModelNameBinding.cpp</span></code></p>
-<p>and rename the model in the file (i.e. Template to YoureModelName).
-Note that the provided template binding model is an implementation of the multi-component Langmuir binding.</p>
-<p>2.
-Register the binding model by adding</p>
-<p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">registerYourModelNameModel(std::unordered_map&lt;std::string,</span> <span class="pre">std::function&lt;model::IBindingModel*</span> <span class="pre">()&gt;&gt;&amp;</span> <span class="pre">bindings);</span></code></p>
-<p>to the <code class="docutils literal notranslate"><span class="pre">src\libcadet\BindingModelFactory.cpp</span></code> at the end of all the other registering functions such as <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">registerLinearModel</span></code>.
-Then add</p>
-<p><code class="docutils literal notranslate"><span class="pre">model::binding::registerExampleModel(_bindingModels);</span></code></p>
-<p>to the <code class="docutils literal notranslate"><span class="pre">BindingModelFactory.cpp</span></code> at the end of all the other registering functions such as <code class="docutils literal notranslate"><span class="pre">model::binding::registerLinearModel(_bindingModels)</span></code>.
-The final step to register your model is to add your model to the <code class="docutils literal notranslate"><span class="pre">\src\libcadet\CMakeLists.txt</span></code> (again look for similar statements for the other binding models) by adding</p>
-<p><code class="docutils literal notranslate"><span class="pre">${CMAKE_SOURCE_DIR}</span> <span class="pre">/src/libcadet/model/binding/ExampleBinding.cpp</span></code></p>
-<p>Before continuing with the third step, you should rebuild CADET-Core to verify that the first two steps went well.</p>
-<p>3.
-The actual implementation of the new binding model follows two main steps: the configuration of the relevant mechanistic parameters and implementation of adsorption flux and Jacobian.
+<ol class="arabic simple">
+<li><p>Use the <a class="reference external" href="https://github.com/cadet/CADET-Core/tree/master/doc/developer_guide/TemplateBinding.cpp">binding model template</a> to create a new binding model file in the CADET binding model source directory <code class="docutils literal notranslate"><span class="pre">\src\libcadet\model\binding\YourModelNameBinding.cpp</span></code> and rename the model in the file (i.e. Template to YoureModelName).
+Note that the provided template binding model is an implementation of the multi-component Langmuir binding.</p></li>
+<li><p>Register the binding model by adding <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">registerYourModelNameModel(std::unordered_map&lt;std::string,</span> <span class="pre">std::function&lt;model::IBindingModel*</span> <span class="pre">()&gt;&gt;&amp;</span> <span class="pre">bindings);</span></code> to the <code class="docutils literal notranslate"><span class="pre">src\libcadet\BindingModelFactory.cpp</span></code> at the end of all the other registering functions such as <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">registerLinearModel</span></code>.
+Then add <code class="docutils literal notranslate"><span class="pre">model::binding::registerExampleModel(_bindingModels);</span></code> to the <code class="docutils literal notranslate"><span class="pre">BindingModelFactory.cpp</span></code> at the end of all the other registering functions such as <code class="docutils literal notranslate"><span class="pre">model::binding::registerLinearModel(_bindingModels)</span></code>.
+The final step to register your model is to add your model to the <code class="docutils literal notranslate"><span class="pre">\src\libcadet\CMakeLists.txt</span></code> (again look for similar statements for the other binding models) by adding <code class="docutils literal notranslate"><span class="pre">${CMAKE_SOURCE_DIR}</span> <span class="pre">/src/libcadet/model/binding/ExampleBinding.cpp</span></code>.
+Before continuing with the third step, you should rebuild CADET-Core to verify that the first two steps went well.</p></li>
+<li><p>The actual implementation of the new binding model follows two main steps: the configuration of the relevant mechanistic parameters and implementation of adsorption flux and Jacobian.
 To set up the configuration of isotherm parameters a macro (.json script) has been included in the code, which generates the relevant code section when the user defines the parameters in the scope of this script.
-To modify the script go to Line 30 in the provided file template and adjust the parameters to your needs, a more detailed description for that is provided in the <a class="reference external" href="https://forum.cadet-web.de/t/registration-implementation-and-testing-of-new-binding-model-in-cadet/533">aforementioned forum post</a>.</p>
-<p>Next, the adsorption flux equations need to be implemented int the corresponding function</p>
-<p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">fluxImpl(double</span> <span class="pre">t,</span> <span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">secIdx,</span> <span class="pre">const</span> <span class="pre">ColumnPosition&amp;</span> <span class="pre">colPos,</span> <span class="pre">StateType</span> <span class="pre">const*</span> <span class="pre">y,</span> <span class="pre">CpStateType</span> <span class="pre">const*</span> <span class="pre">yCp,</span> <span class="pre">ResidualType*</span> <span class="pre">res,</span> <span class="pre">LinearBufferAllocator</span> <span class="pre">workSpace)</span> <span class="pre">const</span></code></p>
-<p>For an explanation of <code class="docutils literal notranslate"><span class="pre">active</span></code> types for the template arguments <code class="docutils literal notranslate"><span class="pre">StateType</span></code>, <code class="docutils literal notranslate"><span class="pre">ParamType</span></code>, <code class="docutils literal notranslate"><span class="pre">ResidualType</span></code>, please refer to the Algorithmic Differentiation section.</p>
-<p>Finally, the Jacobian needs to be implemented in the function</p>
-<p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">jacobianImpl()</span></code></p>
-<p>We note that the Jacobian implementation is optional but highly recommended to speed up the simulation.
-If you have trouble with deriving the Jacobian or if you want to test you model first, modify the
-<code class="docutils literal notranslate"><span class="pre">implementsAnalyticJacobian()</span></code>
-function to return false.
-By doing so, CADET-Core defaults to computing the binding <a class="reference external" href="https://doi.org/10.1016/j.ces.2015.08.050">Jacobian via Algorithmic differentiation (AD)</a>.</p>
+To modify the script go to Line 30 in the provided file template and adjust the parameters to your needs, a more detailed description for that is provided in the <a class="reference external" href="https://forum.cadet-web.de/t/registration-implementation-and-testing-of-new-binding-model-in-cadet/533">aforementioned forum post</a>.
+Next, the adsorption flux equations need to be implemented int the corresponding function <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">fluxImpl(double</span> <span class="pre">t,</span> <span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">secIdx,</span> <span class="pre">const</span> <span class="pre">ColumnPosition&amp;</span> <span class="pre">colPos,</span> <span class="pre">StateType</span> <span class="pre">const*</span> <span class="pre">y,</span> <span class="pre">CpStateType</span> <span class="pre">const*</span> <span class="pre">yCp,</span> <span class="pre">ResidualType*</span> <span class="pre">res,</span> <span class="pre">LinearBufferAllocator</span> <span class="pre">workSpace)</span> <span class="pre">const</span></code>.
+For an explanation of <code class="docutils literal notranslate"><span class="pre">active</span></code> types for the template arguments <code class="docutils literal notranslate"><span class="pre">StateType</span></code>, <code class="docutils literal notranslate"><span class="pre">ParamType</span></code>, <code class="docutils literal notranslate"><span class="pre">ResidualType</span></code>, please refer to the Algorithmic Differentiation section.
+Finally, the Jacobian needs to be implemented in the function <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">jacobianImpl()</span></code> We note that the Jacobian implementation is optional but highly recommended to speed up the simulation.
+If you have trouble with deriving the Jacobian or if you want to test you model first, modify the <code class="docutils literal notranslate"><span class="pre">implementsAnalyticJacobian()</span></code> function to return false.
+By doing so, CADET-Core defaults to computing the binding <a class="reference external" href="https://doi.org/10.1016/j.ces.2015.08.050">Jacobian via Algorithmic differentiation (AD)</a>.</p></li>
+</ol>
 </section>
 <section id="unit-operation">
 <h2>Unit Operation<a class="headerlink" href="#unit-operation" title="Link to this heading">¶</a></h2>
@@ -186,7 +173,7 @@ Note that you will probably have to clean up a lot of things from the copied uni
 <li><p>Linear solve: Solves the system <span class="math notranslate nohighlight">\(J x = b\)</span> with given <span class="math notranslate nohighlight">\(b\)</span>.</p></li>
 <li><p>Algorithmic differentiation (AD):
 a. Parameter sensitivities: Use <code class="docutils literal notranslate"><span class="pre">ParamType</span></code> for all parameters and <code class="docutils literal notranslate"><span class="pre">ResidualType</span></code> for the residual. A more detailed guide on parameter sensitivities can be found in the corresponding section below.
-b. Jacobian calculation via AD (can be used to verify the analytical implementation): Use <code class="docutils literal notranslate"><span class="pre">StateType</span></code> for the state and <code class="docutils literal notranslate"><span class="pre">ResidualType</span></code> for the residual. Additionally, you need to implement the following functions to enable the AD Jacobian: <code class="docutils literal notranslate"><span class="pre">requiredADdirs()</span></code>, <code class="docutils literal notranslate"><span class="pre">prepareADvectors</span></code>, <code class="docutils literal notranslate"><span class="pre">extractJacobianFromAD()</span></code>, <code class="docutils literal notranslate"><span class="pre">useAnalyticJacobian()</span></code>. For details please refer to <a class="reference external" href="https://doi.org/10.1016/j.ces.2015.08.050">P?ttmann et al. (2016)</a>.</p></li>
+b. Jacobian calculation via AD (can be used to verify the analytical implementation): Use <code class="docutils literal notranslate"><span class="pre">StateType</span></code> for the state and <code class="docutils literal notranslate"><span class="pre">ResidualType</span></code> for the residual. Additionally, you need to implement the following functions to enable the AD Jacobian: <code class="docutils literal notranslate"><span class="pre">requiredADdirs()</span></code>, <code class="docutils literal notranslate"><span class="pre">prepareADvectors</span></code>, <code class="docutils literal notranslate"><span class="pre">extractJacobianFromAD()</span></code>, <code class="docutils literal notranslate"><span class="pre">useAnalyticJacobian()</span></code>. For details please refer to <a class="reference external" href="https://doi.org/10.1016/j.ces.2015.08.050">Püttmann et al. (2016)</a>.</p></li>
 </ol>
 </section>
 <section id="testing-and-publication">
@@ -213,29 +200,13 @@ Use <code class="docutils literal notranslate"><span class="pre">StateType</span
 </section>
 <section id="parameter-sensitivities">
 <h2>Parameter sensitivities<a class="headerlink" href="#parameter-sensitivities" title="Link to this heading">¶</a></h2>
-<p>Parameter sensitivity estimation in CADET-Core leverages the capabilities provided by the time integrator module <a class="reference external" href="https://sundials.readthedocs.io/en/latest/idas/index.html">IDAS</a> to compute <a class="reference external" href="https://sundials.readthedocs.io/en/latest/idas/Mathematics_link.html#forward-sensitivity-analysis">forward sensitivities</a>, combined with our custom implementation for algorithmic differentiation, as described in our publication <a class="reference external" href="https://doi.org/10.1016/j.ces.2015.08.050">P?ttmann et al. (2016)</a>.
+<p>Parameter sensitivity estimation in CADET-Core leverages the capabilities provided by the time integrator module <a class="reference external" href="https://sundials.readthedocs.io/en/latest/idas/index.html">IDAS</a> to compute <a class="reference external" href="https://sundials.readthedocs.io/en/latest/idas/Mathematics_link.html#forward-sensitivity-analysis">forward sensitivities</a>, combined with our custom implementation for algorithmic differentiation, as described in our publication <a class="reference external" href="https://doi.org/10.1016/j.ces.2015.08.050">Püttmann et al. (2016)</a>.
 To enable a parameter sensitivity for you model, you only have to take care about calling and interfacing to the existing infrastructure, which is briefly described in the following steps:
 - The parameter must be defined as an <cite>active</cite> type
 - In the residual function, the parameter must be used as a <cite>ParamType</cite>
-- The parameter must be registered, i.e. added to the <cite>_parameters</cite> map, e.g.
-<a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">`</span></a></p>
-<blockquote>
-<div><p>_parameters[makeParamId(hashString(“TOTAL_POROSITY”), _unitOpIdx, CompIndep, ParTypeIndep, BoundStateIndep, ReactionIndep, SectionIndep)] = &amp;_totalPorosity;</p>
-</div></blockquote>
-<dl class="simple">
-<dt><a href="#id7"><span class="problematic" id="id8">``</span></a><a href="#id9"><span class="problematic" id="id10">`</span></a></dt><dd><p>which creates a unique parameter ID. ALso, the dependencies of the parameter need to be specified here, e.g. if it depends on a particle type or component etc. This map is called by the modelsystem to set up the sensitivity equations.</p>
-</dd>
-</dl>
-<ul class="simple">
-<li><p>If the parameter is vector valued, the sensitivities for each entry of the 1D or 2D vector can be computed.
-To this end, you need to call the corresponding registering function, e.g.</p></li>
-</ul>
-<dl class="simple">
-<dt><a href="#id11"><span class="problematic" id="id12">``</span></a><a href="#id13"><span class="problematic" id="id14">`</span></a></dt><dd><p>registerParam1DArray(_parameters, _initC, [=](bool multi, unsigned int comp) { return makeParamId(hashString(“INIT_C”), _unitOpIdx, comp, ParTypeIndep, BoundStateIndep, ReactionIndep, SectionIndep); });</p>
-</dd>
-</dl>
-<p><a href="#id15"><span class="problematic" id="id16">``</span></a>`
-- CADET-Core takes care of the rest</p>
+- The parameter must be registered, i.e. added to the <cite>_parameters</cite> map, e.g. <code class="docutils literal notranslate"><span class="pre">_parameters[makeParamId(hashString(&quot;TOTAL_POROSITY&quot;),</span> <span class="pre">_unitOpIdx,</span> <span class="pre">CompIndep,</span> <span class="pre">ParTypeIndep,</span> <span class="pre">BoundStateIndep,</span> <span class="pre">ReactionIndep,</span> <span class="pre">SectionIndep)]</span> <span class="pre">=</span> <span class="pre">&amp;_totalPorosity;</span></code> which creates a unique parameter ID. ALso, the dependencies of the parameter need to be specified here, e.g. if it depends on a particle type or component etc. This map is called by the modelsystem to set up the sensitivity equations.
+- If the parameter is vector valued, the sensitivities for each entry of the 1D or 2D vector can be computed. To this end, you need to call the corresponding registering function, e.g. <code class="docutils literal notranslate"><span class="pre">registerParam1DArray(_parameters,</span> <span class="pre">_initC,</span> <span class="pre">[=](bool</span> <span class="pre">multi,</span> <span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">comp)</span> <span class="pre">{</span> <span class="pre">return</span> <span class="pre">makeParamId(hashString(&quot;INIT_C&quot;),</span> <span class="pre">_unitOpIdx,</span> <span class="pre">comp,</span> <span class="pre">ParTypeIndep,</span> <span class="pre">BoundStateIndep,</span> <span class="pre">ReactionIndep,</span> <span class="pre">SectionIndep);</span> <span class="pre">});</span></code>
+-CADET-Core takes care of the rest</p>
 </section>
 </section>
 

@@ -16,6 +16,8 @@
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Rate Constant Distribution Theory" href="rate_constant_distribution_theory.html" />
+    <link rel="prev" title="Mass action law" href="mass_action_law.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -40,9 +42,19 @@
 
 
 <h3>Navigation</h3>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Modelling</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Reaction models</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization/index.html">Crystallization / Precipitation Models</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
@@ -123,9 +135,10 @@ In this case, the flux has the form</p>
 \[\begin{aligned}
     \nu_j = \frac{\mu_{\mathrm{max},j} c_S}{k_{\mathrm{MM},j} + c_S} \cdot \frac{1}{1 + \sum_i c_{Ii}/k_{I,j,i}}.
 \end{aligned}\]</div>
-<p>Here, :math:k_{mathrm{I},j,i} is the inhibition constant with respect to component :math:i in reaction :math:j.
-If :math:k_{mathrm{I},j,i} leq 0, component :math:i does not act as an inhibitor.</p>
+<p>Here, <span class="math notranslate nohighlight">\(k_{\mathrm{I},j,i}\)</span> is the inhibition constant with respect to component <span class="math notranslate nohighlight">\(i\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span>.
+If <span class="math notranslate nohighlight">\(k_{\mathrm{I},j,i} \leq 0\)</span>, component <span class="math notranslate nohighlight">\(i\)</span> does not act as an inhibitor.</p>
 <p>Note: Currently, the model does not allow substrates to function as inhibitors.</p>
+<p>For more information on model parameters required to define in CADET file format, see <a class="reference internal" href="../../interface/reaction/michaelis_menten_kinetics.html#michaelis-menten-kinetics-config"><span class="std std-ref">Michaelis Menten kinetics</span></a>.</p>
 </section>
 
 

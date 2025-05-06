@@ -16,6 +16,8 @@
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Michaelis Menten kinetics" href="michaelis_menten_kinetics.html" />
+    <link rel="prev" title="Reaction models" href="index.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -40,9 +42,19 @@
 
 
 <h3>Navigation</h3>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Modelling</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Reaction models</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization/index.html">Crystallization / Precipitation Models</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
@@ -114,7 +126,7 @@ The net flux for component <span class="math notranslate nohighlight">\(i\)</spa
 <p>where <span class="math notranslate nohighlight">\(S^l = (s^l_{i,j}) \in \mathbb{R}^{N_{\mathrm{comp}} \times N_{\mathrm{react}}}\)</span> is the stoichiometric matrix, <span class="math notranslate nohighlight">\(\varphi^l_j(c)\)</span> is the net flux of reaction <span class="math notranslate nohighlight">\(j\)</span>, and <span class="math notranslate nohighlight">\(k^l_{\mathrm{fwd},j}\)</span> and <span class="math notranslate nohighlight">\(k^l_{\mathrm{bwd},j}\)</span> are the rate constants.
 The matrices <span class="math notranslate nohighlight">\(E^l_{\mathrm{fwd}} = (e^l_{\mathrm{fwd},\ell,j}) \in \mathbb{R}^{N_{\mathrm{comp}} \times N_{\mathrm{react}}}\)</span> and <span class="math notranslate nohighlight">\(E^l_{\mathrm{bwd}} = (e^l_{\mathrm{bwd},\ell,j}) \in \mathbb{R}^{N_{\mathrm{comp}} \times N_{\mathrm{react}}}\)</span> are usually derived by the order of the reaction, that is,</p>
 <div class="math notranslate nohighlight" id="equation-mrmassactionlawexpmatdefault">
-<span class="eqno">()<a class="headerlink" href="#equation-mrmassactionlawexpmatdefault" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(25)<a class="headerlink" href="#equation-mrmassactionlawexpmatdefault" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
     e^l_{\mathrm{fwd},\ell,j} &amp;= \max(0, -s^l_{\ell,j}), \\
     e^l_{\mathrm{bwd},\ell,j} &amp;= \max(0, s^l_{\ell,j}).
 \end{aligned}\end{split}\]</div>
@@ -132,7 +144,7 @@ For example, consider reactions in the liquid phase of a particle given by</p>
 \end{split}\end{split}\]</div>
 <p>The forward and backward rates of the liquid phase particle reactions can be modified by a power of every bound state in the solid phase of the particle.
 The exponents of these powers are given by the matrices <span class="math notranslate nohighlight">\(E^{ps}_{\mathrm{fwd}} = (e^{ps}_{\mathrm{fwd},m,j})\)</span> and <span class="math notranslate nohighlight">\(E^{ps}_{\mathrm{bwd}} = (e^{ps}_{\mathrm{bwd},m,j})\)</span>, which are both of size <span class="math notranslate nohighlight">\((\sum_i N_{\mathrm{bnd},i}) \times N_{\mathrm{react}}\)</span>.
-Whereas the exponent matrices <span class="math notranslate nohighlight">\(E^{p}_{\mathrm{fwd}}, E^{p}_{\mathrm{bwd}} \in \mathbb{R}^{N_{\mathrm{comp}} \times N_{\mathrm{react}}}\)</span> are initialized based on the stoichiometric matrix <span class="math notranslate nohighlight">\(S^{p} \in \mathbb{R}^{N_{\mathrm{comp}} \times N_{\mathrm{react}}}\)</span>, see Eq.?:eq:<cite>MRMassActionLawExpMatDefault</cite>, the exponent matrices <span class="math notranslate nohighlight">\(E^{ps}_{\mathrm{fwd}}, E^{ps}_{\mathrm{bwd}}\)</span> of the modifier terms default to <span class="math notranslate nohighlight">\(0\)</span>.</p>
+Whereas the exponent matrices <span class="math notranslate nohighlight">\(E^{p}_{\mathrm{fwd}}, E^{p}_{\mathrm{bwd}} \in \mathbb{R}^{N_{\mathrm{comp}} \times N_{\mathrm{react}}}\)</span> are initialized based on the stoichiometric matrix <span class="math notranslate nohighlight">\(S^{p} \in \mathbb{R}^{N_{\mathrm{comp}} \times N_{\mathrm{react}}}\)</span>, see Eq. <a class="reference internal" href="#equation-mrmassactionlawexpmatdefault">25</a>, the exponent matrices <span class="math notranslate nohighlight">\(E^{ps}_{\mathrm{fwd}}, E^{ps}_{\mathrm{bwd}}\)</span> of the modifier terms default to <span class="math notranslate nohighlight">\(0\)</span>.</p>
 <p>Vice versa, the rates of solid phase reactions can be modified by liquid phase concentrations.
 The corresponding exponent matrices <span class="math notranslate nohighlight">\(E^{sp}_{\mathrm{fwd}} = (e^{sp}_{\mathrm{fwd},\ell,j})\)</span> and <span class="math notranslate nohighlight">\(E^{sp}_{\mathrm{bwd}} = (e^{sp}_{\mathrm{bwd},\ell,j})\)</span> are both of size <span class="math notranslate nohighlight">\(N_{\mathrm{comp}} \times N_{\mathrm{react}}\)</span>.</p>
 <div class="math notranslate nohighlight">
@@ -145,7 +157,7 @@ The corresponding exponent matrices <span class="math notranslate nohighlight">\
     \varphi^s_j(c^s, c^p) = k^s_{\mathrm{fwd},j} &amp;\left[\prod_{m=0}^{\sum_{i=0}^{N_{\mathrm{comp}}-1} N_{\mathrm{bnd},i}-1} \left(c^s_{m}\right)^{e^{s}_{\mathrm{fwd},m,j}}\right] \left[\prod_{\ell=0}^{N_{\mathrm{comp}}-1} \left(c^p_{\ell}\right)^{e^{sp}_{\mathrm{fwd},\ell,j}}\right] \\
     - k^p_{\mathrm{bwd},j} &amp;\left[\prod_{m=0}^{\sum_{i=0}^{N_{\mathrm{comp}}-1} N_{\mathrm{bnd},i}-1} \left(c^s_{m}\right)^{e^{s}_{\mathrm{bwd},m,j}}\right] \left[\prod_{\ell=0}^{N_{\mathrm{comp}}-1} \left(c^p_{\ell}\right)^{e^{sp}_{\mathrm{bwd},\ell,j}}\right].
 \end{split}\end{split}\]</div>
-<p>Whereas the exponent matrices <span class="math notranslate nohighlight">\(E^{s}_{\mathrm{fwd}}, E^{s}_{\mathrm{bwd}} \in \mathbb{R}^{(\sum_i N_{\mathrm{bnd},i}) \times N_{\mathrm{react}}}\)</span> are initialized based on the stoichiometric matrix <span class="math notranslate nohighlight">\(S^{s} \in \mathbb{R}^{(\sum_i N_{\mathrm{bnd},i}) \times N_{\mathrm{react}}}\)</span>, see Eq.?:eq:<cite>MRMassActionLawExpMatDefault</cite>, the exponent matrices <span class="math notranslate nohighlight">\(E^{sp}_{\mathrm{fwd}}, E^{sp}_{\mathrm{bwd}}\)</span> of the modifier terms default to <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<p>Whereas the exponent matrices <span class="math notranslate nohighlight">\(E^{s}_{\mathrm{fwd}}, E^{s}_{\mathrm{bwd}} \in \mathbb{R}^{(\sum_i N_{\mathrm{bnd},i}) \times N_{\mathrm{react}}}\)</span> are initialized based on the stoichiometric matrix <span class="math notranslate nohighlight">\(S^{s} \in \mathbb{R}^{(\sum_i N_{\mathrm{bnd},i}) \times N_{\mathrm{react}}}\)</span>, see Eq. <a class="reference internal" href="#equation-mrmassactionlawexpmatdefault">25</a>, the exponent matrices <span class="math notranslate nohighlight">\(E^{sp}_{\mathrm{fwd}}, E^{sp}_{\mathrm{bwd}}\)</span> of the modifier terms default to <span class="math notranslate nohighlight">\(0\)</span>.</p>
 </section>
 <section id="correlation-of-forward-and-backward-rate-constants">
 <h1>Correlation of forward- and backward rate constants<a class="headerlink" href="#correlation-of-forward-and-backward-rate-constants" title="Link to this heading">¶</a></h1>
@@ -171,6 +183,7 @@ The parameters can be decoupled by reparameterization:</p>
     F\left( k_{\mathrm{eq},i}, k_{\mathrm{bwd},i} \right) &amp;= \begin{pmatrix} k_{\mathrm{eq},i} k_{\mathrm{bwd},i} \\ k_{\mathrm{bwd},i} \end{pmatrix} \\
     \text{ with Jacobian } J_F\left( k_{\mathrm{eq},i}, k_{\mathrm{bwd},i} \right) &amp;= \begin{pmatrix} k_{\mathrm{bwd},i} &amp; k_{\mathrm{eq},i} \\ 0 &amp; 1 \end{pmatrix}.
 \end{aligned}\end{split}\]</div>
+<p>For more information on model parameters required to define in CADET file format, see <a class="reference internal" href="../../interface/reaction/mass_action_law.html#mass-action-law-config"><span class="std std-ref">Mass Action Law</span></a>.</p>
 </section>
 
 

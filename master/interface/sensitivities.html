@@ -165,7 +165,7 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">SENS_NAME</span></code></p>
 <blockquote>
-<div><p>Name of the parameter (Note that <code class="docutils literal notranslate"><span class="pre">PAR_RADIUS</span></code> and <code class="docutils literal notranslate"><span class="pre">PAR_CORE_RADIUS</span></code> sensitivities are only available for Finite Volume discretization)</p>
+<div><p>Name of the parameter (Note that <code class="docutils literal notranslate"><span class="pre">PAR_RADIUS</span></code> and <code class="docutils literal notranslate"><span class="pre">PAR_CORERADIUS</span></code> sensitivities are only available for Finite Volume discretization)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
@@ -176,7 +176,7 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">SENS_COMP</span></code></p>
 <blockquote>
-<div><p>Component index (<span class="math notranslate nohighlight">\(-1\)</span> if parameter is independent of components)</p>
+<div><p>Component index (<span class="math notranslate nohighlight">\(-1\)</span> if parameter is independent of components, see the multiplexing of the corresponding parameter, e.g. <cite>FILM_DIFFUSION_MULTIPLEX</cite>)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -188,7 +188,7 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">SENS_PARTYPE</span></code></p>
 <blockquote>
-<div><p>Particle type index (<span class="math notranslate nohighlight">\(-1\)</span> if parameter is independent of particle types)</p>
+<div><p>Particle type index (<span class="math notranslate nohighlight">\(-1\)</span> if parameter is independent of particle types, see the multiplexing of the corresponding parameter, e.g. <cite>PAR_DIFFUSION_MULTIPLEX</cite>)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>

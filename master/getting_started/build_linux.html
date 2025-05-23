@@ -157,9 +157,10 @@ recent version.</p>
 <li><p>Create the directories <code class="docutils literal notranslate"><span class="pre">CADET-Core/build</span></code> and <code class="docutils literal notranslate"><span class="pre">CADET-Core/install</span></code></p></li>
 <li><p>Open a terminal and change to <code class="docutils literal notranslate"><span class="pre">CADET-Core/build</span></code></p></li>
 <li><p>If using MKL, execute <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">MKLROOT=/opt/intel/mkl</span></code></p></li>
-<li><p>To compile:
-- Using standard LAPACK: Execute <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=&quot;../install&quot;</span> <span class="pre">../</span></code></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  - Using MKL (sequential): Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;../install&quot; -DBLA_VENDOR=Intel10_64lp_seq ../`
+<li><p>To compile:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  - Using standard LAPACK: Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;../install&quot; ../`
+
+  - Using MKL (sequential): Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;../install&quot; -DBLA_VENDOR=Intel10_64lp_seq ../`
 
   - Using MKL (parallel): Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;../install&quot; -DBLA_VENDOR=Intel10_64lp ../`
 </pre></div>

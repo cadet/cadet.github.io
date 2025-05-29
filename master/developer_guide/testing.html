@@ -57,6 +57,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#run-the-tests">Run the tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-tests-for-your-model">Adding tests for your model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#maintenance-of-the-tests">Maintenance of the tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-coverage">Test coverage</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release_new_version.html">CADET-Core release</a></li>
@@ -224,6 +225,16 @@ The <code class="docutils literal notranslate"><span class="pre">[CI]</span></co
 <h2>Maintenance of the tests<a class="headerlink" href="#maintenance-of-the-tests" title="Link to this heading">¶</a></h2>
 <p>Some changes will break the tests without them being necessarily wrong. A change in the numerics for instance, will most likely break some tests.
 This can be fixed by carefully adapting the absolute and relative tolerances for the broken tests. These changes should not change the magnitude of the tolerances, except if this is within an acceptable and expected new tolerance).</p>
+</section>
+<section id="test-coverage">
+<h2>Test coverage<a class="headerlink" href="#test-coverage" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Codecov</span></code> is used to analyze test coverage through an automated workflow (see <code class="docutils literal notranslate"><span class="pre">coverage.yml</span></code>), which runs on changes to the <code class="docutils literal notranslate"><span class="pre">test/coverage</span></code> branch and can also be triggered manually (workflow dispatch).
+Coverage reports are automatically uploaded to <code class="docutils literal notranslate"><span class="pre">Codecov</span></code>, providing detailed insights into tested code areas, uncovered lines, and coverage trends over time.
+Tests marked with the <code class="docutils literal notranslate"><span class="pre">[CI]</span></code> flag are automatically included in the coverage analysis; otherwise, they can be added manually in the workflow file.
+The goal is to maintain complete test coverage by ensuring every new functionality or code change includes corresponding tests executed with Codecov.
+The file <code class="docutils literal notranslate"><span class="pre">.codecov.yml</span></code> defines a target coverage percentage. If the coverage falls below that, the workflow fails.
+This percentage should be updated as we continuously expand our test coverage.
+Further, the file defines ignored paths, such as the <cite>ThirdParty</cite> directory as we dont consider test coverage of third party software.</p>
 </section>
 </section>
 

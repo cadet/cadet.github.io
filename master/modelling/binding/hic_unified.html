@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>HIC Unified &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/modelling/binding/hic_unified.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="HIC Water on Hydrophobic Surfaces" href="hic_water_on_hydrophobic_surfaces.html" />
+    <link rel="prev" title="HIC Constant Water Activity" href="hic_constant_water_activity.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Binding models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#equilibrium-constants">Equilibrium constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#linear-driving-force-ldf">Linear Driving Force (LDF)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#reference-concentrations">Reference concentrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature-matrix">Binding model feature matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization/index.html">Crystallization / Precipitation Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../../v5.0.3/index.html">v5.0.3</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="hic_unified.html">master</a></li>
+  <li><a href="../../../chore/developer_guide/index.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+<p>
+  <strong>
+    
+    You're reading the documentation for a development version.
+    For the latest released version, please have a look at <a href="../../../v5.0.3/index.html">v5.0.3</a>.
+    
+  </strong>
+</p>
+
+
+  <section id="hic-unified">
+<span id="hic-unified-model"></span><h1>HIC Unified<a class="headerlink" href="#hic-unified" title="Link to this heading">¶</a></h1>
+<p>This model implements a unified hydrophobic interaction chromatography (HIC) isotherm as described by Jäpel et al. <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id12" title="Ronald Colin Jäpel, Matthias Knödler, Eric von Lieres, and Johannes Felix Buyel. Hydrophobic interaction chromatography (hic) isotherm incorporating salt-dependent water activity enhances model-based analysis of protein elution profiles. Journal of Chromatography A, 1756:466095, 2025. doi:10.1016/j.chroma.2025.466095.">16</a>]</span>.
+It combines the isotherms proposed by Mollerup <span id="id2">[<a class="reference internal" href="../../zbibliography.html#id30" title="Jørgen M. Mollerup. Applied thermodynamics: a new frontier for biotechnology. Fluid Phase Equilibria, 241(1):205-215, 2006. doi:10.1016/j.fluid.2005.12.037.">17</a>]</span>, Deitcher <span id="id3">[<a class="reference internal" href="../../zbibliography.html#id32" title="R.W. Deitcher, J.E. Rome, P.A. Gildea, J.P. O’Connell, and E.J. Fernandez. A new thermodynamic model describes the effects of ligand density and type, salt concentration and protein species in hydrophobic interaction chromatography. Journal of Chromatography A, 1217(2):199-208, 2010. doi:10.1016/j.chroma.2009.07.068.">18</a>]</span> and the SWA isotherm by Jäpel et al. into one isotherm.
+In addition to the first component <span class="math notranslate nohighlight">\(c_{p,0}\)</span>, which represents salt, the second component <span class="math notranslate nohighlight">\(c_{p,1}\)</span> represents another non-binding modifier (e.g., pH).</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+    k_{a,i} &amp;= k_{a,i,0} \exp\left( k_{a,i,lin} ({c_{p,1}}-{c}_{1,ref})\right)\\
+    \nu_i &amp;= \nu_{i,0}  + \nu_{i,lin} ({c_{p,1}}-{c}_{1,ref})\\
+    \beta &amp;= \beta_0 \exp\left(\beta_1 c_{p,0}\right) \\
+    \frac{\mathrm{d}q_i}{\mathrm{d}t} &amp;= k_{a,i} c_{p,i}\exp\left({k_{p,i} c_{p,i}+k_{s,i} c_{p,0}}\right)\left( 1 - \sum_j \frac{q_j}{q_{max,j}} \right)^{\nu_i}
+    -k_{d,i} q_{p,i}(1+\epsilon q_{p,i}) \exp\left(({\rho c_{p,0}})^{\nu_i \beta} \right)
+\end{align}\end{split}\]</div>
+<p>Model Assumptions and Limitations:</p>
+<ul class="simple">
+<li><p>Component <span class="math notranslate nohighlight">\(c_0\)</span> is assumed to be salt with no bound state.</p></li>
+<li><p>Component <span class="math notranslate nohighlight">\(c_1\)</span> is assumed to be a modifying component with no bound state. It is measured relative to a reference concentration of <span class="math notranslate nohighlight">\(c_{1,ref}\)</span>, which defaults to 0.0.</p></li>
+<li><p>Multiple bound states are not supported.</p></li>
+<li><p>Components without bound state (i.e., salt and additional non-binding components) are supported.</p></li>
+</ul>
+<p>For more information on model parameters required to define in CADET file format, see <a class="reference internal" href="../../interface/binding/hic_unified.html#hic-unified-config"><span class="std std-ref">HIC Unified</span></a>.</p>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2025.
+      
+      |
+      <a href="../../_sources/modelling/binding/hic_unified.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -88,6 +88,7 @@
   <li><a href="../../../../v5.0.1/index.html">v5.0.1</a></li>
   <li><a href="../../../../v5.0.2/modelling/binding/affinity_energy_distribution.html">v5.0.2</a></li>
   <li><a href="../../../../v5.0.3/modelling/binding/affinity_energy_distribution.html">v5.0.3</a></li>
+  <li><a href="../../../../v5.0.4/modelling/binding/affinity_energy_distribution.html">v5.0.4</a></li>
 </ul>
 <h3>Branches</h3>
 <ul>
@@ -104,11 +105,20 @@
           <div class="body" role="main">
             
 
+<p>
+  <strong>
+    
+    You're reading the documentation for a development version.
+    For the latest released version, please have a look at <a href="../../../../v5.0.4/modelling/binding/affinity_energy_distribution.html">v5.0.4</a>.
+    
+  </strong>
+</p>
+
 
   <section id="affinity-energy-distribuition">
 <span id="affinity-energy-distribution"></span><h1>Affinity Energy Distribuition<a class="headerlink" href="#affinity-energy-distribuition" title="Link to this heading">¶</a></h1>
-<p>Unlike the multi component Langmuir model and the multi component Bi-Langmuir model that presume a fixed number of discrete binding sites, the affinity energy distribution (AED) model considers a continuous distribution of binding site types on a heterogeneous surface on the energy space <span class="math notranslate nohighlight">\(\ln(K_{eq}) \in \mathbb{R}^{&gt;0}\)</span> (see e.g. <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id19" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, Amsterdam, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>]</span>).
-Assuming a single component system, the AED isotherm reads <span id="id2">[<a class="reference internal" href="../../zbibliography.html#id19" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, Amsterdam, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>]</span>:</p>
+<p>Unlike the multi component Langmuir model and the multi component Bi-Langmuir model that presume a fixed number of discrete binding sites, the affinity energy distribution (AED) model considers a continuous distribution of binding site types on a heterogeneous surface on the energy space <span class="math notranslate nohighlight">\(\ln(K_{eq}) \in \mathbb{R}^{&gt;0}\)</span> (see e.g. <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id21" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>]</span>).
+Assuming a single component system, the AED isotherm reads <span id="id2">[<a class="reference internal" href="../../zbibliography.html#id21" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>]</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
     q(c) = \int_0^{\infty} F(\ln(K_{eq})) \theta(K_{eq}, c) \, \mathrm{d} \ln(K_{eq}),

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Rate Constant Distribution Theory &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/modelling/reaction/rate_constant_distribution_theory.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Thomas Model" href="thomas_model.html" />
+    <link rel="prev" title="Michaelis Menten kinetics" href="michaelis_menten_kinetics.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Reaction models</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization.html">Population Balance Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/modelling/reaction/rate_constant_distribution_theory.html">v5.0.2</a></li>
+  <li><a href="../../../v5.0.3/modelling/reaction/rate_constant_distribution_theory.html">v5.0.3</a></li>
+  <li><a href="rate_constant_distribution_theory.html">v5.0.4</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../../master/modelling/reaction/rate_constant_distribution_theory.html">master</a></li>
+  <li><a href="../../../chore/developer_guide/modelling/reaction/rate_constant_distribution_theory.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+  <section id="rate-constant-distribution-theory">
+<span id="id1"></span><h1>Rate Constant Distribution Theory<a class="headerlink" href="#rate-constant-distribution-theory" title="Link to this heading">¶</a></h1>
+<p>The rate constant distribution (RCD) theory describes a heterogeneous system by assuming a continuum of different adsorption sites, in contrast to the single site presumed in the <a class="reference internal" href="thomas_model.html#thomas-model"><span class="std std-ref">Thomas Model</span></a>.
+The traditional RCD model assumes that each binding site is governed by a Langmuir isotherm model, while in theory any single-component isotherm models can be used.</p>
+<p>The RCD model reads:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \frac{\mathrm{d} q}{\mathrm{d} t} = \int_{0}^{\infty} \int_{0}^{\infty} k_a c(t) (\mathbf{q_{\text{max}}}(k_a, k_d) - \mathbf{q}(k_a, k_d, c, t) ) \mathrm{d} k_a \mathrm{d} k_d  - \int_{0}^{\infty} \int_{0}^{\infty} k_d \mathbf{q}(k_a, k_d, c, t) \mathrm{d} k_a \mathrm{d} k_d.
+\end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(q\)</span> is the total solid phase concentration, <span class="math notranslate nohighlight">\(\mathbf{q_{\text{max}}}(k_a, k_d)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{q}(k_a, k_d, c, t)\)</span> are the binding capacity distribution and the solid phase concentration distribution in the <span class="math notranslate nohighlight">\([k_a^{\text{min}}, k_a^{\text{max}}]\)</span> and <span class="math notranslate nohighlight">\([k_d^{\text{min}}, k_d^{\text{max}}]\)</span> domain, respectively, where <span class="math notranslate nohighlight">\(k_a^{\text{max}}\)</span>, <span class="math notranslate nohighlight">\(k_a^{\text{min}}\)</span> and <span class="math notranslate nohighlight">\(k_d^{\text{max}}\)</span>, <span class="math notranslate nohighlight">\(k_d^{\text{min}}\)</span> are the maximum and minimum adsorption and desorption rate constants considered.</p>
+<p>To solve the above integro-differential equation, the <span class="math notranslate nohighlight">\(k_a\)</span> and <span class="math notranslate nohighlight">\(k_d\)</span> domains can be separately discretized on an equidistant logarithmic grid:
+<span class="math notranslate nohighlight">\(\ln k_a^{\text{min}} = \ln k_a^{1} &lt; \ln k_a^{2} &lt; ...&lt; \ln k_a^{N_{ka}-1} &lt; \ln k_a^{N_{ka}} = \ln k_a^{\text{max}}\)</span>
+and <span class="math notranslate nohighlight">\(\ln k_d^{\text{min}} = \ln k_d^{1} &lt; \ln k_d^{2} &lt; ...&lt; \ln k_d^{N_{kd}-1} &lt; \ln k_d^{N_{kd}} = \ln k_d^{\text{max}}\)</span>.
+<span class="math notranslate nohighlight">\(N_{ka}\)</span> and <span class="math notranslate nohighlight">\(N_{kd}\)</span> are the number of nodes considered for the <span class="math notranslate nohighlight">\(k_a\)</span> and <span class="math notranslate nohighlight">\(k_d\)</span> domains, respectively.</p>
+<p>The discretized RCD model reads:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \frac{\mathrm{d} q}{\mathrm{d} t} = \sum_{i=1}^{N_{ka}} \sum_{j=1}^{N_{kd}} k_{a}^i c (q_{\text{max}}^{i, j} - q^{i,j}) - \sum_{i=1}^{N_{ka}} \sum_{j=1}^{N_{kd}} k_{d}^{j} q^{i,j},
+\end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(q^{i,j}\)</span> and <span class="math notranslate nohighlight">\(q_{\text{max}}^{i, j}\)</span> are the solid phase concentration and binding capacity for binding site <span class="math notranslate nohighlight">\((i,j)\)</span>.</p>
+<p>By definition, the total solid phase concentration <span class="math notranslate nohighlight">\(q\)</span> is a collective value of the amount absorbed by each site, rendering</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    q = \sum_{i=1}^{N_{ka}} \sum_{j=1}^{N_{kd}} q^{i, j}.
+\end{aligned}\]</div>
+<p>Therefore, we obtain a governing equation for each discretized binding site:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \frac{\mathrm{d} q^{i,j}}{\mathrm{d} t} = k_{a}^i c (q_{max}^{i, j} - q^{i,j}) - k_{d}^j q^{i,j}.
+\end{aligned}\]</div>
+<p>This equation is essentially a single-component Langmuir isotherm model.
+Hence, to configure the entire RCD model, one can utilize the <a class="reference internal" href="../binding/multi_component_bi_langmuir.html#multi-component-bi-langmuir-model"><span class="std std-ref">Multi Component Bi-Langmuir</span></a> implementation and the RCD model is thus not implemented as a standalone model.</p>
+<p>The associated mass balance equation is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \frac{\mathrm{d} c}{\mathrm{d} t} =  -\frac{1}{\beta} \sum_{i=1}^{N_{ka}} \sum_{j=1}^{N_{kd}} \frac{\mathrm{d} q^{i,j}}{\mathrm{d} t}.
+\end{aligned}\]</div>
+<p>Similar to the <a class="reference internal" href="thomas_model.html#thomas-model"><span class="std std-ref">Thomas Model</span></a>, the RCD model can also be configured in different unit operation models like <a class="reference internal" href="../unit_operations/cstr.html#cstr-model"><span class="std std-ref">Continuous stirred tank reactor model (CSTR)</span></a> and <a class="reference internal" href="../unit_operations/lumped_rate_model_without_pores.html#lumped-rate-model-without-pores-model"><span class="std std-ref">Lumped rate model without pores (LRM)</span></a>.</p>
+<p>We note that a significant issue with the RCD model is the difficulty in uniquely determining its parameters.
+Therefore, careful handling of the model is essential.</p>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2025.
+      
+      |
+      <a href="../../_sources/modelling/reaction/rate_constant_distribution_theory.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

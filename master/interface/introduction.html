@@ -117,9 +117,9 @@
 <span id="ffintroduction"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h1>
 <section id="global-structure">
 <h2>Global structure<a class="headerlink" href="#global-structure" title="Link to this heading">¶</a></h2>
-<p>The global structure (see <a class="reference internal" href="#ffrootfig"><span class="std std-numref">Fig. 10</span></a>) is divided into three parts: <code class="docutils literal notranslate"><span class="pre">input</span></code>, <code class="docutils literal notranslate"><span class="pre">output</span></code>, and <code class="docutils literal notranslate"><span class="pre">meta</span></code>.
-Every valid CADET file needs an <code class="docutils literal notranslate"><span class="pre">input</span></code> group (see <a class="reference internal" href="#ffinputfig"><span class="std std-numref">Fig. 11</span></a>) which contains all relevant information for simulating a model.
-It does not need an <code class="docutils literal notranslate"><span class="pre">output</span></code> (see <a class="reference internal" href="#ffoutputfig"><span class="std std-numref">Fig. 13</span></a>) or <code class="docutils literal notranslate"><span class="pre">meta</span></code> (see <a class="reference internal" href="#ffrootfig"><span class="std std-numref">Fig. 10</span></a>) group, since those are created when results are written.
+<p>The global structure (see <a class="reference internal" href="#ffrootfig"><span class="std std-numref">Fig. 13</span></a>) is divided into three parts: <code class="docutils literal notranslate"><span class="pre">input</span></code>, <code class="docutils literal notranslate"><span class="pre">output</span></code>, and <code class="docutils literal notranslate"><span class="pre">meta</span></code>.
+Every valid CADET file needs an <code class="docutils literal notranslate"><span class="pre">input</span></code> group (see <a class="reference internal" href="#ffinputfig"><span class="std std-numref">Fig. 14</span></a>) which contains all relevant information for simulating a model.
+It does not need an <code class="docutils literal notranslate"><span class="pre">output</span></code> (see <a class="reference internal" href="#ffoutputfig"><span class="std std-numref">Fig. 16</span></a>) or <code class="docutils literal notranslate"><span class="pre">meta</span></code> (see <a class="reference internal" href="#ffrootfig"><span class="std std-numref">Fig. 13</span></a>) group, since those are created when results are written.
 Whereas the <code class="docutils literal notranslate"><span class="pre">output</span></code> group is solely used as output and holds the results of the simulation, the <code class="docutils literal notranslate"><span class="pre">meta</span></code> group is used for input and output.
 Details such as file format version and simulator version are read from and written to the <code class="docutils literal notranslate"><span class="pre">meta</span></code> group.</p>
 <p>If not explicitly stated otherwise, all datasets are mandatory.
@@ -129,25 +129,25 @@ For the latter, please refer to the corresponding sections in the previous chapt
 <figure class="align-default" id="id1">
 <span id="ffrootfig"></span><img alt="../_images/file_format_structure.png" src="../_images/file_format_structure.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Structure of the groups in the root group of the file format</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Structure of the groups in the root group of the file format</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <span id="ffinputfig"></span><img alt="../_images/file_format_input.png" src="../_images/file_format_input.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">High-level structure of the groups in the input part of the file format</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">High-level structure of the groups in the input part of the file format</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id3">
 <span id="ffmodelunitopcolumnfig"></span><img alt="../_images/file_format_input_model_unit.png" src="../_images/file_format_input_model_unit.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Structure of the groups in a column unit operation (/input/model group)</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Structure of the groups in a column unit operation (/input/model group)</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
 <span id="ffoutputfig"></span><img alt="../_images/file_format_output.png" src="../_images/file_format_output.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Structure of the groups in the output part of the file format</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Structure of the groups in the output part of the file format</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -281,9 +281,6 @@ If a parameter depends on both the component and the section, the ordering is se
     <div class="footer">
       &#169;2008-2025.
       
-      |
-      <a href="../_sources/interface/introduction.rst.txt"
-          rel="nofollow">Page source</a>
     </div>
 
     

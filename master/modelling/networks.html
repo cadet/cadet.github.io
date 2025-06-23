@@ -199,7 +199,7 @@ That is, the flow rate coefficients have to be chosen such that the flow into ev
 </section>
 <section id="solution-of-the-linear-systems">
 <span id="muopnetworklinearsolver"></span><h2>Solution of the linear systems<a class="headerlink" href="#solution-of-the-linear-systems" title="Link to this heading">¶</a></h2>
-<p>Each time step in the simulation requires the solution of a nonlinear system Eq. <a class="reference internal" href="../simulation/index.html#equation-bdfnonlinsystem">28</a> (see Sec. <a class="reference internal" href="../simulation/index.html#simtimeintegration"><span class="std std-ref">Time stepping</span></a>).
+<p>Each time step in the simulation requires the solution of a nonlinear system Eq. <a class="reference internal" href="../simulation/index.html#equation-bdfnonlinsystem">36</a> (see Sec. <a class="reference internal" href="../simulation/index.html#simtimeintegration"><span class="std std-ref">Time stepping</span></a>).
 The nonlinear problem is solved by a Newton iteration, which, in turn, requires the solution of a linear system that essentially consists of the Jacobians of the unit operations and some coupling matrices from Eqs. <a class="reference internal" href="#equation-networkinletconnection">26</a> and <a class="reference internal" href="#equation-networkconnection">27</a>.</p>
 <p>These linear systems are either solved in parallel or sequentially. The parallel method first solves each unit operation (in parallel) to compute the solution at its outlet.
 Using these values, the inlets are adjusted and the unit operations are solved again.
@@ -229,9 +229,6 @@ If some network configurations contain cycles, the parallel method is chosen for
     <div class="footer">
       &#169;2008-2025.
       
-      |
-      <a href="../_sources/modelling/networks.rst.txt"
-          rel="nofollow">Page source</a>
     </div>
 
     

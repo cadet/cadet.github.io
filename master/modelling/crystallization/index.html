@@ -11,11 +11,12 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/master/modelling/crystallization/index.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Simulation" href="../../simulation/index.html" />
+    <link rel="next" title="Primary Particle Formation" href="primary_particle_formation.html" />
     <link rel="prev" title="Networks of unit operations" href="../networks.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -48,7 +49,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Crystallization / Precipitation Models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Crystallization / Precipitation Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="primary_particle_formation.html">Primary Particle Formation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aggregation.html">Aggregation Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fragmentation.html">Fragmentation Models</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
@@ -109,17 +115,24 @@
 
   <section id="crystallization-precipitation-models">
 <span id="ffcrystallization"></span><h1>Crystallization / Precipitation Models<a class="headerlink" href="#crystallization-precipitation-models" title="Link to this heading">¶</a></h1>
-<p>CADET features various crystallization / precipitation mechanisms:</p>
+<p>CADET-Core features various crystallization / precipitation mechanisms, modeled using population balance models (PBM). These models are defined by a particle-number continuity equation which describes the evolution of the number density <span class="math notranslate nohighlight">\(n\)</span> of the particles over time <span class="math notranslate nohighlight">\(t\)</span> and with respect to size, the so-called internal coordinate <span class="math notranslate nohighlight">\(x\)</span>, and external coordinate <span class="math notranslate nohighlight">\(z\)</span>.
+The external coordinate can be a characteristic dimension of the reactor itself, including its axial length.</p>
+<p>The PBM in CADET-Core are implemented in a modular manner and can be used in any unit operation that supports reactions.
+Typical applications consider crystallization in a CSTR or, to model continuous processes, in a Dispersive Plug-Flow Reactor (DPFR), which can be described by the LRM without solid phase.</p>
+<p>For detailed information on the PBM implemented in CADET-Core, please refer to <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id5" title="Wendi Zhang, Todd Przybycien, Johannes Schmölder, Samuel Leweke, and Eric von Lieres. Solving crystallization/precipitation population balance models in cadet, part i: nucleation growth and growth rate dispersion in batch and continuous modes on nonuniform grids. Computers &amp; Chemical Engineering, pages 108612, 2024. doi:10.1016/j.compchemeng.2024.108612.">29</a>]</span> and <span id="id2">[<a class="reference internal" href="../../zbibliography.html#id4" title="Wendi Zhang, Todd Przybycien, Jan Michael Breuer, and Eric von Lieres. Solving crystallization/precipitation population balance models in cadet, part ii: size-based smoluchowski coagulation and fragmentation equations in batch and continuous modes. Computers &amp; Chemical Engineering, 192:108860, 2025. doi:10.1016/j.compchemeng.2024.108860.">30</a>]</span>.
+A concise overview of the models is provided in the following sections:</p>
 <blockquote>
-<div><ul class="simple">
-<li><p><a class="reference internal" href="population_balance_model.html#pbm-model"><span class="std std-ref">Population Balance Models</span></a></p></li>
-<li><p><a class="reference internal" href="aggregation.html#aggregation-model"><span class="std std-ref">Aggregation Models</span></a></p></li>
-<li><p><a class="reference internal" href="fragmentation.html#fragmentation-model"><span class="std std-ref">Fragmentation Models</span></a></p></li>
+<div><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="primary_particle_formation.html">Primary Particle Formation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aggregation.html">Aggregation Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fragmentation.html">Fragmentation Models</a></li>
 </ul>
-<p>Additionally, any combination of these models is featured.
+</div>
+<p>Additionally, any combination of these models is also supported.
 Further, any of these crystallization precipitation models can be combined with any of the transport models listed among the <a class="reference internal" href="../unit_operations/index.html#unit-operation-models"><span class="std std-ref">Unit operation models</span></a>.
 To this end, most common use-cases consider a <a class="reference internal" href="../unit_operations/cstr.html#cstr-model"><span class="std std-ref">Continuous stirred tank reactor model (CSTR)</span></a> or a dispersive plug-flow reactor (which can be modeled with the <a class="reference internal" href="../unit_operations/lumped_rate_model_without_pores.html#lumped-rate-model-without-pores-model"><span class="std std-ref">Lumped rate model without pores (LRM)</span></a>).</p>
-<p>For detailed information on the crystallization models implemented in CADET, including nucleation, growth, aggregation and fragmentation, please refer to <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id5" title="Wendi Zhang, Todd Przybycien, Johannes Schmölder, Samuel Leweke, and Eric von Lieres. Solving crystallization/precipitation population balance models in cadet, part i: nucleation growth and growth rate dispersion in batch and continuous modes on nonuniform grids. Computers &amp; Chemical Engineering, pages 108612, 2024. doi:10.1016/j.compchemeng.2024.108612.">29</a>]</span> and <span id="id2">[<a class="reference internal" href="../../zbibliography.html#id4" title="Wendi Zhang, Todd Przybycien, Jan Michael Breuer, and Eric von Lieres. Solving crystallization/precipitation population balance models in cadet, part ii: size-based smoluchowski coagulation and fragmentation equations in batch and continuous modes. Computers &amp; Chemical Engineering, 192:108860, 2025. doi:10.1016/j.compchemeng.2024.108860.">30</a>]</span>.</p>
+<p>For detailed information on the crystallization models implemented in CADET, including PBM, aggregation and fragmentation, please refer to <span id="id3">[<a class="reference internal" href="../../zbibliography.html#id5" title="Wendi Zhang, Todd Przybycien, Johannes Schmölder, Samuel Leweke, and Eric von Lieres. Solving crystallization/precipitation population balance models in cadet, part i: nucleation growth and growth rate dispersion in batch and continuous modes on nonuniform grids. Computers &amp; Chemical Engineering, pages 108612, 2024. doi:10.1016/j.compchemeng.2024.108612.">29</a>]</span> and <span id="id4">[<a class="reference internal" href="../../zbibliography.html#id4" title="Wendi Zhang, Todd Przybycien, Jan Michael Breuer, and Eric von Lieres. Solving crystallization/precipitation population balance models in cadet, part ii: size-based smoluchowski coagulation and fragmentation equations in batch and continuous modes. Computers &amp; Chemical Engineering, 192:108860, 2025. doi:10.1016/j.compchemeng.2024.108860.">30</a>]</span>.</p>
 </div></blockquote>
 </section>
 
@@ -134,9 +147,6 @@ To this end, most common use-cases consider a <a class="reference internal" href
     <div class="footer">
       &#169;2008-2025.
       
-      |
-      <a href="../../_sources/modelling/crystallization/index.rst.txt"
-          rel="nofollow">Page source</a>
     </div>
 
     

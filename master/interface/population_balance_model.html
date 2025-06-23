@@ -123,24 +123,24 @@
 
   <section id="crystallization-precipitation-models">
 <span id="pbm-config"></span><h1>Crystallization / Precipitation models<a class="headerlink" href="#crystallization-precipitation-models" title="Link to this heading">¶</a></h1>
-<p>Crystallization / Precipitation in CADET can be modeled by <a class="reference internal" href="../modelling/crystallization/population_balance_model.html#pbm-model"><span class="std std-ref">Population Balance Models</span></a>, <a class="reference internal" href="../modelling/crystallization/aggregation.html#aggregation-model"><span class="std std-ref">Aggregation Models</span></a>, <a class="reference internal" href="../modelling/crystallization/fragmentation.html#fragmentation-model"><span class="std std-ref">Fragmentation Models</span></a>, as well as their combinations.
+<p>Crystallization / Precipitation in CADET can be modeled by <a class="reference internal" href="../modelling/crystallization/primary_particle_formation.html#primary-particle-formation"><span class="std std-ref">Primary Particle Formation</span></a>, <a class="reference internal" href="../modelling/crystallization/aggregation.html#aggregation"><span class="std std-ref">Aggregation Models</span></a>, <a class="reference internal" href="../modelling/crystallization/fragmentation.html#fragmentation"><span class="std std-ref">Fragmentation Models</span></a>, as well as their combinations.
 The configuration is described for all three modules in the following.
 For more information on the model equations, please refer to <a class="reference internal" href="../modelling/crystallization/index.html#ffcrystallization"><span class="std std-ref">Crystallization / Precipitation Models</span></a>.</p>
 <p>Note that any of these models can be used in any unit operation that supports reactions.</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>By setting the <code class="docutils literal notranslate"><span class="pre">NCOMP</span></code> field, you specify the number of FV cells for the internal coordinate:
-If the PBM is considered, we have two components that account for the solute <span class="math notranslate nohighlight">\(c\)</span> and solubility <span class="math notranslate nohighlight">\(c_\text{eq}\)</span>.
+If primary particle formation is considered, we have two components that account for the solute <span class="math notranslate nohighlight">\(c\)</span> and solubility <span class="math notranslate nohighlight">\(c_\text{eq}\)</span>.
 Note that the first component must be solute <span class="math notranslate nohighlight">\(c\)</span> and the last component must be the solubility <span class="math notranslate nohighlight">\(c_\text{eq}\)</span>.
-Additionally, we discretize the particle size domain (internal coordinate) by some customary FV methods, giving us a finite set of particle sizes under consideration <span class="math notranslate nohighlight">\(\{x_1, \dots, x_{N_x}\}\)</span>.
-Every particle size considered is treated as an individual component of the unit operation and the field <code class="docutils literal notranslate"><span class="pre">NCOMP</span></code> of that unit operation in which the crystallization happens, must be specified accordingly as <span class="math notranslate nohighlight">\(N_x\)</span> or <span class="math notranslate nohighlight">\(N_x + 2\)</span> if the model includes the PBM.</p>
+Additionally, we discretize the particle size domain (internal coordinate) using customary FV methods, giving us a finite set of particle sizes under consideration <span class="math notranslate nohighlight">\(\{x_1, \dots, x_{N_x}\}\)</span>.
+Every particle size considered is treated as an individual component of the unit operation and the field <code class="docutils literal notranslate"><span class="pre">NCOMP</span></code> of that unit operation in which the crystallization happens, must be specified accordingly as <span class="math notranslate nohighlight">\(N_x\)</span> or <span class="math notranslate nohighlight">\(N_x + 2\)</span> if the model includes primary particle formation.</p>
 </div>
 <p>Example code for configuring the crystallization models is available in <a class="reference external" href="https://github.com/cadet/CADET-Verification/">CADET-Verification</a> .</p>
 <section id="group-input-model-unit-xxx">
 <h2>Group /input/model/unit_XXX<a class="headerlink" href="#group-input-model-unit-xxx" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NCOMP</span></code></p>
 <blockquote>
-<div><p>Number of components, which is defined by the number of considered particle sizes (i.e. discretization with FV cells) plus, in the case that the PBM is employed, 2 (for solute and solubility).</p>
+<div><p>Number of components, which is defined by the number of considered particle sizes (i.e. discretization with FV cells) plus, in the case that primary particle formation is employed, 2 (for solute and solubility).</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -156,7 +156,7 @@ Every particle size considered is treated as an individual component of the unit
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> String</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{ CRYSTALLIZATION \}\)</span></p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{ CRYSTALLIZATION }\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>
@@ -172,13 +172,13 @@ Every particle size considered is treated as an individual component of the unit
 <div><p>Crystallization mode, which determines the exact model equation to be employed.</p>
 </div></blockquote>
 <ol class="arabic simple">
-<li><p>Pure PBM, as described in <a class="reference internal" href="../modelling/crystallization/population_balance_model.html#pbm-model"><span class="std std-ref">Population Balance Models</span></a>.</p></li>
-<li><p>Pure aggregation, as described in</p></li>
-<li><p>Combined PBM and aggregation.</p></li>
-<li><p>Pure fragmentation, as described in</p></li>
-<li><p>Combined PBM and fragmentation.</p></li>
+<li><p>Pure primary particle formation, as described in <a class="reference internal" href="../modelling/crystallization/primary_particle_formation.html#primary-particle-formation"><span class="std std-ref">Primary Particle Formation</span></a>.</p></li>
+<li><p>Pure aggregation, as described in <a class="reference internal" href="../modelling/crystallization/aggregation.html#aggregation"><span class="std std-ref">Aggregation Models</span></a>.</p></li>
+<li><p>Combined primary particle formation and aggregation.</p></li>
+<li><p>Pure fragmentation, as described in <a class="reference internal" href="../modelling/crystallization/fragmentation.html#fragmentation"><span class="std std-ref">Fragmentation Models</span></a>.</p></li>
+<li><p>Combined primary particle formation and fragmentation.</p></li>
 <li><p>Combined aggregation and fragmentation.</p></li>
-<li><p>Combined PBM, aggregation, and fragmentation.</p></li>
+<li><p>Combined primary particle formation, aggregation, and fragmentation.</p></li>
 </ol>
 <blockquote>
 <div><table class="docutils align-default">
@@ -203,8 +203,8 @@ Every particle size considered is treated as an individual component of the unit
 </tbody>
 </table>
 </div></blockquote>
-<section id="population-mass-balance-input-parameters">
-<h3>Population Mass Balance input parameters<a class="headerlink" href="#population-mass-balance-input-parameters" title="Link to this heading">¶</a></h3>
+<section id="population-and-mass-balance-input-parameters">
+<h3>Population and Mass Balance input parameters<a class="headerlink" href="#population-and-mass-balance-input-parameters" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">CRY_NUCLEI_MASS_DENSITY</span></code></p>
 <blockquote>
 <div><p>Nulcei mass density</p>
@@ -351,7 +351,7 @@ Every particle size considered is treated as an individual component of the unit
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">CRY_K</span></code></p>
 <blockquote>
-<div><p>Defines constant <span class="math notranslate nohighlight">\(k\)</span> used to determine the secondary nucleation</p>
+<div><p>Defines constant <span class="math notranslate nohighlight">\(k\)</span> used to determine the secondary nucleation, usually set to <span class="math notranslate nohighlight">\(\geq 1\)</span></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -468,9 +468,6 @@ Every particle size considered is treated as an individual component of the unit
     <div class="footer">
       &#169;2008-2025.
       
-      |
-      <a href="../_sources/interface/population_balance_model.rst.txt"
-          rel="nofollow">Page source</a>
     </div>
 
     

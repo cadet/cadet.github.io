@@ -56,7 +56,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../crystallization.html">Population Balance Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization/index.html">Crystallization / Precipitation Models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
@@ -117,7 +117,7 @@
 
   <section id="freundlich-ldf">
 <span id="freundlich-ldf-model"></span><h1>Freundlich LDF<a class="headerlink" href="#freundlich-ldf" title="Link to this heading">¶</a></h1>
-<p>The Freundlich isotherm model is an empirical model that considers changes in the equilibrium constant of the binding process due to the heterogeneity of the surface and the variation of the interaction strength <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id48" title="Benedikt M. Aumeier, Anh H. Q. Dang, Burkhard Ohs, Süleyman Yüce, and Matthias Wessling. Aqueous-phase temperature swing adsorption for pesticide removal. Environmental Science &amp; Technology, 53(2):919–927, 2019. URL: https://doi.org/10.1021/acs.est.8b05873, arXiv:https://doi.org/10.1021/acs.est.8b05873, doi:10.1021/acs.est.8b05873.">11</a>, <a class="reference internal" href="../../zbibliography.html#id47" title="Ashok K. Singh. Chapter 8 - nanoparticle ecotoxicology. In Ashok K. Singh, editor, Engineered Nanoparticles, pages 343–450. Academic Press, 2016. URL: https://www.sciencedirect.com/science/article/pii/B978012801406600008X, doi:https://doi.org/10.1016/B978-0-12-801406-6.00008-X.">12</a>]</span>.
+<p>The Freundlich isotherm model is an empirical model that considers changes in the equilibrium constant of the binding process due to the heterogeneity of the surface and the variation of the interaction strength <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id48" title="Benedikt M. Aumeier, Anh H. Q. Dang, Burkhard Ohs, Süleyman Yüce, and Matthias Wessling. Aqueous-phase temperature swing adsorption for pesticide removal. Environmental Science &amp; Technology, 53(2):919–927, 2019. URL: https://doi.org/10.1021/acs.est.8b05873, arXiv:https://doi.org/10.1021/acs.est.8b05873, doi:10.1021/acs.est.8b05873.">12</a>, <a class="reference internal" href="../../zbibliography.html#id47" title="Ashok K. Singh. Chapter 8 - nanoparticle ecotoxicology. In Ashok K. Singh, editor, Engineered Nanoparticles, pages 343–450. Academic Press, 2016. URL: https://www.sciencedirect.com/science/article/pii/B978012801406600008X, doi:https://doi.org/10.1016/B978-0-12-801406-6.00008-X.">13</a>]</span>.
 This variant of the model is based on the linear driving force approximation (see section <a class="reference internal" href="index.html#ldf-model"><span class="std std-ref">Linear Driving Force (LDF)</span></a>) and is given as</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
@@ -125,9 +125,10 @@ This variant of the model is based on the linear driving force approximation (se
 \end{aligned}\]</div>
 <p>No interaction between the components is considered when the model has multiple components.
 One of the limitation of this isotherm is the first order Jacobian <span class="math notranslate nohighlight">\(\left(\frac{dq^*}{dc_p}\right)\)</span> tends to infinity as <span class="math notranslate nohighlight">\(c_{p} \rightarrow 0\)</span> for <span class="math notranslate nohighlight">\(n&gt;1\)</span>.
-To address this issue an approximation of isotherm is considered near the origin.
-This approximation matches the isotherm in such a way that  <span class="math notranslate nohighlight">\(q=0\)</span> at <span class="math notranslate nohighlight">\(c_p=0\)</span> and also matches the first derivative of the istotherm at <span class="math notranslate nohighlight">\(c_p = \varepsilon\)</span>, where <span class="math notranslate nohighlight">\(\varepsilon\)</span> is a very small number, for example <span class="math notranslate nohighlight">\(1e-14\)</span>.
-The form of approximation and its derivative is given below for <span class="math notranslate nohighlight">\(c_p &lt; \varepsilon\)</span> and <span class="math notranslate nohighlight">\(n&gt;1\)</span>:</p>
+Additionally, the isotherm is undefined for <span class="math notranslate nohighlight">\(c_{p} &lt; 0\)</span> if <span class="math notranslate nohighlight">\(\frac{1}{n_i}\)</span> can be expressed as <span class="math notranslate nohighlight">\(\frac{p}{q}\)</span> with <span class="math notranslate nohighlight">\(p,q \in \mathbb{N}\)</span> where <span class="math notranslate nohighlight">\(q\)</span> is an even number.
+To address these issues an approximation of the isotherm is considered below a threshold concentration <span class="math notranslate nohighlight">\(c_p &lt; \varepsilon\)</span>.
+This approximation matches the isotherm in such a way that  <span class="math notranslate nohighlight">\(q=0\)</span> at <span class="math notranslate nohighlight">\(c_p=0\)</span> and also matches the value and the first derivative of the isotherm at <span class="math notranslate nohighlight">\(c_p = \varepsilon\)</span>, where <span class="math notranslate nohighlight">\(\varepsilon\)</span> is a very small number, for example <span class="math notranslate nohighlight">\(1e-14\)</span>.
+The form of approximation and its derivative is given below for <span class="math notranslate nohighlight">\(c_p &lt; \varepsilon\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}\begin{aligned}
         q^* = \alpha_0+\alpha_1 c+\alpha_2 c_p^2
@@ -143,8 +144,7 @@ The form of approximation and its derivative is given below for <span class="mat
 \[\begin{aligned}
         \alpha_2 = \frac{1-n}{n}k_f \varepsilon^{\frac{1-2 n}{n}}
 \end{aligned}\]</div>
-<p>This approximation can be used for any pore phase cocentration <span class="math notranslate nohighlight">\(c_p &lt; \varepsilon\)</span> given <span class="math notranslate nohighlight">\(n&gt;1\)</span>.
-For the case, when <span class="math notranslate nohighlight">\(n \le 1\)</span> no special treament near the origin is required.
+<p>This approximation can be used for any pore phase concentration <span class="math notranslate nohighlight">\(c_p &lt; \varepsilon\)</span> given <span class="math notranslate nohighlight">\(n&gt;1\)</span>.
 For more information on model parameters required to define in CADET file format, see <a class="reference internal" href="../../interface/binding/freundlich_ldf.html#freundlich-ldf-config"><span class="std std-ref">Freundlich LDF</span></a>.</p>
 </section>
 
@@ -159,6 +159,9 @@ For more information on model parameters required to define in CADET file format
     <div class="footer">
       &#169;2008-2025.
       
+      |
+      <a href="../../_sources/modelling/binding/freundlich_ldf.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

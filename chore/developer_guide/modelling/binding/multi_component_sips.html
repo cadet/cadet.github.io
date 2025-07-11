@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Multi Component Sips &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/modelling/binding/multi_component_sips.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Multi Component Spreading" href="multi_component_spreading.html" />
+    <link rel="prev" title="Multi Component Linear Driving Force Freundlich" href="multi_component_ldf_freundlich.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Binding models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#equilibrium-constants">Equilibrium constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#linear-driving-force-ldf">Linear Driving Force (LDF)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#reference-concentrations">Reference concentrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature-matrix">Binding model feature matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization/index.html">Crystallization / Precipitation Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../../../v5.0.3/index.html">v5.0.3</a></li>
+  <li><a href="../../../../v5.0.4/index.html">v5.0.4</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../../../master/modelling/binding/multi_component_sips.html">master</a></li>
+  <li><a href="multi_component_sips.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+<p>
+  <strong>
+    
+    You're reading the documentation for a development version.
+    For the latest released version, please have a look at <a href="../../../../v5.0.4/index.html">v5.0.4</a>.
+    
+  </strong>
+</p>
+
+
+  <section id="multi-component-sips">
+<span id="multi-component-sips-model"></span><h1>Multi Component Sips<a class="headerlink" href="#multi-component-sips" title="Link to this heading">¶</a></h1>
+<p>The Sips binding model is a combination of the <a class="reference internal" href="freundlich_ldf.html#freundlich-ldf-model"><span class="std std-ref">Freundlich</span></a> and the <a class="reference internal" href="multi_component_langmuir.html#multi-component-langmuir-model"><span class="std std-ref">Langmuir adsorption model</span></a>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \frac{\mathrm{d} q_i}{\mathrm{d} t} = k_{a,i}\: \left( \frac{c_{p,i}}{ c_{\text{ref}} }\right)^{1 / n_i}\: q_{\text{max},i} \left( 1 - \sum_{j=0}^{N_{\text{comp}} - 1} \frac{q_j}{q_{\text{max},j}} \right) - k_{d,i} \left( \frac{q_i}{q_{\text{ref}}} \right) &amp;&amp; i = 0, \dots, N_{\text{comp}} - 1.
+\end{aligned}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(c_{\text{ref}}\)</span> is a <a class="reference internal" href="index.html#reference-concentrations"><span class="std std-ref">reference concentration</span></a>, <span class="math notranslate nohighlight">\(n_i\)</span> is the Freundlich exponent, <span class="math notranslate nohighlight">\(k_{a,i}, k_{d,i}\)</span> are the adsorption and desorption rates, and <span class="math notranslate nohighlight">\(q_{\text{max},j}\)</span> is the adsorption capacity.</p>
+<p>As for the <a class="reference internal" href="freundlich_ldf.html#freundlich-ldf-model"><span class="std std-ref">Freundlich</span></a> isotherm, the first order Jacobian <span class="math notranslate nohighlight">\(\left(\frac{dq^*}{dc_p}\right)\)</span> tends to infinity as <span class="math notranslate nohighlight">\(c_{p} \rightarrow 0\)</span> for <span class="math notranslate nohighlight">\(n&gt;1\)</span>.
+Additionally, the isotherm is undefined for <span class="math notranslate nohighlight">\(c_{p} &lt; 0\)</span> if <span class="math notranslate nohighlight">\(\frac{1}{n_i}\)</span> can be expressed as <span class="math notranslate nohighlight">\(\frac{p}{q}\)</span> with <span class="math notranslate nohighlight">\(p,q \in \mathbb{N}\)</span> where <span class="math notranslate nohighlight">\(q\)</span> is an even number.
+Negative concentrations can arise during simulations due to numerical fluctuations.
+To address these issues an approximation of the isotherm is considered below a threshold concentration <span class="math notranslate nohighlight">\(c_p &lt; \varepsilon\)</span>.
+This approximation matches the isotherm in such a way that <span class="math notranslate nohighlight">\(q=0\)</span> at <span class="math notranslate nohighlight">\(c_p=0\)</span> and also matches the value and the first derivative of the istotherm at <span class="math notranslate nohighlight">\(c_p = \varepsilon\)</span>, where <span class="math notranslate nohighlight">\(\varepsilon\)</span> is a very small number, for example <span class="math notranslate nohighlight">\(1e-10\)</span>.
+The form of approximation and its derivative is given below for <span class="math notranslate nohighlight">\(c_p &lt; \varepsilon\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    c_{p,i,lin}  &amp;= \left(\frac{\varepsilon}{c_{p,\text{ref}}}\right)^{\frac{1}{n_i} - 2} \frac{c_{p,i}}{{c_{p,\text{ref}}}^2} \left( \left(2-\frac{1}{n_i}\right)\varepsilon + c_{p,i}\left(\frac{1}{n}-1\right) \right)  \\
+    \frac{\mathrm{d}q_i}{\mathrm{d}t} &amp;= k_{a,i} c_{p,i,lin} q_{\text{max},i} \left( 1 - \sum_j \frac{q_j}{q_{\text{max},j}} \right) - k_{d,i} \frac{q_i}{q_{i,\text{ref}}}
+\end{aligned}\end{split}\]</div>
+<p>For more information on model parameters required to define in CADET file format, see <a class="reference internal" href="../../interface/binding/multi_component_sips.html#multi-component-sips-config"><span class="std std-ref">Multi Component Sips</span></a>.
+For more information on the model and its origin, please refer to <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id54" title="Robert Sips. On the Structure of a Catalyst Surface. The Journal of Chemical Physics, 16(5):490–495, 1948-05. doi:https://doi.org/10.1063/1.1746922.">25</a>]</span>.</p>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2025.
+      
+      |
+      <a href="../../_sources/modelling/binding/multi_component_sips.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

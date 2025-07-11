@@ -50,13 +50,14 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Developer Guide</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="cadet_python.html">CADET-Python Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cadet_core_architecture.html">Software Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="build_options.html">CADET build options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_options.html">CADET-Core build options</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model_expansion.html">Model Expansion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="debugging.html">CADET-Core debugging</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">CADET-Core testing</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#run-the-tests">Run the tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-tests-for-your-model">Adding tests for your model</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#maintenance-of-the-tests">Maintenance of the tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-coverage">Test coverage</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release_new_version.html">CADET-Core release</a></li>
@@ -120,7 +121,7 @@
 <section id="run-the-tests">
 <h2>Run the tests<a class="headerlink" href="#run-the-tests" title="Link to this heading">¶</a></h2>
 <p>If you want to run tests in CADET-Core you need to ensure that in the <cite>CMakeSettings.json</cite> file:</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><dl class="simple">
 <dt>The <code class="docutils literal notranslate"><span class="pre">cmakeCommandArgs</span></code> contain:</dt><dd><ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-DENABLE_TESTS=ON</span></code> to enable building the test runner</p></li>
@@ -129,28 +130,41 @@
 </dd>
 </dl>
 </li>
-</ol>
-<p>2. The <cite>variables</cite> field contains:
-.. code-block:: json</p>
-<blockquote>
-<div><dl class="simple">
-<dt>{</dt><dd><p>“name”: “HDF5_USE_STATIC_LIBRARIES”,
-“value”: “1”,
-“type”: “STRING”</p>
+<li><dl>
+<dt>The <cite>variables</cite> field contains:</dt><dd><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HDF5_USE_STATIC_LIBRARIES&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUILD_SHARED_LIBS&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </dd>
 </dl>
-<p>},
-{</p>
-<blockquote>
-<div><p>“name”: “BUILD_SHARED_LIBS”,
-“value”: “0”,
-“type”: “STRING”</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
+</li>
+</ol>
 <p>After building, you can find the testRunner.exe in <code class="docutils literal notranslate"><span class="pre">CADET-root/build/test/Release</span></code> or, when build in debug mode, in <code class="docutils literal notranslate"><span class="pre">CADET-root/build/test/Debug</span></code>.</p>
 <p>To debug specific tests (with flag [testHere]) from the Visual Studio IDE, you can add the following configuration to the launch.vs.json file mentioned in the <a class="reference internal" href="debugging.html#debugging"><span class="std std-ref">CADET-Core debugging</span></a> section:</p>
-<p>Select the testRunner.exe in the startup item dropdown menu and you can start debugging tests with the specified flag.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;project&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CMakeLists.txt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;projectTarget&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;testRunner.exe (test/Debug/testRunner.exe)&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;testRunner.exe (test/Debug/testRunner.exe)&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;[testHere]&quot;</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Select the testRunner.exe in the startup item dropdown menu and you can start debugging tests with the specified flag.
+To see the options, run <cite>testrunner –help</cite>. To get the available test flags for instance, execute the testrunner with the corresponding option, i.e. <cite>testrunner -t</cite>.
+You can provide multiple arguments like <cite>“[testHere][testHere2]”</cite> to run all test that have both flags, or with comma separation <cite>“[testHere],[testHere2]”</cite> to run all tests with the first and/or the second flag.</p>
 </section>
 <section id="adding-tests-for-your-model">
 <h2>Adding tests for your model<a class="headerlink" href="#adding-tests-for-your-model" title="Link to this heading">¶</a></h2>
@@ -161,62 +175,7 @@ Here, we distinguish between unit tests and numerical reference tests.</p>
 <p>Unit tests are designed to verify the correctness of individual units or components of code in isolation.
 Unit tests in CADET-Core typically encompass tests for the Jacobian implementation and consistent initialization of the model, which can be adapted from corresponding existing tests.
 Testing the Jacobian typically involves comparing the analytical Jacobian to the AD Jacobian to verify that the residual implementation is consistent to the analytical Jacobian.
-To this end, it might be necessary to increase the maximum number of AD directions for your test case, which can be done via the cmake argument <cite>NUM_MAX_AD_DIRS</cite>, as described in the <a class="reference internal" href="build_options.html#build-options"><span class="std std-ref">CADET build options</span></a>.</p>
-</section>
-<section id="binding-tests">
-<h3>Binding tests<a class="headerlink" href="#binding-tests" title="Link to this heading">¶</a></h3>
-<p>Binding tests check the correct and consistent implementation of a binding model.
-For binding tests, CADET-Core provides a set of tests that check the correct implementation of the residual and Jacobian functions of the binding model.
-These tests are located in the file <cite>testBindingModelTests.cpp</cite>.
-To test the new binding model with the implemented tests, you need to add a new configuration setup to the <cite>testBindingModels.cpp</cite> file.
-In the general framework, you test a configuration where all components have at least one binding side with a model configuration where an additional component has no binding side.
-These cases are tested against an external configuration.
-An example configuration for two components would look like this
-.. code-block:: JSON</p>
-<blockquote>
-<div><blockquote>
-<div><p>{</p>
-</div></blockquote>
-<dl>
-<dt>CADET_BINDINGTEST(“NAME_OF_YOUR_BINDING_MODEL”, “EXT_NAME_OF_YOUR_BINDING_MODEL”, (b1,b2) ,(b1,0,b2), (c1, c2, q1, q2), (c1, c2, c3, q1, q2) </dt><dd><dl class="simple">
-<dt>R”json(“PARAMETER_NAME1”: [p1,p2],</dt><dd><p>“PARAMETER_NAME2”: [r1,r2])json”, </p>
-</dd>
-<dt>R”json(“PARAMETER_NAME1”: [p1,p2,p3],</dt><dd><p>“PARAMETER_NAME2”: [r1,r2,r3])json”, </p>
-</dd>
-<dt>R”json(“EXT_PARAMETER_NAME1”: [p1,p2],</dt><dd><dl class="simple">
-<dt>(“EXT_PARAMETER_NAME1_T”: [p_T1,p_T2],</dt><dd><p>“EXT_PARAMETER_NAME1_TT”: [p_TT1,p_TT2],
-“EXT_PARAMETER_NAME1_TTT”: [p_TTT1,p_TTT2],
-“EXT_PARAMETER_NAME2”: [r1,r2],
-“EXT_PARAMETER_NAME2_T”: [r_T1,r_T2],
-“EXT_PARAMETER_NAME2_TT”: [r_TT1,r_TT2],
-“EXT_PARAMETER_NAME2_TTT”: [r_TTT1,r_TTT2],)json”, </p>
-</dd>
-</dl>
-</dd>
-<dt>R”json(“EXT_PARAMETER_NAME1”: [p1,p2,p3],</dt><dd><dl class="simple">
-<dt>(“EXT_PARAMETER_NAME1_T”: [p_T1,p_T2,p_T3],</dt><dd><p>“EXT_PARAMETER_NAME1_TT”: [p_TT1,p_TT2,p_TT3],
-“EXT_PARAMETER_NAME1_TTT”: [p_TTT1,p_TTT2,P_TTT3],
-“EXT_PARAMETER_NAME2”: [r1,r2,r3],
-“EXT_PARAMETER_NAME2_T”: [r_T1,r_T2,r_T3],
-“EXT_PARAMETER_NAME2_TT”: [r_TT1,r_TT2,r_TT3],
-“EXT_PARAMETER_NAME2_TTT”: [r_TTT1,r_TTT2,r_TTT3],)json”, </p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>consistentInititalisationTol1, consistentInititalisationTol2, Flag1, Flag2)</p>
-</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
-<p>with
-- <code class="docutils literal notranslate"><span class="pre">bi</span></code> for the number of binding sites of component i
-- <code class="docutils literal notranslate"><span class="pre">ci</span></code> for the initial concentration of component i in the liquid phase
-- <code class="docutils literal notranslate"><span class="pre">qi</span></code> for the initial concentration of component i in the bound phase
-- <code class="docutils literal notranslate"><span class="pre">pi,</span> <span class="pre">ri</span></code> for the parameters of the binding model of component i, if your binding model has system parameters you can write <code class="docutils literal notranslate"><span class="pre">&quot;PARAMETER_NAME2&quot;</span> <span class="pre">:</span> <span class="pre">g</span></code>
-- Flag1 and Flag2 determine what kind of test you want to run (see <cite>testBindingModelTests.hpp</cite> for more information).</p>
-<p>If you want to test a binding model with different configurations, you can use <code class="docutils literal notranslate"><span class="pre">CADET_BINDINGTEST_MULTI(&quot;NAME_OF_YOUR_BINDING_MODEL&quot;,</span> <span class="pre">&quot;EXT_NAME_OF_YOUR_BINDING_MODEL&quot;,</span> <span class="pre">&quot;name</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">configuration&quot;,...</span></code>).
-For more implementations, you can look at the existing tests in the <cite>testBindingModels.cpp</cite> file and you can find more documentation in the <cite>testBindingModelTests.hpp</cite> file.</p>
+To this end, it might be necessary to increase the maximum number of AD directions for your test case, which can be done via the cmake argument <cite>NUM_MAX_AD_DIRS</cite>, as described in the <a class="reference internal" href="build_options.html#build-options"><span class="std std-ref">CADET-Core build options</span></a>.</p>
 </section>
 <section id="numerical-reference-tests">
 <h3>Numerical reference tests<a class="headerlink" href="#numerical-reference-tests" title="Link to this heading">¶</a></h3>
@@ -268,6 +227,16 @@ The <code class="docutils literal notranslate"><span class="pre">[CI]</span></co
 <p>Some changes will break the tests without them being necessarily wrong. A change in the numerics for instance, will most likely break some tests.
 This can be fixed by carefully adapting the absolute and relative tolerances for the broken tests. These changes should not change the magnitude of the tolerances, except if this is within an acceptable and expected new tolerance).</p>
 </section>
+<section id="test-coverage">
+<h2>Test coverage<a class="headerlink" href="#test-coverage" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Codecov</span></code> is used to analyze test coverage through an automated workflow (see <code class="docutils literal notranslate"><span class="pre">coverage.yml</span></code>), which runs on changes to the <code class="docutils literal notranslate"><span class="pre">test/coverage</span></code> branch and can also be triggered manually (workflow dispatch).
+Coverage reports are automatically uploaded to <code class="docutils literal notranslate"><span class="pre">Codecov</span></code>, providing detailed insights into tested code areas, uncovered lines, and coverage trends over time.
+Tests marked with the <code class="docutils literal notranslate"><span class="pre">[CI]</span></code> flag are automatically included in the coverage analysis; otherwise, they can be added manually in the workflow file.
+The goal is to maintain complete test coverage by ensuring every new functionality or code change includes corresponding tests executed with Codecov.
+The file <code class="docutils literal notranslate"><span class="pre">.codecov.yml</span></code> defines a target coverage percentage. If the coverage falls below that, the workflow fails.
+This percentage should be updated as we continuously expand our test coverage.
+Further, the file defines ignored paths, such as the <cite>ThirdParty</cite> directory as we dont consider test coverage of third party software.</p>
+</section>
 </section>
 
 
@@ -281,6 +250,9 @@ This can be fixed by carefully adapting the absolute and relative tolerances for
     <div class="footer">
       &#169;2008-2025.
       
+      |
+      <a href="../_sources/developer_guide/testing.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

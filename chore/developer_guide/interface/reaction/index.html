@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Mass Action Law" href="mass_action_law.html" />
-    <link rel="prev" title="Multi Component Colloidal" href="../binding/multi_component_colloidal.html" />
+    <link rel="prev" title="Affinity Complex Titration" href="../binding/affinity_complex_titration.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -52,7 +52,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../system.html">System of unit operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../unit_operations/index.html">Unit Operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../population_balance_model.html">Population balance model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../population_balance_model.html">Crystallization / Precipitation models</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Reaction models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../flux_reconstruction.html">Flux reconstruction methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
@@ -131,7 +131,7 @@
 </div>
 <section id="externally-dependent-reaction-models">
 <h2>Externally dependent reaction models<a class="headerlink" href="#externally-dependent-reaction-models" title="Link to this heading">¶</a></h2>
-<p>Some reaction models have a variant that can use external sources as specified <a class="reference internal" href="../system.html#ffmodelexternalsourcelininterp"><span class="std std-ref">/input/model/external/</span></a> (also see Section?:ref:<cite>dependence-on-external-function_react</cite>).
+<p>Some reaction models have a variant that can use external sources as specified <a class="reference internal" href="../system.html#ffmodelexternalsourcelininterp"><span class="std std-ref">/input/model/external/</span></a> (also see Section <a class="reference internal" href="../../modelling/reaction/index.html#dependence-on-external-function-react"><span class="std std-ref">Dependence on external function</span></a>).
 For the sake of brevity, only the standard variant of those reaction models is specified below.
 In order to obtain the format for the externally dependent variant, first replace the reaction model name <code class="docutils literal notranslate"><span class="pre">XXX</span></code> by <code class="docutils literal notranslate"><span class="pre">EXT_XXX</span></code>.
 Each parameter <span class="math notranslate nohighlight">\(p\)</span> (except for stoichiometric and exponent matrices) depends on a (possibly distinct) external source in a polynomial way:</p>
@@ -168,6 +168,9 @@ This group also takes precedence over a possibly existing <code class="docutils 
     <div class="footer">
       &#169;2008-2025.
       
+      |
+      <a href="../../_sources/interface/reaction/index.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

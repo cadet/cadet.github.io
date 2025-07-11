@@ -59,7 +59,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../crystallization.html">Population Balance Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization/index.html">Crystallization / Precipitation Models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
@@ -167,8 +167,8 @@ Therefore, the beads can be seen as continuously distributed inside the column (
 That is, the volumetric flow rate at the inner and outer column radius are the same.</p></li>
 </ul>
 <p>Consider a hollow (double walled) column with inner column diameter <span class="math notranslate nohighlight">\(\mathrm{P}_c&gt;0\)</span> and outer diameter <span class="math notranslate nohighlight">\(\mathrm{P}&gt;\mathrm{P}_c\)</span>, filled with spherical beads of (possibly) multiple types with radius <span class="math notranslate nohighlight">\(r_{p,j} \ll L\)</span> (see <a class="reference internal" href="general_rate_model.html#modelgrmcolumn"><span class="std std-numref">Fig. 2</span></a>), where <span class="math notranslate nohighlight">\(j\)</span> is the particle type index. The mass balance in the interstitial column volume is described by</p>
-<div class="math notranslate nohighlight" id="equation-modelradialcolumngrm">
-<span class="eqno">(18)<a class="headerlink" href="#equation-modelradialcolumngrm" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-modelradialcolumnlrmp">
+<span class="eqno">(18)<a class="headerlink" href="#equation-modelradialcolumnlrmp" title="Link to this equation">¶</a></span>\[\begin{aligned}
     \frac{\partial c^\ell_i}{\partial t} &amp;= -\frac{u}{\rho} \frac{\partial c^\ell_i}{\partial \rho} + D_{\text{rad},i} \frac{1}{\rho} \frac{\partial}{\partial \rho} \left( \rho \frac{\partial c^\ell_i}{\partial \rho} \right) - \frac{1}{\beta_c} \sum_{j} d_j \frac{3}{r_{p,j}} k_{f,j,i}\left[ c^\ell_i - c^p_{j,i} \right] + f_{\text{react},i}^\ell\left(c^\ell\right),
 \end{aligned}\]</div>
 <p>The equations are complemented by Eq. <a class="reference internal" href="#equation-modelparticlelrmp">17</a> and the Danckwerts boundary conditions <span id="id3">[<a class="reference internal" href="../../zbibliography.html#id22" title="P.V. Danckwerts. Continuous flow systems: Distribution of residence times. Chemical Engineering Science, 2(1):1–13, 1953-02. URL: http://linkinghub.elsevier.com/retrieve/pii/0009250953800011, doi:10.1016/0009-2509(53)80001-1.">8</a>]</span></p>
@@ -193,6 +193,9 @@ That is, the volumetric flow rate at the inner and outer column radius are the s
     <div class="footer">
       &#169;2008-2025.
       
+      |
+      <a href="../../_sources/modelling/unit_operations/lumped_rate_model_with_pores.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

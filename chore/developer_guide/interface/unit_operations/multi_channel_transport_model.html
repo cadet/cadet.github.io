@@ -16,7 +16,7 @@
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Population balance model" href="../population_balance_model.html" />
+    <link rel="next" title="Crystallization / Precipitation models" href="../population_balance_model.html" />
     <link rel="prev" title="Radial Flow Models" href="radial_flow_models.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -52,7 +52,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../system.html">System of unit operations</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">Unit Operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../population_balance_model.html">Population balance model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../population_balance_model.html">Crystallization / Precipitation models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../flux_reconstruction.html">Flux reconstruction methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
@@ -206,7 +206,7 @@
 <div><blockquote>
 <div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is treated as component-, channel-, and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span>.  Valid modes are:</p>
 </div></blockquote>
-<ol class="arabic simple">
+<ol class="arabic simple" start="0">
 <li><p>Component-independent, channel-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is 1</p></li>
 <li><p>Component-independent, channel-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCHANNEL}\)</span></p></li>
 <li><p>Component-dependent, channel-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span></p></li>
@@ -259,7 +259,7 @@
 <div><blockquote>
 <div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is treated as channel- and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span>.  Valid modes are:</p>
 </div></blockquote>
-<ol class="arabic simple">
+<ol class="arabic simple" start="0">
 <li><p>Channel-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is 1</p></li>
 <li><p>Channel-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCHANNEL}\)</span></p></li>
 <li><p>Section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NSEC}\)</span></p></li>
@@ -392,7 +392,7 @@ e^k_{N1} &amp; \dots &amp; e^k_{N(N-1)} &amp; 0
 </tbody>
 </table>
 </div></blockquote>
-<p>For further discretization parameters, see also <span class="xref std std-ref">flux_restruction_methods</span> (FV specific)), and <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
+<p>For further discretization parameters, see also <a class="reference internal" href="../flux_reconstruction.html#flux-reconstruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific)), and <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
 </section>
 </section>
 
@@ -407,6 +407,9 @@ e^k_{N1} &amp; \dots &amp; e^k_{N(N-1)} &amp; 0
     <div class="footer">
       &#169;2008-2025.
       
+      |
+      <a href="../../_sources/interface/unit_operations/multi_channel_transport_model.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

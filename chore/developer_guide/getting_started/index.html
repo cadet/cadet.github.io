@@ -15,7 +15,7 @@
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="next" title="CADET-Core Installation" href="installation_core.html" />
     <link rel="prev" title="CADET-Core" href="../index.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -43,8 +43,9 @@
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorials/breakthrough.html">CADET Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_core.html">CADET-Core Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_frontend.html">Frontend Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">CADET Introduction</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
@@ -106,15 +107,34 @@
 
   <section id="getting-started">
 <span id="id1"></span><h1>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h1>
-<p>This section details the steps to install CADET, as pre-built binaries or building from scratch, and also provides the series of tutorials that will help in building complete model from scratch in CADET.</p>
+<p>This section details the steps to install CADET, as pre-built binaries or building from scratch, and also provides the series of tutorials that will help in building complete models from scratch in CADET.</p>
+<p>A CADET installation consists of two parts: The CADET-Core simulator and a frontend.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation_core.html">CADET-Core Installation</a></li>
 </ul>
 </div>
+<p>After the core simulator is installed, you can verify the installation via</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>createLWE
+cadet-cli<span class="w"> </span>LWE.h5
+</pre></div>
+</div>
+<p>The first command calls the <code class="docutils literal notranslate"><span class="pre">createLWE</span></code>, which generates an <code class="docutils literal notranslate"><span class="pre">h5</span></code> configuration file for a fully configured <cite>Load-Wash-Elute</cite> process (some parameters can be changed, run <code class="docutils literal notranslate"><span class="pre">createLWE</span> <span class="pre">--help</span></code> for input options). The model is then simulated via the second command.</p>
+<p>Next, in order to build your own model from scratch, we recommend installing a frontend.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorials/breakthrough.html">CADET Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation_frontend.html">Frontend Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation_frontend.html#install-cadet-process-recommended-for-users">Install CADET-Process (recommended for users)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_frontend.html#install-cadet-python-recommended-for-cadet-core-developers">Install CADET-Python (recommended for CADET-Core developers)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_frontend.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Finally, the following introductory tutorials will guide you through the process of building a complete model from scratch.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">CADET Introduction</a></li>
 </ul>
 </div>
 </section>
@@ -130,6 +150,9 @@
     <div class="footer">
       &#169;2008-2025.
       
+      |
+      <a href="../_sources/getting_started/index.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

@@ -15,6 +15,8 @@
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Build for OSX" href="build_osx.html" />
+    <link rel="prev" title="Build for Linux" href="build_linux.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -39,8 +41,17 @@
 
 
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Getting started</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting started</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="installation_core.html">CADET-Core Installation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="installation_core.html#install-pre-built-binaries">Install pre-built binaries</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="installation_core.html#install-from-source">Install from source</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation_frontend.html">Frontend Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">CADET Introduction</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
@@ -100,32 +111,33 @@
 
   <section id="build-for-ms-windows">
 <span id="build-windows"></span><h1>Build for MS Windows<a class="headerlink" href="#build-for-ms-windows" title="Link to this heading">¶</a></h1>
+<section id="build-cadet-core-on-windows">
+<h2>Build CADET-Core on Windows<a class="headerlink" href="#build-cadet-core-on-windows" title="Link to this heading">¶</a></h2>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Microsoft Visual Studio <strong>2022</strong> (Community Edition, or better)</p></li>
 <li><p>Intel OneAPI MKL</p></li>
 <li><p>Optional: Git</p></li>
 <li><p>Optional but not generally recommended*: Intel OneAPI TBB</p></li>
 </ul>
-<p>*For most use-cases it is more efficient to parallelize by running multiple CADET simulations instead
-of parallelizing within one CADET simulation. Including the parallelization code in CADET can lead to performance
-losses, even if parallelization within CADET is not used.
+<p>*For most use-cases it is more efficient to parallelize by running multiple CADET-Core simulations instead
+of parallelizing within one CADET-Core simulation. Including the parallelization code in CADET-Core can lead to performance
+losses, even if parallelization within CADET-Core is not used.
 Therefore, we recommend not including the parallelization library TBB
 unless you know your simulations are large enough to benefit from it.</p>
 <p>Assumed directory structure:</p>
 <pre>
-|- CADET
+|- CADET-Core
 |    - src
 |    - include
 |    - [...]
-|    - build
 </pre>
 <p>Note that the version numbers of the files and packages below are subject to change and will not always reflect the most
 recent version.</p>
 </section>
 <section id="visual-studio">
-<h2>Visual Studio:<a class="headerlink" href="#visual-studio" title="Link to this heading">¶</a></h2>
+<h3>Visual Studio:<a class="headerlink" href="#visual-studio" title="Link to this heading">¶</a></h3>
 <p>We are using Visual Studio because it is the easiest way to install all required tools, compilers etc. in one step.</p>
 <ul class="simple">
 <li><p>Download <a class="reference external" href="https://visualstudio.microsoft.com/de/downloads/">MS Visual Studio</a></p></li>
@@ -133,7 +145,7 @@ recent version.</p>
 </ul>
 </section>
 <section id="intel-oneapi-base-toolkit">
-<h2>Intel oneAPI Base Toolkit<a class="headerlink" href="#intel-oneapi-base-toolkit" title="Link to this heading">¶</a></h2>
+<h3>Intel oneAPI Base Toolkit<a class="headerlink" href="#intel-oneapi-base-toolkit" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Download
 the <a class="reference external" href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html?operatingsystem=window&amp;amp;distributions=webdownload&amp;amp;options=online">Intel oneAPI Base Toolkit online installer</a>.</p></li>
@@ -146,27 +158,26 @@ the <a class="reference external" href="https://www.intel.com/content/www/us/en/
 </ul>
 </section>
 <section id="optional-clink">
-<h2>Optional:  clink<a class="headerlink" href="#optional-clink" title="Link to this heading">¶</a></h2>
+<h3>Optional:  clink<a class="headerlink" href="#optional-clink" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Clink provides text completion, history, and line-editing to Windows Command Prompt</p></li>
 <li><p>Download the <a class="reference external" href="https://github.com/chrisant996/clink">clink installer exe</a> and install clink.</p></li>
 </ul>
 </section>
-<section id="prepare-cadet-code">
-<h2>Prepare CADET code<a class="headerlink" href="#prepare-cadet-code" title="Link to this heading">¶</a></h2>
+<section id="obtain-cadet-core-code">
+<h3>Obtain CADET-Core code<a class="headerlink" href="#obtain-cadet-core-code" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p>Clone the CADET source code into a <code class="docutils literal notranslate"><span class="pre">CADET</span></code> folder:</p>
+<li><p>Clone the CADET-Core source code into a <code class="docutils literal notranslate"><span class="pre">CADET-Core</span></code> folder:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/cadet/cadet-core.git</span> <span class="pre">CADET</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/cadet/cadet-core.git</span> <span class="pre">CADET-Core</span></code></p></li>
 </ul>
 </li>
-<li><p>Create the directories <code class="docutils literal notranslate"><span class="pre">CADET\build</span></code> and <code class="docutils literal notranslate"><span class="pre">CADET\install</span></code></p></li>
 </ul>
 </section>
-<section id="build-cadet-in-visual-studio">
-<h2>Build CADET in Visual Studio<a class="headerlink" href="#build-cadet-in-visual-studio" title="Link to this heading">¶</a></h2>
+<section id="build-cadet-core-in-visual-studio">
+<h3>Build CADET-Core in Visual Studio<a class="headerlink" href="#build-cadet-core-in-visual-studio" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p>Open Visual Studio and open the <code class="docutils literal notranslate"><span class="pre">CADET</span></code> folder</p></li>
+<li><p>Open Visual Studio and open the <code class="docutils literal notranslate"><span class="pre">CADET-Core</span></code> folder</p></li>
 <li><p>Navigate to “Tools” - “Command Line” and open either a “Developer Command Prompt” or “Developer PowerShell”</p></li>
 <li><p>Execute the following command:</p>
 <ul>
@@ -178,18 +189,19 @@ the <a class="reference external" href="https://www.intel.com/content/www/us/en/
 <li><p>Wait for <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">generation</span></code> to finish (see <code class="docutils literal notranslate"><span class="pre">output</span></code> window)</p></li>
 <li><p>From the status bar at the top select <code class="docutils literal notranslate"><span class="pre">Build</span></code>, <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">all</span></code></p></li>
 <li><p>Once that finishes, select <code class="docutils literal notranslate"><span class="pre">Build</span></code>, <code class="docutils literal notranslate"><span class="pre">Install</span> <span class="pre">CadetFramework</span></code></p></li>
-<li><p>The binaries will be located in <code class="docutils literal notranslate"><span class="pre">CADET\out\install\aRELEASE\bin</span></code></p></li>
+<li><p>The binaries will be located in <code class="docutils literal notranslate"><span class="pre">CADET-Core\out\install\aRELEASE\bin</span></code></p></li>
 </ul>
 </section>
-<section id="build-cadet-from-the-command-line">
-<h2>Build CADET from the command line<a class="headerlink" href="#build-cadet-from-the-command-line" title="Link to this heading">¶</a></h2>
+<section id="build-cadet-core-from-the-command-line">
+<h3>Build CADET-Core from the command line<a class="headerlink" href="#build-cadet-core-from-the-command-line" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Open Visual Studio and select “continue without code”</p></li>
 <li><p>Navigate to “Tools” - “Command Line” and open either a “Developer Command Prompt” or “Developer PowerShell”</p></li>
 <li><p>Execute the following commands:</p></li>
 <li><p>For Command Prompt:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">CADET\build</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">not</span> <span class="pre">exist</span> <span class="pre">CADET-Core\build</span> <span class="pre">mkdir</span> <span class="pre">CADET-Core\build</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">CADET-Core\build</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">vcpkg</span> <span class="pre">integrate</span> <span class="pre">install</span></code> (this only needs to be run <em>once</em> and will require admin privileges)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">MKLROOT=&quot;C:/Program</span> <span class="pre">Files</span> <span class="pre">(x86)/Intel/oneAPI/mkl/latest&quot;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=..\out\install\aRELEASE</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">17</span> <span class="pre">2022&quot;</span> <span class="pre">-A</span> <span class="pre">x64</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span> <span class="pre">-DCMAKE_TOOLCHAIN_FILE=&quot;%VCPKG_ROOT%/scripts/buildsystems/vcpkg.cmake&quot;</span> <span class="pre">-DVCPKG_TARGET_TRIPLET=x64-windows-static</span> <span class="pre">-DENABLE_STATIC_LINK_LAPACK=ON</span> <span class="pre">-DENABLE_STATIC_LINK_DEPS=ON</span> <span class="pre">-DBLA_VENDOR=Intel10_64lp_seq</span> <span class="pre">--fresh</span> <span class="pre">../</span></code></p>
@@ -204,7 +216,8 @@ execute <code class="docutils literal notranslate"><span class="pre">set</span> 
 </li>
 <li><p>For PowerShell:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">CADET\build</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">(-Not(Test-Path</span> <span class="pre">CADET-Core\build)){mkdir</span> <span class="pre">CADET-Core\build}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">CADET-Core\build</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">vcpkg</span> <span class="pre">integrate</span> <span class="pre">install</span></code> (this only needs to be run <em>once</em> and will require admin privileges)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">$ENV:MKLROOT</span> <span class="pre">=</span> <span class="pre">&quot;C:\Program</span> <span class="pre">Files</span> <span class="pre">(x86)\Intel\oneAPI\mkl\latest&quot;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=&quot;..\out\install\aRELEASE&quot;</span> <span class="pre">-G</span> <span class="pre">&quot;Visual</span> <span class="pre">Studio</span> <span class="pre">17</span> <span class="pre">2022&quot;</span> <span class="pre">-A</span> <span class="pre">x64</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span> <span class="pre">-DCMAKE_TOOLCHAIN_FILE=&quot;$ENV:VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake&quot;</span> <span class="pre">-DVCPKG_TARGET_TRIPLET=x64-windows-static</span> <span class="pre">-DENABLE_STATIC_LINK_LAPACK=ON</span> <span class="pre">-DENABLE_STATIC_LINK_DEPS=ON</span> <span class="pre">-DBLA_VENDOR=Intel10_64lp_seq</span> <span class="pre">&quot;../&quot;</span> <span class="pre">--fresh</span></code></p>
@@ -218,13 +231,14 @@ and</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">msbuild.exe</span> <span class="pre">INSTALL.vcxproj</span> <span class="pre">/p:Configuration=&quot;Release;Platform=x64&quot;</span></code></p></li>
 </ul>
 </li>
-<li><p>The binaries will be located in <code class="docutils literal notranslate"><span class="pre">CADET\out\install\aRELEASE\bin</span></code></p></li>
+<li><p>There are further compile flags that can be passed to the above cmake command, please refer to the build options described in the developer guide.</p></li>
+<li><p>The binaries will be located in <code class="docutils literal notranslate"><span class="pre">CADET-Core\out\install\aRELEASE\bin</span></code></p></li>
 </ul>
 </section>
 <section id="test-build-results">
-<h2>Test build results<a class="headerlink" href="#test-build-results" title="Link to this heading">¶</a></h2>
+<h3>Test build results<a class="headerlink" href="#test-build-results" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p>Navigate to the install location <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">CADET\out\install\aRELEASE\bin</span></code></p></li>
+<li><p>Navigate to the install location <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">CADET-Core\out\install\aRELEASE\bin</span></code></p></li>
 <li><p>Run:</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">cadet-cli.exe</span> <span class="pre">--version</span></code></p></li>
@@ -236,6 +250,7 @@ and</p></li>
 <li><p>If you get no printed return from the first command, run cadet-cli.exe by double-clicking it in the file explorer.
 This raises error messages that are not raised from a cmd or PowerShell window.</p></li>
 </ul>
+</section>
 </section>
 </section>
 
@@ -250,6 +265,9 @@ This raises error messages that are not raised from a cmd or PowerShell window.<
     <div class="footer">
       &#169;2008-2025.
       
+      |
+      <a href="../_sources/getting_started/build_windows.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

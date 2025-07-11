@@ -16,8 +16,8 @@
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Reaction models" href="../reaction/index.html" />
-    <link rel="prev" title="HIC Constant Water Activity" href="hic_constant_water_activity.html" />
+    <link rel="next" title="Affinity Complex Titration" href="affinity_complex_titration.html" />
+    <link rel="prev" title="HIC Unified" href="hic_unified.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -52,7 +52,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../system.html">System of unit operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../unit_operations/index.html">Unit Operations</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="index.html">Binding models</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../population_balance_model.html">Population balance model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../population_balance_model.html">Crystallization / Precipitation models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../flux_reconstruction.html">Flux reconstruction methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
@@ -354,6 +354,14 @@ If pH is not considered, this value will be not be used but must still be specif
 <dt><code class="docutils literal notranslate"><span class="pre">COL_LINEAR_THRESHOLD</span></code></dt><dd><p>Threshold concentration <span class="math notranslate nohighlight">\(c_\epsilon\)</span> for switching to linear approximation</p>
 </dd>
 </dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">COL_USE_PH</span></code></dt><dd><p>Selects if pH is included in the model or not: 1 = yes, 0 = no.</p>
 </dd>
@@ -379,6 +387,9 @@ If pH is not considered, this value will be not be used but must still be specif
     <div class="footer">
       &#169;2008-2025.
       
+      |
+      <a href="../../_sources/interface/binding/multi_component_colloidal.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Parameter Dependencies &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/interface/parameter_dependencies.html" />
+    <link rel="icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Spatial discretization methods" href="spatial_discretization_methods.html" />
+    <link rel="prev" title="Solver Configuration" href="solver.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Interface specifications</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="input_group.html">Input Group</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="system.html">System of unit operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit_operations/index.html">Unit Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binding/index.html">Binding models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="population_balance_model.html">Population balance model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reaction/index.html">Reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flux_reconstruction.html">Flux reconstruction methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="return_data.html">Return data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sensitivities.html">Parameter Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solver.html">Solver Configuration</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Parameter Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_discretization_methods.html">Spatial discretization methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="output_group.html">Output Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_group.html">Meta Group</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../v5.0.0/interface/parameter_dependencies.html">v5.0.0</a></li>
+  <li><a href="../../v5.0.1/interface/parameter_dependencies.html">v5.0.1</a></li>
+  <li><a href="../../v5.0.2/interface/parameter_dependencies.html">v5.0.2</a></li>
+  <li><a href="parameter_dependencies.html">v5.0.3</a></li>
+  <li><a href="../../v5.0.4/interface/parameter_dependencies.html">v5.0.4</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../master/interface/parameter_dependencies.html">master</a></li>
+  <li><a href="../../chore/developer_guide/interface/parameter_dependencies.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+<p>
+  <strong>
+    
+    You're reading an old version of this documentation.
+    For the latest released version, please have a look at <a href="../../v5.0.4/interface/parameter_dependencies.html">v5.0.4</a>.
+    
+  </strong>
+</p>
+
+
+  <section id="parameter-dependencies">
+<span id="id1"></span><h1>Parameter Dependencies<a class="headerlink" href="#parameter-dependencies" title="Link to this heading">¶</a></h1>
+<p>Some parameters depend on other parameters (parameter-parameter dependency) or the solution variables (parameter-state dependency).
+Parameter dependencies are defined in the unit operation scope.</p>
+<section id="parameter-parameter-dependencies">
+<h2>Parameter-Parameter Dependencies<a class="headerlink" href="#parameter-parameter-dependencies" title="Link to this heading">¶</a></h2>
+<section id="group-input-model-unit-xxx">
+<h3>Group /input/model/unit_XXX<a class="headerlink" href="#group-input-model-unit-xxx" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_DEP</span></code></p>
+<blockquote>
+<div><p>Parameter dependence of column dispersion on the interstitial velocity. Available for the LRM, LRMP and GRM units (with FV discretization only at the moment)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{POWER_LAW}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">FILM_DIFFUSION_DEP</span></code></p>
+<blockquote>
+<div><p>Parameter dependence of film diffusion on the interstitial velocity. Available for the LRMP unit (with FV discretization only at the moment)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{POWER_LAW}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<section id="correlations">
+<h4><strong>Correlations</strong><a class="headerlink" href="#correlations" title="Link to this heading">¶</a></h4>
+<p>Different types of parameter correlations are can be applied.
+The following correlations can be used for all parameter-parameter dependencies, but we specify the required input fields only for <code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_DEP</span></code>, for the sake of conciseness.</p>
+<p><strong>Power Law</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    p_{dep} &amp;= p_{dep} \cdot b \ |p_{on}^x|
+\end{aligned}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(p_{dep}\)</span> is the dependent parameter and <span class="math notranslate nohighlight">\(p_{on}\)</span> is the parameter it depends on.</p>
+<p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_DEP_BASE</span></code></p>
+<blockquote>
+<div><p>Base <span class="math notranslate nohighlight">\(b\)</span> of the power law parameter dependence. Optional, defaults to <span class="math notranslate nohighlight">\(1.0\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_DEP_EXPONENT</span></code></p>
+<blockquote>
+<div><p>Exponent <span class="math notranslate nohighlight">\(x\)</span> of the power law parameter dependence</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_DEP_ABS</span></code></p>
+<blockquote>
+<div><p>Specifies whether or not the absolute value should be computed. Optional, defaults to <span class="math notranslate nohighlight">\(1\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+</section>
+</section>
+<section id="parameter-state-dependencies">
+<h2>Parameter-State Dependencies<a class="headerlink" href="#parameter-state-dependencies" title="Link to this heading">¶</a></h2>
+<p>Currently, the dependence of surface diffusion on the particle liquid salt component is the only available parameter-state dependence.</p>
+<section id="id2">
+<h3>Group /input/model/unit_XXX<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_DEP</span></code></p>
+<blockquote>
+<div><p>Parameter dependence of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> on the particle liquid salt component (i.e. component with index 0). Valid dependencies are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\texttt{NONE}\)</span> Original parameter is used unmodified.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_EXPONENTIAL}\)</span> Original parameter is modified by exponential law of liquid phase salt concentration.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_POWER}\)</span> Original parameter is modified by power law of liquid phase salt concentration.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span> Original parameter is modified by colloidal binding affinity based on liquid phase salt concentration.</p></li>
+</ul>
+<p>Optional: If left out, no parameter dependence is assumed and the original surface diffusion coefficients are used unmodified.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1 / \texttt{NPARTYPE}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_EXPFACTOR</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p1}\)</span> in exponential law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} p_{1, i, m} exp \left(p_{2, i, m} c_{0}^{p} \right)\)</span>, where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_EXPONENTIAL}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_EXPFACTOR</span></code>
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
+<span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_EXPARGMULT</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p2}\)</span> in exponential law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} p_{1, i, m} exp \left(p_{2, i, m} c_{0}^{p} \right)\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_EXPONENTIAL}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_POWFACTOR</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p1}\)</span> in power law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} p_{1, i, m} \left( c_{0}^{p} \right)^{p_{2, i, m}}\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_POWER}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_POWEXP</span></code></p>
+<blockquote>
+<div><p>Fjactor <span class="math notranslate nohighlight">\(\texttt{p2}\)</span> in power law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} p_{1, i, m} \left( c_{0}^{p} \right)^{p_{2, i, m}}\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_POWER}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_LOGKEQFACTOR</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p1}\)</span> in colloidal affinity law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
+<span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_LOGKEQEXP</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p2}\)</span> in colloidal affinity law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
+<span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_LOGKEQCONST</span></code></p>
+<blockquote>
+<div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p3}\)</span> in colloidal affinity law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
+<span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
+Only required if <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2025.
+      
+      |
+      <a href="../_sources/interface/parameter_dependencies.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

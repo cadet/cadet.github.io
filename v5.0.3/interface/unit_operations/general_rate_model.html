@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>General Rate Model &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/interface/unit_operations/general_rate_model.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lumped rate model with pores" href="lumped_rate_model_with_pores.html" />
+    <link rel="prev" title="Outlet" href="outlet.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Interface specifications</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../input_group.html">Input Group</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../system.html">System of unit operations</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Unit Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../population_balance_model.html">Population balance model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flux_reconstruction.html">Flux reconstruction methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../return_data.html">Return data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensitivities.html">Parameter Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../solver.html">Solver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../parameter_dependencies.html">Parameter Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spatial_discretization_methods.html">Spatial discretization methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../output_group.html">Output Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta_group.html">Meta Group</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/interface/unit_operations/general_rate_model.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/interface/unit_operations/general_rate_model.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/interface/unit_operations/general_rate_model.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/interface/unit_operations/general_rate_model.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/interface/unit_operations/general_rate_model.html">v5.0.2</a></li>
+  <li><a href="general_rate_model.html">v5.0.3</a></li>
+  <li><a href="../../../v5.0.4/interface/unit_operations/general_rate_model.html">v5.0.4</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../../master/interface/unit_operations/general_rate_model.html">master</a></li>
+  <li><a href="../../../chore/developer_guide/interface/unit_operations/general_rate_model.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+<p>
+  <strong>
+    
+    You're reading an old version of this documentation.
+    For the latest released version, please have a look at <a href="../../../v5.0.4/interface/unit_operations/general_rate_model.html">v5.0.4</a>.
+    
+  </strong>
+</p>
+
+
+  <section id="general-rate-model">
+<span id="general-rate-model-config"></span><h1>General Rate Model<a class="headerlink" href="#general-rate-model" title="Link to this heading">¶</a></h1>
+<section id="group-input-model-unit-xxx-unit-type-general-rate-model">
+<h2>Group /input/model/unit_XXX - UNIT_TYPE - GENERAL_RATE_MODEL<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-general-rate-model" title="Link to this heading">¶</a></h2>
+<p>For information on model equations, refer to <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#general-rate-model-model"><span class="std std-ref">General rate model (GRM)</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">UNIT_TYPE</span></code></p>
+<blockquote>
+<div><p>Specifies the type of unit operation model</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{GENERAL_RATE_MODEL}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">NCOMP</span></code></p>
+<blockquote>
+<div><p>Number of chemical components in the chromatographic medium</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">ADSORPTION_MODEL</span></code></p>
+<blockquote>
+<div><p>Specifies the type of binding model of each particle type (or of all particle types if length is <span class="math notranslate nohighlight">\(1\)</span>)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> <a class="reference internal" href="../binding/index.html#ffadsorption"><span class="std std-ref">Binding models</span></a></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1 / \texttt{NPARTYPE}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">ADSORPTION_MODEL_MULTIPLEX</span></code></p>
+<blockquote>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL}\)</span>. If set to <span class="math notranslate nohighlight">\(0\)</span>, each particle type has a different binding model and the length of <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NPARTYPE}\)</span>. If set to <span class="math notranslate nohighlight">\(1\)</span>, all particle types share the same binding model and the length of <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL}\)</span> is <span class="math notranslate nohighlight">\(1\)</span>.  This field is optional and inferred from the length of <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL}\)</span> if left out.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">NBOUND</span></code></p>
+<blockquote>
+<div><p>Number of bound states for each component in each particle type in type-major ordering</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span> / <span class="math notranslate nohighlight">\(\texttt{NPARTYPE} \cdot \texttt{NCOMP}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">REACTION_MODEL_BULK</span></code></p>
+<blockquote>
+<div><p>Specifies the type of reaction model of the bulk volume. The model is configured in the subgroup <span class="math notranslate nohighlight">\(\texttt{reaction_bulk}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> See Section <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">REACTION_MODEL_PARTICLES</span></code></p>
+<blockquote>
+<div><p>Specifies the type of reaction model of each particle type (or of all particle types if length is <span class="math notranslate nohighlight">\(1\)</span>). The model is configured in the subgroup <span class="math notranslate nohighlight">\(\texttt{reaction_particle}\)</span>, or <span class="math notranslate nohighlight">\(\texttt{reaction_particle_XXX}\)</span> in case of disabled multiplexing.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> See Section <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1 / \texttt{NPARTYPE}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">REACTION_MODEL_PARTICLES_MULTIPLEX</span></code></p>
+<blockquote>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{REACTION_MODEL_PARTICLES}\)</span>. If set to <span class="math notranslate nohighlight">\(0\)</span>, each particle type has a different reaction model and the length of <span class="math notranslate nohighlight">\(\texttt{REACTION_MODEL_PARTICLES}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NPARTYPE}\)</span>. If set to <span class="math notranslate nohighlight">\(1\)</span>, all particle types share the same reaction model and the length of <span class="math notranslate nohighlight">\(\texttt{REACTION_MODEL_PARTICLES}\)</span> is <span class="math notranslate nohighlight">\(1\)</span>.  This field is optional and inferred from the length of <span class="math notranslate nohighlight">\(\texttt{REACTION_MODEL_PARTICLES}\)</span> if left out.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">INIT_C</span></code></p>
+<blockquote>
+<div><p>Initial concentrations for each component in the bulk mobile phase</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{IV}}^{-3}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">INIT_CP</span></code></p>
+<blockquote>
+<div><p>Initial concentrations for each component in the bead liquid phase (optional, <span class="math notranslate nohighlight">\(\texttt{INIT_C}\)</span> is used if left out). The length of this field can be <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span> (same values for each particle type) or <span class="math notranslate nohighlight">\(\texttt{NPARTYPE} \cdot \texttt{NCOMP}\)</span>  Values for each particle type can only be given when <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL_MULTIPLEX}\)</span> is <span class="math notranslate nohighlight">\(0\)</span>. The ordering is type-major.</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{MP}}^{-3}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} / \texttt{NPARTYPE} \cdot \texttt{NCOMP}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">INIT_Q</span></code></p>
+<blockquote>
+<div><p>Initial concentrations for each bound state of each component in the bead solid phase. If <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL_MULTIPLEX}\)</span> is <span class="math notranslate nohighlight">\(0\)</span>, values for each particle type are required in type-component-major ordering (length is <span class="math notranslate nohighlight">\(\texttt{NTOTALBND}\)</span>). If <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL_MULTIPLEX}\)</span> is <span class="math notranslate nohighlight">\(1\)</span>, values for one particle type are required in component-major ordering (length is <span class="math notranslate nohighlight">\(\sum_{i = 0}^{\texttt{NCOMP} - 1} \texttt{NBND}_i\)</span>).</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{SP}}^{-3}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">INIT_STATE</span></code></p>
+<blockquote>
+<div><p>Full state vector for initialization (optional, <span class="math notranslate nohighlight">\(\texttt{INIT_C}\)</span>, <span class="math notranslate nohighlight">\(\texttt{INIT_CP}\)</span>, and <span class="math notranslate nohighlight">\(\texttt{INIT_Q}\)</span> will be ignored; if length is <span class="math notranslate nohighlight">\(2\texttt{NDOF}\)</span>, then the second half is used for time derivatives)</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(various\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NDOF} / 2\texttt{NDOF}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION</span></code></p>
+<blockquote>
+<div><p>Axial dispersion coefficient</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}_{\mathrm{IV}}^{2}\,\mathrm{s}^{-1}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> see <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_MULTIPLEX}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_MULTIPLEX</span></code></p>
+<blockquote>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is treated as component- and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span>.  Valid modes are:</p>
+<ol class="arabic simple" start="0">
+<li><p>Component-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(1\)</span></p></li>
+<li><p>Component-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span></p></li>
+<li><p>Component-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NSEC}\)</span></p></li>
+<li><p>Component-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
+</ol>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 3 \}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">COL_LENGTH</span></code></p>
+<blockquote>
+<div><p>Column length</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">COL_POROSITY</span></code></p>
+<blockquote>
+<div><p>Column porosity</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\((0,1]\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">FILM_DIFFUSION</span></code></p>
+<blockquote>
+<div><p>Film diffusion coefficients for each component of each particle type</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\,\mathrm{s}^{-1}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> see <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION_MULTIPLEX}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">FILM_DIFFUSION_MULTIPLEX</span></code></p>
+<blockquote>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION}\)</span> is treated as component-, type-, and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION}\)</span>.  Valid modes are:</p>
+<ol class="arabic simple" start="0">
+<li><p>Component-dependent, type-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span></p></li>
+<li><p>Component-dependent, type-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
+<li><p>Component-dependent, type-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPARTYPE}\)</span>; ordering is type-major</p></li>
+<li><p>Component-dependent, type-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPARTYPE} \cdot \texttt{NSEC}\)</span>; ordering is section-type-major</p></li>
+</ol>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 3 \}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_POROSITY</span></code></p>
+<blockquote>
+<div><p>Particle porosity of all particle types or for each particle type</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\((0,1]\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1 / \texttt{NPARTYPE}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_RADIUS</span></code></p>
+<blockquote>
+<div><p>Particle radius of all particle types or for each particle type</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt;0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1 / \texttt{NPARTYPE}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_CORERADIUS</span></code></p>
+<blockquote>
+<div><p>Particle core radius of all particle types or for each particle type (optional, defaults to <span class="math notranslate nohighlight">\(\mathrm{m}\)</span>)</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\([0, \texttt{PAR_RADIUS})\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1 / \texttt{NPARTYPE}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PORE_ACCESSIBILITY</span></code></p>
+<blockquote>
+<div><p>Pore accessibility factor of each component in each particle type (optional, defaults to <span class="math notranslate nohighlight">\(1\)</span>).
+Note: Should not be used in combination with any binding model!</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\((0, 1]\)</span></p></td>
+<td><p><strong>Length:</strong> see <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY_MULTIPLEX}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PORE_ACCESSIBILITY_MULTIPLEX</span></code></p>
+<blockquote>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is treated as component-, type-, and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span>. Valid modes are:
+0. Component-dependent, type-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span>
+1. Component-dependent, type-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major
+2. Component-dependent, type-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPARTYPE}\)</span>; ordering is type-major
+3. Component-dependent, type-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PORE_ACCESSIBILITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPARTYPE} \cdot \texttt{NSEC}\)</span>; ordering is section-type-major</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 3 \}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_DIFFUSION</span></code></p>
+<blockquote>
+<div><p>Effective particle diffusion coefficients of each component in each particle type</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}_{\mathrm{MP}}^{2}\,\mathrm{s}^{-1}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> see <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION_MULTIPLEX}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_DIFFUSION_MULTIPLEX</span></code></p>
+<blockquote>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION}\)</span> is treated as component-, type-, and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION}\)</span>. Valid modes are:</p>
+<ol class="arabic simple" start="0">
+<li><p>Component-dependent, type-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span></p></li>
+<li><p>Component-dependent, type-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
+<li><p>Component-dependent, type-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPARTYPE}\)</span>; ordering is type-major</p></li>
+<li><p>Component-dependent, type-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_DIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NPARTYPE} \cdot \texttt{NSEC}\)</span>; ordering is section-type-major</p></li>
+</ol>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 3 \}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION</span></code></p>
+<blockquote>
+<div><p>Particle surface diffusion coefficients of each bound state of each component in each particle type (optional, defaults to all 0 <span class="math notranslate nohighlight">\(\mathrm{m}_{\mathrm{SP}}^{2}\,\mathrm{s}^{-1}\)</span>)</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}_{\mathrm{SP}}^{2}\,\mathrm{s}^{-1}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> see <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION_MULTIPLEX}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_MULTIPLEX</span></code></dt><dd><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> is treated as component-, type-, and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span>. Valid modes are:</p>
+<ol class="arabic simple" start="0">
+<li><p>Component-dependent, type-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NBND}\)</span>; ordering is component-major</p></li>
+<li><p>Component-dependent, type-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NBND} \cdot \texttt{NSEC}\)</span>; ordering is section-component-major</p></li>
+<li><p>Component-dependent, type-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NTOTALBND}\)</span>; ordering is type-component-major</p></li>
+<li><p>Component-dependent, type-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \cdot \texttt{NSEC}\)</span>; ordering is section-type-component-major</p></li>
+</ol>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_MULTIPLEX</span></code></dt><dd><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{ 0, \dots, 3 \}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_SURFDIFFUSION_DEP</span></code></p>
+<blockquote>
+<div><p>Parameter dependence of <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span>, please refer to <a class="reference internal" href="../parameter_dependencies.html#parameter-dependencies"><span class="std std-ref">Parameter Dependencies</span></a>, section parameter-state dependencies, for more information.</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
+<blockquote>
+<div><p>Interstitial velocity of the mobile phase (optional if <span class="math notranslate nohighlight">\(\texttt{CROSS_SECTION_AREA}\)</span> is present, see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>)
+<strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\,\mathrm{s}^{-1}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1 / \texttt{NSEC}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CROSS_SECTION_AREA</span></code></p>
+<blockquote>
+<div><p>Cross section area of the column (optional if <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is present, see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>)
+<strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}^{2}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt;0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">NPARTYPE</span></code></p>
+<blockquote>
+<div><p>Number of particle types. Optional, inferred from the length of <span class="math notranslate nohighlight">\(\texttt{NPAR}\)</span> or <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span> if left out.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_GEOM</span></code></p>
+<blockquote>
+<div><p>Specifies the particle geometry for all or each particle type. Valid values are <span class="math notranslate nohighlight">\(\texttt{SPHERE}\)</span>, <span class="math notranslate nohighlight">\(\texttt{CYLINDER}\)</span>, <span class="math notranslate nohighlight">\(\texttt{SLAB}\)</span>. Optional, defaults to <span class="math notranslate nohighlight">\(\texttt{SPHERE}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span> / <span class="math notranslate nohighlight">\(\texttt{NPARTYPE}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_TYPE_VOLFRAC</span></code></p>
+<blockquote>
+<div><p>Volume fractions of the particle types. The volume fractions can be set for all axial cells together or for each individual axial cell. For each cell, the volume fractions have to sum to <span class="math notranslate nohighlight">\(1\)</span>. In case of a spatially inhomogeneous setting, the data is expected in cell-major ordering and the <span class="math notranslate nohighlight">\(\texttt{SENS_SECTION}\)</span> field is used for indexing the axial cell when specifying parameter sensitivities.  This field is optional in case of only one particle type.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\([0,1]\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NPARTYPE} / \texttt{NCOL} \cdot \texttt{NPARTYPE}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="group-input-model-unit-xxx-discretization-unit-type-general-rate-model">
+<h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE - GENERAL_RATE_MODEL<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-general-rate-model" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">USE_ANALYTIC_JACOBIAN</span></code></p>
+<blockquote>
+<div><p>Determines whether analytically computed Jacobian matrix (faster) is used (value is 1) instead of Jacobians generated by algorithmic differentiation (slower, value is 0)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_DISC_TYPE</span></code></p>
+<blockquote>
+<div><p>Specifies the discretization scheme inside the particles for all or each particle type. Valid values are <span class="math notranslate nohighlight">\(\texttt{EQUIDISTANT_PAR}\)</span>, <span class="math notranslate nohighlight">\(\texttt{EQUIVOLUME_PAR}\)</span>, and <span class="math notranslate nohighlight">\(\texttt{USER_DEFINED_PAR}\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span> / <span class="math notranslate nohighlight">\(\texttt{NPARTYPE}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_DISC_VECTOR</span></code></p>
+<blockquote>
+<div><p>Node coordinates for the cell boundaries (ignored if <span class="math notranslate nohighlight">\(\texttt{PAR_DISC_TYPE} \neq \texttt{USER_DEFINED_PAR}\)</span>). The coordinates are relative and have to include the endpoints <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>. They are later linearly mapped to the true radial range <span class="math notranslate nohighlight">\([r_{c,j}, r_{p,j}]\)</span>. The coordinates for each particle type are appended to one long vector in type-major ordering.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\([0,1]\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\sum_i (\texttt{NPAR}_i + 1)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="spatial-discretization-numerical-methods">
+<h2>Spatial discretization - Numerical Methods<a class="headerlink" href="#spatial-discretization-numerical-methods" title="Link to this heading">¶</a></h2>
+<p>CADET offers two spatial discretization methods: Finite Volumes (FV) and Discontinuous Galerkin (DG). Each method has it’s own set of input fields.
+While both methods approximate the same solution to the same underlying model, they may differ in terms of computational performance.
+With our currently implemented variants of FV and DG, FV perform better for solutions with steep gradients or discontinuities, while DG can be much faster for rather smooth solutions.
+For the same number of discrete points, DG will generally be slower but often more accurate.</p>
+<p>For further information on the choice of discretization methods and their parameters, see <a class="reference internal" href="../spatial_discretization_methods.html#spatial-discretization-methods"><span class="std std-ref">Spatial discretization methods</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">SPATIAL_METHOD</span></code></p>
+<blockquote>
+<div><p>Spatial discretization method. Optional, defaults to <span class="math notranslate nohighlight">\(\texttt{FV}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{\texttt{FV}, \texttt{DG}\}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="finite-volumes-default">
+<h2>Finite Volumes (Default)<a class="headerlink" href="#finite-volumes-default" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">NCOL</span></code></p>
+<blockquote>
+<div><p>Number of axial column discretization points</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">NPAR</span></code></p>
+<blockquote>
+<div><p>Number of particle (radial) discretization points for each particle type</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span> / <span class="math notranslate nohighlight">\(\texttt{NPARTYPE}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_BOUNDARY_ORDER</span></code></p>
+<blockquote>
+<div><p>Order of accuracy of outer particle boundary condition. Optional, defaults to <span class="math notranslate nohighlight">\(2\)</span>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{ 1,2 \}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">RECONSTRUCTION</span></code></p>
+<blockquote>
+<div><p>Type of reconstruction method for fluxes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{WENO}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">GS_TYPE</span></code></p>
+<blockquote>
+<div><p>Type of Gram-Schmidt orthogonalization, see IDAS guide Section 4.5.7.3, p. 41f. A value of <span class="math notranslate nohighlight">\(0\)</span> enables classical Gram-Schmidt, a value of 1 uses modified Gram-Schmidt.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">MAX_KRYLOV</span></code></p>
+<blockquote>
+<div><p>Defines the size of the Krylov subspace in the iterative linear GMRES solver (0: <span class="math notranslate nohighlight">\(\texttt{MAX_KRYLOV} = \texttt{NCOL} \cdot \texttt{NCOMP} \cdot \texttt{NPARTYPE}\)</span>)</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, \texttt{NCOL} \cdot \texttt{NCOMP} \cdot \texttt{NPARTYPE} \}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">MAX_RESTARTS</span></code></p>
+<blockquote>
+<div><p>Maximum number of restarts in the GMRES algorithm. If lack of memory is not an issue, better use a larger Krylov space than restarts.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">SCHUR_SAFETY</span></code></p>
+<blockquote>
+<div><p>Schur safety factor; Influences the tradeoff between linear iterations and nonlinear error control; see IDAS guide Section~2.1 and 5.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">FIX_ZERO_SURFACE_DIFFUSION</span></code></p>
+<blockquote>
+<div><p>Determines whether the surface diffusion parameters <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION}\)</span> are fixed if the parameters are zero. If the parameters are fixed to zero (<span class="math notranslate nohighlight">\(\texttt{FIX_ZERO_SURFACE_DIFFUSION} = 1\)</span>, <span class="math notranslate nohighlight">\(\texttt{PAR_SURFDIFFUSION} = 0\)</span>), the parameters must not become non-zero during this or subsequent simulation runs. The internal data structures are optimized for a more efficient simulation.  This field is optional and defaults to <span class="math notranslate nohighlight">\(0\)</span> (optimization disabled in favor of flexibility).</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>For further discretization parameters, see also <a class="reference internal" href="../flux_reconstruction.html#flux-reconstruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific)), and <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
+</section>
+<section id="discontinuous-galerkin">
+<h2>Discontinuous Galerkin<a class="headerlink" href="#discontinuous-galerkin" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code></p>
+<blockquote>
+<div><p>DG polynomial degree. Optional, defaults to 4 and <span class="math notranslate nohighlight">\(N_d \in \{3, 4, 5\}\)</span> is recommended. The total number of axial discrete points is given by (<code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code> + 1 ) * <code class="docutils literal notranslate"><span class="pre">NELEM</span></code></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">NELEM</span></code></p>
+<blockquote>
+<div><p>Number of axial column discretization DG cellselements. The total number of axial discrete points is given by (<code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code> + 1 ) * <code class="docutils literal notranslate"><span class="pre">NELEM</span></code></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">NCOL</span></code></p>
+<blockquote>
+<div><p>Number of axial discrete points. Optional and ignored if <code class="docutils literal notranslate"><span class="pre">NELEM</span></code> is defined. Otherwise, used to calculate <code class="docutils literal notranslate"><span class="pre">NELEM</span></code> = <span class="math notranslate nohighlight">\(\lfloor\)</span> <code class="docutils literal notranslate"><span class="pre">NCOL</span></code> / (<code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code> + 1 ) <span class="math notranslate nohighlight">\(\rfloor\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">EXACT_INTEGRATION</span></code></p>
+<blockquote>
+<div><p>Specifies the DG integration variant. Optional, defaults to 0</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_POLYDEG</span></code></p>
+<blockquote>
+<div><p>DG particle (radial) polynomial degree. Optional, defaults to 3. The total number of particle (radial) discrete points is given by (<code class="docutils literal notranslate"><span class="pre">PARPOLYDEG</span></code> + 1 ) * <code class="docutils literal notranslate"><span class="pre">PAR_NELEM</span></code>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">PAR_NELEM</span></code></p>
+<blockquote>
+<div><p>Number of particle (radial) discretization DG elements for each particle type. For the particle discretization, it is usually most performant to fix <code class="docutils literal notranslate"><span class="pre">PAR_NELEM</span></code> = 1 and to increase the polynomial degree for more accuracy.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span> / <span class="math notranslate nohighlight">\(\texttt{NPARTYPE}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>When using the DG method for the GRM, we recommend specifying <code class="docutils literal notranslate"><span class="pre">USE_MODIFIED_NEWTON</span> <span class="pre">=</span> <span class="pre">1</span></code> in <a class="reference internal" href="../solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>, i.e. to use the modified Newton method to solve the linear system within the time integrator.
+For further discretization parameters, see also <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
+</div></blockquote>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2025.
+      
+      |
+      <a href="../../_sources/interface/unit_operations/general_rate_model.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

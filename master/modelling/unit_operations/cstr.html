@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Continuous stirred tank reactor model (CSTR) &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/modelling/unit_operations/cstr.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Inlet" href="inlet.html" />
+    <link rel="prev" title="Multichannel Transport model (MCT model)" href="multi_channel_transport_model.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Unit operation models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="general_rate_model.html">General rate model (GRM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_without_pores.html">Lumped rate model without pores (LRM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_with_pores.html">Lumped rate model with pores (LRMP)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="2d_general_rate_model.html">Two Dimensional General rate model (GRM2D)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multi_channel_transport_model.html">Multichannel Transport model (MCT model)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Continuous stirred tank reactor model (CSTR)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inlet.html">Inlet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="outlet.html">Outlet</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization/index.html">Crystallization / Precipitation Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/modelling/unit_operations/cstr.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/modelling/unit_operations/cstr.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/modelling/unit_operations/cstr.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/modelling/unit_operations/cstr.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/modelling/unit_operations/cstr.html">v5.0.2</a></li>
+  <li><a href="../../../v5.0.3/modelling/unit_operations/cstr.html">v5.0.3</a></li>
+  <li><a href="../../../v5.0.4/modelling/unit_operations/cstr.html">v5.0.4</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="cstr.html">master</a></li>
+  <li><a href="../../../chore/developer_guide/modelling/unit_operations/cstr.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+<p>
+  <strong>
+    
+    You're reading the documentation for a development version.
+    For the latest released version, please have a look at <a href="../../../v5.0.4/modelling/unit_operations/cstr.html">v5.0.4</a>.
+    
+  </strong>
+</p>
+
+
+  <section id="continuous-stirred-tank-reactor-model-cstr">
+<span id="cstr-model"></span><h1>Continuous stirred tank reactor model (CSTR)<a class="headerlink" href="#continuous-stirred-tank-reactor-model-cstr" title="Link to this heading">¶</a></h1>
+<p>The continuous stirred tank reactor model is a basic building block in unit operation networks and often used to model holdup volume.
+When combined with a binding model, it can be used to model batch uptake experiments.</p>
+<p>Assuming that the fluid inside the tank is well-mixed and that the liquid volume <span class="math notranslate nohighlight">\(V^{\ell}\)</span> can vary, the governing equations are given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    \frac{\mathrm{d}}{\mathrm{d}t} (V^{\ell} c^\ell_i) + V^{s} \sum_j d_j \sum_{m_{j,i}}^{N_{\text{bnd},j,i}}  \frac{\mathrm{d}}{\mathrm{d}t} (c^s_{j,i,m_{j,i}}) &amp;= F_{\text{in}} c^\ell_{\text{in},i} - F_{\text{out}} c^\ell_i + V^{\ell} f_{\text{react},i}^l\left( c^\ell \right) \\
+    &amp;+V^{s}\sum_j d_j f_{\text{react},j,i}^s\left( c^\ell, c_j^s \right)
+\end{aligned}\end{split}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(c^\ell_i\)</span> concentration of component <span class="math notranslate nohighlight">\(i\)</span> in the liquid phase.</p></li>
+<li><p><span class="math notranslate nohighlight">\(c^s_{j,i,m_{j,i}}\)</span> concentration of component <span class="math notranslate nohighlight">\(i\)</span> in the solid phase of particle type <span class="math notranslate nohighlight">\(j\)</span> and particle type <span class="math notranslate nohighlight">\(m_{j,i}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V^{\ell}\)</span> liquid volume in the tank.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V^{s}\)</span> solid volume in the tank.</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{\text{in}}\)</span> and <span class="math notranslate nohighlight">\(F_{\text{out}}\)</span> flow rates of liquid into and out of the tank.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_{\text{react},i}^l\left( c^\ell \right)\)</span> and <span class="math notranslate nohighlight">\(f_{\text{react},j,i}^s\left( c^\ell, c_j^s \right)\)</span> reaction rates of component <span class="math notranslate nohighlight">\(i\)</span> in the liquid and solid phase.</p></li>
+<li><p><span class="math notranslate nohighlight">\(d_j\)</span> volume fraction of the different solid volume in the tank.</p></li>
+</ul>
+<p>Depending on whether quasi-stationary or dynamic binding is used the binding behavior of <span class="math notranslate nohighlight">\(c_i^{\ell}\)</span> and <span class="math notranslate nohighlight">\(c^s_j\)</span> is described by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+    \text{quasi-stationary: }&amp; &amp; 0 &amp;= f_{\text{ads},j}\left( c_i^\ell, c^s_j\right), \\
+    \text{dynamic: }&amp; &amp; \frac{\partial c^s_j}{\partial t} &amp;= f_{\text{ads},j}\left( c_i^\ell, c^s_j\right) + f_{\text{react},j}^s\left( c_i^\ell, c_j^s \right),
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(f_{\text{ads},j}\)</span> is the adsorption rate in the solid phase of particle type <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<p>The evolution of volume of the liquid volume</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+   \frac{\mathrm{d}V^{\ell}}{\mathrm{d}t}= F_{\text{in}} - F_{\text{out}} - F_{\text{filter}}.
+\end{aligned}\]</div>
+<p>Removing all bound states by setting <span class="math notranslate nohighlight">\(N_{\text{bnd},j,i} = 0\)</span> for all components <span class="math notranslate nohighlight">\(i\)</span> and particle types <span class="math notranslate nohighlight">\(j\)</span>, and applying no binding model results in a simple tank.
+The additional parameter <span class="math notranslate nohighlight">\(F_{\text{filter}}\)</span>, which denotes the flow rate of pure liquid (without any components) out of the tank, can be used to model a filtering unit.</p>
+<p>Note that it is the user’s duty to make sure that the volume of the CSTR does not fall below 0. If it does, the simulation may fail to run or may produce unreasonable (e.g., unphysical) results.</p>
+<p>See <a class="reference internal" href="../../interface/unit_operations/cstr.html#cstr-config"><span class="std std-ref">Continuous stirred tank reactor model</span></a>.</p>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2025.
+      
+      |
+      <a href="../../_sources/modelling/unit_operations/cstr.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

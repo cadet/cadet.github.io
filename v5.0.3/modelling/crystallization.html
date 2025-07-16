@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Population Balance Models &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/modelling/crystallization.html" />
+    <link rel="icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Simulation" href="../simulation/index.html" />
+    <link rel="prev" title="Networks of unit operations" href="networks.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binding/index.html">Binding models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reaction/index.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Population Balance Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#population-balance-model-in-a-cstr">Population Balance Model in a CSTR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#population-balance-model-in-a-dpfr">Population Balance Model in a DPFR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constitutive-equations">Constitutive equations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../v5.0.0/modelling/crystallization.html">v5.0.0</a></li>
+  <li><a href="../../v5.0.1/modelling/crystallization.html">v5.0.1</a></li>
+  <li><a href="../../v5.0.2/modelling/crystallization.html">v5.0.2</a></li>
+  <li><a href="crystallization.html">v5.0.3</a></li>
+  <li><a href="../../v5.0.4/modelling/crystallization.html">v5.0.4</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../master/index.html">master</a></li>
+  <li><a href="../../chore/developer_guide/index.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+<p>
+  <strong>
+    
+    You're reading an old version of this documentation.
+    For the latest released version, please have a look at <a href="../../v5.0.4/modelling/crystallization.html">v5.0.4</a>.
+    
+  </strong>
+</p>
+
+
+  <section id="population-balance-models">
+<span id="pbm-model"></span><h1>Population Balance Models<a class="headerlink" href="#population-balance-models" title="Link to this heading">¶</a></h1>
+<p>The population balance model (PBM) is given by a particle-number continuity equation which describes the evolution of the number density <span class="math notranslate nohighlight">\(n\)</span> of the particles over time <span class="math notranslate nohighlight">\(t\)</span> and with respect to a so-called internal coordinate <span class="math notranslate nohighlight">\(x\)</span> and external coordinate <span class="math notranslate nohighlight">\(z\)</span>.
+The internal coordinate can be chosen as any characteristic property of the particles such as the particle size or volume.
+The external coordinate can be a characteristic dimension of the reactor itself, including its axial length.</p>
+<p>In CADET, we chose particle size and axial coordinate as the internal and external coodinate respectively.
+The PBM in CADET is implemented so that it can be used in any unit operation that supports reactions.
+Typical applications consider crystallization in a CSTR or, to model continuous processes, in a Dispersive Plug-Flow Reactor (DPFR), which is described by the LRM without solid phase.</p>
+<p>In the following, we give a brief overview on the modelling equations, for more information on the PBM as implemented in CADET, please refer to <span id="id1">[<a class="reference internal" href="../zbibliography.html#id5" title="Wendi Zhang, Todd Przybycien, Johannes Schmölder, Samuel Leweke, and Eric von Lieres. Solving crystallization/precipitation population balance models in cadet, part i: nucleation growth and growth rate dispersion in batch and continuous modes on nonuniform grids. Computers &amp; Chemical Engineering, pages 108612, 2024. doi:10.1016/j.compchemeng.2024.108612.">24</a>]</span>.</p>
+<figure class="align-default" id="id2">
+<img alt="../_images/PBM_Part_I.png" src="../_images/PBM_Part_I.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Nucleation, growth and growth rate dispersion in PBM. Note that dispersion is used to model (random) variance in growth speed, not the reduction of particle size, which is feasible for a convection dominated process.</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="population-balance-model-in-a-cstr">
+<h2>Population Balance Model in a CSTR<a class="headerlink" href="#population-balance-model-in-a-cstr" title="Link to this heading">¶</a></h2>
+<p>We assume a well-mixed tank and choose the particle size <span class="math notranslate nohighlight">\(x\in (x_c, \infty)\)</span> as the internal coodinate, with <span class="math notranslate nohighlight">\(x_c&gt;0\)</span> being the minimal particle size considered.
+The corresponding PBM is given as</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \frac{\partial (n V)}{\partial t} = F_{in}n_{in} - F_{out}n - V \left( \frac{\partial (v_{G}n)}{\partial x} - D_g \frac{\partial^2 n}{\partial x^2} - B_0 \delta (x-x_c) \right),
+\end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(F_{in}, F_{out}\in \mathbb{R}^+\)</span> are the volumetric inflow and outflow rates, <span class="math notranslate nohighlight">\(V\in\mathbb{R}^+\)</span> is the reactor volume,
+<span class="math notranslate nohighlight">\(n(t, x)\colon [0, T_\text{end}] \times (x_c, \infty) \mapsto \mathbb{R}^+\)</span> is the number density distribution,
+<span class="math notranslate nohighlight">\(n_{in}\in\mathbb{R}^+\)</span> is the number density distribution of the inlet feed, <span class="math notranslate nohighlight">\(v_{G}\in\mathbb{R}^+\)</span> is the particle growth rate,
+<span class="math notranslate nohighlight">\(D_g\in\mathbb{R}^+\)</span> is the growth dispersion rate.</p>
+<p>The boundary conditions are given by the regularity boundary condition</p>
+<div class="math notranslate nohighlight" id="equation-regularitybc">
+<span class="eqno">(27)<a class="headerlink" href="#equation-regularitybc" title="Link to this equation">¶</a></span>\[\begin{aligned}
+    \left. \left( nv_{G} - D_g \frac{\partial n}{\partial x} \right) \right|_{x \to \infty}=0,
+\end{aligned}\]</div>
+<p>and the nucleation kinetics boundary condition</p>
+<div class="math notranslate nohighlight" id="equation-nucleationbc">
+<span class="eqno">(28)<a class="headerlink" href="#equation-nucleationbc" title="Link to this equation">¶</a></span>\[\begin{aligned}
+    \left. \left( nv_{G}-D_g \frac{\partial n}{\partial x} \right)\right|_{x=x_c} = B_0,
+\end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(B_0\in\mathbb{R}^+\)</span> is the nucleation kinetics factor representing particle nucleations of size <span class="math notranslate nohighlight">\(x_c\in\mathbb{R}^+\)</span>.</p>
+<p>The model is complemented by the following mass balance equation which accounts for the mass transfer between the particle phase and the solute phase</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \frac{\partial (cV)}{\partial t} = F_{in}c_{in} - F_{out}c -\rho k_v  V \left( B_0x^3_c + 3\int_{x_c}^{\infty} v_{G}n\ x^2 \;\mathrm{d}x \right),
+\end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(c(t)\colon [0, T_\text{end}] \mapsto \mathbb{R}^+\)</span> is the solute concentration in the bulk phase, <span class="math notranslate nohighlight">\(c_{in}\in\mathbb{R}^+\)</span> is the inlet solute mass concentration, <span class="math notranslate nohighlight">\(\rho &gt; 0\)</span> is the nuclei mass density and <span class="math notranslate nohighlight">\(k_v &gt; 0\)</span> is the volumetric shape factor of the particles.</p>
+<p>Evolution of the reactor’s volume is governed by</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \frac{\mathrm{d}V}{\mathrm{d}t} &amp;= F_{\text{in}} - F_{\text{out}}.
+\end{aligned}\]</div>
+</section>
+<section id="population-balance-model-in-a-dpfr">
+<h2>Population Balance Model in a DPFR<a class="headerlink" href="#population-balance-model-in-a-dpfr" title="Link to this heading">¶</a></h2>
+<p>The PBM can also be formulated for a DPFR to model continuous processes.
+That is, we choose the axial position within a DPFR as the external coordinate <span class="math notranslate nohighlight">\(z\in[0, L]\)</span> and formulate the <span class="math notranslate nohighlight">\(2D\)</span> PBM</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \frac{\partial n}{\partial t} = -v_\text{ax} \frac{\partial n}{\partial z} +D_{ax} \frac{\partial^2 n}{\partial z^2}  - \frac{\partial (v_{G}n)}{\partial x} + D_g \frac{\partial^2 n}{\partial x^2},
+\end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(n(t, x, z)\colon [0, T_\text{end}] \times (x_c, \infty) \times [0, L] \mapsto \mathbb{R}^+\)</span> is the number density distribution,
+<span class="math notranslate nohighlight">\(v_\text{ax}\in\mathbb{R}^+\)</span> is the axial velocity and <span class="math notranslate nohighlight">\(D_{ax}\in\mathbb{R}^+\)</span> is the axial dispersion coefficient.</p>
+<p>Boundary conditions for the internal coordinate are again given by Eq. <a class="reference internal" href="#equation-regularitybc">27</a> and Eq. <a class="reference internal" href="#equation-nucleationbc">28</a>.</p>
+<p>For the external coordinate <span class="math notranslate nohighlight">\(z\)</span>, Danckwerts boundary conditions are applied:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \left. \left( n v_\text{ax}-D_{ax}\frac{\partial n}{\partial z} \right) \right|_{z=0} = v_\text{ax} n_{in,x}, \qquad \left.\frac{\partial n}{\partial z}\right|_{z=L}=0.
+\end{aligned}\]</div>
+<p>The mass balance equation for the solute <span class="math notranslate nohighlight">\(c(t, z)\colon [0,T-\text{end}] \times [0,L] \mapsto \mathbb{R}^+\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \frac{\partial c}{\partial t} = -v_\text{ax} \frac{\partial c}{\partial z} +D_{ax} \frac{\partial^2 c}{\partial z^2} -\rho k_v \left( B_0x^3_c + 3\int_{x_c}^{\infty} v_{G}n x^2 \;\mathrm{d}x \right).
+\end{aligned}\]</div>
+<p>As for the particle phase, the solute mass concentration subjects to the Danckwerts boundary conditions</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \left.\left( c v_\text{ax}-D_{ax}\frac{\partial c}{\partial z} \right) \right|_{z=0} = v_\text{ax} c_{in}, \qquad \left.\frac{\partial c}{\partial z}\right|_{z=L}=0.
+\end{aligned}\]</div>
+</section>
+<section id="constitutive-equations">
+<h2>Constitutive equations<a class="headerlink" href="#constitutive-equations" title="Link to this heading">¶</a></h2>
+<p>Constitutive equations describe the kinetic processes in the governing equations. The relative supersaturation <span class="math notranslate nohighlight">\(s&gt;0\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    s=\frac{c-c_{eq}}{c_{eq}},
+\end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(c_{eq}&gt;0\)</span> is the solute solubility in the solvent.
+The nucleation kinetics can be split into primary and secondary nucleation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    B_0 = B_p + B_s,
+\end{aligned}\]</div>
+<p>Which are in turn defined by the following constitutive equations.
+An empirical equation for primary nucleation is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    B_p=k_ps^u,
+\end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(k_p\in\mathbb{R}^+\)</span> is the primary nucleation rate constant and <span class="math notranslate nohighlight">\(u\in\mathbb{R}^+\)</span> is a constant.
+An empirical power-law expression is used for the secondary nucleation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    B_s=k_bs^bM^k,
+\end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(k_b\in\mathbb{R}^+\)</span> is the secondary nucleation rate constant, <span class="math notranslate nohighlight">\(b\in\mathbb{R}^+\)</span> and <span class="math notranslate nohighlight">\(k\in\mathbb{R}^+\)</span> are system-related parameters and <span class="math notranslate nohighlight">\(M\in\mathbb{R}^+\)</span> is the suspension density defined as</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    M=k_v\rho\int_{0}^{\infty}n\ x^3\;\mathrm{d}x.
+\end{aligned}\]</div>
+<p>The following expression for the growth rate is implemented:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    v_{G}=k_gs^g(a+\gamma x^p),
+\end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(k_g\in\mathbb{R}^+\)</span> is the growth rate constant, <span class="math notranslate nohighlight">\(\gamma\in\mathbb{R}^+\)</span> quantifies the size dependence, and <span class="math notranslate nohighlight">\(g, a, p\in\mathbb{R}^+\)</span> are system-related constants.</p>
+<p>For information on model parameters and how to specify the model interface, see <a class="reference internal" href="../interface/population_balance_model.html#pbm-config"><span class="std std-ref">Population balance model</span></a>.</p>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2025.
+      
+      |
+      <a href="../_sources/modelling/crystallization.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

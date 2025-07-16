@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Build for Linux &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/getting_started/build_linux.html" />
+    <link rel="icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Build for MS Windows" href="build_windows.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Getting started</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="installation.html">Installation</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="installation.html#install-cadet-core-simulator">Install CADET core simulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation.html#install-a-frontend">Install a frontend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/breakthrough.html">CADET Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/portal/EN/Service/LegalNotice/_node.html">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="build_linux.html">v4.3.0</a></li>
+  <li><a href="../../v4.4.0/getting_started/build_linux.html">v4.4.0</a></li>
+  <li><a href="../../v5.0.0/getting_started/build_linux.html">v5.0.0</a></li>
+  <li><a href="../../v5.0.1/getting_started/build_linux.html">v5.0.1</a></li>
+  <li><a href="../../v5.0.2/getting_started/build_linux.html">v5.0.2</a></li>
+  <li><a href="../../v5.0.3/getting_started/build_linux.html">v5.0.3</a></li>
+  <li><a href="../../v5.0.4/getting_started/build_linux.html">v5.0.4</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../master/getting_started/build_linux.html">master</a></li>
+  <li><a href="../../chore/developer_guide/getting_started/build_linux.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+<p>
+  <strong>
+    
+    You're reading an old version of this documentation.
+    For the latest released version, please have a look at <a href="../../v5.0.4/getting_started/build_linux.html">v5.0.4</a>.
+    
+  </strong>
+</p>
+
+
+  <section id="build-for-linux">
+<span id="build-linux"></span><h1>Build for Linux<a class="headerlink" href="#build-for-linux" title="Link to this heading">¶</a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>CMake (&gt;= 3.12.0)</p></li>
+<li><p>GCC &gt;= 5.0 or Clang &gt;= 3.4</p></li>
+<li><p>Optional: MATLAB R2009a or greater</p></li>
+<li><p>Optional: Git</p></li>
+</ul>
+<p>Assumed directory structure:</p>
+<pre>
+&lt;ROOT&gt;
+   |-libs
+   |   |- sundials
+   |   |- hdf5
+   |   |- superlu
+   |   |- suitesparse
+   |-code
+   |-cadet
+   |-build
+</pre><p>Note that the version numbers of the files and packages below are
+subject to change and will not always reflect the most recent version.</p>
+</section>
+<section id="build-dependencies">
+<h2>Build dependencies<a class="headerlink" href="#build-dependencies" title="Link to this heading">¶</a></h2>
+<section id="hdf5">
+<h3>HDF5<a class="headerlink" href="#hdf5" title="Link to this heading">¶</a></h3>
+<p>You can either build HDF5 yourself or rely on the packages provided by
+your Linux distribution.</p>
+<p>Obtain HDF5 from your distribution: * Install the development package
+of your distribution (e.g., <code class="docutils literal notranslate"><span class="pre">libhdf5-dev</span></code> for Ubuntu and Debian,
+<code class="docutils literal notranslate"><span class="pre">hdf5-devel</span></code> OpenSUSE) * Additional postfixes or prefixes in the
+library names (e.g., Debian uses <code class="docutils literal notranslate"><span class="pre">libhdf5_serial.*</span></code> instead of
+<code class="docutils literal notranslate"><span class="pre">libhdf5.*</span></code>) can cause troubles when CMake is trying to find HDF5. If
+this is the case, you can circumvent this by using symlinks
+<code class="docutils literal notranslate"><span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">libhdf5_serial.*</span> <span class="pre">libhdf5.*</span></code>. However, this can later cause
+troubles because other packages might contain this file.</p>
+<p>Build HDF5 yourself: * Download CMake-enabled source from
+<a class="reference external" href="https://www.hdfgroup.org/downloads/hdf5/source-code/">https://www.hdfgroup.org/downloads/hdf5/source-code/</a> * Unzip and make
+sure that the directory path does not contain blank spaces * Open a
+terminal and change to the unzipped directory * Execute
+<code class="docutils literal notranslate"><span class="pre">ctest</span> <span class="pre">-S</span> <span class="pre">HDF5config.cmake,BUILD_GENERATOR=Unix,INSTALLDIR=&quot;&lt;ROOT&gt;/Libs/hdf5&quot;</span> <span class="pre">-C</span> <span class="pre">Release</span> <span class="pre">-V</span></code>
+* Extract the created <code class="docutils literal notranslate"><span class="pre">HDF5-1.10.0-patch1-Linux.tar.gz</span></code> file to
+<code class="docutils literal notranslate"><span class="pre">&lt;ROOT&gt;/Libs/hdf5</span></code> such that you have <code class="docutils literal notranslate"><span class="pre">&lt;ROOT&gt;/Libs/hdf5/lib</span></code></p>
+</section>
+<section id="sundials">
+<h3>SUNDIALS<a class="headerlink" href="#sundials" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Download SUNDIALS source from
+<a class="reference external" href="http://computation.llnl.gov/projects/sundials/sundials-software">http://computation.llnl.gov/projects/sundials/sundials-software</a>
+(version &lt;= 3.2.1)</p></li>
+<li><p>Unzip</p></li>
+<li><p>Open a terminal and change to the parent directory of the unzipped
+directory</p></li>
+<li><p>Create a new folder <code class="docutils literal notranslate"><span class="pre">sundialsbuild</span></code> and change to it</p></li>
+<li><p>Execute
+<code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=&quot;&lt;ROOT&gt;/Libs/sundials&quot;</span> <span class="pre">-DEXAMPLES_ENABLE=OFF</span> <span class="pre">-DOPENMP_ENABLE=ON</span> <span class="pre">-DBUILD_SHARED_LIBS=OFF</span> <span class="pre">-DCMAKE_C_FLAGS=-fPIC</span> <span class="pre">../sundials-3.2.1/</span></code></p></li>
+<li><p>Execute <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code></p></li>
+<li><p>Delete the folder <code class="docutils literal notranslate"><span class="pre">sundialsbuild</span></code> (e.g., execute
+<code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-rf</span> <span class="pre">sundialsbuild</span></code> in the parent directory of
+<code class="docutils literal notranslate"><span class="pre">sundialsbuild</span></code>)</p></li>
+</ul>
+</section>
+<section id="lapack">
+<h3>LAPACK<a class="headerlink" href="#lapack" title="Link to this heading">¶</a></h3>
+<p>You can either use a LAPACK implementation provided by your distribution
+or install the freely available <a class="reference external" href="https://software.intel.com/sites/campaigns/nest/">Intel
+MKL</a> which is very
+fast and probably faster than your distribution’s implementation.</p>
+<p>Obtain LAPACK from your distribution: * Install the packages (LAPACK
+and BLAS) of your distribution (e.g., <code class="docutils literal notranslate"><span class="pre">liblapack3</span></code>, <code class="docutils literal notranslate"><span class="pre">liblapack-dev</span></code>,
+<code class="docutils literal notranslate"><span class="pre">libblas3</span></code>, <code class="docutils literal notranslate"><span class="pre">libblas-dev</span></code> for Ubuntu and Debian). Note that some
+packages only provide reference (i.e., slow) implementations and others
+(e.g., ATLAS, GOTO) perform much faster.</p>
+</section>
+<section id="superlu">
+<h3>SuperLU<a class="headerlink" href="#superlu" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Download SuperLU source from <a class="reference external" href="https://github.com/xiaoyeli/superlu">https://github.com/xiaoyeli/superlu</a></p></li>
+<li><p>Unzip</p></li>
+<li><p>Open a terminal and change to the parent directory of the unzipped
+directory</p></li>
+<li><p>Create a new folder <code class="docutils literal notranslate"><span class="pre">superlubuild</span></code> and change to it</p></li>
+<li><p>Execute
+<code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=&quot;&lt;ROOT&gt;/Libs/superlu&quot;</span> <span class="pre">-Denable_complex=OFF</span> <span class="pre">-Denable_complex16=OFF</span> <span class="pre">-Denable_blaslib=OFF</span> <span class="pre">-DCMAKE_C_FLAGS=-fPIC</span> <span class="pre">-DCMAKE_BUILD_TYPE=Release</span> <span class="pre">../SuperLU_5.2.1/</span></code></p></li>
+<li><p>Execute <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code></p></li>
+<li><p>Delete the folder <code class="docutils literal notranslate"><span class="pre">superlubuild</span></code> (e.g., execute
+<code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-rf</span> <span class="pre">superlubuild</span></code> in the parent directory of <code class="docutils literal notranslate"><span class="pre">superlubuild</span></code>)</p></li>
+</ul>
+</section>
+<section id="umfpack">
+<h3>UMFPACK<a class="headerlink" href="#umfpack" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Download SuiteSparse source from
+<a class="reference external" href="http://faculty.cse.tamu.edu/davis/suitesparse.html">http://faculty.cse.tamu.edu/davis/suitesparse.html</a></p></li>
+<li><p>Unzip</p></li>
+<li><p>Open a terminal and change to the unzipped directory</p></li>
+<li><p>Execute
+<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span> <span class="pre">INSTALL=&quot;&lt;ROOT&gt;/Libs/suitesparse&quot;</span> <span class="pre">CHOLMOD_CONFIG=-DNPARTITION</span></code>
+or
+<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span> <span class="pre">INSTALL=&quot;&lt;ROOT&gt;/Libs/suitesparse&quot;</span> <span class="pre">CHOLMOD_CONFIG=-DNPARTITION</span> <span class="pre">AUTOCC=no</span> <span class="pre">CC=&lt;COMPILER&gt;</span> <span class="pre">CXX=&lt;C++COMPILER&gt;</span></code>
+if you want to manually select the compiler</p></li>
+</ul>
+</section>
+</section>
+<section id="build-cadet">
+<h2>Build CADET<a class="headerlink" href="#build-cadet" title="Link to this heading">¶</a></h2>
+<ul>
+<li><p>Download release of CADET or checkout from git</p></li>
+<li><p>Place the source in <code class="docutils literal notranslate"><span class="pre">&lt;ROOT&gt;/code</span></code> and create the directory
+<code class="docutils literal notranslate"><span class="pre">&lt;ROOT&gt;/build</span></code></p></li>
+<li><p>Open a terminal and change to <code class="docutils literal notranslate"><span class="pre">&lt;ROOT&gt;/build</span></code></p></li>
+<li><p>If you have built HDF5 yourself, execute
+<code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">HDF5_ROOT=&lt;ROOT&gt;/Libs/hdf5</span></code></p></li>
+<li><p>Execute <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">SUNDIALS_ROOT=&lt;ROOT&gt;/Libs/sundials</span></code></p></li>
+<li><p>Execute <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">SUPERLU_ROOT=&lt;ROOT&gt;/Libs/superlu</span></code></p></li>
+<li><p>Execute <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">UMFPACK_ROOT=&lt;ROOT&gt;/Libs/suitesparse</span></code></p></li>
+<li><p>If using MKL, execute <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">MKLROOT=/opt/intel/mkl</span></code></p></li>
+<li><p>Using standard LAPACK: Execute
+<code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=&quot;&lt;ROOT&gt;/cadet&quot;</span> <span class="pre">../code/</span></code></p>
+<p>Using MKL (sequential): Execute
+<code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=&quot;&lt;ROOT&gt;/cadet&quot;</span> <span class="pre">-DBLA_VENDOR=Intel10_64lp_seq</span> <span class="pre">../code/</span></code></p>
+<p>Using MKL (parallel): Execute
+<code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=&quot;&lt;ROOT&gt;/cadet&quot;</span> <span class="pre">-DBLA_VENDOR=Intel10_64lp</span> <span class="pre">../code/</span></code></p>
+</li>
+<li><p>If CMake was not able to locate MATLAB, execute
+<code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">MATLAB_ROOT=/path/to/my/MATLAB/R2016a</span></code> and try to run CMake
+again</p></li>
+<li><p>Execute <code class="docutils literal notranslate"><span class="pre">make</span></code></p></li>
+<li><p>Execute <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code></p></li>
+</ul>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2025.
+      
+      |
+      <a href="../_sources/getting_started/build_linux.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

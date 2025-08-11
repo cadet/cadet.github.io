@@ -206,7 +206,8 @@ Parameter dependencies are described here <a class="reference internal" href="..
 <p><code class="docutils literal notranslate"><span class="pre">VELOCITY_COEFF</span></code></p>
 <blockquote>
 <div><p>Interstitial velocity coefficient of the mobile phase (optional <span class="math notranslate nohighlight">\(\texttt{COL_LENGTH}\)</span> is present, see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>).
-This input replaces the <code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code> field, which is used for axial flow models. The distinction is made to emphasize that radial flow models do not incorporate a global velocity but a variable velocity field that depends on the spatial position, for details see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmradialflow"><span class="std std-ref">Radial flow GRM</span></a>.</p>
+This input replaces the <code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code> field, which is used for axial flow models. The distinction is made to emphasize that radial flow models do not incorporate a global velocity but a variable velocity field that depends on the spatial position.
+Specifically, the velocity coefficient here is defined as <span class="math notranslate nohighlight">\(\frac{Q}{2 \pi L \varepsilon_c}\)</span>, for details see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmradialflow"><span class="std std-ref">Radial flow GRM</span></a>.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\,\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
 <tbody>

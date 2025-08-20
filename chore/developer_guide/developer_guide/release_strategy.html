@@ -5,18 +5,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; CADET</title>
+    <title>Code development and release strategy &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
     <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2bcfc6fe" />
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <link rel="canonical" href="https://cadet.github.io/master/developer_guide/release_new_version.html" />
+    <link rel="canonical" href="https://cadet.github.io/master/developer_guide/release_strategy.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="License" href="../license.html" />
-    <link rel="prev" title="CADET-Core testing" href="testing.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -69,16 +67,16 @@
 <ul>
   <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
   <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
-  <li><a href="../../../v5.0.0/developer_guide/release_new_version.html">v5.0.0</a></li>
-  <li><a href="../../../v5.0.1/developer_guide/release_new_version.html">v5.0.1</a></li>
-  <li><a href="../../../v5.0.2/developer_guide/release_new_version.html">v5.0.2</a></li>
-  <li><a href="../../../v5.0.3/developer_guide/release_new_version.html">v5.0.3</a></li>
-  <li><a href="../../../v5.0.4/developer_guide/release_new_version.html">v5.0.4</a></li>
+  <li><a href="../../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../../v5.0.3/index.html">v5.0.3</a></li>
+  <li><a href="../../../v5.0.4/index.html">v5.0.4</a></li>
 </ul>
 <h3>Branches</h3>
 <ul>
-  <li><a href="../../../master/developer_guide/release_new_version.html">master</a></li>
-  <li><a href="release_new_version.html">chore/developer_guide</a></li>
+  <li><a href="../../../master/index.html">master</a></li>
+  <li><a href="release_strategy.html">chore/developer_guide</a></li>
 </ul>
 
         </div>
@@ -94,13 +92,41 @@
   <strong>
     
     You're reading the documentation for a development version.
-    For the latest released version, please have a look at <a href="../../../v5.0.4/developer_guide/release_new_version.html">v5.0.4</a>.
+    For the latest released version, please have a look at <a href="../../../v5.0.4/index.html">v5.0.4</a>.
     
   </strong>
 </p>
 
 
-  <p id="release-new-version"># CADET-Core Release Guide</p>
+  <section id="code-development-and-release-strategy">
+<span id="release-strategy"></span><h1>Code development and release strategy<a class="headerlink" href="#code-development-and-release-strategy" title="Link to this heading">¶</a></h1>
+<section id="agile-code-development">
+<h2>Agile code development<a class="headerlink" href="#agile-code-development" title="Link to this heading">¶</a></h2>
+<p>PRs are merged into master as soon as they are complete, i.e. no half-baked solutions, tested, documented, updated C-API (if required).
+This happens independent of when we want to release the code.</p>
+<p>Due to our limited resources and since we?re not paid by our users, we need to avoid technical debt arising from trying to satisfy everybody at once.
+Specifically, we do not implement multiple interfaces on master since they all need to be tested and later deprecated.</p>
+</section>
+<section id="release-strategy-and-code-distribution">
+<h2>Release strategy and Code distribution<a class="headerlink" href="#release-strategy-and-code-distribution" title="Link to this heading">¶</a></h2>
+<p><strong>Patch releases</strong> latest minor/major release is supported by patch releases, i.e. bug fixes and minor improvements are made on the corresponding release branch <strong>and</strong> on master.</p>
+<p><strong>Minor releases</strong>: New minor releases are branched off of master with the desired code changes to be cherry-picked.
+If an interface breaking change is desired to be released in a minor version release, the code must be reworked to implement the old interface.
+Added features implementing a new interface can be added to a minor version release.
+Only major version relases may contain breaking changes to the interface.</p>
+<p><strong>Major version pre-releases</strong>: The above rule prevents the direct release (i.e. release without additional work) of code that breaks the interface until the next major version is published.
+To distribute the code e.g. for publications, collaborations, early-access, we can create a pre-release of the major version, requiring users to adapt to the new interface as it currently is.
+In this case, we can distribute binaries or the docker image and the corresponding documentation to collaborators.
+This is a pre-release that we also want to have on zenodo, in contrast to pre-releases made for testing/verification.
+It should be made clear to users that this is not a formal release and that the interface may still evolve.</p>
+<p><strong>Major release</strong>: Major releases may contain breaking changes to the interface.
+Foreseeable breaking changes to established feature should thus be bundled in a major release.</p>
+<p>This strategy is meant to reduce development time and maintenance overhead and shifts tedious/painful rework to where it pays off - collaboration, publication.</p>
+</section>
+<section id="making-a-new-release">
+<h2>Making a new release<a class="headerlink" href="#making-a-new-release" title="Link to this heading">¶</a></h2>
+<p>Every release of CADET-Core follows the <strong>release_checklist</strong>, ensuring proper testing, documentation and deployment:</p>
+<p># CADET-Core Release Guide</p>
 <p>CADET-Core follows the semantic versioning system described at [semver.org](<a class="reference external" href="https://semver.org/">https://semver.org/</a>).</p>
 <p>CADET-Core is released using the GitLab flow. In GitLab flow, feature and hotfix branches contain work for new features and bug fixes. These branches are merged back into the master branch immediately after they are finished, reviewed, and approved. The master branch is ready to be deployed but is not necessarily the source of truth for a new release. Each release has an associated release branch that is based on the master branch. Changes that are intended to be released are cherry-picked from master onto the release branch. The release is made on the release branch. Some release branches can be maintained, for example branch <cite>v5.0.X</cite> to support the last major release.</p>
 <p>The following checklist describes the steps to execute sequentially for creating a new release.</p>
@@ -178,6 +204,8 @@ Replace <cite>{{ version }}</cite> with the semantic version number.</p>
 <li><p>[ ] Merge the pull request to trigger the conda-forge release.</p></li>
 <li><p>[ ] Create or update a CADET forum post announcing the release.</p></li>
 </ul>
+</section>
+</section>
 
 
 
@@ -191,7 +219,7 @@ Replace <cite>{{ version }}</cite> with the semantic version number.</p>
       &#169;2008-2025.
       
       |
-      <a href="../_sources/developer_guide/release_new_version.rst.txt"
+      <a href="../_sources/developer_guide/release_strategy.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

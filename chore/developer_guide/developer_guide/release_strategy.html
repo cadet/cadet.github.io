@@ -142,6 +142,13 @@ Foreseeable breaking changes to established feature should thus be bundled in a 
 <section id="making-a-new-release">
 <h2>Making a new release<a class="headerlink" href="#making-a-new-release" title="Link to this heading">¶</a></h2>
 <p>Every release of CADET-Core follows the <strong>release_checklist</strong>, ensuring proper testing, documentation and deployment:</p>
+<p>—
+name: Release checklist
+about: Checklist to make a release
+title: ‘’
+labels: ‘maintenance’
+assignees: ‘’</p>
+<p>—</p>
 <p># CADET-Core Release Guide</p>
 <p>CADET-Core follows the semantic versioning system described at [semver.org](<a class="reference external" href="https://semver.org/">https://semver.org/</a>).</p>
 <p>CADET-Core is released using the GitLab flow. In GitLab flow, feature and hotfix branches contain work for new features and bug fixes. These branches are merged back into the master branch immediately after they are finished, reviewed, and approved. The master branch is ready to be deployed but is not necessarily the source of truth for a new release. Each release has an associated release branch that is based on the master branch. Changes that are intended to be released are cherry-picked from master onto the release branch. The release is made on the release branch. Some release branches can be maintained, for example branch <cite>v5.0.X</cite> to support the last major release.</p>

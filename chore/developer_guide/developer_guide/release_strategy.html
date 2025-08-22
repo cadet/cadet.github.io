@@ -120,7 +120,7 @@
 <h2>Agile code development<a class="headerlink" href="#agile-code-development" title="Link to this heading">¶</a></h2>
 <p>PRs are merged into master as soon as they are complete, i.e. no half-baked solutions, tested, documented, updated C-API (if required).
 This happens independent of when we want to release the code.</p>
-<p>Due to our limited resources and since we?re not paid by our users, we need to avoid technical debt arising from trying to satisfy everybody at once.
+<p>Due to our limited resources and since we’re not paid by our users, we need to avoid technical debt arising from trying to satisfy everybody at once.
 Specifically, we do not implement multiple interfaces on master since they all need to be tested and later deprecated.</p>
 </section>
 <section id="release-strategy-and-code-distribution">
@@ -141,92 +141,8 @@ Foreseeable breaking changes to established feature should thus be bundled in a 
 </section>
 <section id="making-a-new-release">
 <h2>Making a new release<a class="headerlink" href="#making-a-new-release" title="Link to this heading">¶</a></h2>
-<p>Every release of CADET-Core follows the <strong>release_checklist</strong>, ensuring proper testing, documentation and deployment:</p>
-<p>—
-name: Release checklist
-about: Checklist to make a release
-title: ‘’
-labels: ‘maintenance’
-assignees: ‘’</p>
-<p>—</p>
-<p># CADET-Core Release Guide</p>
-<p>CADET-Core follows the semantic versioning system described at [semver.org](<a class="reference external" href="https://semver.org/">https://semver.org/</a>).</p>
-<p>CADET-Core is released using the GitLab flow. In GitLab flow, feature and hotfix branches contain work for new features and bug fixes. These branches are merged back into the master branch immediately after they are finished, reviewed, and approved. The master branch is ready to be deployed but is not necessarily the source of truth for a new release. Each release has an associated release branch that is based on the master branch. Changes that are intended to be released are cherry-picked from master onto the release branch. The release is made on the release branch. Some release branches can be maintained, for example branch <cite>v5.0.X</cite> to support the last major release.</p>
-<p>The following checklist describes the steps to execute sequentially for creating a new release.</p>
-<p>—</p>
-<p>## Preparation</p>
-<ul class="simple">
-<li><p>[ ] Create a release branch <cite>vX.X.X</cite> (typically from <cite>master</cite>) and cherry-pick the commits to include.</p></li>
-<li><p>[ ] Create a version bump commit <cite>Bump version to vX.X.X</cite>:
-- Update the version number in <cite>version.txt</cite>, <cite>zenodo.json</cite> (two places), <cite>cadet.hpp</cite> and <cite>cadet.doxyfile</cite>.
-- Update the authors list if needed in <cite>CONTRIBUTING.md</cite> and <cite>zenodo.json</cite>.
-- Update the file format in <cite>driver.hpp</cite> if required.
-- If the release contains all commits from <cite>master</cite>, merge the bump commit into <cite>master</cite>.</p></li>
-</ul>
-<p>—</p>
-<p>## Pre-release build and Docker image</p>
-<ul class="simple">
-<li><p>[ ] If the pre-release should not appear on Zenodo, temporarily disconnect Zenodo from GitHub before creating the label (Eric has the required access rights).</p></li>
-<li><p>[ ] Add a pre-release label such as <cite>v1.2.3-alpha</cite> or <cite>v1.2.3-beta.1</cite> to the latest commit on the release branch.
-This triggers the Docker workflow to build an image containing:
-- The CADET-Core version at this commit
-- The latest released version of CADET-Python
-- The latest released version of CADET-Process</p></li>
-</ul>
-<p>—</p>
-<p>## Continuous Deployment tests</p>
-<ul class="simple">
-<li><p>[ ] Run the CD tests as described in the [CADET-Verification README](<a class="reference external" href="https://github.com/cadet/CADET-Verification">https://github.com/cadet/CADET-Verification</a>).</p></li>
-<li><p>[ ] In the [CADET-Verification Output repository](<a class="reference external" href="https://github.com/cadet/CADET-Verification-Output">https://github.com/cadet/CADET-Verification-Output</a>):
-- Open the automatically created branch for this release and compare the results with the previous release.
-- If the numerical engine or code structure changed, check the required simulation times.</p></li>
-<li><p>[ ] If tests fail or show unexpected behaviour:
-- Fix the issues on the release branch.
-- Repeat the tests until results are as expected.
-- Merge fixes into <cite>master</cite> and resolve conflicts if needed.</p></li>
-<li><p>[ ] Add the new run to the [meta-issue](<a class="reference external" href="https://github.com/cadet/CADET-Verification-Output/issues/1">https://github.com/cadet/CADET-Verification-Output/issues/1</a>).</p></li>
-<li><p>[ ] Link the output branch in the release issue.</p></li>
-</ul>
-<p>—</p>
-<p>## Creating the release on GitHub</p>
-<ul class="simple">
-<li><p>[ ] Reconnect Zenodo if it was disconnected for the pre-release.</p></li>
-<li><p>[ ] Go to [GitHub Releases](<a class="reference external" href="https://github.com/cadet/CADET-Core/releases/new">https://github.com/cadet/CADET-Core/releases/new</a>):
-- Set the release branch as the target.
-- Specify the tag <cite>vX.X.X</cite> according to semantic versioning.
-- Add release notes with sections for Added, Fixed, Changed, and Updated.</p></li>
-<li><p>[ ] Publish the release.</p></li>
-<li><p>[ ] Verify Zenodo archiving:
-- Confirm that a version-specific DOI was created.
-- Ensure that the source code and associated files are archived.
-- Note that the [concept DOI](<a class="reference external" href="https://doi.org/10.5281/zenodo.8179015">https://doi.org/10.5281/zenodo.8179015</a>) remains constant.</p></li>
-</ul>
-<p>—</p>
-<p>## Release of binaries on conda-forge</p>
-<p>To ensure CADET-Core is accessible to a broad community, it is available as a Python package on conda-forge.
-Other software, such as CADET-Process and CADET-Python, import this package.</p>
-<ul>
-<li><p>[ ] Go to your fork of [cadet-feedstock](<a class="reference external" href="https://github.com/conda-forge/cadet-feedstock">https://github.com/conda-forge/cadet-feedstock</a>) or create one if it does not exist.</p></li>
-<li><p>[ ] Create a new branch on your fork and open a pull request.</p></li>
-<li><p>[ ] Change the file <cite>recipe/meta.yaml</cite>:
-- Generate the SHA256 key:</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">`bash</span>
-<span class="pre">curl</span> <span class="pre">-sL</span> <span class="pre">https://github.com/cadet/CADET-Core/archive/refs/tags/v{{</span> <span class="pre">version</span> <span class="pre">}}.tar.gz</span> <span class="pre">|</span> <span class="pre">openssl</span> <span class="pre">sha256</span>
-<span class="pre">`</span></code>
-Replace <cite>{{ version }}</cite> with the semantic version number.</p>
-</div></blockquote>
-<ul class="simple">
-<li><p>Update the version number and SHA256 key.</p></li>
-<li><p>Set the build number to zero (<cite>build: number: 0</cite>).</p></li>
-</ul>
-</li>
-<li><p>[ ] After opening the pull request, complete the automatically generated checklist.</p></li>
-<li><p>[ ] Comment in the pull request: <cite>&#64;conda-forge-admin, please rerender</cite></p></li>
-<li><p>[ ] Wait for the automatic checks to pass.</p></li>
-<li><p>[ ] Merge the pull request to trigger the conda-forge release.</p></li>
-<li><p>[ ] Create or update a CADET forum post announcing the release.</p></li>
-</ul>
+<p>Every release of CADET-Core follows the <a class="reference external" href="https://github.com/CADET/CADET-Core/blob/master/.github/ISSUE_TEMPLATE/release_checklist.md">release checklist</a>,
+ensuring proper testing, documentation and deployment.</p>
 </section>
 </section>
 

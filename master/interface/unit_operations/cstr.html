@@ -16,8 +16,8 @@
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Radial Flow Models" href="radial_flow_models.html" />
-    <link rel="prev" title="Two dimensional general rate model" href="2d_general_rate_model.html" />
+    <link rel="next" title="Multichannel Transport model (MCT model)" href="multi_channel_transport_model.html" />
+    <link rel="prev" title="Axial Flow Column 2D" href="axial_flow_column_2D_config.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -248,7 +248,7 @@
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">INIT_Q</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">INIT_CS</span></code></p>
 <blockquote>
 <div><p>Initial concentrations for each bound state of each component in the bead solid phase of each particle type in type-component-major ordering. This field is optional and defaults to all 0.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{SP}}^{-3}\)</span></p>
@@ -263,7 +263,7 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_STATE</span></code></p>
 <blockquote>
-<div><p>Full state vector for initialization (optional, <span class="math notranslate nohighlight">\(\texttt{INIT_C}\)</span>, <span class="math notranslate nohighlight">\(\texttt{INIT_Q}\)</span>, and <span class="math notranslate nohighlight">\(\texttt{INIT_VOLUME}\)</span> will be ignored; if length is <span class="math notranslate nohighlight">\(2\texttt{NDOF}\)</span>, then the second half is used for time derivatives)</p>
+<div><p>Full state vector for initialization (optional, <span class="math notranslate nohighlight">\(\texttt{INIT_C}\)</span>, <span class="math notranslate nohighlight">\(\texttt{INIT_CS}\)</span>, and <span class="math notranslate nohighlight">\(\texttt{INIT_VOLUME}\)</span> will be ignored; if length is <span class="math notranslate nohighlight">\(2\texttt{NDOF}\)</span>, then the second half is used for time derivatives)</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(various\)</span></p>
 <table class="docutils align-default">
 <tbody>

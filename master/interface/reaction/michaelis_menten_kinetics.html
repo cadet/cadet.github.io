@@ -124,12 +124,17 @@
   <section id="michaelis-menten-kinetics">
 <span id="michaelis-menten-kinetics-config"></span><h1>Michaelis Menten kinetics<a class="headerlink" href="#michaelis-menten-kinetics" title="Link to this heading">¶</a></h1>
 <p><strong>Group /input/model/unit_XXX/reaction - REACTION_MODEL = MICHAELIS_MENTEN</strong></p>
-<p>For information on model equations, refer to <a class="reference internal" href="../../modelling/reaction/michaelis_menten_kinetics.html#michaelis-menten-kinetics-model"><span class="std std-ref">Michaelis Menten kinetics</span></a>.</p>
+<p>For information on model equations, refer to <span class="xref std std-ref">_michaelis_menten_kinetics_model</span>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">MM_STOICHIOMETRY_BULK</span></code></p>
 <blockquote>
-<div><p>Stochiometric matrix <span class="math notranslate nohighlight">\(S\)</span>.
-The substrate component <span class="math notranslate nohighlight">\(c_S\)</span> is identified by the index of the first negative entry in the stoichiometry of the corresponding reaction.
+<div><blockquote>
+<div><p>Stoichiometric matrix <span class="math notranslate nohighlight">\(S\)</span>.
+This matrix defines the quantitative relationships between reactants and products for each reaction in the system.
+Each entry <span class="math notranslate nohighlight">\(S_{i,j}\)</span> specifies the stoichiometric coefficient for component <span class="math notranslate nohighlight">\(i\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span>.
+Negative values indicate consumption (substrate), while positive values indicate production (products).
 Input as reaction index major.</p>
+<p><strong>Unit:</strong> None</p>
+</div></blockquote>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -142,7 +147,9 @@ Input as reaction index major.</p>
 <p><code class="docutils literal notranslate"><span class="pre">MM_VMAX</span></code></p>
 <blockquote>
 <div><blockquote>
-<div><p>Limiting rate <span class="math notranslate nohighlight">\(\mu_{\mathrm{max},j}\)</span> at saturation.</p>
+<div><p>Maximum reaction rate <span class="math notranslate nohighlight">\(v_{\mathrm{max},j}\)</span> at substrate saturation for reaction <span class="math notranslate nohighlight">\(j\)</span>.
+This parameter defines the upper limit of the reaction rate when the substrate concentration is sufficiently high such that the enzyme is saturated.</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(~mol^{-1}~m^{-3}~s^{-1}\)</span></p>
 </div></blockquote>
 <table class="docutils align-default">
 <tbody>
@@ -153,10 +160,12 @@ Input as reaction index major.</p>
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MM_KMM</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">MM_KM</span></code></p>
 <blockquote>
 <div><blockquote>
-<div><p>Michaelis constant <span class="math notranslate nohighlight">\(k_{\mathrm{MM},j}\)</span>.</p>
+<div><p>Michaelis constant <span class="math notranslate nohighlight">\(K_{\mathrm{M},{i,j}}\)</span> for reaction <span class="math notranslate nohighlight">\(j\)</span> and substrate <span class="math notranslate nohighlight">\(i\)</span>.
+This constant represents the substrate concentration at which the reaction rate is half of its maximum value.</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(~mol^{-1}~m^{-3}\)</span></p>
 </div></blockquote>
 <table class="docutils align-default">
 <tbody>
@@ -167,21 +176,94 @@ Input as reaction index major.</p>
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MM_KI</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">MM_KI_C</span></code></p>
 <blockquote>
 <div><blockquote>
-<div><p>Inhibition constant <span class="math notranslate nohighlight">\(k_{\mathrm{I},j,i}\)</span> w.r.t component <span class="math notranslate nohighlight">\(i\)</span> and reaction <span class="math notranslate nohighlight">\(j\)</span>. If <span class="math notranslate nohighlight">\(k_{\mathrm{I},j,i} &lt;= 0\)</span>, the component does not inhibit the reaction.
-Input as reaction index major.</p>
+<div><blockquote>
+<div><p>Inhibition constant for competitive inhibition <span class="math notranslate nohighlight">\(K_{I_{k}}\)</span>.</p>
+</div></blockquote>
+<p>The index <span class="math notranslate nohighlight">\(k\)</span> corresponds to the inhibitors acting on substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span>, i.e. <span class="math notranslate nohighlight">\(k = (j,i,k)\)</span>, where <span class="math notranslate nohighlight">\(k\)</span> is the index of the inhibitor.
+If <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} &gt; 0\)</span>, the component inhibits the reaction.</p>
+<blockquote>
+<div><p>Input as reaction index major.</p>
+</div></blockquote>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(mol^{-1}~m^{-3}\)</span></p>
 </div></blockquote>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NREACT} \cdot \texttt{NCOMP}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NREACT} \cdot \texttt{NCOMP} \cdot \texttt{NCOMP}\)</span></p></td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">MM_KI_UC</span></code></p>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>Inhibition constant uncompetitive inhibition <span class="math notranslate nohighlight">\(K^{u}_{I_{k}}\)</span>.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>The index <span class="math notranslate nohighlight">\(k\)</span> corresponds to the inhibitors acting on substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span>, i.e. <span class="math notranslate nohighlight">\(k = (j,i,k)\)</span>, where <span class="math notranslate nohighlight">\(k\)</span> is the index of the inhibitor.</dt><dd><p>Input as reaction index major.</p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(mol^{-1}~m^{-3}\)</span></p>
+</div></blockquote>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NREACT} \cdot \texttt{NCOMP} \cdot \texttt{NCOMP}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<section id="example-configuration">
+<h2>Example configuration<a class="headerlink" href="#example-configuration" title="Link to this heading">¶</a></h2>
+<p>This example shows the configuration of one Michaelis-Menten reaction system in CADET-Python.
+The system has two components A and B, where A is the substrate and B is the product.
+In addition to that the model includes:</p>
+<ul class="simple">
+<li><p>A Michaelis constant <code class="docutils literal notranslate"><span class="pre">KM_a</span></code>,</p></li>
+<li><p>competitive inhibition constant of <code class="docutils literal notranslate"><span class="pre">KI_b_a</span></code> for B inhibiting A,</p></li>
+<li><p>and a maximum rate of <code class="docutils literal notranslate"><span class="pre">vmax</span></code></p></li>
+</ul>
+<div class="highlight-Python3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Configure the reaction system</span>
+ <span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_001</span><span class="o">.</span><span class="n">reaction_model</span> <span class="o">=</span> <span class="s1">&#39;MICHAELIS_MENTEN&#39;</span>
+
+ <span class="c1"># Km values 2D array [reaction][components]</span>
+ <span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_001</span><span class="o">.</span><span class="n">reaction_bulk</span><span class="o">.</span><span class="n">mm_km</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="p">[</span><span class="n">KM_a</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span> <span class="c1"># A is substrate</span>
+ <span class="p">]</span>
+
+ <span class="c1"># Competitive inhibition constants - 3D array [reaction][components][components]</span>
+ <span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_001</span><span class="o">.</span><span class="n">reaction_bulk</span><span class="o">.</span><span class="n">mm_ki_c</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="p">[</span>
+         <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">KI_b_a</span><span class="p">],</span> <span class="c1"># Inhibition konstant for A (Product inhibtion B inhibits A)</span>
+         <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>  <span class="c1"># Inhibition konstant for B (not active)</span>
+     <span class="p">]</span>
+ <span class="p">]</span>
+
+ <span class="c1"># Uncompetitive inhibition constants - 3D array [reaction][components][components]</span>
+ <span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_001</span><span class="o">.</span><span class="n">reaction_bulk</span><span class="o">.</span><span class="n">mm_ki_uc</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="p">[</span>
+         <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="c1"># Inhibition konstant for A (not active)</span>
+         <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="c1"># Inhibition konstant for B (not active)</span>
+     <span class="p">]</span>
+ <span class="p">]</span>
+
+ <span class="c1"># Vmax values 1D array [reaction]</span>
+ <span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_001</span><span class="o">.</span><span class="n">reaction_bulk</span><span class="o">.</span><span class="n">mm_vmax</span> <span class="o">=</span> <span class="p">[</span><span class="n">vmax</span><span class="p">]</span>
+
+ <span class="c1"># Stoichiometry matrix 2D array [components][reaction]</span>
+ <span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_001</span><span class="o">.</span><span class="n">reaction_bulk</span><span class="o">.</span><span class="n">mm_stoichiometry_bulk</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># A -&gt; B</span>
+ <span class="p">]</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 

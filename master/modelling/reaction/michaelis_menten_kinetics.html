@@ -113,33 +113,121 @@
 
   <section id="michaelis-menten-kinetics">
 <span id="michaelis-menten-kinetics-model"></span><h1>Michaelis Menten kinetics<a class="headerlink" href="#michaelis-menten-kinetics" title="Link to this heading">¶</a></h1>
-<p>Implements liquid phase Michaelis-Menten reaction kinetics of the form</p>
+<p>Implements Michaelis-Menten reaction kinetics of the form</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-    f_\text{react} = S \mathbf{\nu},
+    f_\text{react} = S \nu,
 \end{aligned}\]</div>
-<p>where <span class="math notranslate nohighlight">\(S\)</span> is the stoichiometric matrix and the fluxes are given by</p>
+<p>where <span class="math notranslate nohighlight">\(S\)</span> is the stoichiometric matrix and <span class="math notranslate nohighlight">\(\nu\)</span> a flux vector with</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-    \nu_j = \frac{\mu_{\mathrm{max},j} \, c_S}{k_{\mathrm{MM},j} + c_S},
+    \nu_{j} = v_{\mathrm{max},j} \prod_{i = 1}^{N_{sub,j}} \nu_{i,j} = v_{\mathrm{max},j} \prod_{i = 1}^{N_{sub,j}} \frac{ c_{i,j}}{K_{\mathrm{M},i,j} + c_{i,j}}
 \end{aligned}\]</div>
 <p>where</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(j\)</span> is the reaction index,</p></li>
-<li><p><span class="math notranslate nohighlight">\(c_S\)</span> is the substrate component,</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mu_{\mathrm{max},j}\)</span>, is the limiting rate approached by the system at saturation,</p></li>
-<li><p><span class="math notranslate nohighlight">\(k_{\mathrm{MM},j}\)</span> is the Michaelis constant, which is defined as the concentration of substrate at which the reaction rate is half ov <span class="math notranslate nohighlight">\(\mu_{\mathrm{max},j}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\nu_{j}\)</span> is the flux of reaction <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(\nu_{i,j}\)</span> is the flux of reaction <span class="math notranslate nohighlight">\(j\)</span> with respect to substrate <span class="math notranslate nohighlight">\(i\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(N_{sub,j}\)</span> is the number of substrates for reaction <span class="math notranslate nohighlight">\(j\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(v_{\mathrm{max},j}\)</span> is the maximum reaction rate in reaction <span class="math notranslate nohighlight">\(j\)</span>,</p></li>
+<li><p>and <span class="math notranslate nohighlight">\(c_{i,j}\)</span> is the concentration of substrate <span class="math notranslate nohighlight">\(i\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(K_{\mathrm{M}_{i,j}}\)</span> is the Michaelis constant for substrate <span class="math notranslate nohighlight">\(i\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span>.</p></li>
 </ul>
-<p>In addition, the reaction might be inhibited by other components.
-In this case, the flux has the form</p>
+<p>The selection of which components act as substrates is controlled via the sign of the entries of the stoichiometric matrix.
+For more information about the configuration can be found in <a class="reference internal" href="../../interface/reaction/michaelis_menten_kinetics.html#michaelis-menten-kinetics-config"><span class="std std-ref">Michaelis Menten kinetics</span></a>.</p>
+<p>In addition, CADET supports three types of inhibition reactions.
+In this case the flux <span class="math notranslate nohighlight">\(\nu_{i,j}\)</span> can be modified as one of the following:</p>
+<section id="competitive-inhibition">
+<h2>Competitive Inhibition<a class="headerlink" href="#competitive-inhibition" title="Link to this heading">¶</a></h2>
+<p>In competitive inhibition, the inhibitor binds at the enzyme’s active site. The modified flux expression is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-    \nu_j = \frac{\mu_{\mathrm{max},j} c_S}{k_{\mathrm{MM},j} + c_S} \cdot \frac{1}{1 + \sum_i c_{Ii}/k_{I,j,i}}.
+    \nu_{i,j} =  \frac{ c_{i,j}}{K_{\mathrm{M},i,j}\,(1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{K^{c}_{I_{k}}}) + c_{i,j}},
 \end{aligned}\]</div>
-<p>Here, <span class="math notranslate nohighlight">\(k_{\mathrm{I},j,i}\)</span> is the inhibition constant with respect to component <span class="math notranslate nohighlight">\(i\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span>.
-If <span class="math notranslate nohighlight">\(k_{\mathrm{I},j,i} \leq 0\)</span>, component <span class="math notranslate nohighlight">\(i\)</span> does not act as an inhibitor.</p>
-<p>Note: Currently, the model does not allow substrates to function as inhibitors.</p>
-<p>For more information on model parameters required to define in CADET file format, see <a class="reference internal" href="../../interface/reaction/michaelis_menten_kinetics.html#michaelis-menten-kinetics-config"><span class="std std-ref">Michaelis Menten kinetics</span></a>.</p>
+<dl class="simple">
+<dt>where</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(c_{i,j}\)</span> is the substrate component and <span class="math notranslate nohighlight">\(c_{k}\)</span> is one inhibitor acting on substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(K^{c}_{I_{k}}\)</span> is the inhibition constant with respect to inhibitor <span class="math notranslate nohighlight">\(c_{k}\)</span> i.e if <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} &gt; 0\)</span>, component <span class="math notranslate nohighlight">\(c_{k}\)</span> acts as an inhibitor to substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{I}_{i,j}\)</span> is the index set of inhibitors for substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>, i.e the indices <span class="math notranslate nohighlight">\(k\)</span> where <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} &gt; 0\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="uncompetitive-inhibition">
+<h2>Uncompetitive Inhibition<a class="headerlink" href="#uncompetitive-inhibition" title="Link to this heading">¶</a></h2>
+<p>In an uncompetitive inhibition, the inhibitor binds to the enzyme-substrate complex, preventing the reaction from proceeding. The modified flux expression is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \nu_{i,j} = \frac{c_{i,j}}{K_{\mathrm{M},i,j} + c_{i,j} \, (1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{\tilde{K}_{k}})},
+\end{aligned}\]</div>
+<dl class="simple">
+<dt>where</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(c_{i,j}\)</span> is the substrate component and <span class="math notranslate nohighlight">\(c_{k}\)</span> is one inhibitor acting on substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(K^{u}_{I_{k}}\)</span> is the inhibition constant with respect to component <span class="math notranslate nohighlight">\(c_{k}\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span> i.e if <span class="math notranslate nohighlight">\(K^{u}_{I_{k}} &gt; 0\)</span>, component <span class="math notranslate nohighlight">\(c_{k}\)</span> acts as an inhibitor to substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{I}_{i,j}\)</span> is the index set of inhibitors in reaction <span class="math notranslate nohighlight">\(j\)</span>, i.e the indices <span class="math notranslate nohighlight">\(k\)</span> where <span class="math notranslate nohighlight">\(K^{u}_{I_{k}} &gt; 0\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="mixed-inhibition">
+<h2>Mixed Inhibition<a class="headerlink" href="#mixed-inhibition" title="Link to this heading">¶</a></h2>
+<p>In non-competitive inhibition, the inhibitor can bind to both the enzyme and the enzyme-substrate complex, preventing the reaction from proceeding. The modified flux expression is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+   \nu_{i,j} =  \frac{c_{i,j}}{ K_{\mathrm{M},i,j} \,(1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{K^{c}_{I_{k}}}) + c_{i,j} \,(1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{K^{u}_{I_{k}}})},
+\end{aligned}\]</div>
+<dl class="simple">
+<dt>where</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(c_{i,j}\)</span> is the substrate component and <span class="math notranslate nohighlight">\(c_{k}\)</span> is one the inhibitor acting on substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(K^{c}_{I_{k}}`and :math:`K^{u}_{I_{k}}\)</span> are the inhibition constants with respect to component <span class="math notranslate nohighlight">\(c_{k}\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span> i.e if <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} &gt; 0\)</span>, component <span class="math notranslate nohighlight">\(c_{k}\)</span> acts as an inhibitor to substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{I}_{i,j}\)</span> is the index set of inhibitors in reaction <span class="math notranslate nohighlight">\(j\)</span>, i.e the indices <span class="math notranslate nohighlight">\(k\)</span> where <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} &gt; 0\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="non-competitive-inhibition">
+<h2>Non-Competitive Inhibition<a class="headerlink" href="#non-competitive-inhibition" title="Link to this heading">¶</a></h2>
+<p>Non-competitive inhibition is a form of mixed inhibition where the inhibitor binds to both the enzyme and the enzyme-substrate complex with the <strong>same affinity</strong>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+   \nu_{i,j} =  \frac{c_{i,j}}{(K_{\mathrm{M},i,j} + c_{i,j}) \,(1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{K^{n}_{I_{k}}})}
+\end{aligned}\]</div>
+<dl class="simple">
+<dt>where</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(c_{i,j}\)</span> is the substrate component and <span class="math notranslate nohighlight">\(c_{k}\)</span> is one the inhibitor acting on substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(K^{n}_{I_{k}}\)</span> is the inhibition constant with respect to component <span class="math notranslate nohighlight">\(c_{k}\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span> i.e if <span class="math notranslate nohighlight">\(K^{n}_{I_{k}} &gt; 0\)</span>, component <span class="math notranslate nohighlight">\(c_{k}\)</span> acts as an inhibitor to substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{I}_{i,j}\)</span> is the index set of inhibitors in reaction <span class="math notranslate nohighlight">\(j\)</span>, i.e the indices <span class="math notranslate nohighlight">\(k\)</span> where <span class="math notranslate nohighlight">\(K^{n}_{I_{k}} &gt; 0\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Note that the inhibition constant for the non-competitive inhibition is indirectly given if :math:` K^{c}_{I_{k}} = K^{u}_{I_{k}} = K^{n}_{I_{k}}`</p>
+<p>For configuration information please refer to <a class="reference internal" href="../../interface/reaction/michaelis_menten_kinetics.html#michaelis-menten-kinetics-config"><span class="std std-ref">Michaelis Menten kinetics</span></a>.</p>
+</section>
+<section id="monod-kinetics">
+<h2>Monod Kinetics<a class="headerlink" href="#monod-kinetics" title="Link to this heading">¶</a></h2>
+<p>The Michaelis-Menten model in CADET can also be used to represent Monod kinetics, as the mathematical formulation is identical.
+The Monod equation is commonly used to describe microbial growth processes and corresponds to Michaelis-Menten kinetics with only one substrate.</p>
+<p>The Monod equation for microbial growth has the form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \mu = \frac{\mu_{\mathrm{max}} \, c_S}{K_S + c_S}
+\end{aligned}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mu\)</span> is the specific growth rate</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_{\mathrm{max}}\)</span> is the maximum specific growth rate</p></li>
+<li><p><span class="math notranslate nohighlight">\(c_S\)</span> is the substrate concentration</p></li>
+<li><p><span class="math notranslate nohighlight">\(K_S\)</span> is the saturation constant (half-saturation constant)</p></li>
+</ul>
+<p>By choosing a Michaelis-Menten kinetics configuration with one substrate and setting the the parameter accordingly,
+i.e <span class="math notranslate nohighlight">\(\mu_{\mathrm{max}} = v_{\mathrm{max}}\)</span>, <span class="math notranslate nohighlight">\(K_S = K_{\mathrm{M},0,0}\)</span> and <span class="math notranslate nohighlight">\(c_S = c_{0,0}\)</span>,
+the Monod equation can be expressed in the same form as the Michaelis-Menten kinetics.</p>
+</section>
+<section id="literature">
+<h2>Literature<a class="headerlink" href="#literature" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Segel, I. H. (1993). Enzyme kinetics: Behavior and analysis of rapid equilibrium and steady-state enzyme systems. John Wiley &amp; Sons.</p></li>
+<li><p>Monod, Jacques. 1949. “The Growth of Bacterial Cultures.” <em>Annual Review of Microbiology</em> 3 (1): 371–394. <a class="reference external" href="https://doi.org/10.1146/annurev.mi.03.100149.002103">https://doi.org/10.1146/annurev.mi.03.100149.002103</a></p></li>
+</ul>
+</section>
 </section>
 
 

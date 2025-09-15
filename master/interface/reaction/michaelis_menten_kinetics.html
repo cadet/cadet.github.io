@@ -124,7 +124,7 @@
   <section id="michaelis-menten-kinetics">
 <span id="michaelis-menten-kinetics-config"></span><h1>Michaelis Menten kinetics<a class="headerlink" href="#michaelis-menten-kinetics" title="Link to this heading">¶</a></h1>
 <p><strong>Group /input/model/unit_XXX/reaction - REACTION_MODEL = MICHAELIS_MENTEN</strong></p>
-<p>For information on model equations, refer to <span class="xref std std-ref">_michaelis_menten_kinetics_model</span>.</p>
+<p>For information on model equations, refer to <a class="reference internal" href="../../modelling/reaction/michaelis_menten_kinetics.html#michaelis-menten-kinetics-model"><span class="std std-ref">Michaelis Menten kinetics</span></a>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">MM_STOICHIOMETRY_BULK</span></code></p>
 <blockquote>
 <div><blockquote>
@@ -163,7 +163,7 @@ This parameter defines the upper limit of the reaction rate when the substrate c
 <p><code class="docutils literal notranslate"><span class="pre">MM_KM</span></code></p>
 <blockquote>
 <div><blockquote>
-<div><p>Michaelis constant <span class="math notranslate nohighlight">\(K_{\mathrm{M},{i,j}}\)</span> for reaction <span class="math notranslate nohighlight">\(j\)</span> and substrate <span class="math notranslate nohighlight">\(i\)</span>.
+<div><p>Michaelis constant <span class="math notranslate nohighlight">\(K_{\mathrm{M}_{i,j}}\)</span> for reaction <span class="math notranslate nohighlight">\(j\)</span> and substrate <span class="math notranslate nohighlight">\(i\)</span>.
 This constant represents the substrate concentration at which the reaction rate is half of its maximum value.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(~mol^{-1}~m^{-3}\)</span></p>
 </div></blockquote>
@@ -180,7 +180,7 @@ This constant represents the substrate concentration at which the reaction rate 
 <blockquote>
 <div><blockquote>
 <div><blockquote>
-<div><p>Inhibition constant for competitive inhibition <span class="math notranslate nohighlight">\(K_{I_{k}}\)</span>.</p>
+<div><p>Inhibition constant for competitive inhibition <span class="math notranslate nohighlight">\(K^{c}_{I_{k}}\)</span>.</p>
 </div></blockquote>
 <p>The index <span class="math notranslate nohighlight">\(k\)</span> corresponds to the inhibitors acting on substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span>, i.e. <span class="math notranslate nohighlight">\(k = (j,i,k)\)</span>, where <span class="math notranslate nohighlight">\(k\)</span> is the index of the inhibitor.
 If <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} &gt; 0\)</span>, the component inhibits the reaction.</p>
@@ -202,7 +202,7 @@ If <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} &gt; 0\)</span>, t
 <blockquote>
 <div><blockquote>
 <div><blockquote>
-<div><p>Inhibition constant uncompetitive inhibition <span class="math notranslate nohighlight">\(K^{u}_{I_{k}}\)</span>.</p>
+<div><p>Inhibition constant for uncompetitive inhibition <span class="math notranslate nohighlight">\(K^{uc}_{I_{k}}\)</span>.</p>
 </div></blockquote>
 <dl class="simple">
 <dt>The index <span class="math notranslate nohighlight">\(k\)</span> corresponds to the inhibitors acting on substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span>, i.e. <span class="math notranslate nohighlight">\(k = (j,i,k)\)</span>, where <span class="math notranslate nohighlight">\(k\)</span> is the index of the inhibitor.</dt><dd><p>Input as reaction index major.</p>

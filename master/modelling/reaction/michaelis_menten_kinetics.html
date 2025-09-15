@@ -121,7 +121,7 @@
 <p>where <span class="math notranslate nohighlight">\(S\)</span> is the stoichiometric matrix and <span class="math notranslate nohighlight">\(\nu\)</span> a flux vector with</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-    \nu_{j} = v_{\mathrm{max},j} \prod_{i = 1}^{N_{sub,j}} \nu_{i,j} = v_{\mathrm{max},j} \prod_{i = 1}^{N_{sub,j}} \frac{ c_{i,j}}{K_{\mathrm{M},i,j} + c_{i,j}}
+    \nu_{j} = v_{\mathrm{max},j} \prod_{i = 1}^{N_{sub,j}} \nu_{i,j} = v_{\mathrm{max},j} \prod_{i = 1}^{N_{sub,j}} \frac{ c_{i,j}}{K_{\mathrm{M}_{i,j}} + c_{i,j}}
 \end{aligned}\]</div>
 <p>where</p>
 <ul class="simple">
@@ -140,13 +140,13 @@ In this case the flux <span class="math notranslate nohighlight">\(\nu_{i,j}\)</
 <p>In competitive inhibition, the inhibitor binds at the enzyme’s active site. The modified flux expression is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-    \nu_{i,j} =  \frac{ c_{i,j}}{K_{\mathrm{M},i,j}\,(1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{K^{c}_{I_{k}}}) + c_{i,j}},
+    \nu_{i,j} =  \frac{c_{i,j}}{K_{\mathrm{M}_{i,j}}\,(1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{K^{c}_{I_{k}}}) + c_{i,j}},
 \end{aligned}\]</div>
 <dl class="simple">
 <dt>where</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(c_{i,j}\)</span> is the substrate component and <span class="math notranslate nohighlight">\(c_{k}\)</span> is one inhibitor acting on substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>,</p></li>
 <li><p><span class="math notranslate nohighlight">\(K^{c}_{I_{k}}\)</span> is the inhibition constant with respect to inhibitor <span class="math notranslate nohighlight">\(c_{k}\)</span> i.e if <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} &gt; 0\)</span>, component <span class="math notranslate nohighlight">\(c_{k}\)</span> acts as an inhibitor to substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>,</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathcal{I}_{i,j}\)</span> is the index set of inhibitors for substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>, i.e the indices <span class="math notranslate nohighlight">\(k\)</span> where <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} &gt; 0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{I}^{c}_{i,j}\)</span> is the index set of inhibitors for substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>, i.e the indices <span class="math notranslate nohighlight">\(k\)</span> where <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} &gt; 0\)</span>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -156,29 +156,30 @@ In this case the flux <span class="math notranslate nohighlight">\(\nu_{i,j}\)</
 <p>In an uncompetitive inhibition, the inhibitor binds to the enzyme-substrate complex, preventing the reaction from proceeding. The modified flux expression is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-    \nu_{i,j} = \frac{c_{i,j}}{K_{\mathrm{M},i,j} + c_{i,j} \, (1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{\tilde{K}_{k}})},
+    \nu_{i,j} = \frac{c_{i,j}}{K_{\mathrm{M}_{i,j}} + c_{i,j} \, (1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{K^{uc}_{I_{k}}})},
 \end{aligned}\]</div>
 <dl class="simple">
 <dt>where</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(c_{i,j}\)</span> is the substrate component and <span class="math notranslate nohighlight">\(c_{k}\)</span> is one inhibitor acting on substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(K^{u}_{I_{k}}\)</span> is the inhibition constant with respect to component <span class="math notranslate nohighlight">\(c_{k}\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span> i.e if <span class="math notranslate nohighlight">\(K^{u}_{I_{k}} &gt; 0\)</span>, component <span class="math notranslate nohighlight">\(c_{k}\)</span> acts as an inhibitor to substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathcal{I}_{i,j}\)</span> is the index set of inhibitors in reaction <span class="math notranslate nohighlight">\(j\)</span>, i.e the indices <span class="math notranslate nohighlight">\(k\)</span> where <span class="math notranslate nohighlight">\(K^{u}_{I_{k}} &gt; 0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(K^{uc}_{I_{k}}\)</span> is the inhibition constant with respect to component <span class="math notranslate nohighlight">\(c_{k}\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span> i.e if <span class="math notranslate nohighlight">\(K^{uc}_{I_{k}} &gt; 0\)</span>, component <span class="math notranslate nohighlight">\(c_{k}\)</span> acts as an inhibitor to substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{I}^{uc}_{i,j}\)</span> is the index set of inhibitors in reaction <span class="math notranslate nohighlight">\(j\)</span>, i.e the indices <span class="math notranslate nohighlight">\(k\)</span> where <span class="math notranslate nohighlight">\(K^{uc}_{I_{k}} &gt; 0\)</span>.</p></li>
 </ul>
 </dd>
 </dl>
 </section>
 <section id="mixed-inhibition">
 <h2>Mixed Inhibition<a class="headerlink" href="#mixed-inhibition" title="Link to this heading">¶</a></h2>
-<p>In non-competitive inhibition, the inhibitor can bind to both the enzyme and the enzyme-substrate complex, preventing the reaction from proceeding. The modified flux expression is:</p>
+<p>In mixed inhibition, the inhibitor can bind to both the enzyme and the enzyme-substrate complex, preventing the reaction from proceeding. The modified flux expression is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-   \nu_{i,j} =  \frac{c_{i,j}}{ K_{\mathrm{M},i,j} \,(1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{K^{c}_{I_{k}}}) + c_{i,j} \,(1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{K^{u}_{I_{k}}})},
+   \nu_{i,j} =  \frac{c_{i,j}}{ K_{\mathrm{M}_{i,j}} \,(1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{K^{c}_{I_{k}}}) + c_{i,j} \,(1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{K^{uc}_{I_{k}}})},
 \end{aligned}\]</div>
 <dl class="simple">
 <dt>where</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(c_{i,j}\)</span> is the substrate component and <span class="math notranslate nohighlight">\(c_{k}\)</span> is one the inhibitor acting on substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(K^{c}_{I_{k}}`and :math:`K^{u}_{I_{k}}\)</span> are the inhibition constants with respect to component <span class="math notranslate nohighlight">\(c_{k}\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span> i.e if <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} &gt; 0\)</span>, component <span class="math notranslate nohighlight">\(c_{k}\)</span> acts as an inhibitor to substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mathcal{I}_{i,j}\)</span> is the index set of inhibitors in reaction <span class="math notranslate nohighlight">\(j\)</span>, i.e the indices <span class="math notranslate nohighlight">\(k\)</span> where <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} &gt; 0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(K^{c}_{I_{k}}\)</span> and <span class="math notranslate nohighlight">\(K^{uc}_{I_{k}}\)</span> are the inhibition constants with respect to component <span class="math notranslate nohighlight">\(c_{k}\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span> i.e if <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} &gt; 0\)</span>, component <span class="math notranslate nohighlight">\(c_{k}\)</span> acts as an inhibitor to substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{I}^{c}_{i,j}\)</span> is the index set of inhibitors in reaction <span class="math notranslate nohighlight">\(j\)</span>, i.e the indices <span class="math notranslate nohighlight">\(k\)</span> where <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} &gt; 0\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{I}^{uc}_{i,j}\)</span> is the index set of inhibitors in reaction <span class="math notranslate nohighlight">\(j\)</span>, i.e the indices <span class="math notranslate nohighlight">\(k\)</span> where <span class="math notranslate nohighlight">\(K^{uc}_{I_{k}} &gt; 0\)</span>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -188,7 +189,7 @@ In this case the flux <span class="math notranslate nohighlight">\(\nu_{i,j}\)</
 <p>Non-competitive inhibition is a form of mixed inhibition where the inhibitor binds to both the enzyme and the enzyme-substrate complex with the <strong>same affinity</strong>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-   \nu_{i,j} =  \frac{c_{i,j}}{(K_{\mathrm{M},i,j} + c_{i,j}) \,(1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{K^{n}_{I_{k}}})}
+   \nu_{i,j} =  \frac{c_{i,j}}{(K_{\mathrm{M}_{i,j}} + c_{i,j}) \,(1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{K^{n}_{I_{k}}})}
 \end{aligned}\]</div>
 <dl class="simple">
 <dt>where</dt><dd><ul class="simple">
@@ -198,7 +199,7 @@ In this case the flux <span class="math notranslate nohighlight">\(\nu_{i,j}\)</
 </ul>
 </dd>
 </dl>
-<p>Note that the inhibition constant for the non-competitive inhibition is indirectly given if :math:` K^{c}_{I_{k}} = K^{u}_{I_{k}} = K^{n}_{I_{k}}`</p>
+<p>Note that the inhibition constant for the non-competitive inhibition is indirectly given if <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} = K^{uc}_{I_{k}} = K^{n}_{I_{k}}\)</span></p>
 <p>For configuration information please refer to <a class="reference internal" href="../../interface/reaction/michaelis_menten_kinetics.html#michaelis-menten-kinetics-config"><span class="std std-ref">Michaelis Menten kinetics</span></a>.</p>
 </section>
 <section id="monod-kinetics">
@@ -218,7 +219,7 @@ The Monod equation is commonly used to describe microbial growth processes and c
 <li><p><span class="math notranslate nohighlight">\(K_S\)</span> is the saturation constant (half-saturation constant)</p></li>
 </ul>
 <p>By choosing a Michaelis-Menten kinetics configuration with one substrate and setting the the parameter accordingly,
-i.e <span class="math notranslate nohighlight">\(\mu_{\mathrm{max}} = v_{\mathrm{max}}\)</span>, <span class="math notranslate nohighlight">\(K_S = K_{\mathrm{M},0,0}\)</span> and <span class="math notranslate nohighlight">\(c_S = c_{0,0}\)</span>,
+i.e <span class="math notranslate nohighlight">\(\mu_{\mathrm{max}} = v_{\mathrm{max}}\)</span>, <span class="math notranslate nohighlight">\(K_S = K_{\mathrm{M}_{0,0}}\)</span> and <span class="math notranslate nohighlight">\(c_S = c_{0,0}\)</span>,
 the Monod equation can be expressed in the same form as the Michaelis-Menten kinetics.</p>
 </section>
 <section id="literature">

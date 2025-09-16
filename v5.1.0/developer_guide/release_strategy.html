@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Code development and release strategy &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/developer_guide/release_strategy.html" />
+    <link rel="icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="License" href="../license.html" />
+    <link rel="prev" title="CADET-Core testing" href="testing.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Developer Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html">CADET-Python Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadet_core_architecture.html">Software Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_options.html">CADET-Core build options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_expansion.html">Model Expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">CADET-Core debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">CADET-Core testing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Code development and release strategy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agile-code-development">Agile code development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#release-strategy-and-code-distribution">Release strategy and Code distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#making-a-new-release">Making a new release</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../v5.0.3/index.html">v5.0.3</a></li>
+  <li><a href="../../v5.0.4/index.html">v5.0.4</a></li>
+  <li><a href="release_strategy.html">v5.1.0</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../master/developer_guide/release_strategy.html">master</a></li>
+  <li><a href="../../chore/developer_guide/developer_guide/release_strategy.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+  <section id="code-development-and-release-strategy">
+<span id="release-strategy"></span><h1>Code development and release strategy<a class="headerlink" href="#code-development-and-release-strategy" title="Link to this heading">¶</a></h1>
+<section id="agile-code-development">
+<h2>Agile code development<a class="headerlink" href="#agile-code-development" title="Link to this heading">¶</a></h2>
+<p>PRs are merged into master as soon as they are complete, i.e. no half-baked solutions, tested, documented, updated C-API (if required).
+This happens independent of when we want to release the code.</p>
+<p>Due to our limited resources and since we’re not paid by our users, we need to avoid technical debt arising from trying to satisfy everybody at once.
+Specifically, we do not implement multiple interfaces on master since they all need to be tested and later deprecated.</p>
+</section>
+<section id="release-strategy-and-code-distribution">
+<h2>Release strategy and Code distribution<a class="headerlink" href="#release-strategy-and-code-distribution" title="Link to this heading">¶</a></h2>
+<p><strong>Patch releases</strong> latest minor/major release is supported by patch releases, i.e. bug fixes and minor improvements are made on the corresponding release branch <strong>and</strong> on master.</p>
+<p><strong>Minor releases</strong>: New minor releases are branched off of master with the desired code changes to be cherry-picked.
+If an interface breaking change is desired to be released in a minor version release, the code must be reworked to implement the old interface.
+Added features implementing a new interface can be added to a minor version release.
+Only major version relases may contain breaking changes to the interface.</p>
+<p><strong>Major version pre-releases</strong>: The above rule prevents the direct release (i.e. release without additional work) of code that breaks the interface until the next major version is published.
+To distribute the code e.g. for publications, collaborations, early-access, we can create a pre-release of the major version, requiring users to adapt to the new interface as it currently is.
+In this case, we can distribute binaries or the docker image and the corresponding documentation to collaborators.
+This is a pre-release that we also want to have on zenodo, in contrast to pre-releases made for testing/verification.
+It should be made clear to users that this is not a formal release and that the interface may still evolve.</p>
+<p><strong>Major release</strong>: Major releases may contain breaking changes to the interface.
+Foreseeable breaking changes to established feature should thus be bundled in a major release.</p>
+<p>This strategy is meant to reduce development time and maintenance overhead and shifts tedious/painful rework to where it pays off - collaboration, publication.</p>
+</section>
+<section id="making-a-new-release">
+<h2>Making a new release<a class="headerlink" href="#making-a-new-release" title="Link to this heading">¶</a></h2>
+<p>Every release of CADET-Core follows the <a class="reference external" href="https://github.com/CADET/CADET-Core/blob/master/.github/ISSUE_TEMPLATE/release_checklist.md">release checklist</a>,
+ensuring proper testing, documentation and deployment.</p>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2025.
+      
+      |
+      <a href="../_sources/developer_guide/release_strategy.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

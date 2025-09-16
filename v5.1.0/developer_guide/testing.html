@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CADET-Core testing &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/master/developer_guide/testing.html" />
+    <link rel="icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Code development and release strategy" href="release_strategy.html" />
+    <link rel="prev" title="CADET-Core debugging" href="debugging.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Developer Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cadet_python.html">CADET-Python Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cadet_core_architecture.html">Software Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_options.html">CADET-Core build options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_expansion.html">Model Expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">CADET-Core debugging</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CADET-Core testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-tests">Run the tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-tests-for-your-model">Adding tests for your model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#maintenance-of-the-tests">Maintenance of the tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-coverage">Test coverage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="release_strategy.html">Code development and release strategy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../v5.0.0/developer_guide/testing.html">v5.0.0</a></li>
+  <li><a href="../../v5.0.1/developer_guide/testing.html">v5.0.1</a></li>
+  <li><a href="../../v5.0.2/developer_guide/testing.html">v5.0.2</a></li>
+  <li><a href="../../v5.0.3/developer_guide/testing.html">v5.0.3</a></li>
+  <li><a href="../../v5.0.4/developer_guide/testing.html">v5.0.4</a></li>
+  <li><a href="testing.html">v5.1.0</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../master/developer_guide/testing.html">master</a></li>
+  <li><a href="../../chore/developer_guide/developer_guide/testing.html">chore/developer_guide</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+  <section id="cadet-core-testing">
+<span id="testing"></span><h1>CADET-Core testing<a class="headerlink" href="#cadet-core-testing" title="Link to this heading">¶</a></h1>
+<section id="run-the-tests">
+<h2>Run the tests<a class="headerlink" href="#run-the-tests" title="Link to this heading">¶</a></h2>
+<p>If you want to run tests in CADET-Core you need to ensure that in the <cite>CMakeSettings.json</cite> file:</p>
+<ol class="arabic">
+<li><dl class="simple">
+<dt>The <code class="docutils literal notranslate"><span class="pre">cmakeCommandArgs</span></code> contain:</dt><dd><ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-DENABLE_TESTS=ON</span></code> to enable building the test runner</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-DENABLE_STATIC_LINK_LAPACK=ON</span> <span class="pre">-DENABLE_STATIC_LINK_DEPS=ON</span></code> to create statically linked dependencies</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>The <cite>variables</cite> field contains:</dt><dd><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HDF5_USE_STATIC_LIBRARIES&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BUILD_SHARED_LIBS&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;STRING&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+<p>After building, you can find the testRunner.exe in <code class="docutils literal notranslate"><span class="pre">CADET-root/build/test/Release</span></code> or, when build in debug mode, in <code class="docutils literal notranslate"><span class="pre">CADET-root/build/test/Debug</span></code>.</p>
+<p>To debug specific tests (with flag [testHere]) from the Visual Studio IDE, you can add the following configuration to the launch.vs.json file mentioned in the <a class="reference internal" href="debugging.html#debugging"><span class="std std-ref">CADET-Core debugging</span></a> section:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;project&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CMakeLists.txt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;projectTarget&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;testRunner.exe (test/Debug/testRunner.exe)&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;testRunner.exe (test/Debug/testRunner.exe)&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;[testHere]&quot;</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Select the testRunner.exe in the startup item dropdown menu and you can start debugging tests with the specified flag.
+To see the options, run <cite>testrunner –help</cite>. To get the available test flags for instance, execute the testrunner with the corresponding option, i.e. <cite>testrunner -t</cite>.
+You can provide multiple arguments like <cite>“[testHere][testHere2]”</cite> to run all test that have both flags, or with comma separation <cite>“[testHere],[testHere2]”</cite> to run all tests with the first and/or the second flag.</p>
+</section>
+<section id="adding-tests-for-your-model">
+<h2>Adding tests for your model<a class="headerlink" href="#adding-tests-for-your-model" title="Link to this heading">¶</a></h2>
+<p>Every model and numerical method implemented in CADET-Core has to be tested adequatly.
+Here, we distinguish between unit tests and numerical reference tests.</p>
+<section id="unit-tests">
+<h3>Unit tests<a class="headerlink" href="#unit-tests" title="Link to this heading">¶</a></h3>
+<p>Unit tests are designed to verify the correctness of individual units or components of code in isolation.
+Unit tests in CADET-Core typically encompass tests for the Jacobian implementation and consistent initialization of the model, which can be adapted from corresponding existing tests.
+Testing the Jacobian typically involves comparing the analytical Jacobian to the AD Jacobian to verify that the residual implementation is consistent to the analytical Jacobian.
+To this end, it might be necessary to increase the maximum number of AD directions for your test case, which can be done via the cmake argument <cite>NUM_MAX_AD_DIRS</cite>, as described in the <a class="reference internal" href="build_options.html#build-options"><span class="std std-ref">CADET-Core build options</span></a>.</p>
+</section>
+<section id="numerical-reference-tests">
+<h3>Numerical reference tests<a class="headerlink" href="#numerical-reference-tests" title="Link to this heading">¶</a></h3>
+<p>Every major feature of the model or numerical method should be tested in a separate test case, preferably recreating examples from literature, including your own publication on the corresponding CADET extension.
+This section provides a guide on creating reference tests, including convergence tables and research data management (RDM).
+We strongly emphasize that the procedure described here should be taken into consideration not just as part of the software testing but also for method/model validation, especially when a paper publication is planned.</p>
+<p>We utilize <a class="reference external" href="https://jugit.fz-juelich.de/IBG-1/ModSim/cadet/cadet-database">CADET-Database</a> and <a class="reference external" href="https://github.com/cadet/CADET-Verification">CADET-Verification</a> to ensure reproducibility of the tests.</p>
+<p>We recommend using this procedure not only for the tests but also for the publication to make good standards regarding RDM.</p>
+<p>The general procedure how to add a reference test is as follows:</p>
+<p><strong>1. Define your model setup in CADET-Database:</strong>
+The easiest way to do this, is to clone the <a class="reference external" href="https://jugit.fz-juelich.de/IBG-1/ModSim/cadet/cadet-database">CADET-Database</a>, checkout the core_tests branch and store your model setup file as a json file in the cadet-config folder.
+You can create this json config file by translating the standard CADET h5 file to a json using python, see the utility/h5ToJson.py script for reference.
+Make sure to give your model setup a meaningful and unique name (follow the naming logic of other setups in that folder).
+Note that the return data should only specify the output required for the reference test, i.e. usually the outlet of a single unit.</p>
+<p><strong>2. Add a CADET-Verification script:</strong>
+This python script reads the model setup from CADET-Database and generates all the reference data that will be used in your tests.
+This includes a specific low resolution reference solution as well as convergence (EOC) tables computed using a high precision solution.
+If analytical solutions are available for the considered model, you should use that as the high precision solution.
+Otherwise, you additionally need to generate a very high resolution numerical reference solution, preferably with an accuracy of at least <span class="math notranslate nohighlight">\(\mathcal{L}_\text{inf} \approx 1e-8\)</span>.</p>
+<p><strong>3. Add numerical reference tests to CADET-Core:</strong>
+These tests should read the model setups previously defined in CADET-Database and run them with the same numerical specification as used to compute the reference solutions computed by the CADET-Verification script.
+The resulta are compared to the reference solution generated by CADET-Verification.
+This type of tests ensures that the model is still functional and that the numerics for this model have not changed.
+Hence, every major feature of the model should be tested in a separete tests.
+This way, we make sure that ongoing CADET-Core development doesnt break the model and these tests should be included in the CI pipeline by adding the [CI] flag as described in the implementation procedure section.</p>
+<p><strong>4. Add EOC tests to CADET-Core (optional):</strong>
+These tests should be part of the paper publication which introduces the new model implemented in CADET-Core and can also be included in the CADET-Core tests.
+Verifying the experimental order of convergence (EOC) is widely considered the most rigorous and best scientific practice in model and method validation, which is why we recommend including the EOC tables in your publication.
+The convergence tests should not be added to the standard CI but only be rerun on release, i.e. by adding the [ReleaseCI] flag.
+Details on how to compute EOC tables can be found elsewhere, please also refer to the already implemented EOC tests in CADET-Verification.</p>
+</section>
+<section id="manufactured-solution">
+<h3>Manufactured solution<a class="headerlink" href="#manufactured-solution" title="Link to this heading">¶</a></h3>
+<p>If no analytical solution is available for your model, you can use a so-called “manufactured solution” to verify your implementation.
+A manufactured solution was implemented e.g. for the radial flow model, see test/testRadialKernel.cpp.</p>
+</section>
+<section id="implementation-procedure">
+<h3>Implementation procedure<a class="headerlink" href="#implementation-procedure" title="Link to this heading">¶</a></h3>
+<p>Create a new test file <code class="docutils literal notranslate"><span class="pre">test\NewModelMethod.cpp</span></code>, an easy way to begin with is to copy one of the files that implements tests which are the closest to the ones that you are planning on, e.g. LumpedRateModelWithPores to test a new unit operation.
+Add your tests to the testrunner executable by adding <code class="docutils literal notranslate"><span class="pre">NewModelMethod.cpp</span></code> to the list in the command <code class="docutils literal notranslate"><span class="pre">add_executable(testrunner</span></code> within the <code class="docutils literal notranslate"><span class="pre">test\CmakeList.txt</span></code> file.
+Note that every test needs an unique name, which is specified for each test by <code class="docutils literal notranslate"><span class="pre">TEST_CASE(&quot;My</span> <span class="pre">first</span> <span class="pre">test&quot;,</span> <span class="pre">&quot;[FLAG1],[FLAG2]&quot;)</span></code>.
+Flags are used as options for the testrunner.exe and are specified within square brackets.
+Reuse existing flags and add new ones for your extension.
+The <code class="docutils literal notranslate"><span class="pre">[CI]</span></code> flag is used for tests that shall be rerun as part of our github continuous integration (CI) pipeline.</p>
+</section>
+</section>
+<section id="maintenance-of-the-tests">
+<h2>Maintenance of the tests<a class="headerlink" href="#maintenance-of-the-tests" title="Link to this heading">¶</a></h2>
+<p>Some changes will break the tests without them being necessarily wrong. A change in the numerics for instance, will most likely break some tests.
+This can be fixed by carefully adapting the absolute and relative tolerances for the broken tests. These changes should not change the magnitude of the tolerances, except if this is within an acceptable and expected new tolerance).</p>
+</section>
+<section id="test-coverage">
+<h2>Test coverage<a class="headerlink" href="#test-coverage" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Codecov</span></code> is used to analyze test coverage through an automated workflow (see <code class="docutils literal notranslate"><span class="pre">coverage.yml</span></code>), which runs on changes to the <code class="docutils literal notranslate"><span class="pre">test/coverage</span></code> branch and can also be triggered manually (workflow dispatch).
+Coverage reports are automatically uploaded to <code class="docutils literal notranslate"><span class="pre">Codecov</span></code>, providing detailed insights into tested code areas, uncovered lines, and coverage trends over time.
+Tests marked with the <code class="docutils literal notranslate"><span class="pre">[CI]</span></code> flag are automatically included in the coverage analysis; otherwise, they can be added manually in the workflow file.
+The goal is to maintain complete test coverage by ensuring every new functionality or code change includes corresponding tests executed with Codecov.
+The file <code class="docutils literal notranslate"><span class="pre">.codecov.yml</span></code> defines a target coverage percentage. If the coverage falls below that, the workflow fails.
+This percentage should be updated as we continuously expand our test coverage.
+Further, the file defines ignored paths, such as the <cite>ThirdParty</cite> directory as we dont consider test coverage of third party software.</p>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2025.
+      
+      |
+      <a href="../_sources/developer_guide/testing.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

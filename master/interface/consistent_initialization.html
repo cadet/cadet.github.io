@@ -126,19 +126,39 @@
 <span id="non-consistency-solver-parameters"></span><h1>Nonlinear solver for consistent initialization<a class="headerlink" href="#nonlinear-solver-for-consistent-initialization" title="Link to this heading">¶</a></h1>
 <section id="group-input-model-unit-xxx-discretization-consistency-solver-nonlinear-consistency-solver-paramters">
 <h2>Group /input/model/unit_XXX/discretization/consistency_solver - Nonlinear consistency solver paramters<a class="headerlink" href="#group-input-model-unit-xxx-discretization-consistency-solver-nonlinear-consistency-solver-paramters" title="Link to this heading">¶</a></h2>
+<p>The following specifications of the nonlinear solver for consistent initialization are available.
+The default is a <code class="docutils literal notranslate"><span class="pre">COMPOSITE</span></code> solver that applies multiple solvers subsequently, where the default is <code class="docutils literal notranslate"><span class="pre">ATRN_ERR</span></code> followed by <code class="docutils literal notranslate"><span class="pre">LEVMAR</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">SOLVER_NAME</span></code></p>
-<p>Name of the solver. Available solvers are <code class="docutils literal notranslate"><span class="pre">LEVMAR</span></code>, <code class="docutils literal notranslate"><span class="pre">ATRN_RES</span></code>, <code class="docutils literal notranslate"><span class="pre">ATRN_ERR</span></code>, and <code class="docutils literal notranslate"><span class="pre">COMPOSITE</span></code>.</p>
-<blockquote>
-<div><table class="docutils align-default">
+<p>Name of the solver.
+Available solvers are</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">LEVMAR</span></code>: Levenberg-Marquardt method (ported from the MATLAB implementation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ATRN_RES</span></code>: Adaptive trust-region Newton solver, implemetation of the NLEQ-RES algorithm described in <span id="id1">[<a class="reference internal" href="../zbibliography.html#id20" title="Peter Deuflhard. Newton Methods for Nonlinear Problems. Volume 35 of Springer Series in Computational Mathematics. Springer Berlin Heidelberg, 2011. ISBN 978-3-642-23898-7. URL: http://link.springer.com/10.1007/978-3-642-23899-4, doi:10.1007/978-3-642-23899-4.">34</a>]</span> (p. 131)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ATRN_ERR</span></code>: Robust adaptive trust-region Newton solver, implemetation of the NLEQ-ERR algorithm described in <span id="id2">[<a class="reference internal" href="../zbibliography.html#id20" title="Peter Deuflhard. Newton Methods for Nonlinear Problems. Volume 35 of Springer Series in Computational Mathematics. Springer Berlin Heidelberg, 2011. ISBN 978-3-642-23898-7. URL: http://link.springer.com/10.1007/978-3-642-23899-4, doi:10.1007/978-3-642-23899-4.">34</a>]</span> (pp. 148)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PCT</span></code>: Pseudo-transient continuation method, see <span id="id3">[<a class="reference internal" href="../zbibliography.html#id20" title="Peter Deuflhard. Newton Methods for Nonlinear Problems. Volume 35 of Springer Series in Computational Mathematics. Springer Berlin Heidelberg, 2011. ISBN 978-3-642-23898-7. URL: http://link.springer.com/10.1007/978-3-642-23899-4, doi:10.1007/978-3-642-23899-4.">34</a>]</span> (section 6.4)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COMPOSITE</span></code>: Applies multiple solvers subsequently</p>
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span></p></td>
 </tr>
 </tbody>
 </table>
+</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">SUBSOLVERS</span></code></p>
+<p>Vector with names of solvers for the <code class="docutils literal notranslate"><span class="pre">COMPOSITE</span></code> solver (only required for composite solver). See <code class="docutils literal notranslate"><span class="pre">SOLVER_NAME</span></code> for available solvers.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\gt 1\)</span></p></td>
+</tr>
+</tbody>
+</table>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_DAMPING</span></code></p>
-<p>Initial damping factor (default is <span class="math notranslate nohighlight">\(0.01\)</span>)</p>
+<p>Initial damping factor (default is <span class="math notranslate nohighlight">\(0.01\)</span>), only required for <code class="docutils literal notranslate"><span class="pre">LEVMAR</span></code>, <code class="docutils literal notranslate"><span class="pre">ATRN_RES</span></code> and <code class="docutils literal notranslate"><span class="pre">ATRN_ERR</span></code>. See <code class="docutils literal notranslate"><span class="pre">SOLVER_NAME</span></code> for available solvers.</p>
 <blockquote>
 <div><table class="docutils align-default">
 <tbody>
@@ -150,24 +170,13 @@
 </table>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">MIN_DAMPING</span></code></p>
-<p>Minimal damping factor (default is <span class="math notranslate nohighlight">\(0.0001\)</span>; ignored by <code class="docutils literal notranslate"><span class="pre">LEVMAR</span></code>)</p>
+<p>Minimal damping factor (default is <span class="math notranslate nohighlight">\(0.0001\)</span>), only required for <code class="docutils literal notranslate"><span class="pre">ATRN_RES</span></code> and <code class="docutils literal notranslate"><span class="pre">ATRN_ERR</span></code>. See <code class="docutils literal notranslate"><span class="pre">SOLVER_NAME</span></code> for available solvers.</p>
 <blockquote>
 <div><table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">SUBSOLVERS</span></code></p>
-<p>Vector with names of solvers for the composite solver (only required for composite solver). See <code class="docutils literal notranslate"><span class="pre">SOLVER_NAME</span></code> for available solvers.</p>
-<blockquote>
-<div><table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\gt 1\)</span></p></td>
 </tr>
 </tbody>
 </table>

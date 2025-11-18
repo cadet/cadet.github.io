@@ -123,8 +123,10 @@
 <span id="multi-channel-transport-model-model"></span><h1>Multichannel Transport model (MCT model)<a class="headerlink" href="#multichannel-transport-model-mct-model" title="Link to this heading">¶</a></h1>
 <p>The Multichannel Transport (MCT) model in CADET is based on a class of compartment models introduced by Jonas Bühler et al. <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id52" title="Jonas Bühler, Eric von Lieres, and Gregor Huber. A class of compartmental models for long-distance tracer transport in plants. Journal of Theoretical Biology, 341:131–142, 2014. URL: https://www.sciencedirect.com/science/article/pii/S0022519313004530, doi:https://doi.org/10.1016/j.jtbi.2013.09.023.">9</a>]</span>, which was originally developed in the field of plant sciences.
 There it is used to determine transport and storage parameters of radioactive labelled tracer molecules from positron emission tomography (PET) or magnetic resonance imaging (MRI) based experimental data.
-The model represents main functions of vascular transport pathways: axial transport of the tracer, diffusion in axial direction, lateral exchange between compartments and storage of tracer in compartments. Here, the axial direction represents the length of the stem of the plant and the lateral dimension its cross section. In the MCT context, the compartments of the model class are also referred to as channels.</p>
-<p>The same model equations arise in describing other biological and technical processes outside of the field of plant sciences, where solutes are transported and exchanged between spatially separated compartments, for example liquid-liquid chromatography (LLC). Here, components in a mixture are separated based on their interactions with two immiscible phases of a biphasic solvent system <span id="id2">[<a class="reference internal" href="../../zbibliography.html#id53" title="Raena Morley and Mirjana Minceva. Operating mode and parameter selection in liquid–liquid chromatography. Journal of Chromatography A, 1617:460479, 2020. URL: https://www.sciencedirect.com/science/article/pii/S0021967319308659, doi:https://doi.org/10.1016/j.chroma.2019.460479.">10</a>]</span>. The MCT model represents these phases by channels with respective transport and exchange properties. While the current implementation only covers linear driving forces for the exchange processes, the reaction module in CADET allows to add non-linear driving forces for the exchange processes and other chemical reactions in the channels.</p>
+The model represents main functions of vascular transport pathways: axial transport of the tracer, diffusion in axial direction, lateral exchange between compartments and storage of tracer in compartments.
+Here, the axial direction represents the length of the stem of the plant and the lateral dimension its cross section. In the MCT context, the compartments of the model class are also referred to as channels.</p>
+<p>The same model equations arise in describing other biological and technical processes outside of the field of plant sciences, where solutes are transported and exchanged between spatially separated compartments, for example liquid-liquid chromatography (LLC).
+Here, components in a mixture are separated based on their interactions with two immiscible phases of a biphasic solvent system <span id="id2">[<a class="reference internal" href="../../zbibliography.html#id53" title="Raena Morley and Mirjana Minceva. Operating mode and parameter selection in liquid–liquid chromatography. Journal of Chromatography A, 1617:460479, 2020. URL: https://www.sciencedirect.com/science/article/pii/S0021967319308659, doi:https://doi.org/10.1016/j.chroma.2019.460479.">10</a>]</span>.</p>
 <p>The MCT model equations are given for all channels <span class="math notranslate nohighlight">\(l \in \{1, \dots, N_k\}\)</span> and components <span class="math notranslate nohighlight">\(i \in \{1, \dots, N_c\}\)</span> by</p>
 <div class="math notranslate nohighlight" id="equation-modelmct">
 <span class="eqno">(24)<a class="headerlink" href="#equation-modelmct" title="Link to this equation">¶</a></span>\[\begin{aligned}
@@ -132,23 +134,23 @@ The model represents main functions of vascular transport pathways: axial transp
     =
     - u_l \frac{\partial c_{i,l}^\ell}{\partial z}
     + D_{\text{ax},i,l} \frac{\partial^2 c_{i,l}^\ell}{\partial z^2}
-    + \sum_{k=1}^{N_k} e^i_{kl} c_{i,k}^\ell A_k / A_l - e^i_{lk} c_{i,l}^\ell
+    + \sum_{k=1, k \neq l}^{N_k} f_{ex,i}^{k \to l}(c^\ell_l ) \, A_k / A_l - f_{ex,i}^{l \to k}(c^\ell_l)
     + f_{\text{react},i,l}\left( c^\ell_l \right),
 \end{aligned}\]</div>
-<p>where <span class="math notranslate nohighlight">\(e^i_{lk}\)</span> denotes the exchange rate of component <span class="math notranslate nohighlight">\(i\)</span> from channel <span class="math notranslate nohighlight">\(l\)</span> to channel <span class="math notranslate nohighlight">\(k\)</span>, and <span class="math notranslate nohighlight">\(A_l\)</span> denotes the cross section area of channel <span class="math notranslate nohighlight">\(l\)</span>.
-The equations are complemented by Danckwerts boundary conditions <span id="id3">[<a class="reference internal" href="../../zbibliography.html#id23" title="P.V. Danckwerts. Continuous flow systems: Distribution of residence times. Chemical Engineering Science, 2(1):1–13, 1953-02. URL: http://linkinghub.elsevier.com/retrieve/pii/0009250953800011, doi:10.1016/0009-2509(53)80001-1.">8</a>]</span></p>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A_l\)</span> is the cross-sectional area of channel <span class="math notranslate nohighlight">\(l\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(u_l\)</span> is the velocity in channel <span class="math notranslate nohighlight">\(l\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(D_{\text{ax},i,l}\)</span> is the dispersion coefficient for component <span class="math notranslate nohighlight">\(i\)</span> in channel <span class="math notranslate nohighlight">\(l\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_{\text{react},i,l}\)</span> is the net change of concentration due to reactions in channel <span class="math notranslate nohighlight">\(l\)</span> for component <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(c_{i,l}^\ell\)</span> is the concentration of component <span class="math notranslate nohighlight">\(i\)</span> in channel <span class="math notranslate nohighlight">\(l\)</span> at position <span class="math notranslate nohighlight">\(z\)</span> and time <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+</ul>
+<p>The equations are complemented by Danckwerts boundary conditions <span id="id3">[<a class="reference internal" href="../../zbibliography.html#id23" title="P.V. Danckwerts. Continuous flow systems: Distribution of residence times. Chemical Engineering Science, 2(1):1–13, 1953-02. URL: http://linkinghub.elsevier.com/retrieve/pii/0009250953800011, doi:10.1016/0009-2509(53)80001-1.">8</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
     u_l c^\ell_{\text{in},i,l}(t) &amp;= u_l c^\ell_{i,l}(t,0) - D_{\text{ax},i,l} \frac{\partial c^\ell_{i,l}}{\partial z}(t, 0) &amp; \forall t &gt; 0,\\
     \frac{\partial c^\ell_{i,l}}{\partial z}(t, L) &amp;= 0 &amp; \forall t &gt; 0.
 \end{aligned}\end{split}\]</div>
-<p>The MCT model describes <span class="math notranslate nohighlight">\(N_k\)</span> one-dimensional spatially parallel channels (see <a class="reference internal" href="#fig-model-class"><span class="std std-numref">Fig. 6</span></a>).
-In each channel <span class="math notranslate nohighlight">\(l\)</span>, molecules of different species <span class="math notranslate nohighlight">\(i\)</span>, represented by a liquid phase concentration <span class="math notranslate nohighlight">\(c^\ell_{i,l}\)</span>, can be transported with flux velocities <span class="math notranslate nohighlight">\(v_{i,l}\)</span> while undergoing axial diffusion: <span class="math notranslate nohighlight">\(D_{\text{ax},i,l}\)</span>.
-Molecules can be laterally exchanged between any pair of channels <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(k\)</span> with rate constant <span class="math notranslate nohighlight">\(e^i_{lk}\)</span>.
-We note that the exchange fluxes are computed from the exchange rates w.r.t. the source channel volume, that is, channels with the same exchange rate but different volume will produce differently large exchange fluxes.
-For further elaboration on this, please refer to the second use-case section below.
-If reactions are considered, the term <span class="math notranslate nohighlight">\(f_{\text{react},i,l}\left(c^\ell_l\right)\)</span> represents the net change of concentration <span class="math notranslate nohighlight">\(c^\ell_{il}\)</span> due to reactions in channel <span class="math notranslate nohighlight">\(l\)</span> involving component <span class="math notranslate nohighlight">\(i\)</span>.</p>
-<p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/multi_channel_transport_model.html#multi-channel-transport-model-config"><span class="std std-ref">Multichannel Transport model (MCT model)</span></a>.</p>
 <figure class="align-default" id="id7">
 <span id="fig-model-class"></span><img alt="../../_images/multi_channel_transport_model_class.png" src="../../_images/multi_channel_transport_model_class.png" />
 <figcaption>
@@ -156,13 +158,50 @@ If reactions are considered, the term <span class="math notranslate nohighlight"
 Figure taken from Jonas Bühler et al. <span id="id4">[<a class="reference internal" href="../../zbibliography.html#id52" title="Jonas Bühler, Eric von Lieres, and Gregor Huber. A class of compartmental models for long-distance tracer transport in plants. Journal of Theoretical Biology, 341:131–142, 2014. URL: https://www.sciencedirect.com/science/article/pii/S0022519313004530, doi:https://doi.org/10.1016/j.jtbi.2013.09.023.">9</a>]</span>.</span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>The cross-section area <span class="math notranslate nohighlight">\(A_N\)</span> is individually specified for each channel (see <a class="reference internal" href="#fig-variable-areas"><span class="std std-numref">Fig. 7</span></a>). The MCT is agnostic to the shape of these cross sections, while their ratio determines the distribution of the volumetric flow.</p>
+<p>The MCT model describes <span class="math notranslate nohighlight">\(N_k\)</span> one-dimensional spatially parallel channels (see <a class="reference internal" href="#fig-model-class"><span class="std std-numref">Fig. 6</span></a>).
+In each channel <span class="math notranslate nohighlight">\(l\)</span>, molecules of different species <span class="math notranslate nohighlight">\(i\)</span>, represented by a liquid phase concentration <span class="math notranslate nohighlight">\(c^\ell_{i,l}\)</span>, can be transported with flux velocities <span class="math notranslate nohighlight">\(v_{i,l}\)</span> while undergoing axial diffusion: <span class="math notranslate nohighlight">\(D_{\text{ax},i,l}\)</span>.
+Molecules can be laterally exchanged between any pair of channels <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(k\)</span> while using different exchange models (see Exchange Models section below).
+We note that the exchange fluxes are computed from the exchange rates w.r.t. the source channel volume, that is, channels with the same exchange rate but different volume will produce differently large exchange fluxes.
+This volume scaling is particularly important for the Langmuir exchange model, where the <span class="math notranslate nohighlight">\(A_l/A_k\)</span> factor ensures proper mass conservation between channels of different cross-sectional areas.
+For further elaboration on volume scaling effects, please refer to the second use-case section below.
+If reactions are considered, the term <span class="math notranslate nohighlight">\(f_{\text{react},i,l}\left(c^\ell_l\right)\)</span> represents the net change of concentration <span class="math notranslate nohighlight">\(c^\ell_{il}\)</span> due to reactions in channel <span class="math notranslate nohighlight">\(l\)</span> involving component <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<section id="exchange-models">
+<h2>Exchange Models<a class="headerlink" href="#exchange-models" title="Link to this heading">¶</a></h2>
+<p>For the MCT model, two exchange models are implemented to describe the lateral transport processes between channels.</p>
+<p><strong>Linear Exchange Model</strong> (Default)
+The Linear Exchange Model assumes a linear relationship between the concentration difference and the exchange flux:</p>
+<div class="math notranslate nohighlight">
+\[f_{ex,i}^{l \to k}(c^\ell) = e^i_{lk} \, c_{i,l}^\ell\]</div>
+<p>where <span class="math notranslate nohighlight">\(e^i_{lk}\)</span> is the exchange rate constant for component <span class="math notranslate nohighlight">\(i\)</span> from channel <span class="math notranslate nohighlight">\(l\)</span> to <span class="math notranslate nohighlight">\(k\)</span>.</p>
+<p>This model describes simple diffusion-driven exchange where the flux is proportional to the concentration gradient between channels. The exchange is symmetric when <span class="math notranslate nohighlight">\(e^i_{lk} = e^i_{kl}\)</span>,
+but can be asymmetric to model preferential partitioning of components between different phases.
+Unlike the Langmuir model, the linear exchange has no saturation limit and remains valid even at high concentrations.</p>
+<p><strong>Langmuir Exchange Model</strong>
+The Langmuir Exchange Model incorporates saturation-limited exchange kinetics between channels:</p>
+<div class="math notranslate nohighlight">
+\[f_{ex,i}^{l \to k}(c^\ell) = e_{lk}^i \, c_{i,l}^\ell \, q_{\max,i}^k \, \left(1 - \sum_{j=1}^{N_c} \frac{c_{j,k}^\ell}{q_{\max,j}^k}\right) \, \frac{A_l}{A_k}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(e_{lk}^i\)</span> is the exchange rate constant for component <span class="math notranslate nohighlight">\(i\)</span> from channel <span class="math notranslate nohighlight">\(l\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(q_{\max,i}^k\)</span> is the maximum saturation level for component <span class="math notranslate nohighlight">\(i\)</span> in destination channel <span class="math notranslate nohighlight">\(k\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum_{j=1}^{N_c} \frac{c_{j,k}^\ell}{q_{\max,j}^k}\)</span> is the relative occupancy in destination channel <span class="math notranslate nohighlight">\(k\)</span></p></li>
+</ul>
+<p>This model reduces to the linear exchange model when <span class="math notranslate nohighlight">\(q_{\max,k}^i \rightarrow \infty\)</span>.
+The factor <span class="math notranslate nohighlight">\(A_l/A_k\)</span> ensures proper mass conservation when exchanging between channels with different cross-sectional areas, as the exchange flux must be scaled according to the volume ratio of the source and destination channels.</p>
+<p>Note that only one exchange model can be active at a time for all components.</p>
+<p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/multi_channel_transport_model.html#multi-channel-transport-model-config"><span class="std std-ref">Multichannel Transport model (MCT model)</span></a>.</p>
+</section>
+<section id="cross-section-areas">
+<h2>Cross-section Areas<a class="headerlink" href="#cross-section-areas" title="Link to this heading">¶</a></h2>
+<p>The cross-section area <span class="math notranslate nohighlight">\(A_N\)</span> is individually specified for each channel (see <a class="reference internal" href="#fig-variable-areas"><span class="std std-numref">Fig. 7</span></a>).
+The MCT is agnostic to the shape of these cross sections, while their ratio determines the distribution of the volumetric flow.</p>
 <figure class="align-default" id="id8">
 <span id="fig-variable-areas"></span><img alt="../../_images/mct_variable_areas.png" src="../../_images/mct_variable_areas.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 7 </span><span class="caption-text">Scheme of exemplary channels with different cross section areas and arbitrary exchange between channels.</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
+</section>
 <section id="use-case-tracer-transport-in-plants">
 <h2>Use-case: Tracer transport in plants<a class="headerlink" href="#use-case-tracer-transport-in-plants" title="Link to this heading">¶</a></h2>
 <p>The MCT can be used to model tracer transport in plants, following Jonas Bühler et al. <span id="id5">[<a class="reference internal" href="../../zbibliography.html#id52" title="Jonas Bühler, Eric von Lieres, and Gregor Huber. A class of compartmental models for long-distance tracer transport in plants. Journal of Theoretical Biology, 341:131–142, 2014. URL: https://www.sciencedirect.com/science/article/pii/S0022519313004530, doi:https://doi.org/10.1016/j.jtbi.2013.09.023.">9</a>]</span>.

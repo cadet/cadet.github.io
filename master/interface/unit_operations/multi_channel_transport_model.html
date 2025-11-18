@@ -278,6 +278,24 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </table>
 </div></blockquote>
 </div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">EXCHANGE_TYPE</span></code></p>
+<blockquote>
+<div><p>Type of exchange model to be used (optional)</p>
+<p><strong>Unit:</strong> N/A</p>
+<p>Specifies the exchange model to be applied for inter-channel transport. Possible values are:</p>
+<ul class="simple">
+<li><p><cite>LINEAR_EX</cite>: Linear Exchange model (default)</p></li>
+<li><p><cite>LANGMUIR_EX</cite>: Langmuir Exchange model</p></li>
+</ul>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> {LANGMUIR_EX, LINEAR_EX}</p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">EXCHANGE_MATRIX</span></code></p>
 <blockquote>
 <div><blockquote>
@@ -308,6 +326,26 @@ e^k_{N1} &amp; \dots &amp; e^k_{N(N-1)} &amp; 0
 </table>
 </div></blockquote>
 </div></blockquote>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">SATURATION_MATRIX</span></code></dt><dd><p>Maximum exchange saturation matrix (optional)
+Only when using the Langmuir Exchange model.</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(mol~m_{channel}^{-3}\)</span></p>
+<p>Matrix containing maximum saturation levels <span class="math notranslate nohighlight">\(q_{max,i}^{k}\)</span> for each component <span class="math notranslate nohighlight">\(i\)</span> in each channel <span class="math notranslate nohighlight">\(k\)</span>.
+This parameter determines the saturation limit for the Langmuir-type exchange kinetics.</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(q_{max,i}^{k} = 0\)</span> the corresponding exchange flux will reduce to the linear exchange model.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(q_{max,i}^{k} &lt; 0\)</span> the model will describe an Anti-Langmuir behavior.</p></li>
+</ul>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCHANNEL}*\texttt{NCOMP}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
 <p><code class="docutils literal notranslate"><span class="pre">NCHANNEL</span></code></p>
 <blockquote>
 <div><p>Number of channels <span class="math notranslate nohighlight">\(ij\)</span></p>
@@ -394,7 +432,7 @@ e^k_{N1} &amp; \dots &amp; e^k_{N(N-1)} &amp; 0
 </tbody>
 </table>
 </div></blockquote>
-<p>For further discretization parameters, see also <a class="reference internal" href="../flux_reconstruction.html#flux-reconstruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific)), and <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
+<p>For further discretization parameters, see also <a class="reference internal" href="../flux_reconstruction.html#flux-reconstruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific), and <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
 </section>
 </section>
 

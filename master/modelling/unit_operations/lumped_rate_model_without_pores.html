@@ -124,13 +124,13 @@
 <p>The lumped rate model without pores <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id22" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>, <a class="reference internal" href="../../zbibliography.html#id24" title="A. Felinger and G. Guiochon. Comparison of the Kinetic Models of Linear Chromatography. Chromatographia, 60(S1):175–180, 2004-05. URL: http://springerlink.metapress.com/openurl.asp?genre=article{\&amp;}id=doi:10.1365/s10337-004-0288-7, doi:10.1365/s10337-004-0288-7.">4</a>]</span> deviates from the lumped rate model with pores (see Section <a class="reference internal" href="lumped_rate_model_with_pores.html#lumped-rate-model-with-pores-model"><span class="std std-ref">Lumped rate model with pores (LRMP)</span></a>) by neglecting pores completely.
 The particle phase <span class="math notranslate nohighlight">\(c^p\)</span> is removed and the porosity <span class="math notranslate nohighlight">\(\varepsilon_t\)</span> is taken as total porosity</p>
 <div class="math notranslate nohighlight" id="equation-totalporosity">
-<span class="eqno">(13)<a class="headerlink" href="#equation-totalporosity" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(16)<a class="headerlink" href="#equation-totalporosity" title="Link to this equation">¶</a></span>\[\begin{aligned}
     \varepsilon_t = \varepsilon_c + \left( 1 - \varepsilon_c \right) \varepsilon_p.
 \end{aligned}\]</div>
 <p>The phase ratio is denoted by <span class="math notranslate nohighlight">\(\beta_t = \varepsilon_t / (1 - \varepsilon_t)\)</span> accordingly.
 The model equations are given by</p>
 <div class="math notranslate nohighlight" id="equation-modelcolumnlrm">
-<span class="eqno">(14)<a class="headerlink" href="#equation-modelcolumnlrm" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(17)<a class="headerlink" href="#equation-modelcolumnlrm" title="Link to this equation">¶</a></span>\[\begin{aligned}
     \frac{\partial c^\ell_i}{\partial t} + \frac{1}{\beta_t} \frac{\partial}{\partial t} \sum_{m_i} c^s_{i,m_i} &amp;= -u \frac{\partial c^\ell_i}{\partial z} + D_{\text{ax},i} \frac{\partial^2 c^\ell_i}{\partial z^2} + f_{\text{react},i}^\ell\left( c^\ell, c^s \right) + \frac{1}{\beta_t} f_{\text{react},i}^s\left( c^\ell, c^s \right),
 \end{aligned}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\beta_t = \varepsilon_t / (1 - \varepsilon_t)\)</span> denotes the (total) phase ratio.
@@ -168,7 +168,7 @@ That is, the volumetric flow rate at the inner and outer column radius are the s
 </ul>
 <p>Consider a hollow (double walled) column with inner column diameter <span class="math notranslate nohighlight">\(\mathrm{P}_c&gt;0\)</span> and outer diameter <span class="math notranslate nohighlight">\(\mathrm{P}&gt;\mathrm{P}_c\)</span>, filled with spherical beads. The mass balance in the interstitial column volume is described by</p>
 <div class="math notranslate nohighlight" id="equation-modelradialcolumnlrm">
-<span class="eqno">(15)<a class="headerlink" href="#equation-modelradialcolumnlrm" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(18)<a class="headerlink" href="#equation-modelradialcolumnlrm" title="Link to this equation">¶</a></span>\[\begin{aligned}
     \frac{\partial c^\ell_i}{\partial t} + \frac{1}{\beta_t} \frac{\partial}{\partial t} \sum_{m_i} c^s_{i,m_i} &amp;= -\frac{u}{\rho} \frac{\partial c^\ell_i}{\partial \rho} + D_{\text{rad},i} \frac{1}{\rho} \frac{\partial}{\partial \rho}  \left( \rho \frac{\partial c^\ell_i}{\partial \rho} \right) + f_{\text{react},i}^\ell\left( c^\ell, c^s \right) + \frac{1}{\beta_t} f_{\text{react},i}^s\left( c^\ell, c^s \right),
 \end{aligned}\]</div>
 <p>The equations are complemented by Danckwerts boundary conditions <span id="id3">[<a class="reference internal" href="../../zbibliography.html#id23" title="P.V. Danckwerts. Continuous flow systems: Distribution of residence times. Chemical Engineering Science, 2(1):1–13, 1953-02. URL: http://linkinghub.elsevier.com/retrieve/pii/0009250953800011, doi:10.1016/0009-2509(53)80001-1.">8</a>]</span></p>

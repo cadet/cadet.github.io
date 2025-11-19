@@ -129,8 +129,8 @@ Thus, only one spatial coordinate in axial direction is needed and radial transp
 <li><p>The bead radii <span class="math notranslate nohighlight">\(r_{p}\)</span> are much smaller than the column radius <span class="math notranslate nohighlight">\(\mathrm{P}\)</span> and the column length <span class="math notranslate nohighlight">\(L\)</span>.
 Therefore, the beads can be seen as continuously distributed inside the column (i.e., at each point there is interstitial and bead volume).</p></li>
 </ul>
-<span id="table-features"></span><table class="docutils align-default" id="id7">
-<caption><span class="caption-number">Table 2 </span><span class="caption-text">Variables and unknowns</span><a class="headerlink" href="#id7" title="Link to this table">¶</a></caption>
+<span id="table-features"></span><table class="docutils align-default" id="id9">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Variables and unknowns</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 30.0%" />
@@ -189,10 +189,10 @@ Therefore, the beads can be seen as continuously distributed inside the column (
 </tr>
 </tbody>
 </table>
-<figure class="align-default" id="id8">
+<figure class="align-default" id="id10">
 <span id="modelgrmcolumn"></span><img alt="../../_images/column_bulk_model.png" src="../../_images/column_bulk_model.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Column bulk model</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Column bulk model</span><a class="headerlink" href="#id10" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The GRM describes transport of solute molecules through the interstitial column volume by convective flow, band broadening caused by axial dispersion, mass transfer resistance through a stagnant film around the beads, pore (and surface) diffusion in the porous beads <span id="id2">[<a class="reference internal" href="../../zbibliography.html#id40" title="Z. Ma, R. D. Whitley, and N.-H. L. Wang. Pore and surface diffusion in multicomponent adsorption and liquid chromatography systems. AIChE Journal, 42(5):1244–1262, 1996-05. URL: http://doi.wiley.com/10.1002/aic.690420507, doi:10.1002/aic.690420507.">5</a>, <a class="reference internal" href="../../zbibliography.html#id39" title="Petr Schneider and J. M. Smith. Chromatographic study of surface diffusion. AIChE Journal, 14(6):886–895, 1968-11. URL: http://doi.wiley.com/10.1002/aic.690140613, doi:10.1002/aic.690140613.">6</a>, <a class="reference internal" href="../../zbibliography.html#id41" title="Kanji Miyabe. Surface diffusion in reversed-phase liquid chromatography using silica gel stationary phases of different C1 and C18 ligand densities. Journal of Chromatography A, 1167(2):161–70, 2007-10. URL: http://www.ncbi.nlm.nih.gov/pubmed/17825832, doi:10.1016/j.chroma.2007.08.045.">7</a>]</span>, and adsorption to the inner bead surfaces.</p>
@@ -251,17 +251,17 @@ Reaction terms in liquid and solid phase are collected in <span class="math notr
 <span class="eqno">(9)<a class="headerlink" href="#equation-initialconditions" title="Link to this equation">¶</a></span>\[\begin{aligned}
     c^\ell_i(0, z) &amp;= 0, &amp; c^p_{j,i}(0, z, r) &amp;= 0, &amp; c^s_{j,i,m_{j,i}}(0,z,r) &amp;= 0.
 \end{aligned}\]</div>
-<figure class="align-default" id="id9">
+<figure class="align-default" id="id11">
 <span id="modelgrmbead"></span><img alt="../../_images/column_bead_model.png" src="../../_images/column_bead_model.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Column bead model</span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Column bead model</span><a class="headerlink" href="#id11" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id10">
+<figure class="align-default" id="id12">
 <span id="modelgrmstates"></span><a class="reference internal image-reference" href="../../_images/multiple_bound_states.png"><img alt="../../_images/multiple_bound_states.png" src="../../_images/multiple_bound_states.png" style="width: 340.0px; height: 268.0px;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Binding with multiple bound states</span><a class="headerlink" href="#id10" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Binding with multiple bound states</span><a class="headerlink" href="#id12" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>See Table <a class="reference internal" href="../../interface/unit_operations/axial_flow_column_1D_config.html#axial-flow-column-1d-config"><span class="std std-ref">Axial Flow Column 1D</span></a> and <a class="reference internal" href="../../interface/unit_operations/particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
@@ -274,10 +274,10 @@ Slabs are assumed to have two large sides such that molecules enter through the 
 <p>All particle forms support core-shell beads that have an impermeable core.
 The particles are characterized by their (outer) “radius” <span class="math notranslate nohighlight">\(r_{p,j}\)</span> and their (inner) core “radius” <span class="math notranslate nohighlight">\(r_{c,j} \in [0, r_{p,j})\)</span>.
 See <a class="reference internal" href="#modelgrmparticlegeometries"><span class="std std-numref">Fig. 5</span></a>.</p>
-<figure class="align-default" id="id11">
+<figure class="align-default" id="id13">
 <span id="modelgrmparticlegeometries"></span><img alt="../../_images/column_particle_geometries.png" src="../../_images/column_particle_geometries.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Particle geometries</span><a class="headerlink" href="#id11" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Particle geometries</span><a class="headerlink" href="#id13" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>For cylinders, the factor <span class="math notranslate nohighlight">\(3 / r_{p,j}\)</span> in Eq. (<a class="reference internal" href="#equation-modelcolumn">1</a>) changes to <span class="math notranslate nohighlight">\(2 / r_{p,j}\)</span> and the diffusion operator in Eq. (<a class="reference internal" href="#equation-modelbead">4</a>) and Eq. (<a class="reference internal" href="#equation-dynbinding">6</a>) changes as</p>
@@ -381,6 +381,48 @@ If reactions are considered, the term <span class="math notranslate nohighlight"
 <p>Note that the outlet boundary condition Eq. <a class="reference internal" href="#equation-bcoutletradial">11</a> is also known as “do nothing” or natural outflow condition.</p>
 <p>The complementing mass transport and binding equations for the liquid and solid phases of the porous beads are described by the same equations as for the axial GRM.</p>
 <p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/radial_flow_column_1D_config.html#radial-flow-column-1d-config"><span class="std std-ref">Radial Flow Column 1D</span></a> and <a class="reference internal" href="../../interface/unit_operations/particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
+</section>
+<section id="frustum-device-grm">
+<h2>Frustum device GRM<a class="headerlink" href="#frustum-device-grm" title="Link to this heading">¶</a></h2>
+<p>The frustum GRM describes transport of solute molecules through the interstitial column volume by convective flow from the smaller to the larger radius of the frustum device (“axial” direction), band broadening caused by dispersion, mass transfer resistance through a stagnant film around the beads, pore (and surface) diffusion in the porous beads <span id="id7">[<a class="reference internal" href="../../zbibliography.html#id40" title="Z. Ma, R. D. Whitley, and N.-H. L. Wang. Pore and surface diffusion in multicomponent adsorption and liquid chromatography systems. AIChE Journal, 42(5):1244–1262, 1996-05. URL: http://doi.wiley.com/10.1002/aic.690420507, doi:10.1002/aic.690420507.">5</a>, <a class="reference internal" href="../../zbibliography.html#id39" title="Petr Schneider and J. M. Smith. Chromatographic study of surface diffusion. AIChE Journal, 14(6):886–895, 1968-11. URL: http://doi.wiley.com/10.1002/aic.690140613, doi:10.1002/aic.690140613.">6</a>, <a class="reference internal" href="../../zbibliography.html#id41" title="Kanji Miyabe. Surface diffusion in reversed-phase liquid chromatography using silica gel stationary phases of different C1 and C18 ligand densities. Journal of Chromatography A, 1167(2):161–70, 2007-10. URL: http://www.ncbi.nlm.nih.gov/pubmed/17825832, doi:10.1016/j.chroma.2007.08.045.">7</a>]</span>, and adsorption to the inner bead surfaces.</p>
+<p>The main assumptions are:</p>
+<ul class="simple">
+<li><p>The frustum shells of the column are homogenous in terms of interstitial volume, fluid flow, and distribution of components.
+Thus, only one spatial coordinate in axial direction <span class="math notranslate nohighlight">\(x\)</span> is needed.</p></li>
+<li><p>The bead radii <span class="math notranslate nohighlight">\(r_{p}\)</span> are much smaller than the column length <span class="math notranslate nohighlight">\(H\)</span> and radius <span class="math notranslate nohighlight">\(r(x) \forall x\in(0,H)\)</span>.
+Therefore, the beads can be seen as continuously distributed inside the column (i.e., at each point there is interstitial and bead volume).</p></li>
+<li><p>The fluids are incompressible, i.e. the velocity field <span class="math notranslate nohighlight">\(\mathrm{V} \colon \mathbb{R}^3 \to \mathbb{R}^3\)</span> submits to <span class="math notranslate nohighlight">\(\operatorname{div}\left( \mathrm{V} \right) \equiv 0\)</span>.
+That is, the volumetric flow rate at the inner and outer column radius are the same.</p></li>
+<li><p>A cross-sectional average <span class="math notranslate nohighlight">\(\overline{u}(x) := \int_A \vec{u} dA\)</span> of the velocity is considered. This is a necessary assumption to derive the one-dimensionalized model.</p></li>
+</ul>
+<p>We consider axial flow through a conical frustum, where the axial coordinate from bottom to top is denoted by <span class="math notranslate nohighlight">\(x \in (0, H)\)</span>.
+The frustum is filled with spherical beads of (possibly) multiple types with radius <span class="math notranslate nohighlight">\(r_{p,j} \ll H\)</span> (see <a class="reference internal" href="#modelgrmcolumn"><span class="std std-numref">Fig. 2</span></a>), where <span class="math notranslate nohighlight">\(j\)</span> is the particle type index.</p>
+<p>The flow-directional cross-section area is circular and varies with axial position <span class="math notranslate nohighlight">\(A(x) = \pi r(x)^2\)</span>, with <span class="math notranslate nohighlight">\(r(x) = r_0 + \frac{x}{H} (r_H - r_0)\)</span> being the frustum radius at axial position <span class="math notranslate nohighlight">\(x\)</span>, and <span class="math notranslate nohighlight">\(r_H, r_0\)</span> being the radii at the frustum top and bottom, respectively.</p>
+<p>The <em>averaged bulk velocity</em> at position <span class="math notranslate nohighlight">\(x\)</span> is then given by <span class="math notranslate nohighlight">\(\overline{u}(x) = \frac{Q}{A(x)} = \frac{Q}{\pi r(x)^2}\)</span>.</p>
+<p>We define the <em>velocity coefficient</em> <span class="math notranslate nohighlight">\(u := \frac{Q}{\pi}\)</span>, which has units of <span class="math notranslate nohighlight">\(\mathrm{m}^3/\mathrm{s}\)</span>, and expresses the scaled volumetric flow rate.</p>
+<p>The mass balance in the interstitial column volume is described by</p>
+<div class="math notranslate nohighlight" id="equation-modelfrustumcolumngrm">
+<span class="eqno">(13)<a class="headerlink" href="#equation-modelfrustumcolumngrm" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+    \frac{\partial c}{\partial t}
+    = -\frac{u}{r(x)^2} \frac{\partial c}{\partial x}
+    + \frac{1}{r(x)^2} \frac{\partial}{\partial x} \left( D(x) r(x)^2 \frac{\partial c}{\partial x} \right)
+    &amp;- \frac{1}{\beta_c} \sum_j d_j \frac{3}{r_{p,j}} k_{f,j,i} \left[ c^\ell_i - c^p_{j,i}(\cdot, \cdot, r_{p,j}) \right] \\
+    &amp;+ f_{\text{react},i}^\ell\left(c^\ell\right).
+\end{aligned}\end{split}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(c^\ell_i\colon \left[0, T_{\text{end}}\right] \times (0, H) \rightarrow \mathbb{R}^{\geq 0}\)</span> denotes the concentration in the interstitial column volume, <span class="math notranslate nohighlight">\(c^p_{j,i}\colon \left[0, T_{\text{end}}\right] \times (0, H) \times (r_{c,j}, r_{p,j}) \rightarrow \mathbb{R}^{\geq 0}\)</span> the liquid phase concentration in the beads, <span class="math notranslate nohighlight">\(k_{f,j,i}\geq 0\)</span> the film diffusion coefficient, <span class="math notranslate nohighlight">\(D_{i}\geq 0\)</span> the dispersion coefficient, <span class="math notranslate nohighlight">\(u&gt;0\)</span> the interstitial velocity coefficient, <span class="math notranslate nohighlight">\(d_j&gt;0\)</span> the volume fraction of particle type <span class="math notranslate nohighlight">\(j\)</span>, and <span class="math notranslate nohighlight">\(\beta_c = \varepsilon_c / (1 - \varepsilon_c)\)</span> the column phase ratio, where <span class="math notranslate nohighlight">\(\varepsilon_c\in(0,1)\)</span> is the column porosity (ratio of interstitial volume to total column volume).
+If reactions are considered, the term <span class="math notranslate nohighlight">\(f_{\text{react},i}^\ell\left(c^\ell\right)\)</span> represents the net change of concentration <span class="math notranslate nohighlight">\(c_i\)</span> due to reactions involving component <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>Danckwerts boundary conditions <span id="id8">[<a class="reference internal" href="../../zbibliography.html#id23" title="P.V. Danckwerts. Continuous flow systems: Distribution of residence times. Chemical Engineering Science, 2(1):1–13, 1953-02. URL: http://linkinghub.elsevier.com/retrieve/pii/0009250953800011, doi:10.1016/0009-2509(53)80001-1.">8</a>]</span> are applied to inlet and outlet of the column:</p>
+<div class="math notranslate nohighlight" id="equation-bcoutletfrustum">
+<span class="eqno">(14)<a class="headerlink" href="#equation-bcoutletfrustum" title="Link to this equation">¶</a></span>\[\begin{aligned}
+    u c_{\text{in},i}(t) &amp;= u c^\ell_i(t,0) - D_{i} \frac{\partial c^\ell_i}{\partial \rho}(t, 0) &amp; \forall t &gt; 0,
+\end{aligned}\]</div>
+<div class="math notranslate nohighlight" id="equation-bcinletfrustum">
+<span class="eqno">(15)<a class="headerlink" href="#equation-bcinletfrustum" title="Link to this equation">¶</a></span>\[\begin{aligned}
+    \frac{\partial c^\ell_i}{\partial \rho}(t, \mathrm{P}) &amp;= 0 &amp; \forall t &gt; 0.
+\end{aligned}\]</div>
+<p>Note that the outlet boundary condition Eq. <a class="reference internal" href="#equation-bcoutletfrustum">14</a> is also known as “do nothing” or natural outflow condition.</p>
+<p>The complementing mass transport and binding equations for the liquid and solid phases of the porous beads are described by the same equations as for the axial GRM.</p>
+<p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/frustum_flow_column_1D_config.html#frustum-flow-column-1d-config"><span class="std std-ref">Frustum Flow Column 1D</span></a> and <a class="reference internal" href="../../interface/unit_operations/particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
 </section>
 </section>
 

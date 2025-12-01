@@ -178,12 +178,37 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_LENGTH</span></code></p>
 <blockquote>
-<div><p>Column length/height (optional if <span class="math notranslate nohighlight">\(\texttt{VELOCITY_COEFF}\)</span> is present, see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>)</p>
+<div><p>Column length/height (optional if <span class="math notranslate nohighlight">\(\texttt{VELOCITY_COEFF}\)</span> is present, see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>).
+Note that this is not the bed height in flow direction.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">COLUMN_GEOMETRY</span></code></p>
+<blockquote>
+<div><p>Optional, specifies whether the radial flow model is a full cylinder shell or a fraction, i.e. a wedge</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{CYLINDER_SHELL}, \texttt{WEDGE}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CIRCLE_FRACTION</span></code></p>
+<blockquote>
+<div><p>Optional, only required for wedge geometry. Specifies the cylinder shell fraction of the wedge</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\((0,1]\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>

@@ -314,6 +314,38 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </tbody>
 </table>
 </div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">NREAC_LIQUID</span></code></p>
+<blockquote>
+<div><p>Number of reactions in the bulk volume.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>The bulk reactions in the CSTR is defined in the following subgroup:</p>
+<p>Group /input/model/unit_XXX/liquid_reaction_YYY</p>
+</section>
+<section id="reaction-model-in-the-bulk-volume">
+<h2>Reaction model in the bulk volume<a class="headerlink" href="#reaction-model-in-the-bulk-volume" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">TYPE</span></code></p>
+<blockquote>
+<div><p>Specifies the type of reaction model</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> See Section <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Further reaction configuration are depending on the <code class="docutils literal notranslate"><span class="pre">TYPE</span></code>.
+For information on model configuration, refer to <a class="reference internal" href="../reaction/mass_action_law.html#mass-action-law-config"><span class="std std-ref">Mass Action Law</span></a> or <a class="reference internal" href="../reaction/michaelis_menten_kinetics.html#michaelis-menten-kinetics-config"><span class="std std-ref">Michaelis Menten kinetics</span></a>.</p>
+<p><strong>NOTE:</strong> This interface will be implemented for further unit operation in the future.</p>
 </section>
 </section>
 

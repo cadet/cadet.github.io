@@ -328,7 +328,7 @@ Is only applied when <span class="math notranslate nohighlight">\(\texttt{HAS_PO
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">NBOUND</span></code></p>
 <blockquote>
-<div><p>Number of bound states for each component in each particle type in type-major ordering</p>
+<div><p>Number of bound states for each component in each particle type in particle type major ordering</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -340,7 +340,8 @@ Is only applied when <span class="math notranslate nohighlight">\(\texttt{HAS_PO
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">REACTION_MODEL</span></code></p>
 <blockquote>
-<div><p>Specifies the type of reaction model of each particle type (or of all particle types if length is <span class="math notranslate nohighlight">\(1\)</span>). The model is configured in the subgroup <span class="math notranslate nohighlight">\(\texttt{reaction_particle}\)</span>, or <span class="math notranslate nohighlight">\(\texttt{reaction_particle_XXX}\)</span> in case of disabled multiplexing.</p>
+<div><p>Specifies the type of reaction model of each particle type (or of all particle types if length is <span class="math notranslate nohighlight">\(1\)</span>).
+The model is configured in the subgroup <span class="math notranslate nohighlight">\(\texttt{reaction_particle}\)</span>, or <span class="math notranslate nohighlight">\(\texttt{reaction_particle_XXX}\)</span> in case of disabled multiplexing.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
@@ -352,7 +353,10 @@ Is only applied when <span class="math notranslate nohighlight">\(\texttt{HAS_PO
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_CP</span></code></p>
 <blockquote>
-<div><p>Initial concentrations for each component in the bead liquid phase (optional, <span class="math notranslate nohighlight">\(\texttt{INIT_C}\)</span> is used if left out). The length of this field can be <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span> (same values for each particle type) or <span class="math notranslate nohighlight">\(\texttt{NPARTYPE} \cdot \texttt{NCOMP}\)</span>  Values for each particle type can only be given when <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL_MULTIPLEX}\)</span> is <span class="math notranslate nohighlight">\(0\)</span>. The ordering is type-major.</p>
+<div><p>Initial concentrations for each component in the bead liquid phase (optional, <span class="math notranslate nohighlight">\(\texttt{INIT_C}\)</span> is used if left out).
+The length of this field is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span>.
+Only in case of a 2D bulk model, the field length <em>can</em> also be <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NRAD}\)</span> to specify radial dependence, in which case the ordering is radial position major.
+If <span class="math notranslate nohighlight">\(\texttt{BINDING_PARTYPE_DEPENDENT}\)</span> is <span class="math notranslate nohighlight">\(0\)</span>, the values across different particle types (if multiple particle types are being used) must be the same.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{MP}}^{-3}\)</span></p>
 <table class="docutils align-default">
 <tbody>
@@ -365,7 +369,10 @@ Is only applied when <span class="math notranslate nohighlight">\(\texttt{HAS_PO
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_CS</span></code></p>
 <blockquote>
-<div><p>Initial concentrations for each bound state of each component in the bead solid phase. If <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL_MULTIPLEX}\)</span> is <span class="math notranslate nohighlight">\(0\)</span>, values for each particle type are required in type-component-major ordering (length is <span class="math notranslate nohighlight">\(\texttt{NTOTALBND}\)</span>). If <span class="math notranslate nohighlight">\(\texttt{ADSORPTION_MODEL_MULTIPLEX}\)</span> is <span class="math notranslate nohighlight">\(1\)</span>, values for one particle type are required in component-major ordering (length is <span class="math notranslate nohighlight">\(\sum_{i = 0}^{\texttt{NCOMP} - 1} \texttt{NBND}_i\)</span>).</p>
+<div><p>Initial concentrations for each bound state of each component in the bead solid phase.
+The length of this field is <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span>.
+Only in case of a 2D bulk model, the field length <em>can</em> also be <span class="math notranslate nohighlight">\(\texttt{NBOUND} \cdot \texttt{NRAD}\)</span> to specify radial dependence, in which case the ordering is radial position major.
+If <span class="math notranslate nohighlight">\(\texttt{BINDING_PARTYPE_DEPENDENT}\)</span> is <span class="math notranslate nohighlight">\(0\)</span>, the values across different particle types (if multiple particle types are being used) must be the same.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{SP}}^{-3}\)</span></p>
 <table class="docutils align-default">
 <tbody>
@@ -412,7 +419,7 @@ For more information on parameter sensitivities, see <a class="reference interna
 <div><p>Node coordinates for the DG element (or FV cell) boundaries (ignored if <span class="math notranslate nohighlight">\(\texttt{PAR_DISC_TYPE} \neq \texttt{USER_DEFINED}\)</span>).
 The coordinates are relative and have to include the endpoints <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>.
 They are later linearly mapped to the true radial range <span class="math notranslate nohighlight">\([r_{c,j}, r_{p,j}]\)</span>.
-The coordinates for each particle type are appended to one long vector in type-major ordering.</p>
+The coordinates for each particle type are appended to one long vector in particle type major ordering.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>

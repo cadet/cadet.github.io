@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Crystallization / Precipitation models &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/population_balance_model.html" />
+    <link rel="icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Binding models" href="binding/index.html" />
+    <link rel="prev" title="Multichannel Transport model (MCT model)" href="unit_operations/multi_channel_transport_model.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Interface specifications</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="input_group.html">Input Group</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="system.html">System of unit operations</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="unit_operations/index.html">Unit Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binding/index.html">Binding models</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Crystallization / Precipitation models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reaction/index.html">Reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flux_reconstruction.html">Flux reconstruction methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="return_data.html">Return data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sensitivities.html">Parameter Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solver.html">Solver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameter_dependencies.html">Parameter Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_discretization_methods.html">Spatial discretization methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="output_group.html">Output Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="meta_group.html">Meta Group</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../v5.0.0/interface/population_balance_model.html">v5.0.0</a></li>
+  <li><a href="../../v5.0.1/interface/population_balance_model.html">v5.0.1</a></li>
+  <li><a href="../../v5.0.2/interface/population_balance_model.html">v5.0.2</a></li>
+  <li><a href="../../v5.0.3/interface/population_balance_model.html">v5.0.3</a></li>
+  <li><a href="../../v5.0.4/interface/population_balance_model.html">v5.0.4</a></li>
+  <li><a href="../../v5.1.0/interface/population_balance_model.html">v5.1.0</a></li>
+  <li><a href="population_balance_model.html">v6.0.0-alpha.1</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../chore/developer_guide/interface/population_balance_model.html">chore/developer_guide</a></li>
+  <li><a href="../../master/interface/population_balance_model.html">master</a></li>
+  <li><a href="../../v5.1.X/interface/population_balance_model.html">v5.1.X</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+  <section id="crystallization-precipitation-models">
+<span id="pbm-config"></span><h1>Crystallization / Precipitation models<a class="headerlink" href="#crystallization-precipitation-models" title="Link to this heading">¶</a></h1>
+<p>Crystallization / Precipitation in CADET can be modeled by <a class="reference internal" href="../modelling/crystallization/primary_particle_formation.html#primary-particle-formation"><span class="std std-ref">Primary Particle Formation</span></a>, <a class="reference internal" href="../modelling/crystallization/aggregation.html#aggregation"><span class="std std-ref">Aggregation Models</span></a>, <a class="reference internal" href="../modelling/crystallization/fragmentation.html#fragmentation"><span class="std std-ref">Fragmentation Models</span></a>, as well as their combinations.
+The configuration is described for all three modules in the following.
+For more information on the model equations, please refer to <a class="reference internal" href="../modelling/crystallization/index.html#ffcrystallization"><span class="std std-ref">Crystallization / Precipitation Models</span></a>.</p>
+<p>Note that any of these models can be used in any unit operation that supports reactions.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>By setting the <code class="docutils literal notranslate"><span class="pre">NCOMP</span></code> field, you specify the number of FV cells for the internal coordinate:
+If primary particle formation is considered, we have two components that account for the solute <span class="math notranslate nohighlight">\(c\)</span> and solubility <span class="math notranslate nohighlight">\(c_\text{eq}\)</span>.
+Note that the first component must be solute <span class="math notranslate nohighlight">\(c\)</span> and the last component must be the solubility <span class="math notranslate nohighlight">\(c_\text{eq}\)</span>.
+Additionally, we discretize the particle size domain (internal coordinate) using customary FV methods, giving us a finite set of particle sizes under consideration <span class="math notranslate nohighlight">\(\{x_1, \dots, x_{N_x}\}\)</span>.
+Every particle size considered is treated as an individual component of the unit operation and the field <code class="docutils literal notranslate"><span class="pre">NCOMP</span></code> of that unit operation in which the crystallization happens, must be specified accordingly as <span class="math notranslate nohighlight">\(N_x\)</span> or <span class="math notranslate nohighlight">\(N_x + 2\)</span> if the model includes primary particle formation.</p>
+</div>
+<p>Example code for configuring the crystallization models is available in <a class="reference external" href="https://github.com/cadet/CADET-Verification/">CADET-Verification</a> .</p>
+<section id="group-input-model-unit-xxx">
+<h2>Group /input/model/unit_XXX<a class="headerlink" href="#group-input-model-unit-xxx" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">NCOMP</span></code></p>
+<blockquote>
+<div><p>Number of components, which is defined by the number of considered particle sizes (i.e. discretization with FV cells) plus, in the case that primary particle formation is employed, 2 (for solute and solubility).</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 3\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">REACTION_MODEL</span></code></p>
+<blockquote>
+<div><p>The crystallization code is implemented as a reaction module, which is why crystallization needs to be specified here</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> String</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{ CRYSTALLIZATION }\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="group-input-model-unit-xxx-reaction-bulk-reaction-model-crystallization-unit-type-cstr">
+<h2>Group /input/model/unit_XXX/reaction_bulk - REACTION_MODEL = CRYSTALLIZATION - UNIT_TYPE = CSTR<a class="headerlink" href="#group-input-model-unit-xxx-reaction-bulk-reaction-model-crystallization-unit-type-cstr" title="Link to this heading">¶</a></h2>
+<p><em>The following parameters need to be specified under Group /input/model/unit_XXX/reaction/reaction_bulk/ for CSTR units, and Group /input/model/unit_XXX/reaction/reaction/ for transport units like the LRM.</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_MODE</span></code></p>
+<blockquote>
+<div><blockquote>
+<div><p>Crystallization mode, which determines the exact model equation to be employed.</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Pure primary particle formation, as described in <a class="reference internal" href="../modelling/crystallization/primary_particle_formation.html#primary-particle-formation"><span class="std std-ref">Primary Particle Formation</span></a>.</p></li>
+<li><p>Pure aggregation, as described in <a class="reference internal" href="../modelling/crystallization/aggregation.html#aggregation"><span class="std std-ref">Aggregation Models</span></a>.</p></li>
+<li><p>Combined primary particle formation and aggregation.</p></li>
+<li><p>Pure fragmentation, as described in <a class="reference internal" href="../modelling/crystallization/fragmentation.html#fragmentation"><span class="std std-ref">Fragmentation Models</span></a>.</p></li>
+<li><p>Combined primary particle formation and fragmentation.</p></li>
+<li><p>Combined aggregation and fragmentation.</p></li>
+<li><p>Combined primary particle formation, aggregation, and fragmentation.</p></li>
+</ol>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\mathrm{N_x} + 1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_BINS</span></code></p>
+<blockquote>
+<div><p>Coordinates of the cell faces, e.g. equidistant or logarithmic discretization of the internal coordinate <span class="math notranslate nohighlight">\(x \in [x_c, x_\text{end}]\)</span>, including the end points.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\mathrm{N_x} + 1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<section id="population-and-mass-balance-input-parameters">
+<h3>Population and Mass Balance input parameters<a class="headerlink" href="#population-and-mass-balance-input-parameters" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_NUCLEI_MASS_DENSITY</span></code></p>
+<blockquote>
+<div><p>Nulcei mass density</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_VOL_SHAPE_FACTOR</span></code></p>
+<blockquote>
+<div><p>Volumetric shape factor of the particles</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_PRIMARY_NUCLEATION_RATE</span></code></p>
+<blockquote>
+<div><p>Primary nucleation rate constant <span class="math notranslate nohighlight">\(k_p\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_SECONDARY_NUCLEATION_RATE</span></code></p>
+<blockquote>
+<div><p>Secondary nucleation rate <span class="math notranslate nohighlight">\(k_b\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_GROWTH_RATE_CONSTANT</span></code></p>
+<blockquote>
+<div><p>Growth rate constant <span class="math notranslate nohighlight">\(k_g\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_GROWTH_CONSTANT</span></code></p>
+<blockquote>
+<div><p>Growth constant <span class="math notranslate nohighlight">\(\gamma\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_A</span></code></p>
+<blockquote>
+<div><p>Defines constant <span class="math notranslate nohighlight">\(a\)</span> used to determine the growth rate</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_G</span></code></p>
+<blockquote>
+<div><p>Defines constant <span class="math notranslate nohighlight">\(g\)</span> used to determine the growth rate</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_P</span></code></p>
+<blockquote>
+<div><p>Defines constant <span class="math notranslate nohighlight">\(p\)</span>  used to determine the growth rate</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_GROWTH_DISPERSION_RATE</span></code></p>
+<blockquote>
+<div><p>Growth dispersion rate <span class="math notranslate nohighlight">\(D_g\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_U</span></code></p>
+<blockquote>
+<div><p>Defines constant <span class="math notranslate nohighlight">\(u\)</span> used to determine the primary nucleation</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_B</span></code></p>
+<blockquote>
+<div><p>Defines constant <span class="math notranslate nohighlight">\(b\)</span> used to determine the secondary nucleation</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_K</span></code></p>
+<blockquote>
+<div><p>Defines constant <span class="math notranslate nohighlight">\(k\)</span> used to determine the secondary nucleation, usually set to <span class="math notranslate nohighlight">\(\geq 1\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_GROWTH_SCHEME_ORDER</span></code></p>
+<blockquote>
+<div><p>Defines the growth flux FV reconstruction scheme. It can only be</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(1\)</span>: upwind scheme</p></li>
+<li><p><span class="math notranslate nohighlight">\(2\)</span>: HR Koren scheme</p></li>
+<li><p><span class="math notranslate nohighlight">\(3\)</span>: WENO23 scheme</p></li>
+<li><p><span class="math notranslate nohighlight">\(4\)</span>: WENO35 scheme.</p></li>
+</ul>
+<p>We recommend using the HR Koren scheme, which showed to be the most performant in our benchmarks.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\([1, \dots, 4]\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="aggregation-input-parameters">
+<h3>Aggregation input parameters<a class="headerlink" href="#aggregation-input-parameters" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_AGGREGATION_INDEX</span></code></p>
+<blockquote>
+<div><p>Defines the aggregation kernel. It can only be</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(0\)</span>: constant kernel</p></li>
+<li><p><span class="math notranslate nohighlight">\(1\)</span>: Brownian kernel</p></li>
+<li><p><span class="math notranslate nohighlight">\(2\)</span>: Smoluchowski kernel</p></li>
+<li><p><span class="math notranslate nohighlight">\(3\)</span>: Golovin kernel</p></li>
+<li><p><span class="math notranslate nohighlight">\(4\)</span>: differential force kernel</p></li>
+</ul>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\([0, \dots, 4]\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_AGGREGATION_RATE_CONSTANT</span></code></p>
+<blockquote>
+<div><p>Aggregation rate constant <span class="math notranslate nohighlight">\(\beta_0\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="fragmentation-input-parameters">
+<h3>Fragmentation input parameters<a class="headerlink" href="#fragmentation-input-parameters" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_FRAGMENTATION_RATE_CONSTANT</span></code></p>
+<blockquote>
+<div><p>Fragmentation rate constant <span class="math notranslate nohighlight">\(S_0\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_FRAGMENTATION_KERNEL_GAMMA</span></code></p>
+<blockquote>
+<div><p>Fragmentation kernel coefficient <span class="math notranslate nohighlight">\(\gamma\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 1.0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CRY_FRAGMENTATION_SELECTION_FUNCTION_ALPHA</span></code></p>
+<blockquote>
+<div><p>Fragmentation selection function coefficient <span class="math notranslate nohighlight">\(\alpha\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2026.
+      
+      |
+      <a href="../_sources/interface/population_balance_model.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

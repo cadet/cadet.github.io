@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Fragmentation Models &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/crystallization/fragmentation.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Simulation" href="../../simulation/index.html" />
+    <link rel="prev" title="Aggregation Models" href="aggregation.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Crystallization / Precipitation Models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="primary_particle_formation.html">Primary Particle Formation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aggregation.html">Aggregation Models</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Fragmentation Models</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../../v5.0.3/index.html">v5.0.3</a></li>
+  <li><a href="../../../v5.0.4/index.html">v5.0.4</a></li>
+  <li><a href="../../../v5.1.0/modelling/crystallization/fragmentation.html">v5.1.0</a></li>
+  <li><a href="fragmentation.html">v6.0.0-alpha.1</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../../chore/developer_guide/modelling/crystallization/fragmentation.html">chore/developer_guide</a></li>
+  <li><a href="../../../master/modelling/crystallization/fragmentation.html">master</a></li>
+  <li><a href="../../../v5.1.X/modelling/crystallization/fragmentation.html">v5.1.X</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+  <section id="fragmentation-models">
+<span id="fragmentation"></span><h1>Fragmentation Models<a class="headerlink" href="#fragmentation-models" title="Link to this heading">¶</a></h1>
+<p>For detailed information on the crystallization models implemented in CADET, including aggregation, please refer to <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id5" title="Wendi Zhang, Todd Przybycien, Jan Michael Breuer, and Eric von Lieres. Solving crystallization/precipitation population balance models in cadet, part ii: size-based smoluchowski coagulation and fragmentation equations in batch and continuous modes. Computers &amp; Chemical Engineering, 192:108860, 2025. doi:10.1016/j.compchemeng.2024.108860.">30</a>]</span>.</p>
+<p>The fragmentation/breakage model considered here can be combined with <a class="reference internal" href="primary_particle_formation.html#primary-particle-formation"><span class="std std-ref">Primary Particle Formation</span></a> and/or <a class="reference internal" href="aggregation.html#aggregation"><span class="std std-ref">Aggregation Models</span></a>.
+Further, it can be applied in any of the unit operations, specifically in a STR or DPFR.</p>
+<p>The fragmentation/breakage is governed by the fragmentation equation and describes the evolution of the particle number density <span class="math notranslate nohighlight">\(n\)</span> changes due to fragmentation/breakage.
+Here, we consider multiple fragmentation, i.e. the general breakage of a particle into a particle size distribution, based on particle size <span class="math notranslate nohighlight">\(x\)</span>, which is called internal coordinate.</p>
+<figure class="align-default" id="id2">
+<img alt="../../_images/Fragmentation_concept.png" src="../../_images/Fragmentation_concept.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Particle fragmentation/breakage considered in the fragmentation equation.</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Size-based fragmentation is governed by</p>
+<div class="math notranslate nohighlight" id="equation-fragmentationsizebased">
+<span class="eqno">(35)<a class="headerlink" href="#equation-fragmentationsizebased" title="Link to this equation">¶</a></span>\[\begin{aligned}
+    \frac{\partial n(x)}{\partial t} &amp;=
+    - S(x) n(x) + \int_x^{x_{\mathrm{max}}} S(\lambda) b(x | \lambda) n(\lambda) d\lambda.
+\end{aligned}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(x_{\mathrm{end}}\)</span> is the maximal considered particle size, <span class="math notranslate nohighlight">\(b(x | \lambda)\)</span> is the probability density function for the generation of a particle of size <span class="math notranslate nohighlight">\(x\)</span> from breakage of a particle of size <span class="math notranslate nohighlight">\(\lambda\)</span>,
+and <span class="math notranslate nohighlight">\(S\)</span> is the selection function which determines the rate of fragmentation.</p>
+<div class="math notranslate nohighlight" id="equation-selectionfunction">
+<span class="eqno">(36)<a class="headerlink" href="#equation-selectionfunction" title="Link to this equation">¶</a></span>\[\begin{aligned}
+    S(x) := S_0 x^{3 \alpha},
+\end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha &gt; 0\)</span> reckons the breakage rate as a function of particle volume.</p>
+<p>The propability breakage function is defined as</p>
+<div class="math notranslate nohighlight" id="equation-propabilitydensityfunc">
+<span class="eqno">(37)<a class="headerlink" href="#equation-propabilitydensityfunc" title="Link to this equation">¶</a></span>\[\begin{aligned}
+    b(x | \lambda) := 3 x^2 \frac{\gamma}{\lambda^3} \left( \frac{x^3}{\lambda^3} \right)^{\gamma - 2},
+\end{aligned}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\gamma &gt; 1\)</span> determines the average number of daughter particles into which a mother particle breaks.
+Further, <span class="math notranslate nohighlight">\(b\)</span> satisfies</p>
+<div class="math notranslate nohighlight" id="equation-propabilitydensityfuncconstraints">
+<span class="eqno">(38)<a class="headerlink" href="#equation-propabilitydensityfuncconstraints" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+    \int_{x_\mathrm{c}}^\lambda x^3 b(x | \lambda) dx &amp;= \lambda^3,
+    \\
+    N(\lambda) = \int_{x_\mathrm{c}}^\lambda b(x | \lambda) dx &amp;\geq 1,
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(N(\lambda)\)</span> is the total number of daughter particles that a mother particle of size <span class="math notranslate nohighlight">\(\lambda\)</span> generates on average.</p>
+<p>For information on model parameters and how to specify the model interface, see <a class="reference internal" href="../../interface/population_balance_model.html#pbm-config"><span class="std std-ref">Crystallization / Precipitation models</span></a>.</p>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2026.
+      
+      |
+      <a href="../../_sources/modelling/crystallization/fragmentation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

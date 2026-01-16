@@ -12,7 +12,7 @@
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://cadet.github.io/master/modelling/crystallization/primary_particle_formation.html" />
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/crystallization/primary_particle_formation.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -91,8 +91,9 @@
 </ul>
 <h3>Branches</h3>
 <ul>
-  <li><a href="primary_particle_formation.html">master</a></li>
   <li><a href="../../../chore/developer_guide/modelling/crystallization/primary_particle_formation.html">chore/developer_guide</a></li>
+  <li><a href="primary_particle_formation.html">master</a></li>
+  <li><a href="../../../v5.1.X/modelling/crystallization/primary_particle_formation.html">v5.1.X</a></li>
 </ul>
 
         </div>
@@ -130,12 +131,12 @@ The corresponding PBM is given as</p>
 <span class="math notranslate nohighlight">\(D_g\in\mathbb{R}^+\)</span> is the growth dispersion rate.</p>
 <p>The boundary conditions are given by the regularity boundary condition</p>
 <div class="math notranslate nohighlight" id="equation-regularitybc">
-<span class="eqno">(31)<a class="headerlink" href="#equation-regularitybc" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(32)<a class="headerlink" href="#equation-regularitybc" title="Link to this equation">¶</a></span>\[\begin{aligned}
     \left. \left( nv_{G} - D_g \frac{\partial n}{\partial x} \right) \right|_{x \to \infty}=0,
 \end{aligned}\]</div>
 <p>and the nucleation kinetics boundary condition</p>
 <div class="math notranslate nohighlight" id="equation-nucleationbc">
-<span class="eqno">(32)<a class="headerlink" href="#equation-nucleationbc" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(33)<a class="headerlink" href="#equation-nucleationbc" title="Link to this equation">¶</a></span>\[\begin{aligned}
     \left. \left( nv_{G}-D_g \frac{\partial n}{\partial x} \right)\right|_{x=x_c} = B_0,
 \end{aligned}\]</div>
 <p>where <span class="math notranslate nohighlight">\(B_0\in\mathbb{R}^+\)</span> is the nucleation kinetics factor representing particle nucleations of size <span class="math notranslate nohighlight">\(x_c\in\mathbb{R}^+\)</span>.</p>
@@ -161,7 +162,7 @@ That is, we choose the axial position within a DPFR as the external coordinate <
 \end{aligned}\]</div>
 <p>where <span class="math notranslate nohighlight">\(n(t, x, z)\colon [0, T_\text{end}] \times (x_c, \infty) \times [0, L] \mapsto \mathbb{R}^+\)</span> is the number density distribution,
 <span class="math notranslate nohighlight">\(v_\text{ax}\in\mathbb{R}^+\)</span> is the axial velocity and <span class="math notranslate nohighlight">\(D_{ax}\in\mathbb{R}^+\)</span> is the axial dispersion coefficient.</p>
-<p>Boundary conditions for the internal coordinate are again given by Eq. <a class="reference internal" href="#equation-regularitybc">31</a> and Eq. <a class="reference internal" href="#equation-nucleationbc">32</a>.</p>
+<p>Boundary conditions for the internal coordinate are again given by Eq. <a class="reference internal" href="#equation-regularitybc">32</a> and Eq. <a class="reference internal" href="#equation-nucleationbc">33</a>.</p>
 <p>For the external coordinate <span class="math notranslate nohighlight">\(z\)</span>, Danckwerts boundary conditions are applied:</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}

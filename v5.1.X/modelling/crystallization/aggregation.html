@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Aggregation Models &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/crystallization/aggregation.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Fragmentation Models" href="fragmentation.html" />
+    <link rel="prev" title="Primary Particle Formation" href="primary_particle_formation.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Crystallization / Precipitation Models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="primary_particle_formation.html">Primary Particle Formation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Aggregation Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fragmentation.html">Fragmentation Models</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../../v5.0.3/index.html">v5.0.3</a></li>
+  <li><a href="../../../v5.0.4/index.html">v5.0.4</a></li>
+  <li><a href="../../../v5.1.0/modelling/crystallization/aggregation.html">v5.1.0</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../../chore/developer_guide/modelling/crystallization/aggregation.html">chore/developer_guide</a></li>
+  <li><a href="../../../master/modelling/crystallization/aggregation.html">master</a></li>
+  <li><a href="aggregation.html">v5.1.X</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+  <section id="aggregation-models">
+<span id="aggregation"></span><h1>Aggregation Models<a class="headerlink" href="#aggregation-models" title="Link to this heading">¶</a></h1>
+<p>For detailed information on the crystallization models implemented in CADET, including aggregation, please refer to <span id="id1">[<a class="reference internal" href="../../zbibliography.html#id5" title="Wendi Zhang, Todd Przybycien, Jan Michael Breuer, and Eric von Lieres. Solving crystallization/precipitation population balance models in cadet, part ii: size-based smoluchowski coagulation and fragmentation equations in batch and continuous modes. Computers &amp; Chemical Engineering, 192:108860, 2025. doi:10.1016/j.compchemeng.2024.108860.">30</a>]</span>.</p>
+<p>The aggregation model can be combined with <a class="reference internal" href="primary_particle_formation.html#primary-particle-formation"><span class="std std-ref">Primary Particle Formation</span></a> and/or <a class="reference internal" href="fragmentation.html#fragmentation"><span class="std std-ref">Fragmentation Models</span></a>.
+Further, it can be applied in any of the unit operations, specifically in a STR or DPFR.</p>
+<p>The aggregation is governed by the Smoluchowski coagulation equation and describes the evolution of the particle number density <span class="math notranslate nohighlight">\(n\)</span> changes due to agglomeration/aggregation.
+Here, we consider binary particle aggregation based on particle size <span class="math notranslate nohighlight">\(x\)</span>, which is called internal coordinate.</p>
+<figure class="align-default" id="id2">
+<img alt="../../_images/Aggregation_concept.png" src="../../_images/Aggregation_concept.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Particle agglomeration/aggregation considered in the Smoluchowski coagulation equation.</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The size-based aggregation equation roots in the classical volume based Smoluchowski coagulation equation, which we transform to a size-based equation using the identity</p>
+<div class="math notranslate nohighlight" id="equation-volumetosizeidentity">
+<span class="eqno">(30)<a class="headerlink" href="#equation-volumetosizeidentity" title="Link to this equation">¶</a></span>\[\begin{aligned}
+    n_v \mathrm{d} (k_v x^3) &amp;= n \mathrm{d} x,
+\end{aligned}\]</div>
+<p>which identifies the change of particle count within a volume interval <span class="math notranslate nohighlight">\([k_vx^3, k_vx^3+d(k_vx^3)]\)</span> with the change of particle count within a size interval <span class="math notranslate nohighlight">\([x,x+dx]\)</span>.</p>
+<p>Size-based binary aggregation is governed by the Smoluchowski coagulation equation</p>
+<div class="math notranslate nohighlight" id="equation-aggregationsizebased">
+<span class="eqno">(31)<a class="headerlink" href="#equation-aggregationsizebased" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+    \frac{\partial n(x)}{\partial t} &amp;=
+    \frac{x^2}{2} \int_{x_c}^x \frac{\beta \left((x^3-\lambda^3)^\frac{1}{3},\lambda \right)}{(x^3-\lambda^3)^\frac{2}{3}} n\left( (x^3-\lambda^3)^\frac{1}{3}\right) n(\lambda) \mathrm{d} \lambda
+    \\
+    &amp;\phantom{=} - n(x) \int_0^{x_\mathrm{end}} \beta(x,\lambda) n(\lambda) \mathrm{d} \lambda .
+\end{aligned}\end{split}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\([x_{c}, x_{\mathrm{end}}]\)</span> is the considered particle size interval, <span class="math notranslate nohighlight">\(\beta(x,\lambda)\)</span> is the aggregation kernel specific to the underlying aggregation mechanism of your system.</p>
+<p>Five kernels are already implemented in CADET. They include:</p>
+<dl>
+<dt>Constant kernel</dt><dd><div class="math notranslate nohighlight">
+\[\beta(x, \lambda) = \beta_0\]</div>
+</dd>
+<dt>Brownian kernel</dt><dd><div class="math notranslate nohighlight">
+\[\beta(x, \lambda) = \beta_0 \frac{(x + \lambda)^2}{x \lambda}\]</div>
+</dd>
+<dt>Smoluchowski kernel</dt><dd><div class="math notranslate nohighlight">
+\[\beta(x, \lambda) = \beta_0 (x + \lambda)^3\]</div>
+</dd>
+<dt>Golovin kernel</dt><dd><div class="math notranslate nohighlight">
+\[\beta(x, \lambda) = \beta_0 (x^3 + \lambda^3)\]</div>
+</dd>
+<dt>Differential force kernel</dt><dd><div class="math notranslate nohighlight">
+\[\beta(x, \lambda) = \beta_0 (x + \lambda)^2 (x^2 - \lambda^2)\]</div>
+</dd>
+</dl>
+<p>where <span class="math notranslate nohighlight">\(\beta_0 &gt; 0\)</span> is the aggregation rate constant. Please reach out to us for customized aggregation kernels.</p>
+<p>For information on model parameters and how to specify the model interface, see <a class="reference internal" href="../../interface/population_balance_model.html#pbm-config"><span class="std std-ref">Crystallization / Precipitation models</span></a>.</p>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2026.
+      
+      |
+      <a href="../../_sources/modelling/crystallization/aggregation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

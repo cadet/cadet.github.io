@@ -11,7 +11,7 @@
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <link rel="canonical" href="https://cadet.github.io/master/interface/input_group.html" />
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/input_group.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -98,8 +98,9 @@
 </ul>
 <h3>Branches</h3>
 <ul>
-  <li><a href="input_group.html">master</a></li>
   <li><a href="../../chore/developer_guide/interface/input_group.html">chore/developer_guide</a></li>
+  <li><a href="input_group.html">master</a></li>
+  <li><a href="../../v5.1.X/interface/input_group.html">v5.1.X</a></li>
 </ul>
 
         </div>
@@ -137,6 +138,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="unit_operations/axial_flow_column_1D_config.html">Axial Flow Column 1D</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/axial_flow_column_1D_config.html#group-input-model-unit-xxx-unit-type-column-model-1d">Group /input/model/unit_XXX - UNIT_TYPE - COLUMN_MODEL_1D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit_operations/axial_flow_column_1D_config.html#group-input-model-unit-xxx-liquid-reaction-yyy">Group /input/model/unit_XXX/liquid_reaction_YYY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/axial_flow_column_1D_config.html#group-input-model-unit-xxx-particle-type-xxx">Group /input/model/unit_XXX/particle_type_XXX</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/axial_flow_column_1D_config.html#group-input-model-unit-xxx-discretization-unit-type-column-model-1d">Group /input/model/unit_XXX/discretization - UNIT_TYPE - COLUMN_MODEL_1D</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/axial_flow_column_1D_config.html#spatial-discretization-numerical-methods">Spatial discretization - Numerical Methods</a></li>
@@ -160,6 +162,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="unit_operations/axial_flow_column_2D_config.html">Axial Flow Column 2D</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/axial_flow_column_2D_config.html#group-input-model-unit-xxx-unit-type-column-model-2d">Group /input/model/unit_XXX - UNIT_TYPE - COLUMN_MODEL_2D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit_operations/axial_flow_column_2D_config.html#group-input-model-unit-xxx-liquid-reaction-yyy">Group /input/model/unit_XXX/liquid_reaction_YYY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/axial_flow_column_2D_config.html#group-input-model-unit-xxx-particle-type-xxx">Group /input/model/unit_XXX/particle_type_XXX</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/axial_flow_column_2D_config.html#group-input-model-unit-xxx-discretization-unit-type-column-model-2d">Group /input/model/unit_XXX/discretization - UNIT_TYPE - COLUMN_MODEL_2D</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/axial_flow_column_2D_config.html#spatial-discretization-numerical-methods">Spatial discretization - Numerical Methods</a></li>
@@ -169,11 +172,12 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="unit_operations/cstr.html">Continuous stirred tank reactor model</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/cstr.html#group-input-model-unit-xxx-unit-type-cstr">Group /input/model/unit_XXX - UNIT_TYPE = CSTR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="unit_operations/cstr.html#reaction-model-in-the-bulk-volume">Reaction model in the bulk volume</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit_operations/cstr.html#group-input-model-unit-xxx-phase-reaction-yyy">Group /input/model/unit_XXX/phase_reaction_YYY</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="unit_operations/multi_channel_transport_model.html">Multichannel Transport model (MCT model)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/multi_channel_transport_model.html#group-input-model-unit-xxx-unit-type-multi-channel-transport">Group /input/model/unit_XXX - UNIT_TYPE = MULTI_CHANNEL_TRANSPORT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit_operations/multi_channel_transport_model.html#group-input-model-unit-xxx-liquid-reaction-yyy">Group /input/model/unit_XXX/liquid_reaction_YYY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="unit_operations/multi_channel_transport_model.html#group-input-model-unit-xxx-discretization-unit-type-multi-channel-transport">Group /input/model/unit_XXX/discretization - UNIT_TYPE = MULTI_CHANNEL_TRANSPORT</a></li>
 </ul>
 </li>
@@ -228,13 +232,17 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reaction/index.html">Reaction models</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reaction/mass_action_law.html">Mass Action Law</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reaction/michaelis_menten_kinetics.html">Michaelis Menten kinetics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reaction/michaelis_menten_kinetics.html#example-configuration">Example configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reaction/index.html#single-phase-reactions">Single Phase Reactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reaction/mass_action_law.html">Mass Action Law</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reaction/michaelis_menten_kinetics.html">Michaelis Menten kinetics</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="reaction/index.html#cross-phase-reactions">Cross Phase Reactions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reaction/mass_action_law_cross_phase.html">Mass Action Law Cross Phase</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="reaction/index.html#step-by-step-guide-to-define-reaction-model">Step by Step guide to define reaction model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reaction/index.html#externally-dependent-reaction-models">Externally dependent reaction models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reaction/index.html#multiple-particle-types">Multiple particle types</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="flux_reconstruction.html">Flux reconstruction methods</a><ul>

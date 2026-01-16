@@ -12,7 +12,7 @@
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://cadet.github.io/master/modelling/crystallization/fragmentation.html" />
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/crystallization/fragmentation.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -91,8 +91,9 @@
 </ul>
 <h3>Branches</h3>
 <ul>
-  <li><a href="fragmentation.html">master</a></li>
   <li><a href="../../../chore/developer_guide/modelling/crystallization/fragmentation.html">chore/developer_guide</a></li>
+  <li><a href="fragmentation.html">master</a></li>
+  <li><a href="../../../v5.1.X/modelling/crystallization/fragmentation.html">v5.1.X</a></li>
 </ul>
 
         </div>
@@ -120,26 +121,26 @@ Here, we consider multiple fragmentation, i.e. the general breakage of a particl
 </figure>
 <p>Size-based fragmentation is governed by</p>
 <div class="math notranslate nohighlight" id="equation-fragmentationsizebased">
-<span class="eqno">(35)<a class="headerlink" href="#equation-fragmentationsizebased" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(36)<a class="headerlink" href="#equation-fragmentationsizebased" title="Link to this equation">¶</a></span>\[\begin{aligned}
     \frac{\partial n(x)}{\partial t} &amp;=
     - S(x) n(x) + \int_x^{x_{\mathrm{max}}} S(\lambda) b(x | \lambda) n(\lambda) d\lambda.
 \end{aligned}\]</div>
 <p>Here, <span class="math notranslate nohighlight">\(x_{\mathrm{end}}\)</span> is the maximal considered particle size, <span class="math notranslate nohighlight">\(b(x | \lambda)\)</span> is the probability density function for the generation of a particle of size <span class="math notranslate nohighlight">\(x\)</span> from breakage of a particle of size <span class="math notranslate nohighlight">\(\lambda\)</span>,
 and <span class="math notranslate nohighlight">\(S\)</span> is the selection function which determines the rate of fragmentation.</p>
 <div class="math notranslate nohighlight" id="equation-selectionfunction">
-<span class="eqno">(36)<a class="headerlink" href="#equation-selectionfunction" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(37)<a class="headerlink" href="#equation-selectionfunction" title="Link to this equation">¶</a></span>\[\begin{aligned}
     S(x) := S_0 x^{3 \alpha},
 \end{aligned}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha &gt; 0\)</span> reckons the breakage rate as a function of particle volume.</p>
 <p>The propability breakage function is defined as</p>
 <div class="math notranslate nohighlight" id="equation-propabilitydensityfunc">
-<span class="eqno">(37)<a class="headerlink" href="#equation-propabilitydensityfunc" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(38)<a class="headerlink" href="#equation-propabilitydensityfunc" title="Link to this equation">¶</a></span>\[\begin{aligned}
     b(x | \lambda) := 3 x^2 \frac{\gamma}{\lambda^3} \left( \frac{x^3}{\lambda^3} \right)^{\gamma - 2},
 \end{aligned}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\gamma &gt; 1\)</span> determines the average number of daughter particles into which a mother particle breaks.
 Further, <span class="math notranslate nohighlight">\(b\)</span> satisfies</p>
 <div class="math notranslate nohighlight" id="equation-propabilitydensityfuncconstraints">
-<span class="eqno">(38)<a class="headerlink" href="#equation-propabilitydensityfuncconstraints" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(39)<a class="headerlink" href="#equation-propabilitydensityfuncconstraints" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
     \int_{x_\mathrm{c}}^\lambda x^3 b(x | \lambda) dx &amp;= \lambda^3,
     \\
     N(\lambda) = \int_{x_\mathrm{c}}^\lambda b(x | \lambda) dx &amp;\geq 1,

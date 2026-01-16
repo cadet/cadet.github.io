@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mass Action Law Cross Phase &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/reaction/mass_action_law_model_cross_phase.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Michaelis Menten kinetics" href="michaelis_menten_kinetics.html" />
+    <link rel="prev" title="Mass Action Law" href="mass_action_law_model.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Reaction models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#cross-phase-reaction-models">Cross phase reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#application-examples">Application examples</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization/index.html">Crystallization / Precipitation Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../../v5.0.3/index.html">v5.0.3</a></li>
+  <li><a href="../../../v5.0.4/index.html">v5.0.4</a></li>
+  <li><a href="../../../v5.1.0/index.html">v5.1.0</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../../chore/developer_guide/index.html">chore/developer_guide</a></li>
+  <li><a href="mass_action_law_model_cross_phase.html">master</a></li>
+  <li><a href="../../../v5.1.X/index.html">v5.1.X</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+  <section id="mass-action-law-cross-phase">
+<span id="mass-action-law-model-cross-phase"></span><h1>Mass Action Law Cross Phase<a class="headerlink" href="#mass-action-law-cross-phase" title="Link to this heading">¶</a></h1>
+<p>The mass action law cross phase reaction model describes reactions that occur between the liquid and solid phases.</p>
+<p>This model extends the basic mass action law to handle interactions between phases, such as reactions between liquid phase components and bound states in the solid phase.</p>
+<p>As for the singe phase Mass Action Law note, that the concentrations are directly used for calculating the fluxes.
+Hence, the model only holds for dilute solutions under the assumption of a well-stirred reaction vessel.
+These assumptions can be weakened by passing to the generalized mass action law, which uses chemical activities instead of concentrations.</p>
+<p>The mass action law states that the speed of a reaction is proportional to the product of the concentrations of their reactants.</p>
+<p>For single-phase reactions within a single phase only, see <a class="reference internal" href="mass_action_law_model.html#mass-action-law-model"><span class="std std-ref">Mass Action Law</span></a>.</p>
+<section id="cross-phase-reactions">
+<h2>Cross-Phase Reactions<a class="headerlink" href="#cross-phase-reactions" title="Link to this heading">¶</a></h2>
+<p>In situations where both liquid and solid phase are present (e.g., in a bead), reactions can occur between phases, where one phase may act as a modifier in the net flux equation of the other phase.</p>
+<p>In the following <span class="math notranslate nohighlight">\(l\)</span> denotes the liquid phase and <span class="math notranslate nohighlight">\(s\)</span> the solid phase.
+Depending on the unit operation, the liquid phase can be considered as the bulk or particle phase.</p>
+<p>The indices used in the equations have the following meaning:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(i\)</span> is the component index,</p></li>
+<li><p><span class="math notranslate nohighlight">\(j\)</span> is the reaction index, ranging from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(N_{\mathrm{react}}-1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\ell\)</span> is the component index for liquid phase components, ranging from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(N_{\mathrm{comp}}-1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(m\)</span> is the bound state index for solid phase components, ranging from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(\sum_{i=0}^{N_{\mathrm{comp}}-1} N_{\mathrm{bnd},i}-1\)</span></p></li>
+</ul>
+<section id="liquid-phase-reactions-modified-by-solid-phase">
+<h3>Liquid Phase Reactions Modified by Solid Phase<a class="headerlink" href="#liquid-phase-reactions-modified-by-solid-phase" title="Link to this heading">¶</a></h3>
+<p>The exponent matrices are usually derived by the order of the reaction, that is,</p>
+<div class="math notranslate nohighlight" id="equation-mrmassactionlawexpmatdefaultcrossphase">
+<span class="eqno">(29)<a class="headerlink" href="#equation-mrmassactionlawexpmatdefaultcrossphase" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+    e^l_{\mathrm{fwd},\ell,j} &amp;= \max(0, -s^l_{\ell,j}), \\
+    e^l_{\mathrm{bwd},\ell,j} &amp;= \max(0, s^l_{\ell,j}).
+\end{aligned}\end{split}\]</div>
+<p>However, these defaults can be changed by providing those matrices.</p>
+<p>For example, consider reactions in the liquid phase of a particle given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    f_{\mathrm{react},i}^l\left(c^l, c^s\right) &amp;= \sum_{j=0}^{N_{\mathrm{react}}-1} s_{i,j}^l \varphi^l_j\left(c^l, c^s\right),\end{aligned}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
+    \varphi^l_j(c^l, c^s) = k^l_{\mathrm{fwd},j} &amp;\left[\prod_{\ell=0}^{N_{\mathrm{comp}}-1} \left(c^l_{\ell}\right)^{e^l_{\mathrm{fwd},\ell,j}}\right] \left[\prod_{m=0}^{\sum_{i=0}^{N_{\mathrm{comp}}-1} N_{\mathrm{bnd},i}-1} \left(c^s_{m}\right)^{e^{ls}_{\mathrm{fwd},m,j}}\right] \\
+     - k^l_{\mathrm{bwd},j} &amp;\left[\prod_{\ell=0}^{N_{\mathrm{comp}}-1} \left(c^l_{\ell}\right)^{e^l_{\mathrm{bwd},\ell,j}}\right] \left[\prod_{m=0}^{\sum_{i=0}^{N_{\mathrm{comp}}-1} N_{\mathrm{bnd},i}-1} \left(c^s_{m}\right)^{e^{ls}_{\mathrm{bwd},m,j}}\right].
+\end{split}\end{split}\]</div>
+<p>The forward and backward rates of the liquid phase particle reactions can be modified by a power of every bound state in the solid phase of the particle.
+The exponents of these powers are given by the matrices <span class="math notranslate nohighlight">\(E^{ls}_{\mathrm{fwd}} = (e^{ls}_{\mathrm{fwd},m,j})\)</span> and <span class="math notranslate nohighlight">\(E^{ls}_{\mathrm{bwd}} = (e^{ls}_{\mathrm{bwd},m,j})\)</span>, which are both of size <span class="math notranslate nohighlight">\((\sum_i N_{\mathrm{bnd},i}) \times N_{\mathrm{react}}\)</span>.
+Whereas the exponent matrices <span class="math notranslate nohighlight">\(E^{p}_{\mathrm{fwd}}, E^{p}_{\mathrm{bwd}} \in \mathbb{R}^{N_{\mathrm{comp}} \times N_{\mathrm{react}}}\)</span> are initialized based on the stoichiometric matrix <span class="math notranslate nohighlight">\(S^{p} \in \mathbb{R}^{N_{\mathrm{comp}} \times N_{\mathrm{react}}}\)</span>, see Eq. <a class="reference internal" href="#equation-mrmassactionlawexpmatdefaultcrossphase">29</a>, the exponent matrices <span class="math notranslate nohighlight">\(E^{ls}_{\mathrm{fwd}}, E^{ls}_{\mathrm{bwd}}\)</span> of the modifier terms default to <span class="math notranslate nohighlight">\(0\)</span>.</p>
+</section>
+<section id="solid-phase-reactions-modified-by-liquid-phase">
+<h3>Solid Phase Reactions Modified by Liquid Phase<a class="headerlink" href="#solid-phase-reactions-modified-by-liquid-phase" title="Link to this heading">¶</a></h3>
+<p>Vice versa, the rates of solid phase reactions can be modified by liquid phase concentrations.
+The corresponding exponent matrices <span class="math notranslate nohighlight">\(E^{sp}_{\mathrm{fwd}} = (e^{sp}_{\mathrm{fwd},\ell,j})\)</span> and <span class="math notranslate nohighlight">\(E^{sp}_{\mathrm{bwd}} = (e^{sp}_{\mathrm{bwd},\ell,j})\)</span> are both of size <span class="math notranslate nohighlight">\(N_{\mathrm{comp}} \times N_{\mathrm{react}}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    f_{\mathrm{react},i}^s\left(c^s, c^l\right) &amp;= \sum_{j=0}^{N_{\mathrm{react}}-1} s_{i,j}^s \varphi^s_j\left(c^s, c^l\right),
+\end{aligned}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
+    \varphi^s_j(c^s, c^l) = k^s_{\mathrm{fwd},j} &amp;\left[\prod_{m=0}^{\sum_{i=0}^{N_{\mathrm{comp}}-1} N_{\mathrm{bnd},i}-1} \left(c^s_{m}\right)^{e^{s}_{\mathrm{fwd},m,j}}\right] \left[\prod_{\ell=0}^{N_{\mathrm{comp}}-1} \left(c^l_{\ell}\right)^{e^{sp}_{\mathrm{fwd},\ell,j}}\right] \\
+    - k^l_{\mathrm{bwd},j} &amp;\left[\prod_{m=0}^{\sum_{i=0}^{N_{\mathrm{comp}}-1} N_{\mathrm{bnd},i}-1} \left(c^s_{m}\right)^{e^{s}_{\mathrm{bwd},m,j}}\right] \left[\prod_{\ell=0}^{N_{\mathrm{comp}}-1} \left(c^l_{\ell}\right)^{e^{sp}_{\mathrm{bwd},\ell,j}}\right].
+\end{split}\end{split}\]</div>
+<p>Whereas the exponent matrices <span class="math notranslate nohighlight">\(E^{s}_{\mathrm{fwd}}, E^{s}_{\mathrm{bwd}} \in \mathbb{R}^{(\sum_i N_{\mathrm{bnd},i}) \times N_{\mathrm{react}}}\)</span> are initialized based on the stoichiometric matrix <span class="math notranslate nohighlight">\(S^{s} \in \mathbb{R}^{(\sum_i N_{\mathrm{bnd},i}) \times N_{\mathrm{react}}}\)</span>, see Eq. <a class="reference internal" href="#equation-mrmassactionlawexpmatdefaultcrossphase">29</a>, the exponent matrices <span class="math notranslate nohighlight">\(E^{sp}_{\mathrm{fwd}}, E^{sp}_{\mathrm{bwd}}\)</span> of the modifier terms default to <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<p>For more information on model parameters required to define in CADET file format, see <a class="reference internal" href="../../interface/reaction/mass_action_law_cross_phase.html#mass-action-law-cross-phase-config"><span class="std std-ref">Mass Action Law Cross Phase</span></a>.</p>
+</section>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2026.
+      
+      |
+      <a href="../../_sources/modelling/reaction/mass_action_law_model_cross_phase.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

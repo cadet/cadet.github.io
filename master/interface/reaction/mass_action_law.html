@@ -12,7 +12,7 @@
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://cadet.github.io/master/interface/reaction/mass_action_law.html" />
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/reaction/mass_action_law.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -99,8 +99,9 @@
 </ul>
 <h3>Branches</h3>
 <ul>
-  <li><a href="mass_action_law.html">master</a></li>
   <li><a href="../../../chore/developer_guide/interface/reaction/mass_action_law.html">chore/developer_guide</a></li>
+  <li><a href="mass_action_law.html">master</a></li>
+  <li><a href="../../../v5.1.X/interface/reaction/mass_action_law.html">v5.1.X</a></li>
 </ul>
 
         </div>
@@ -115,11 +116,24 @@
 
   <section id="mass-action-law">
 <span id="mass-action-law-config"></span><h1>Mass Action Law<a class="headerlink" href="#mass-action-law" title="Link to this heading">¶</a></h1>
-<p><strong>Group /input/model/unit_XXX/reaction - REACTION_MODEL = MASS_ACTION_LAW</strong></p>
-<p>For information on model equations, refer to <a class="reference internal" href="../../modelling/reaction/mass_action_law.html#mass-action-law-model"><span class="std std-ref">Mass action law</span></a>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_KFWD_BULK</span></code></p>
+<p><strong>Group /input/model/unit_XXX(/particle_type_YYY)/phase_reaction_ZZZ/ - TYPE = MASS_ACTION_LAW</strong></p>
+<p>For information on model equations, refer to <a class="reference internal" href="../../modelling/reaction/mass_action_law_model.html#mass-action-law-model"><span class="std std-ref">Mass Action Law</span></a>.</p>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">reaction_phase_ZZZ</span></code> refers to one of the phase-specific raction groups listed in <a class="reference internal" href="index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>, e.g., <code class="docutils literal notranslate"><span class="pre">reaction_bulk_ZZZ</span></code>, <code class="docutils literal notranslate"><span class="pre">reaction_solid_ZZZ</span></code>, or <code class="docutils literal notranslate"><span class="pre">reaction_particle_ZZZ</span></code> (for particle type <code class="docutils literal notranslate"><span class="pre">YYY</span></code>).</p></li>
+<li><dl class="simple">
+<dt>Some dimensions below depend on the hosting phase of this model instance:</dt><dd><ul>
+<li><p>Bulk phase or particle liquid phase: <code class="docutils literal notranslate"><span class="pre">NVAR</span> <span class="pre">=</span> <span class="pre">NCOMP</span></code></p></li>
+<li><p>Particle solid phase: <code class="docutils literal notranslate"><span class="pre">NVAR</span> <span class="pre">=</span> <span class="pre">NTOTALBOUND</span></code> (total number of bound states across all components)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">MAL_KFWD</span></code></p>
 <blockquote>
-<div><p>Forward rate constants for bulk volume reactions (available for external functions)</p>
+<div><p>Forward rate constants for reactions in this phase (available for external functions)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -129,9 +143,9 @@
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_KBWD_BULK</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">MAL_KBWD</span></code></p>
 <blockquote>
-<div><p>Backward rate constants for bulk volume reactions (available for external functions)</p>
+<div><p>Backward rate constants for reactions in this phase (available for external functions)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -141,197 +155,73 @@
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_KFWD_LIQUID</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">MAL_STOICHIOMETRY</span></code></p>
 <blockquote>
-<div><p>Forward rate constants for particle liquid phase reactions (available for external functions)</p>
+<div><p>Stoichiometric matrix as <span class="math notranslate nohighlight">\(\texttt{NVAR} \times \texttt{NREACT}\)</span> matrix in row-major storage (phase-dependent <code class="docutils literal notranslate"><span class="pre">NVAR</span></code>, see Notes)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NREACT}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NVAR} \cdot \texttt{NREACT}\)</span></p></td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_KBWD_LIQUID</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">MAL_EXPONENTS_FWD</span></code></p>
 <blockquote>
-<div><p>Backward rate constants for particle liquid phase reactions (available for external functions)</p>
+<div><p>Forward exponent matrix as <span class="math notranslate nohighlight">\(\texttt{NVAR} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, calculated from <span class="math notranslate nohighlight">\(\texttt{MAL_STOICHIOMETRY}\)</span> by default)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NREACT}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NVAR} \cdot \texttt{NREACT}\)</span></p></td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_KFWD_SOLID</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">MAL_EXPONENTS_BWD</span></code></p>
 <blockquote>
-<div><p>Forward rate constants for particle solid phase reactions (available for external functions)</p>
+<div><p>Backward exponent matrix as <span class="math notranslate nohighlight">\(\texttt{NVAR} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, calculated from <span class="math notranslate nohighlight">\(\texttt{MAL_STOICHIOMETRY}\)</span> by default)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NREACT}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NVAR} \cdot \texttt{NREACT}\)</span></p></td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_KBWD_SOLID</span></code></p>
-<blockquote>
-<div><p>Backward rate constants for particle solid phase reactions (available for external functions)</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NREACT}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_STOICHIOMETRY_BULK</span></code></p>
-<blockquote>
-<div><p>Stoichiometric matrix of bulk volume reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_EXPONENTS_BULK_FWD</span></code></p>
-<blockquote>
-<div><p>Forward exponent matrix of bulk volume reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, calculated from <span class="math notranslate nohighlight">\(\texttt{MAL_STOICHIOMETRY_BULK}\)</span> by default)</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_EXPONENTS_BULK_BWD</span></code></p>
-<blockquote>
-<div><p>Backward exponent matrix of bulk volume reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, calculated from <span class="math notranslate nohighlight">\(\texttt{MAL_STOICHIOMETRY_BULK}\)</span> by default)</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_STOICHIOMETRY_LIQUID</span></code></p>
-<blockquote>
-<div><p>Stoichiometric matrix of particle liquid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_EXPONENTS_LIQUID_FWD</span></code></p>
-<blockquote>
-<div><p>Forward exponent matrix of particle liquid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, calculated from <span class="math notranslate nohighlight">\(\texttt{MAL_STOICHIOMETRY_LIQUID}\)</span> by default)</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_EXPONENTS_LIQUID_BWD</span></code></p>
-<blockquote>
-<div><p>Backward exponent matrix of particle liquid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, calculated from <span class="math notranslate nohighlight">\(\texttt{MAL_STOICHIOMETRY_LIQUID}\)</span> by default)</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_EXPONENTS_LIQUID_FWD_MODSOLID</span></code></p>
-<blockquote>
-<div><p>Forward solid phase modifier exponent matrix of particle liquid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, defaults to all 0)</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \cdot \texttt{NREACT}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_EXPONENTS_LIQUID_BWD_MODSOLID</span></code></p>
-<blockquote>
-<div><p>Backward solid phase modifier exponent matrix of particle liquid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, defaults to all 0)</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \cdot \texttt{NREACT}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_STOICHIOMETRY_SOLID</span></code></p>
-<blockquote>
-<div><p>Stoichiometric matrix of particle solid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \times \texttt{NREACT}\)</span> matrix in row-major storage</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \cdot \texttt{NREACT}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_EXPONENTS_SOLID_FWD</span></code></p>
-<blockquote>
-<div><p>Forward exponent matrix of particle solid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, calculated from <span class="math notranslate nohighlight">\(\texttt{MAL_STOICHIOMETRY_SOLID}\)</span> by default)</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \cdot \texttt{NREACT}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_EXPONENTS_SOLID_BWD</span></code></p>
-<blockquote>
-<div><p>Backward exponent matrix of particle solid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, calculated from <span class="math notranslate nohighlight">\(\texttt{MAL_STOICHIOMETRY_SOLID}\)</span> by default)</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NTOTALBND} \cdot \texttt{NREACT}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_EXPONENTS_SOLID_FWD_MODLIQUID</span></code></p>
-<blockquote>
-<div><p>Forward liquid phase modifier exponent matrix of particle solid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, defaults to all 0)</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">MAL_EXPONENTS_SOLID_BWD_MODLIQUID</span></code></p>
-<blockquote>
-<div><p>Backward liquid phase modifier exponent matrix of particle solid phase reactions as <span class="math notranslate nohighlight">\(\texttt{NCOMP} \times \texttt{NREACT}\)</span> matrix in row-major storage (optional, defaults to all 0)</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NREACT}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+</section>
+<section id="cadet-python-interface-example">
+<h2>CADET Python Interface Example<a class="headerlink" href="#cadet-python-interface-example" title="Link to this heading">¶</a></h2>
+<p>This example shows the configuration of one mass-action-law reaction system.
+The system has two components A and B, where A reactions to B.
+In addition to that the model includes:
+- A forward reaction rate constant of 1.0
+- A backward reaction rate constant of 1.0</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p># Reaction in a bulk liquid phase:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_000</span><span class="o">.</span><span class="n">NREAC_LIQUID</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_000</span><span class="o">.</span><span class="n">reaction_liquid_000</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">MASS_ACTION_LAW</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_000</span><span class="o">.</span><span class="n">reaction_liquid_000</span><span class="o">.</span><span class="n">MAL_KFWD</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_000</span><span class="o">.</span><span class="n">reaction_liquid_000</span><span class="o">.</span><span class="n">MAL_KBWD</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_000</span><span class="o">.</span><span class="n">reaction_liquid_000</span><span class="o">.</span><span class="n">MAL_STOICHIOMETRY</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span> <span class="c1"># A -&gt; B</span>
+</pre></div>
+</div>
+<p># Reaction in a particle liquid phase:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_000</span><span class="o">.</span><span class="n">particle_type_000</span><span class="o">.</span><span class="n">NREAC_PORE</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_000</span><span class="o">.</span><span class="n">particle_type_000</span><span class="o">.</span><span class="n">reaction_liquid_000</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">MASS_ACTION_LAW</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_000</span><span class="o">.</span><span class="n">particle_type_000</span><span class="o">.</span><span class="n">reaction_liquid_000</span><span class="o">.</span><span class="n">MAL_KFWD</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_000</span><span class="o">.</span><span class="n">particle_type_000</span><span class="o">.</span><span class="n">reaction_liquid_000</span><span class="o">.</span><span class="n">MAL_KBWD</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+<span class="nb">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_000</span><span class="o">.</span><span class="n">particle_type_000</span><span class="o">.</span><span class="n">reaction_liquid_000</span><span class="o">.</span><span class="n">MAL_STOICHIOMETRY</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span> <span class="c1"># A -&gt; B</span>
+</pre></div>
+</div>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Cross-phase variant: <a class="reference internal" href="mass_action_law_cross_phase.html#mass-action-law-cross-phase-config"><span class="std std-ref">Mass Action Law Cross Phase</span></a> (supports liquid/solid modifiers and bulk coupling)</p></li>
+</ul>
+</section>
 </section>
 
 

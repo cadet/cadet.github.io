@@ -12,11 +12,11 @@
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://cadet.github.io/master/modelling/reaction/index.html" />
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/reaction/index.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Mass action law" href="mass_action_law.html" />
+    <link rel="next" title="Mass Action Law" href="mass_action_law_model.html" />
     <link rel="prev" title="Steric Mass Action" href="../binding/steric_mass_action.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -48,6 +48,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Reaction models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cross-phase-reaction-models">Cross phase reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#application-examples">Application examples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dependence-on-external-function">Dependence on external function</a></li>
 </ul>
 </li>
@@ -89,8 +91,9 @@
 </ul>
 <h3>Branches</h3>
 <ul>
-  <li><a href="index.html">master</a></li>
   <li><a href="../../../chore/developer_guide/modelling/reaction/index.html">chore/developer_guide</a></li>
+  <li><a href="index.html">master</a></li>
+  <li><a href="../../../v5.1.X/modelling/reaction/index.html">v5.1.X</a></li>
 </ul>
 
         </div>
@@ -105,15 +108,33 @@
 
   <section id="reaction-models">
 <span id="id1"></span><h1>Reaction models<a class="headerlink" href="#reaction-models" title="Link to this heading">¶</a></h1>
-<p>Reaction models describe the (net) fluxes <span class="math notranslate nohighlight">\(f_{\mathrm{react}}\)</span> of a
-reaction mechanism.
-CADET features multiple reaction types:</p>
+<p>Reaction models describe the (net) fluxes <span class="math notranslate nohighlight">\(f_{\mathrm{react}}(c)\)</span> of a
+reaction mechanism.</p>
+<p>In this kind of mechanism, the fluxes are typically defined as a function of the concentration of the components involved in the reaction and the reaction parameters.</p>
+<p>In CADET, reaction models are defined for each phase of a unit operation separately, i.e., for the liquid phase and solid phase.
+For more information on the interface specification, see <a class="reference internal" href="../../interface/reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.</p>
+<p>CADET features the following reaction model types:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference internal" href="mass_action_law.html#mass-action-law-model"><span class="std std-ref">Mass action law</span></a></p></li>
+<li><p><a class="reference internal" href="mass_action_law_model.html#mass-action-law-model"><span class="std std-ref">Mass Action Law</span></a></p></li>
 <li><p><a class="reference internal" href="michaelis_menten_kinetics.html#michaelis-menten-kinetics-model"><span class="std std-ref">Michaelis Menten kinetics</span></a></p></li>
 </ul>
 </div></blockquote>
+<p>It is possible to combine reaction models within the same phase.</p>
+<section id="cross-phase-reaction-models">
+<h2>Cross phase reaction models<a class="headerlink" href="#cross-phase-reaction-models" title="Link to this heading">¶</a></h2>
+<p>If a reaction is defined between a liquid phase and solid phases, the net fluxes of the reaction are defined
+as a function of the concentrations in the respective phases and is called a cross phase reaction.</p>
+<p>CADET features the following cross phase reaction types:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="mass_action_law_model_cross_phase.html#mass-action-law-model-cross-phase"><span class="std std-ref">Mass Action Law Cross Phase</span></a></p></li>
+</ul>
+</div></blockquote>
+<p>Further details on the interface specification are provided in <a class="reference internal" href="../../interface/reaction/index.html#ffreaction"><span class="std std-ref">the corresponding section</span></a>.</p>
+</section>
+<section id="application-examples">
+<h2>Application examples<a class="headerlink" href="#application-examples" title="Link to this heading">¶</a></h2>
 <p>Historically, a chromatography system is modeled as a reaction system without considering any transport phenomenon. We also introduce some reaction-based models that can be solved in CADET:</p>
 <blockquote>
 <div><ul class="simple">
@@ -121,6 +142,7 @@ CADET features multiple reaction types:</p>
 <li><p><a class="reference internal" href="rate_constant_distribution_theory.html#rate-constant-distribution-theory"><span class="std std-ref">Rate Constant Distribution Theory</span></a></p></li>
 </ul>
 </div></blockquote>
+</section>
 <section id="dependence-on-external-function">
 <span id="dependence-on-external-function-react"></span><h2>Dependence on external function<a class="headerlink" href="#dependence-on-external-function" title="Link to this heading">¶</a></h2>
 <p>A reaction model may depend on an external function or profile <span class="math notranslate nohighlight">\(T\colon \left[ 0, T_{\mathrm{end}}\right] \times [0, L] \to \mathbb{R}\)</span>, where <span class="math notranslate nohighlight">\(L\)</span> denotes the physical length of the unit operation, or <span class="math notranslate nohighlight">\(T\colon \left[0, T_{\mathrm{end}}\right] \to \mathbb{R}\)</span> if the unit operation model has no axial length.

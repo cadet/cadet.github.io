@@ -12,7 +12,7 @@
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://cadet.github.io/master/modelling/crystallization/aggregation.html" />
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/crystallization/aggregation.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -91,8 +91,9 @@
 </ul>
 <h3>Branches</h3>
 <ul>
-  <li><a href="aggregation.html">master</a></li>
   <li><a href="../../../chore/developer_guide/modelling/crystallization/aggregation.html">chore/developer_guide</a></li>
+  <li><a href="aggregation.html">master</a></li>
+  <li><a href="../../../v5.1.X/modelling/crystallization/aggregation.html">v5.1.X</a></li>
 </ul>
 
         </div>
@@ -120,13 +121,13 @@ Here, we consider binary particle aggregation based on particle size <span class
 </figure>
 <p>The size-based aggregation equation roots in the classical volume based Smoluchowski coagulation equation, which we transform to a size-based equation using the identity</p>
 <div class="math notranslate nohighlight" id="equation-volumetosizeidentity">
-<span class="eqno">(33)<a class="headerlink" href="#equation-volumetosizeidentity" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(34)<a class="headerlink" href="#equation-volumetosizeidentity" title="Link to this equation">¶</a></span>\[\begin{aligned}
     n_v \mathrm{d} (k_v x^3) &amp;= n \mathrm{d} x,
 \end{aligned}\]</div>
 <p>which identifies the change of particle count within a volume interval <span class="math notranslate nohighlight">\([k_vx^3, k_vx^3+d(k_vx^3)]\)</span> with the change of particle count within a size interval <span class="math notranslate nohighlight">\([x,x+dx]\)</span>.</p>
 <p>Size-based binary aggregation is governed by the Smoluchowski coagulation equation</p>
 <div class="math notranslate nohighlight" id="equation-aggregationsizebased">
-<span class="eqno">(34)<a class="headerlink" href="#equation-aggregationsizebased" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+<span class="eqno">(35)<a class="headerlink" href="#equation-aggregationsizebased" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
     \frac{\partial n(x)}{\partial t} &amp;=
     \frac{x^2}{2} \int_{x_c}^x \frac{\beta \left((x^3-\lambda^3)^\frac{1}{3},\lambda \right)}{(x^3-\lambda^3)^\frac{2}{3}} n\left( (x^3-\lambda^3)^\frac{1}{3}\right) n(\lambda) \mathrm{d} \lambda
     \\

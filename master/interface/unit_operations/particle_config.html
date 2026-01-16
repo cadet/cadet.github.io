@@ -12,7 +12,7 @@
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://cadet.github.io/master/interface/unit_operations/particle_config.html" />
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/unit_operations/particle_config.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -77,8 +77,9 @@
 </ul>
 <h3>Branches</h3>
 <ul>
-  <li><a href="particle_config.html">master</a></li>
   <li><a href="../../../chore/developer_guide/index.html">chore/developer_guide</a></li>
+  <li><a href="particle_config.html">master</a></li>
+  <li><a href="../../../v5.1.X/index.html">v5.1.X</a></li>
 </ul>
 
         </div>
@@ -329,19 +330,6 @@ Is only applied when <span class="math notranslate nohighlight">\(\texttt{HAS_PO
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">REACTION_MODEL</span></code></p>
-<blockquote>
-<div><p>Specifies the type of reaction model of each particle type (or of all particle types if length is <span class="math notranslate nohighlight">\(1\)</span>).
-The model is configured in the subgroup <span class="math notranslate nohighlight">\(\texttt{reaction_particle}\)</span>, or <span class="math notranslate nohighlight">\(\texttt{reaction_particle_XXX}\)</span> in case of disabled multiplexing.</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
-<td><p><strong>Range:</strong> See Section <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a></p></td>
-<td><p><strong>Length:</strong> 1</p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_CP</span></code></p>
 <blockquote>
 <div><p>Initial concentrations for each component in the bead liquid phase (optional, <span class="math notranslate nohighlight">\(\texttt{INIT_C}\)</span> is used if left out).
@@ -391,6 +379,44 @@ For more information on parameter sensitivities, see <a class="reference interna
 </tbody>
 </table>
 </div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">NREAC_LIQUID</span></code></p>
+<blockquote>
+<div><p>Number of liquid phase reaction models (optional, only if liquid reactions are present).</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">NREAC_SOLID</span></code></dt><dd><p>Number of solid phase reaction models (optional, only if solid reactions are present).</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">NREAC_CROSS_PHASE</span></code></dt><dd><p>Number of cross-phase reaction models (optional, only if cross-phase reactions are present).</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</section>
+<section id="group-input-model-unit-xxx-phase-reaction-yyy">
+<h2>Group /input/model/unit_XXX/phase_reaction_YYY<a class="headerlink" href="#group-input-model-unit-xxx-phase-reaction-yyy" title="Link to this heading">¶</a></h2>
+<p>Each reaction is specified in another subgroup <cite>phase_reaction_YYY</cite>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.</p>
 </section>
 <section id="group-input-model-unit-xxx-particle-type-xxx-discretization">
 <h2>Group /input/model/unit_XXX/particle_type_XXX/discretization<a class="headerlink" href="#group-input-model-unit-xxx-particle-type-xxx-discretization" title="Link to this heading">¶</a></h2>

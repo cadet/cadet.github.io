@@ -12,7 +12,7 @@
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://cadet.github.io/master/interface/spatial_discretization_methods.html" />
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/spatial_discretization_methods.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -99,8 +99,9 @@
 </ul>
 <h3>Branches</h3>
 <ul>
-  <li><a href="spatial_discretization_methods.html">master</a></li>
   <li><a href="../../chore/developer_guide/interface/spatial_discretization_methods.html">chore/developer_guide</a></li>
+  <li><a href="spatial_discretization_methods.html">master</a></li>
+  <li><a href="../../v5.1.X/interface/spatial_discretization_methods.html">v5.1.X</a></li>
 </ul>
 
         </div>
@@ -146,7 +147,7 @@ For the CADET-DG method, the theoretical order of convergence is <span class="ma
 <p>The theoretical order of convergence is an asymptotic property, i.e. holds for infinite refinements, but can be numerivcally observed for finite refinements as well.
 Having the exact solution, we can compute an experimental order of convergence (EOC) via the formula</p>
 <div class="math notranslate nohighlight" id="equation-modelcolumn">
-<span class="eqno">(40)<a class="headerlink" href="#equation-modelcolumn" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<span class="eqno">(41)<a class="headerlink" href="#equation-modelcolumn" title="Link to this equation">¶</a></span>\[\begin{aligned}
     EOC_k = \frac{log(\varepsilon_{k+1} / \varepsilon_{k}) }{log(n_{k} / n_{k+1})},
 \end{aligned}\]</div>
 <p>with <span class="math notranslate nohighlight">\(\varepsilon_{k}\)</span> and <span class="math notranslate nohighlight">\(n_{k}\)</span> denoting some error norm and the degrees of freedom of the $k$th approximation.

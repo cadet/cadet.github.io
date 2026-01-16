@@ -12,7 +12,7 @@
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://cadet.github.io/master/interface/reaction/index.html" />
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/reaction/index.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -99,8 +99,9 @@
 </ul>
 <h3>Branches</h3>
 <ul>
-  <li><a href="index.html">master</a></li>
   <li><a href="../../../chore/developer_guide/interface/reaction/index.html">chore/developer_guide</a></li>
+  <li><a href="index.html">master</a></li>
+  <li><a href="../../../v5.1.X/interface/reaction/index.html">v5.1.X</a></li>
 </ul>
 
         </div>
@@ -115,15 +116,75 @@
 
   <section id="reaction-models">
 <span id="ffreaction"></span><h1>Reaction models<a class="headerlink" href="#reaction-models" title="Link to this heading">¶</a></h1>
+<p>Reactions can take place on different phases in the model. The interface specification depends on the phase(s) for which the reaction takes place.</p>
+<p>A reaction can be located in:</p>
+<ul class="simple">
+<li><p><strong>Unit Operation</strong>: The reaction group is defined under the corresponding transport phase i.e. <code class="docutils literal notranslate"><span class="pre">unit_XXX/liquid_reaction_YYY</span></code>.</p></li>
+<li><p><strong>Particle</strong>: The reaction group is defined under the corresponding particle phase i.e. <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/liquid_reaction_YYY</span></code> or <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/solid_reaction_YYY</span></code>.</p></li>
+</ul>
+<p>Furthermore, we differ between reactions which take place in either a single phase or between two phases.</p>
+<section id="single-phase-reactions">
+<h2>Single Phase Reactions<a class="headerlink" href="#single-phase-reactions" title="Link to this heading">¶</a></h2>
+<p>Single phase reactions take place either in the liquid phase or the solid phase.</p>
+<p>The number of reaction models is specified at the unit or particle level using the following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NREAC_LIQUID</span></code> for liquid phase reactions i.e. <code class="docutils literal notranslate"><span class="pre">unit_XXX/NREAC_LIQUID</span></code> or <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/NREAC_LIQUID</span></code>.,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NREAC_SOLID</span></code> for solid phase reactions i.e. <code class="docutils literal notranslate"><span class="pre">unit_XXX/NREAC_SOLID</span></code> or <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/NREAC_SOLID</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>The input group for parameters of single reactions is given by <code class="docutils literal notranslate"><span class="pre">phase_reaction_YYY</span></code> where <code class="docutils literal notranslate"><span class="pre">phase</span></code> is one of <code class="docutils literal notranslate"><span class="pre">liquid</span></code> or <code class="docutils literal notranslate"><span class="pre">solid</span></code> and <code class="docutils literal notranslate"><span class="pre">YYY</span></code> is a 0-based index for the reaction group.</p>
+<p><strong>Single-Phase Reaction Models</strong>:</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="mass_action_law.html">Mass Action Law</a></li>
-<li class="toctree-l1"><a class="reference internal" href="michaelis_menten_kinetics.html">Michaelis Menten kinetics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="michaelis_menten_kinetics.html#example-configuration">Example configuration</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="michaelis_menten_kinetics.html">Michaelis Menten kinetics</a></li>
 </ul>
 </div>
+</section>
+<section id="cross-phase-reactions">
+<h2>Cross Phase Reactions<a class="headerlink" href="#cross-phase-reactions" title="Link to this heading">¶</a></h2>
+<p>Cross phase reactions take place between a liquid phase and a solid phase.</p>
+<dl class="simple">
+<dt>To specify the number of reaction models, use the parameter at the column or particle level:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NREAC_CROSS_PHASE</span></code> for cross-phase reactions i.e. <code class="docutils literal notranslate"><span class="pre">unit_XXX/NREAC_CROSS_PHASE</span></code> or <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/NREAC_CROSS_PHASE</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The input group for cross-phase reactions is given by <code class="docutils literal notranslate"><span class="pre">cross_phase_reaction_YYY</span></code> where <code class="docutils literal notranslate"><span class="pre">YYY</span></code> is a 0-based index for the reaction group.</p>
+<p><strong>Cross-Phase Reaction Models</strong>:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mass_action_law_cross_phase.html">Mass Action Law Cross Phase</a></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Cross-phase reaction models can <strong>only</strong> be used in the cross-phase formulation</p></li>
+</ul>
+</div>
+</section>
+<section id="step-by-step-guide-to-define-reaction-model">
+<h2>Step by Step guide to define reaction model<a class="headerlink" href="#step-by-step-guide-to-define-reaction-model" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Select the phase(s) the reaction (liquid, solid or cross phase) will take place.</p></li>
+<li><p>Choose how many reaction model types you want to define and set up the corresponding parameter in the configuration file (e.g., <code class="docutils literal notranslate"><span class="pre">NREAC_LIQUID</span></code>, <code class="docutils literal notranslate"><span class="pre">NREAC_SOLID</span></code>, <code class="docutils literal notranslate"><span class="pre">NREAC_CROSS_PHASE</span></code>).</p></li>
+</ol>
+<blockquote>
+<div><dl class="simple">
+<dt><strong>Note</strong>:</dt><dd><ul class="simple">
+<li><p>The input group depends on whether the reaction is defined in a particle phase(s) or bulk phases.</p></li>
+<li><p>It is possible to define multiple reactions of the same type.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Choose the appropriate reaction model for each of the reaction model type based on the kinetics of your system (e.g., Mass Action Law (<a class="reference internal" href="mass_action_law.html#mass-action-law-config"><span class="std std-ref">Mass Action Law</span></a>), Michaelis-Menten (<a class="reference internal" href="michaelis_menten_kinetics.html#michaelis-menten-kinetics-config"><span class="std std-ref">Michaelis Menten kinetics</span></a>)) and write it under the corresponding input group (e.g., <code class="docutils literal notranslate"><span class="pre">liquid_reaction_000</span></code>, <code class="docutils literal notranslate"><span class="pre">solid_reaction_001</span></code>, <code class="docutils literal notranslate"><span class="pre">cross_phase_reaction_002</span></code>).</p></li>
+<li><p>Define the reaction parameters according to the chosen model’s specifications. Refer to the specific reaction model documentation for details on required parameters.</p></li>
+</ol>
+</section>
 <section id="externally-dependent-reaction-models">
 <h2>Externally dependent reaction models<a class="headerlink" href="#externally-dependent-reaction-models" title="Link to this heading">¶</a></h2>
 <p>Some reaction models have a variant that can use external sources as specified <a class="reference internal" href="../system.html#ffmodelexternalsourcelininterp"><span class="std std-ref">/input/model/external/</span></a> (also see Section <a class="reference internal" href="../../modelling/reaction/index.html#dependence-on-external-function-react"><span class="std std-ref">Dependence on external function</span></a>).
@@ -140,15 +201,6 @@ The ordering of the parameters in <code class="docutils literal notranslate"><sp
 However, if only one index is passed in <code class="docutils literal notranslate"><span class="pre">EXTFUN</span></code>, this external source is used for all parameters.</p>
 <p>Note that parameter sensitivities with respect to column radius, column length, particle core radius, and particle radius may be wrong when using externally dependent reaction models.
 This is caused by not taking into account the derivative of the external profile with respect to column position.</p>
-</section>
-<section id="multiple-particle-types">
-<span id="multiple-particle-types-reactions"></span><h2>Multiple particle types<a class="headerlink" href="#multiple-particle-types" title="Link to this heading">¶</a></h2>
-<p>The group that contains the parameters of a reaction model in unit operation with index <code class="docutils literal notranslate"><span class="pre">XXX</span></code> reads <code class="docutils literal notranslate"><span class="pre">/input/model/unit_XXX/reaction_particle</span></code>.
-This is valid for models with a single particle type.
-If a model has multiple particle types, it may have a different reaction model in each type.
-The parameters are then placed in the group <code class="docutils literal notranslate"><span class="pre">/input/model/unit_XXX/reaction_particle_YYY</span></code> instead, where <code class="docutils literal notranslate"><span class="pre">YYY</span></code> denotes the index of the particle type.</p>
-<p>Note that, in any case, <code class="docutils literal notranslate"><span class="pre">/input/model/unit_XXX/reaction_particle_000</span></code> contains the parameters of the first (and possibly sole) particle type.
-This group also takes precedence over a possibly existing <code class="docutils literal notranslate"><span class="pre">/input/model/unit_XXX/adsorption_particle</span></code> group.</p>
 </section>
 </section>
 

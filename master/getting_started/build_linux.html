@@ -247,9 +247,27 @@ recent version.</p>
 <section id="debian-ubuntu">
 <h4>Debian/Ubuntu/…<a class="headerlink" href="#debian-ubuntu" title="Link to this heading">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">cmake</span> <span class="n">libhdf5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libsuperlu</span><span class="o">-</span><span class="n">dev</span> <span class="n">libeigen3</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">cmake</span> <span class="n">libhdf5</span><span class="o">-</span><span class="n">dev</span> <span class="n">libsuperlu</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
+<section id="eigen3">
+<h5>EIGEN3<a class="headerlink" href="#eigen3" title="Link to this heading">¶</a></h5>
+<p>The latest stable Eigen3 (v5.0) is not yet available via apt.
+Installing via <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">libeigen3-dev</span></code> will will provide an older version.
+To install Eigen3 v5.0 manually:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gitlab</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">libeigen</span><span class="o">/</span><span class="n">eigen</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">eigen</span>
+<span class="n">git</span> <span class="n">fetch</span> <span class="n">origin</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="o">--</span><span class="n">detach</span> <span class="n">origin</span><span class="o">/</span><span class="mf">5.0</span>
+<span class="n">cmake</span> <span class="o">-</span><span class="n">S</span> <span class="o">.</span> <span class="o">-</span><span class="n">B</span> <span class="n">build</span> \
+<span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=</span><span class="s2">&quot;$</span><span class="si">{INSTALL_PREFIX}</span><span class="s2">&quot;</span> \
+<span class="o">-</span><span class="n">DEIGEN_BUILD_BLAS</span><span class="o">=</span><span class="n">OFF</span> \
+<span class="o">-</span><span class="n">DEIGEN_BUILD_LAPACK</span><span class="o">=</span><span class="n">OFF</span> \
+<span class="o">-</span><span class="n">DBUILD_TESTING</span><span class="o">=</span><span class="n">OFF</span>
+<span class="n">cmake</span> <span class="o">--</span><span class="n">install</span> <span class="n">build</span>
+</pre></div>
+</div>
+</section>
 <section id="lapack">
 <h5>LAPACK<a class="headerlink" href="#lapack" title="Link to this heading">¶</a></h5>
 <p>You can either use a LAPACK implementation provided by your distribution or install the freely available Intel MKL.</p>

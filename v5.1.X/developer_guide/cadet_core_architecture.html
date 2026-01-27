@@ -224,7 +224,7 @@
 
   <section id="software-architecture">
 <span id="cadet-core-architecture"></span><h1>Software Architecture<a class="headerlink" href="#software-architecture" title="Link to this heading">¶</a></h1>
-<p>This section gives a general overview of the object-oriented c++ implementation of CADET-Core and is based on the Software Architecture chapter 3.2 in Samuel Lewekes PhD thesis <span id="id1">[<a class="reference internal" href="../zbibliography.html#id16" title="Samuel Leweke. Unified modeling and efficient simulation of chromatographic separation processes. Dissertation, Rheinisch-Westfälische Technische Hochschule Aachen, Aachen, 2021. URL: https://publications.rwth-aachen.de/record/840314, doi:10.18154/RWTH-2022-01184.">34</a>]</span>.</p>
+<p>This section gives a general overview of the object-oriented c++ implementation of CADET-Core and is based on the Software Architecture chapter 3.2 in Samuel Lewekes PhD thesis <span id="id1">[<a class="reference internal" href="../zbibliography.html#id16" title="Samuel Leweke. Unified modeling and efficient simulation of chromatographic separation processes. Dissertation, Rheinisch-Westfälische Technische Hochschule Aachen, Aachen, 2021. URL: https://publications.rwth-aachen.de/record/840314, doi:10.18154/RWTH-2022-01184.">35</a>]</span>.</p>
 <p>The CADET-Core software is designed to be modular, extendable, maintainable and computationally efficient and robust.
 To promote these goals, CADET-Core is implemented in C++, a highly performant, object-oriented language that supports cross-platform compatibility.</p>
 <section id="features-and-capabilities">
@@ -246,10 +246,10 @@ Additionally, IDAS supports the forward computation of parameter sensitivities, 
 <section id="implementation-details">
 <h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">¶</a></h2>
 <p>Classes and realationships</p>
-<figure class="align-default" id="id4">
+<figure class="align-default" id="id9">
 <span id="libcadetclasses"></span><img alt="../_images/architecture_libcadet_classes.png" src="../_images/architecture_libcadet_classes.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Selected relationships of classes in <code class="docutils literal notranslate"><span class="pre">libcadet</span></code> <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Selected relationships of classes in <code class="docutils literal notranslate"><span class="pre">libcadet</span></code> <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <aside class="footnote-list brackets">
@@ -313,6 +313,37 @@ If supported, reaction model parameters may have a <a class="reference internal"
 <ul class="simple">
 <li><p>The outlet concentration <span class="math notranslate nohighlight">\(\mathbf{c}_{out,n,j} \ \colon (0, T_\text{end}) \mapsto \mathbb{R}^{N_{c,n}}\)</span> of port <span class="math notranslate nohighlight">\(j\in\{1,\dots , N_{out,n}\}\)</span> of submodel <span class="math notranslate nohighlight">\(n\)</span> is a linear function of its state vector <span class="math notranslate nohighlight">\(\mathbf{y}_n\)</span>.</p></li>
 </ul>
+</section>
+<section id="unit-operation-state-vector-ordering">
+<span id="unitoperationstateordering"></span><h3>Unit Operation state vector ordering<a class="headerlink" href="#unit-operation-state-vector-ordering" title="Link to this heading">¶</a></h3>
+<p>We refer to the solution of the spatially semi-discretized unit operation model equations as <em>state</em>.
+The order of the state vector impacts performance of the solver and has to adhere to submodule interfaces, such as binding models.
+The specific order implemented for chromatography column units is given in the figures below</p>
+<figure class="align-default" id="id10">
+<span id="statevectororder"></span><img alt="../_images/state_vector_grm2D.png" src="../_images/state_vector_grm2D.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">State vector order of the two-dimensional general rate model, and two-dimensional lumped rate model with pores <span class="math notranslate nohighlight">\((N^{\mathrm{r}}=1)\)</span>.</span><a class="headerlink" href="#id10" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id11">
+<span id="id4"></span><img alt="../_images/state_vector_grm.png" src="../_images/state_vector_grm.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">State vector order of the general rate model, lumped rate model with pores <span class="math notranslate nohighlight">\((N^{\mathrm{r}}=1)\)</span>, and Finite Bath / Tank <span class="math notranslate nohighlight">\((N^{\mathrm{z}}=1, N^{\mathrm{r}}=1)\)</span> <a class="footnote-reference brackets" href="#id3" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id11" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id12">
+<span id="id6"></span><img alt="../_images/state_vector_lrm.png" src="../_images/state_vector_lrm.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">State vector order of model variants with non-limiting film diffusion <span class="math notranslate nohighlight">\((k^\mathrm{f}_i \to \infty)\)</span>, such as the lumped rate model without pores <a class="footnote-reference brackets" href="#id3" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id12" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id8" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
+<p>Samuel Lewekes PhD thesis, available at: <a class="reference external" href="https://publications.rwth-aachen.de/record/840314">https://publications.rwth-aachen.de/record/840314</a></p>
+</aside>
+</aside>
+<p>Note that the finite bath / tank (CSTR) unit operation has an additional first entry that defines the tank volume.</p>
 </section>
 </section>
 </section>

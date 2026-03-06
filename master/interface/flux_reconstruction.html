@@ -233,8 +233,34 @@
 
   <section id="flux-reconstruction-methods">
 <span id="id1"></span><h1>Flux reconstruction methods<a class="headerlink" href="#flux-reconstruction-methods" title="Link to this heading">¶</a></h1>
-<section id="group-input-model-unit-xxx-discretization-reconstruction-weno">
-<h2>Group /input/model/unit_XXX/discretization/reconstruction = WENO<a class="headerlink" href="#group-input-model-unit-xxx-discretization-reconstruction-weno" title="Link to this heading">¶</a></h2>
+<section id="group-input-model-unit-xxx-discretization">
+<h2>Group /input/model/unit_XXX/discretization<a class="headerlink" href="#group-input-model-unit-xxx-discretization" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">GRID_FACES</span></code></p>
+<blockquote>
+<div><blockquote>
+<div><p>Optional, required only for non-equidistant grids.
+An array specifying the coordinates of all grid faces, which are used for reconstruction.
+The array length must equal the number of grid faces, i.e., number of grid cells plus one, and the column boundaries must be included.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>large ratios of adjacent cells sizes <strong>may</strong> reduce reconstruction accuracy. Recommendation <span class="math notranslate nohighlight">\(r = max(Δx_{i+1}/Δx_i, Δx_i/Δx_{i+1}) &lt; 3\)</span>.</p></li>
+<li><p>Avoid large ratios <span class="math notranslate nohighlight">\(Δx_{max} / Δx_{min}\)</span>, which <strong>might</strong> cause stiff ODE systems and thus slow, unstable time integration.</p></li>
+</ul>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\([0, L]\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(NCOL + 1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="group-input-model-unit-xxx-discretization-weno-reconstruction-weno">
+<h2>Group /input/model/unit_XXX/discretization/weno - RECONSTRUCTION = WENO<a class="headerlink" href="#group-input-model-unit-xxx-discretization-weno-reconstruction-weno" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">BOUNDARY_MODEL</span></code></p>
 <blockquote>
 <div><p>Boundary model type:
@@ -252,11 +278,12 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">WENO_EPS</span></code></p>
 <blockquote>
-<div><p>WENO <span class="math notranslate nohighlight">\(\varepsilon\)</span></p>
+<div><p>WENO <span class="math notranslate nohighlight">\(\varepsilon\)</span>, a small regularization parameter added to the nonlinear weight denominator to prevent division by zero and improve numerical condition for small smoothness indicators.
+A default value <span class="math notranslate nohighlight">\(1e-10\)</span> often works well.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}^{&gt;0}\)</span></p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt;0\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>
@@ -267,8 +294,8 @@
 <div><p>WENO order, also called WENO <span class="math notranslate nohighlight">\(k\)</span>:</p>
 <ol class="arabic simple">
 <li><p>Standard upwind scheme (order 1)</p></li>
-<li><p>WENO 2 (order 3)</p></li>
-<li><p>WENO 3 (order 5)</p></li>
+<li><p>WENO 2 (order 3, 2nd order at boundaries)</p></li>
+<li><p>WENO 3 (order 5, 2nd order at boundaries)</p></li>
 </ol>
 <table class="docutils align-default">
 <tbody>
@@ -280,17 +307,17 @@
 </table>
 </div></blockquote>
 </section>
-<section id="group-input-model-unit-xxx-discretization-reconstruction-koren">
-<h2>Group /input/model/unit_XXX/discretization/reconstruction = KOREN<a class="headerlink" href="#group-input-model-unit-xxx-discretization-reconstruction-koren" title="Link to this heading">¶</a></h2>
-<p>The Koren scheme implemented in CADET intrinsically uses a van Leer flux limiter. It can reach a maximum order of 2 depending on the smoothness of the solution. The
-BOUNDARY_MODEL is intrinsically set to 0 (stable).</p>
+<section id="group-input-model-unit-xxx-discretization-koren-reconstruction-koren">
+<h2>Group /input/model/unit_XXX/discretization/koren - RECONSTRUCTION = KOREN<a class="headerlink" href="#group-input-model-unit-xxx-discretization-koren-reconstruction-koren" title="Link to this heading">¶</a></h2>
+<p>The Koren scheme implemented in CADET intrinsically uses a van Leer flux limiter and has a theoretical convergence order between 1 and 2 depending on the smoothness of the solution.</p>
 <p><code class="docutils literal notranslate"><span class="pre">KOREN_EPS</span></code></p>
 <blockquote>
-<div><p>Set <span class="math notranslate nohighlight">\(\varepsilon\)</span> in the van Leer flux limiter</p>
+<div><p>Sets <span class="math notranslate nohighlight">\(\varepsilon\)</span> in the van Leer flux limiter, a small numerical parameter added to the slope-ratio denominator to prevent division by zero and improve numerical condition when gradients are very small.
+A default value <span class="math notranslate nohighlight">\(1e-10\)</span> often works well.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\qe 0\)</span></p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>

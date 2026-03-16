@@ -470,10 +470,9 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </section>
 <section id="spatial-discretization-numerical-methods">
 <h2>Spatial discretization - Numerical Methods<a class="headerlink" href="#spatial-discretization-numerical-methods" title="Link to this heading">¶</a></h2>
-<p>CADET offers a 1st order upwind FV method for radial flow chromatography</p>
 <p><code class="docutils literal notranslate"><span class="pre">SPATIAL_METHOD</span></code></p>
 <blockquote>
-<div><p>Spatial discretization method. Optional, defaults to <span class="math notranslate nohighlight">\(\texttt{FV}\)</span></p>
+<div><p>Spatial discretization method</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
@@ -494,6 +493,19 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </tr>
 </tbody>
 </table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">RECONSTRUCTION</span></code></p>
+<blockquote>
+<div><p>Type of reconstruction method for fluxes</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{WENO, KOREN}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<p>For further information on discretization parameters for reconstruction methods, see also <a class="reference internal" href="../flux_reconstruction.html#flux-reconstruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific).</p>
 </div></blockquote>
 <p>The following FV discretization parameters are only required if particles are present:</p>
 <p><code class="docutils literal notranslate"><span class="pre">GS_TYPE</span></code></p>

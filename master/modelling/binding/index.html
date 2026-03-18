@@ -90,6 +90,7 @@
   <li><a href="../../../v5.0.3/modelling/binding/index.html">v5.0.3</a></li>
   <li><a href="../../../v5.0.4/modelling/binding/index.html">v5.0.4</a></li>
   <li><a href="../../../v5.1.0/modelling/binding/index.html">v5.1.0</a></li>
+  <li><a href="../../../v5.1.1/modelling/binding/index.html">v5.1.1</a></li>
   <li><a href="../../../v6.0.0-alpha.1/modelling/binding/index.html">v6.0.0-alpha.1</a></li>
   <li><a href="../../../v6.0.0-alpha.2/modelling/binding/index.html">v6.0.0-alpha.2</a></li>
 </ul>
@@ -137,6 +138,9 @@
 
 
 
+  
+    
+    
   
     
     
@@ -305,7 +309,7 @@ For example <span class="math notranslate nohighlight">\(q^*= \frac{q_m k_{eq} c
 Here, <span class="math notranslate nohighlight">\(\frac{dq}{dt}\)</span> is proportional to the actual difference from equilibrium, i.e. <span class="math notranslate nohighlight">\(\frac{dq}{dt} = k_{kin}(q^*-q)\)</span>.
 Note that, the sign of <span class="math notranslate nohighlight">\(\frac{dq}{dt}\)</span> causes the resulting flux to act towards the equilibrium.
 In CADET, this approach is denoted by <code class="docutils literal notranslate"><span class="pre">LDF</span></code>, for example in <code class="docutils literal notranslate"><span class="pre">MULTI_COMPONENT_LANGMUIR_LDF</span></code>.</p>
-<p>3. An alterniative linear driving force approximation is based on the equilibrium concentration <span class="math notranslate nohighlight">\(c^*\)</span> for given <span class="math notranslate nohighlight">\(q\)</span>.
+<p>3. An alternative linear driving force approximation is based on the equilibrium concentration <span class="math notranslate nohighlight">\(c^*\)</span> for given <span class="math notranslate nohighlight">\(q\)</span>.
 For example <span class="math notranslate nohighlight">\(c^*=\frac{q}{k_{eq} \left(q_{m}-q\right)}\)</span> in the Langmuir model.
 Here, <span class="math notranslate nohighlight">\(\frac{dq}{dt}\)</span> is proportional to the actual difference from equilibrium concentrations, i.e. <span class="math notranslate nohighlight">\(\frac{dq}{dt} = k_{kin}(c-c^*)\)</span>.
 Note that, the sign of <span class="math notranslate nohighlight">\(\frac{dq}{dt}\)</span> causes the resulting flux to act towards the equilibrium.
@@ -542,6 +546,12 @@ The models also differ in whether a mobile phase modifier (e.g., salt) is suppor
 <td><p>×</p></td>
 <td><p>✓</p></td>
 <td><p>×</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="spline_interpolation.html#spline-interpolation"><span class="std std-ref">Spline Interpolation</span></a></p></td>
+<td><p>×</p></td>
+<td><p>×</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
 </tr>
 </tbody>
 </table>

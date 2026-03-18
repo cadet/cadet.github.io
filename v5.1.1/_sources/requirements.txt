@@ -1,0 +1,5 @@
+sphinx
+sphinx-sitemap
+sphinxcontrib-bibtex
+sphinx_multiversion
+myst-parser

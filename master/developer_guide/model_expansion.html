@@ -282,21 +282,34 @@ Additionally, some models can be mimicked by or are even equivalent to already i
 <h2>Binding Model<a class="headerlink" href="#binding-model" title="Link to this heading">¶</a></h2>
 <p>An extensive description on how to add a new binding model to CADET-Core is given in a <a class="reference external" href="https://forum.cadet-web.de/t/registration-implementation-and-testing-of-new-binding-model-in-cadet/533">forum post</a>, where such an extension is described using the example of a Langmuir binding.
 A more concise description is given in the following:</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Use the <a class="reference external" href="https://github.com/cadet/CADET-Core/tree/master/doc/developer_guide/TemplateBinding.cpp">binding model template</a> to create a new binding model file in the CADET binding model source directory <code class="docutils literal notranslate"><span class="pre">\src\libcadet\model\binding\YourModelNameBinding.cpp</span></code> and rename the model in the file (i.e. Template to YoureModelName).
 Note that the provided template binding model is an implementation of the multi-component Langmuir binding.</p></li>
 <li><p>Register the binding model by adding <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">registerYourModelNameModel(std::unordered_map&lt;std::string,</span> <span class="pre">std::function&lt;model::IBindingModel*</span> <span class="pre">()&gt;&gt;&amp;</span> <span class="pre">bindings);</span></code> to the <code class="docutils literal notranslate"><span class="pre">src\libcadet\BindingModelFactory.cpp</span></code> at the end of all the other registering functions such as <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">registerLinearModel</span></code>.
 Then add <code class="docutils literal notranslate"><span class="pre">model::binding::registerExampleModel(_bindingModels);</span></code> to the <code class="docutils literal notranslate"><span class="pre">BindingModelFactory.cpp</span></code> at the end of all the other registering functions such as <code class="docutils literal notranslate"><span class="pre">model::binding::registerLinearModel(_bindingModels)</span></code>.
 The final step to register your model is to add your model to the <code class="docutils literal notranslate"><span class="pre">\src\libcadet\CMakeLists.txt</span></code> (again look for similar statements for the other binding models) by adding <code class="docutils literal notranslate"><span class="pre">${CMAKE_SOURCE_DIR}</span> <span class="pre">/src/libcadet/model/binding/ExampleBinding.cpp</span></code>.
 Before continuing with the third step, you should rebuild CADET-Core to verify that the first two steps went well.</p></li>
-<li><p>The actual implementation of the new binding model follows two main steps: the configuration of the relevant mechanistic parameters and implementation of adsorption flux and Jacobian.
+<li><blockquote>
+<div><p>The actual implementation of the new binding model follows two main steps: the configuration of the relevant mechanistic parameters and implementation of adsorption flux and Jacobian.
 To set up the configuration of isotherm parameters a macro (.json script) has been included in the code, which generates the relevant code section when the user defines the parameters in the scope of this script.
 To modify the script go to Line 30 in the provided file template and adjust the parameters to your needs, a more detailed description for that is provided in the <a class="reference external" href="https://forum.cadet-web.de/t/registration-implementation-and-testing-of-new-binding-model-in-cadet/533">aforementioned forum post</a>.
 Next, the adsorption flux equations need to be implemented int the corresponding function <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">fluxImpl(double</span> <span class="pre">t,</span> <span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">secIdx,</span> <span class="pre">const</span> <span class="pre">ColumnPosition&amp;</span> <span class="pre">colPos,</span> <span class="pre">StateType</span> <span class="pre">const*</span> <span class="pre">y,</span> <span class="pre">CpStateType</span> <span class="pre">const*</span> <span class="pre">yCp,</span> <span class="pre">ResidualType*</span> <span class="pre">res,</span> <span class="pre">LinearBufferAllocator</span> <span class="pre">workSpace)</span> <span class="pre">const</span></code>.
 For an explanation of <code class="docutils literal notranslate"><span class="pre">active</span></code> types for the template arguments <code class="docutils literal notranslate"><span class="pre">StateType</span></code>, <code class="docutils literal notranslate"><span class="pre">ParamType</span></code>, <code class="docutils literal notranslate"><span class="pre">ResidualType</span></code>, please refer to the Algorithmic Differentiation section.
 Finally, the Jacobian needs to be implemented in the function <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">jacobianImpl()</span></code> We note that the Jacobian implementation is optional but highly recommended to speed up the simulation.
 If you have trouble with deriving the Jacobian or if you want to test you model first, modify the <code class="docutils literal notranslate"><span class="pre">implementsAnalyticJacobian()</span></code> function to return false.
-By doing so, CADET-Core defaults to computing the binding <a class="reference external" href="https://doi.org/10.1016/j.ces.2015.08.050">Jacobian via Algorithmic differentiation (AD)</a>.</p></li>
+By doing so, CADET-Core defaults to computing the binding <a class="reference external" href="https://doi.org/10.1016/j.ces.2015.08.050">Jacobian via Algorithmic differentiation (AD)</a>.</p>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p>Proper testing of a new binding model must include verification of the analytical Jacobian.
+For this purpose, the templated utilities in <code class="docutils literal notranslate"><span class="pre">test/BindingModels.hpp</span></code> can be used.
+The <code class="docutils literal notranslate"><span class="pre">CADET_BINDINGTEST</span></code> template automatically generates tests for binding models that support external function dependence and provide both a non-binding and an all-binding variant.
+Only the configuration data needs to be specified in JSON format, see <code class="docutils literal notranslate"><span class="pre">test/BindingModelTests.cpp</span></code> for examples.
+For other types of binding models, similar templates can be used or may serve as reference if a custom implementation is required.
+In addition, a test should be added to <strong>CADET-Verification</strong>, which is part of the continuous deployment (CD) pipeline.
+A meaningful example ´(preferably from a publication) should be defined and compared against a stored reference solution (<code class="docutils literal notranslate"><span class="pre">.h5</span></code> file).
+Optionally, the simulation’s outlet profile can also be plotted for visual assessment.</p></li>
+</ol>
+</li>
 </ol>
 </section>
 <section id="unit-operation">

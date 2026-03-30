@@ -47,6 +47,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Unit operation models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="general_rate_model.html">General rate model (GRM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="general_rate_model.html#column-geometry">Column Geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_without_pores.html">Lumped rate model without pores (LRM)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_with_pores.html">Lumped rate model with pores (LRMP)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="2d_general_rate_model.html">Two Dimensional General rate model (GRM2D)</a></li>
@@ -304,11 +305,11 @@ Here, components in a mixture are separated based on their interactions with two
 <figure class="align-default" id="id7">
 <span id="fig-model-class"></span><img alt="../../_images/multi_channel_transport_model_class.png" src="../../_images/multi_channel_transport_model_class.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Illustration of the Multichannel Transport model class and relevant parameters.
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Illustration of the Multichannel Transport model class and relevant parameters.
 Figure taken from Jonas Bühler et al. <span id="id4">[<a class="reference internal" href="../../zbibliography.html#id52" title="Jonas Bühler, Eric von Lieres, and Gregor Huber. A class of compartmental models for long-distance tracer transport in plants. Journal of Theoretical Biology, 341:131–142, 2014. URL: https://www.sciencedirect.com/science/article/pii/S0022519313004530, doi:https://doi.org/10.1016/j.jtbi.2013.09.023.">9</a>]</span>.</span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<p>The MCT model describes <span class="math notranslate nohighlight">\(N_k\)</span> one-dimensional spatially parallel channels (see <a class="reference internal" href="#fig-model-class"><span class="std std-numref">Fig. 6</span></a>).
+<p>The MCT model describes <span class="math notranslate nohighlight">\(N_k\)</span> one-dimensional spatially parallel channels (see <a class="reference internal" href="#fig-model-class"><span class="std std-numref">Fig. 9</span></a>).
 In each channel <span class="math notranslate nohighlight">\(l\)</span>, molecules of different species <span class="math notranslate nohighlight">\(i\)</span>, represented by a liquid phase concentration <span class="math notranslate nohighlight">\(c^\ell_{i,l}\)</span>, can be transported with flux velocities <span class="math notranslate nohighlight">\(v_{i,l}\)</span> while undergoing axial diffusion: <span class="math notranslate nohighlight">\(D_{\text{ax},i,l}\)</span>.
 Molecules can be laterally exchanged between any pair of channels <span class="math notranslate nohighlight">\(l\)</span> and <span class="math notranslate nohighlight">\(k\)</span> while using different exchange models (see Exchange Models section below).
 We note that the exchange fluxes are computed from the exchange rates w.r.t. the source channel volume, that is, channels with the same exchange rate but different volume will produce differently large exchange fluxes.
@@ -343,12 +344,12 @@ The factor <span class="math notranslate nohighlight">\(A_l/A_k\)</span> ensures
 </section>
 <section id="cross-section-areas">
 <h2>Cross-section Areas<a class="headerlink" href="#cross-section-areas" title="Link to this heading">¶</a></h2>
-<p>The cross-section area <span class="math notranslate nohighlight">\(A_N\)</span> is individually specified for each channel (see <a class="reference internal" href="#fig-variable-areas"><span class="std std-numref">Fig. 7</span></a>).
+<p>The cross-section area <span class="math notranslate nohighlight">\(A_N\)</span> is individually specified for each channel (see <a class="reference internal" href="#fig-variable-areas"><span class="std std-numref">Fig. 10</span></a>).
 The MCT is agnostic to the shape of these cross sections, while their ratio determines the distribution of the volumetric flow.</p>
 <figure class="align-default" id="id8">
 <span id="fig-variable-areas"></span><img alt="../../_images/mct_variable_areas.png" src="../../_images/mct_variable_areas.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Scheme of exemplary channels with different cross section areas and arbitrary exchange between channels.</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Scheme of exemplary channels with different cross section areas and arbitrary exchange between channels.</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>

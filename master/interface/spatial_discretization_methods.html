@@ -360,7 +360,7 @@ Nonetheless, many chromatography settings yield rather smooth concentration prof
 <li><p>Employ an axial polynomial degree between 3 and 5</p></li>
 <li><p>Select a lower axial polynomial degree for approximating functions that tend to be less smooth and employ more elements instead. Converse choice for smooth problems</p></li>
 <li><p>Adjust the DG particle polynomial degree to control approximation accuracy; leave the number of elements at one. Make exceptions if very steep gradients occur inside the particles or when specific regions of the particle domain are more interesting (the spatial resolution of certain regions can be refined by a user-defined spacing of multiple elements)</p></li>
-<li><p>The field <code class="docutils literal notranslate"><span class="pre">EXACT_INTEGRATION</span></code> specifies the DG polynomial integration method. The default value of $0$ (collocation DG) is expected to be slightly more performant in most settings</p></li>
+<li><p>The field <code class="docutils literal notranslate"><span class="pre">POLYNOMIAL_INTEGRATION_TYPE</span></code> specifies the DG polynomial integration type. The default value of $0$ (collocation DG) is expected to be slightly more performant in most settings.</p></li>
 </ul>
 </section>
 <section id="refinement-strategy">

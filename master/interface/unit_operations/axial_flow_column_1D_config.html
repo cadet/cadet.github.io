@@ -527,13 +527,18 @@ For the same number of discrete points, DG will generally be slower but often mo
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">EXACT_INTEGRATION</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">POLYNOMIAL_INTEGRATION_TYPE</span></code></p>
 <blockquote>
 <div><p>Specifies the DG integration variant. Optional, defaults to 0</p>
+<ol class="arabic simple" start="0">
+<li><p>Collocation Lagrange-Gauss-Lobatto quadrature (inexact, but faster)</p></li>
+</ol>
+<p>1. Exact analytical integration
+0. Gauss-Legendre quadrature (exact)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1, 2\}\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>

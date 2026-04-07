@@ -328,7 +328,21 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_POROSITY</span></code></p>
 <blockquote>
-<div><p>Column porosity</p>
+<div><p>Column porosity of the interstitial volume.
+Used only if model is not a Lumped Rate Model without Pores, in which case <code class="docutils literal notranslate"><span class="pre">TOTAL_POROSITY</span></code> is used instead.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\((0,1]\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">TOTAL_POROSITY</span></code></p>
+<blockquote>
+<div><p>Total porosity of including the porosity of the particles.
+Only applicable for the Lumped Rate Model without pores, i.e. when <code class="docutils literal notranslate"><span class="pre">NPARTYPE</span> <span class="pre">=</span> <span class="pre">1</span></code> <strong>AND</strong> <code class="docutils literal notranslate"><span class="pre">particle_type_000\HAS_FILM_DIFFUSION</span> <span class="pre">=</span> <span class="pre">0</span></code></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>

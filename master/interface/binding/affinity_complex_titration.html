@@ -275,12 +275,20 @@
   <section id="affinity-complex-titration">
 <span id="affinity-complex-titration-config"></span><h1>Affinity Complex Titration<a class="headerlink" href="#affinity-complex-titration" title="Link to this heading">¶</a></h1>
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption – ADSORPTION_MODEL = AFFINITY_COMPLEX_TITRATION</strong></p>
-<p>For information on model equations, refer to <a class="reference internal" href="../../modelling/binding/affinity_complex_titration.html#affinity-complex-titration"><span class="std std-ref">Affinity Complex Titration</span></a>. The first component should be pH.</p>
+<p>For information on model equations, refer to <a class="reference internal" href="../../modelling/binding/affinity_complex_titration.html#affinity-complex-titration"><span class="std std-ref">Affinity Complex Titration</span></a>.</p>
+<section id="general-remarks">
+<h2>General remarks<a class="headerlink" href="#general-remarks" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>The <strong>first component</strong> is the mobile phase modulator.</p></li>
+<li><p>This first component must be <strong>non-binding</strong>.</p></li>
+<li><p>The ACT implementation currently supports <strong>at most one bound state per component</strong>.</p></li>
+<li><p>The first component can be specified either as a negative logarithmic concentration
+(<span class="math notranslate nohighlight">\(\mathrm{pH}\)</span>, <span class="math notranslate nohighlight">\(\mathrm{pNa}\)</span>, …) or as a raw ion concentration.</p></li>
+</ul>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></dt><dd><p>Selects kinetic or quasi-stationary adsorption mode: 1 = kinetic, 0 =
-quasi-stationary. If a single value is given, the mode is set for all
-bound states. Otherwise, the adsorption mode is set for each bound
-state separately.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></dt><dd><p>Selects kinetic or quasi-stationary adsorption mode: 1 = kinetic, 0 = quasi-stationary.
+If a single value is given, the mode is set for all bound states. Otherwise, the adsorption
+mode is set for each bound state separately.</p>
 </dd>
 </dl>
 <table class="docutils align-default">
@@ -291,11 +299,38 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">ACT_KA</span></code></dt><dd><p>Adsorption rate constants</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">ACT_USE_ION_CONC</span></code></dt><dd><p>Selects how the mobile phase modulator concentration is interpreted.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code>: the first component concentration is on a negative logarithmic axis, for example
+<span class="math notranslate nohighlight">\(\mathrm{pH}\)</span> or <span class="math notranslate nohighlight">\(\mathrm{pNa}\)</span>.
+Use <code class="docutils literal notranslate"><span class="pre">ACT_PKAA</span></code> and <code class="docutils literal notranslate"><span class="pre">ACT_PKAG</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code>: the first component is the raw ion concentration <span class="math notranslate nohighlight">\(c_{\mathrm{ion}}\)</span>.
+Use <code class="docutils literal notranslate"><span class="pre">ACT_CMID_A</span></code> and <code class="docutils literal notranslate"><span class="pre">ACT_CMID_G</span></code>.</p></li>
+</ul>
+<p>Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>These two cases are equivalent when</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{p}K_{a,A,i} = -\log_{10}(c_{\mathrm{mid},A,i}), \qquad
+\mathrm{p}K_{a,G,i} = -\log_{10}(c_{\mathrm{mid},G,i}).\]</div>
 </dd>
 </dl>
-<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(m_{MP}^3~mol^{-1}~s^{-1}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> bool</p></td>
+<td><p><strong>Range:</strong> {False, True}</p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="core-kinetic-parameters">
+<h2>Core kinetic parameters<a class="headerlink" href="#core-kinetic-parameters" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">ACT_KA</span></code></dt><dd><p>Adsorption rate constants.</p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(m_{MP}^3\,mol^{-1}\,s^{-1}\)</span></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -305,7 +340,7 @@ state separately.</p>
 </tbody>
 </table>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">ACT_KD</span></code></dt><dd><p>Desorption rate constants</p>
+<dt><code class="docutils literal notranslate"><span class="pre">ACT_KD</span></code></dt><dd><p>Desorption rate constants.</p>
 </dd>
 </dl>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(s^{-1}\)</span></p>
@@ -318,20 +353,20 @@ state separately.</p>
 </tbody>
 </table>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">ACT_QMAX</span></code></dt><dd><p>Maximum binding capacities</p>
+<dt><code class="docutils literal notranslate"><span class="pre">ACT_QMAX</span></code></dt><dd><p>Maximum binding capacities before modulation by the ACT capacity gate.</p>
 </dd>
 </dl>
-<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(mol~m_{SP}^{-3}\)</span></p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(mol\,m_{SP}^{-3}\)</span></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\gt 0\)</span></p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
 <td><p><strong>Length:</strong> NCOMP</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">ACT_ETAA</span></code></dt><dd><p>Hill-type coefficients denoting the slope for the binding capacity changes as a function of pH changes</p>
+<dt><code class="docutils literal notranslate"><span class="pre">ACT_ETAA</span></code></dt><dd><p>Hill-type coefficients controlling how strongly the apparent binding capacity changes with the modulator concentration.</p>
 </dd>
 </dl>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(1\)</span></p>
@@ -344,7 +379,25 @@ state separately.</p>
 </tbody>
 </table>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">ACT_ETAG</span></code></dt><dd><p>Hill-type coefficients denoting the slope for the equilibrium constant changes as a function of pH changes</p>
+<dt><code class="docutils literal notranslate"><span class="pre">ACT_ETAG</span></code></dt><dd><p>Hill-type coefficients controlling how strongly the apparent affinity changes with the modulator concentration.</p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(1\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> NCOMP</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="parameters-for-act-use-ion-conc-false">
+<h2>Parameters for <code class="docutils literal notranslate"><span class="pre">ACT_USE_ION_CONC</span> <span class="pre">=</span> <span class="pre">False</span></code><a class="headerlink" href="#parameters-for-act-use-ion-conc-false" title="Link to this heading">¶</a></h2>
+<p>Use these parameters only when the first component is given as <span class="math notranslate nohighlight">\(\mathrm{pIon}\)</span>
+(for example <span class="math notranslate nohighlight">\(\mathrm{pH}\)</span>).</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">ACT_PKAA</span></code></dt><dd><p>Midpoint of the binding capacity transition on the negative logarithmic ion axis.</p>
 </dd>
 </dl>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(1\)</span></p>
@@ -357,7 +410,7 @@ state separately.</p>
 </tbody>
 </table>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">ACT_PKAA</span></code></dt><dd><p>Center point for the binding capacity changes as a function of pH changes</p>
+<dt><code class="docutils literal notranslate"><span class="pre">ACT_PKAG</span></code></dt><dd><p>Midpoint of the affinity (equilibrium constant) transition on the negative logarithmic ion axis.</p>
 </dd>
 </dl>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(1\)</span></p>
@@ -365,23 +418,55 @@ state separately.</p>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> NCOMP</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="parameters-for-act-use-ion-conc-true">
+<h2>Parameters for <code class="docutils literal notranslate"><span class="pre">ACT_USE_ION_CONC</span> <span class="pre">=</span> <span class="pre">True</span></code><a class="headerlink" href="#parameters-for-act-use-ion-conc-true" title="Link to this heading">¶</a></h2>
+<p>Use these parameters only when the first component is given as a raw ion concentration.
+CADET internally converts them to the same negative logarithmic axis used by the <code class="docutils literal notranslate"><span class="pre">ACT_PKAA</span></code> / <code class="docutils literal notranslate"><span class="pre">ACT_PKAG</span></code> form.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">ACT_CMID_A</span></code></dt><dd><p>Midpoint ion concentration for the binding capacity transition.
+Must be non-negative and should use the same concentration unit as the first liquid-phase component.</p>
+</dd>
+</dl>
+<p><strong>Recommended unit:</strong> <span class="math notranslate nohighlight">\(mol\,m_{MP}^{-3}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
 <td><p><strong>Length:</strong> NCOMP</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">ACT_PKAG</span></code></dt><dd><p>Center point for the equilibrium constant changes as a function of pH changes</p>
+<dt><code class="docutils literal notranslate"><span class="pre">ACT_CMID_G</span></code></dt><dd><p>Midpoint ion concentration for the affinity (equilibrium constant) transition.
+Must be non-negative and should use the same concentration unit as the first liquid-phase component.</p>
 </dd>
 </dl>
-<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(1\)</span></p>
+<p><strong>Recommended unit:</strong> <span class="math notranslate nohighlight">\(mol\,m_{MP}^{-3}\)</span></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
 <td><p><strong>Length:</strong> NCOMP</p></td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="practical-switching-rule">
+<h2>Practical switching rule<a class="headerlink" href="#practical-switching-rule" title="Link to this heading">¶</a></h2>
+<p>To convert an existing ACT setup from <code class="docutils literal notranslate"><span class="pre">ACT_USE_ION_CONC</span> <span class="pre">=</span> <span class="pre">False</span></code> to <code class="docutils literal notranslate"><span class="pre">ACT_USE_ION_CONC</span> <span class="pre">=</span> <span class="pre">True</span></code> while keeping
+exactly the same model response:</p>
+<ol class="arabic simple">
+<li><p>Replace the first component value <span class="math notranslate nohighlight">\(\mathrm{pIon}\)</span> by <span class="math notranslate nohighlight">\(c_{\mathrm{ion}} = 10^{-\mathrm{pIon}}\)</span>.</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">ACT_PKAA</span></code> by <code class="docutils literal notranslate"><span class="pre">ACT_CMID_A</span> <span class="pre">=</span> <span class="pre">10^{-\mathrm{ACT\_PKAA}}</span></code>.</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">ACT_PKAG</span></code> by <code class="docutils literal notranslate"><span class="pre">ACT_CMID_G</span> <span class="pre">=</span> <span class="pre">10^{-\mathrm{ACT\_PKAG}}</span></code>.</p></li>
+<li><p>Keep <code class="docutils literal notranslate"><span class="pre">ACT_KA</span></code>, <code class="docutils literal notranslate"><span class="pre">ACT_KD</span></code>, <code class="docutils literal notranslate"><span class="pre">ACT_QMAX</span></code>, <code class="docutils literal notranslate"><span class="pre">ACT_ETAA</span></code>, and <code class="docutils literal notranslate"><span class="pre">ACT_ETAG</span></code> unchanged.</p></li>
+</ol>
+</section>
 </section>
 
 

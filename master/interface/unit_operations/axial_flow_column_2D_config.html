@@ -273,13 +273,13 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_POROSITY</span></code></p>
 <blockquote>
-<div><p>Column porosity, either constant (length is 1) or for each radial zone (length is <span class="math notranslate nohighlight">\(\texttt{NRAD}\)</span>).
+<div><p>Column porosity, either constant (length is 1) or for each radial zone (length is <span class="math notranslate nohighlight">\(\texttt{RAD_NELEM}\)</span>).
 In case of a spatially inhomogeneous setting, the <span class="math notranslate nohighlight">\(\texttt{SENS_PARTYPE}\)</span> field is used for indexing the radial zone when specifying parameter sensitivities.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\((0,1]\)</span></p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1 / \texttt{NRAD}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1 / \texttt{RAD_NELEM}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -317,9 +317,9 @@ This field is optional. When left out, multiplexing behavior is inferred from th
 </div></blockquote>
 <ol class="arabic simple" start="0">
 <li><p>Radial-independent, axial-independent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_TYPE_VOLFRAC}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NPARTYPE}\)</span></p></li>
-<li><p>Radial-dependent, axial-independent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_TYPE_VOLFRAC}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NRAD} \cdot \texttt{NPARTYPE}\)</span>; ordering is radial-major</p></li>
+<li><p>Radial-dependent, axial-independent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_TYPE_VOLFRAC}\)</span> is <span class="math notranslate nohighlight">\(\texttt{RAD_NELEM} \cdot \texttt{NPARTYPE}\)</span>; ordering is radial-major</p></li>
 <li><p>Axial-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_TYPE_VOLFRAC}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOL} \cdot \texttt{NPARTYPE}\)</span>; ordering is axial-major</p></li>
-<li><p>Radial-dependent, axial-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_TYPE_VOLFRAC}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOL} \cdot \texttt{NRAD} \cdot \texttt{NPARTYPE}\)</span>; ordering is axial-radial-major</p></li>
+<li><p>Radial-dependent, axial-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_TYPE_VOLFRAC}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOL} \cdot \texttt{RAD_NELEM} \cdot \texttt{NPARTYPE}\)</span>; ordering is axial-radial-major</p></li>
 </ol>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
@@ -341,9 +341,9 @@ This field is optional. When left out, multiplexing behavior is inferred from th
 </div></blockquote>
 <ol class="arabic simple" start="0">
 <li><p>Radial-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is 1</p></li>
-<li><p>Radial-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NRAD}\)</span></p></li>
+<li><p>Radial-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{RAD_NELEM}\)</span></p></li>
 <li><p>Section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NSEC}\)</span></p></li>
-<li><p>Radial-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NRAD} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
+<li><p>Radial-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{RAD_NELEM} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
 </ol>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_AXIAL</span></code></p>
@@ -366,13 +366,13 @@ This field is optional. When left out, multiplexing behavior is inferred from th
 </div></blockquote>
 <ol class="arabic simple" start="0">
 <li><p>Component-independent, radial-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is 1</p></li>
-<li><p>Component-independent, radial-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NRAD}\)</span></p></li>
+<li><p>Component-independent, radial-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{RAD_NELEM}\)</span></p></li>
 <li><p>Component-dependent, radial-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span></p></li>
-<li><p>Component-dependent, radial-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NRAD}\)</span>; ordering is radial-major</p></li>
+<li><p>Component-dependent, radial-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{RAD_NELEM}\)</span>; ordering is radial-major</p></li>
 <li><p>Component-independent, radial-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NSEC}\)</span></p></li>
-<li><p>Component-independent, radial-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NRAD} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
+<li><p>Component-independent, radial-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{RAD_NELEM} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
 <li><p>Component-dependent, radial-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
-<li><p>Component-dependent, radial-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NRAD} \cdot \texttt{NSEC}\)</span>; ordering is section-radial-major</p></li>
+<li><p>Component-dependent, radial-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{RAD_NELEM} \cdot \texttt{NSEC}\)</span>; ordering is section-radial-major</p></li>
 </ol>
 <blockquote>
 <div><table class="docutils align-default">
@@ -405,13 +405,13 @@ This field is optional. When left out, multiplexing behavior is inferred from th
 </div></blockquote>
 <ol class="arabic simple" start="0">
 <li><p>Component-independent, radial-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is 1</p></li>
-<li><p>Component-independent, radial-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NRAD}\)</span></p></li>
+<li><p>Component-independent, radial-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{RAD_NELEM}\)</span></p></li>
 <li><p>Component-dependent, radial-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span></p></li>
-<li><p>Component-dependent, radial-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NRAD}\)</span>; ordering is radial-major</p></li>
+<li><p>Component-dependent, radial-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{RAD_NELEM}\)</span>; ordering is radial-major</p></li>
 <li><p>Component-independent, radial-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NSEC}\)</span></p></li>
-<li><p>Component-independent, radial-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NRAD} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
+<li><p>Component-independent, radial-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{RAD_NELEM} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
 <li><p>Component-dependent, radial-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
-<li><p>Component-dependent, radial-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NRAD} \cdot \texttt{NSEC}\)</span>; ordering is section-radial-major</p></li>
+<li><p>Component-dependent, radial-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{RAD_NELEM} \cdot \texttt{NSEC}\)</span>; ordering is section-radial-major</p></li>
 </ol>
 <blockquote>
 <div><table class="docutils align-default">
@@ -426,13 +426,13 @@ This field is optional. When left out, multiplexing behavior is inferred from th
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_C</span></code></p>
 <blockquote>
-<div><p>Initial concentrations for each component in all radial zones the bulk mobile phase (length <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span>), or for each component in each radial zone (length <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NRAD}\)</span>, ordering radial-major)</p>
+<div><p>Initial concentrations for each component in all radial zones the bulk mobile phase (length <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span>), or for each component in each radial zone (length <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{RAD_NELEM}\)</span>, ordering radial-major)</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{IV}}^{-3}\)</span></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} / \texttt{NCOMP} \cdot \texttt{NRAD}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOMP} / \texttt{NCOMP} \cdot \texttt{RAD_NELEM}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -525,7 +525,7 @@ For the same number of discrete points, DG will generally be slower but often mo
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\([0,\texttt{COLUMN_RADIUS}]\)</span></p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NRAD} + 1\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{RAD_NELEM} + 1\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -548,7 +548,7 @@ The total number of axial discrete points is given by (<code class="docutils lit
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">AX_NELEM</span></code></p>
 <blockquote>
-<div><p>Number of axial column discretization DG cellselements. The total number of axial discrete points is given by (<code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code> + 1 ) * <code class="docutils literal notranslate"><span class="pre">NELEM</span></code></p>
+<div><p>Number of axial column discretization DG elements. The total number of axial discrete points is given by (<code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code> + 1 ) * <code class="docutils literal notranslate"><span class="pre">NELEM</span></code></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -573,7 +573,7 @@ The total number of radial discrete points is given by (<code class="docutils li
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">RAD_NELEM</span></code></p>
 <blockquote>
-<div><p>Number of radial column discretization DG cellselements. The total number of axial discrete points is given by (<code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code> + 1 ) * <code class="docutils literal notranslate"><span class="pre">NELEM</span></code></p>
+<div><p>Number of radial column discretization DG elements. The total number of axial discrete points is given by (<code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code> + 1 ) * <code class="docutils literal notranslate"><span class="pre">NELEM</span></code>.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -613,7 +613,8 @@ The total number of radial discrete points is given by (<code class="docutils li
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">NRAD</span></code></p>
 <blockquote>
-<div><p>Number of radial column discretization cells</p>
+<div><p>Number of radial column discretization cells.
+Replaces the <code class="docutils literal notranslate"><span class="pre">RAD_NELEM</span></code> field in the length specification of parameters.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>

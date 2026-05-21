@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Gaussian Process Regression &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/binding/gaussian_process_regression.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Generalized Ion Exchange" href="generalized_ion_exchange.html" />
+    <link rel="prev" title="Freundlich LDF" href="freundlich_ldf.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Binding models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#equilibrium-constants">Equilibrium constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#linear-driving-force-ldf">Linear Driving Force (LDF)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#reference-concentrations">Reference concentrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature-matrix">Binding model feature matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization/index.html">Crystallization / Precipitation Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../../v5.0.3/index.html">v5.0.3</a></li>
+  <li><a href="../../../v5.0.4/index.html">v5.0.4</a></li>
+  <li><a href="../../../v5.1.0/index.html">v5.1.0</a></li>
+  <li><a href="../../../v5.1.1/index.html">v5.1.1</a></li>
+  <li><a href="../../../v6.0.0a1/index.html">v6.0.0a1</a></li>
+  <li><a href="../../../v6.0.0a3/index.html">v6.0.0a3</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="gaussian_process_regression.html">master</a></li>
+  <li><a href="../../../v5.1.X/index.html">v5.1.X</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+
+
+
+
+
+  
+    
+    
+  
+    
+    
+      
+      
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+  
+
+
+
+
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><strong>
+  You're reading the documentation for a development version.
+  
+    For the latest stable documentation, please have a look at <a href="../../../v5.1.X/index.html">v5.1.X</a>.
+  
+  
+</strong></p>
+
+
+
+
+  <section id="gaussian-process-regression">
+<span id="id1"></span><h1>Gaussian Process Regression<a class="headerlink" href="#gaussian-process-regression" title="Link to this heading">¶</a></h1>
+<p>The Gaussian process regression (GPR) model is a non-parametric, data-driven binding model that represents the equilibrium relation between pore-phase and solid-phase concentration by Gaussian process regression trained on tabulated data. The model predicts an equilibrium loading from training inputs in pore-phase concentration space and corresponding solid-phase loadings. :contentReference[oaicite:0]{index=0} :contentReference[oaicite:1]{index=1}</p>
+<p>For each component <span class="math notranslate nohighlight">\(i\)</span> and bound state <span class="math notranslate nohighlight">\(m\)</span>, an equilibrium loading</p>
+<div class="math notranslate nohighlight">
+\[c^{s,\ast}_{i,m} = f_{i,m}(c^p)\]</div>
+<p>is constructed from user-provided training data and trained kernel parameters. In the current implementation, the prediction is evaluated from pore-phase training inputs <code class="docutils literal notranslate"><span class="pre">CP_VALS</span></code>, solid-phase targets <code class="docutils literal notranslate"><span class="pre">CS_VALS</span></code>, and trained kernel hyperparameters <code class="docutils literal notranslate"><span class="pre">TRAINED_PARAMS</span></code> provided in the <code class="docutils literal notranslate"><span class="pre">training_data</span></code> scope. The input dimension is specified by <code class="docutils literal notranslate"><span class="pre">NDIM</span></code> and the kernel type by <code class="docutils literal notranslate"><span class="pre">KERNEL</span></code>. Supported kernels are <code class="docutils literal notranslate"><span class="pre">MLP</span></code>, <code class="docutils literal notranslate"><span class="pre">RBF</span></code>, <code class="docutils literal notranslate"><span class="pre">RBF_Linear</span></code>, and <code class="docutils literal notranslate"><span class="pre">MLP_Linear</span></code>. :contentReference[oaicite:2]{index=2}</p>
+<p>The GPR predictor evaluates the equilibrium loading in the standard kernel form</p>
+<div class="math notranslate nohighlight">
+\[c^{s,\ast}(c^p) = k(c^p, X)^\top \alpha,\]</div>
+<p>where <span class="math notranslate nohighlight">\(X\)</span> denotes the training inputs, <span class="math notranslate nohighlight">\(k(c^p, X)\)</span> is the vector of kernel evaluations between the current pore-phase concentration and all training samples, and <span class="math notranslate nohighlight">\(\alpha\)</span> is obtained from the linear system</p>
+<div class="math notranslate nohighlight">
+\[\alpha = \left(K(X,X) + \sigma_n^2 I\right)^{-1} y.\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(K(X,X)\)</span> is the kernel matrix assembled from the training inputs, <span class="math notranslate nohighlight">\(y\)</span> is the vector of solid-phase training values, and <span class="math notranslate nohighlight">\(\sigma_n^2\)</span> is the Gaussian noise variance added to the diagonal before Cholesky factorization. :contentReference[oaicite:3]{index=3}</p>
+<p>Depending on the selected kernel, the covariance function is given by one of the following forms.</p>
+<p>For the radial basis function kernel,</p>
+<div class="math notranslate nohighlight">
+\[k_{\mathrm{RBF}}(x,x')
+=
+\sigma_{\mathrm{RBF}}^2
+\exp\!\left(
+    -\frac{\lVert x-x' \rVert^2}{2\,\ell_{\mathrm{RBF}}}
+\right).\]</div>
+<p>For the linear kernel,</p>
+<div class="math notranslate nohighlight">
+\[k_{\mathrm{Lin}}(x,x')
+=
+\sigma_{\mathrm{Lin}}^2 \, x^\top x'.\]</div>
+<p>For the multilayer perceptron kernel,</p>
+<div class="math notranslate nohighlight">
+\[k_{\mathrm{MLP}}(x,x')
+=
+\sigma_{\mathrm{MLP}}^2 \frac{2}{\pi}
+\arcsin\!\left(
+    \frac{\sigma_w^2 x^\top x' + \sigma_b^2}
+    {\sqrt{\sigma_w^2 x^\top x + \sigma_b^2 + 1}
+     \sqrt{\sigma_w^2 x'^\top x' + \sigma_b^2 + 1}}
+\right).\]</div>
+<p>In addition, the implementation supports additive mixed kernels</p>
+<div class="math notranslate nohighlight">
+\[k_{\mathrm{RBF+Lin}}(x,x') = k_{\mathrm{RBF}}(x,x') + k_{\mathrm{Lin}}(x,x'),\]</div>
+<div class="math notranslate nohighlight">
+\[k_{\mathrm{MLP+Lin}}(x,x') = k_{\mathrm{MLP}}(x,x') + k_{\mathrm{Lin}}(x,x').\]</div>
+<p>These kernel definitions are used both for prediction and for evaluation of the Jacobian contribution. :contentReference[oaicite:4]{index=4} :contentReference[oaicite:5]{index=5}</p>
+<p>An offset is computed once during configuration as the GPR prediction at zero input and is subtracted from subsequent predictions. Thus, the equilibrium loading used by the binding model is</p>
+<div class="math notranslate nohighlight">
+\[c^{s,\ast}(c^p) = f(c^p) - f(0).\]</div>
+<p>This shifts the model response such that the predicted loading is zero at the chosen reference point. :contentReference[oaicite:6]{index=6} :contentReference[oaicite:7]{index=7}</p>
+<section id="kinetic-form">
+<h2>Kinetic form<a class="headerlink" href="#kinetic-form" title="Link to this heading">¶</a></h2>
+<p>The model is used in a kinetic linear-driving-force form. For each component <span class="math notranslate nohighlight">\(i\)</span> and bound state <span class="math notranslate nohighlight">\(m\)</span>, the exchange term is based on the deviation of the current solid-phase loading <span class="math notranslate nohighlight">\(c^s_{i,m}\)</span> from the GPR-predicted equilibrium loading <span class="math notranslate nohighlight">\(c^{s,\ast}_{i,m}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial c^s_{i,m}}{\partial t}
+=
+k^{\mathrm{kin}}_{i,m}\left(c^{s,\ast}_{i,m}(c^p) - c^s_{i,m}\right).\]</div>
+<p>Equivalently, in residual form the implementation evaluates</p>
+<div class="math notranslate nohighlight">
+\[r_{i,m}
+=
+k^{\mathrm{kin}}_{i,m}\left(c^s_{i,m} - c^{s,\ast}_{i,m}(c^p)\right).\]</div>
+<p>Thus, the Gaussian process regression model provides the equilibrium target, while the kinetic constant <span class="math notranslate nohighlight">\(k^{\mathrm{kin}}_{i,m}\)</span> controls how fast the equilibrium state is approached. The kinetic parameter is configured through <code class="docutils literal notranslate"><span class="pre">GPR_KKIN</span></code>. :contentReference[oaicite:8]{index=8} :contentReference[oaicite:9]{index=9}</p>
+<p>For more information on model parameters required to define in CADET file format, see <a class="reference internal" href="../../interface/binding/gaussian_process_regression.html#gaussian-process-regression-config"><span class="std std-ref">Gaussian Process Regression</span></a>.</p>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2026.
+      
+      |
+      <a href="../../_sources/modelling/binding/gaussian_process_regression.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

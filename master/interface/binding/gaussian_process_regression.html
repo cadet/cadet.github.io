@@ -224,10 +224,36 @@ state separately.</p>
 </tbody>
 </table>
 <dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CP_NDIM</span></code></dt><dd><p>Number of input dimensions per training point used in <code class="docutils literal notranslate"><span class="pre">CP_VALS</span></code>.
+Must equal number of components, user sanity check.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> NCOMP</p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CS_NDIM</span></code></dt><dd><p>Number of output dimensions per training point used in <code class="docutils literal notranslate"><span class="pre">CS_VALS</span></code>.
+Must equal total number of bound states, user sanity check.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> NTOTALBOUND</p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">CP_VALS</span></code></dt><dd><p>Flattened pore-phase concentration training inputs used by the Gaussian
 process regression model. The values represent the training input points
 <span class="math notranslate nohighlight">\(X\)</span> used to evaluate the kernel function. The array is interpreted
-according to <code class="docutils literal notranslate"><span class="pre">NDIM</span></code>.</p>
+as an <code class="docutils literal notranslate"><span class="pre">NTRAIN</span></code> major vector.</p>
 </dd>
 </dl>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(mol~m_{MP}^{-3}\)</span></p>
@@ -235,7 +261,7 @@ according to <code class="docutils literal notranslate"><span class="pre">NDIM</
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> unrestricted</p></td>
-<td><p><strong>Length:</strong> NTRAIN * NDIM</p></td>
+<td><p><strong>Length:</strong> NTRAIN * CP_NDIM</p></td>
 </tr>
 </tbody>
 </table>
@@ -250,25 +276,23 @@ coefficient vector <span class="math notranslate nohighlight">\(\alpha = (K + \s
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> unrestricted</p></td>
-<td><p><strong>Length:</strong> NTRAIN</p></td>
+<td><p><strong>Length:</strong> NTRAIN * CS_NDIM</p></td>
 </tr>
 </tbody>
 </table>
-<dl>
-<dt><code class="docutils literal notranslate"><span class="pre">TRAINED_PARAMS</span></code></dt><dd><p>Trained kernel hyperparameters of the Gaussian process regression model.
-The parameters are expected in the following order:</p>
-<ul class="simple">
-<li><p>MLP weight variance</p></li>
-<li><p>MLP bias variance</p></li>
-<li><p>MLP variance</p></li>
-<li><p>Linear variance</p></li>
-<li><p>RBF variance</p></li>
-<li><p>RBF lengthscale</p></li>
-<li><p>Gaussian noise variance</p></li>
-</ul>
-<p>All entries must be provided, regardless of the selected kernel.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">GPR_KKIN</span></code></dt><dd><p>Linear-driving-force coefficients in component-major ordering.</p>
 </dd>
 </dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(s^{-1}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> NCOMP</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code></dt><dd><p>Selects the kernel function used by the Gaussian process regression
 model. Supported values are <code class="docutils literal notranslate"><span class="pre">MLP</span></code>, <code class="docutils literal notranslate"><span class="pre">RBF</span></code>, <code class="docutils literal notranslate"><span class="pre">RBF_Linear</span></code>, and
@@ -283,32 +307,167 @@ model. Supported values are <code class="docutils literal notranslate"><span cla
 </tr>
 </tbody>
 </table>
+<section id="kernel-specific-hyperparameters">
+<h2>Kernel-Specific Hyperparameters<a class="headerlink" href="#kernel-specific-hyperparameters" title="Link to this heading">¶</a></h2>
+<p>Each bound state requires its own kernel configuration specified using the
+suffix <code class="docutils literal notranslate"><span class="pre">_BNDXXX</span></code>, where <code class="docutils literal notranslate"><span class="pre">XXX</span></code> is the zero-padded bound state index
+(e.g., <code class="docutils literal notranslate"><span class="pre">_BND000</span></code>, <code class="docutils literal notranslate"><span class="pre">_BND001</span></code>, <code class="docutils literal notranslate"><span class="pre">_BND002</span></code>).</p>
+<p>Bound state indices are assigned sequentially across components: if component 0
+has 2 bound states and component 1 has 1 bound state, the indices are:</p>
+<ul class="simple">
+<li><p>Bound state 0: component 0, state 0</p></li>
+<li><p>Bound state 1: component 0, state 1</p></li>
+<li><p>Bound state 2: component 1, state 0</p></li>
+</ul>
+<p>The following table summarizes which parameters are required for each kernel:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Kernel</strong></p></th>
+<th class="head"><p><strong>MLP</strong></p></th>
+<th class="head"><p><strong>RBF</strong></p></th>
+<th class="head"><p><strong>RBF_Linear</strong></p></th>
+<th class="head"><p><strong>MLP_Linear</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MLP_WEIGHT_VARIANCE_BND_XXX</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>MLP_BIAS_VARIANCE_BND_XXX</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>MLP_VARIANCE_BND_XXX</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>RBF_VARIANCE_BND_XXX</p></td>
+<td><p>—</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-even"><td><p>RBF_LENGTHSCALE_BND_XXX</p></td>
+<td><p>—</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+</tr>
+<tr class="row-odd"><td><p>LINEAR_VARIANCE_BND_XXX</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>GAUSSIAN_NOISE_VARIANCE_BND_XXX</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">NDIM</span></code></dt><dd><p>Number of input dimensions per training point used in
-<code class="docutils literal notranslate"><span class="pre">CP_VALS</span></code>. Must be a positive integer.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">MLP_WEIGHT_VARIANCE_BND_XXX</span></code></dt><dd><p>Weight variance hyperparameter for the MLP (arc-cosine) kernel.
+Required for <code class="docutils literal notranslate"><span class="pre">MLP</span></code> and <code class="docutils literal notranslate"><span class="pre">MLP_Linear</span></code> kernels.</p>
 </dd>
 </dl>
 <table class="docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">GPR_KKIN</span></code></dt><dd><p>Linear-driving-force coefficients in component-major ordering.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">MLP_BIAS_VARIANCE_BND_XXX</span></code></dt><dd><p>Bias variance hyperparameter for the MLP (arc-cosine) kernel.
+Required for <code class="docutils literal notranslate"><span class="pre">MLP</span></code> and <code class="docutils literal notranslate"><span class="pre">MLP_Linear</span></code> kernels.</p>
 </dd>
 </dl>
-<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(s^{-1}\)</span></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
-<td><p><strong>Length:</strong> NTOTALBND</p></td>
+<td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">MLP_VARIANCE_BND_XXX</span></code></dt><dd><p>Output variance hyperparameter for the MLP (arc-cosine) kernel.
+Required for <code class="docutils literal notranslate"><span class="pre">MLP</span></code> and <code class="docutils literal notranslate"><span class="pre">MLP_Linear</span></code> kernels.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">RBF_VARIANCE_BND_XXX</span></code></dt><dd><p>Output variance hyperparameter for the RBF (squared exponential) kernel.
+Required for <code class="docutils literal notranslate"><span class="pre">RBF</span></code> and <code class="docutils literal notranslate"><span class="pre">RBF_Linear</span></code> kernels.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">RBF_LENGTHSCALE_BND_XXX</span></code></dt><dd><p>Lengthscale hyperparameter for the RBF kernel, expected as <span class="math notranslate nohighlight">\(\ell^2\)</span>
+(squared lengthscale as exported from scikit-learn).
+Required for <code class="docutils literal notranslate"><span class="pre">RBF</span></code> and <code class="docutils literal notranslate"><span class="pre">RBF_Linear</span></code> kernels.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">LINEAR_VARIANCE_BND_XXX</span></code></dt><dd><p>Variance hyperparameter for the linear kernel.
+Required for <code class="docutils literal notranslate"><span class="pre">RBF_Linear</span></code> and <code class="docutils literal notranslate"><span class="pre">MLP_Linear</span></code> kernels.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">GAUSSIAN_NOISE_VARIANCE_BND_XXX</span></code></dt><dd><p>Noise variance hyperparameter <span class="math notranslate nohighlight">\(\sigma_n^2\)</span> added to the kernel
+diagonal for numerical stability and observation noise modeling.
+Required for all kernel types.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 
 

@@ -264,17 +264,16 @@ number of nodes.</p>
 </tr>
 </tbody>
 </table>
+<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_YYY</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">NORM_FACTOR</span></code></dt><dd><p>Normalization factors applied element-wise to the pore-phase
-concentration before feeding into the neural network. Each entry
-corresponds to one input dimension (component).</p>
+<dt><code class="docutils literal notranslate"><span class="pre">NORM_FACTOR</span></code></dt><dd><p>Normalization factors applied pore-phase concentration before feeding into the neural network.</p>
 </dd>
 </dl>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
-<td><p><strong>Length:</strong> NCOMP</p></td>
+<td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>
 </table>
@@ -292,8 +291,9 @@ training data and simulation conditions.</p>
 </tr>
 </tbody>
 </table>
-<p>Neural network weights and biases are organized hierarchically by layer. All weight matrices must be stored in column-major (Fortran) order.</p>
-<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/layer_0</strong></p>
+<p>Neural network weights and biases are organized hierarchically by layer.
+All weight matrices must be stored in column-major (Fortran) order.</p>
+<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_YYY/layer_0</strong></p>
 <p>First hidden layer parameters.</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code></dt><dd><p>Weight matrix <span class="math notranslate nohighlight">\(W_1\)</span> connecting input to first hidden layer.
@@ -320,7 +320,7 @@ Shape: (NNODES x NCOMP). Stored in column-major order.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/layer_1</strong></p>
+<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_YYY/layer_1</strong></p>
 <p>Second hidden layer parameters (for NLAYERS=2) or output layer parameters (for NLAYERS=1).</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code></dt><dd><p>Weight matrix <span class="math notranslate nohighlight">\(W_2\)</span>.</p>
@@ -363,7 +363,7 @@ Shape: (NNODES x NCOMP). Stored in column-major order.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/layer_2</strong></p>
+<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_YYY/layer_2</strong></p>
 <p>Output layer parameters (only for NLAYERS=2).</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code></dt><dd><p>Weight matrix <span class="math notranslate nohighlight">\(W_3\)</span> connecting second hidden layer to output.

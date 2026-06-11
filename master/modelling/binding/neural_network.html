@@ -228,7 +228,23 @@
 <p>The network output is scaled by a porosity factor and shifted by an offset:</p>
 <div class="math notranslate nohighlight">
 \[c^{s,\ast}(c^p) = \beta_{\text{poros}} \cdot \left(f(c^p \odot \alpha_{\text{norm}}) - f(0)\right)\]</div>
-<p>where <span class="math notranslate nohighlight">\(\beta_{\text{poros}}\)</span> is specified by <code class="docutils literal notranslate"><span class="pre">POROSITY_FACTOR</span></code>. The offset <span class="math notranslate nohighlight">\(f(0)\)</span> is computed once during configuration to ensure that the predicted loading is zero when the pore-phase concentration is zero.</p>
+<p>where <span class="math notranslate nohighlight">\(\beta_{\text{poros}}\)</span> is specified by <code class="docutils literal notranslate"><span class="pre">POROSITY_FACTOR</span></code>.
+The offset <span class="math notranslate nohighlight">\(f(0)\)</span> is computed once during configuration to ensure that the predicted loading is zero when the pore-phase concentration is zero (enforcing physically valid boundary conditions).</p>
+</section>
+<section id="normalization">
+<h2>Normalization<a class="headerlink" href="#normalization" title="Link to this heading">¶</a></h2>
+<p>The normalization factor <span class="math notranslate nohighlight">\(\alpha_{\text{norm}}\)</span> scales the liquid-phase concentrations before they are passed to the ANN.
+The ANN is trained and evaluated on these normalized concentrations rather than on the raw concentrations.
+Normalization factors should be chosen such that the normalized ANN inputs are typically of order 1.
+This generally improves training stability, prediction accuracy, and robustness of the nonlinear solver.
+Values that are excessively large or small should be avoided.</p>
+<p><strong>With</strong> mechanistic knowledge, it may be practical to choose normalization factors that reflect characteristic concentration scales of the respective bound state (e.g., equilibrium constants, affinity parameters, or other physically meaningful scaling factors).
+<strong>Without</strong> mechanistic knowledge, it may be practical to choose normalization factors purely for numerical conditioning. A common choice is to scale each input component to values of order unity, for example <span class="math notranslate nohighlight">\(\alpha_{\text{norm}} = max(c^p)\)</span></p>
+</section>
+<section id="porosity-factor">
+<h2>Porosity factor<a class="headerlink" href="#porosity-factor" title="Link to this heading">¶</a></h2>
+<p>The porosity scaling factor <span class="math notranslate nohighlight">\(\beta_{\text{poros}}\)</span> scales this prediction to the physical solid-phase loading used by the binding model.
+Since equilibrium loadings are often reported on different reference volumes or masses, <span class="math notranslate nohighlight">\(\beta_{\text{poros}}\)</span> is intended to be used as a simple correction factor to account for differences in porosity or unit conversions between the training data and the simulation conditions.</p>
 </section>
 <section id="kinetic-form">
 <h2>Kinetic Form<a class="headerlink" href="#kinetic-form" title="Link to this heading">¶</a></h2>

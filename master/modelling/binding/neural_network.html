@@ -204,17 +204,20 @@
 <p>For each component <span class="math notranslate nohighlight">\(i\)</span> and bound state <span class="math notranslate nohighlight">\(m\)</span>, an equilibrium loading</p>
 <div class="math notranslate nohighlight">
 \[c^{s,\ast}_{i,m} = f_{i,m}(c^p)\]</div>
-<p>is constructed from user-provided trained neural network weights and biases. In the current implementation, the neural network is a feedforward architecture with exponential linear unit (ELU) activations, supporting either one or two hidden layers.</p>
+<p>is constructed from user-provided trained neural network weights and biases.
+The neural network is a feedforward architecture with exponential linear unit (ELU) activations and an arbitrary number of hidden layers <span class="math notranslate nohighlight">\(N \geq 1\)</span>.</p>
 <section id="network-architecture">
 <h2>Network Architecture<a class="headerlink" href="#network-architecture" title="Link to this heading">¶</a></h2>
-<p>The neural network predictor uses the following architectures:</p>
-<p><strong>Single hidden layer:</strong></p>
+<p>The neural network predictor is defined by the following recurrence over <span class="math notranslate nohighlight">\(N\)</span> hidden layers:</p>
 <div class="math notranslate nohighlight">
-\[f(x) = W_2 \cdot \text{ELU}(W_1 \cdot x + b_1) + b_2\]</div>
-<p><strong>Two hidden layers:</strong></p>
+\[\begin{split}h_0 &amp;= x \\
+h_l &amp;= \text{ELU}(W_l \cdot h_{l-1} + b_l), \quad l = 1, \ldots, N \\
+f(x) &amp;= W_{N+1} \cdot h_N + b_{N+1}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(W_l\)</span> denote weight matrices, <span class="math notranslate nohighlight">\(b_l\)</span> denote bias vectors, and <span class="math notranslate nohighlight">\(x\)</span> is the input vector. The output layer applies no activation. The special cases are:</p>
 <div class="math notranslate nohighlight">
-\[f(x) = W_3 \cdot \text{ELU}(W_2 \cdot \text{ELU}(W_1 \cdot x + b_1) + b_2) + b_3\]</div>
-<p>where <span class="math notranslate nohighlight">\(W_i\)</span> denote weight matrices, <span class="math notranslate nohighlight">\(b_i\)</span> denote bias vectors, and the exponential linear unit (ELU) activation function is defined as:</p>
+\[\begin{split}N=1: \quad f(x) &amp;= W_2 \cdot \text{ELU}(W_1 \cdot x + b_1) + b_2 \\
+N=2: \quad f(x) &amp;= W_3 \cdot \text{ELU}(W_2 \cdot \text{ELU}(W_1 \cdot x + b_1) + b_2) + b_3\end{split}\]</div>
+<p>The exponential linear unit (ELU) activation function is defined as:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\text{ELU}(z) =
 \begin{cases}
@@ -262,14 +265,17 @@ k^{\mathrm{kin}}_{i,m}\left(c^s_{i,m} - c^{s,\ast}_{i,m}(c^p)\right).\]</div>
 </section>
 <section id="jacobian-computation">
 <h2>Jacobian Computation<a class="headerlink" href="#jacobian-computation" title="Link to this heading">¶</a></h2>
-<p>An analytical Jacobian is implemented, where the gradient with respect to the pore-phase concentration is computed as:</p>
-<p><strong>Single hidden layer:</strong></p>
+<p>An analytical Jacobian is implemented.
+Denoting the pre-activation at hidden layer <span class="math notranslate nohighlight">\(l\)</span> as <span class="math notranslate nohighlight">\(z_l = W_l \cdot h_{l-1} + b_l\)</span>, the gradient of the network output with respect to the input is given by the backpropagation chain rule:</p>
 <div class="math notranslate nohighlight">
-\[\frac{\partial c^{s,\ast}}{\partial c^p} = W_1^\top \cdot \text{diag}(\text{ELU}'(z_1)) \cdot W_2^\top\]</div>
-<p><strong>Two hidden layers:</strong></p>
-<div class="math notranslate nohighlight">
-\[\frac{\partial c^{s,\ast}}{\partial c^p} = W_1^\top \cdot \text{diag}(\text{ELU}'(z_1)) \cdot W_2^\top \cdot \text{diag}(\text{ELU}'(z_2)) \cdot W_3^\top\]</div>
-<p>where <span class="math notranslate nohighlight">\(z_i\)</span> denotes the pre-activation at layer <span class="math notranslate nohighlight">\(i\)</span>, and the ELU derivative is:</p>
+\[\frac{\partial f}{\partial x}
+=
+W_1^\top \cdot
+\left[
+    \prod_{l=1}^{N}
+    \text{diag}\!\left(\text{ELU}'(z_l)\right) \cdot W_{l+1}^\top
+\right]\]</div>
+<p>where the product is taken left-to-right with increasing <span class="math notranslate nohighlight">\(l\)</span>, and the ELU derivative is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\text{ELU}'(z) =
 \begin{cases}

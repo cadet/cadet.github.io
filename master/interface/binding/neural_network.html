@@ -239,21 +239,7 @@ neural network-predicted equilibrium.</p>
 </tbody>
 </table>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">NLAYERS</span></code></dt><dd><p>Number of hidden layers in the neural network architecture.
-Currently supports 1 or 2 hidden layers.</p>
-</dd>
-</dl>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
-<td><p><strong>Range:</strong> {1, 2}</p></td>
-<td><p><strong>Length:</strong> 1</p></td>
-</tr>
-</tbody>
-</table>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">NNODES</span></code></dt><dd><p>Number of nodes per hidden layer. All hidden layers have the same
-number of nodes.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">NLAYERS</span></code></dt><dd><p>Number of hidden layers <span class="math notranslate nohighlight">\(N\)</span> in the neural network architecture.</p>
 </dd>
 </dl>
 <table class="docutils align-default">
@@ -264,9 +250,23 @@ number of nodes.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_YYY</strong></p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">NORM_FACTOR</span></code></dt><dd><p>Normalization factors applied pore-phase concentration before feeding into the neural network.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">NNODES</span></code></dt><dd><p>Number of nodes per hidden layer.
+All hidden layers share the same width.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_XXX/layer_0</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">NORM_FACTOR</span></code></dt><dd><p>Normalization factors applied to the pore-phase
+concentration before feeding into the neural network.</p>
 </dd>
 </dl>
 <table class="docutils align-default">
@@ -291,12 +291,15 @@ training data and simulation conditions.</p>
 </tr>
 </tbody>
 </table>
-<p>Neural network weights and biases are organized hierarchically by layer.
-All weight matrices must be stored in column-major (Fortran) order.</p>
-<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_YYY/layer_0</strong></p>
-<p>First hidden layer parameters.</p>
+<p>Neural network weights and biases are organized hierarchically by bound state and layer.
+For each bound state, there are <code class="docutils literal notranslate"><span class="pre">NLAYERS</span> <span class="pre">+</span> <span class="pre">1</span></code> layer groups:
+<code class="docutils literal notranslate"><span class="pre">layer_0</span></code> through <code class="docutils literal notranslate"><span class="pre">layer_{NLAYERS-1}</span></code> are the hidden layers and
+<code class="docutils literal notranslate"><span class="pre">layer_{NLAYERS}</span></code> is the output layer. All weight matrices must be stored in
+column-major (Fortran) order.</p>
+<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_XXX/layer_0</strong></p>
+<p>First hidden layer parameters. Always present.</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code></dt><dd><p>Weight matrix <span class="math notranslate nohighlight">\(W_1\)</span> connecting input to first hidden layer.
+<dt><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code></dt><dd><p>Weight matrix <span class="math notranslate nohighlight">\(W_1\)</span> connecting the input to the first hidden layer.
 Shape: (NNODES x NCOMP). Stored in column-major order.</p>
 </dd>
 </dl>
@@ -309,7 +312,7 @@ Shape: (NNODES x NCOMP). Stored in column-major order.</p>
 </tbody>
 </table>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">BIAS</span></code></dt><dd><p>Bias vector <span class="math notranslate nohighlight">\(b_1\)</span> for first hidden layer.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">BIAS</span></code></dt><dd><p>Bias vector <span class="math notranslate nohighlight">\(b_1\)</span> for the first hidden layer.</p>
 </dd>
 </dl>
 <table class="docutils align-default">
@@ -320,53 +323,38 @@ Shape: (NNODES x NCOMP). Stored in column-major order.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_YYY/layer_1</strong></p>
-<p>Second hidden layer parameters (for NLAYERS=2) or output layer parameters (for NLAYERS=1).</p>
-<dl>
-<dt><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code></dt><dd><p>Weight matrix <span class="math notranslate nohighlight">\(W_2\)</span>.</p>
-<ul class="simple">
-<li><p>For NLAYERS=1: Shape (1 x NNODES), connects hidden to output.</p></li>
-<li><p>For NLAYERS=2: Shape (NNODES x NNODES), connects first to second hidden layer.</p></li>
-</ul>
-<p>Stored in column-major order.</p>
+<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_XXX/layer_l</strong>
+<strong>(for l = 1, …, NLAYERS-1)</strong></p>
+<p>Intermediate hidden layer parameters. Present only when <code class="docutils literal notranslate"><span class="pre">NLAYERS</span> <span class="pre">&gt;=</span> <span class="pre">2</span></code>.
+Layer <code class="docutils literal notranslate"><span class="pre">layer_l</span></code> connects hidden layer <span class="math notranslate nohighlight">\(l\)</span> to hidden layer <span class="math notranslate nohighlight">\(l+1\)</span>.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code></dt><dd><p>Weight matrix <span class="math notranslate nohighlight">\(W_{l+1}\)</span> of shape (NNODES x NNODES). Stored in column-major order.</p>
 </dd>
 </dl>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
-<td><dl class="simple">
-<dt><strong>Length:</strong> NNODES (NLAYERS=1)</dt><dd><p>or NNODES*NNODES (NLAYERS=2)</p>
-</dd>
-</dl>
-</td>
+<td><p><strong>Length:</strong> NNODES*NNODES</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">BIAS</span></code></dt><dd><p>Bias vector <span class="math notranslate nohighlight">\(b_2\)</span>.</p>
-<ul class="simple">
-<li><p>For NLAYERS=1: Output bias (length 1).</p></li>
-<li><p>For NLAYERS=2: Second hidden layer bias (length NNODES).</p></li>
-</ul>
+<dt><code class="docutils literal notranslate"><span class="pre">BIAS</span></code></dt><dd><p>Bias vector <span class="math notranslate nohighlight">\(b_{l+1}\)</span> for hidden layer <span class="math notranslate nohighlight">\(l+1\)</span>.</p>
 </dd>
 </dl>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
-<td><dl class="simple">
-<dt><strong>Length:</strong> 1 (NLAYERS=1)</dt><dd><p>or NNODES (NLAYERS=2)</p>
-</dd>
-</dl>
-</td>
+<td><p><strong>Length:</strong> NNODES</p></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_YYY/layer_2</strong></p>
-<p>Output layer parameters (only for NLAYERS=2).</p>
+<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_XXX/layer_NLAYERS</strong></p>
+<p>Output layer parameters. Always present. Index equals <code class="docutils literal notranslate"><span class="pre">NLAYERS</span></code>.</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code></dt><dd><p>Weight matrix <span class="math notranslate nohighlight">\(W_3\)</span> connecting second hidden layer to output.
+<dt><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code></dt><dd><p>Weight matrix <span class="math notranslate nohighlight">\(W_{N+1}\)</span> connecting the last hidden layer to the scalar output.
 Shape: (1 x NNODES). Stored in column-major order.</p>
 </dd>
 </dl>
@@ -379,7 +367,7 @@ Shape: (1 x NNODES). Stored in column-major order.</p>
 </tbody>
 </table>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">BIAS</span></code></dt><dd><p>Bias scalar <span class="math notranslate nohighlight">\(b_3\)</span> for output layer.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">BIAS</span></code></dt><dd><p>Bias scalar <span class="math notranslate nohighlight">\(b_{N+1}\)</span> for the output layer.</p>
 </dd>
 </dl>
 <table class="docutils align-default">

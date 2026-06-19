@@ -50,7 +50,10 @@
 <li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input_group.html">Input Group</a></li>
 <li class="toctree-l2"><a class="reference internal" href="output_group.html">Output Group</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Meta Group</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Meta Group</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#group-meta-idas">Group /meta/idas</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../developer_guide/index.html">Developer Guide</a></li>
@@ -248,6 +251,147 @@
 </tbody>
 </table>
 </div></blockquote>
+<section id="group-meta-idas">
+<h2>Group /meta/idas<a class="headerlink" href="#group-meta-idas" title="Link to this heading">¶</a></h2>
+<p>Some of the optional outputs, especially the various counters, can be very useful in determining how successful the IDA solver is in doing its job.
+For example, the counters nsteps and nrevals provide a rough measure of the overall cost of a given run, and can be compared among runs with differing input options to suggest which set of options is most efficient.
+The ratio nniters/nsteps measures the performance of the nonlinear solver in solving the nonlinear systems at each time step; typical values for this range from 1.1 to 1.8.
+The ratio njevals/nniters (in the case of a matrix-based linear solver), and the ratio npevals/nniters (in the case of an iterative linear solver) measure the overall degree of nonlinearity in these systems, and also the quality of the approximate Jacobian or preconditioner being used.
+Thus, for example, njevals/nniters can indicate if a user-supplied Jacobian is inaccurate, if this ratio is larger than for the case of the corresponding internal Jacobian.
+The ratio nliters/nniters measures the performance of the Krylov iterative linear solver, and thus (indirectly) the quality of the preconditioner.
+In the following, <cite>NSOLUTIONTIMES</cite> denotes the number of time points at which the solution is reported, see <cite>USER_SOLUTION_TIMES</cite>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">IDAS_NTIMESTEPS</span></code></p>
+<blockquote>
+<div><p>Number of time steps taken by the IDAS time integrator</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
+<td><p><strong>Type:</strong> int</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">IDAS_NEXT_STEP_SIZE</span></code></p>
+<blockquote>
+<div><p>Time integration step size to be attempted on the next internal step</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
+<td><p><strong>Type:</strong> double</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">IDAS_NEXT_TIME_POINT</span></code></p>
+<blockquote>
+<div><p>Time integration next time point to be attempted on the next internal step</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
+<td><p><strong>Type:</strong> double</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">IDAS_BDF_ORDER</span></code></p>
+<blockquote>
+<div><p>Integration method order at corresponding time point</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
+<td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Length:</strong> <code class="docutils literal notranslate"><span class="pre">NSOLUTIONTIMES</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">IDAS_KUMULATIVE_NTIMESTEPS</span></code></p>
+<blockquote>
+<div><p>Cumulative number of time steps taken by the IDAS at corresponding time point</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
+<td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Length:</strong> <code class="docutils literal notranslate"><span class="pre">NSOLUTIONTIMES</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">IDAS_N_RESIDUAL_CALLS</span></code></p>
+<blockquote>
+<div><p>Number of calls to the user?s residual evaluation function at corresponding time point</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
+<td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Length:</strong> <code class="docutils literal notranslate"><span class="pre">NSOLUTIONTIMES</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">IDAS_N_LINSOLVER_SETUP_CALLS</span></code></p>
+<blockquote>
+<div><p>Cumulative number of calls made to the linear solver?s setup function at corresponding time point</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
+<td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Length:</strong> <code class="docutils literal notranslate"><span class="pre">NSOLUTIONTIMES</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">IDAS_N_LOCAL_ERROR_TEST_FAILURES</span></code></p>
+<blockquote>
+<div><p>Cumulative number of local error test failures that have occurred at corresponding time point</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
+<td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Length:</strong> <code class="docutils literal notranslate"><span class="pre">NSOLUTIONTIMES</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">IDAS_INTEGRATION_STEP_SIZE</span></code></p>
+<blockquote>
+<div><p>Integration step size taken on the last internal step at corresponding time point</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
+<td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Length:</strong> <code class="docutils literal notranslate"><span class="pre">NSOLUTIONTIMES</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">IDAS_FIRST_INTEGRATION_STEP_SIZE</span></code></p>
+<blockquote>
+<div><p>Value of the integration step size used on the first step</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
+<td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Length:</strong> <code class="docutils literal notranslate"><span class="pre">NSOLUTIONTIMES</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div></blockquote>
+</section>
 </section>
 
 

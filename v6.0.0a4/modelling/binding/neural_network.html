@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Neural Network Binding &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/binding/neural_network.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Saska" href="saska.html" />
+    <link rel="prev" title="Multi-State Steric Mass Action" href="multi_state_steric_mass_action.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Binding models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#equilibrium-constants">Equilibrium constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#linear-driving-force-ldf">Linear Driving Force (LDF)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#reference-concentrations">Reference concentrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature-matrix">Binding model feature matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization/index.html">Crystallization / Precipitation Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../../v5.0.3/index.html">v5.0.3</a></li>
+  <li><a href="../../../v5.0.4/index.html">v5.0.4</a></li>
+  <li><a href="../../../v5.1.0/index.html">v5.1.0</a></li>
+  <li><a href="../../../v5.1.1/index.html">v5.1.1</a></li>
+  <li><a href="../../../v6.0.0a1/index.html">v6.0.0a1</a></li>
+  <li><a href="../../../v6.0.0a3/index.html">v6.0.0a3</a></li>
+  <li><a href="neural_network.html">v6.0.0a4</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../../master/modelling/binding/neural_network.html">master</a></li>
+  <li><a href="../../../v5.1.X/index.html">v5.1.X</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+
+
+
+
+
+  
+    
+    
+  
+    
+    
+      
+      
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+  
+
+
+
+
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section id="neural-network-binding">
+<span id="neural-network"></span><h1>Neural Network Binding<a class="headerlink" href="#neural-network-binding" title="Link to this heading">¶</a></h1>
+<p>The Neural Network (NN) binding model is a non-parametric, data-driven binding model that represents the equilibrium relation between pore-phase and solid-phase concentration using a trained feedforward neural network. The model predicts an equilibrium loading from a neural network trained on experimental or simulated adsorption data.</p>
+<p>For each component <span class="math notranslate nohighlight">\(i\)</span> and bound state <span class="math notranslate nohighlight">\(m\)</span>, an equilibrium loading</p>
+<div class="math notranslate nohighlight">
+\[c^{s,\ast}_{i,m} = f_{i,m}(c^p)\]</div>
+<p>is constructed from user-provided trained neural network weights and biases.
+The neural network is a feedforward architecture with exponential linear unit (ELU) activations and an arbitrary number of hidden layers <span class="math notranslate nohighlight">\(N \geq 1\)</span>.</p>
+<section id="network-architecture">
+<h2>Network Architecture<a class="headerlink" href="#network-architecture" title="Link to this heading">¶</a></h2>
+<p>The neural network predictor is defined by the following recurrence over <span class="math notranslate nohighlight">\(N\)</span> hidden layers:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}h_0 &amp;= x \\
+h_l &amp;= \text{ELU}(W_l \cdot h_{l-1} + b_l), \quad l = 1, \ldots, N \\
+f(x) &amp;= W_{N+1} \cdot h_N + b_{N+1}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(W_l\)</span> denote weight matrices, <span class="math notranslate nohighlight">\(b_l\)</span> denote bias vectors, and <span class="math notranslate nohighlight">\(x\)</span> is the input vector. The output layer applies no activation. The special cases are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}N=1: \quad f(x) &amp;= W_2 \cdot \text{ELU}(W_1 \cdot x + b_1) + b_2 \\
+N=2: \quad f(x) &amp;= W_3 \cdot \text{ELU}(W_2 \cdot \text{ELU}(W_1 \cdot x + b_1) + b_2) + b_3\end{split}\]</div>
+<p>The exponential linear unit (ELU) activation function is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{ELU}(z) =
+\begin{cases}
+    z &amp; \text{if } z \geq 0 \\
+    e^z - 1 &amp; \text{if } z &lt; 0
+\end{cases}\end{split}\]</div>
+<p>The input to the neural network is the normalized pore-phase concentration vector:</p>
+<div class="math notranslate nohighlight">
+\[x = c^p \odot \alpha_{\text{norm}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha_{\text{norm}}\)</span> is the normalization factor specified by <code class="docutils literal notranslate"><span class="pre">NORM_FACTOR</span></code>, and <span class="math notranslate nohighlight">\(\odot\)</span> denotes element-wise multiplication.</p>
+<p>The network output is scaled by a porosity factor and shifted by an offset:</p>
+<div class="math notranslate nohighlight">
+\[c^{s,\ast}(c^p) = \beta_{\text{poros}} \cdot \left(f(c^p \odot \alpha_{\text{norm}}) - f(0)\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\beta_{\text{poros}}\)</span> is specified by <code class="docutils literal notranslate"><span class="pre">POROSITY_FACTOR</span></code>.
+The offset <span class="math notranslate nohighlight">\(f(0)\)</span> is computed once during configuration to ensure that the predicted loading is zero when the pore-phase concentration is zero (enforcing physically valid boundary conditions).</p>
+</section>
+<section id="normalization">
+<h2>Normalization<a class="headerlink" href="#normalization" title="Link to this heading">¶</a></h2>
+<p>The normalization factor <span class="math notranslate nohighlight">\(\alpha_{\text{norm}}\)</span> scales the liquid-phase concentrations before they are passed to the ANN.
+The ANN is trained and evaluated on these normalized concentrations rather than on the raw concentrations.
+Normalization factors should be chosen such that the normalized ANN inputs are typically of order 1.
+This generally improves training stability, prediction accuracy, and robustness of the nonlinear solver.
+Values that are excessively large or small should be avoided.</p>
+<p><strong>With</strong> mechanistic knowledge, it may be practical to choose normalization factors that reflect characteristic concentration scales of the respective bound state (e.g., equilibrium constants, affinity parameters, or other physically meaningful scaling factors).
+<strong>Without</strong> mechanistic knowledge, it may be practical to choose normalization factors purely for numerical conditioning. A common choice is to scale each input component to values of order unity, for example <span class="math notranslate nohighlight">\(\alpha_{\text{norm}} = max(c^p)\)</span></p>
+</section>
+<section id="porosity-factor">
+<h2>Porosity factor<a class="headerlink" href="#porosity-factor" title="Link to this heading">¶</a></h2>
+<p>The porosity scaling factor <span class="math notranslate nohighlight">\(\beta_{\text{poros}}\)</span> scales this prediction to the physical solid-phase loading used by the binding model.
+Since equilibrium loadings are often reported on different reference volumes or masses, <span class="math notranslate nohighlight">\(\beta_{\text{poros}}\)</span> is intended to be used as a simple correction factor to account for differences in porosity or unit conversions between the training data and the simulation conditions.</p>
+</section>
+<section id="kinetic-form">
+<h2>Kinetic Form<a class="headerlink" href="#kinetic-form" title="Link to this heading">¶</a></h2>
+<p>The model is used in a kinetic linear-driving-force form. For each component <span class="math notranslate nohighlight">\(i\)</span> and bound state <span class="math notranslate nohighlight">\(m\)</span>, the exchange term is based on the deviation of the current solid-phase loading <span class="math notranslate nohighlight">\(c^s_{i,m}\)</span> from the neural network-predicted equilibrium loading <span class="math notranslate nohighlight">\(c^{s,\ast}_{i,m}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial c^s_{i,m}}{\partial t}
+=
+k^{\mathrm{kin}}_{i,m}\left(c^{s,\ast}_{i,m}(c^p) - c^s_{i,m}\right).\]</div>
+<p>Equivalently, in residual form the implementation evaluates</p>
+<div class="math notranslate nohighlight">
+\[r_{i,m}
+=
+k^{\mathrm{kin}}_{i,m}\left(c^s_{i,m} - c^{s,\ast}_{i,m}(c^p)\right).\]</div>
+<p>Thus, the neural network provides the equilibrium target, while the kinetic constant <span class="math notranslate nohighlight">\(k^{\mathrm{kin}}_{i,m}\)</span> controls how fast the equilibrium state is approached. The kinetic parameter is configured through <code class="docutils literal notranslate"><span class="pre">NN_KKIN</span></code>.</p>
+</section>
+<section id="jacobian-computation">
+<h2>Jacobian Computation<a class="headerlink" href="#jacobian-computation" title="Link to this heading">¶</a></h2>
+<p>An analytical Jacobian is implemented.
+Denoting the pre-activation at hidden layer <span class="math notranslate nohighlight">\(l\)</span> as <span class="math notranslate nohighlight">\(z_l = W_l \cdot h_{l-1} + b_l\)</span>, the gradient of the network output with respect to the input is given by the backpropagation chain rule:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial f}{\partial x}
+=
+W_1^\top \cdot
+\left[
+    \prod_{l=1}^{N}
+    \text{diag}\!\left(\text{ELU}'(z_l)\right) \cdot W_{l+1}^\top
+\right]\]</div>
+<p>where the product is taken left-to-right with increasing <span class="math notranslate nohighlight">\(l\)</span>, and the ELU derivative is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{ELU}'(z) =
+\begin{cases}
+    1 &amp; \text{if } z \geq 0 \\
+    e^z &amp; \text{if } z &lt; 0
+\end{cases}\end{split}\]</div>
+<p>The chain rule accounts for input normalization and output scaling when computing the full Jacobian contribution to the binding residual.</p>
+<p>For more information on model parameters required to define in CADET file format, see <a class="reference internal" href="../../interface/binding/neural_network.html#neural-network-config"><span class="std std-ref">Neural Network Binding</span></a>.</p>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2026.
+      
+      |
+      <a href="../../_sources/modelling/binding/neural_network.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

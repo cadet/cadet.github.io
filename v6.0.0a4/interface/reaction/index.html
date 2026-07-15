@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Reaction models &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/reaction/index.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Mass Action Law" href="mass_action_law.html" />
+    <link rel="prev" title="Neural Network Binding" href="../binding/neural_network.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Interface specifications</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../input_group.html">Input Group</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../system.html">System of unit operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../unit_operations/index.html">Unit Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../population_balance_model.html">Crystallization / Precipitation models</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flux_reconstruction.html">Flux reconstruction methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../return_data.html">Return data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensitivities.html">Parameter Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../solver.html">Solver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../parameter_dependencies.html">Parameter Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spatial_discretization_methods.html">Spatial discretization methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../output_group.html">Output Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta_group.html">Meta Group</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/interface/reaction/index.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/interface/reaction/index.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/interface/reaction/index.html">v5.0.2</a></li>
+  <li><a href="../../../v5.0.3/interface/reaction/index.html">v5.0.3</a></li>
+  <li><a href="../../../v5.0.4/interface/reaction/index.html">v5.0.4</a></li>
+  <li><a href="../../../v5.1.0/interface/reaction/index.html">v5.1.0</a></li>
+  <li><a href="../../../v5.1.1/interface/reaction/index.html">v5.1.1</a></li>
+  <li><a href="../../../v6.0.0a1/interface/reaction/index.html">v6.0.0a1</a></li>
+  <li><a href="../../../v6.0.0a3/interface/reaction/index.html">v6.0.0a3</a></li>
+  <li><a href="index.html">v6.0.0a4</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../../master/interface/reaction/index.html">master</a></li>
+  <li><a href="../../../v5.1.X/interface/reaction/index.html">v5.1.X</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+
+
+
+
+
+  
+    
+    
+  
+    
+    
+      
+      
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+  
+
+
+
+
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section id="reaction-models">
+<span id="ffreaction"></span><h1>Reaction models<a class="headerlink" href="#reaction-models" title="Link to this heading">¶</a></h1>
+<p>Reactions can take place on different phases in the model. The interface specification depends on the phase(s) for which the reaction takes place.</p>
+<p>A reaction can be located in:</p>
+<ul class="simple">
+<li><p><strong>Unit Operation</strong>: The reaction group is defined under the corresponding transport phase i.e. <code class="docutils literal notranslate"><span class="pre">unit_XXX/liquid_reaction_YYY</span></code>.</p></li>
+<li><p><strong>Particle</strong>: The reaction group is defined under the corresponding particle phase i.e. <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/liquid_reaction_YYY</span></code> or <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/solid_reaction_YYY</span></code>.</p></li>
+</ul>
+<p>Furthermore, we differ between reactions which take place in either a single phase or between two phases.</p>
+<section id="single-phase-reactions">
+<h2>Single Phase Reactions<a class="headerlink" href="#single-phase-reactions" title="Link to this heading">¶</a></h2>
+<p>Single phase reactions take place either in the liquid phase or the solid phase.</p>
+<p>The number of reaction models is specified at the unit or particle level using the following parameters:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NREAC_LIQUID</span></code> for liquid phase reactions i.e. <code class="docutils literal notranslate"><span class="pre">unit_XXX/NREAC_LIQUID</span></code> or <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/NREAC_LIQUID</span></code>.,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NREAC_SOLID</span></code> for solid phase reactions i.e. <code class="docutils literal notranslate"><span class="pre">unit_XXX/NREAC_SOLID</span></code> or <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/NREAC_SOLID</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>The input group for parameters of single reactions is given by <code class="docutils literal notranslate"><span class="pre">phase_reaction_YYY</span></code> where <code class="docutils literal notranslate"><span class="pre">phase</span></code> is one of <code class="docutils literal notranslate"><span class="pre">liquid</span></code> or <code class="docutils literal notranslate"><span class="pre">solid</span></code> and <code class="docutils literal notranslate"><span class="pre">YYY</span></code> is a 0-based index for the reaction group.</p>
+<p><strong>Single-Phase Reaction Models</strong>:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mass_action_law.html">Mass Action Law</a></li>
+<li class="toctree-l1"><a class="reference internal" href="michaelis_menten_kinetics.html">Michaelis Menten kinetics</a></li>
+</ul>
+</div>
+</section>
+<section id="cross-phase-reactions">
+<h2>Cross Phase Reactions<a class="headerlink" href="#cross-phase-reactions" title="Link to this heading">¶</a></h2>
+<p>Cross phase reactions take place between a liquid phase and a solid phase.</p>
+<dl class="simple">
+<dt>To specify the number of reaction models, use the parameter at the column or particle level:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NREAC_CROSS_PHASE</span></code> for cross-phase reactions i.e. <code class="docutils literal notranslate"><span class="pre">unit_XXX/NREAC_CROSS_PHASE</span></code> or <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/NREAC_CROSS_PHASE</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The input group for cross-phase reactions is given by <code class="docutils literal notranslate"><span class="pre">cross_phase_reaction_YYY</span></code> where <code class="docutils literal notranslate"><span class="pre">YYY</span></code> is a 0-based index for the reaction group.</p>
+<p><strong>Cross-Phase Reaction Models</strong>:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mass_action_law_cross_phase.html">Mass Action Law Cross Phase</a></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Cross-phase reaction models can <strong>only</strong> be used in the cross-phase formulation</p></li>
+</ul>
+</div>
+</section>
+<section id="step-by-step-guide-to-define-reaction-model">
+<h2>Step by Step guide to define reaction model<a class="headerlink" href="#step-by-step-guide-to-define-reaction-model" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Select the phase(s) the reaction (liquid, solid or cross phase) will take place.</p></li>
+<li><p>Choose how many reaction model types you want to define and set up the corresponding parameter in the configuration file (e.g., <code class="docutils literal notranslate"><span class="pre">NREAC_LIQUID</span></code>, <code class="docutils literal notranslate"><span class="pre">NREAC_SOLID</span></code>, <code class="docutils literal notranslate"><span class="pre">NREAC_CROSS_PHASE</span></code>).</p></li>
+</ol>
+<blockquote>
+<div><dl class="simple">
+<dt><strong>Note</strong>:</dt><dd><ul class="simple">
+<li><p>The input group depends on whether the reaction is defined in a particle phase(s) or bulk phases.</p></li>
+<li><p>It is possible to define multiple reactions of the same type.</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Choose the appropriate reaction model for each of the reaction model type based on the kinetics of your system (e.g., Mass Action Law (<a class="reference internal" href="mass_action_law.html#mass-action-law-config"><span class="std std-ref">Mass Action Law</span></a>), Michaelis-Menten (<a class="reference internal" href="michaelis_menten_kinetics.html#michaelis-menten-kinetics-config"><span class="std std-ref">Michaelis Menten kinetics</span></a>)) and write it under the corresponding input group (e.g., <code class="docutils literal notranslate"><span class="pre">liquid_reaction_000</span></code>, <code class="docutils literal notranslate"><span class="pre">solid_reaction_001</span></code>, <code class="docutils literal notranslate"><span class="pre">cross_phase_reaction_002</span></code>).</p></li>
+<li><p>Define the reaction parameters according to the chosen model’s specifications. Refer to the specific reaction model documentation for details on required parameters.</p></li>
+</ol>
+</section>
+<section id="externally-dependent-reaction-models">
+<h2>Externally dependent reaction models<a class="headerlink" href="#externally-dependent-reaction-models" title="Link to this heading">¶</a></h2>
+<p>Some reaction models have a variant that can use external sources as specified <a class="reference internal" href="../system.html#ffmodelexternalsourcelininterp"><span class="std std-ref">/input/model/external/</span></a> (also see Section <a class="reference internal" href="../../modelling/reaction/index.html#dependence-on-external-function-react"><span class="std std-ref">Dependence on external function</span></a>).
+For the sake of brevity, only the standard variant of those reaction models is specified below.
+In order to obtain the format for the externally dependent variant, first replace the reaction model name <code class="docutils literal notranslate"><span class="pre">XXX</span></code> by <code class="docutils literal notranslate"><span class="pre">EXT_XXX</span></code>.
+Each parameter <span class="math notranslate nohighlight">\(p\)</span> (except for stoichiometric and exponent matrices) depends on a (possibly distinct) external source in a polynomial way:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    p(T) &amp;= p_{\texttt{TTT}} T^3 + p_{\texttt{TT}} T^2 + p_{\texttt{T}} T + p.
+\end{aligned}\]</div>
+<p>Thus, a parameter <code class="docutils literal notranslate"><span class="pre">XXX_YYY</span></code> of the standard reaction model variant is replaced by the four parameters <code class="docutils literal notranslate"><span class="pre">EXT_XXX_YYY</span></code>, <code class="docutils literal notranslate"><span class="pre">EXT_XXX_YYY_T</span></code>, <code class="docutils literal notranslate"><span class="pre">EXT_XXX_YYY_TT</span></code>, and <code class="docutils literal notranslate"><span class="pre">EXT_XXX_YYY_TTT</span></code>.
+Since each parameter can depend on a different external source, the dataset <code class="docutils literal notranslate"><span class="pre">EXTFUN</span></code> (not listed in the standard variants below) should contain a vector of 0-based integer indices of the external source of each parameter.
+The ordering of the parameters in <code class="docutils literal notranslate"><span class="pre">EXTFUN</span></code> is given by the ordering in the standard variant.
+However, if only one index is passed in <code class="docutils literal notranslate"><span class="pre">EXTFUN</span></code>, this external source is used for all parameters.</p>
+<p>Note that parameter sensitivities with respect to column radius, column length, particle core radius, and particle radius may be wrong when using externally dependent reaction models.
+This is caused by not taking into account the derivative of the external profile with respect to column position.</p>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2026.
+      
+      |
+      <a href="../../_sources/interface/reaction/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

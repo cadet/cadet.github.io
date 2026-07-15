@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Spline Interpolation &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/binding/spline_interpolation.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Steric Mass Action" href="steric_mass_action.html" />
+    <link rel="prev" title="Simplified Multi-State Steric Mass Action" href="simplified_multi_state_steric_mass_action.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Binding models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#equilibrium-constants">Equilibrium constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#linear-driving-force-ldf">Linear Driving Force (LDF)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#reference-concentrations">Reference concentrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature-matrix">Binding model feature matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization/index.html">Crystallization / Precipitation Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../../v5.0.3/index.html">v5.0.3</a></li>
+  <li><a href="../../../v5.0.4/index.html">v5.0.4</a></li>
+  <li><a href="../../../v5.1.0/index.html">v5.1.0</a></li>
+  <li><a href="../../../v5.1.1/index.html">v5.1.1</a></li>
+  <li><a href="../../../v6.0.0a1/index.html">v6.0.0a1</a></li>
+  <li><a href="../../../v6.0.0a3/modelling/binding/spline_interpolation.html">v6.0.0a3</a></li>
+  <li><a href="spline_interpolation.html">v6.0.0a4</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="../../../master/modelling/binding/spline_interpolation.html">master</a></li>
+  <li><a href="../../../v5.1.X/index.html">v5.1.X</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+
+
+
+
+
+  
+    
+    
+  
+    
+    
+      
+      
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+  
+
+
+
+
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section id="spline-interpolation">
+<span id="id1"></span><h1>Spline Interpolation<a class="headerlink" href="#spline-interpolation" title="Link to this heading">¶</a></h1>
+<p>The spline interpolation model is a non-parametric, data-driven binding model.
+It represents the equilibrium relation between pore-phase and solid-phase concentration
+by interpolation of tabulated data.</p>
+<p>Two interpolation modes are supported:</p>
+<ul class="simple">
+<li><p><strong>INDEPENDENT</strong>: each component’s equilibrium loading is a 1D cubic spline of its
+own pore-phase concentration.</p></li>
+<li><p><strong>COMPETITIVE_REGULAR_GRID</strong>: all equilibrium loadings depend simultaneously on the full
+pore-phase concentration vector via multilinear interpolation on a regular
+Cartesian-product grid.</p></li>
+</ul>
+<section id="independent-mode">
+<h2>INDEPENDENT mode<a class="headerlink" href="#independent-mode" title="Link to this heading">¶</a></h2>
+<p>For each component <span class="math notranslate nohighlight">\(i\)</span> and bound state <span class="math notranslate nohighlight">\(m\)</span>, an equilibrium loading</p>
+<div class="math notranslate nohighlight">
+\[c^{s,\ast}_{i,m} = f_{i,m}(c_{p,i})\]</div>
+<p>is constructed from user-provided data pairs <span class="math notranslate nohighlight">\((\vec{c}^p_{i}, \vec{c}^s_{i,m})\)</span>.
+Here, <span class="math notranslate nohighlight">\(c^p_{i}\)</span> and <span class="math notranslate nohighlight">\(c^s_{i,m}\)</span> denote the pore- and solid-phase concentration
+of component <span class="math notranslate nohighlight">\(i\)</span> and bound state <span class="math notranslate nohighlight">\(m\)</span>.</p>
+<p>The spline function <span class="math notranslate nohighlight">\(f_{i,m}\)</span> is a piecewise cubic polynomial. On an interval
+<span class="math notranslate nohighlight">\([c_{p,i}^{(k)}, c_{p,i}^{(k+1)}]\)</span>, it is evaluated as</p>
+<div class="math notranslate nohighlight">
+\[c^{s, \ast}_{i,m}(c_{p,i}) =
+a_{i,m}^{(k)} h^3 + b_{i,m}^{(k)} h^2 + c_{i,m}^{(k)} h + d_{i,m}^{(k)},
+\qquad
+h = c_{p,i} - c_{p,i}^{(k)}.\]</div>
+<p>The spline coefficients are generated from the tabulated data using a cubic spline
+construction. A monotonicity correction is applied to avoid non-physical oscillations
+between supporting points.</p>
+<section id="extrapolation-behavior">
+<h3>Extrapolation behavior<a class="headerlink" href="#extrapolation-behavior" title="Link to this heading">¶</a></h3>
+<p>If <span class="math notranslate nohighlight">\(c^p_{i}\)</span> lies outside the tabulated concentration range, the model extrapolates
+using mixed boundary conditions:</p>
+<ul class="simple">
+<li><p>at <span class="math notranslate nohighlight">\(c^p_i &lt; \operatorname{min}\left(\vec{c}^p_{i}\right)\)</span>, the second derivative is set to zero, resulting in a linear continuation beyond the boundary,</p></li>
+<li><p>at <span class="math notranslate nohighlight">\(c^p_i &gt; \operatorname{max}\left(\vec{c}^p_{i}\right)\)</span>, the first derivative is set to zero, resulting in a flat continuation beyond the boundary.</p></li>
+</ul>
+</section>
+</section>
+<section id="competitive-regular-grid-mode">
+<h2>COMPETITIVE_REGULAR_GRID mode<a class="headerlink" href="#competitive-regular-grid-mode" title="Link to this heading">¶</a></h2>
+<p>In competitive mode, every bound state’s equilibrium loading depends on the complete
+pore-phase concentration vector
+<span class="math notranslate nohighlight">\(\boldsymbol{c}_p = (c_{p,1}, \ldots, c_{p,N_c})\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[c^{s,\ast}_{i,m} = f_{i,m}(\boldsymbol{c}_p).\]</div>
+<p>The user supplies a sorted support axis
+<span class="math notranslate nohighlight">\(G_j = \{c_{p,j}^{(0)}, \ldots, c_{p,j}^{(K_j)}\}\)</span> for each component <span class="math notranslate nohighlight">\(j\)</span>.
+The evaluation grid is the Cartesian product <span class="math notranslate nohighlight">\(G_1 \times \cdots \times G_{N_c}\)</span>,
+and equilibrium values <span class="math notranslate nohighlight">\(c^{s,\ast}_{i,m}\)</span> must be provided at every one of the
+<span class="math notranslate nohighlight">\(\prod_j (K_j + 1)\)</span> grid points.</p>
+<p>For a query point <span class="math notranslate nohighlight">\(\boldsymbol{c}_p\)</span> located in the hypercell
+<span class="math notranslate nohighlight">\(\prod_j [c_{p,j}^{(k_j)}, c_{p,j}^{(k_j+1)}]\)</span>, the interpolated value is the
+multilinear (tensor-product linear) combination over the <span class="math notranslate nohighlight">\(2^{N_c}\)</span> cell corners:</p>
+<div class="math notranslate nohighlight">
+\[f_{i,m}(\boldsymbol{c}_p)
+=
+\sum_{\boldsymbol{s} \in \{0,1\}^{N_c}}
+\left(\prod_{j=1}^{N_c} w_j^{(s_j)}\right)
+c^{s,\ast}_{i,m}\!\left(c_{p,j}^{(k_j+s_j)}\right)_{j=1}^{N_c},\]</div>
+<p>where the interpolation weights are
+<span class="math notranslate nohighlight">\(w_j^{(0)} = 1 - \xi_j\)</span>, <span class="math notranslate nohighlight">\(w_j^{(1)} = \xi_j\)</span>, and</p>
+<div class="math notranslate nohighlight">
+\[\xi_j = \frac{c_{p,j} - c_{p,j}^{(k_j)}}{c_{p,j}^{(k_j+1)} - c_{p,j}^{(k_j)}}.\]</div>
+<p>This is equivalent to <code class="docutils literal notranslate"><span class="pre">scipy.interpolate.RegularGridInterpolator</span></code> with
+<code class="docutils literal notranslate"><span class="pre">method='linear'</span></code>.</p>
+<section id="id2">
+<h3>Extrapolation behavior<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<p>If any pore-phase concentration lies outside the tabulated range, the multilinear
+polynomial of the clamped boundary cell is extended linearly in each out-of-bounds
+dimension. No constant fill value is applied.</p>
+</section>
+</section>
+<section id="kinetic-form">
+<h2>Kinetic form<a class="headerlink" href="#kinetic-form" title="Link to this heading">¶</a></h2>
+<p>The model is used in a kinetic linear-driving-force form for both modes.
+For each component <span class="math notranslate nohighlight">\(i\)</span> and bound state <span class="math notranslate nohighlight">\(m\)</span>, the exchange term is based on
+the deviation of the current solid-phase loading <span class="math notranslate nohighlight">\(c^s_{i,m}\)</span> from the
+interpolated equilibrium loading <span class="math notranslate nohighlight">\(c^{s,\ast}_{i,m}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial c^s_{i,m}}{\partial t}
+=
+k^{\mathrm{kin}}_{i,m}\left(c^{s, \ast}_{i,m} - c^s_{i,m}\right).\]</div>
+<p>Thus, the spline interpolation model provides the equilibrium target, while the kinetic
+constant <span class="math notranslate nohighlight">\(k^{\mathrm{kin}}_{i,m}\)</span> controls how fast the equilibrium state is approached.</p>
+</section>
+<section id="parameter-sensitivities">
+<h2>Parameter sensitivities<a class="headerlink" href="#parameter-sensitivities" title="Link to this heading">¶</a></h2>
+<p>Sensitivities for the spline interpolation data <span class="math notranslate nohighlight">\(\vec{c}^p_{i}, \vec{c}^s_{i,m}\)</span> are currently not available.
+Sensitivities for the kinetic constant <span class="math notranslate nohighlight">\(k^{\mathrm{kin}}_{i,m}\)</span> are enabled.</p>
+</section>
+<section id="cadet-core-interface">
+<h2>CADET-Core interface<a class="headerlink" href="#cadet-core-interface" title="Link to this heading">¶</a></h2>
+<p>For more information on model parameters required to define in CADET file format, see <a class="reference internal" href="../../interface/binding/spline_interpolation.html#spline-interpolation-config"><span class="std std-ref">Spline Interpolation</span></a>.</p>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2026.
+      
+      |
+      <a href="../../_sources/modelling/binding/spline_interpolation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

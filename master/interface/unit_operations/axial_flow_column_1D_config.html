@@ -585,6 +585,19 @@ For further information on discretization parameters, see also <a class="referen
 </tbody>
 </table>
 </div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">FV_ARROW_HEAD_OPTIMIZATION</span></code></p>
+<blockquote>
+<div><p>Optional, specifies whether an optimized Jacobian block structure is exploited by a custommized linear solver module for improved computational efficiency.
+Prohibits mix of particle types and mix of FV, DG discretizations for bulk and particles.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">FIX_ZERO_SURFACE_DIFFUSION</span></code></p>
 <blockquote>
 <div><p>Determines whether the surface diffusion parameters <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION}\)</span> are fixed if the parameters are zero. If the parameters are fixed to zero (<span class="math notranslate nohighlight">\(\texttt{FIX_ZERO_SURFACE_DIFFUSION} = 1\)</span>, <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION} = 0\)</span>), the parameters must not become non-zero during this or subsequent simulation runs. The internal data structures are optimized for a more efficient simulation.  This field is optional and defaults to <span class="math notranslate nohighlight">\(0\)</span> (optimization disabled in favor of flexibility).</p>

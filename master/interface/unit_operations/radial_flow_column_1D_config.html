@@ -602,6 +602,19 @@ While both methods approximate the same solution to the same underlying model, t
 </tbody>
 </table>
 </div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">FV_ARROW_HEAD_OPTIMIZATION</span></code></p>
+<blockquote>
+<div><p>Optional, specifies whether an optimized Jacobian block structure is exploited by a custommized linear solver module for improved computational efficiency.
+Prohibits mix of particle types and mix of FV, DG discretizations for bulk and particles.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 <p>When using the FV method, we generally recommend specifying <code class="docutils literal notranslate"><span class="pre">USE_MODIFIED_NEWTON</span> <span class="pre">=</span> <span class="pre">0</span></code> in <a class="reference internal" href="../solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>, i.e. to use the full Newton method to solve the linear system within the time integrator.
 For further information on discretization parameters, see also <a class="reference internal" href="../flux_reconstruction.html#flux-reconstruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific), and <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
 </section>

@@ -12,7 +12,7 @@
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/parameter_dependencies.html" />
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/parameter_dependencies_config.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -90,21 +90,21 @@
 <ul>
   <li><a href="../../v4.3.0/index.html">v4.3.0</a></li>
   <li><a href="../../v4.4.0/index.html">v4.4.0</a></li>
-  <li><a href="../../v5.0.0/interface/parameter_dependencies.html">v5.0.0</a></li>
-  <li><a href="../../v5.0.1/interface/parameter_dependencies.html">v5.0.1</a></li>
-  <li><a href="../../v5.0.2/interface/parameter_dependencies.html">v5.0.2</a></li>
-  <li><a href="../../v5.0.3/interface/parameter_dependencies.html">v5.0.3</a></li>
-  <li><a href="../../v5.0.4/interface/parameter_dependencies.html">v5.0.4</a></li>
-  <li><a href="../../v5.1.0/interface/parameter_dependencies.html">v5.1.0</a></li>
-  <li><a href="../../v5.1.1/interface/parameter_dependencies.html">v5.1.1</a></li>
-  <li><a href="../../v6.0.0a1/interface/parameter_dependencies.html">v6.0.0a1</a></li>
-  <li><a href="../../v6.0.0a3/interface/parameter_dependencies.html">v6.0.0a3</a></li>
-  <li><a href="../../v6.0.0a4/interface/parameter_dependencies.html">v6.0.0a4</a></li>
+  <li><a href="../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../v5.0.3/index.html">v5.0.3</a></li>
+  <li><a href="../../v5.0.4/index.html">v5.0.4</a></li>
+  <li><a href="../../v5.1.0/index.html">v5.1.0</a></li>
+  <li><a href="../../v5.1.1/index.html">v5.1.1</a></li>
+  <li><a href="../../v6.0.0a1/index.html">v6.0.0a1</a></li>
+  <li><a href="../../v6.0.0a3/index.html">v6.0.0a3</a></li>
+  <li><a href="../../v6.0.0a4/index.html">v6.0.0a4</a></li>
 </ul>
 <h3>Branches</h3>
 <ul>
-  <li><a href="parameter_dependencies.html">master</a></li>
-  <li><a href="../../v5.1.X/interface/parameter_dependencies.html">v5.1.X</a></li>
+  <li><a href="parameter_dependencies_config.html">master</a></li>
+  <li><a href="../../v5.1.X/index.html">v5.1.X</a></li>
 </ul>
 
         </div>
@@ -200,7 +200,7 @@
 <p><strong>
   You're reading the documentation for a development version.
   
-    For the latest stable documentation, please have a look at <a href="../../v5.1.X/interface/parameter_dependencies.html">v5.1.X</a>.
+    For the latest stable documentation, please have a look at <a href="../../v5.1.X/index.html">v5.1.X</a>.
   
   
 </strong></p>
@@ -209,9 +209,8 @@
 
 
   <section id="parameter-dependencies">
-<span id="id1"></span><h1>Parameter Dependencies<a class="headerlink" href="#parameter-dependencies" title="Link to this heading">¶</a></h1>
-<p>Some parameters depend on other parameters (parameter-parameter dependency) or the solution variables (parameter-state dependency).
-Parameter dependencies are defined in the unit operation scope.</p>
+<span id="parameter-dependencies-config"></span><h1>Parameter Dependencies<a class="headerlink" href="#parameter-dependencies" title="Link to this heading">¶</a></h1>
+<p>A description on parameter dependencies from a modeling perspective is provided under <a class="reference internal" href="../modelling/parameter_dependencies.html#parameter-dependencies"><span class="std std-ref">Parameter Dependencies</span></a>.</p>
 <section id="parameter-parameter-dependencies">
 <h2>Parameter-Parameter Dependencies<a class="headerlink" href="#parameter-parameter-dependencies" title="Link to this heading">¶</a></h2>
 <section id="group-input-model-unit-xxx">
@@ -245,7 +244,7 @@ Parameter dependencies are defined in the unit operation scope.</p>
 </div></blockquote>
 <section id="correlations">
 <h4><strong>Correlations</strong><a class="headerlink" href="#correlations" title="Link to this heading">¶</a></h4>
-<p>Different types of parameter correlations are can be applied.
+<p>Different types of parameter correlations can be applied.
 The following correlations can be used for all parameter-parameter dependencies, but we specify the required input fields only for <code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_DEP</span></code>, for the sake of conciseness.</p>
 <p><strong>Power Law</strong></p>
 <div class="math notranslate nohighlight">
@@ -295,8 +294,8 @@ The following correlations can be used for all parameter-parameter dependencies,
 <section id="parameter-state-dependencies">
 <h2>Parameter-State Dependencies<a class="headerlink" href="#parameter-state-dependencies" title="Link to this heading">¶</a></h2>
 <p>Currently, the dependence of surface diffusion on the particle liquid salt component is the only available parameter-state dependence.</p>
-<section id="id2">
-<h3>Group /input/model/unit_XXX/particle_type_YYY<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<section id="id1">
+<h3>Group /input/model/unit_XXX/particle_type_YYY<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">SURFACE_DIFFUSION_DEP</span></code></p>
 <blockquote>
 <div><p>Parameter dependence of <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION}\)</span> on the particle liquid salt component (i.e. component with index 0). Valid dependencies are:</p>
@@ -434,6 +433,9 @@ Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DI
 </div></blockquote>
 </section>
 </section>
+<section id="dependence-on-external-functions">
+<h2>Dependence on external functions<a class="headerlink" href="#dependence-on-external-functions" title="Link to this heading">¶</a></h2>
+</section>
 </section>
 
 
@@ -448,7 +450,7 @@ Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DI
       &#169;2008-2026.
       
       |
-      <a href="../_sources/interface/parameter_dependencies.rst.txt"
+      <a href="../_sources/interface/parameter_dependencies_config.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

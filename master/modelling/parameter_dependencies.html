@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Parameter Dependencies &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/parameter_dependencies.html" />
+    <link rel="icon" href="../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Simulation" href="../simulation/index.html" />
+    <link rel="prev" title="Fragmentation Models" href="crystallization/fragmentation.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binding/index.html">Binding models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reaction/index.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crystallization/index.html">Crystallization / Precipitation Models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Parameter Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#current-implementation">Current Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types-of-dependencies">Types of Dependencies</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../v5.0.3/index.html">v5.0.3</a></li>
+  <li><a href="../../v5.0.4/index.html">v5.0.4</a></li>
+  <li><a href="../../v5.1.0/index.html">v5.1.0</a></li>
+  <li><a href="../../v5.1.1/index.html">v5.1.1</a></li>
+  <li><a href="../../v6.0.0a1/index.html">v6.0.0a1</a></li>
+  <li><a href="../../v6.0.0a3/index.html">v6.0.0a3</a></li>
+  <li><a href="../../v6.0.0a4/index.html">v6.0.0a4</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="parameter_dependencies.html">master</a></li>
+  <li><a href="../../v5.1.X/index.html">v5.1.X</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+
+
+
+
+
+  
+    
+    
+  
+    
+    
+      
+      
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+  
+
+
+
+
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><strong>
+  You're reading the documentation for a development version.
+  
+    For the latest stable documentation, please have a look at <a href="../../v5.1.X/index.html">v5.1.X</a>.
+  
+  
+</strong></p>
+
+
+
+
+  <section id="parameter-dependencies">
+<span id="id1"></span><h1>Parameter Dependencies<a class="headerlink" href="#parameter-dependencies" title="Link to this heading">¶</a></h1>
+<p>Many physical models require parameters that are not constant but depend on the operating conditions, spatial position, or the current solution state.
+Parameter dependencies provide a general mechanism to express such relationships while preserving the underlying model formulation.
+Instead of replacing governing equations, they modify selected model parameters by evaluating a prescribed functional relation.</p>
+<p>A parameter dependency of a model parameter <span class="math notranslate nohighlight">\(p\)</span> can generally be viewed as</p>
+<div class="math notranslate nohighlight">
+\[p = f(\cdot),\]</div>
+<p>where the function <span class="math notranslate nohighlight">\(f\)</span> may depend on spatial coordinates, model parameters, solution variables, external functions, or combinations thereof.</p>
+<p>Parameter dependencies enable the representation of empirical correlations and constitutive relations without introducing additional governing equations.</p>
+<section id="current-implementation">
+<h2>Current Implementation<a class="headerlink" href="#current-implementation" title="Link to this heading">¶</a></h2>
+<p>The dependency framework is designed as a generic extension mechanism for model parameters.
+The currently implemented parameter dependencies represent selected examples that demonstrate the general concept and provide reusable implementation patterns for further extensions.
+Only a limited subset of model parameters and dependency functions is currently supported.
+Complete coverage of all model parameters is not intended.
+The set of currently available parameter dependencies, supported functional forms, and corresponding configuration options is described in the interface documentation (see <a class="reference internal" href="../interface/parameter_dependencies_config.html#parameter-dependencies-config"><span class="std std-ref">Parameter Dependencies</span></a>).
+If a desired parameter dependency is not implemented, users are encouraged to <a class="reference external" href="https://github.com/cadet/CADET-Core/issues">open an issue to CADET-Core</a> or, even better, contribute a pull request.</p>
+</section>
+<section id="types-of-dependencies">
+<h2>Types of Dependencies<a class="headerlink" href="#types-of-dependencies" title="Link to this heading">¶</a></h2>
+<p>Several categories of parameter dependencies can be distinguished based on the quantity on which a parameter depends.</p>
+<section id="external-function-dependence">
+<h3>External Function Dependence<a class="headerlink" href="#external-function-dependence" title="Link to this heading">¶</a></h3>
+<p>A parameter may depend on an external function or profile <span class="math notranslate nohighlight">\(F\colon \left[ 0, T_{\text{end}}\right] \times [0, L] \to \mathbb{R}\)</span>, where <span class="math notranslate nohighlight">\(L\)</span> denotes the physical length of the unit operation, or <span class="math notranslate nohighlight">\(T\colon \left[0, T_{\text{end}}\right] \to \mathbb{R}\)</span> if the unit operation model has no axial length.
+The current implementation represents this dependence by a polynomial of third degree.
+For example, the adsorption rate <span class="math notranslate nohighlight">\(k_a\)</span> can be defined as</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    k_a(T) &amp;= k_{a,3} T^3 + k_{a,2} T^2 + k_{a,1} T + k_{a,0}.
+\end{aligned}\]</div>
+<p>This type of dependency is implemented in CADET for binding model parameters.
+For more details, refer to <a class="reference internal" href="binding/index.html#dependence-on-external-function-bind"><span class="std std-ref">Dependence on external function</span></a>.</p>
+</section>
+<section id="parameter-parameter-dependence">
+<h3>Parameter-Parameter Dependence<a class="headerlink" href="#parameter-parameter-dependence" title="Link to this heading">¶</a></h3>
+<p>A parameter may depend on another model parameter, such as film diffusion depending on the velocity in an axial flow column with constant porosity.
+The parameter dependence is recomputed during every residual evaluation to account for changes of the independent parameter over time.</p>
+<p>The independent parameter may itself vary spatially.
+More generally, a parameter may depend explicitly on the spatial position or on another spatially varying parameter.
+Examples include spatially varying porosity distributions, or parameters depending on the local velocity in a radial flow column.</p>
+<p>From a modeling perspective, the dependent parameter then becomes a spatial field rather than a single scalar quantity.
+Consequently, it must be represented on the computational mesh and handled consistently by the spatial discretization.
+Evaluating the dependency only from (averaged) state values generally introduces an additional approximation and may reduce the accuracy of the numerical solution.</p>
+</section>
+<section id="parameter-state-dependence">
+<h3>Parameter-State Dependence<a class="headerlink" href="#parameter-state-dependence" title="Link to this heading">¶</a></h3>
+<p>A parameter may depend on a solution variable of the model.
+Typical examples include transport coefficients such as surface diffusion depending on salt concentration.
+In this case, the parameter becomes part of the nonlinear model and must be re-evaluated whenever the solution changes.
+State-dependent parameters may introduce additional nonlinearities, increasing the computational effort and the number of nonlinear iterations required for convergence during the nonlinear solution procedure.</p>
+<p>If the state variable varies spatially, the dependent parameter likewise becomes a spatial field and must be represented on the computational mesh and handled consistently by the spatial discretization.
+Evaluating the dependency only from (averaged) state values generally introduces an additional approximation and may reduce the accuracy of the numerical solution.</p>
+</section>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2026.
+      
+      |
+      <a href="../_sources/modelling/parameter_dependencies.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,10 +1,9 @@
-.. _parameter_dependencies:
+.. _parameter_dependencies_config:
 
 Parameter Dependencies
 ======================
 
-Some parameters depend on other parameters (parameter-parameter dependency) or the solution variables (parameter-state dependency).
-Parameter dependencies are defined in the unit operation scope.
+A description on parameter dependencies from a modeling perspective is provided under :ref:`parameter_dependencies`.
 
 Parameter-Parameter Dependencies
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -35,7 +34,7 @@ Group /input/model/unit_XXX/particle_type_YYY
 **Correlations**
 """"""""""""""""
 
-Different types of parameter correlations are can be applied.
+Different types of parameter correlations can be applied.
 The following correlations can be used for all parameter-parameter dependencies, but we specify the required input fields only for ``COL_DISPERSION_DEP``, for the sake of conciseness.
 
 **Power Law**
@@ -181,3 +180,6 @@ Group /input/model/unit_XXX/particle_type_YYY
    ================  =============================  ===================================
    **Type:** double  **Range:** :math:`\mathbb{R}`  **Length:** :math:`\texttt{NBOUND}`
    ================  =============================  ===================================
+
+Dependence on external functions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

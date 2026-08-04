@@ -183,3 +183,5 @@ Group /input/model/unit_XXX/particle_type_YYY
 
 Dependence on external functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Dependence on external functions is currently only implemented for binding model parameters, as detailed in :ref:`dependence-on-external-function_bind`.

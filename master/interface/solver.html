@@ -238,6 +238,21 @@ Optional: if not specified, the solution is written for every time integration s
 </tbody>
 </table>
 </div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">USER_SOLUTION_TIMES_UNIT_STATE</span></code></p>
+<blockquote>
+<div><p>Vector with timepoints at which the solution is evaluated and, if the according fields (see e.g. <code class="docutils literal notranslate"><span class="pre">WRITE_BULK_SOLUTION</span></code>) are enabled, the unit state solutions are written at these time points.
+This way, the unit state solutions can be written at a different time resolution than e.g. the outlet solution.
+Optional: if not specified, the solution is evaluated and written according to <code class="docutils literal notranslate"><span class="pre">USER_SOLUTION_TIMES</span></code>.</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Length:</strong> Arbitrary</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">CONSISTENT_INIT_MODE</span></code></p>
 <blockquote>
 <div><blockquote>

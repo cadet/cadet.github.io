@@ -218,7 +218,7 @@ Moreover, components can be named which automatically adds legends to the plot m
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CADETProcess.processModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">ComponentSystem</span>
 
 <span class="n">component_system</span> <span class="o">=</span> <span class="n">ComponentSystem</span><span class="p">()</span>
-<span class="n">component_system</span><span class="o">.</span><span class="n">add_component</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+<span class="n">component_system</span><span class="o">.</span><span class="n">add_component</span><span class="p">(</span><span class="s1">'A'</span><span class="p">)</span>
 </pre></div>
 </div>
 <section id="inlet-model">
@@ -228,7 +228,7 @@ The concentration profile is described using a piecewise cubic polynomial (cubic
 In this example we set a constant inlet concentration of 1 mM.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CADETProcess.processModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Inlet</span>
 
-<span class="n">inlet</span> <span class="o">=</span> <span class="n">Inlet</span><span class="p">(</span><span class="n">component_system</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;inlet&#39;</span><span class="p">)</span>
+<span class="n">inlet</span> <span class="o">=</span> <span class="n">Inlet</span><span class="p">(</span><span class="n">component_system</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'inlet'</span><span class="p">)</span>
 <span class="n">inlet</span><span class="o">.</span><span class="n">flow_rate</span> <span class="o">=</span> <span class="mf">6.683738370512285e-8</span>  <span class="c1"># m^3 / s</span>
 <span class="n">inlet</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>  <span class="c1"># mol / m^3</span>
 </pre></div>
@@ -247,7 +247,7 @@ All model parameters can be listed using the <code class="docutils literal notra
 In case of the Langmuir model, we have to specify the parameters <code class="docutils literal notranslate"><span class="pre">adsorption_rate</span></code>, <code class="docutils literal notranslate"><span class="pre">desorption_rate</span></code>, and <code class="docutils literal notranslate"><span class="pre">capacity</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CADETProcess.processModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Langmuir</span>
 
-<span class="n">binding_model</span> <span class="o">=</span> <span class="n">Langmuir</span><span class="p">(</span><span class="n">component_system</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;binding_model&#39;</span><span class="p">)</span>
+<span class="n">binding_model</span> <span class="o">=</span> <span class="n">Langmuir</span><span class="p">(</span><span class="n">component_system</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'binding_model'</span><span class="p">)</span>
 <span class="n">binding_model</span><span class="o">.</span><span class="n">is_kinetic</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">binding_model</span><span class="o">.</span><span class="n">adsorption_rate</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="p">]</span>  <span class="c1"># m^3 / (mol * s)   (mobile phase</span>
 <span class="n">binding_model</span><span class="o">.</span><span class="n">desorption_rate</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="p">]</span>  <span class="c1"># 1 / s (desorption)</span>
@@ -262,7 +262,7 @@ For the <a class="reference internal" href="../../modelling/unit_operations/gene
 In this class, we set the parameters related to transport and column geometry.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CADETProcess.processModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeneralRateModel</span>
 
-<span class="n">column</span> <span class="o">=</span> <span class="n">GeneralRateModel</span><span class="p">(</span><span class="n">component_system</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;column&#39;</span><span class="p">)</span>
+<span class="n">column</span> <span class="o">=</span> <span class="n">GeneralRateModel</span><span class="p">(</span><span class="n">component_system</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'column'</span><span class="p">)</span>
 <span class="n">column</span><span class="o">.</span><span class="n">binding_model</span> <span class="o">=</span> <span class="n">binding_model</span>
 
 <span class="n">column</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mf">0.014</span>  <span class="c1"># m</span>
@@ -297,7 +297,7 @@ In this example, we start with an empty column.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CADETProcess.processModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Outlet</span>
 
-<span class="n">outlet</span> <span class="o">=</span> <span class="n">Outlet</span><span class="p">(</span><span class="n">component_system</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;outlet&#39;</span><span class="p">)</span>
+<span class="n">outlet</span> <span class="o">=</span> <span class="n">Outlet</span><span class="p">(</span><span class="n">component_system</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">'outlet'</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -332,7 +332,7 @@ This includes the duration of a simulation (<code class="docutils literal notran
 To instantiate a <code class="docutils literal notranslate"><span class="pre">Process</span></code>, a <code class="docutils literal notranslate"><span class="pre">FlowSheet</span></code> needs to be passed as argument, as well as a string to name that process.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CADETProcess.processModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Process</span>
 
-<span class="n">process</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">flow_sheet</span><span class="p">,</span> <span class="s1">&#39;Langmuir Breakthrough&#39;</span><span class="p">)</span>
+<span class="n">process</span> <span class="o">=</span> <span class="n">Process</span><span class="p">(</span><span class="n">flow_sheet</span><span class="p">,</span> <span class="s1">'Langmuir Breakthrough'</span><span class="p">)</span>
 <span class="n">process</span><span class="o">.</span><span class="n">cycle_time</span> <span class="o">=</span> <span class="mf">1000.0</span>
 </pre></div>
 </div>

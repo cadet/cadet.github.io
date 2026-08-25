@@ -203,16 +203,16 @@
 <p>If the debugger does not stop at a breakpoint even though it is set in the correct source file, this might be because a corresponding libcadet file was build and is being run. You can find these files under <cite>build/src/libcadet</cite>. Alternatively, you can set a breakpoint in an early stage, e.g. in the driver file and manually step through the code.</p>
 <p>To run a specific simulation with the Visual Studio debugguer, you can add the launch.vs.json file provided here to the .vs folder</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.1&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;defaults&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
-<span class="w">  </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2.1"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"defaults"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="nt">"configurations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;project&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CMakeLists.txt&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;projectTarget&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cadet-cli.exe (Install) (bin/cadet-cli.exe)&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CoreDebug.txt&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;path_to_setup_file/model.h5&gt;&quot;</span>
+<span class="w">      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"project"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CMakeLists.txt"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"projectTarget"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cadet-cli.exe (Install) (bin/cadet-cli.exe)"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CoreDebug.txt"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"path_to_setup_file/model.h5&gt;"</span>
 <span class="w">      </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>

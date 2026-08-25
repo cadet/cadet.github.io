@@ -237,7 +237,7 @@ To install Eigen3 v5.0 manually:</p>
 <span class="n">git</span> <span class="n">fetch</span> <span class="n">origin</span>
 <span class="n">git</span> <span class="n">checkout</span> <span class="o">--</span><span class="n">detach</span> <span class="n">origin</span><span class="o">/</span><span class="mf">5.0</span>
 <span class="n">cmake</span> <span class="o">-</span><span class="n">S</span> <span class="o">.</span> <span class="o">-</span><span class="n">B</span> <span class="n">build</span> \
-<span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=</span><span class="s2">&quot;$</span><span class="si">{INSTALL_PREFIX}</span><span class="s2">&quot;</span> \
+<span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="o">=</span><span class="s2">"$</span><span class="si">{INSTALL_PREFIX}</span><span class="s2">"</span> \
 <span class="o">-</span><span class="n">DEIGEN_BUILD_BLAS</span><span class="o">=</span><span class="n">OFF</span> \
 <span class="o">-</span><span class="n">DEIGEN_BUILD_LAPACK</span><span class="o">=</span><span class="n">OFF</span> \
 <span class="o">-</span><span class="n">DBUILD_TESTING</span><span class="o">=</span><span class="n">OFF</span>
@@ -278,11 +278,11 @@ To install Eigen3 v5.0 manually:</p>
 <li><p>Open a terminal and change to <code class="docutils literal notranslate"><span class="pre">CADET-Core/build</span></code></p></li>
 <li><p>If using MKL, execute <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">MKLROOT=/opt/intel/mkl</span></code></p></li>
 <li><p>To compile:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  - Using standard LAPACK: Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;../install&quot; ../`
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  - Using standard LAPACK: Execute `cmake -DCMAKE_INSTALL_PREFIX="../install" ../`
 
-  - Using MKL (sequential): Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;../install&quot; -DBLA_VENDOR=Intel10_64lp_seq ../`
+  - Using MKL (sequential): Execute `cmake -DCMAKE_INSTALL_PREFIX="../install" -DBLA_VENDOR=Intel10_64lp_seq ../`
 
-  - Using MKL (parallel): Execute `cmake -DCMAKE_INSTALL_PREFIX=&quot;../install&quot; -DBLA_VENDOR=Intel10_64lp ../`
+  - Using MKL (parallel): Execute `cmake -DCMAKE_INSTALL_PREFIX="../install" -DBLA_VENDOR=Intel10_64lp ../`
 </pre></div>
 </div>
 </li>

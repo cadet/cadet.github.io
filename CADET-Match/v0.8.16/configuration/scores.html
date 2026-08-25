@@ -119,7 +119,7 @@ Each score is designed to solve a particular type of problem.
 The most common ones will be covered first.
 There are a few additional ones available in the code that are retained for backwards compatibility that will not be covered and their usage is not recomended.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="nt">&quot;scores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="nt">"scores"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span>
@@ -214,10 +214,10 @@ The shape is dictated by the physics of the reaction while the position can shif
 </tbody>
 </table>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;main_peak&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Shape&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"main_peak"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Shape"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"stop"</span><span class="p">:</span><span class="w"> </span><span class="mf">300.0</span>
 <span class="w">    </span><span class="p">}</span>
 </pre></div>
 </div>
@@ -293,10 +293,10 @@ This is especially important with breakthrough curves where the back of the peak
 </tbody>
 </table>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak_front&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ShapeFront&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;min_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;max_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peak_front"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ShapeFront"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"min_percent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"max_percent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -372,10 +372,10 @@ This is often used when a system starts saturated and there is no front side of 
 </tbody>
 </table>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak_back&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ShapeBack&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peak_back"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ShapeBack"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"stop"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -429,10 +429,10 @@ For some problems this score may work but in general it is not advised.</p>
 </tbody>
 </table>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SSE&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peak"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SSE"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"stop"</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -485,8 +485,8 @@ It automatically isolates as much of the front of peak and uses as much of the f
 </tbody>
 </table>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DextranShape&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peak"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DextranShape"</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -538,8 +538,8 @@ It automatically isolates as much of the front of peak and uses as much of the f
 </tbody>
 </table>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;peak&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DextranSSE&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peak"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DextranSSE"</span><span class="p">,</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -636,10 +636,10 @@ If there is no data for a sample in a particular fraction the entry can be left 
 </tbody>
 </table>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionation&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionationSlide&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;unit_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unit_002&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;fraction_csv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;frac.csv&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fractionation"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fractionationSlide"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"unit_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unit_002"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"fraction_csv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frac.csv"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -703,10 +703,10 @@ If there is no data for a sample in a particular fraction the entry can be left 
 </tbody>
 </table>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionation&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fractionationSSE&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;unit_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unit_002&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;fraction_csv&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;frac.csv&quot;</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fractionation"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fractionationSSE"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"unit_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unit_002"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"fraction_csv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"frac.csv"</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -766,11 +766,11 @@ This can be used as a restriction for that effect.</p>
 </tbody>
 </table>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;limit&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ceiling&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;max_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;stop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"limit"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ceiling"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"max_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"stop"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
 <span class="p">}</span>
 </pre></div>
 </div>

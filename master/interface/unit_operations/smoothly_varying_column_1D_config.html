@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Smoothly Varying Cross Section Column 1D &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/unit_operations/smoothly_varying_column_1D_config.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Axial Flow Column 2D" href="axial_flow_column_2D_config.html" />
+    <link rel="prev" title="Frustum Flow Column 1D" href="frustum_flow_column_1D_config.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Interface specifications</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../input_group.html">Input Group</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../system.html">System of unit operations</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Unit Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../population_balance_model.html">Crystallization / Precipitation models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flux_reconstruction.html">Flux reconstruction methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../return_data.html">Return data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensitivities.html">Parameter Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../solver.html">Solver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../parameter_dependencies_config.html">Parameter Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spatial_discretization_methods.html">Spatial discretization methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../output_group.html">Output Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta_group.html">Meta Group</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../../v5.0.3/index.html">v5.0.3</a></li>
+  <li><a href="../../../v5.0.4/index.html">v5.0.4</a></li>
+  <li><a href="../../../v5.1.0/index.html">v5.1.0</a></li>
+  <li><a href="../../../v5.1.1/index.html">v5.1.1</a></li>
+  <li><a href="../../../v6.0.0a1/index.html">v6.0.0a1</a></li>
+  <li><a href="../../../v6.0.0a3/index.html">v6.0.0a3</a></li>
+  <li><a href="../../../v6.0.0a4/index.html">v6.0.0a4</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="smoothly_varying_column_1D_config.html">master</a></li>
+  <li><a href="../../../v5.1.X/index.html">v5.1.X</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+
+
+
+
+
+  
+    
+    
+  
+    
+    
+      
+      
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+  
+
+
+
+
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><strong>
+  You're reading the documentation for a development version.
+  
+    For the latest stable documentation, please have a look at <a href="../../../v5.1.X/index.html">v5.1.X</a>.
+  
+  
+</strong></p>
+
+
+
+
+  <section id="smoothly-varying-cross-section-column-1d">
+<span id="smoothly-varying-column-1d-config"></span><h1>Smoothly Varying Cross Section Column 1D<a class="headerlink" href="#smoothly-varying-cross-section-column-1d" title="Link to this heading">¶</a></h1>
+<section id="group-input-model-unit-xxx-unit-type-column-model-1d">
+<h2>Group /input/model/unit_XXX - UNIT_TYPE - COLUMN_MODEL_1D<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-column-model-1d" title="Link to this heading">¶</a></h2>
+<p>This geometry describes an axial flow column whose cross section area varies smoothly along
+the flow path and is prescribed by the user, see <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmsmoothlyvarying"><span class="std std-ref">Smoothly varying cross section GRM</span></a>.
+It is selected by <code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code> <span class="math notranslate nohighlight">\(= \texttt{SMOOTHLY_VARYING}\)</span> and is only available for the
+DG spatial discretization, since the area is given at the DG nodes.</p>
+<p>Only the geometry fields differ from the axial flow cylinder; all remaining fields of the unit
+(<code class="docutils literal notranslate"><span class="pre">NCOMP</span></code>, <code class="docutils literal notranslate"><span class="pre">COL_POROSITY</span></code>, <code class="docutils literal notranslate"><span class="pre">TOTAL_POROSITY</span></code>, <code class="docutils literal notranslate"><span class="pre">NPARTYPE</span></code>, <code class="docutils literal notranslate"><span class="pre">PAR_TYPE_VOLFRAC</span></code>,
+<code class="docutils literal notranslate"><span class="pre">COL_DISPERSION</span></code>, <code class="docutils literal notranslate"><span class="pre">INIT_C</span></code>, <code class="docutils literal notranslate"><span class="pre">INIT_STATE</span></code>, the reaction and particle subgroups, and the
+discretization group) are identical to <a class="reference internal" href="axial_flow_column_1D_config.html#axial-flow-column-1d-config"><span class="std std-ref">Axial Flow Column 1D</span></a>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">UNIT_TYPE</span></code></p>
+<blockquote>
+<div><p>Specifies the type of unit operation model</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{COLUMN_MODEL_1D}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code></p>
+<blockquote>
+<div><p>Column geometry</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{SMOOTHLY_VARYING}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">CROSS_SECTIONAL_AREA_AT_NODES</span></code></p>
+<blockquote>
+<div><p>Cross section area at every DG node, in the ordering of the bulk solution, i.e. element by
+element from the column inlet at <span class="math notranslate nohighlight">\(x = 0\)</span> to <span class="math notranslate nohighlight">\(x = \texttt{BED_LENGTH}\)</span>, with the
+nodes of each element in ascending order.
+Since neighbouring elements share their interface node, that node appears twice, once as the
+last entry of the left and once as the first entry of the right element, and the two entries
+must be equal.
+The area has to be strictly positive.</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}^2\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\((\texttt{POLYDEG} + 1) \cdot \texttt{NELEM}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>The nodes are the Legendre-Gauss-Lobatto nodes of each element, which are also written out by
+<code class="docutils literal notranslate"><span class="pre">WRITE_COORDINATES</span></code>, so a convenient way to obtain them is to run the same discretization
+once with any other geometry and evaluate the intended area profile at the reported
+coordinates.</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">BED_LENGTH</span></code></p>
+<blockquote>
+<div><p>Column length. NOT optional for this geometry.</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">FORWARD_FLOW</span></code></p>
+<blockquote>
+<div><p>Flow direction of the column. If set to 1, the flow runs from <span class="math notranslate nohighlight">\(x = 0\)</span> towards
+<span class="math notranslate nohighlight">\(x = \texttt{BED_LENGTH}\)</span>, i.e. the inlet is the end whose area is the first entry of
+<code class="docutils literal notranslate"><span class="pre">CROSS_SECTIONAL_AREA_AT_NODES</span></code>.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> bool</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
+<td><p><strong>Length:</strong> NSEC</p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</section>
+<section id="group-input-model-unit-xxx-discretization-unit-type-column-model-1d">
+<h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE - COLUMN_MODEL_1D<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-column-model-1d" title="Link to this heading">¶</a></h2>
+<p>The discretization group is the one of <a class="reference internal" href="axial_flow_column_1D_config.html#axial-flow-column-1d-config"><span class="std std-ref">Axial Flow Column 1D</span></a>, with two restrictions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SPATIAL_METHOD</span></code> must be <span class="math notranslate nohighlight">\(\texttt{DG}\)</span>. There is no Finite Volume variant of this
+geometry, because the area is prescribed at the DG nodes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">USE_COLLOCATION_DG</span></code> must be <span class="math notranslate nohighlight">\(0\)</span>, which is the default for every geometry other than
+the axial flow cylinder.</p></li>
+</ul>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">CROSS_SECTIONAL_AREA_AT_NODES</span></code> depends on <code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code> and <code class="docutils literal notranslate"><span class="pre">NELEM</span></code>, so it has to be
+recomputed whenever the discretization is refined.</p>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2026.
+      
+      |
+      <a href="../../_sources/interface/unit_operations/smoothly_varying_column_1D_config.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

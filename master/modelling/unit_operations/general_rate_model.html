@@ -429,7 +429,7 @@ Note that in case of reversed flow, the chromatogram is returned at the unit ope
 <section id="column-geometry">
 <span id="muopgrmcolumngeometry"></span><h1>Column Geometry<a class="headerlink" href="#column-geometry" title="Link to this heading">¶</a></h1>
 <p>In the model above, a cylindrical axial flow column is considered, see figure <a class="reference internal" href="#geometrygrmaxialcolumn"><span class="std std-numref">Fig. 6</span></a>.
-Other geometries are being used, and CADET-Core additionally supports cylindrical radial flow and frustum columns.</p>
+Other geometries are being used, and CADET-Core additionally supports cylindrical radial flow columns, frustum columns, and columns whose cross section area varies smoothly along the flow path and is prescribed by the user.</p>
 <figure class="align-default" id="id14">
 <span id="geometrygrmaxialcolumn"></span><img alt="../../_images/geometry_axial_flow_column.png" src="../../_images/geometry_axial_flow_column.png" />
 <figcaption>
@@ -529,6 +529,28 @@ If reactions are considered, the term <span class="math notranslate nohighlight"
 Note that the outlet boundary condition Eq. <a class="reference internal" href="#equation-bcoutletfrustum">15</a> is also known as “do nothing” or natural outflow condition.</p>
 <p>The complementing mass transport and binding equations for the liquid and solid phases of the porous beads are described by the same equations as for the axial GRM.</p>
 <p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/frustum_flow_column_1D_config.html#frustum-flow-column-1d-config"><span class="std std-ref">Frustum Flow Column 1D</span></a> and <a class="reference internal" href="../../interface/unit_operations/particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
+</section>
+<section id="smoothly-varying-cross-section-grm">
+<span id="muopgrmsmoothlyvarying"></span><h2>Smoothly varying cross section GRM<a class="headerlink" href="#smoothly-varying-cross-section-grm" title="Link to this heading">¶</a></h2>
+<p>The radial flow and frustum geometries both prescribe the cross section area <span class="math notranslate nohighlight">\(A(x)\)</span> through a small number of geometric parameters, namely the end radii and, for the radial flow column, the cylinder height.
+The smoothly varying cross section GRM instead lets the user prescribe <span class="math notranslate nohighlight">\(A(x)\)</span> directly, which covers columns and devices whose shape is neither a cylinder shell nor a frustum.</p>
+<p>We consider axial flow along the coordinate <span class="math notranslate nohighlight">\(x \in (0, H)\)</span>, with a cross section area <span class="math notranslate nohighlight">\(A \colon [0, H] \to \mathbb{R}^{&gt;0}\)</span> that is smooth and strictly positive, and a constant volumetric flow rate <span class="math notranslate nohighlight">\(Q\)</span>.
+The <em>averaged bulk velocity</em> at position <span class="math notranslate nohighlight">\(x\)</span> is then <span class="math notranslate nohighlight">\(\overline{u}(x) = \frac{Q}{A(x)}\)</span>, and the mass balance in the interstitial column volume reads</p>
+<div class="math notranslate nohighlight" id="equation-modelsmoothlyvaryingcolumngrm">
+<span class="eqno">(16)<a class="headerlink" href="#equation-modelsmoothlyvaryingcolumngrm" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+    \frac{\partial c}{\partial t}
+    = -\frac{Q}{A(x)} \frac{\partial c}{\partial x}
+    + \frac{1}{A(x)} \frac{\partial}{\partial x} \left( D(x) A(x) \frac{\partial c}{\partial x} \right)
+    &amp;- \frac{1}{\beta_c} \sum_j d_j \frac{3}{r_{p,j}} k_{f,j,i} \left[ c^\ell_i - c^p_{j,i}(\cdot, \cdot, r_{p,j}) \right] \\
+    &amp;+ f_{\text{react},i}^\ell\left(c^\ell\right).
+\end{aligned}\end{split}\]</div>
+<p>Danckwerts boundary conditions are applied as before, with <span class="math notranslate nohighlight">\(A(0)\)</span> in place of <span class="math notranslate nohighlight">\(r(0)^2\)</span> in Eq. <a class="reference internal" href="#equation-bcinletfrustum">14</a>.
+Under the default flow direction (<code class="docutils literal notranslate"><span class="pre">FORWARD_FLOW</span></code> <span class="math notranslate nohighlight">\(= 1\)</span>) the fluid enters at <span class="math notranslate nohighlight">\(x = 0\)</span> and leaves at <span class="math notranslate nohighlight">\(x = H\)</span>.</p>
+<p>The area is supplied as the field <code class="docutils literal notranslate"><span class="pre">CROSS_SECTIONAL_AREA_AT_NODES</span></code>, i.e. by its values at the nodes of the DG discretization, and is represented within the scheme by the nodal Lagrange interpolant of those values on each element.
+The area therefore lives in the same polynomial space as the solution, and the integrals weighted by <span class="math notranslate nohighlight">\(A\)</span> (and by <span class="math notranslate nohighlight">\(A D\)</span>) that the discretization requires are evaluated by Gauss quadrature that is exact for the resulting integrands.
+For a smooth area profile, the interpolation error is of the same order as the discretization error of the scheme itself, so this representation does not reduce the order of convergence.
+Since the representation is tied to the DG grid, this geometry is only available for the DG spatial discretization, and the field has to be recomputed whenever the discretization is refined.</p>
+<p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/smoothly_varying_column_1D_config.html#smoothly-varying-column-1d-config"><span class="std std-ref">Smoothly Varying Cross Section Column 1D</span></a> and <a class="reference internal" href="../../interface/unit_operations/particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
 </section>
 </section>
 

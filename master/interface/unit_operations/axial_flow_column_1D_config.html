@@ -270,7 +270,7 @@
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> bool</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
-<td><p><strong>Length:</strong> NSEC</p></td>
+<td><p><strong>Length:</strong> 1 or NSEC</p></td>
 </tr>
 </tbody>
 </table>
@@ -316,27 +316,6 @@ Only applicable for the Lumped Rate Model without pores, i.e. when <code class="
 <p><code class="docutils literal notranslate"><span class="pre">PAR_TYPE_VOLFRAC</span></code></p>
 <blockquote>
 <div><p>Volume fractions of the particle types. The volume fractions can be set for all axial cells together or for each individual axial cell. For each cell, the volume fractions have to sum to <span class="math notranslate nohighlight">\(1\)</span>. In case of a spatially inhomogeneous setting, the data is expected in cell-major ordering and the <span class="math notranslate nohighlight">\(\texttt{SENS_SECTION}\)</span> field is used for indexing the axial cell when specifying parameter sensitivities.  This field is optional in case of only one particle type.</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\([0,1]\)</span></p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NPARTYPE} / \texttt{NCOL} \cdot \texttt{NPARTYPE}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
-<blockquote>
-<div><p>Interstitial velocity of the mobile phase (optional if <span class="math notranslate nohighlight">\(\texttt{CROSS_SECTION_AREA}\)</span> is present, see Section <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmflow"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>)
-<strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\,\mathrm{s}^{-1}\)</span></p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1 / \texttt{NSEC}\)</span></p></td>
-</tr>
-</tbody>
-</table>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION</span></code></p>
 <blockquote>

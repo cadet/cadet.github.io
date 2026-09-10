@@ -414,24 +414,15 @@ In order to simulate pure SEC, binding is disabled by setting <span class="math 
 </section>
 <section id="specification-of-flow-rate-velocity-and-direction">
 <span id="muopgrmflow"></span><h2>Specification of flow rate / velocity and direction<a class="headerlink" href="#specification-of-flow-rate-velocity-and-direction" title="Link to this heading">¶</a></h2>
-<p>Since volumetric flow rates are specified for each network connection, the unit operation can infer its interstitial velocity via</p>
+<p>Since volumetric flow rates are specified for each network connection, the unit operation always infers its interstitial velocity via</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
     u = u_{\text{int}} = \frac{F_{\text{in}}}{A \varepsilon_c},
 \end{aligned}\]</div>
 <p>where <span class="math notranslate nohighlight">\(F_{\text{in}}\)</span> denotes the volumetric flow rate and <span class="math notranslate nohighlight">\(A\)</span> the cross section area.
 Note that without the bulk porosity <span class="math notranslate nohighlight">\(\varepsilon_c\)</span>, the superficial velocity would be obtained.</p>
-<p>The direction of flow inside the unit operation is governed by the sign of the interstitial velocity <span class="math notranslate nohighlight">\(u\)</span>.
-A positive sign results in (standard) forward flow, whereas a negative sign reverses the flow direction.
+<p>The direction of flow inside the unit operation is governed by the field <code class="docutils literal notranslate"><span class="pre">FORWARD_FLOW</span></code>, whose default (<span class="math notranslate nohighlight">\(1\)</span>) means flow from the larger towards the smaller radius for the radial flow and frustum geometries.
 Note that in case of reversed flow, the chromatogram is returned at the unit operation’s <cite>INLET</cite>, which may not be returned from simulation by default.</p>
-<p>The final behavior for axial flow models is controlled by the interplay of cross section area and interstitial velocity:</p>
-<ul class="simple">
-<li><p>If cross section area <span class="math notranslate nohighlight">\(A\)</span> is given and <span class="math notranslate nohighlight">\(u\)</span> is not, <span class="math notranslate nohighlight">\(u\)</span> is inferred from the volumetric flow rate.</p></li>
-<li><p>If <span class="math notranslate nohighlight">\(u\)</span> is given and <span class="math notranslate nohighlight">\(A\)</span> is not, the volumetric flow rate is ignored and the provided interstitial velocity is used.</p></li>
-<li><p>If both cross section area <span class="math notranslate nohighlight">\(A\)</span> and interstitial velocity <span class="math notranslate nohighlight">\(u\)</span> are given, the magnitude of the actual interstitial velocity <span class="math notranslate nohighlight">\(u\)</span> is inferred from the volumetric flow rate and the flow direction is given by the sign of the provided <span class="math notranslate nohighlight">\(u\)</span>.</p></li>
-</ul>
-<p>For the radial flow and frustum geometries, the interstitial velocity field is always inferred from the volumetric flow rate and the geometry, i.e. from the mandatory cross section area fields (see <a class="reference internal" href="../../interface/unit_operations/radial_flow_column_1D_config.html#radial-flow-column-1d-config"><span class="std std-ref">Radial Flow Column 1D</span></a> and <a class="reference internal" href="../../interface/unit_operations/frustum_flow_column_1D_config.html#frustum-flow-column-1d-config"><span class="std std-ref">Frustum Flow Column 1D</span></a>).
-The direction of the flow is given by the mandatory field <code class="docutils literal notranslate"><span class="pre">FORWARD_FLOW</span></code>, whose default (<span class="math notranslate nohighlight">\(1\)</span>) means flow from the larger towards the smaller radius for both geometries, so that the fluid accelerates as the cross section narrows.</p>
 <p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/axial_flow_column_1D_config.html#axial-flow-column-1d-config"><span class="std std-ref">Axial Flow Column 1D</span></a> and <a class="reference internal" href="../../interface/unit_operations/particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
 </section>
 </section>

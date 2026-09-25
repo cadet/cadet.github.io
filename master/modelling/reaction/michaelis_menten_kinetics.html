@@ -292,25 +292,30 @@ In this case the flux <span class="math notranslate nohighlight">\(\nu_{i,j}\)</
 <p>Note that the inhibition constant for the non-competitive inhibition is indirectly given if <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} = K^{uc}_{I_{k}} = K^{n}_{I_{k}}\)</span></p>
 <p>For configuration information please refer to <a class="reference internal" href="../../interface/reaction/michaelis_menten_kinetics.html#michaelis-menten-kinetics-config"><span class="std std-ref">Michaelis Menten kinetics</span></a>.</p>
 </section>
-<section id="monod-kinetics">
-<h2>Monod Kinetics<a class="headerlink" href="#monod-kinetics" title="Link to this heading">¶</a></h2>
-<p>The Michaelis-Menten model in CADET can also be used to represent Monod kinetics, as the mathematical formulation is identical.
-The Monod equation is commonly used to describe microbial growth processes and corresponds to Michaelis-Menten kinetics with only one substrate.</p>
-<p>The Monod equation for microbial growth has the form:</p>
+<section id="prefactorial-extension">
+<h2>Prefactorial extension<a class="headerlink" href="#prefactorial-extension" title="Link to this heading">¶</a></h2>
+<p>In some cases a different component, like biomass, may have a prefactorial effect on the reaction rate, which can be represented by a prefactorial extension of the Michaelis-Menten kinetics:</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
-    \mu = \frac{\mu_{\mathrm{max}} \, c_S}{K_S + c_S}
+    \nu_{i,j} = \prod_{q = 1}^{N_{q,j}} K_{q,j} c_{q,j} \cdot v_{\mathrm{max},j} \prod_{i = 1}^{N_{sub,j}} \frac{ c_{i,j}}{K_{\mathrm{M}_{i,j}} + c_{i,j}}
 \end{aligned}\]</div>
 <p>where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\mu\)</span> is the specific growth rate</p></li>
-<li><p><span class="math notranslate nohighlight">\(\mu_{\mathrm{max}}\)</span> is the maximum specific growth rate</p></li>
-<li><p><span class="math notranslate nohighlight">\(c_S\)</span> is the substrate concentration</p></li>
-<li><p><span class="math notranslate nohighlight">\(K_S\)</span> is the saturation constant (half-saturation constant)</p></li>
+<li><p><span class="math notranslate nohighlight">\(c_{q,j}\)</span> is biomass concentration (or any other component that has a prefactorial effect on the reaction rate)</p></li>
+<li><p><span class="math notranslate nohighlight">\(K_{q,j}\)</span> is the prefactorial constant (if no prefactorial effect it is set as <span class="math notranslate nohighlight">\(0\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(N_{q,j}\)</span> components that are <strong>not</strong> in <span class="math notranslate nohighlight">\(N_{sub,j}\)</span> but have a prefactorial effect on the reaction rate</p></li>
 </ul>
-<p>By choosing a Michaelis-Menten kinetics configuration with one substrate and setting the the parameter accordingly,
-i.e <span class="math notranslate nohighlight">\(\mu_{\mathrm{max}} = v_{\mathrm{max}}\)</span>, <span class="math notranslate nohighlight">\(K_S = K_{\mathrm{M}_{0,0}}\)</span> and <span class="math notranslate nohighlight">\(c_S = c_{0,0}\)</span>,
-the Monod equation can be expressed in the same form as the Michaelis-Menten kinetics.</p>
+<p>While those prefactorial components are not contributing to the reaction rate in the same way as substrates, they can still influence the overall reaction rate by acting as any form of inhibitor:</p>
+<div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \nu_{i,j} = \prod_{q = 1}^{N_{q,j}} K_{q,j} c_{q,j} \cdot v_{\mathrm{max},j} \prod_{i = 1}^{N_{sub,j}} \frac{c_{i,j}}{ K_{\mathrm{M}_{i,j}} \,(1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{K^{c}_{I_{k}}}) + c_{i,j} \,(1 + \sum_{k \in \mathcal{I}_{i,j}} \frac{c_{k}}{K^{uc}_{I_{k}}})},
+\end{aligned}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N_{q,j}\)</span> <span class="math notranslate nohighlight">\(\cap\)</span> <span class="math notranslate nohighlight">\(N_{sub,j} = 0\)</span>, i.e. the prefactorial components which are not substrates</p></li>
+<li><p><span class="math notranslate nohighlight">\(N_{q,j}\)</span> <span class="math notranslate nohighlight">\(\cap\)</span> <span class="math notranslate nohighlight">\(\mathcal{I}_{i,j} \neq 0\)</span>, i.e. the prefactorial components which <strong>can</strong> act as inhibitors</p></li>
+</ul>
+<p>The Michaelis-Menten model with defined prefactor for biomass component in CADET can also be used to represent <strong>Monod kinetics</strong>, as the mathematical formulation is identical.</p>
 </section>
 <section id="literature">
 <h2>Literature<a class="headerlink" href="#literature" title="Link to this heading">¶</a></h2>

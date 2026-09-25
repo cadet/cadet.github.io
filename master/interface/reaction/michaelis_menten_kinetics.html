@@ -253,19 +253,20 @@ This parameter defines the upper limit of the reaction rate when the substrate c
 </tbody>
 </table>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">MM_KM</span></code></dt><dd><p>Michaelis constant <span class="math notranslate nohighlight">\(K_{\mathrm{M}_{i,j}}\)</span> for reaction <span class="math notranslate nohighlight">\(j\)</span> and substrate <span class="math notranslate nohighlight">\(i\)</span>.
-This constant represents the substrate concentration at which the reaction rate is half of its maximum value.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">MM_KMM</span></code></dt><dd><p>Michaelis constant <span class="math notranslate nohighlight">\(K_{\mathrm{M}_{i,j}}\)</span> for reaction <span class="math notranslate nohighlight">\(j\)</span> and substrate <span class="math notranslate nohighlight">\(i\)</span>.
+This constant represents the substrate concentration at which the reaction rate is half of its maximum value.
+Input as reaction index major.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(~mol^{-1}~m^{-3}\)</span></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NREACT}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NREACT} \cdot \texttt{NVAR}\)</span></p></td>
 </tr>
 </tbody>
 </table>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">MM_KI_C</span></code></dt><dd><p>Inhibition constant for competitive inhibition <span class="math notranslate nohighlight">\(K^{c}_{I_{k}}\)</span>.
+<dt><code class="docutils literal notranslate"><span class="pre">MM_KI_C</span></code></dt><dd><p>(Optional)Inhibition constant for competitive inhibition <span class="math notranslate nohighlight">\(K^{c}_{I_{k}}\)</span>.
 The index <span class="math notranslate nohighlight">\(k\)</span> corresponds to the inhibitors acting on substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span>, i.e. <span class="math notranslate nohighlight">\(k = (j,i,k)\)</span>, where <span class="math notranslate nohighlight">\(k\)</span> is the index of the inhibitor.
 If <span class="math notranslate nohighlight">\(K^{c}_{I_{k}} &gt; 0\)</span>, the component inhibits the reaction.
 Input as reaction index major.</p>
@@ -279,7 +280,7 @@ Input as reaction index major.</p>
 </tbody>
 </table>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">MM_KI_UC</span></code></dt><dd><p>Inhibition constant for uncompetitive inhibition <span class="math notranslate nohighlight">\(K^{uc}_{I_{k}}\)</span>.
+<dt><code class="docutils literal notranslate"><span class="pre">MM_KI_UC</span></code></dt><dd><p>(Optional) Inhibition constant for uncompetitive inhibition <span class="math notranslate nohighlight">\(K^{uc}_{I_{k}}\)</span>.
 The index <span class="math notranslate nohighlight">\(k\)</span> corresponds to the inhibitors acting on substrate <span class="math notranslate nohighlight">\(c_{i,j}\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span>, i.e. <span class="math notranslate nohighlight">\(k = (j,i,k)\)</span>, where <span class="math notranslate nohighlight">\(k\)</span> is the index of the inhibitor.
 Input as reaction index major.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(mol^{-1}~m^{-3}\)</span></p>
@@ -288,6 +289,19 @@ Input as reaction index major.</p>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NREACT} \cdot \texttt{NVAR} \cdot \texttt{NVAR}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">MM_PRE_K</span></code></dt><dd><p>(Optional) Factor (<span class="math notranslate nohighlight">\(\neq 0\)</span>) before component for multiplying with Michaelis-Menten kinetics.
+The index <span class="math notranslate nohighlight">\(k\)</span> corresponds to the component acting on reaction <span class="math notranslate nohighlight">\(j\)</span>. Note that components acting as substrates can not defined as prefactor components.
+Input as reaction index major.</p>
+<p><strong>Unit:</strong> None</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NREACT} \cdot \texttt{NVAR}\)</span></p></td>
 </tr>
 </tbody>
 </table>

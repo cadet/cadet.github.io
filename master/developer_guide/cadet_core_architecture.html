@@ -208,14 +208,14 @@
 
   <section id="software-architecture">
 <span id="cadet-core-architecture"></span><h1>Software Architecture<a class="headerlink" href="#software-architecture" title="Link to this heading">¶</a></h1>
-<p>This section gives a general overview of the object-oriented c++ implementation of CADET-Core and is based on the Software Architecture chapter 3.2 in Samuel Lewekes PhD thesis <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../zbibliography.html#id16" title="Samuel Leweke. Unified modeling and efficient simulation of chromatographic separation processes. Dissertation, Rheinisch-Westfälische Technische Hochschule Aachen, Aachen, 2021. URL: https://publications.rwth-aachen.de/record/840314, doi:10.18154/RWTH-2022-01184.">35</a>]</span>.</p>
+<p>This section gives a general overview of the object-oriented C++ implementation of CADET-Core and is based on the Software Architecture chapter 3.2 in Samuel Leweke’s PhD thesis <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../zbibliography.html#id16" title="Samuel Leweke. Unified modeling and efficient simulation of chromatographic separation processes. Dissertation, Rheinisch-Westfälische Technische Hochschule Aachen, Aachen, 2021. URL: https://publications.rwth-aachen.de/record/840314, doi:10.18154/RWTH-2022-01184.">35</a>]</span>.</p>
 <p>The CADET-Core software is designed to be modular, extendable, maintainable and computationally efficient and robust.
 To promote these goals, CADET-Core is implemented in C++, a highly performant, object-oriented language that supports cross-platform compatibility.</p>
 <section id="features-and-capabilities">
 <h2>Features and Capabilities<a class="headerlink" href="#features-and-capabilities" title="Link to this heading">¶</a></h2>
 <p>CADET-Core</p>
 <ul class="simple">
-<li><p>Builds on Windows, Linux and MacOs</p></li>
+<li><p>Builds on Windows, Linux and macOS</p></li>
 <li><p>Allows to easily add new frontends as the core simulator is implemented in the library <code class="docutils literal notranslate"><span class="pre">libcadet</span></code>, which can be called from different frontends.
 Currently, CADET-Core features the command line interface <code class="docutils literal notranslate"><span class="pre">cadet-cli</span></code> and CADET-Python, which includes a <code class="docutils literal notranslate"><span class="pre">Cadet</span></code> class that serves as a generic HDF5 frontend and calls the <code class="docutils literal notranslate"><span class="pre">cadet-cli</span></code>.
 The CADET-Process frontend is a separate software that wraps CADET-Python and supports additional pre- and post-processing functionality, as described in the <a class="reference external" href="https://cadet-process.readthedocs.io/en/latest/index.html">CADET-Process documentation</a>.
@@ -229,17 +229,18 @@ Additionally, IDAS supports the forward computation of parameter sensitivities, 
 </section>
 <section id="implementation-details">
 <h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">¶</a></h2>
-<p>Classes and realationships</p>
-<figure class="align-default" id="id9">
+<p>Classes and relationships</p>
+<figure class="align-default" id="id7">
 <span id="libcadetclasses"></span><img alt="../_images/architecture_libcadet_classes.png" src="../_images/architecture_libcadet_classes.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Selected relationships of classes in <code class="docutils literal notranslate"><span class="pre">libcadet</span></code> <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Selected relationships of classes in <code class="docutils literal notranslate"><span class="pre">libcadet</span></code> <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="id3" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<p>Samuel Lewekes PhD thesis, available at: <a class="reference external" href="https://publications.rwth-aachen.de/record/840314">https://publications.rwth-aachen.de/record/840314</a></p>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id4">2</a>)</span>
+<p>Samuel Leweke’s PhD thesis, available at: <a class="reference external" href="https://publications.rwth-aachen.de/record/840314">https://publications.rwth-aachen.de/record/840314</a></p>
 </aside>
 </aside>
 <p>In the following, we briefly describe the purpose of some of the items in the figure above:</p>
@@ -281,7 +282,7 @@ If supported, reaction model parameters may have a <a class="reference internal"
 <span id="unitoperationassumption"></span><h3>Unit Operation submodel assumption<a class="headerlink" href="#unit-operation-submodel-assumption" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Each submodel has <span class="math notranslate nohighlight">\(N_{c,n} \in \mathbb{N}\)</span> components, <span class="math notranslate nohighlight">\(N_{in, n} \in \mathbb{N}\)</span> inlet ports and <span class="math notranslate nohighlight">\(N_{out, n} \in \mathbb{N}\)</span> outlet ports.</p></li>
-<li><p>The dynamics of each submodel n are described by a fully implicit equation (e.g., PDE, PDAE, DAE, ODER) of the form</p></li>
+<li><p>The dynamics of each submodel n are described by a fully implicit equation (e.g., PDE, PDAE, DAE, ODE) of the form</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\mathcal{F}_n \left(t, \mathbf{q}_{in,n}, \mathbf{q}_{out,n}, \mathbf{y}_{in,n}, \mathbf{y}_{n}, \frac{\partial \mathbf{y}_{n}}{\partial t} \right),\]</div>
@@ -303,28 +304,28 @@ If supported, reaction model parameters may have a <a class="reference internal"
 <p>We refer to the solution of the spatially semi-discretized unit operation model equations as <em>state</em>.
 The order of the state vector impacts performance of the solver and has to adhere to submodule interfaces, such as binding models.
 The specific order implemented for chromatography column units is given in the figures below</p>
+<figure class="align-default" id="id8">
+<span id="statevectororder2d"></span><img alt="../_images/state_vector_grm2D.png" src="../_images/state_vector_grm2D.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">State vector order of the two-dimensional general rate model, and two-dimensional lumped rate model with pores <span class="math notranslate nohighlight">\((N^{\mathrm{r}}=1)\)</span>.</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id9">
+<span id="statevectororder"></span><img alt="../_images/state_vector_grm.png" src="../_images/state_vector_grm.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">State vector order of the general rate model, lumped rate model with pores <span class="math notranslate nohighlight">\((N^{\mathrm{r}}=1)\)</span>, and Finite Bath / Tank <span class="math notranslate nohighlight">\((N^{\mathrm{z}}=1, N^{\mathrm{r}}=1)\)</span> <a class="footnote-reference brackets" href="#id3" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
 <figure class="align-default" id="id10">
-<span id="statevectororder"></span><img alt="../_images/state_vector_grm2D.png" src="../_images/state_vector_grm2D.png" />
+<span id="statevectororderlrm"></span><img alt="../_images/state_vector_lrm.png" src="../_images/state_vector_lrm.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">State vector order of the two-dimensional general rate model, and two-dimensional lumped rate model with pores <span class="math notranslate nohighlight">\((N^{\mathrm{r}}=1)\)</span>.</span><a class="headerlink" href="#id10" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
-<figure class="align-default" id="id11">
-<span id="id4"></span><img alt="../_images/state_vector_grm.png" src="../_images/state_vector_grm.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">State vector order of the general rate model, lumped rate model with pores <span class="math notranslate nohighlight">\((N^{\mathrm{r}}=1)\)</span>, and Finite Bath / Tank <span class="math notranslate nohighlight">\((N^{\mathrm{z}}=1, N^{\mathrm{r}}=1)\)</span> <a class="footnote-reference brackets" href="#id3" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id11" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
-<figure class="align-default" id="id12">
-<span id="id6"></span><img alt="../_images/state_vector_lrm.png" src="../_images/state_vector_lrm.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">State vector order of model variants with non-limiting film diffusion <span class="math notranslate nohighlight">\((k^\mathrm{f}_i \to \infty)\)</span>, such as the lumped rate model without pores <a class="footnote-reference brackets" href="#id3" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id12" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">State vector order of model variants with non-limiting film diffusion <span class="math notranslate nohighlight">\((k^\mathrm{f}_i \to \infty)\)</span>, such as the lumped rate model without pores <a class="footnote-reference brackets" href="#id6" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id10" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id8" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></span>
-<p>Samuel Lewekes PhD thesis, available at: <a class="reference external" href="https://publications.rwth-aachen.de/record/840314">https://publications.rwth-aachen.de/record/840314</a></p>
+<aside class="footnote brackets" id="id6" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">2</a><span class="fn-bracket">]</span></span>
+<p>Samuel Leweke’s PhD thesis, available at: <a class="reference external" href="https://publications.rwth-aachen.de/record/840314">https://publications.rwth-aachen.de/record/840314</a></p>
 </aside>
 </aside>
 <p>Note that the finite bath / tank (CSTR) unit operation has an additional first entry that defines the tank volume.</p>

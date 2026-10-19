@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Affinity Energy Distribuition &#8212; CADET</title>
+    <title>Affinity Energy Distribution &#8212; CADET</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
@@ -207,10 +207,10 @@
 
 
 
-  <section id="affinity-energy-distribuition">
-<span id="affinity-energy-distribution"></span><h1>Affinity Energy Distribuition<a class="headerlink" href="#affinity-energy-distribuition" title="Link to this heading">¶</a></h1>
-<p>Unlike the multi component Langmuir model and the multi component Bi-Langmuir model that presume a fixed number of discrete binding sites, the affinity energy distribution (AED) model considers a continuous distribution of binding site types on a heterogeneous surface on the energy space <span class="math notranslate nohighlight">\(\ln(K_{eq}) \in \mathbb{R}^{&gt;0}\)</span> (see e.g. <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../../zbibliography.html#id22" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>]</span>).
-Assuming a single component system, the AED isotherm reads <span class="bibtex-citation" id="id2">[<a class="reference internal" href="../../zbibliography.html#id22" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>]</span>:</p>
+  <section id="affinity-energy-distribution">
+<span id="id1"></span><h1>Affinity Energy Distribution<a class="headerlink" href="#affinity-energy-distribution" title="Link to this heading">¶</a></h1>
+<p>Unlike the multi component Langmuir model and the multi component Bi-Langmuir model that presume a fixed number of discrete binding sites, the affinity energy distribution (AED) model considers a continuous distribution of binding site types on a heterogeneous surface on the energy space <span class="math notranslate nohighlight">\(\ln(K_{eq}) \in \mathbb{R}^{&gt;0}\)</span> (see e.g. <span class="bibtex-citation" id="id2">[<a class="reference internal" href="../../zbibliography.html#id22" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>]</span>).
+Assuming a single component system, the AED isotherm reads <span class="bibtex-citation" id="id3">[<a class="reference internal" href="../../zbibliography.html#id22" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>]</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
     q(c) = \int_0^{\infty} F(\ln(K_{eq})) \theta(K_{eq}, c) \, \mathrm{d} \ln(K_{eq}),
@@ -222,14 +222,14 @@ In general, the kernel can be chosen as any isotherm model that governs the adso
     \theta (K_{eq}, c) =  \frac{K_{eq}c}{1 + K_{eq}c},
 \end{aligned}\]</div>
 <p>meaning that each binding site is governed by a Langmuir isotherm model.</p>
-<p>When solving the AED model in a unit operation, the integral is disretized on an equidistant logarithmic grid between <span class="math notranslate nohighlight">\(\ln(K_{min})\)</span> and <span class="math notranslate nohighlight">\(\ln(K_{max})\)</span> to give:</p>
+<p>When solving the AED model in a unit operation, the integral is discretized on an equidistant logarithmic grid between <span class="math notranslate nohighlight">\(\ln(K_{min})\)</span> and <span class="math notranslate nohighlight">\(\ln(K_{max})\)</span> to give:</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
 \[\begin{aligned}
     q(c) = \sum_{i=1}^{N_k} F(\ln(K_{eq, i})) \theta (K_{eq,i}, c) \Delta \ln(K_{eq}),
 \end{aligned}\]</div>
 </div></blockquote>
-<p>where <span class="math notranslate nohighlight">\(K_{min}\)</span> is the mimimum binding equilibrium constant, <span class="math notranslate nohighlight">\(K_{max}\)</span> is the maximum binding equilibrium constant, <span class="math notranslate nohighlight">\(N_k\)</span> is the total number of of nodes (sites) and <span class="math notranslate nohighlight">\(\Delta \ln(K_{eq})\)</span> is the distance between two nodes.
+<p>where <span class="math notranslate nohighlight">\(K_{min}\)</span> is the minimum binding equilibrium constant, <span class="math notranslate nohighlight">\(K_{max}\)</span> is the maximum binding equilibrium constant, <span class="math notranslate nohighlight">\(N_k\)</span> is the total number of nodes (sites) and <span class="math notranslate nohighlight">\(\Delta \ln(K_{eq})\)</span> is the distance between two nodes.
 Hence</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
@@ -237,7 +237,7 @@ Hence</p>
     F(\ln(K_{eq, i})) \Delta \ln(K_{eq}) = q_{\text{max}, i},
 \end{aligned}\]</div>
 </div></blockquote>
-<p>where <span class="math notranslate nohighlight">\(q_{max, i}\)</span> is the binding capacity for the <span class="math notranslate nohighlight">\(i^{\text{th}}\)</span> binding site. Inserting the Langmuir kernel, the above equation is equivilent to:</p>
+<p>where <span class="math notranslate nohighlight">\(q_{max, i}\)</span> is the binding capacity for the <span class="math notranslate nohighlight">\(i^{\text{th}}\)</span> binding site. Inserting the Langmuir kernel, the above equation is equivalent to:</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
 \[\begin{aligned}
@@ -249,7 +249,7 @@ Hence</p>
 \[\begin{aligned}
     \frac{\mathrm{d} q_i}{\mathrm{d} t} &amp;=  k_{a,i}\: c \: q_{\text{max}, i} \left( 1 - \frac{q_i}{ q_{\text{max}, i} } \right) - k_{d, i} q_{i} &amp; i = 0, \dots, N_k - 1.
 \end{aligned}\]</div>
-<p>The above discretized AED isotherm model is equivilent to the <a class="reference internal" href="multi_component_bi_langmuir.html#multi-component-bi-langmuir-model"><span class="std std-ref">Multi Component Bi-Langmuir</span></a> with a single component and <span class="math notranslate nohighlight">\(N_k\)</span> binding sites. Therefore, the AED isotherm model is not registered in CADET as a standalone isotherm model and the <a class="reference internal" href="multi_component_bi_langmuir.html#multi-component-bi-langmuir-model"><span class="std std-ref">Multi Component Bi-Langmuir</span></a> is used instead.
+<p>The above discretized AED isotherm model is equivalent to the <a class="reference internal" href="multi_component_bi_langmuir.html#multi-component-bi-langmuir-model"><span class="std std-ref">Multi Component Bi-Langmuir</span></a> with a single component and <span class="math notranslate nohighlight">\(N_k\)</span> binding sites. Therefore, the AED isotherm model is not registered in CADET as a standalone isotherm model and the <a class="reference internal" href="multi_component_bi_langmuir.html#multi-component-bi-langmuir-model"><span class="std std-ref">Multi Component Bi-Langmuir</span></a> is used instead.
 Please refer to <a class="reference internal" href="../../interface/binding/multi_component_bi_langmuir.html#multi-component-bi-langmuir-config"><span class="std std-ref">Multi Component Bi-Langmuir</span></a> for information on the configuration of the CADET file format.</p>
 <p>We emphasize that while the Multi-component Bi-langmuir isotherm implementation in CADET allows multiple components, the AED isotherm is originally derived and used for a single-component system.</p>
 </section>

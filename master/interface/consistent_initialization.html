@@ -214,8 +214,8 @@
 
   <section id="nonlinear-solver-for-consistent-initialization">
 <span id="non-consistency-solver-parameters"></span><h1>Nonlinear solver for consistent initialization<a class="headerlink" href="#nonlinear-solver-for-consistent-initialization" title="Link to this heading">¶</a></h1>
-<section id="group-input-model-unit-xxx-discretization-consistency-solver-nonlinear-consistency-solver-paramters">
-<h2>Group /input/model/unit_XXX/discretization/consistency_solver - Nonlinear consistency solver paramters<a class="headerlink" href="#group-input-model-unit-xxx-discretization-consistency-solver-nonlinear-consistency-solver-paramters" title="Link to this heading">¶</a></h2>
+<section id="group-input-model-unit-xxx-discretization-consistency-solver-nonlinear-consistency-solver-parameters">
+<h2>Group /input/model/unit_XXX/discretization/consistency_solver - Nonlinear consistency solver parameters<a class="headerlink" href="#group-input-model-unit-xxx-discretization-consistency-solver-nonlinear-consistency-solver-parameters" title="Link to this heading">¶</a></h2>
 <p>The following specifications of the nonlinear solver for consistent initialization are available.
 The default is a <code class="docutils literal notranslate"><span class="pre">COMPOSITE</span></code> solver that applies multiple solvers subsequently, where the default is <code class="docutils literal notranslate"><span class="pre">ATRN_ERR</span></code> followed by <code class="docutils literal notranslate"><span class="pre">LEVMAR</span></code>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">SOLVER_NAME</span></code></p>
@@ -223,8 +223,8 @@ The default is a <code class="docutils literal notranslate"><span class="pre">CO
 Available solvers are</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">LEVMAR</span></code>: Levenberg-Marquardt method (ported from the MATLAB implementation)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ATRN_RES</span></code>: Adaptive trust-region Newton solver, implemetation of the NLEQ-RES algorithm described in <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../zbibliography.html#id20" title="Peter Deuflhard. Newton Methods for Nonlinear Problems. Volume 35 of Springer Series in Computational Mathematics. Springer Berlin Heidelberg, 2011. ISBN 978-3-642-23898-7. URL: http://link.springer.com/10.1007/978-3-642-23899-4, doi:10.1007/978-3-642-23899-4.">34</a>]</span> (p. 131)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ATRN_ERR</span></code>: Robust adaptive trust-region Newton solver, implemetation of the NLEQ-ERR algorithm described in <span class="bibtex-citation" id="id2">[<a class="reference internal" href="../zbibliography.html#id20" title="Peter Deuflhard. Newton Methods for Nonlinear Problems. Volume 35 of Springer Series in Computational Mathematics. Springer Berlin Heidelberg, 2011. ISBN 978-3-642-23898-7. URL: http://link.springer.com/10.1007/978-3-642-23899-4, doi:10.1007/978-3-642-23899-4.">34</a>]</span> (pp. 148)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ATRN_RES</span></code>: Adaptive trust-region Newton solver, implementation of the NLEQ-RES algorithm described in <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../zbibliography.html#id20" title="Peter Deuflhard. Newton Methods for Nonlinear Problems. Volume 35 of Springer Series in Computational Mathematics. Springer Berlin Heidelberg, 2011. ISBN 978-3-642-23898-7. URL: http://link.springer.com/10.1007/978-3-642-23899-4, doi:10.1007/978-3-642-23899-4.">34</a>]</span> (p. 131)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ATRN_ERR</span></code>: Robust adaptive trust-region Newton solver, implementation of the NLEQ-ERR algorithm described in <span class="bibtex-citation" id="id2">[<a class="reference internal" href="../zbibliography.html#id20" title="Peter Deuflhard. Newton Methods for Nonlinear Problems. Volume 35 of Springer Series in Computational Mathematics. Springer Berlin Heidelberg, 2011. ISBN 978-3-642-23898-7. URL: http://link.springer.com/10.1007/978-3-642-23899-4, doi:10.1007/978-3-642-23899-4.">34</a>]</span> (pp. 148)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PTC</span></code>: Pseudo-transient continuation method, see <span class="bibtex-citation" id="id3">[<a class="reference internal" href="../zbibliography.html#id20" title="Peter Deuflhard. Newton Methods for Nonlinear Problems. Volume 35 of Springer Series in Computational Mathematics. Springer Berlin Heidelberg, 2011. ISBN 978-3-642-23898-7. URL: http://link.springer.com/10.1007/978-3-642-23899-4, doi:10.1007/978-3-642-23899-4.">34</a>]</span> (section 6.4)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">COMPOSITE</span></code>: Applies multiple solvers subsequently</p>
 <table class="docutils align-default">
@@ -266,6 +266,54 @@ Available solvers are</p>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">MAX_ITERATIONS</span></code></p>
+<p>Maximum number of iterations (optional, defaults to <span class="math notranslate nohighlight">\(50\)</span> for <code class="docutils literal notranslate"><span class="pre">LEVMAR</span></code>, <code class="docutils literal notranslate"><span class="pre">ATRN_RES</span></code> and <code class="docutils literal notranslate"><span class="pre">ATRN_ERR</span></code>, and to <span class="math notranslate nohighlight">\(100\)</span> for <code class="docutils literal notranslate"><span class="pre">PTC</span></code>).</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 1\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">INIT_PSEUDOTIMESTEP</span></code></p>
+<p>Initial pseudo time step (optional, defaults to <span class="math notranslate nohighlight">\(20.0\)</span>), only used by <code class="docutils literal notranslate"><span class="pre">PTC</span></code>.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">MAX_NONMONOTONE_ITERATIONS</span></code></p>
+<p>Maximum number of consecutive iterations in which the residual is allowed to grow (optional, defaults to <span class="math notranslate nohighlight">\(5\)</span>), only used by <code class="docutils literal notranslate"><span class="pre">PTC</span></code>.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">NUMERIC_VARIANT</span></code></p>
+<p>Selects the numeric variant of the method (optional, defaults to <span class="math notranslate nohighlight">\(0\)</span>), only used by <code class="docutils literal notranslate"><span class="pre">PTC</span></code>.</p>
+<blockquote>
+<div><table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span></p></td>
 </tr>
 </tbody>

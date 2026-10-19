@@ -219,7 +219,7 @@ Moreover, components can be named which automatically adds legends to the plot m
 </div>
 <section id="inlet-model">
 <h3>Inlet Model<a class="headerlink" href="#inlet-model" title="Link to this heading">¶</a></h3>
-<p>In CADET, the <code class="docutils literal notranslate"><span class="pre">Inlet</span></code> pseudo unit operation serves as a source for the system and is used to create arbitary concentration profiles as boundary conditions.
+<p>In CADET, the <code class="docutils literal notranslate"><span class="pre">Inlet</span></code> pseudo unit operation serves as a source for the system and is used to create arbitrary concentration profiles as boundary conditions.
 The concentration profile is described using a piecewise cubic polynomial (cubic spline in the continuous case) for each component, where the pieces are given by the time sections.
 In this example we set a constant inlet concentration of 1 mM.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">CADETProcess.processModel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Inlet</span>

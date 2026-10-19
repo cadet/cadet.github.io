@@ -219,10 +219,26 @@
 <p><code class="docutils literal notranslate"><span class="pre">UNIT_TYPE</span></code></p>
 <blockquote>
 <div><p>Specifies the type of unit operation model</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{COLUMN_MODEL_1D}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code></p>
 <blockquote>
 <div><p>Column geometry</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{AXIAL_FLOW_FRUSTUM}\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">NCOMP</span></code></p>
 <blockquote>
@@ -277,13 +293,13 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">FORWARD_FLOW</span></code></p>
 <blockquote>
-<div><p>Flow direction of the column. If set to 1, the flow is from the larger radius to the smaller radius.</p>
-<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
+<div><p>Flow direction of the column.
+If set to 1, the flow is from the larger radius to the smaller radius.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> bool</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
-<td><p><strong>Length:</strong> NSEC</p></td>
+<td><p><strong>Length:</strong> 1 or NSEC</p></td>
 </tr>
 </tbody>
 </table>
@@ -314,7 +330,9 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">PAR_TYPE_VOLFRAC</span></code></p>
 <blockquote>
-<div><p>Volume fractions of the particle types. The volume fractions can be set for all axial cells together or for each individual axial cell. For each cell, the volume fractions have to sum to <span class="math notranslate nohighlight">\(1\)</span>. In case of a spatially inhomogeneous setting, the data is expected in cell-major ordering and the <span class="math notranslate nohighlight">\(\texttt{SENS_SECTION}\)</span> field is used for indexing the axial cell when specifying parameter sensitivities.  This field is optional in case of only one particle type.</p>
+<div><p>Volume fractions of the particle types.
+The volume fractions can be set for all axial cells together or for each individual axial cell.
+For each cell, the volume fractions have to sum to <span class="math notranslate nohighlight">\(1\)</span>. In case of a spatially inhomogeneous setting, the data is expected in cell-major ordering and the <span class="math notranslate nohighlight">\(\texttt{SENS_SECTION}\)</span> field is used for indexing the axial cell when specifying parameter sensitivities.  This field is optional in case of only one particle type.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -339,7 +357,8 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_MULTIPLEX</span></code></p>
 <blockquote>
-<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is treated as component- and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span>.  Valid modes are:</p>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span>.
+Determines whether <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is treated as component- and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span>.  Valid modes are:</p>
 <ol class="arabic simple" start="0">
 <li><p>Component-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(1\)</span></p></li>
 <li><p>Component-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span></p></li>
@@ -367,10 +386,6 @@
 </tbody>
 </table>
 </div></blockquote>
-</section>
-<section id="group-input-model-unit-xxx-liquid-reaction-yyy">
-<h2>Group /input/model/unit_XXX/liquid_reaction_YYY<a class="headerlink" href="#group-input-model-unit-xxx-liquid-reaction-yyy" title="Link to this heading">¶</a></h2>
-<p>Each reaction is specified in another subgroup <cite>liquid_reaction_YYY</cite>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_C</span></code></p>
 <blockquote>
 <div><p>Initial concentrations for each component in the bulk mobile phase</p>
@@ -399,12 +414,16 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </table>
 </div></blockquote>
 </section>
+<section id="group-input-model-unit-xxx-liquid-reaction-yyy">
+<h2>Group /input/model/unit_XXX/liquid_reaction_YYY<a class="headerlink" href="#group-input-model-unit-xxx-liquid-reaction-yyy" title="Link to this heading">¶</a></h2>
+<p>Each reaction is specified in another subgroup <cite>liquid_reaction_YYY</cite>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.</p>
+</section>
 <section id="group-input-model-unit-xxx-particle-type-xxx">
 <h2>Group /input/model/unit_XXX/particle_type_XXX<a class="headerlink" href="#group-input-model-unit-xxx-particle-type-xxx" title="Link to this heading">¶</a></h2>
 <p>Each particle type is specified in another subgroup <cite>particle_type_XXX</cite>, see <a class="reference internal" href="particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
 </section>
-<section id="group-input-model-unit-xxx-discretization-unit-type-frustum-column-model-1d">
-<h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE - FRUSTUM_COLUMN_MODEL_1D<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-frustum-column-model-1d" title="Link to this heading">¶</a></h2>
+<section id="group-input-model-unit-xxx-discretization-unit-type-column-model-1d">
+<h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE - COLUMN_MODEL_1D<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-column-model-1d" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">USE_ANALYTIC_JACOBIAN</span></code></p>
 <blockquote>
 <div><p>Determines whether analytically computed Jacobian matrix (faster) is used (value is 1) instead of Jacobians generated by algorithmic differentiation (slower, value is 0)</p>
@@ -420,10 +439,10 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </section>
 <section id="spatial-discretization-numerical-methods">
 <h2>Spatial discretization - Numerical Methods<a class="headerlink" href="#spatial-discretization-numerical-methods" title="Link to this heading">¶</a></h2>
-<p>CADET offers a 1st order upwind FV method for frustum flow chromatography</p>
+<p>CADET offers an FV method for frustum flow chromatography.</p>
 <p><code class="docutils literal notranslate"><span class="pre">SPATIAL_METHOD</span></code></p>
 <blockquote>
-<div><p>Spatial discretization method. Optional, defaults to <span class="math notranslate nohighlight">\(\texttt{FV}\)</span></p>
+<div><p>Spatial discretization method</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
@@ -433,7 +452,7 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">NCELLS</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">NCOL</span></code></p>
 <blockquote>
 <div><p>Number of axial column discretization points, i.e. FV cells</p>
 <table class="docutils align-default">
@@ -484,7 +503,7 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">SCHUR_SAFETY</span></code></p>
 <blockquote>
-<div><p>Schur safety factor; Influences the tradeoff between linear iterations and nonlinear error control; see IDAS guide Section~2.1 and 5.</p>
+<div><p>Schur safety factor; Influences the tradeoff between linear iterations and nonlinear error control; see IDAS guide Section 2.1 and 5.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -496,7 +515,7 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">FV_ARROW_HEAD_OPTIMIZATION</span></code></p>
 <blockquote>
-<div><p>Optional, specifies whether an optimized Jacobian block structure is exploited by a custommized linear solver module for improved computational efficiency.
+<div><p>Optional, specifies whether an optimized Jacobian block structure is exploited by a customized linear solver module for improved computational efficiency.
 Prohibits mix of particle types and mix of FV, DG discretizations for bulk and particles.</p>
 <table class="docutils align-default">
 <tbody>
@@ -507,7 +526,7 @@ Prohibits mix of particle types and mix of FV, DG discretizations for bulk and p
 </tbody>
 </table>
 </div></blockquote>
-<p>When using the FV method, we generally recommend specifying <code class="docutils literal notranslate"><span class="pre">USE_MODIFIED_NEWTON</span> <span class="pre">=</span> <span class="pre">0</span></code> in <a class="reference internal" href="../solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>, i.e. to use the full Newton method to solve the linear system within the time integrator.
+<p>When using the FV method, we generally recommend specifying <code class="docutils literal notranslate"><span class="pre">USE_MODIFIED_NEWTON</span> <span class="pre">=</span> <span class="pre">0</span></code> in <a class="reference internal" href="../solver.html#ffsolvertime"><span class="std std-ref">Group /input/solver/time_integrator</span></a>, i.e. to use the full Newton method to solve the linear system within the time integrator.
 For further information on discretization parameters, see also <a class="reference internal" href="../flux_reconstruction.html#flux-reconstruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific), and <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
 </section>
 </section>

@@ -54,7 +54,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#group-output-solution">Group /output/solution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#group-output-solution-unit-xxx">Group /output/solution/unit_XXX</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#group-output-sensitivity-param-xxx-unit-yyy">Group /output/sensitivity/param_XXX/unit_YYY</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#output-coordinates-unit-xxx">/output/coordinates/unit_XXX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#group-output-coordinates-unit-xxx">Group /output/coordinates/unit_XXX</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="meta_group.html">Meta Group</a></li>
@@ -235,6 +235,12 @@
 <p><code class="docutils literal notranslate"><span class="pre">SOLUTION_TIMES</span></code></p>
 <blockquote>
 <div><p>Time points at which the solution is written if <span class="math notranslate nohighlight">\(\texttt{WRITE_SOLUTION_TIMES}\)</span> in <span class="math notranslate nohighlight">\(\texttt{/input/return}\)</span> is enabled</p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}\)</span></p>
+<p><strong>Type:</strong> double</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">SOLUTION_TIMES_UNIT_STATE</span></code></p>
+<blockquote>
+<div><p>Time points at which the unit state solutions are written. Only present if <span class="math notranslate nohighlight">\(\texttt{USER_SOLUTION_TIMES_UNIT_STATE}\)</span> in <span class="math notranslate nohighlight">\(\texttt{/input/solver}\)</span> is given</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}\)</span></p>
 <p><strong>Type:</strong> double</p>
 </div></blockquote>
@@ -617,8 +623,8 @@ Note that the vector includes the dedicated inlet DOFs at the beginning (length:
 <p><strong>Type:</strong> double</p>
 </div></blockquote>
 </section>
-<section id="output-coordinates-unit-xxx">
-<h2>/output/coordinates/unit_XXX<a class="headerlink" href="#output-coordinates-unit-xxx" title="Link to this heading">¶</a></h2>
+<section id="group-output-coordinates-unit-xxx">
+<h2>Group /output/coordinates/unit_XXX<a class="headerlink" href="#group-output-coordinates-unit-xxx" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">AXIAL_COORDINATES</span></code></p>
 <blockquote>
 <div><p>Axial coordinates of the bulk discretization nodes</p>
@@ -626,7 +632,7 @@ Note that the vector includes the dedicated inlet DOFs at the beginning (length:
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOL}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCOL}\)</span> (FV) / <span class="math notranslate nohighlight">\((\texttt{POLYDEG} + 1) \cdot \texttt{NELEM}\)</span> (DG)</p></td>
 </tr>
 </tbody>
 </table>
@@ -650,7 +656,7 @@ Note that the vector includes the dedicated inlet DOFs at the beginning (length:
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NPAR}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NCELLS}\)</span> (FV) / <span class="math notranslate nohighlight">\((\texttt{PAR_POLYDEG} + 1) \cdot \texttt{PAR_NELEM}\)</span> (DG)</p></td>
 </tr>
 </tbody>
 </table>

@@ -203,7 +203,7 @@
 
   <section id="cadet-python-introduction">
 <span id="cadet-python"></span><h1>CADET-Python Introduction<a class="headerlink" href="#cadet-python-introduction" title="Link to this heading">¶</a></h1>
-<p>The CADET-Python API can be very useful for developers as it allows to create an arbitrary input configuration for CADET-Core.
+<p>The CADET-Python API can be very useful for developers as it allows creating an arbitrary input configuration for CADET-Core.
 This is especially useful when new methods and models are added, which are not (yet) supported by the CADET-Process frontend.
 To demonstrate the use of CADET-Python, we set up a simulation in the following.</p>
 <dl class="simple">
@@ -266,7 +266,7 @@ This can cause problems later on, when the simulator is run.</p>
 The units of the different parameters and quantities are given in the corresponding <a class="reference internal" href="../interface/unit_operations/index.html#unit-operation-config"><span class="std std-ref">file format</span></a> of the respective unit operation.</p>
 <section id="inlet-model">
 <h3>Inlet Model<a class="headerlink" href="#inlet-model" title="Link to this heading">¶</a></h3>
-<p>In CADET, the <code class="docutils literal notranslate"><span class="pre">INLET</span></code> pseudo unit operation serves as a source for the system and is used to create arbitary concentration profiles as boundary conditions.
+<p>In CADET, the <code class="docutils literal notranslate"><span class="pre">INLET</span></code> pseudo unit operation serves as a source for the system and is used to create arbitrary concentration profiles as boundary conditions.
 First, we define an <code class="docutils literal notranslate"><span class="pre">INLET</span></code> as the first unit operation by adding the field <code class="docutils literal notranslate"><span class="pre">unit_000</span></code> in the <code class="docutils literal notranslate"><span class="pre">/input/model/</span></code> group.
 The concentration profile is described using a piecewise cubic polynomial (cubic spline in the continuous case) for each component, where the pieces are given by the time sections.
 Later, we will define the polynomials, when we look at time sections.</p>
@@ -310,7 +310,7 @@ The available models are listed in the <a class="reference internal" href="../mo
 Then, we decide if we want to use the <a class="reference internal" href="../modelling/binding/index.html#binding-models"><span class="std std-ref">rapid-equilibrium assumption</span></a> in the binding model (<code class="docutils literal notranslate"><span class="pre">is_kinetic</span> <span class="pre">=</span> <span class="pre">False</span></code>), which is not the case here (dynamic binding).
 Finally, the parameters of the binding model have to be set for each component (they are vectors of length <code class="docutils literal notranslate"><span class="pre">n_components</span></code>).
 They are described in the <a class="reference internal" href="../interface/binding/multi_component_langmuir.html#multi-component-langmuir-config"><span class="std std-ref">corresponding file format specification</span></a>.
-In case of the Langmuir model, we have to specify the parameters <code class="docutils literal notranslate"><span class="pre">kA</span></code>, <code class="docutils literal notranslate"><span class="pre">kD</span></code>, and <code class="docutils literal notranslate"><span class="pre">qMAX</span></code>.</p>
+In case of the Langmuir model, we have to specify the parameters <code class="docutils literal notranslate"><span class="pre">mcl_ka</span></code>, <code class="docutils literal notranslate"><span class="pre">mcl_kd</span></code>, and <code class="docutils literal notranslate"><span class="pre">mcl_qmax</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_001</span><span class="o">.</span><span class="n">particle_type_000</span><span class="o">.</span><span class="n">adsorption_model</span> <span class="o">=</span> <span class="s1">'MULTI_COMPONENT_LANGMUIR'</span>
 <span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_001</span><span class="o">.</span><span class="n">particle_type_000</span><span class="o">.</span><span class="n">nbound</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_001</span><span class="o">.</span><span class="n">particle_type_000</span><span class="o">.</span><span class="n">adsorption</span><span class="o">.</span><span class="n">is_kinetic</span> <span class="o">=</span> <span class="kc">True</span>    <span class="c1"># Kinetic binding</span>
@@ -334,12 +334,12 @@ In this example, we start with an empty column.</p>
 <section id="setting-up-the-discretization">
 <h4>Setting up the Discretization<a class="headerlink" href="#setting-up-the-discretization" title="Link to this heading">¶</a></h4>
 <p>There are several options for adapting the spatial discretization of the PDE model.
-However, the two most important ones are the number of grid cells in the column (axial direction) and the particles, which are also set in this example.
-We choose <code class="docutils literal notranslate"><span class="pre">20</span></code> axial cells in the column <code class="docutils literal notranslate"><span class="pre">ncol</span></code> and <code class="docutils literal notranslate"><span class="pre">5</span></code> radial cells in the particle <code class="docutils literal notranslate"><span class="pre">npar</span></code>.</p>
+However, the two most important ones are the spatial resolution in the column (axial direction) and in the particles, which are also set in this example.
+This example uses the DG discretization, where the resolution is given by the polynomial degree (<code class="docutils literal notranslate"><span class="pre">polydeg</span></code>, <code class="docutils literal notranslate"><span class="pre">par_polydeg</span></code>) and the number of elements (<code class="docutils literal notranslate"><span class="pre">nelem</span></code>, <code class="docutils literal notranslate"><span class="pre">par_nelem</span></code>).</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>These are rather low values to make the examples run faster, since they are only for educational purposes.
-In practice, much higher values are expected (say 100-200 axial cells and 16-32 particle cells).
+In practice, higher values are expected.
 Note that the WENO scheme, which handles the advection, drastically reduces the required amount of cells compared to an upwind scheme.</p>
 </div>
 <p>Moreover, we have to specify the number of bound states for each component.
@@ -399,7 +399,7 @@ On each section <span class="math notranslate nohighlight">\([ t_i, t_{i+1} ]\)<
 Note that the constant coefficient <code class="docutils literal notranslate"><span class="pre">const_coeff</span></code> determines the starting concentration on each section.
 The stopping concentration is given by <span class="math notranslate nohighlight">\(p_i( t_{i+1} )\)</span> or <span class="math notranslate nohighlight">\(p_{i+1}( t_{i+1} )\)</span> in case of a continuous profile.</p>
 <p>In this example, which has only one section, we define its coefficients by adding the field <code class="docutils literal notranslate"><span class="pre">sec_000</span></code> to the inlet unit (<code class="docutils literal notranslate"><span class="pre">unit_000</span></code>).
-Since the column should be constantly fed with <span class="math notranslate nohighlight">\(1.0 \cdot 10^{-3} mol / m^3\)</span>, we set <code class="docutils literal notranslate"><span class="pre">const_coeff</span></code> to <code class="docutils literal notranslate"><span class="pre">[1.0e-3]</span></code> and all other cofficients to <code class="docutils literal notranslate"><span class="pre">[0.0]</span></code>.
+Since the column should be constantly fed with <span class="math notranslate nohighlight">\(1.0 \cdot 10^{-3} mol / m^3\)</span>, we set <code class="docutils literal notranslate"><span class="pre">const_coeff</span></code> to <code class="docutils literal notranslate"><span class="pre">[1.0e-3]</span></code> and all other coefficients to <code class="docutils literal notranslate"><span class="pre">[0.0]</span></code>.
 Note that for more components, a vector of coefficients needs to be specified.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_000</span><span class="o">.</span><span class="n">sec_000</span><span class="o">.</span><span class="n">const_coeff</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0e-3</span><span class="p">,]</span> <span class="c1"># mol / m^3</span>
 <span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">unit_000</span><span class="o">.</span><span class="n">sec_000</span><span class="o">.</span><span class="n">lin_coeff</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,]</span>
@@ -421,7 +421,7 @@ Moreover, we have to specify the section in which the specified connectivity sho
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Since CADET version 4.1, the flow rates can also be defined with piecewise cubic polynomials.
-Also, for the 2D General rate model inlet ports need to be speciefied.
+Also, for the 2D general rate model, inlet ports need to be specified.
 For more information on the parameters, see the <a class="reference internal" href="../interface/system.html#ffmodelsystemconnections"><span class="std std-ref">file format specification</span></a>.</p>
 </div>
 <p>In this case, we connect all components of <code class="docutils literal notranslate"><span class="pre">unit_000</span></code> to <code class="docutils literal notranslate"><span class="pre">unit_001</span></code>, and from <code class="docutils literal notranslate"><span class="pre">unit_001</span></code> to <code class="docutils literal notranslate"><span class="pre">unit_002</span></code>.</p>
@@ -464,6 +464,10 @@ Usually, these only need to be adapted in special cases.</p>
 <p>Second, we have to specify which results we want CADET to return.
 For this, we have to specify the <code class="docutils literal notranslate"><span class="pre">/input/return/</span></code> group.
 For more information, see the <a class="reference internal" href="../interface/return_data.html#return"><span class="std std-ref">file format specification</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Because <code class="docutils literal notranslate"><span class="pre">return</span></code> is a reserved keyword in Python, we cannot use dot-notation but have to use the ‘proper’ dictionary indexing syntax.</p>
+</div>
 <p>In this example, we want to write the concentration profile of the inlet and outlet of each unit operation.
 In addition, we are interested in the concentration in the interstitial volume (bulk volume) of the column.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">input</span><span class="p">[</span><span class="s1">'return'</span><span class="p">]</span><span class="o">.</span><span class="n">split_components_data</span> <span class="o">=</span> <span class="mi">0</span>
@@ -484,7 +488,7 @@ If the time points are not set explicitly, the time integrator outputs the solut
 </pre></div>
 </div>
 <p>The last remaining step is to actually run the simulation.
-For this, we have to specify a filename, save the configuration to <code class="docutils literal notranslate"><span class="pre">H5</span></code>-format and call call the <code class="docutils literal notranslate"><span class="pre">model</span></code>’s <code class="docutils literal notranslate"><span class="pre">run()</span></code> function.
+For this, we have to specify a filename, save the configuration to <code class="docutils literal notranslate"><span class="pre">H5</span></code>-format and call the <code class="docutils literal notranslate"><span class="pre">model</span></code>’s <code class="docutils literal notranslate"><span class="pre">run()</span></code> function.
 We check if the simulation has completed successfully and load the results.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">'model.h5'</span>
 <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -524,7 +528,7 @@ Finally, we plot the concentration signal at the outlet of the column.</p>
 <li><p>Increase the length of the column and the flow rate.</p></li>
 <li><p>Increase the desorption coefficient <code class="docutils literal notranslate"><span class="pre">MCL_KD</span></code>.</p></li>
 <li><p>Add a second component.</p></li>
-<li><p>Plot the concentration profile of the <code class="docutils literal notranslate"><span class="pre">INLET</span></code> unit operation</p></li>
+<li><p>Plot the concentration profile of the <code class="docutils literal notranslate"><span class="pre">INLET</span></code> unit operation.</p></li>
 </ul>
 </section>
 </section>

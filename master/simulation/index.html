@@ -212,7 +212,7 @@
 <span id="id1"></span><h1>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">¶</a></h1>
 <p>This chapter gives an overview of the simulation process and the different steps involved.</p>
 <p>CADET uses a backward-differentiation-formula (BDF) time discretization as implemented by the IDAS solver from SUNDIALS <span class="bibtex-citation" id="id2">[<a class="reference internal" href="../zbibliography.html#id37" title="Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear and differential/algebraic equation solvers. ACM Transactions on Mathematical Software, 31(3):363–396, 2005-09. URL: http://portal.acm.org/citation.cfm?doid=1089014.1089020, doi:10.1145/1089014.1089020.">31</a>]</span>.
-Each time step requires the solution of a nonlinear algebraic system of equations is performed by a Newton method.
+Each time step requires the solution of a nonlinear algebraic system of equations, which is performed by a Newton method.
 Since chromatographic systems can exhibit strong nonlinearity and stiff systems, the Jacobian of the equation system is always updated (i.e., an “exact” Newton method is used).</p>
 <figure class="align-default" id="id5">
 <span id="simflowchart"></span><img alt="../_images/time_integration.png" src="../_images/time_integration.png" />
@@ -242,7 +242,7 @@ Contrary to smooth transitions, a discontinuous transition requires some extra w
 </figure>
 <section id="time-section-specification">
 <span id="simtimesectionsspecification"></span><h3>Time section specification<a class="headerlink" href="#time-section-specification" title="Link to this heading">¶</a></h3>
-<p>Time sections are specified by an array (<code class="docutils literal notranslate"><span class="pre">SECTION_TIMES</span></code>, see Tab. <a class="reference internal" href="../interface/solver.html#ffsolversections"><span class="std std-ref">Group /solver/sections</span></a>) which contains the <span class="math notranslate nohighlight">\(t_i\)</span> that denote the start- and endpoint of a time section <span class="math notranslate nohighlight">\(\left[t_i, t_{i+1}\right]\)</span>.
+<p>Time sections are specified by an array (<code class="docutils literal notranslate"><span class="pre">SECTION_TIMES</span></code>, see Tab. <a class="reference internal" href="../interface/solver.html#ffsolversections"><span class="std std-ref">Group /input/solver/sections</span></a>) which contains the <span class="math notranslate nohighlight">\(t_i\)</span> that denote the start- and endpoint of a time section <span class="math notranslate nohighlight">\(\left[t_i, t_{i+1}\right]\)</span>.
 This means, that the array contains <span class="math notranslate nohighlight">\(n+1\)</span> values if there are <span class="math notranslate nohighlight">\(n\)</span> sections.
 The smoothness of a section transition is indicated by the array <code class="docutils literal notranslate"><span class="pre">SECTION_CONTINUITY</span></code>, which contains <span class="math notranslate nohighlight">\(n-1\)</span> elements if there are <span class="math notranslate nohighlight">\(n\)</span> sections.</p>
 </section>
@@ -271,10 +271,10 @@ The general DAE can be decomposed into</p>
         M \dot{y}_{\mathcal{I}_d} + G_{\mathcal{I}_d}(t, y, p) &amp;= 0, \\
         G_{\mathcal{I}_a}(t, y, p) &amp;= 0,
 \end{aligned}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(M\)</span> is the so called “mass matrix”, which essentially consist of the state time derivative Jacobian <span class="math notranslate nohighlight">\(\partial F / \partial \dot{y}\)</span>.
+<p>where <span class="math notranslate nohighlight">\(M\)</span> is the so called “mass matrix”, which essentially consists of the state time derivative Jacobian <span class="math notranslate nohighlight">\(\partial F / \partial \dot{y}\)</span>.
 Furthermore, it is assumed that the Jacobian of the algebraic equations with respect to the algebraic variables <span class="math notranslate nohighlight">\(\partial G_{\mathcal{I}_a} / \partial y_{\mathcal{I}_a}\)</span> is invertible.
 Hence, the original DAE is of differential index 1.</p>
-<p>Given <span class="math notranslate nohighlight">\(y_{\mathcal{I}_d}\)</span>, consistently initialization means finding <span class="math notranslate nohighlight">\(y_{\mathcal{I}_a}\)</span>, <span class="math notranslate nohighlight">\(y_{\mathcal{I}_d}\)</span>, and <span class="math notranslate nohighlight">\(\dot{y}\)</span> such that the DAE holds at the initial time point <span class="math notranslate nohighlight">\(t_0\)</span> and can be solved for some non-empty time span.
+<p>Given <span class="math notranslate nohighlight">\(y_{\mathcal{I}_d}\)</span>, consistent initialization means finding <span class="math notranslate nohighlight">\(y_{\mathcal{I}_a}\)</span>, <span class="math notranslate nohighlight">\(y_{\mathcal{I}_d}\)</span>, and <span class="math notranslate nohighlight">\(\dot{y}\)</span> such that the DAE holds at the initial time point <span class="math notranslate nohighlight">\(t_0\)</span> and can be solved for some non-empty time span.
 Thus, consistent initial conditions <span class="math notranslate nohighlight">\(y_0\)</span> and <span class="math notranslate nohighlight">\(\dot{y}_0\)</span> satisfy</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
@@ -284,7 +284,7 @@ Thus, consistent initial conditions <span class="math notranslate nohighlight">\
 \end{aligned}\end{split}\]</div>
 <p>The last equation, which determines <span class="math notranslate nohighlight">\(\dot{y}_{\mathcal{I}_a}\)</span>, arises from taking the total derivative with respect to time <span class="math notranslate nohighlight">\(t\)</span> of the second equation.</p>
 <p>Concluding, a nonlinear algebraic equation system has to be solved in order to compute consistent initial conditions.
-The error in the solution of these systems is controlled by the <code class="docutils literal notranslate"><span class="pre">ALGTOL</span></code> setting (see Tab. <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>).</p>
+The error in the solution of these systems is controlled by the <code class="docutils literal notranslate"><span class="pre">ALGTOL</span></code> setting (see Tab. <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /input/solver/time_integrator</span></a>).</p>
 </section>
 <section id="time-stepping">
 <span id="simtimeintegration"></span><h2>Time stepping<a class="headerlink" href="#time-stepping" title="Link to this heading">¶</a></h2>
@@ -318,7 +318,7 @@ The much simpler Jacobian <span class="math notranslate nohighlight">\(\partial 
 <section id="adaptivity">
 <span id="simtimeintegrationadaptivity"></span><h3>Adaptivity<a class="headerlink" href="#adaptivity" title="Link to this heading">¶</a></h3>
 <p>The BDF order <span class="math notranslate nohighlight">\(q_{\tau}\)</span> and size of the time step <span class="math notranslate nohighlight">\(t_\tau\)</span> are chosen such that the error bounds are satisfied with minimal work.
-Equation <a class="reference internal" href="#equation-bdfnonlinsystem">41</a> is solved with a Newton iteration using very few iterations (<code class="docutils literal notranslate"><span class="pre">MAX_NEWTON_ITER</span></code> from Table <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>) since the starting point is assumed to be close to the solution as the time steps are small.
+Equation <a class="reference internal" href="#equation-bdfnonlinsystem">41</a> is solved with a Newton iteration using very few iterations (<code class="docutils literal notranslate"><span class="pre">MAX_NEWTON_ITER</span></code> from Table <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /input/solver/time_integrator</span></a>) since the starting point is assumed to be close to the solution as the time steps are small.
 If the solution of the Newton iteration does not pass the <em>convergence test</em>, the step size <span class="math notranslate nohighlight">\(t_\tau\)</span> is reduced and the Newton iteration is tried again.
 This may happen at most <code class="docutils literal notranslate"><span class="pre">MAX_CONVTEST_FAIL</span></code> times, otherwise time integration is aborted with failure.
 Having a solution of the Newton iteration at hand, a <em>local truncation error test</em> is performed which controls the error of the BDF method.
@@ -326,8 +326,8 @@ If this test fails, step size <span class="math notranslate nohighlight">\(t_\ta
 The error test may be failed at most <code class="docutils literal notranslate"><span class="pre">MAX_ERRTEST_FAIL</span></code> times before time integration is aborted with failure.</p>
 <p>Error bounds for the local truncation error test are specified by an absolute tolerance (<code class="docutils literal notranslate"><span class="pre">ABSTOL</span></code>) and a relative tolerance (<code class="docutils literal notranslate"><span class="pre">RELTOL</span></code>).
 Note that the relative tolerance only works for non-zero values, whereas zero values are accounted for by the absolute tolerance.
-For example, a relative tolerance of <span class="math notranslate nohighlight">\(10^{-4}\)</span> and absolute tolerance of <span class="math notranslate nohighlight">\(10^{-8}\)</span> requests <span class="math notranslate nohighlight">\(3\)</span> significant digits (correct digits after the comma in scientific notation) and considers all numbers with magnitude smaller than <span class="math notranslate nohighlight">\(10^{-8}\)</span> as <span class="math notranslate nohighlight">\(0\)</span>.</p>
-<p>The size of the first time step in a time slice is given by <code class="docutils literal notranslate"><span class="pre">INIT_STEP_SIZE</span></code> from Table <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>.
+For example, a relative tolerance of <span class="math notranslate nohighlight">\(10^{-4}\)</span> and absolute tolerance of <span class="math notranslate nohighlight">\(10^{-8}\)</span> requests <span class="math notranslate nohighlight">\(3\)</span> significant digits (correct digits after the decimal point in scientific notation) and considers all numbers with magnitude smaller than <span class="math notranslate nohighlight">\(10^{-8}\)</span> as <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<p>The size of the first time step in a time slice is given by <code class="docutils literal notranslate"><span class="pre">INIT_STEP_SIZE</span></code> from Table <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /input/solver/time_integrator</span></a>.
 If a simulation fails on the first time step, it might help to reduce the initial step size.
 It can also help to increase the error tolerances, at the cost of imprecise results over the whole course of the simulation.</p>
 <p>It can happen that due to severe stiffness or ill-posed models a simulation may exceed its computational budget given by the maximum number of time steps (per time slice) <code class="docutils literal notranslate"><span class="pre">MAX_STEPS</span></code>.
@@ -353,8 +353,8 @@ The CADET simulator implements the forward sensitivity approach which creates a 
 <p>These linear DAEs depend on the solution <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(\dot{y}\)</span> of the original DAE system.
 Consequently, the sensitivity systems are solved together with the original DAE system in a staggered approach <span class="bibtex-citation" id="id3">[<a class="reference internal" href="../zbibliography.html#id45" title="William F. Feehery, John E. Tolsma, and Paul I. Barton. Efficient sensitivity analysis of large-scale differential-algebraic systems. Applied Numerical Mathematics, 25(1):41–54, 1997-10. URL: http://dl.acm.org/citation.cfm?id=264193.264573, doi:10.1016/S0168-9274(97)00050-0.">32</a>]</span>.</p>
 <p>After the nonlinear Eq. <a class="reference internal" href="#equation-bdfnonlinsystem">41</a> has been successfully solved using Newton iteration (i.e., it has passed the convergence test), each sensitivity is solved using the same Newton iteration.
-If direct linear solvers were used, this iteration would convergence with a single iteration as there is no nonlinearity.
-The Newton method for the sensitivities performs at most <code class="docutils literal notranslate"><span class="pre">MAX_NEWTON_ITER_SENS</span></code> (see Table <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>) iterations.
+If direct linear solvers were used, this iteration would converge within a single iteration as there is no nonlinearity.
+The Newton method for the sensitivities performs at most <code class="docutils literal notranslate"><span class="pre">MAX_NEWTON_ITER_SENS</span></code> (see Table <a class="reference internal" href="../interface/solver.html#ffsolvertime"><span class="std std-ref">Group /input/solver/time_integrator</span></a>) iterations.
 Assuming the convergence test has passed for each sensitivity, the local truncation error test is performed for the full set of variables (i.e., original system and sensitivities).
 The sensitivities can be excluded from the local truncation error test by setting <code class="docutils literal notranslate"><span class="pre">ERRORTEST_SENS</span></code> appropriately.
 Note that time integration step size is always affected by sensitivities due to possible convergence test failures.</p>

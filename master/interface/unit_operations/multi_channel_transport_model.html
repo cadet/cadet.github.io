@@ -253,10 +253,6 @@
 </tbody>
 </table>
 </div></blockquote>
-</section>
-<section id="group-input-model-unit-xxx-liquid-reaction-yyy">
-<h2>Group /input/model/unit_XXX/liquid_reaction_YYY<a class="headerlink" href="#group-input-model-unit-xxx-liquid-reaction-yyy" title="Link to this heading">¶</a></h2>
-<p>Each reaction is specified in another subgroup <cite>liquid_reaction_YYY</cite>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_C</span></code></p>
 <blockquote>
 <div><p>Initial concentrations for each component in all channels of the bulk mobile phase (length <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span>), or for each component in each channel (length <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NCHANNEL}\)</span>, ordering channel-major)</p>
@@ -309,7 +305,7 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 <li><p>Component-dependent, channel-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NCHANNEL}\)</span>; ordering is channel-major</p></li>
 <li><p>Component-independent, channel-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NSEC}\)</span></p></li>
 <li><p>Component-independent, channel-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCHANNEL} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
-<li><p>Component-dependent, channel-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
+<li><p>Component-dependent, channel-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
 <li><p>Component-dependent, channel-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NCHANNEL} \cdot \texttt{NSEC}\)</span>; ordering is section-channel-major</p></li>
 </ol>
 <blockquote>
@@ -340,7 +336,7 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 <blockquote>
 <div><p>Velocity</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\,\mathrm{s}^{-1}\)</span></p>
-<p>Indicates flow direction in each channel (forward if value is positive, backward if value is negative), see Section <a class="reference internal" href="../../modelling/unit_operations/2d_general_rate_model.html#muopgrmflow2d"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>).  In case of a spatially inhomogeneous setting, the <span class="math notranslate nohighlight">\(\texttt{SENS_PARTYPE}\)</span> field is used for indexing the channel when specifying parameter sensitivities.</p>
+<p>Optional; if left out, the velocity is inferred from the volumetric flow rates of the network connections. Indicates flow direction in each channel (forward if value is positive, backward if value is negative), see Section <a class="reference internal" href="../../modelling/unit_operations/2d_general_rate_model.html#muopgrmflow2d"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>.  In case of a spatially inhomogeneous setting, the <span class="math notranslate nohighlight">\(\texttt{SENS_PARTYPE}\)</span> field is used for indexing the channel when specifying parameter sensitivities.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -372,19 +368,18 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </table>
 </div></blockquote>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">EXCHANGE_TYPE</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">EXCHANGE_MODEL</span></code></p>
 <blockquote>
-<div><p>Type of exchange model to be used (optional)</p>
-<p><strong>Unit:</strong> N/A</p>
+<div><p>Type of exchange model to be used (optional, defaults to <code class="docutils literal notranslate"><span class="pre">LINEAR</span></code>)</p>
 <p>Specifies the exchange model to be applied for inter-channel transport. Possible values are:</p>
 <ul class="simple">
-<li><p><cite>LINEAR_EX</cite>: Linear Exchange model (default)</p></li>
-<li><p><cite>LANGMUIR_EX</cite>: Langmuir Exchange model</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LINEAR</span></code>: Linear Exchange model (default)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LANGMUIR_EX</span></code>: Langmuir Exchange model</p></li>
 </ul>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
-<td><p><strong>Range:</strong> {LANGMUIR_EX, LINEAR_EX}</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{\texttt{LINEAR}, \texttt{LANGMUIR_EX}\}\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>
@@ -403,7 +398,7 @@ e^k_{21} &amp; \ddots &amp; &amp; \vdots\\
 \vdots &amp; &amp; \ddots &amp; e^k_{(N-1)N}\\
 e^k_{N1} &amp; \dots &amp; e^k_{N(N-1)} &amp; 0
 \end{bmatrix}\end{split}\]</div>
-<p>For addressing the exchange rates as a parameter senstivity, the mapping is as follows:</p>
+<p>For addressing the exchange rates as a parameter sensitivity, the mapping is as follows:</p>
 </div></blockquote>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\texttt{SENS_BOUNDPHASE}\)</span> <em>Channel from</em></p></li>
@@ -423,7 +418,7 @@ e^k_{N1} &amp; \dots &amp; e^k_{N(N-1)} &amp; 0
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">SATURATION_MATRIX</span></code></dt><dd><p>Maximum exchange saturation matrix (optional)
 Only when using the Langmuir Exchange model.</p>
-<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(mol~m_{channel}^{-3}\)</span></p>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{channel}}^{-3}\)</span></p>
 <p>Matrix containing maximum saturation levels <span class="math notranslate nohighlight">\(q_{max,i}^{k}\)</span> for each component <span class="math notranslate nohighlight">\(i\)</span> in each channel <span class="math notranslate nohighlight">\(k\)</span>.
 This parameter determines the saturation limit for the Langmuir-type exchange kinetics.</p>
 <ul class="simple">
@@ -466,6 +461,10 @@ This parameter determines the saturation limit for the Langmuir-type exchange ki
 </tbody>
 </table>
 </div></blockquote>
+</section>
+<section id="group-input-model-unit-xxx-liquid-reaction-yyy">
+<h2>Group /input/model/unit_XXX/liquid_reaction_YYY<a class="headerlink" href="#group-input-model-unit-xxx-liquid-reaction-yyy" title="Link to this heading">¶</a></h2>
+<p>Each reaction is specified in another subgroup <cite>liquid_reaction_YYY</cite>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.</p>
 </section>
 <section id="group-input-model-unit-xxx-discretization-unit-type-multi-channel-transport">
 <h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE = MULTI_CHANNEL_TRANSPORT<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-multi-channel-transport" title="Link to this heading">¶</a></h2>

@@ -218,11 +218,13 @@
 <h2>Group /input/solver<a class="headerlink" href="#group-input-solver" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NTHREADS</span></code></p>
 <blockquote>
-<div><p>Number of used threads</p>
+<div><p>Number of used threads (optional, defaults to <span class="math notranslate nohighlight">\(0\)</span>).
+A value of <span class="math notranslate nohighlight">\(0\)</span> lets the runtime choose the number of threads.
+In a non-parallelized build, only the value <span class="math notranslate nohighlight">\(1\)</span> is accepted.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>
@@ -323,8 +325,8 @@ Values less than or equal <span class="math notranslate nohighlight">\(0\)</span
 </table>
 </div></blockquote>
 </section>
-<section id="group-solver-time-integrator">
-<span id="ffsolvertime"></span><h2>Group /solver/time_integrator<a class="headerlink" href="#group-solver-time-integrator" title="Link to this heading">¶</a></h2>
+<section id="group-input-solver-time-integrator">
+<span id="ffsolvertime"></span><h2>Group /input/solver/time_integrator<a class="headerlink" href="#group-input-solver-time-integrator" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">USE_MODIFIED_NEWTON</span></code></p>
 <blockquote>
 <div><p>Specifies whether modified or full Newton method should be used (optional, defaults to <span class="math notranslate nohighlight">\(0\)</span>)</p>
@@ -387,7 +389,7 @@ Values less than or equal <span class="math notranslate nohighlight">\(0\)</span
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_STEP_SIZE</span></code></p>
 <blockquote>
-<div><p>Initial time integrator step size for each section or one value for all sections (0.0: IDAS default value), see <cite>IDAS &lt;https://sundials.readthedocs.io/en/latest/idas/Usage/SIM.html#idas-usage-sim-user-callable-optional-input&gt;</cite> documentation.</p>
+<div><p>Initial time integrator step size for each section or one value for all sections (0.0: IDAS default value), see <a class="reference external" href="https://sundials.readthedocs.io/en/latest/idas/Usage/SIM.html#idas-usage-sim-user-callable-optional-input">IDAS</a> documentation.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}\)</span></p>
 <table class="docutils align-default">
 <tbody>
@@ -400,7 +402,7 @@ Values less than or equal <span class="math notranslate nohighlight">\(0\)</span
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">MAX_STEPS</span></code></p>
 <blockquote>
-<div><p>Maximum number of timesteps taken by IDAS (0: IDAS default = 500), see <cite>IDAS &lt;https://sundials.readthedocs.io/en/latest/idas/Usage/SIM.html#idas-usage-sim-user-callable-optional-input&gt;</cite> documentation.</p>
+<div><p>Maximum number of timesteps taken by IDAS (0: IDAS default = 500), see <a class="reference external" href="https://sundials.readthedocs.io/en/latest/idas/Usage/SIM.html#idas-usage-sim-user-callable-optional-input">IDAS</a> documentation.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -412,7 +414,7 @@ Values less than or equal <span class="math notranslate nohighlight">\(0\)</span
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">MAX_STEP_SIZE</span></code></p>
 <blockquote>
-<div><p>Maximum size of timesteps taken by IDAS (optional, defaults to unlimited 0.0), see <cite>IDAS &lt;https://sundials.readthedocs.io/en/latest/idas/Usage/SIM.html#idas-usage-sim-user-callable-optional-input&gt;</cite> documentation.</p>
+<div><p>Maximum size of timesteps taken by IDAS (optional, defaults to unlimited 0.0), see <a class="reference external" href="https://sundials.readthedocs.io/en/latest/idas/Usage/SIM.html#idas-usage-sim-user-callable-optional-input">IDAS</a> documentation.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}\)</span></p>
 <table class="docutils align-default">
 <tbody>
@@ -484,8 +486,8 @@ Values less than or equal <span class="math notranslate nohighlight">\(0\)</span
 </table>
 </div></blockquote>
 </section>
-<section id="group-solver-sections">
-<span id="ffsolversections"></span><h2>Group /solver/sections<a class="headerlink" href="#group-solver-sections" title="Link to this heading">¶</a></h2>
+<section id="group-input-solver-sections">
+<span id="ffsolversections"></span><h2>Group /input/solver/sections<a class="headerlink" href="#group-input-solver-sections" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NSEC</span></code></p>
 <blockquote>
 <div><p>Number of sections</p>
@@ -500,7 +502,7 @@ Values less than or equal <span class="math notranslate nohighlight">\(0\)</span
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">SECTION_TIMES</span></code></p>
 <blockquote>
-<div><p>Simulation times at which the model changes or behaves discontinously; including start and end times</p>
+<div><p>Simulation times at which the model changes or behaves discontinuously; including start and end times</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}\)</span></p>
 <table class="docutils align-default">
 <tbody>
@@ -513,7 +515,7 @@ Values less than or equal <span class="math notranslate nohighlight">\(0\)</span
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">SECTION_CONTINUITY</span></code></p>
 <blockquote>
-<div><p>Continuity indicator for each section transition: 0 (discontinuous) or 1 (continuous).</p>
+<div><p>Continuity indicator for each section transition: 0 (discontinuous) or 1 (continuous). Optional, defaults to all 0.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>

@@ -233,9 +233,8 @@
 <div><p>Initial full state vector (optional, unit operation specific initial data is ignored)</p>
 <table class="docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
-<td><p><strong>Length:</strong> 1</p></td>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NDOF}\)</span></p></td>
 </tr>
 </tbody>
 </table>
@@ -253,7 +252,7 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_STATE_SENSY_XXX</span></code></p>
 <blockquote>
-<div><p>Initial full time derivative state vector of the <span class="math notranslate nohighlight">\(\texttt{XXX}\)</span> th sensitivity system (optional, can currently not be specified on unit operation level)</p>
+<div><p>Initial full state vector of the <span class="math notranslate nohighlight">\(\texttt{XXX}\)</span> th sensitivity system (optional, can currently not be specified on unit operation level)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -264,7 +263,7 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_STATE_SENSYDOT_XXX</span></code></p>
 <blockquote>
-<div><p>Initial full state vector of the <span class="math notranslate nohighlight">\(\texttt{XXX}\)</span> th sensitivity system (optional, can currently not be specified on unit operation level)</p>
+<div><p>Initial full time derivative state vector of the <span class="math notranslate nohighlight">\(\texttt{XXX}\)</span> th sensitivity system (optional, can currently not be specified on unit operation level)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -340,7 +339,7 @@ If both component indices are <span class="math notranslate nohighlight">\(-1\)<
 <p>The port indices are left out if <span class="math notranslate nohighlight">\(\texttt{CONNECTIONS_INCLUDE_PORTS}\)</span> is set to <span class="math notranslate nohighlight">\(0\)</span> and no unit operation with multiple ports is present in the system. If a unit operation with multiple ports is present, <span class="math notranslate nohighlight">\(\texttt{CONNECTIONS_INCLUDE_PORTS}\)</span> is ignored and port indices are mandatory.</p>
 <p>The last three flow rate coefficients are left out if <span class="math notranslate nohighlight">\(\texttt{CONNECTIONS_INCLUDE_DYNAMIC_FLOW}\)</span> is set to <span class="math notranslate nohighlight">\(0\)</span>.
 Contrary to the constant coefficient, which has the parameter name <span class="math notranslate nohighlight">\(\texttt{CONNECTION}\)</span>, the other coefficients are named <span class="math notranslate nohighlight">\(\texttt{CONNECTION_LIN}\)</span>, <span class="math notranslate nohighlight">\(\texttt{CONNECTION_QUAD}\)</span>, and <span class="math notranslate nohighlight">\(\texttt{CONNECTION_CUB}\)</span>, respectively.</p>
-<p>For addressing the flow rates as a parameter senstivity, the mapping is as follows:</p>
+<p>For addressing the flow rates as a parameter sensitivity, the mapping is as follows:</p>
 </div></blockquote>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\texttt{SENS_UNIT}\)</span> Unused, always set to <span class="math notranslate nohighlight">\(-1\)</span></p></li>
@@ -491,7 +490,7 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 <span id="ffmodelsolver"></span><h2>Group /input/model/solver<a class="headerlink" href="#group-input-model-solver" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">GS_TYPE</span></code></p>
 <blockquote>
-<div><p>Type of Gram-Schmidt orthogonalization, see IDAS guide Section~4.5.7.3, p.~41f. A value of <span class="math notranslate nohighlight">\(0\)</span> enables classical Gram-Schmidt, a value of 1 uses modified Gram-Schmidt.</p>
+<div><p>Type of Gram-Schmidt orthogonalization, see IDAS guide Section 4.5.7.3, p. 41f. A value of <span class="math notranslate nohighlight">\(0\)</span> enables classical Gram-Schmidt, a value of 1 uses modified Gram-Schmidt.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -527,7 +526,7 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">SCHUR_SAFETY</span></code></p>
 <blockquote>
-<div><p>Schur safety factor; Influences the tradeoff between linear iterations and nonlinear error control; see IDAS guide Section~2.1 and 5.</p>
+<div><p>Schur safety factor; Influences the tradeoff between linear iterations and nonlinear error control; see IDAS guide Section 2.1 and 5.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>

@@ -274,7 +274,7 @@ The Langmuir Exchange Model incorporates saturation-limited exchange kinetics be
 \[f_{ex,i}^{l \to k}(c^\ell) = e_{lk}^i \, c_{i,l}^\ell \, q_{\max,i}^k \, \left(1 - \sum_{j=1}^{N_c} \frac{c_{j,k}^\ell}{q_{\max,j}^k}\right) \, \frac{A_l}{A_k}\]</div>
 <p>where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(e_{lk}^i\)</span> is the exchange rate constant for component <span class="math notranslate nohighlight">\(i\)</span> from channel <span class="math notranslate nohighlight">\(l\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(e_{lk}^i\)</span> is the exchange rate constant for component <span class="math notranslate nohighlight">\(i\)</span> from channel <span class="math notranslate nohighlight">\(l\)</span> to channel <span class="math notranslate nohighlight">\(k\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(q_{\max,i}^k\)</span> is the maximum saturation level for component <span class="math notranslate nohighlight">\(i\)</span> in destination channel <span class="math notranslate nohighlight">\(k\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\sum_{j=1}^{N_c} \frac{c_{j,k}^\ell}{q_{\max,j}^k}\)</span> is the relative occupancy in destination channel <span class="math notranslate nohighlight">\(k\)</span></p></li>
 </ul>
@@ -327,7 +327,7 @@ v_1 &amp;  &amp; 0 \\
  0 &amp;  &amp; v_N
 \end{bmatrix}\end{split}\]</div>
 <ul class="simple">
-<li><p>The diagolal matrix <span class="math notranslate nohighlight">\(D\)</span> contains the dispersion coefficients <span class="math notranslate nohighlight">\(d_{l}\)</span> for each channel.</p></li>
+<li><p>The diagonal matrix <span class="math notranslate nohighlight">\(D\)</span> contains the dispersion coefficients <span class="math notranslate nohighlight">\(d_{l}\)</span> for each channel.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}D=\begin{bmatrix}
@@ -343,7 +343,7 @@ A chart of all resulting valid models of the model family can be found in Bühle
 <p>The MCT can be used to model a LRM with linear binding, if specific parameters are chosen.
 To demonstrate this, we derive the LRM with linear binding equations from the MCT defined above.</p>
 <p>We consider the MCT with two channels, which are used to represent the liquid and solid phase of the LRM, and only take one component into account, for the sake of brevity.
-The channel volumes <span class="math notranslate nohighlight">\(V_1, V_2 &gt; 0\)</span> and cross section areas <span class="math notranslate nohighlight">\(A_1,A_2&gt;0\)</span> are chosen according to the total column porosity (here <span class="math notranslate nohighlight">\(\varepsilon_t \in (0,1)\)</span> of the LRM, i.e. e.g. <span class="math notranslate nohighlight">\(A_1 = \varepsilon_t A\)</span>, with <span class="math notranslate nohighlight">\(A\)</span> being the LRM column cross section area.
+The channel volumes <span class="math notranslate nohighlight">\(V_1, V_2 &gt; 0\)</span> and cross section areas <span class="math notranslate nohighlight">\(A_1,A_2&gt;0\)</span> are chosen according to the total column porosity <span class="math notranslate nohighlight">\(\varepsilon_t \in (0,1)\)</span> of the LRM, e.g. <span class="math notranslate nohighlight">\(A_1 = \varepsilon_t A\)</span>, with <span class="math notranslate nohighlight">\(A\)</span> being the LRM column cross section area.
 We set the transport parameters of the second channel to zero, change notation for the concentrations, <span class="math notranslate nohighlight">\(c_{0,1}^\ell, c_{0,2}^\ell \rightarrow c^\ell, c^s\)</span>, and get</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\frac{\partial c^\ell}{\partial t} = - u \frac{\partial c^\ell}{\partial z} + D_\text{ax} \frac{\partial^2 c^\ell}{\partial z^2} + e_{21}^0 c^s A_2 / A_1 - e_{12}^0 c^\ell,

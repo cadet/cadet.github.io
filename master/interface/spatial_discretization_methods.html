@@ -227,12 +227,12 @@ For a comprehensive description of the FV and DG variants that are implemented i
 <h2>Discrete system size<a class="headerlink" href="#discrete-system-size" title="Link to this heading">¶</a></h2>
 <p>FV and DG discretize the continuous spatial domain of the partial differential algebraic equations (PDAE) into a finite set of discrete points.
 Then, a system of (semi-discrete) equations is formulated on those points, resulting in a system of ordinary differential algebraic equations (ODAE).
-The system size and number of unknowns, are also referred to as degrees of freedom (DoF), is given by the number of (spatial) discrete points (times the number of components for multi-component systems).</p>
+The system size, i.e. the number of unknowns, which are also referred to as degrees of freedom (DoF), is given by the number of (spatial) discrete points (times the number of components for multi-component systems).</p>
 <p>The numerical solution becomes more accurate with more discrete points used, but the compute time required to solve the equations also increases.
 That is, we trade compute time for approximation accuracy.</p>
 <p>For the FV method, the number of axial discrete points in the column is specified by the number of volume cells <code class="docutils literal notranslate"><span class="pre">NCOL</span></code>.
 For the DG method, the number of axial discrete points in the column is specified by the number of polynomial interpolation nodes (= <code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code> + 1) times the number of DG elements <code class="docutils literal notranslate"><span class="pre">NELEM</span></code>.
-The GRM additionally comprises a transport equation along the radial coordinate of the particles which is also spatially discretized and the particle discrete points are correspondingly given by <code class="docutils literal notranslate"><span class="pre">NPAR</span></code> for FV and for DG via <code class="docutils literal notranslate"><span class="pre">PAR_POLYDEG</span></code> and <code class="docutils literal notranslate"><span class="pre">PAR_NELEM</span></code>.</p>
+The GRM additionally comprises a transport equation along the radial coordinate of the particles which is also spatially discretized and the particle discrete points are correspondingly given by <code class="docutils literal notranslate"><span class="pre">NCELLS</span></code> for FV and for DG via <code class="docutils literal notranslate"><span class="pre">PAR_POLYDEG</span></code> and <code class="docutils literal notranslate"><span class="pre">PAR_NELEM</span></code>.</p>
 </section>
 <section id="order-of-convergence">
 <h2>Order of convergence<a class="headerlink" href="#order-of-convergence" title="Link to this heading">¶</a></h2>
@@ -242,15 +242,15 @@ Consequently, higher order methods often require less spatial discrete points to
 <p>The theoretical order of convergence for the CADET-FV method is globally limited to 2.
 It is locally (except column boundaries) limited to 3, with an improved order of up to 5 for smooth solutions, and can be varied by specifying the parameters described in the <a class="reference internal" href="flux_reconstruction.html#flux-reconstruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> section.
 For the CADET-DG method, the theoretical order of convergence is <span class="math notranslate nohighlight">\(N_d + 1\)</span> with <span class="math notranslate nohighlight">\(N_d\)</span> denoting the polynomial degree, and can thus be user-defined by specifying the field <code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code> (and <code class="docutils literal notranslate"><span class="pre">PAR_POLYDEG</span></code> for the particles in the GRM).</p>
-<p>The theoretical order of convergence is an asymptotic property, i.e. holds for infinite refinements, but can be numerivcally observed for finite refinements as well.
+<p>The theoretical order of convergence is an asymptotic property, i.e. holds for infinite refinements, but can be numerically observed for finite refinements as well.
 Having the exact solution, we can compute an experimental order of convergence (EOC) via the formula</p>
-<div class="math notranslate nohighlight" id="equation-modelcolumn">
-<span class="eqno">(42)<a class="headerlink" href="#equation-modelcolumn" title="Link to this equation">¶</a></span>\[\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-eoc">
+<span class="eqno">(42)<a class="headerlink" href="#equation-eoc" title="Link to this equation">¶</a></span>\[\begin{aligned}
     EOC_k = \frac{log(\varepsilon_{k+1} / \varepsilon_{k}) }{log(n_{k} / n_{k+1})},
 \end{aligned}\]</div>
-<p>with <span class="math notranslate nohighlight">\(\varepsilon_{k}\)</span> and <span class="math notranslate nohighlight">\(n_{k}\)</span> denoting some error norm and the degrees of freedom of the $k$th approximation.
+<p>with <span class="math notranslate nohighlight">\(\varepsilon_{k}\)</span> and <span class="math notranslate nohighlight">\(n_{k}\)</span> denoting some error norm and the degrees of freedom of the <span class="math notranslate nohighlight">\(k\)</span>-th approximation.
 The EOC approaches the theoretical order of convergence for <span class="math notranslate nohighlight">\(k \rightarrow \infty\)</span> but is typically lower for underresolved problems.
-High-order methods typically do typically not exhibit their theoretical order on very coarse grids.
+High-order methods typically do not exhibit their theoretical order on very coarse grids.
 That is, increasing the number of discrete points from, e.g., 2 to 4 does often not improve the solution according to the theoretical order of convergence but by a much smaller EOC.</p>
 <p>For smooth solutions, we typically observe an EOC of around 2.5 for the default CADET-FV method and around <span class="math notranslate nohighlight">\(N_d\)</span> for the CADET-DG method.
 To our experience, DG with <span class="math notranslate nohighlight">\(N_d&gt;6\)</span> does usually not realize an EOC of <span class="math notranslate nohighlight">\(&gt;6\)</span> for approximation errors within engineering tolerances, i.e. higher rates are achieved only for excessively small error tolerances that are not relevant for most applications.
@@ -267,14 +267,14 @@ It states that linear high-order methods that are monotonous are at most first-o
 Linear higher-order (<span class="math notranslate nohighlight">\(\gt 1\)</span>) methods thus suffer from artificial oscillations at non-smooth parts of the solution, specifically at discontinuities and strong gradients.
 Some higher-order methods, such as the FV variants implemented in CADET, contain a non-linear mechanism to suppress these oscillations.
 The non-linear WENO mechanism employed in CADET-FV can be fine-tuned via the parameters specified in the <a class="reference internal" href="flux_reconstruction.html#flux-reconstruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> section.
-Unfortunately, non-linear higher-order methods (here <span class="math notranslate nohighlight">\(\geq 3\)</span>) are either not applicable (e.g., undefined boundary treatment) or have other shortcomings, such as parameters whose optimal values can be highly proplem-specific.</p>
+Unfortunately, non-linear higher-order methods (here <span class="math notranslate nohighlight">\(\geq 3\)</span>) are either not applicable (e.g., undefined boundary treatment) or have other shortcomings, such as parameters whose optimal values can be highly problem-specific.</p>
 <p>The DG variant that is implemented in CADET is a linear high-order method (arbitrary order) and can thus exhibit oscillatory behaviour at strong gradients, which increases the approximation error and results in a smaller EOC for lower resolutions.
 Since strong gradients are local phenomena which can be captured by employing more discrete points, DG performs better again for higher spatial resolutions.
 This, however, might happen after the engineering error tolerance is by far surpassed.
 Hence, CADET-FV as a stabilized lower-order method can perform better, depending on the smoothness of the approximated solution.
 The DG method reduces its oscillatory behaviour by adding artificial numerical dispersion at element interfaces.
 Thus, the use of a lower polynomial degree and more elements is recommended for non-smooth solutions.</p>
-<p>In Chromatography, mathematical discontinuities never happen, as there are always some dispersive effects in reality.
+<p>In chromatography, mathematical discontinuities never happen, as there are always some dispersive effects in reality.
 Chromatography models, however, allow for discontinuities if dispersion parameters are set to zero.
 Moreover, steep and self-sharpening concentration fronts might appear due to competitive adsorption.
 Examples that can cause self-sharpening concentration fronts are often associated with competitive Langmuir type isotherms for components with differently strong binding properties.
@@ -300,7 +300,7 @@ Nonetheless, many chromatography settings yield rather smooth concentration prof
 <li><p>Employ an axial polynomial degree between 3 and 5</p></li>
 <li><p>Select a lower axial polynomial degree for approximating functions that tend to be less smooth and employ more elements instead. Converse choice for smooth problems</p></li>
 <li><p>Adjust the DG particle polynomial degree to control approximation accuracy; leave the number of elements at one. Make exceptions if very steep gradients occur inside the particles or when specific regions of the particle domain are more interesting (the spatial resolution of certain regions can be refined by a user-defined spacing of multiple elements)</p></li>
-<li><p>The field <code class="docutils literal notranslate"><span class="pre">USE_COLLOCATION_DG</span></code> only exists for axial cylinder columns and defaults to $0$ which is expected to be slightly more performant in most settings.</p></li>
+<li><p>The field <code class="docutils literal notranslate"><span class="pre">USE_COLLOCATION_DG</span></code> only exists for axial cylinder columns and defaults to <span class="math notranslate nohighlight">\(1\)</span>, which is expected to be slightly more performant in most settings.</p></li>
 </ul>
 </section>
 <section id="refinement-strategy">
@@ -313,7 +313,7 @@ An EOC that is significantly lower than the theoretical order indicates that the
 <section id="note-on-dg-solution-vector">
 <h2>Note on DG solution vector<a class="headerlink" href="#note-on-dg-solution-vector" title="Link to this heading">¶</a></h2>
 <p>Any liquid or solid concentration within the column or particles is reported on the discrete points that are employed by the method.
-That is, DG yields a piece-wise polynomial approximation on Lagrange-Gauss-Lobatto nodes.
+That is, DG yields a piece-wise polynomial approximation on Legendre-Gauss-Lobatto nodes.
 If the solution is desired on a different grid, element-wise polynomial interpolation should be applied, and element interface values must be averaged.</p>
 </section>
 </section>

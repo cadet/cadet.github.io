@@ -255,11 +255,11 @@
 </div>
 <p>Select the testRunner.exe in the startup item dropdown menu and you can start debugging tests with the specified flag.
 To see the options, run <cite>testrunner –help</cite>. To get the available test flags for instance, execute the testrunner with the corresponding option, i.e. <cite>testrunner -t</cite>.
-You can provide multiple arguments like <cite>“[testHere][testHere2]”</cite> to run all test that have both flags, or with comma separation <cite>“[testHere],[testHere2]”</cite> to run all tests with the first and/or the second flag.</p>
+You can provide multiple arguments like <cite>“[testHere][testHere2]”</cite> to run all tests that have both flags, or with comma separation <cite>“[testHere],[testHere2]”</cite> to run all tests with the first and/or the second flag.</p>
 </section>
 <section id="adding-tests-for-your-model">
 <h2>Adding tests for your model<a class="headerlink" href="#adding-tests-for-your-model" title="Link to this heading">¶</a></h2>
-<p>Every model and numerical method implemented in CADET-Core has to be tested adequatly.
+<p>Every model and numerical method implemented in CADET-Core has to be tested adequately.
 Here, we distinguish between unit tests and numerical reference tests.</p>
 <section id="unit-tests">
 <h3>Unit tests<a class="headerlink" href="#unit-tests" title="Link to this heading">¶</a></h3>
@@ -277,8 +277,8 @@ We strongly emphasize that the procedure described here should be taken into con
 <p><strong>1. Define your model setup in CADET-Verification:</strong>
 There are many benchmark cases already implemented in CADET-Verification, please refer to them and adopt style, naming conventions and integration into the codebase.</p>
 <p><strong>2. Add tests to CADET-Verification script:</strong>
-Add (potentially reduced/minimallized) test cases, e.g. case studies from a paper publication to <a class="reference external" href="https://github.com/cadet/CADET-Verification">CADET-Verification</a>.
-These tests should be added to the main scipt of CADET-Verification (refer to the README file), so that they are executed as part of the CADET-Core CD pipeline.
+Add (potentially reduced/minimized) test cases, e.g. case studies from a paper publication to <a class="reference external" href="https://github.com/cadet/CADET-Verification">CADET-Verification</a>.
+These tests should be added to the main script of CADET-Verification (refer to the README file), so that they are executed as part of the CADET-Core CD pipeline.
 For numerical additions to the code, please add tests that verify these methods, e.g. experimental order-of-convergence (EOC) tests.</p>
 <p><strong>3. Add numerical reference tests to CADET-Core:</strong>
 Use the code added to CADET-Verification and generate reference solutions to the benchmark cases.
@@ -294,8 +294,8 @@ A manufactured solution was implemented e.g. for the radial flow model, see test
 <section id="general-cadet-core-testing-procedure">
 <h3>General CADET-Core testing procedure<a class="headerlink" href="#general-cadet-core-testing-procedure" title="Link to this heading">¶</a></h3>
 <p>Create a new test file <code class="docutils literal notranslate"><span class="pre">test\NewModelMethod.cpp</span></code>, an easy way to begin with is to copy one of the files that implements tests which are the closest to the ones that you are planning on, e.g. LumpedRateModelWithPores to test a new unit operation.
-Add your tests to the testrunner executable by adding <code class="docutils literal notranslate"><span class="pre">NewModelMethod.cpp</span></code> to the list in the command <code class="docutils literal notranslate"><span class="pre">add_executable(testrunner</span></code> within the <code class="docutils literal notranslate"><span class="pre">test\CmakeList.txt</span></code> file.
-Note that every test needs an unique name, which is specified for each test by <code class="docutils literal notranslate"><span class="pre">TEST_CASE(&quot;My</span> <span class="pre">first</span> <span class="pre">test&quot;,</span> <span class="pre">&quot;[FLAG1],[FLAG2]&quot;)</span></code>.
+Add your tests to the testrunner executable by adding <code class="docutils literal notranslate"><span class="pre">NewModelMethod.cpp</span></code> to the list in the command <code class="docutils literal notranslate"><span class="pre">add_executable(testrunner</span></code> within the <code class="docutils literal notranslate"><span class="pre">test/CMakeLists.txt</span></code> file.
+Note that every test needs a unique name, which is specified for each test by <code class="docutils literal notranslate"><span class="pre">TEST_CASE(&quot;My</span> <span class="pre">first</span> <span class="pre">test&quot;,</span> <span class="pre">&quot;[FLAG1],[FLAG2]&quot;)</span></code>.
 Flags are used as options for the testrunner.exe and are specified within square brackets.
 Reuse existing flags and add new ones for your extension.
 The <code class="docutils literal notranslate"><span class="pre">[CI]</span></code> flag is used for tests that shall be rerun as part of our github continuous integration (CI) pipeline.</p>
@@ -304,7 +304,7 @@ The <code class="docutils literal notranslate"><span class="pre">[CI]</span></co
 <section id="maintenance-of-the-tests">
 <h2>Maintenance of the tests<a class="headerlink" href="#maintenance-of-the-tests" title="Link to this heading">¶</a></h2>
 <p>Some changes will break the tests without them being necessarily wrong. A change in the numerics for instance, will most likely break some tests.
-This can be fixed by carefully adapting the absolute and relative tolerances for the broken tests. These changes should not change the magnitude of the tolerances, except if this is within an acceptable and expected new tolerance).</p>
+This can be fixed by carefully adapting the absolute and relative tolerances for the broken tests. These changes should not change the magnitude of the tolerances, except if this is within an acceptable and expected new tolerance.</p>
 </section>
 <section id="test-coverage">
 <h2>Test coverage<a class="headerlink" href="#test-coverage" title="Link to this heading">¶</a></h2>
@@ -314,7 +314,7 @@ Tests marked with the <code class="docutils literal notranslate"><span class="pr
 The goal is to maintain complete test coverage by ensuring every new functionality or code change includes corresponding tests executed with Codecov.
 The file <code class="docutils literal notranslate"><span class="pre">.codecov.yml</span></code> defines a target coverage percentage. If the coverage falls below that, the workflow fails.
 This percentage should be updated as we continuously expand our test coverage.
-Further, the file defines ignored paths, such as the <cite>ThirdParty</cite> directory as we dont consider test coverage of third party software.</p>
+Further, the file defines ignored paths, such as the <cite>ThirdParty</cite> directory as we don’t consider test coverage of third party software.</p>
 </section>
 </section>
 

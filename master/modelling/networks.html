@@ -302,7 +302,7 @@ Finally, the linear system is solved by solving the unit operations in the order
 Before a unit is solved, its inlet is calculated from the outlets of the previously solved units.
 This means, the system is solved from system inlets to system outlets.</p>
 <p>The parallel method works regardless of the network topology (i.e., cycles in the graph), but requires to solve each unit operation at least twice.
-The sequential method solvs each unit exactly once, but is restricted to acyclic networks and works best for small graphs.
+The sequential method solves each unit exactly once, but is restricted to acyclic networks and works best for small graphs.
 By default, CADET uses a heuristic to select an appropriate solution method.
 This default can be overridden by a flag (see Table <a class="reference internal" href="../interface/system.html#ffmodelsolver"><span class="std std-ref">Group /input/model/solver</span></a>).</p>
 <p>The solution method is selected for each valve switch individually.

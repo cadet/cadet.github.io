@@ -220,14 +220,14 @@
 <li><p><strong>Unit Operation</strong>: The reaction group is defined under the corresponding transport phase i.e. <code class="docutils literal notranslate"><span class="pre">unit_XXX/liquid_reaction_YYY</span></code>.</p></li>
 <li><p><strong>Particle</strong>: The reaction group is defined under the corresponding particle phase i.e. <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/liquid_reaction_YYY</span></code> or <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/solid_reaction_YYY</span></code>.</p></li>
 </ul>
-<p>Furthermore, we differ between reactions which take place in either a single phase or between two phases.</p>
+<p>Furthermore, we distinguish between reactions which take place in either a single phase or between two phases.</p>
 <section id="single-phase-reactions">
 <h2>Single Phase Reactions<a class="headerlink" href="#single-phase-reactions" title="Link to this heading">¶</a></h2>
 <p>Single phase reactions take place either in the liquid phase or the solid phase.</p>
 <p>The number of reaction models is specified at the unit or particle level using the following parameters:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">NREAC_LIQUID</span></code> for liquid phase reactions i.e. <code class="docutils literal notranslate"><span class="pre">unit_XXX/NREAC_LIQUID</span></code> or <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/NREAC_LIQUID</span></code>.,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NREAC_LIQUID</span></code> for liquid phase reactions i.e. <code class="docutils literal notranslate"><span class="pre">unit_XXX/NREAC_LIQUID</span></code> or <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/NREAC_LIQUID</span></code>,</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NREAC_SOLID</span></code> for solid phase reactions i.e. <code class="docutils literal notranslate"><span class="pre">unit_XXX/NREAC_SOLID</span></code> or <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/NREAC_SOLID</span></code>.</p></li>
 </ul>
 </div></blockquote>
@@ -266,26 +266,21 @@
 <section id="step-by-step-guide-to-define-reaction-model">
 <h2>Step by Step guide to define reaction model<a class="headerlink" href="#step-by-step-guide-to-define-reaction-model" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
-<li><p>Select the phase(s) the reaction (liquid, solid or cross phase) will take place.</p></li>
-<li><p>Choose how many reaction model types you want to define and set up the corresponding parameter in the configuration file (e.g., <code class="docutils literal notranslate"><span class="pre">NREAC_LIQUID</span></code>, <code class="docutils literal notranslate"><span class="pre">NREAC_SOLID</span></code>, <code class="docutils literal notranslate"><span class="pre">NREAC_CROSS_PHASE</span></code>).</p></li>
-</ol>
-<blockquote>
-<div><dl class="simple">
-<dt><strong>Note</strong>:</dt><dd><ul class="simple">
+<li><p>Select the phase(s) in which the reaction (liquid, solid or cross phase) will take place.</p></li>
+<li><p>Choose how many reaction model types you want to define and set up the corresponding parameter in the configuration file (e.g., <code class="docutils literal notranslate"><span class="pre">NREAC_LIQUID</span></code>, <code class="docutils literal notranslate"><span class="pre">NREAC_SOLID</span></code>, <code class="docutils literal notranslate"><span class="pre">NREAC_CROSS_PHASE</span></code>).
+<strong>Note</strong>:</p>
+<ul class="simple">
 <li><p>The input group depends on whether the reaction is defined in a particle phase(s) or bulk phases.</p></li>
 <li><p>It is possible to define multiple reactions of the same type.</p></li>
 </ul>
-</dd>
-</dl>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li><p>Choose the appropriate reaction model for each of the reaction model type based on the kinetics of your system (e.g., Mass Action Law (<a class="reference internal" href="mass_action_law.html#mass-action-law-config"><span class="std std-ref">Mass Action Law</span></a>), Michaelis-Menten (<a class="reference internal" href="michaelis_menten_kinetics.html#michaelis-menten-kinetics-config"><span class="std std-ref">Michaelis Menten kinetics</span></a>)) and write it under the corresponding input group (e.g., <code class="docutils literal notranslate"><span class="pre">liquid_reaction_000</span></code>, <code class="docutils literal notranslate"><span class="pre">solid_reaction_001</span></code>, <code class="docutils literal notranslate"><span class="pre">cross_phase_reaction_002</span></code>).</p></li>
+</li>
+<li><p>Choose the appropriate reaction model for each reaction model type based on the kinetics of your system (e.g., Mass Action Law (<a class="reference internal" href="mass_action_law.html#mass-action-law-config"><span class="std std-ref">Mass Action Law</span></a>), Michaelis-Menten (<a class="reference internal" href="michaelis_menten_kinetics.html#michaelis-menten-kinetics-config"><span class="std std-ref">Michaelis Menten kinetics</span></a>)) and write it under the corresponding input group (e.g., <code class="docutils literal notranslate"><span class="pre">liquid_reaction_000</span></code>, <code class="docutils literal notranslate"><span class="pre">solid_reaction_001</span></code>, <code class="docutils literal notranslate"><span class="pre">cross_phase_reaction_002</span></code>).</p></li>
 <li><p>Define the reaction parameters according to the chosen model’s specifications. Refer to the specific reaction model documentation for details on required parameters.</p></li>
 </ol>
 </section>
 <section id="externally-dependent-reaction-models">
 <h2>Externally dependent reaction models<a class="headerlink" href="#externally-dependent-reaction-models" title="Link to this heading">¶</a></h2>
-<p>Some reaction models have a variant that can use external sources as specified <a class="reference internal" href="../system.html#ffmodelexternalsourcelininterp"><span class="std std-ref">/input/model/external/</span></a> (also see Section <a class="reference internal" href="../../modelling/reaction/index.html#dependence-on-external-function-react"><span class="std std-ref">Dependence on external function</span></a>).
+<p>Some reaction models have a variant that can use external sources as specified in <a class="reference internal" href="../system.html#ffmodelexternalsourcelininterp"><span class="std std-ref">/input/model/external/</span></a> (also see Section <a class="reference internal" href="../../modelling/reaction/index.html#dependence-on-external-function-react"><span class="std std-ref">Dependence on external function</span></a>).
 For the sake of brevity, only the standard variant of those reaction models is specified below.
 In order to obtain the format for the externally dependent variant, first replace the reaction model name <code class="docutils literal notranslate"><span class="pre">XXX</span></code> by <code class="docutils literal notranslate"><span class="pre">EXT_XXX</span></code>.
 Each parameter <span class="math notranslate nohighlight">\(p\)</span> (except for stoichiometric and exponent matrices) depends on a (possibly distinct) external source in a polynomial way:</p>

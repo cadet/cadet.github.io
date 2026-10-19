@@ -214,15 +214,19 @@
 
   <section id="radial-flow-column-1d">
 <span id="radial-flow-column-1d-config"></span><h1>Radial Flow Column 1D<a class="headerlink" href="#radial-flow-column-1d" title="Link to this heading">¶</a></h1>
-<section id="group-input-model-unit-xxx-unit-type-radial-column-model-1d">
-<h2>Group /input/model/unit_XXX - UNIT_TYPE - RADIAL_COLUMN_MODEL_1D<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-radial-column-model-1d" title="Link to this heading">¶</a></h2>
+<section id="group-input-model-unit-xxx-unit-type-column-model-1d">
+<h2>Group /input/model/unit_XXX - UNIT_TYPE - COLUMN_MODEL_1D<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-column-model-1d" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">UNIT_TYPE</span></code></p>
 <blockquote>
 <div><p>Specifies the type of unit operation model</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code></p>
+<blockquote>
+<div><p>Column geometry</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{RADIAL_COLUMN_MODEL_1D}\)</span></p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{RADIAL_FLOW_CYLINDER_SHELL}\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>
@@ -301,18 +305,6 @@
 <tr class="row-odd"><td><p><strong>Type:</strong> bool</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
 <td><p><strong>Length:</strong> NSEC</p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">COLUMN_GEOMETRY</span></code></p>
-<blockquote>
-<div><p>Optional, specifies whether the radial flow model is a full cylinder shell or a fraction, i.e. a wedge</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{CYLINDER_SHELL}, \texttt{WEDGE}\)</span></p></td>
-<td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>
 </table>

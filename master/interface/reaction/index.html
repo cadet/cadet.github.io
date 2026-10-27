@@ -232,6 +232,28 @@
 </ul>
 </div></blockquote>
 <p>The input group for parameters of single reactions is given by <code class="docutils literal notranslate"><span class="pre">phase_reaction_YYY</span></code> where <code class="docutils literal notranslate"><span class="pre">phase</span></code> is one of <code class="docutils literal notranslate"><span class="pre">liquid</span></code> or <code class="docutils literal notranslate"><span class="pre">solid</span></code> and <code class="docutils literal notranslate"><span class="pre">YYY</span></code> is a 0-based index for the reaction group.</p>
+</section>
+<section id="reaction-dynamics">
+<span id="ffreactioniskinetic"></span><h2>Reaction dynamics<a class="headerlink" href="#reaction-dynamics" title="Link to this heading">¶</a></h2>
+<p>Every single phase reaction model accepts the following optional field in its input group, which selects whether a reaction is integrated in time or treated as being in rapid equilibrium.
+A rapid-equilibrium reaction is not integrated in time; its rate is fixed by the condition that the net flux vanishes, and the balance equations of the participating components are reformulated in terms of conserved moieties.</p>
+<p><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></p>
+<blockquote>
+<div><p>Selects kinetic (<span class="math notranslate nohighlight">\(1\)</span>) or rapid equilibrium (<span class="math notranslate nohighlight">\(0\)</span>) mode.
+Either a scalar applying to all reactions of the group, or one entry per reaction.
+Optional, defaults to kinetic for all reactions.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span> / <span class="math notranslate nohighlight">\(\texttt{NREACT}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>Rapid equilibrium is only available in the liquid phase, and only for unit operations that implement the reformulation.
+Any other combination is rejected with an error.
+Note that rapid-equilibrium reactions change the initial state: consistent initialization projects the configured initial values onto the equilibrium manifold.</p>
 <p><strong>Single-Phase Reaction Models</strong>:</p>
 <div class="toctree-wrapper compound">
 <ul>

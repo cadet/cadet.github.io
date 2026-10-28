@@ -292,25 +292,67 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_POROSITY</span></code></p>
 <blockquote>
-<div><p>Column porosity of the interstitial volume.
+<div><p>Column porosity of the interstitial volume, either as a single value for the whole column or
+as one value per DG node.
 Used only if model is not a Lumped Rate Model without Pores, in which case <code class="docutils literal notranslate"><span class="pre">TOTAL_POROSITY</span></code> is used instead.</p>
+<p>The second form describes a packing density that varies along the flow path and is available
+for every geometry, see <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmvaryingporosity"><span class="std std-ref">Axially varying bulk porosity</span></a>.
+The values are given in the ordering of the bulk solution, i.e. element by element from the
+column inlet at <span class="math notranslate nohighlight">\(x = 0\)</span> to <span class="math notranslate nohighlight">\(x = \texttt{BED_LENGTH}\)</span>, with the nodes of each
+element in ascending order, exactly as <code class="docutils literal notranslate"><span class="pre">CROSS_SECTIONAL_AREA_AT_NODES</span></code>; the two entries that
+share an element interface node must be equal.
+CADET-Core multiplies the profile with the geometric cross section area of the chosen geometry
+itself, so no further field has to be adjusted.
+It requires <code class="docutils literal notranslate"><span class="pre">SPATIAL_METHOD</span></code> <span class="math notranslate nohighlight">\(= \texttt{DG}\)</span> and <code class="docutils literal notranslate"><span class="pre">USE_COLLOCATION_DG</span></code> <span class="math notranslate nohighlight">\(= 0\)</span>,
+since the collocation operator bakes a constant coefficient into its operators.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\((0,1]\)</span></p></td>
-<td><p><strong>Length:</strong> 1</p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span> or <span class="math notranslate nohighlight">\((\texttt{POLYDEG} + 1) \cdot \texttt{NELEM}\)</span></p></td>
 </tr>
 </tbody>
 </table>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">TOTAL_POROSITY</span></code></p>
 <blockquote>
-<div><p>Total porosity including the porosity of the particles.
+<div><p>Total porosity including the porosity of the particles, either as a single value for the whole
+column or as one value per DG node.
 Only applicable for the Lumped Rate Model without pores, i.e. when <code class="docutils literal notranslate"><span class="pre">NPARTYPE</span> <span class="pre">=</span> <span class="pre">1</span></code> <strong>AND</strong> <code class="docutils literal notranslate"><span class="pre">particle_type_000\HAS_FILM_DIFFUSION</span> <span class="pre">=</span> <span class="pre">0</span></code></p>
+<p>The second form describes a packing density that varies along the flow path and is available
+for every geometry under the same conditions as a nodal <code class="docutils literal notranslate"><span class="pre">COL_POROSITY</span></code> above, see
+<a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmvaryingporosity"><span class="std std-ref">Axially varying bulk porosity</span></a>.
+The solid phase source is evaluated at the discrete points, i.e. by collocation of the element
+integral that weights it with the solid cross section area, which is exact whenever the
+porosity is constant on an element.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\((0,1]\)</span></p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1\)</span> or <span class="math notranslate nohighlight">\((\texttt{POLYDEG} + 1) \cdot \texttt{NELEM}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">FLOW_AREA_QUADRATURE_POLYDEG</span></code></p>
+<blockquote>
+<div><p>Polynomial degree the flow through area <span class="math notranslate nohighlight">\(w(x) = \varepsilon_c(x) A(x)\)</span> is integrated
+exactly with when the element integrals are evaluated by Gauss quadrature, i.e. for
+<code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code> <span class="math notranslate nohighlight">\(= \texttt{SMOOTHLY_VARYING}\)</span> and for an axially varying porosity on any
+geometry, see <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmvaryingporosity"><span class="std std-ref">Axially varying bulk porosity</span></a>. Optional; defaults to <code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code>, which
+integrates the nodal interpolant of <span class="math notranslate nohighlight">\(w\)</span> exactly and is all the transport operator can
+profit from.
+The bulk side operator of the film transfer term is integrated with the same rule but carries
+an additional factor <span class="math notranslate nohighlight">\(1 / \varepsilon_c(x)\)</span>, which is not a polynomial, so the rule is not
+exact there. For a smooth porosity profile the default already reaches that integral to round-off,
+so raising the degree is an escape hatch for a profile that is hard to integrate rather than a
+knob that routinely pays off.
+Ignored by the analytic geometries with a constant porosity, which integrate their weight in
+closed form.</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq \texttt{POLYDEG}\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>

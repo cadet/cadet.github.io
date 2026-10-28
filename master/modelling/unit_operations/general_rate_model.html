@@ -560,6 +560,49 @@ For a smooth area profile, the interpolation error is of the same order as the d
 Since the representation is tied to the DG grid, this geometry is only available for the DG spatial discretization, and the field has to be recomputed whenever the discretization is refined.</p>
 <p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/smoothly_varying_column_1D_config.html#smoothly-varying-column-1d-config"><span class="std std-ref">Smoothly Varying Cross Section Column 1D</span></a> and <a class="reference internal" href="../../interface/unit_operations/particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
 </section>
+<section id="axially-varying-bulk-porosity">
+<span id="muopgrmvaryingporosity"></span><h2>Axially varying bulk porosity<a class="headerlink" href="#axially-varying-bulk-porosity" title="Link to this heading">¶</a></h2>
+<p>A packing whose density varies along the flow path, <span class="math notranslate nohighlight">\(\varepsilon_c = \varepsilon_c(x)\)</span>, is independent of the column geometry: a cylinder, a cylinder shell, a frustum and a user prescribed cross section may each be packed non-uniformly.
+The structure of the mass balance is preserved in either case.
+Convection and dispersion both act on the pore space rather than on the geometric cross section, so both fluxes carry the weight <span class="math notranslate nohighlight">\(\varepsilon_c A\)</span> in place of <span class="math notranslate nohighlight">\(A\)</span>.
+Introducing the <em>flow through area</em></p>
+<div class="math notranslate nohighlight" id="equation-flowthrougharea">
+<span class="eqno">(17)<a class="headerlink" href="#equation-flowthrougharea" title="Link to this equation">¶</a></span>\[w(x) = \varepsilon_c(x) A(x),\]</div>
+<p>the quantity that is constant along the column is the delivered volumetric flow rate <span class="math notranslate nohighlight">\(\dot V = w(x) \overline{u}(x)\)</span>, and the mass balance in the interstitial column volume becomes</p>
+<div class="math notranslate nohighlight" id="equation-modelcolumngrmvariableporosity">
+<span class="eqno">(18)<a class="headerlink" href="#equation-modelcolumngrmvariableporosity" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+    \frac{\partial c}{\partial t}
+    = -\frac{\dot V}{w(x)} \frac{\partial c}{\partial x}
+    + \frac{1}{w(x)} \frac{\partial}{\partial x} \left( D(x) w(x) \frac{\partial c}{\partial x} \right)
+    &amp;- \frac{1 - \varepsilon_c(x)}{\varepsilon_c(x)} \sum_j d_j \frac{3}{r_{p,j}} k_{f,j,i} \left[ c^\ell_i - c^p_{j,i}(\cdot, \cdot, r_{p,j}) \right] \\
+    &amp;+ f_{\text{react},i}^\ell\left(c^\ell\right).
+\end{aligned}\end{split}\]</div>
+<p>This is Eq. <a class="reference internal" href="#equation-modelsmoothlyvaryingcolumngrm">16</a> with <span class="math notranslate nohighlight">\(A\)</span> replaced by <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> by <span class="math notranslate nohighlight">\(\dot V\)</span>, and it returns to it for a constant porosity.
+A spatially varying bulk porosity is therefore not a separate model, but the same model evaluated with the flow through area in place of the geometric cross section area.</p>
+<p>The bulk transport operator depends on the porosity only through the product <span class="math notranslate nohighlight">\(w\)</span>.
+<code class="docutils literal notranslate"><span class="pre">COL_POROSITY</span></code> is prescribed at the DG nodes, in the same ordering as <code class="docutils literal notranslate"><span class="pre">CROSS_SECTIONAL_AREA_AT_NODES</span></code>, and CADET-Core multiplies it with the geometric cross section area of the chosen geometry, so that no other field has to be adjusted.
+Since <span class="math notranslate nohighlight">\(w\)</span> is then no longer the closed-form polynomial that the analytic mass matrices of the cylinder, the cylinder shell and the frustum are derived from, the element integrals are evaluated by the same Gauss quadrature as for the smoothly varying cross section, for every geometry.
+Note that this represents <span class="math notranslate nohighlight">\(w\)</span> by its nodal Lagrange interpolant, so a frustum needs <span class="math notranslate nohighlight">\(\texttt{POLYDEG} \geq 2\)</span> to represent its own quadratic area without an additional interpolation error.
+The rule is sized to integrate a weight of degree <code class="docutils literal notranslate"><span class="pre">FLOW_AREA_QUADRATURE_POLYDEG</span></code> exactly, which defaults to <code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code> and is therefore exact for that interpolant.</p>
+<p>What does not follow from the weight is the film transfer term.
+Weighting the bulk balance with <span class="math notranslate nohighlight">\(w\)</span> gives that term the weight <span class="math notranslate nohighlight">\(w (1 - \varepsilon_c) / \varepsilon_c = A (1 - \varepsilon_c)\)</span>, the solid cross section area, whereas the time derivative carries <span class="math notranslate nohighlight">\(w\)</span>.
+The two are no longer proportional once the porosity, or through the velocity the film mass transfer coefficient, varies within an element, so that the prefactor cannot be taken out of the element integral.
+Inverting the mass matrix of the time derivative then leaves the element wise operator</p>
+<div class="math notranslate nohighlight" id="equation-filmtransferoperator">
+<span class="eqno">(19)<a class="headerlink" href="#equation-filmtransferoperator" title="Link to this equation">¶</a></span>\[\begin{aligned}
+    T^{(e)} = \left( \mathcal{M}^{w} \right)^{-1} \tilde{\mathcal{M}}^{w (1 - \varepsilon_c) k_{f} / \varepsilon_c},
+\end{aligned}\]</div>
+<p>which takes the place of the scalar prefactor, so that the film transfer flux at one discrete point contributes to the bulk residual at every point of its element.
+For a porosity and a film mass transfer coefficient that are constant on an element, <span class="math notranslate nohighlight">\(T^{(e)}\)</span> is that scalar times the identity; CADET-Core detects this case and keeps evaluating the term node locally.
+The operator is assembled wherever <span class="math notranslate nohighlight">\(w\)</span> is represented by its nodal interpolant, i.e. for a prescribed cross section and for an axially varying porosity on any geometry.
+With a constant porosity on one of the analytic geometries, <span class="math notranslate nohighlight">\(w\)</span> is instead integrated in closed form and the term stays node local, even if the film mass transfer coefficient varies within an element through its velocity dependence.
+All nodal fields are represented by their Lagrange interpolant, so a smooth porosity profile does not reduce the order of convergence of the scheme, just as a smooth area profile does not.</p>
+<p>Three restrictions apply.
+The porosity has to be constant over each cross section, since a porosity that varies within the cross section contributes further correlation terms to the cross sectional averaging that the one dimensional model rests on.
+It is prescribed at the DG nodes, like the cross section area itself, and is therefore only available for the DG discretization and has to be recomputed whenever the discretization is refined.
+And it routes the unit to the variable coefficient operator, so <code class="docutils literal notranslate"><span class="pre">USE_COLLOCATION_DG</span></code> has to be <span class="math notranslate nohighlight">\(0\)</span>, which is the default for every geometry other than the axial flow cylinder.</p>
+<p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/axial_flow_column_1D_config.html#axial-flow-column-1d-config"><span class="std std-ref">Axial Flow Column 1D</span></a> and <a class="reference internal" href="../../interface/unit_operations/particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
+</section>
 </section>
 
 

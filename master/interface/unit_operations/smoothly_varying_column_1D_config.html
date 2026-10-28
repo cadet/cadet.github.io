@@ -223,7 +223,9 @@ DG spatial discretization, since the area is given at the DG nodes.</p>
 <p>Only the geometry fields differ from the axial flow cylinder; all remaining fields of the unit
 (<code class="docutils literal notranslate"><span class="pre">NCOMP</span></code>, <code class="docutils literal notranslate"><span class="pre">COL_POROSITY</span></code>, <code class="docutils literal notranslate"><span class="pre">TOTAL_POROSITY</span></code>, <code class="docutils literal notranslate"><span class="pre">NPARTYPE</span></code>, <code class="docutils literal notranslate"><span class="pre">PAR_TYPE_VOLFRAC</span></code>,
 <code class="docutils literal notranslate"><span class="pre">COL_DISPERSION</span></code>, <code class="docutils literal notranslate"><span class="pre">INIT_C</span></code>, <code class="docutils literal notranslate"><span class="pre">INIT_STATE</span></code>, the reaction and particle subgroups, and the
-discretization group) are identical to <a class="reference internal" href="axial_flow_column_1D_config.html#axial-flow-column-1d-config"><span class="std std-ref">Axial Flow Column 1D</span></a>.</p>
+discretization group) are identical to <a class="reference internal" href="axial_flow_column_1D_config.html#axial-flow-column-1d-config"><span class="std std-ref">Axial Flow Column 1D</span></a>.
+In particular, <code class="docutils literal notranslate"><span class="pre">COL_POROSITY</span></code> may be given per DG node here just as it may be for every other
+geometry, see <a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html#muopgrmvaryingporosity"><span class="std std-ref">Axially varying bulk porosity</span></a>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">UNIT_TYPE</span></code></p>
 <blockquote>
 <div><p>Specifies the type of unit operation model</p>
@@ -256,7 +258,9 @@ nodes of each element in ascending order.
 Since neighbouring elements share their interface node, that node appears twice, once as the
 last entry of the left and once as the first entry of the right element, and the two entries
 must be equal.
-The area has to be strictly positive.</p>
+The area has to be strictly positive.
+This is the geometric cross section area <span class="math notranslate nohighlight">\(A(x)\)</span>; the bulk porosity is applied to it by
+CADET-Core, also when it is given per node.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}^2\)</span></p>
 <table class="docutils align-default">
 <tbody>

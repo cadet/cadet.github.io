@@ -15,6 +15,8 @@ Only the geometry fields differ from the axial flow cylinder; all remaining fiel
 (``NCOMP``, ``COL_POROSITY``, ``TOTAL_POROSITY``, ``NPARTYPE``, ``PAR_TYPE_VOLFRAC``,
 ``COL_DISPERSION``, ``INIT_C``, ``INIT_STATE``, the reaction and particle subgroups, and the
 discretization group) are identical to :ref:`axial_flow_column_1D_config`.
+In particular, ``COL_POROSITY`` may be given per DG node here just as it may be for every other
+geometry, see :ref:`MUOPGRMvaryingPorosity`.
 
 ``UNIT_TYPE``
 
@@ -41,6 +43,8 @@ discretization group) are identical to :ref:`axial_flow_column_1D_config`.
    last entry of the left and once as the first entry of the right element, and the two entries
    must be equal.
    The area has to be strictly positive.
+   This is the geometric cross section area :math:`A(x)`; the bulk porosity is applied to it by
+   CADET-Core, also when it is given per node.
 
    **Unit:** :math:`\mathrm{m}^2`
 

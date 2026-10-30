@@ -310,6 +310,20 @@ Input as reaction index major.</p>
 </tbody>
 </table>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">MM_EXP</span></code></dt><dd><p>(Optional) Hill exponent <span class="math notranslate nohighlight">\(n_{i,j}\)</span> for substrate <span class="math notranslate nohighlight">\(i\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span>.
+Only :math:` neq 1` for substrate without competitive or uncompetitive inhibition.
+Use <span class="math notranslate nohighlight">\(1\)</span> for substrates with competitive or uncompetitive inhibition.
+Input as reaction index major.</p>
+<p><strong>Unit:</strong> None</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> :math:` &gt; 0`</p></td>
+<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NREACT} \cdot \texttt{NVAR}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</dd>
 </dl>
 </section>
 <section id="cadet-python-interface-example">

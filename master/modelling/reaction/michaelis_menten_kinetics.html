@@ -321,6 +321,13 @@ In this case the flux <span class="math notranslate nohighlight">\(\nu_{i,j}\)</
 </ul>
 <p>The Michaelis-Menten model with defined prefactor for biomass component in CADET can also be used to represent <strong>Monod kinetics</strong>, as the mathematical formulation is identical.</p>
 </section>
+<section id="hill-kinetics">
+<h2>Hill kinetics<a class="headerlink" href="#hill-kinetics" title="Link to this heading">¶</a></h2>
+<p>For a substrate without competitive or uncompetitive inhibition, the optional Hill exponent <span class="math notranslate nohighlight">\(n_{i,j}\)</span> changes its contribution to reaction <span class="math notranslate nohighlight">\(j\)</span> to</p>
+<div class="math notranslate nohighlight">
+\[\nu_{i,j} = \frac{c_{i,j}^{n_{i,j}}}{K_{\mathrm{M}_{i,j}}^{n_{i,j}} + c_{i,j}^{n_{i,j}}}.\]</div>
+<p>The exponent must be positive. An exponent of one gives the usual Michaelis-Menten term. Exponents greater than one describe positive cooperativity; exponents between zero and one describe negative cooperativity. Different substrates in the same reaction may have different exponents. A substrate with inhibition must use an exponent of one.</p>
+</section>
 <section id="literature">
 <h2>Literature<a class="headerlink" href="#literature" title="Link to this heading">¶</a></h2>
 <ul class="simple">

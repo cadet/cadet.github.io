@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Colloidal Particle Adsorption &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/binding/colloidal_particle_adsorption.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Extended Mobile Phase Modulator Langmuir" href="extended_mobile_phase_modulator_langmuir.html" />
+    <link rel="prev" title="Bi Steric Mass Action" href="bi_steric_mass_action.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Binding models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#equilibrium-constants">Equilibrium constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#linear-driving-force-ldf">Linear Driving Force (LDF)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#reference-concentrations">Reference concentrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature-matrix">Binding model feature matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization/index.html">Crystallization / Precipitation Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameter_dependencies.html">Parameter Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../../v5.0.3/index.html">v5.0.3</a></li>
+  <li><a href="../../../v5.0.4/index.html">v5.0.4</a></li>
+  <li><a href="../../../v5.1.0/index.html">v5.1.0</a></li>
+  <li><a href="../../../v5.1.1/index.html">v5.1.1</a></li>
+  <li><a href="../../../v6.0.0a1/index.html">v6.0.0a1</a></li>
+  <li><a href="../../../v6.0.0a3/index.html">v6.0.0a3</a></li>
+  <li><a href="../../../v6.0.0a4/index.html">v6.0.0a4</a></li>
+  <li><a href="../../../v6.0.0a5/index.html">v6.0.0a5</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="colloidal_particle_adsorption.html">master</a></li>
+  <li><a href="../../../v5.1.X/index.html">v5.1.X</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+
+
+
+
+
+  
+    
+    
+  
+    
+    
+      
+      
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+  
+
+
+
+
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><strong>
+  You're reading the documentation for a development version.
+  
+    For the latest stable documentation, please have a look at <a href="../../../v5.1.X/index.html">v5.1.X</a>.
+  
+  
+</strong></p>
+
+
+
+
+  <section id="colloidal-particle-adsorption">
+<span id="colloidal-particle-adsorption-model"></span><h1>Colloidal Particle Adsorption<a class="headerlink" href="#colloidal-particle-adsorption" title="Link to this heading">¶</a></h1>
+<p>The colloidal particle adsorption (CPA) model describes protein adsorption based on colloidal interaction theory.
+The model captures three key contributions to adsorption:</p>
+<ul class="simple">
+<li><p>electrostatic protein-adsorber interactions,</p></li>
+<li><p>lateral protein-protein interactions on the surface,</p></li>
+<li><p>steric exclusion effects via scaled-particle theory (hard-disc available surface function).</p></li>
+</ul>
+<p>A defined proton component <span class="math notranslate nohighlight">\(c^p_{\mathrm{H}+}\)</span> (by default the first component, index configurable via <code class="docutils literal notranslate"><span class="pre">CPA_PROTON_IDX</span></code>) acts as a non-binding pH state.
+The proton component must be non-binding.</p>
+<p>The kinetic formulation reads for each binding component <span class="math notranslate nohighlight">\(i\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\mathrm{d} c^{s}_{i}}{\mathrm{d} t} = k_{\mathrm{kin},i} \left( K_{v,i} \, c^p_i - c^{s}_{i} \right),\]</div>
+<p>where <span class="math notranslate nohighlight">\(c^{s}_{i}\)</span> is the volumetric solid phase concentration, <span class="math notranslate nohighlight">\(c^p_i\)</span> is the pore liquid phase concentration, <span class="math notranslate nohighlight">\(K_{v,i}\)</span> is the volumetric equilibrium constant, and <span class="math notranslate nohighlight">\(k_{\mathrm{kin},i}\)</span> is the kinetic rate constant <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../../zbibliography.html#id59" title="Till Briskot, Tobias Hahn, Thiemo Huuk, Gang Wang, Simon Kluters, Joey Studts, Felix Wittkopp, Johannes Winderl, Peter Schwan, Isabell Hagemann, Klaus Kaiser, Anja Trapp, Serge M. Stamm, Jadranka Koehn, Gunnar Malmquist, and Jürgen Hubbuch. Analysis of complex protein elution behavior in preparative ion exchange processes using a colloidal particle adsorption model. Journal of Chromatography A, 1654:462439, 2021. doi:10.1016/j.chroma.2021.462439.">13</a>]</span>.</p>
+<p>In rapid-equilibrium mode, the corresponding bound-state equation is algebraic:</p>
+<div class="math notranslate nohighlight">
+\[0 = c^{s}_{i} - K_{v,i} \, c^p_i.\]</div>
+<p>The adsorption mode is selected by <code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code>.</p>
+<p>Multiple bound states per component are not supported.</p>
+<section id="ionic-strength-and-activity-coefficients">
+<h2>Ionic strength and activity coefficients<a class="headerlink" href="#ionic-strength-and-activity-coefficients" title="Link to this heading">¶</a></h2>
+<p>The ionic strength <span class="math notranslate nohighlight">\(I_m\)</span> can be supplied in two ways:</p>
+<ul>
+<li><p><strong>Fixed parameter</strong> (default): <span class="math notranslate nohighlight">\(I_m\)</span> is read from <code class="docutils literal notranslate"><span class="pre">CPA_IONIC_STRENGTH</span></code> and the pH is computed directly from the proton component concentration.
+Since the standard definition of pH is based on concentration in mol/L, <span class="math notranslate nohighlight">\(\mathrm{mol}/\mathrm{m}^3\)</span> is converted to mol/L via the factor <span class="math notranslate nohighlight">\(10^{-3}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{pH} = -\log_{10}\!\left(c^p_{\mathrm{H}+} \cdot 10^{-3}\right).\]</div>
+<p>This corresponds to the setting of <span class="bibtex-citation" id="id2">[<a class="reference internal" href="../../zbibliography.html#id61" title="Till Briskot, Tobias Hahn, Thiemo Huuk, and Jürgen Hubbuch. Protein adsorption on ion exchange adsorbers: a comparison of a stoichiometric and non-stoichiometric modeling approach. Journal of Chromatography A, 1653:462397, 2021. doi:10.1016/j.chroma.2021.462397.">14</a>]</span>, where pH and <span class="math notranslate nohighlight">\(I_m\)</span> are prescribed properties of the mobile phase.</p>
+</li>
+<li><p><strong>Computed from concentrations</strong>: if component charges <span class="math notranslate nohighlight">\(z_i\)</span> are provided via <code class="docutils literal notranslate"><span class="pre">CPA_IONIC_VALENCE</span></code>, the ionic strength is computed from the pore-phase concentrations at each time step, and the Davies activity correction is applied to the proton activity,</p>
+<div class="math notranslate nohighlight">
+\[I_m = \frac{1}{2} \sum_i z_i^2 \, c^p_i.\]</div>
+<p>Components that should not contribute to the ionic strength, should be assigned a charge of zero.
+This also switches off the activity correction for that component; in particular, assigning <span class="math notranslate nohighlight">\(z = 0\)</span> to the proton component reduces <span class="math notranslate nohighlight">\(\gamma_{\mathrm{H}^+}\)</span> to one.
+For the Davies model, this value is converted from <span class="math notranslate nohighlight">\(\mathrm{mol}/\mathrm{m}^3\)</span> to <span class="math notranslate nohighlight">\(\mathrm{mol\,/ L}\)</span> as <span class="math notranslate nohighlight">\(I_M = 10^{-3} I_m\)</span>. The activity correction is then</p>
+<div class="math notranslate nohighlight">
+\[\log_{10}\gamma_i = -0.509 \, z_i^2 \left( \frac{\sqrt{I_M}}{1 + \sqrt{I_M}} - 0.3 \, I_M \right),\]</div>
+<p>so that</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{pH} = -\log_{10}\!\left(\gamma_{\mathrm{H}^+} \, c^p_{\mathrm{H}+} \cdot 10^{-3}\right).\]</div>
+<p><strong>The constant 0.509 is the Debye–Hückel slope for water at 25 °C</strong>.  The factor <span class="math notranslate nohighlight">\(10^{-3}\)</span> converts the pore-phase concentration from <span class="math notranslate nohighlight">\(\mathrm{mol}/\mathrm{m}^3\)</span> to mol/L, as required by the pH definition.</p>
+</li>
+</ul>
+<p>In both cases, a proton activity less than or equal to <span class="math notranslate nohighlight">\(10^{-14}\mathrm{mol}/\mathrm{m}^3\)</span> is mapped to pH 14.</p>
+</section>
+<section id="inverse-debye-length">
+<h2>Inverse Debye length<a class="headerlink" href="#inverse-debye-length" title="Link to this heading">¶</a></h2>
+<p>The inverse Debye length <span class="math notranslate nohighlight">\(\kappa\)</span> characterises the range of electrostatic interactions:</p>
+<div class="math notranslate nohighlight">
+\[\kappa = e \sqrt{\frac{2 \, I_m \, N_A}{k_B \, T \, \varepsilon \, \varepsilon_0}},\]</div>
+<p>where <span class="math notranslate nohighlight">\(e\)</span> is the elementary charge, <span class="math notranslate nohighlight">\(I_m\)</span> the ionic strength, <span class="math notranslate nohighlight">\(N_A\)</span> Avogadro’s number, <span class="math notranslate nohighlight">\(k_B\)</span> the Boltzmann constant, <span class="math notranslate nohighlight">\(T\)</span> the absolute temperature, <span class="math notranslate nohighlight">\(\varepsilon\)</span> the relative permittivity, and <span class="math notranslate nohighlight">\(\varepsilon_0\)</span> the vacuum permittivity.</p>
+</section>
+<section id="adsorber-surface-potential">
+<h2>Adsorber surface potential<a class="headerlink" href="#adsorber-surface-potential" title="Link to this heading">¶</a></h2>
+<p>The adsorber surface potential <span class="math notranslate nohighlight">\(\psi_{0,A}\)</span> is obtained by solving the electroneutrality condition <span class="bibtex-citation" id="id3">[<a class="reference internal" href="../../zbibliography.html#id61" title="Till Briskot, Tobias Hahn, Thiemo Huuk, and Jürgen Hubbuch. Protein adsorption on ion exchange adsorbers: a comparison of a stoichiometric and non-stoichiometric modeling approach. Journal of Chromatography A, 1653:462397, 2021. doi:10.1016/j.chroma.2021.462397.">14</a>, <a class="reference internal" href="../../zbibliography.html#id60" title="Till Briskot, Tobias Hahn, Thiemo Huuk, and Jürgen Hubbuch. Adsorption of colloidal proteins in ion-exchange chromatography under consideration of charge regulation. Journal of Chromatography A, 1611:460608, 2020. doi:10.1016/j.chroma.2019.460608.">15</a>]</span></p>
+<div class="math notranslate nohighlight">
+\[\sigma_{I,A}(\psi_{0,A}) = \sigma_D(\psi_{0,A})\]</div>
+<p>via Newton’s method, where the ionisable surface charge density is</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{I,A} = e \, N_A \, \Gamma_L \left( \zeta_L - \frac{1}{1 + 10^{\mathrm{p}K_L - \mathrm{pH}_0}} \right)\]</div>
+<p>with the surface pH</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{pH}_0 = \mathrm{pH} + \frac{e \, \psi_{0,A}}{\ln(10) \, k_B \, T},\]</div>
+<p>and the diffuse layer charge density is</p>
+<div class="math notranslate nohighlight">
+\[\sigma_D = 2 \, \varepsilon \, \varepsilon_0 \, \kappa \, \frac{k_B T}{e} \, \sinh\!\left( \frac{e \, \psi_{0,A}}{2 \, k_B \, T} \right).\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\Gamma_L\)</span> is the ligand surface density, <span class="math notranslate nohighlight">\(\zeta_L\)</span> the charge of the fully protonated ligand, and <span class="math notranslate nohighlight">\(\mathrm{p}K_L\)</span> the dissociation constant of the ligand.</p>
+<p>The protein surface potential <span class="math notranslate nohighlight">\(\psi_{0,i}\)</span> follows from the same electroneutrality condition, applied to the protein surface charge density <span class="math notranslate nohighlight">\(\sigma_{I,i} = Z_i \, e / (4 \pi a_i^2)\)</span>.
+Since <span class="math notranslate nohighlight">\(\sigma_{I,i}\)</span> does not depend on <span class="math notranslate nohighlight">\(\psi_{0,i}\)</span>, the diffuse layer relation can be inverted analytically,</p>
+<div class="math notranslate nohighlight">
+\[\psi_{0,i} = \frac{2 \, k_B T}{e} \operatorname{arcsinh}\!\left( \frac{Z_i \, e^2}{8 \pi \, a_i^2 \, \varepsilon \, \varepsilon_0 \, \kappa \, k_B T} \right),\]</div>
+<p>where <span class="math notranslate nohighlight">\(a_i\)</span> is the protein hydrodynamic radius.</p>
+</section>
+<section id="protein-net-charge-and-surface-potential">
+<h2>Protein net charge and surface potential<a class="headerlink" href="#protein-net-charge-and-surface-potential" title="Link to this heading">¶</a></h2>
+<p>The protein net charge <span class="math notranslate nohighlight">\(Z_i\)</span> depends on pH through a polynomial of
+arbitrary degree <span class="math notranslate nohighlight">\(P\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[Z_i(\mathrm{pH}) = z_{i,0} + \sum_{k=1}^{P} z_{i,k} \left(\mathrm{pH} - \mathrm{pH}_{\mathrm{ref}}\right)^k.\]</div>
+<p>The coefficients are supplied by <code class="docutils literal notranslate"><span class="pre">CPA_EFFECTIVE_CHARGE_COEF</span></code> as a polynomial-order-row-major matrix. Its rows correspond to increasing powers, its columns to components, and <span class="math notranslate nohighlight">\(z_{i,0}\)</span> is the charge at
+<span class="math notranslate nohighlight">\(\mathrm{pH}_{\mathrm{ref}}\)</span>. The number of matrix rows determines the polynomial degree.</p>
+</section>
+<section id="distance-of-closest-approach">
+<h2>Distance of closest approach<a class="headerlink" href="#distance-of-closest-approach" title="Link to this heading">¶</a></h2>
+<p>The distance of closest approach <span class="math notranslate nohighlight">\(\delta_{m,i}\)</span> between protein <span class="math notranslate nohighlight">\(i\)</span> and the adsorber surface is defined as the positive distance at which the protein–adsorber interaction potential <span class="math notranslate nohighlight">\(u_{A,i}(z)\)</span> attains its minimum:</p>
+<div class="math notranslate nohighlight">
+\[\delta_{m,i} := \operatorname*{arg\,min}_{z&gt;0} u_{A,i}(z).\]</div>
+<p>Setting <span class="math notranslate nohighlight">\(\partial u_{A,i}(z) / \partial z = 0\)</span> gives the analytical expression</p>
+<div class="math notranslate nohighlight">
+\[\delta_{m,i} = -\frac{1}{\kappa} \ln\!\left( \frac{-2 \, \psi_{0,A} \, \psi_{0,i}}{\psi_{0,A}^2 + \psi_{0,i}^2} \right).\]</div>
+<p>The analytical minimum requires opposite signs of <span class="math notranslate nohighlight">\(\psi_{0,A}\)</span> and <span class="math notranslate nohighlight">\(\psi_{0,i}\)</span> and a logarithm argument strictly between zero and one.</p>
+</section>
+<section id="interaction-layer-thickness">
+<h2>Interaction layer thickness<a class="headerlink" href="#interaction-layer-thickness" title="Link to this heading">¶</a></h2>
+<p>The dimensionless interaction layer thickness parameter <span class="math notranslate nohighlight">\(\delta_i\)</span> corresponds to <span class="math notranslate nohighlight">\(\Delta_i = A_{s,i} \left( d_i^* - \delta_{m,i} \right)\)</span> of <span class="bibtex-citation" id="id4">[<a class="reference internal" href="../../zbibliography.html#id59" title="Till Briskot, Tobias Hahn, Thiemo Huuk, Gang Wang, Simon Kluters, Joey Studts, Felix Wittkopp, Johannes Winderl, Peter Schwan, Isabell Hagemann, Klaus Kaiser, Anja Trapp, Serge M. Stamm, Jadranka Koehn, Gunnar Malmquist, and Jürgen Hubbuch. Analysis of complex protein elution behavior in preparative ion exchange processes using a colloidal particle adsorption model. Journal of Chromatography A, 1654:462439, 2021. doi:10.1016/j.chroma.2021.462439.">13</a>, <a class="reference internal" href="../../zbibliography.html#id61" title="Till Briskot, Tobias Hahn, Thiemo Huuk, and Jürgen Hubbuch. Protein adsorption on ion exchange adsorbers: a comparison of a stoichiometric and non-stoichiometric modeling approach. Journal of Chromatography A, 1653:462397, 2021. doi:10.1016/j.chroma.2021.462397.">14</a>]</span>, i.e. the thickness of the interaction boundary layer scaled by the specific adsorber surface area.
+It is parameterised in terms of the protein surface charge density <span class="math notranslate nohighlight">\(\sigma_{I,i} = Z_i \, e / (4\pi a_i^2)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\log_{10}(\delta_i) = \log_{10}(\delta_{i,\mathrm{ref}}) + \delta_{i,\mathrm{lin}} \left( |\sigma_{I,i}| - |\sigma_{I,i}^{\mathrm{ref}}| \right),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\delta_{i,\mathrm{ref}} &gt; 0\)</span> and <span class="math notranslate nohighlight">\(\sigma_{I,i}^{\mathrm{ref}} = z_{i,0} \, e / (4\pi a_i^2)\)</span>.
+The outer edge of the interaction layer is then <span class="math notranslate nohighlight">\(d_i^* = \delta_{m,i} + \delta_i / A_{s,i}\)</span>, so that <span class="math notranslate nohighlight">\(A_{s,i} \left( d_i^* - \delta_{m,i} \right) = \delta_i\)</span>.</p>
+</section>
+<section id="proteinadsorber-interaction-energy">
+<h2>Protein–adsorber interaction energy<a class="headerlink" href="#proteinadsorber-interaction-energy" title="Link to this heading">¶</a></h2>
+<p>The electrostatic interaction energy between protein <span class="math notranslate nohighlight">\(i\)</span> and the adsorber at distance <span class="math notranslate nohighlight">\(\delta_{m,i}\)</span> follows from the Derjaguin approximation applied to the constant-charge plate–plate interaction free energy of <span class="bibtex-citation" id="id5">[<a class="reference internal" href="../../zbibliography.html#id63" title="V. A. Parsegian and D. Gingell. On the electrostatic interaction across a salt solution between two bodies bearing unequal charges. Biophysical Journal, 12(9):1192–1204, 1972. doi:10.1016/S0006-3495(72)86155-1.">16</a>]</span>, as described in <span class="bibtex-citation" id="id6">[<a class="reference internal" href="../../zbibliography.html#id61" title="Till Briskot, Tobias Hahn, Thiemo Huuk, and Jürgen Hubbuch. Protein adsorption on ion exchange adsorbers: a comparison of a stoichiometric and non-stoichiometric modeling approach. Journal of Chromatography A, 1653:462397, 2021. doi:10.1016/j.chroma.2021.462397.">14</a>, <a class="reference internal" href="../../zbibliography.html#id60" title="Till Briskot, Tobias Hahn, Thiemo Huuk, and Jürgen Hubbuch. Adsorption of colloidal proteins in ion-exchange chromatography under consideration of charge regulation. Journal of Chromatography A, 1611:460608, 2020. doi:10.1016/j.chroma.2019.460608.">15</a>]</span>:</p>
+<div class="math notranslate nohighlight">
+\[u_{A,i}(\delta_{m,i}) = \pi \, a_i \, \varepsilon \, \varepsilon_0 \left[ 2 \, \psi_{0,A} \, \psi_{0,i} \ln\!\left(\frac{1 + e^{-\kappa \delta_{m,i}}}{1 - e^{-\kappa \delta_{m,i}}}\right) - \left(\psi_{0,A}^2 + \psi_{0,i}^2\right) \ln\!\left(1 - e^{-2\kappa \delta_{m,i}}\right) \right].\]</div>
+<p>Note the sign of the second term: it is the constant-charge counterpart of the constant-potential (Hogg–Healy–Fuerstenau) expression, and it is what makes <span class="math notranslate nohighlight">\(u_{A,i}\)</span> attain a finite minimum at <span class="math notranslate nohighlight">\(\delta_{m,i} &gt; 0\)</span> for oppositely charged surfaces.</p>
+</section>
+<section id="henry-coefficient">
+<h2>Henry coefficient<a class="headerlink" href="#henry-coefficient" title="Link to this heading">¶</a></h2>
+<p>The Henry adsorption coefficient <span class="math notranslate nohighlight">\(K_{H,i}\)</span> is obtained by linearising <span class="math notranslate nohighlight">\(u_{A,i}(z)\)</span> on <span class="math notranslate nohighlight">\(z \in [\delta_{m,i}, d_i^*]\)</span> and averaging the Boltzmann factor over the interaction layer <span class="bibtex-citation" id="id7">[<a class="reference internal" href="../../zbibliography.html#id60" title="Till Briskot, Tobias Hahn, Thiemo Huuk, and Jürgen Hubbuch. Adsorption of colloidal proteins in ion-exchange chromatography under consideration of charge regulation. Journal of Chromatography A, 1611:460608, 2020. doi:10.1016/j.chroma.2019.460608.">15</a>]</span>:</p>
+<div class="math notranslate nohighlight">
+\[K_{H,i} = \frac{k_B T}{u_{A,i}} \left( 1 - \exp\!\left(-\frac{u_{A,i}}{k_B T}\right) \right).\]</div>
+<p>In the limit <span class="math notranslate nohighlight">\(u_{A,i} \to 0\)</span>, <span class="math notranslate nohighlight">\(K_{H,i} \to 1\)</span>.</p>
+</section>
+<section id="available-surface-function-steric-blocking">
+<h2>Available surface function (steric blocking)<a class="headerlink" href="#available-surface-function-steric-blocking" title="Link to this heading">¶</a></h2>
+<p>The available surface function <span class="math notranslate nohighlight">\(B_i(\Theta)\)</span> follows the two-dimensional scaled-particle theory for hard discs of <span class="bibtex-citation" id="id8">[<a class="reference internal" href="../../zbibliography.html#id62" title="Julian Talbot, Xu Jin, and Nien-Hwa Linda Wang. New equations for multicomponent adsorption kinetics. Langmuir, 10(6):1663–1666, 1994. doi:10.1021/la00018a009.">17</a>]</span>, as used in <span class="bibtex-citation" id="id9">[<a class="reference internal" href="../../zbibliography.html#id61" title="Till Briskot, Tobias Hahn, Thiemo Huuk, and Jürgen Hubbuch. Protein adsorption on ion exchange adsorbers: a comparison of a stoichiometric and non-stoichiometric modeling approach. Journal of Chromatography A, 1653:462397, 2021. doi:10.1016/j.chroma.2021.462397.">14</a>]</span>:</p>
+<div class="math notranslate nohighlight">
+\[B_i(\Theta) = (1 - \Theta) \exp\!\left( -\frac{\pi a_i^2 \, N_A \sum_j \tilde{c}^{s}_{j} + 2\pi a_i \, N_A \sum_j a_j \tilde{c}^{s}_{j}}{1 - \Theta} - \frac{\pi^2 a_i^2 \left(N_A \sum_j a_j \tilde{c}^{s}_{j}\right)^2}{(1 - \Theta)^2} \right),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tilde{c}^{s}_{j} = c^{s}_{j} / A_{s,j}\)</span> denotes the surface concentration, and the total surface coverage is</p>
+<div class="math notranslate nohighlight">
+\[\Theta = \pi \, N_A \sum_j a_j^2 \, \tilde{c}^{s}_{j}.\]</div>
+</section>
+<section id="lateral-proteinprotein-interaction">
+<h2>Lateral protein–protein interaction<a class="headerlink" href="#lateral-proteinprotein-interaction" title="Link to this heading">¶</a></h2>
+<p>Adsorbed proteins are assumed to be arranged on a hexagonal lattice whose centre-to-centre distance <span class="math notranslate nohighlight">\(D_{\mathrm{hex}}\)</span> follows from the maximum packing density <span class="bibtex-citation" id="id10">[<a class="reference internal" href="../../zbibliography.html#id61" title="Till Briskot, Tobias Hahn, Thiemo Huuk, and Jürgen Hubbuch. Protein adsorption on ion exchange adsorbers: a comparison of a stoichiometric and non-stoichiometric modeling approach. Journal of Chromatography A, 1653:462397, 2021. doi:10.1016/j.chroma.2021.462397.">14</a>]</span>,</p>
+<div class="math notranslate nohighlight">
+\[D_{\mathrm{hex}} = \sqrt{\frac{2\sqrt{3}}{3 \, N_A \sum_j \tilde{c}^{s}_{j}}}.\]</div>
+<p>The lateral interaction energy for component <span class="math notranslate nohighlight">\(i\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[u_{\mathrm{lat},i} = \frac{3\sqrt{3} \, D_{\mathrm{hex}} \, N_A \, e^{-\kappa D_{\mathrm{hex}}}}{1 - \exp\!\left(-\frac{3\sqrt{3}}{2\pi} \kappa D_{\mathrm{hex}}\right)} \sum_j \tilde{c}^{s}_{j} \, \beta_{ij},\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[\beta_{ij} = \frac{Z_{\mathrm{lat},i} \, Z_{\mathrm{lat},j} \, e^2}{4\pi \, \varepsilon \, \varepsilon_0} \cdot \frac{\exp\bigl(\kappa(a_i + a_j)\bigr)}{(1 + \kappa a_i)(1 + \kappa a_j)},\]</div>
+<p>where <span class="math notranslate nohighlight">\(Z_{\mathrm{lat},i}\)</span> is the lateral charge of component <span class="math notranslate nohighlight">\(i\)</span>.</p>
+</section>
+<section id="volumetric-equilibrium-constant">
+<h2>Volumetric equilibrium constant<a class="headerlink" href="#volumetric-equilibrium-constant" title="Link to this heading">¶</a></h2>
+<p>Combining all contributions, the volumetric equilibrium constant is <span class="bibtex-citation" id="id11">[<a class="reference internal" href="../../zbibliography.html#id59" title="Till Briskot, Tobias Hahn, Thiemo Huuk, Gang Wang, Simon Kluters, Joey Studts, Felix Wittkopp, Johannes Winderl, Peter Schwan, Isabell Hagemann, Klaus Kaiser, Anja Trapp, Serge M. Stamm, Jadranka Koehn, Gunnar Malmquist, and Jürgen Hubbuch. Analysis of complex protein elution behavior in preparative ion exchange processes using a colloidal particle adsorption model. Journal of Chromatography A, 1654:462439, 2021. doi:10.1016/j.chroma.2021.462439.">13</a>]</span></p>
+<div class="math notranslate nohighlight">
+\[K_{v,i} = A_{s,i} \left(d_i^* - \delta_{m,i}\right) K_{H,i} \, B_i(\Theta) \, \exp\!\left(-\frac{u_{\mathrm{lat},i}}{k_B T}\right)
+        = \delta_i \, K_{H,i} \, B_i(\Theta) \, \exp\!\left(-\frac{u_{\mathrm{lat},i}}{k_B T}\right).\]</div>
+</section>
+<section id="kinetic-rate-constant">
+<h2>Kinetic rate constant<a class="headerlink" href="#kinetic-rate-constant" title="Link to this heading">¶</a></h2>
+<p>The kinetic rate constant <span class="math notranslate nohighlight">\(k_{\mathrm{kin},i}\)</span> is calculated from the kinetic prefactor <span class="math notranslate nohighlight">\(k^*_{\mathrm{kin},i}\)</span> supplied by <code class="docutils literal notranslate"><span class="pre">CPA_KKIN</span></code>:</p>
+<div class="math notranslate nohighlight">
+\[k_{\mathrm{kin},i} = \frac{k^*_{\mathrm{kin},i}}{2} \cdot \frac{\left(u_{A,i} / (k_B T)\right)^2}{\cosh\!\left(u_{A,i} / (k_B T)\right) - 1}.\]</div>
+<p>This expression is taken from <span class="bibtex-citation" id="id12">[<a class="reference internal" href="../../zbibliography.html#id59" title="Till Briskot, Tobias Hahn, Thiemo Huuk, Gang Wang, Simon Kluters, Joey Studts, Felix Wittkopp, Johannes Winderl, Peter Schwan, Isabell Hagemann, Klaus Kaiser, Anja Trapp, Serge M. Stamm, Jadranka Koehn, Gunnar Malmquist, and Jürgen Hubbuch. Analysis of complex protein elution behavior in preparative ion exchange processes using a colloidal particle adsorption model. Journal of Chromatography A, 1654:462439, 2021. doi:10.1016/j.chroma.2021.462439.">13</a>]</span>; it approaches <span class="math notranslate nohighlight">\(k^*_{\mathrm{kin},i}\)</span> in the limit <span class="math notranslate nohighlight">\(u_{A,i} \to 0\)</span>.
+The kinetic rate and <code class="docutils literal notranslate"><span class="pre">CPA_KKIN</span></code> are not evaluated for bound states in rapid-equilibrium mode.</p>
+</section>
+<section id="model-assumptions-and-limitations">
+<h2>Model assumptions and limitations<a class="headerlink" href="#model-assumptions-and-limitations" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>One component must serve as a non-binding proton/pH state (index configurable, default 0).</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">CPA_IONIC_VALENCE</span></code> is provided, the ionic strength is computed from the pore-phase concentrations and the Davies activity correction is applied to the proton activity. Otherwise, <code class="docutils literal notranslate"><span class="pre">CPA_IONIC_STRENGTH</span></code> is used as a fixed parameter.</p></li>
+<li><p>The degree of the protein charge polynomial is inferred from the number of rows in <code class="docutils literal notranslate"><span class="pre">CPA_EFFECTIVE_CHARGE_COEF</span></code> and is the same for all components.</p></li>
+<li><p>Kinetic and rapid-equilibrium adsorption can be selected globally or per bound state through <code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code>.</p></li>
+<li><p>Multiple bound states per component are not supported.</p></li>
+<li><p>Physical constants (<span class="math notranslate nohighlight">\(e\)</span>, <span class="math notranslate nohighlight">\(N_A\)</span>, <span class="math notranslate nohighlight">\(k_B\)</span>, <span class="math notranslate nohighlight">\(\varepsilon_0\)</span>) are hard-coded to CODATA 2018 values.</p></li>
+<li><p>The Davies activity correction uses the Debye–Hückel slope for water at 25 °C. Setting <code class="docutils literal notranslate"><span class="pre">CPA_TEMPERATURE</span></code> to a different value while <code class="docutils literal notranslate"><span class="pre">CPA_IONIC_VALENCE</span></code> is given triggers a warning.</p></li>
+<li><p>Treating the pH as a transported state derived from a proton component is a CADET-Core extension; in <span class="bibtex-citation" id="id13">[<a class="reference internal" href="../../zbibliography.html#id59" title="Till Briskot, Tobias Hahn, Thiemo Huuk, Gang Wang, Simon Kluters, Joey Studts, Felix Wittkopp, Johannes Winderl, Peter Schwan, Isabell Hagemann, Klaus Kaiser, Anja Trapp, Serge M. Stamm, Jadranka Koehn, Gunnar Malmquist, and Jürgen Hubbuch. Analysis of complex protein elution behavior in preparative ion exchange processes using a colloidal particle adsorption model. Journal of Chromatography A, 1654:462439, 2021. doi:10.1016/j.chroma.2021.462439.">13</a>, <a class="reference internal" href="../../zbibliography.html#id61" title="Till Briskot, Tobias Hahn, Thiemo Huuk, and Jürgen Hubbuch. Protein adsorption on ion exchange adsorbers: a comparison of a stoichiometric and non-stoichiometric modeling approach. Journal of Chromatography A, 1653:462397, 2021. doi:10.1016/j.chroma.2021.462397.">14</a>, <a class="reference internal" href="../../zbibliography.html#id60" title="Till Briskot, Tobias Hahn, Thiemo Huuk, and Jürgen Hubbuch. Adsorption of colloidal proteins in ion-exchange chromatography under consideration of charge regulation. Journal of Chromatography A, 1611:460608, 2020. doi:10.1016/j.chroma.2019.460608.">15</a>]</span> the pH is a prescribed property of the mobile phase.</p></li>
+<li><p>The model is only defined for <span class="math notranslate nohighlight">\(\Theta &lt; 1\)</span> and for <span class="math notranslate nohighlight">\(\psi_{0,A}\)</span> and <span class="math notranslate nohighlight">\(\psi_{0,i}\)</span> of opposite sign and different magnitude. States violating this are reported as a recoverable error and logged, so that the time integrator can retry with a smaller step rather than aborting the simulation. Repeated warnings of this kind indicate an unsuitable parameter set.</p></li>
+</ul>
+<p>For more information on model parameters required to configure in CADET-Core, see <a class="reference internal" href="../../interface/binding/colloidal_particle_adsorption.html#colloidal-particle-adsorption-config"><span class="std std-ref">Colloidal Particle Adsorption</span></a>.</p>
+</section>
+<section id="literature">
+<h2>Literature<a class="headerlink" href="#literature" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><span class="bibtex-citation" id="id14">[<a class="reference internal" href="../../zbibliography.html#id60" title="Till Briskot, Tobias Hahn, Thiemo Huuk, and Jürgen Hubbuch. Adsorption of colloidal proteins in ion-exchange chromatography under consideration of charge regulation. Journal of Chromatography A, 1611:460608, 2020. doi:10.1016/j.chroma.2019.460608.">15</a>]</span> — charge regulation, protein–adsorber interaction energy, and the Henry coefficient (linear range).</p></li>
+<li><p><span class="bibtex-citation" id="id15">[<a class="reference internal" href="../../zbibliography.html#id61" title="Till Briskot, Tobias Hahn, Thiemo Huuk, and Jürgen Hubbuch. Protein adsorption on ion exchange adsorbers: a comparison of a stoichiometric and non-stoichiometric modeling approach. Journal of Chromatography A, 1653:462397, 2021. doi:10.1016/j.chroma.2021.462397.">14</a>]</span> — extension to the nonlinear range: available surface function, lateral interactions, and the pH dependence of <span class="math notranslate nohighlight">\(Z_i\)</span> and <span class="math notranslate nohighlight">\(\delta_i\)</span>.</p></li>
+<li><p><span class="bibtex-citation" id="id16">[<a class="reference internal" href="../../zbibliography.html#id59" title="Till Briskot, Tobias Hahn, Thiemo Huuk, Gang Wang, Simon Kluters, Joey Studts, Felix Wittkopp, Johannes Winderl, Peter Schwan, Isabell Hagemann, Klaus Kaiser, Anja Trapp, Serge M. Stamm, Jadranka Koehn, Gunnar Malmquist, and Jürgen Hubbuch. Analysis of complex protein elution behavior in preparative ion exchange processes using a colloidal particle adsorption model. Journal of Chromatography A, 1654:462439, 2021. doi:10.1016/j.chroma.2021.462439.">13</a>]</span> — kinetic formulation, <span class="math notranslate nohighlight">\(k_{\mathrm{kin},i}\)</span> and <span class="math notranslate nohighlight">\(K_{v,i}\)</span>.</p></li>
+<li><p><span class="bibtex-citation" id="id17">[<a class="reference internal" href="../../zbibliography.html#id58" title="Till Briskot, Friederike Stückler, Fabian Wittkopp, Cynthia Williams, Jie Yang, Diana Bernin, Matthias Jöhnck, Sabine Diesel, Patrick Meissner, Sebastian Schwamb, William Heymann, Miguel Díez Aguilar, and Jürgen Hubbuch. Prediction of complex adsorption of a protein mixture on ion-exchange resins based on a colloidal particle adsorption model. Journal of Chromatography A, 1654:462467, 2021. doi:10.1016/j.chroma.2021.462467.">18</a>]</span> — application to protein mixtures.</p></li>
+<li><p><span class="bibtex-citation" id="id18">[<a class="reference internal" href="../../zbibliography.html#id62" title="Julian Talbot, Xu Jin, and Nien-Hwa Linda Wang. New equations for multicomponent adsorption kinetics. Langmuir, 10(6):1663–1666, 1994. doi:10.1021/la00018a009.">17</a>]</span> — scaled-particle theory for the hard-disc available surface function.</p></li>
+<li><p><span class="bibtex-citation" id="id19">[<a class="reference internal" href="../../zbibliography.html#id63" title="V. A. Parsegian and D. Gingell. On the electrostatic interaction across a salt solution between two bodies bearing unequal charges. Biophysical Journal, 12(9):1192–1204, 1972. doi:10.1016/S0006-3495(72)86155-1.">16</a>]</span> — constant-charge double-layer interaction free energy.</p></li>
+</ul>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2026.
+      
+      |
+      <a href="../../_sources/modelling/binding/colloidal_particle_adsorption.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

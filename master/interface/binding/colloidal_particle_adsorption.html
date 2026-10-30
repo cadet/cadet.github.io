@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Colloidal Particle Adsorption &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/binding/colloidal_particle_adsorption.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Affinity Complex Titration" href="affinity_complex_titration.html" />
+    <link rel="prev" title="Multi Component Colloidal" href="multi_component_colloidal.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modelling/index.html">Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Interface specifications</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../input_group.html">Input Group</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../system.html">System of unit operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../unit_operations/index.html">Unit Operations</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Binding models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../population_balance_model.html">Crystallization / Precipitation models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flux_reconstruction.html">Flux reconstruction methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../return_data.html">Return data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sensitivities.html">Parameter Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../solver.html">Solver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../parameter_dependencies_config.html">Parameter Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spatial_discretization_methods.html">Spatial discretization methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../output_group.html">Output Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../meta_group.html">Meta Group</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../../v5.0.3/index.html">v5.0.3</a></li>
+  <li><a href="../../../v5.0.4/index.html">v5.0.4</a></li>
+  <li><a href="../../../v5.1.0/index.html">v5.1.0</a></li>
+  <li><a href="../../../v5.1.1/index.html">v5.1.1</a></li>
+  <li><a href="../../../v6.0.0a1/index.html">v6.0.0a1</a></li>
+  <li><a href="../../../v6.0.0a3/index.html">v6.0.0a3</a></li>
+  <li><a href="../../../v6.0.0a4/index.html">v6.0.0a4</a></li>
+  <li><a href="../../../v6.0.0a5/index.html">v6.0.0a5</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="colloidal_particle_adsorption.html">master</a></li>
+  <li><a href="../../../v5.1.X/index.html">v5.1.X</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+
+
+
+
+
+  
+    
+    
+  
+    
+    
+      
+      
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+  
+
+
+
+
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><strong>
+  You're reading the documentation for a development version.
+  
+    For the latest stable documentation, please have a look at <a href="../../../v5.1.X/index.html">v5.1.X</a>.
+  
+  
+</strong></p>
+
+
+
+
+  <section id="colloidal-particle-adsorption">
+<span id="colloidal-particle-adsorption-config"></span><h1>Colloidal Particle Adsorption<a class="headerlink" href="#colloidal-particle-adsorption" title="Link to this heading">¶</a></h1>
+<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption – ADSORPTION_MODEL = COLLOIDAL_PARTICLE_ADSORPTION</strong></p>
+<p>For information on model equations, refer to <a class="reference internal" href="../../modelling/binding/colloidal_particle_adsorption.html#colloidal-particle-adsorption-model"><span class="std std-ref">Colloidal Particle Adsorption</span></a>.</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></dt><dd><p>Selects kinetic or quasi-stationary adsorption mode: 1 = kinetic, 0 =
+quasi-stationary. If a single value is given, the mode is set for all
+bound states. Otherwise, the adsorption mode is set for each bound
+state separately.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> {0,1}</p></td>
+<td><p><strong>Length:</strong> 1/NTOTALBND</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_TEMPERATURE</span></code></dt><dd><p>Absolute temperature <span class="math notranslate nohighlight">\(T\)</span></p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{K}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_IONIC_STRENGTH</span></code></dt><dd><p>Ionic strength <span class="math notranslate nohighlight">\(I_m\)</span> of the mobile phase. Required but ignored if
+<code class="docutils literal notranslate"><span class="pre">CPA_IONIC_VALENCE</span></code> is set (ionic strength is then computed
+from the pore-phase concentrations).</p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol \, m^{-3}}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_PERMITTIVITY</span></code></dt><dd><p>Relative permittivity <span class="math notranslate nohighlight">\(\varepsilon\)</span> of the solvent</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_LIGAND_DENSITY</span></code></dt><dd><p>Ligand surface density <span class="math notranslate nohighlight">\(\Gamma_L\)</span></p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol \, m^{-2}}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_LIGAND_CHARGE_FULL</span></code></dt><dd><p>Charge of the fully protonated ligand <span class="math notranslate nohighlight">\(\zeta_L\)</span></p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_LIGAND_PK</span></code></dt><dd><p>Dissociation constant <span class="math notranslate nohighlight">\(\mathrm{p}K_L\)</span> of the ligand</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_PH_REF</span></code></dt><dd><p>Reference pH value <span class="math notranslate nohighlight">\(\mathrm{pH}_{\mathrm{ref}}\)</span> for the
+protein charge polynomial</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_SPECIFIC_SURFACE_AREA</span></code></dt><dd><p>Specific adsorber surface area per skeleton volume <span class="math notranslate nohighlight">\(A_{s,i}\)</span>.
+Entries of non-binding components are not used and may be set to zero.</p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m^{-1}}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> NCOMP</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_RADIUS</span></code></dt><dd><p>Hydrodynamic radius <span class="math notranslate nohighlight">\(a_i\)</span> of each protein component.
+Entries of non-binding components are not used and may be set to zero.</p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> NCOMP</p></td>
+</tr>
+</tbody>
+</table>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_EFFECTIVE_CHARGE_COEF</span></code></dt><dd><p>Matrix of coefficients <span class="math notranslate nohighlight">\(z_{i,k}\)</span> for the pH-dependent protein
+net charge. Matrix rows correspond to increasing polynomial powers
+<span class="math notranslate nohighlight">\(k=0,\ldots,P\)</span>, and columns correspond to components. The first row
+therefore contains the constant charges <span class="math notranslate nohighlight">\(z_{i,0}\)</span> at
+<span class="math notranslate nohighlight">\(\mathrm{pH}=\mathrm{pH}_{\mathrm{ref}}\)</span>. The net charge is</p>
+<div class="math notranslate nohighlight">
+\[Z_i(\mathrm{pH}) = z_{i,0} + \sum_{k=1}^{P} z_{i,k}
+\left(\mathrm{pH}-\mathrm{pH}_{\mathrm{ref}}\right)^k.\]</div>
+<p>The matrix is supplied in polynomial-order-row-major ordering.
+Every row must contain one value for every component, including non-binding
+components.
+Coefficients that do not apply should be set to zero.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> NCOMP * (P + 1)</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_LAT_CHARGE</span></code></dt><dd><p>Lateral charge <span class="math notranslate nohighlight">\(Z_{\mathrm{lat},i}\)</span> used for computing
+the pairwise Yukawa coefficient <span class="math notranslate nohighlight">\(\beta_{ij}\)</span> in the lateral
+protein–protein interaction</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
+<td><p><strong>Length:</strong> NCOMP</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_DELTA_REF</span></code></dt><dd><p>Reference interaction layer thickness <span class="math notranslate nohighlight">\(\delta_{i,\mathrm{ref}}\)</span>
+Entries of non-binding components are not used and may be set to zero.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
+<td><p><strong>Length:</strong> NCOMP</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_DELTA_LIN</span></code></dt><dd><p>Linear coefficient <span class="math notranslate nohighlight">\(\delta_{i,\mathrm{lin}}\)</span> for the
+logarithmic interaction layer thickness parameterisation</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
+<td><p><strong>Length:</strong> NCOMP</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_KKIN</span></code></dt><dd><p>Kinetic prefactor <span class="math notranslate nohighlight">\(k^*_{\mathrm{kin},i}\)</span> used to calculate the
+kinetic rate constant <span class="math notranslate nohighlight">\(k_{\mathrm{kin},i}\)</span>.</p>
+</dd>
+</dl>
+<p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s^{-1}}\)</span></p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
+<td><p><strong>Length:</strong> NCOMP</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_PROTON_IDX</span></code></dt><dd><p>0-based index of the proton/pH component in the mobile phase
+(optional, defaults to 0). The corresponding component must be
+non-binding (<code class="docutils literal notranslate"><span class="pre">NBOUND</span> <span class="pre">=</span> <span class="pre">0</span></code>).</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_IONIC_VALENCE</span></code></dt><dd><p>Integer valence charge <span class="math notranslate nohighlight">\(z_i\)</span> for each component (optional).
+If provided, the ionic strength is computed from the pore-phase
+concentrations, and the Davies activity correction is applied to the proton
+component when computing pH.  The vector must contain one entry per
+component (<code class="docutils literal notranslate"><span class="pre">NCOMP</span></code> values). Components that do not contribute to the ionic
+strength, should be assigned a charge of zero. Note that a charge of zero also
+disables the Davies activity correction for that component, so assigning
+<span class="math notranslate nohighlight">\(z = 0\)</span> to the proton component yields <span class="math notranslate nohighlight">\(\gamma_{\mathrm{H}^+} = 1\)</span>.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">CPA_MAXITER</span></code></dt><dd><p>Maximum number of Newton iterations for solving the adsorber surface
+potential <span class="math notranslate nohighlight">\(\psi_{0,A}\)</span> (optional, defaults to 100). If the solver
+does not converge, a warning is emitted and the last iterate is used.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\ge 1\)</span></p></td>
+<td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2026.
+      
+      |
+      <a href="../../_sources/interface/binding/colloidal_particle_adsorption.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

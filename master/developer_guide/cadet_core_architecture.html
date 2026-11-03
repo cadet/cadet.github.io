@@ -317,7 +317,7 @@ The specific order implemented for chromatography column units is given in the f
 <figure class="align-default" id="id9">
 <span id="statevectororder"></span><img alt="../_images/state_vector_grm.png" src="../_images/state_vector_grm.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">State vector order of the general rate model, lumped rate model with pores <span class="math notranslate nohighlight">\((N^{\mathrm{r}}=1)\)</span>, and Finite Bath / Tank <span class="math notranslate nohighlight">\((N^{\mathrm{z}}=1, N^{\mathrm{r}}=1)\)</span> <a class="footnote-reference brackets" href="#id3" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">State vector order of the general rate model, lumped rate model with pores <span class="math notranslate nohighlight">\((N^{\mathrm{r}}=1)\)</span>, and the stirred tank <span class="math notranslate nohighlight">\((N^{\mathrm{z}}=1, N^{\mathrm{r}}=1)\)</span> <a class="footnote-reference brackets" href="#id3" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id10">
@@ -332,7 +332,8 @@ The specific order implemented for chromatography column units is given in the f
 <p>Samuel Leweke’s PhD thesis, available at: <a class="reference external" href="https://publications.rwth-aachen.de/record/840314">https://publications.rwth-aachen.de/record/840314</a></p>
 </aside>
 </aside>
-<p>Note that the finite bath / tank (CSTR) unit operation has an additional first entry that defines the tank volume.</p>
+<p>The stirred tank (CSTR, see <a class="reference internal" href="../modelling/unit_operations/cstr.html#cstr-model"><span class="std std-ref">Continuous stirred tank reactor model (CSTR)</span></a>) uses the same ordering with a single bulk point, <span class="math notranslate nohighlight">\(N^{\mathrm{z}} = 1\)</span>, and has an additional last entry that holds the liquid volume.
+A particle type in rapid equilibrium with the bulk liquid contributes bound states only, so its block holds no liquid phase.</p>
 </section>
 </section>
 </section>

@@ -398,8 +398,8 @@ Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DI
 </tr>
 </tbody>
 </table>
-<p><code class="docutils literal notranslate"><span class="pre">SURFACE_DIFFUSION_EXPFACTOR</span></code>
-<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+<p>If <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>, this is factor <span class="math notranslate nohighlight">\(\texttt{p6}\)</span> in the colloidal affinity law particle surface diffusion relation
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[ p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} + p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
 where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
 <span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
 Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
@@ -416,7 +416,7 @@ Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DI
 <blockquote>
 <div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p2}\)</span> in exponential law particle surface diffusion relation
 <span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} p_{1, i, m} exp \left(p_{2, i, m} c_{0}^{p} \right)\)</span>
-where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_EXPONENTIAL}\)</span>.</p>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_EXPONENTIAL}\)</span> or <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>; in the latter, it is factor <span class="math notranslate nohighlight">\(\texttt{p7}\)</span> of the colloidal affinity law (see <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION_LOGKEQFACTOR}\)</span>).</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -430,7 +430,7 @@ where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> 
 <blockquote>
 <div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p1}\)</span> in power law particle surface diffusion relation
 <span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} p_{1, i, m} \left( c_{0}^{p} \right)^{p_{2, i, m}}\)</span>
-where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_POWER}\)</span>.</p>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_POWER}\)</span> or <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>; in the latter, it is factor <span class="math notranslate nohighlight">\(\texttt{p4}\)</span> of the colloidal affinity law (see <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION_LOGKEQFACTOR}\)</span>).</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -444,7 +444,7 @@ where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> 
 <blockquote>
 <div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p2}\)</span> in power law particle surface diffusion relation
 <span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} p_{1, i, m} \left( c_{0}^{p} \right)^{p_{2, i, m}}\)</span>
-where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_POWER}\)</span>.</p>
+where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient. Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_POWER}\)</span> or <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>; in the latter, it is factor <span class="math notranslate nohighlight">\(\texttt{p5}\)</span> of the colloidal affinity law (see <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION_LOGKEQFACTOR}\)</span>).</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -457,7 +457,7 @@ where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> 
 <p><code class="docutils literal notranslate"><span class="pre">SURFACE_DIFFUSION_LOGKEQFACTOR</span></code></p>
 <blockquote>
 <div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p1}\)</span> in colloidal affinity law particle surface diffusion relation
-<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[ p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} + p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
 where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
 <span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
 Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
@@ -473,7 +473,7 @@ Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DI
 <p><code class="docutils literal notranslate"><span class="pre">SURFACE_DIFFUSION_LOGKEQEXP</span></code></p>
 <blockquote>
 <div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p2}\)</span> in colloidal affinity law particle surface diffusion relation
-<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[ p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} + p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
 where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
 <span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
 Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>
@@ -489,7 +489,7 @@ Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DI
 <p><code class="docutils literal notranslate"><span class="pre">SURFACE_DIFFUSION_LOGKEQCONST</span></code></p>
 <blockquote>
 <div><p>Factor <span class="math notranslate nohighlight">\(\texttt{p3}\)</span> in colloidal affinity law particle surface diffusion relation
-<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[  p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
+<span class="math notranslate nohighlight">\(D_{s, i, m} = \tilde{D}_{s, i, m} \left[ p_{4, i, m} \left( k_{i, m} \left( c_{0}^{p} \right) \right)^{p_{5, i, m}} + p_{6, i, m} exp \left( p_{7, i, m} k_{i, m} \left( c_{0}^{p} \right) \right) \right]\)</span>
 where <span class="math notranslate nohighlight">\(\tilde{D}_{s, i, m}\)</span> is the original surface diffusion coefficient and
 <span class="math notranslate nohighlight">\(k_{i, m} \left( c_{0}^{p} \right) = p_{1, i, m}\left( c_{0}^{p} \right)^{p_{2, i, m}} + p_{3, i, m}\)</span>.
 Only required if <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION_DEP}\)</span> is <span class="math notranslate nohighlight">\(\texttt{LIQUID_SALT_COLLOIDAL_AFFINITY}\)</span>.</p>

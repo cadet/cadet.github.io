@@ -301,7 +301,7 @@ coefficient vector <span class="math notranslate nohighlight">\(\alpha = (K + \s
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
-<td><p><strong>Length:</strong> NCOMP</p></td>
+<td><p><strong>Length:</strong> NTOTALBND</p></td>
 </tr>
 </tbody>
 </table>
@@ -476,6 +476,22 @@ Required for all kernel types.</p>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">POROSITY_FACTOR</span></code></dt><dd><p>Optional scaling factor applied to the predicted equilibrium loading. This can be
+used to account for porosity differences or unit conversions between the training
+data and the simulation conditions. A single value is shared by all bound states;
+otherwise one value per bound state in component-major ordering has to be given.
+Defaults to 1.0 if not present.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1/NTOTALBND</p></td>
 </tr>
 </tbody>
 </table>

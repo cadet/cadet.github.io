@@ -286,6 +286,22 @@ polynomial of the clamped boundary cell is extended linearly in each out-of-boun
 dimension. No constant fill value is applied.</p>
 </section>
 </section>
+<section id="porosity-factor">
+<h2>Porosity factor<a class="headerlink" href="#porosity-factor" title="Link to this heading">¶</a></h2>
+<p>In both modes, the interpolated value is scaled by an optional porosity factor
+<span class="math notranslate nohighlight">\(\beta_{\text{poros},i,m}\)</span> (<code class="docutils literal notranslate"><span class="pre">POROSITY_FACTOR</span></code>),</p>
+<div class="math notranslate nohighlight">
+\[c^{s,\ast}_{i,m} = \beta_{\text{poros},i,m} f_{i,m}(\boldsymbol{c}_p).\]</div>
+<p>Since equilibrium loadings are often reported on different reference volumes or masses,
+this factor can be used as a simple correction for differences in porosity or unit
+conversions between the tabulated data and the simulation conditions.
+It may be given as a single value, which is shared by all bound states, or as one value
+per bound state in component-major ordering, and defaults to <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Note that, unlike the <a class="reference internal" href="neural_network.html#neural-network"><span class="std std-ref">Neural Network Binding</span></a> and <a class="reference internal" href="gaussian_process_regression.html#gaussian-process-regression"><span class="std std-ref">Gaussian Process Regression</span></a>
+binding models, no zero-concentration offset is subtracted here: the interpolant
+reproduces the tabulated data exactly, so <span class="math notranslate nohighlight">\(c^{s,\ast}_{i,m}(0) = 0\)</span> is obtained
+simply by including the origin among the support points.</p>
+</section>
 <section id="kinetic-form">
 <h2>Kinetic form<a class="headerlink" href="#kinetic-form" title="Link to this heading">¶</a></h2>
 <p>The model is used in a kinetic linear-driving-force form for both modes.

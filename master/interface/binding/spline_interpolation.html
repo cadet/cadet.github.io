@@ -240,7 +240,7 @@ state separately.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">INDEPENDENT</span></code>: each component’s equilibrium loading is an independent
 1D cubic spline of its own pore-phase concentration.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">COMPETITIVE</span></code>: all equilibrium loadings depend on the full pore-phase
+<li><p><code class="docutils literal notranslate"><span class="pre">COMPETITIVE_REGULAR_GRID</span></code>: all equilibrium loadings depend on the full pore-phase
 concentration vector via multilinear interpolation on a regular
 Cartesian-product grid (see <a class="reference internal" href="../../modelling/binding/spline_interpolation.html#spline-interpolation"><span class="std std-ref">Spline Interpolation</span></a>).</p></li>
 </ul>
@@ -249,14 +249,14 @@ Cartesian-product grid (see <a class="reference internal" href="../../modelling/
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
-<td><p><strong>Value:</strong> INDEPENDENT, COMPETITIVE</p></td>
+<td><p><strong>Value:</strong> INDEPENDENT, COMPETITIVE_REGULAR_GRID</p></td>
 </tr>
 </tbody>
 </table>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">CP_VALS_COMP_XXX</span></code></dt><dd><p>Pore-phase concentration support points for component <code class="docutils literal notranslate"><span class="pre">XXX</span></code>.</p>
 <p><em>INDEPENDENT mode</em>: the 1D spline knots in strictly ascending order.</p>
-<p><em>COMPETITIVE mode</em>: sample values whose distinct entries define the axis
+<p><em>COMPETITIVE_REGULAR_GRID mode</em>: sample values whose distinct entries define the axis
 for component <code class="docutils literal notranslate"><span class="pre">XXX</span></code> of the Cartesian-product grid. All components must
 supply the same number of samples, together covering the full grid (i.e.
 every combination of distinct per-component values must appear exactly once).</p>
@@ -294,6 +294,22 @@ every combination of distinct per-component values must appear exactly once).</p
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
 <td><p><strong>Length:</strong> NTOTALBND</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">POROSITY_FACTOR</span></code></dt><dd><p>Optional scaling factor applied to the predicted equilibrium loading. This can be
+used to account for porosity differences or unit conversions between the training
+data and the simulation conditions. A single value is shared by all bound states;
+otherwise one value per bound state in component-major ordering has to be given.
+Defaults to 1.0 if not present.</p>
+</dd>
+</dl>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1/NTOTALBND</p></td>
 </tr>
 </tbody>
 </table>

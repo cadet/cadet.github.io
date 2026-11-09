@@ -285,8 +285,14 @@ For a system with multiple components where each component may have multiple bou
 <h2>Offset Correction<a class="headerlink" href="#offset-correction" title="Link to this heading">¶</a></h2>
 <p>An offset is computed once during configuration for each bound state as the GPR prediction at zero input and is subtracted from subsequent predictions:</p>
 <div class="math notranslate nohighlight">
-\[c^{s,\ast}_{\text{j}}(c^p) = f_{\text{j}}(c^p) - f_{\text{j}}(0).\]</div>
+\[c^{s,\ast}_{\text{j}}(c^p) = \beta_{\text{poros},\text{j}} \left( f_{\text{j}}(c^p) - f_{\text{j}}(0) \right).\]</div>
 <p>This shifts the model response such that the predicted loading is zero at the origin. This correction is applied independently for each bound state.</p>
+</section>
+<section id="porosity-factor">
+<h2>Porosity factor<a class="headerlink" href="#porosity-factor" title="Link to this heading">¶</a></h2>
+<p>The optional porosity scaling factor <span class="math notranslate nohighlight">\(\beta_{\text{poros},\text{j}}\)</span> (<code class="docutils literal notranslate"><span class="pre">POROSITY_FACTOR</span></code>) scales the prediction to the solid-phase loading used by the binding model.
+Since equilibrium loadings are often reported on different reference volumes or masses, it can be used as a simple correction factor to account for differences in porosity or unit conversions between the training data and the simulation conditions.
+It may be given as a single value, which is shared by all bound states, or as one value per bound state in component-major ordering, and defaults to <span class="math notranslate nohighlight">\(1\)</span>.</p>
 </section>
 <section id="kinetic-form">
 <h2>Kinetic Form<a class="headerlink" href="#kinetic-form" title="Link to this heading">¶</a></h2>

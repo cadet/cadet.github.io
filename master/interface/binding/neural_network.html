@@ -246,7 +246,7 @@ neural network-predicted equilibrium.</p>
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
-<td><p><strong>Length:</strong> NCOMP</p></td>
+<td><p><strong>Length:</strong> NTOTALBND</p></td>
 </tr>
 </tbody>
 </table>
@@ -275,24 +275,31 @@ All hidden layers share the same width.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_XXX/layer_0</strong></p>
-<dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">NORM_FACTOR</span></code></dt><dd><p>Normalization factors applied to the pore-phase
-concentration before feeding into the neural network.</p>
+<p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_XXX</strong></p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">NORM_FACTOR</span></code></dt><dd><p>Normalization factors applied element-wise to the pore-phase concentration
+vector before it is fed into the neural network, i.e. the network is
+evaluated on <span class="math notranslate nohighlight">\(x = c^p \odot \alpha_{\mathrm{norm}}\)</span>. Each factor is
+therefore the reciprocal of a characteristic concentration scale, for example
+<span class="math notranslate nohighlight">\(1 / \max\left(c^p\right)\)</span>, chosen such that the network inputs are of
+order one. The network must have been trained on exactly this scaling.</p>
+<p>A single value is applied to all input dimensions; otherwise one value per
+component has to be given. Each bound state has its own factors because each
+network is trained independently.</p>
 </dd>
 </dl>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
-<td><p><strong>Length:</strong> 1</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\neq 0\)</span></p></td>
+<td><p><strong>Length:</strong> 1/NCOMP</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">POROSITY_FACTOR</span></code></dt><dd><p>Scaling factor applied to the neural network prediction. This can be
-used to account for porosity differences or unit conversions between
-training data and simulation conditions.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">POROSITY_FACTOR</span></code></dt><dd><p>Optional scaling factor applied to the neural network prediction. This can
+be used to account for porosity differences or unit conversions between
+training data and simulation conditions. Defaults to 1.0 if not given.</p>
 </dd>
 </dl>
 <table class="docutils align-default">

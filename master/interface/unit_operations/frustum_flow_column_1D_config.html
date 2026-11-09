@@ -468,7 +468,12 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </tbody>
 </table>
 </div></blockquote>
-<p>The following FV discretization parameters are only required if particles are present:</p>
+<p>The following FV discretization parameters configure the GMRES solver of the unit operation’s own
+arrow-head Schur complement. They are required if particles are present <strong>and</strong>
+<code class="docutils literal notranslate"><span class="pre">FV_ARROW_HEAD_OPTIMIZATION</span></code> <span class="math notranslate nohighlight">\(= 1\)</span>, which is the default for an FV bulk with FV particles.
+With <code class="docutils literal notranslate"><span class="pre">FV_ARROW_HEAD_OPTIMIZATION</span></code> <span class="math notranslate nohighlight">\(= 0\)</span> the unit is solved by a global sparse solver that
+does not read them. They are independent of the identically named fields in
+<a class="reference internal" href="../system.html#ffmodelsolver"><span class="std std-ref">Group /input/model/solver</span></a>, which size the GMRES of the network.</p>
 <p><code class="docutils literal notranslate"><span class="pre">GS_TYPE</span></code></p>
 <blockquote>
 <div><p>Type of Gram-Schmidt orthogonalization, see IDAS guide Section 4.5.7.3, p. 41f. A value of <span class="math notranslate nohighlight">\(0\)</span> enables classical Gram-Schmidt, a value of 1 uses modified Gram-Schmidt.</p>

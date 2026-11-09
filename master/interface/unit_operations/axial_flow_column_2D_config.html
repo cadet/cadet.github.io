@@ -659,18 +659,6 @@ Replaces the <code class="docutils literal notranslate"><span class="pre">RAD_NE
 </tbody>
 </table>
 </div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">NPAR</span></code></p>
-<blockquote>
-<div><p>Number of particle (radial) discretization cells for each particle type</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
-<td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(1 / \texttt{NPARTYPE}\)</span></p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">LINEAR_SOLVER_BULK</span></code></p>
 <blockquote>
 <div><blockquote>
@@ -705,6 +693,9 @@ Replaces the <code class="docutils literal notranslate"><span class="pre">RAD_NE
 </table>
 <p>For further information on discretization parameters for reconstruction methods (including <code class="docutils literal notranslate"><span class="pre">AXIAL_GRID_FACES</span></code> for non-equidistant axial grid spacing), see also <a class="reference internal" href="../flux_reconstruction.html#flux-reconstruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific).</p>
 </div></blockquote>
+<p>The following FV discretization parameters configure the GMRES solver of the unit operation’s own
+arrow-head Schur complement and are required for the FV discretization. They are independent of the
+identically named fields in <a class="reference internal" href="../system.html#ffmodelsolver"><span class="std std-ref">Group /input/model/solver</span></a>, which size the GMRES of the network.</p>
 <p><code class="docutils literal notranslate"><span class="pre">GS_TYPE</span></code></p>
 <blockquote>
 <div><p>Type of Gram-Schmidt orthogonalization, see IDAS guide Section 4.5.7.3, p. 41f. A value of 0 enables classical Gram-Schmidt, a value of 1 uses modified Gram-Schmidt.</p>

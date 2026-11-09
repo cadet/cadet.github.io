@@ -220,18 +220,6 @@
 <span id="ffmodelsystem"></span><h1>System of unit operations<a class="headerlink" href="#system-of-unit-operations" title="Link to this heading">¶</a></h1>
 <section id="group-input-model">
 <h2>Group /input/model<a class="headerlink" href="#group-input-model" title="Link to this heading">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">NUNITS</span></code></p>
-<blockquote>
-<div><p>Number of unit operations in the system</p>
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
-<td><p><strong>Length:</strong> 1</p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_STATE_Y</span></code></p>
 <blockquote>
 <div><p>Initial full state vector (optional, unit operation specific initial data is ignored)</p>
@@ -370,12 +358,15 @@ Contrary to the constant coefficient, which has the parameter name <span class="
 <p><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
 <blockquote>
 <div><p>Velocity of the external profile in positive column axial direction.
-The velocity is normalized to a column with length 1, hence the unit <span class="math notranslate nohighlight">\(\mathrm{s}^{-1}\)</span>.</p>
+The velocity is normalized to a column with length 1, hence the unit <span class="math notranslate nohighlight">\(\mathrm{s}^{-1}\)</span>.
+A negative value lets the profile travel towards the column inlet instead.
+The value must not be <span class="math notranslate nohighlight">\(0\)</span>, since the profile is evaluated at the transformed time
+<span class="math notranslate nohighlight">\((1 - z) / \texttt{VELOCITY} + t\)</span>.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R} \setminus \{0\}\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>
@@ -413,12 +404,15 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 <p><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
 <blockquote>
 <div><p>Velocity of the external profile in positive column axial direction.
-The velocity is normalized to a column with length 1, hence the unit <span class="math notranslate nohighlight">\(\mathrm{s}^{-1}\)</span>.</p>
+The velocity is normalized to a column with length 1, hence the unit <span class="math notranslate nohighlight">\(\mathrm{s}^{-1}\)</span>.
+A negative value lets the profile travel towards the column inlet instead.
+The value must not be <span class="math notranslate nohighlight">\(0\)</span>, since the profile is evaluated at the transformed time
+<span class="math notranslate nohighlight">\((1 - z) / \texttt{VELOCITY} + t\)</span>.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R} \setminus \{0\}\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>
@@ -506,11 +500,15 @@ The velocity is normalized to a column with length 1, hence the unit <span class
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">MAX_KRYLOV</span></code></p>
 <blockquote>
-<div><p>Defines the size of the Krylov subspace in the iterative linear GMRES solver (0: <span class="math notranslate nohighlight">\(\texttt{MAX_KRYLOV} = \texttt{NDOF}\)</span>)</p>
+<div><p>Defines the size of the Krylov subspace in the iterative linear GMRES solver that solves the
+Schur complement of the network. That Schur complement is formed on the inlet degrees of freedom
+of the network, of which there are
+<span class="math notranslate nohighlight">\(\texttt{NCOUPLINGDOF} = \sum_i \texttt{NPORT}_i \cdot \texttt{NCOMP}_i\)</span>, summed over all
+unit operations that have an inlet (0: <span class="math notranslate nohighlight">\(\texttt{MAX_KRYLOV} = \texttt{NCOUPLINGDOF}\)</span>).</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
-<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, \texttt{NDOF}\}\)</span></p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, \texttt{NCOUPLINGDOF}\}\)</span></p></td>
 <td><p><strong>Length:</strong> 1</p></td>
 </tr>
 </tbody>

@@ -258,7 +258,9 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">CROSS_SECTION_AREA_INNER</span></code></p>
 <blockquote>
-<div><p>Cross section area of the inner column radius (optional, only triggers a geometry check against <code class="docutils literal notranslate"><span class="pre">CROSS_SECTION_AREA_OUTER</span></code>, <code class="docutils literal notranslate"><span class="pre">CYLINDER_HEIGHT</span></code>, and <code class="docutils literal notranslate"><span class="pre">BED_LENGTH</span></code>).</p>
+<div><p>Cross section area of the inner column radius (optional, only triggers a geometry check against <code class="docutils literal notranslate"><span class="pre">CROSS_SECTION_AREA_OUTER</span></code>, <code class="docutils literal notranslate"><span class="pre">CYLINDER_HEIGHT</span></code>, and <code class="docutils literal notranslate"><span class="pre">BED_LENGTH</span></code>).
+The inner radius has to be positive, i.e. <code class="docutils literal notranslate"><span class="pre">BED_LENGTH</span></code> strictly smaller than the outer radius:
+the interstitial velocity of a radial flow column scales with <span class="math notranslate nohighlight">\(1/r\)</span> and is singular on the axis.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}^2\)</span></p>
 <table class="docutils align-default">
 <tbody>
@@ -570,7 +572,12 @@ While both methods approximate the same solution to the same underlying model, t
 </table>
 <p>For further information on discretization parameters for reconstruction methods, see also <a class="reference internal" href="../flux_reconstruction.html#flux-reconstruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific).</p>
 </div></blockquote>
-<p>The following FV discretization parameters are only required if particles are present:</p>
+<p>The following FV discretization parameters configure the GMRES solver of the unit operation’s own
+arrow-head Schur complement. They are required if particles are present <strong>and</strong>
+<code class="docutils literal notranslate"><span class="pre">FV_ARROW_HEAD_OPTIMIZATION</span></code> <span class="math notranslate nohighlight">\(= 1\)</span>, which is the default for an FV bulk with FV particles.
+With <code class="docutils literal notranslate"><span class="pre">FV_ARROW_HEAD_OPTIMIZATION</span></code> <span class="math notranslate nohighlight">\(= 0\)</span> the unit is solved by a global sparse solver that
+does not read them. They are independent of the identically named fields in
+<a class="reference internal" href="../system.html#ffmodelsolver"><span class="std std-ref">Group /input/model/solver</span></a>, which size the GMRES of the network.</p>
 <p><code class="docutils literal notranslate"><span class="pre">GS_TYPE</span></code></p>
 <blockquote>
 <div><p>Type of Gram-Schmidt orthogonalization, see IDAS guide Section 4.5.7.3, p. 41f. A value of <span class="math notranslate nohighlight">\(0\)</span> enables classical Gram-Schmidt, a value of 1 uses modified Gram-Schmidt.</p>

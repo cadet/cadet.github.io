@@ -204,12 +204,13 @@
 
 
 
-  <section id="build-for-ms-windows">
-<span id="build-windows"></span><h1>Build for MS Windows<a class="headerlink" href="#build-for-ms-windows" title="Link to this heading">¶</a></h1>
-<section id="build-cadet-core-on-windows">
-<h2>Build CADET-Core on Windows<a class="headerlink" href="#build-cadet-core-on-windows" title="Link to this heading">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="build-windows">
+<span id="build-for-ms-windows"></span><h1>Build for MS Windows<a class="headerlink" href="#build-windows" title="Link to this heading">¶</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="build-cadet-core-on-windows">
+<h1>Build CADET-Core on Windows<a class="headerlink" href="#build-cadet-core-on-windows" title="Link to this heading">¶</a></h1>
 <section id="prerequisites">
-<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h3>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Microsoft Visual Studio <strong>2022</strong> (Community Edition, or better)</p></li>
 <li><p>Intel OneAPI MKL</p></li>
@@ -232,7 +233,7 @@ unless you know your simulations are large enough to benefit from it.</p>
 recent version.</p>
 </section>
 <section id="visual-studio">
-<h3>Visual Studio:<a class="headerlink" href="#visual-studio" title="Link to this heading">¶</a></h3>
+<h2>Visual Studio:<a class="headerlink" href="#visual-studio" title="Link to this heading">¶</a></h2>
 <p>We are using Visual Studio because it is the easiest way to install all required tools, compilers etc. in one step.</p>
 <ul class="simple">
 <li><p>Download <a class="reference external" href="https://visualstudio.microsoft.com/de/downloads/">MS Visual Studio</a></p></li>
@@ -240,7 +241,7 @@ recent version.</p>
 </ul>
 </section>
 <section id="intel-oneapi-base-toolkit">
-<h3>Intel oneAPI Base Toolkit<a class="headerlink" href="#intel-oneapi-base-toolkit" title="Link to this heading">¶</a></h3>
+<h2>Intel oneAPI Base Toolkit<a class="headerlink" href="#intel-oneapi-base-toolkit" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Download
 the <a class="reference external" href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html?operatingsystem=window&amp;distributions=webdownload&amp;options=online">Intel oneAPI Base Toolkit online installer</a>.</p></li>
@@ -253,14 +254,14 @@ the <a class="reference external" href="https://www.intel.com/content/www/us/en/
 </ul>
 </section>
 <section id="optional-clink">
-<h3>Optional:  clink<a class="headerlink" href="#optional-clink" title="Link to this heading">¶</a></h3>
+<h2>Optional:  clink<a class="headerlink" href="#optional-clink" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Clink provides text completion, history, and line-editing to Windows Command Prompt</p></li>
 <li><p>Download the <a class="reference external" href="https://github.com/chrisant996/clink">clink installer exe</a> and install clink.</p></li>
 </ul>
 </section>
 <section id="obtain-cadet-core-code">
-<h3>Obtain CADET-Core code<a class="headerlink" href="#obtain-cadet-core-code" title="Link to this heading">¶</a></h3>
+<h2>Obtain CADET-Core code<a class="headerlink" href="#obtain-cadet-core-code" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Clone the CADET-Core source code into a <code class="docutils literal notranslate"><span class="pre">CADET-Core</span></code> folder:</p>
 <ul>
@@ -270,7 +271,7 @@ the <a class="reference external" href="https://www.intel.com/content/www/us/en/
 </ul>
 </section>
 <section id="build-cadet-core-in-visual-studio">
-<h3>Build CADET-Core in Visual Studio<a class="headerlink" href="#build-cadet-core-in-visual-studio" title="Link to this heading">¶</a></h3>
+<h2>Build CADET-Core in Visual Studio<a class="headerlink" href="#build-cadet-core-in-visual-studio" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Open Visual Studio and open the <code class="docutils literal notranslate"><span class="pre">CADET-Core</span></code> folder</p></li>
 <li><p>Navigate to “Tools” - “Command Line” and open either a “Developer Command Prompt” or “Developer PowerShell”</p></li>
@@ -288,7 +289,7 @@ the <a class="reference external" href="https://www.intel.com/content/www/us/en/
 </ul>
 </section>
 <section id="build-cadet-core-from-the-command-line">
-<h3>Build CADET-Core from the command line<a class="headerlink" href="#build-cadet-core-from-the-command-line" title="Link to this heading">¶</a></h3>
+<h2>Build CADET-Core from the command line<a class="headerlink" href="#build-cadet-core-from-the-command-line" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Open Visual Studio and select “continue without code”</p></li>
 <li><p>Navigate to “Tools” - “Command Line” and open either a “Developer Command Prompt” or “Developer PowerShell”</p></li>
@@ -331,7 +332,7 @@ and</p></li>
 </ul>
 </section>
 <section id="test-build-results">
-<h3>Test build results<a class="headerlink" href="#test-build-results" title="Link to this heading">¶</a></h3>
+<h2>Test build results<a class="headerlink" href="#test-build-results" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Navigate to the install location <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">CADET-Core\out\install\aRELEASE\bin</span></code></p></li>
 <li><p>Run:</p>
@@ -347,7 +348,6 @@ This raises error messages that are not raised from a cmd or PowerShell window.<
 </ul>
 </section>
 </section>
-</section>
 
 
 
@@ -361,7 +361,7 @@ This raises error messages that are not raised from a cmd or PowerShell window.<
       &#169;2008-2026.
       
       |
-      <a href="../_sources/getting_started/build_windows.rst.txt"
+      <a href="../_sources/getting_started/build_windows.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

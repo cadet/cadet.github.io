@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/binding/index.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,8 +217,8 @@
 
 
 
-  <section id="binding-models">
-<span id="ffadsorption"></span><h1>Binding models<a class="headerlink" href="#binding-models" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ffadsorption">
+<span id="binding-models"></span><h1>Binding models<a class="headerlink" href="#ffadsorption" title="Link to this heading">¶</a></h1>
 <section id="externally-dependent-binding-models">
 <h2>Externally dependent binding models<a class="headerlink" href="#externally-dependent-binding-models" title="Link to this heading">¶</a></h2>
 <p>Some binding models have a variant that can use external sources as specified in <a class="reference internal" href="../system.html#ffmodelexternalsourcelininterp"><span class="std std-ref">/input/model/external/</span></a> (also see Section <a class="reference internal" href="../../modelling/binding/index.html#dependence-on-external-function-bind"><span class="std std-ref">Dependence on external function</span></a> for more information, and Section <a class="reference internal" href="../../modelling/binding/index.html#binding-model-feature"><span class="std std-ref">Binding model feature matrix</span></a> on which binding models support this feature).
@@ -241,8 +242,8 @@ This is caused by not taking into account the derivative of the external profile
 However, these models still support non-binding components.
 In this case, the entries in their parameters that correspond to non-binding components are simply ignored.</p>
 </section>
-<section id="multiple-particle-types">
-<span id="multiple-particle-types-binding"></span><h2>Multiple particle types<a class="headerlink" href="#multiple-particle-types" title="Link to this heading">¶</a></h2>
+<section id="multiple-particle-types-binding">
+<span id="multiple-particle-types"></span><h2>Multiple particle types<a class="headerlink" href="#multiple-particle-types-binding" title="Link to this heading">¶</a></h2>
 <p>The group that contains the parameters of a binding model in unit operation with index <code class="docutils literal notranslate"><span class="pre">XXX</span></code> reads <code class="docutils literal notranslate"><span class="pre">/input/model/unit_XXX/particle_type_ZZZ/adsorption</span></code>.
 This is valid for models with a single particle type.
 If a model has multiple particle types, it may have a different binding model in each type.
@@ -297,7 +298,7 @@ This group also takes precedence over a possibly existing <code class="docutils 
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/binding/index.rst.txt"
+      <a href="../../_sources/interface/binding/index.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

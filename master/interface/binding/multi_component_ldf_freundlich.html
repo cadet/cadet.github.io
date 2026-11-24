@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/binding/multi_component_ldf_freundlich.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,11 +217,11 @@
 
 
 
-  <section id="multi-component-linear-driving-force-freundlich">
-<span id="multi-component-ldf-freundlich-config"></span><h1>Multi Component Linear Driving Force Freundlich<a class="headerlink" href="#multi-component-linear-driving-force-freundlich" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="multi-component-ldf-freundlich-config">
+<span id="multi-component-linear-driving-force-freundlich"></span><h1>Multi Component Linear Driving Force Freundlich<a class="headerlink" href="#multi-component-ldf-freundlich-config" title="Link to this heading">¶</a></h1>
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption – ADSORPTION_MODEL = MULTI_COMPONENT_LDF_FREUNDLICH</strong></p>
 <p>For information on model equations, refer to <a class="reference internal" href="../../modelling/binding/multi_component_ldf_freundlich.html#multi-component-ldf-freundlich-model"><span class="std std-ref">Multi Component Linear Driving Force Freundlich</span></a>.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></dt><dd><p>Selects kinetic or quasi-stationary adsorption mode: 1 = kinetic, 0 =
 quasi-stationary. If a single value is given, the mode is set for all
 bound states. Otherwise, the adsorption mode is set for each bound
@@ -235,7 +236,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">MCLDFFRL_KLDF</span></code></dt><dd><p>Rate constants in linear driving force approach</p>
 </dd>
 </dl>
@@ -248,7 +249,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">MCLDFFRL_KF</span></code></dt><dd><p>Proportionality constants</p>
 </dd>
 </dl>
@@ -261,7 +262,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">MCLDFFRL_EXP</span></code></dt><dd><p>Freundlich exponent</p>
 </dd>
 </dl>
@@ -274,7 +275,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">MCLDFFRL_A</span></code></dt><dd><p>Component influences in row-major ordering</p>
 </dd>
 </dl>
@@ -287,7 +288,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">MCLDFFRL_TAU</span></code></dt><dd><p>Small constant that ensures numerical stability</p>
 </dd>
 </dl>
@@ -314,7 +315,7 @@ state separately.</p>
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/binding/multi_component_ldf_freundlich.rst.txt"
+      <a href="../../_sources/interface/binding/multi_component_ldf_freundlich.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

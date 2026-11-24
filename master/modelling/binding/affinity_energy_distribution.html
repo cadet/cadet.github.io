@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/binding/affinity_energy_distribution.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -48,10 +49,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Binding models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="index.html#equilibrium-constants">Equilibrium constants</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#linear-driving-force-ldf">Linear Driving Force (LDF)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#ldf-model">Linear Driving Force (LDF)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#reference-concentrations">Reference concentrations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature-matrix">Binding model feature matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function-bind">Dependence on external function</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature">Binding model feature matrix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
@@ -211,7 +212,7 @@
 
 
 
-  <section id="affinity-energy-distribution">
+  <section class="tex2jax_ignore mathjax_ignore" id="affinity-energy-distribution">
 <span id="id1"></span><h1>Affinity Energy Distribution<a class="headerlink" href="#affinity-energy-distribution" title="Link to this heading">¶</a></h1>
 <p>Unlike the multi component Langmuir model and the multi component Bi-Langmuir model that presume a fixed number of discrete binding sites, the affinity energy distribution (AED) model considers a continuous distribution of binding site types on a heterogeneous surface on the energy space <span class="math notranslate nohighlight">\(\ln(K_{eq}) \in \mathbb{R}^{&gt;0}\)</span> (see e.g. <span class="bibtex-citation" id="id2">[<a class="reference internal" href="../../zbibliography.html#id23" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>]</span>).
 Assuming a single component system, the AED isotherm reads <span class="bibtex-citation" id="id3">[<a class="reference internal" href="../../zbibliography.html#id23" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>]</span>:</p>
@@ -270,7 +271,7 @@ Please refer to <a class="reference internal" href="../../interface/binding/mult
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/modelling/binding/affinity_energy_distribution.rst.txt"
+      <a href="../../_sources/modelling/binding/affinity_energy_distribution.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/binding/multi_component_sips.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -48,10 +49,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Binding models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="index.html#equilibrium-constants">Equilibrium constants</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#linear-driving-force-ldf">Linear Driving Force (LDF)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#ldf-model">Linear Driving Force (LDF)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#reference-concentrations">Reference concentrations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature-matrix">Binding model feature matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function-bind">Dependence on external function</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature">Binding model feature matrix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
@@ -211,8 +212,8 @@
 
 
 
-  <section id="multi-component-sips">
-<span id="multi-component-sips-model"></span><h1>Multi Component Sips<a class="headerlink" href="#multi-component-sips" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="multi-component-sips-model">
+<span id="multi-component-sips"></span><h1>Multi Component Sips<a class="headerlink" href="#multi-component-sips-model" title="Link to this heading">¶</a></h1>
 <p>The Sips binding model is a combination of the <a class="reference internal" href="freundlich_ldf.html#freundlich-ldf-model"><span class="std std-ref">Freundlich</span></a> and the <a class="reference internal" href="multi_component_langmuir.html#multi-component-langmuir-model"><span class="std std-ref">Langmuir adsorption model</span></a>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
@@ -246,7 +247,7 @@ For more information on the model and its origin, please refer to <span class="b
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/modelling/binding/multi_component_sips.rst.txt"
+      <a href="../../_sources/modelling/binding/multi_component_sips.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

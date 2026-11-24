@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/unit_operations/particle_config.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,8 +217,8 @@
 
 
 
-  <section id="particle-model">
-<span id="particle-model-config"></span><h1>Particle Model<a class="headerlink" href="#particle-model" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="particle-model-config">
+<span id="particle-model"></span><h1>Particle Model<a class="headerlink" href="#particle-model-config" title="Link to this heading">¶</a></h1>
 <section id="group-input-model-unit-xxx-particle-type-xxx">
 <h2>Group /input/model/unit_XXX/particle_type_XXX<a class="headerlink" href="#group-input-model-unit-xxx-particle-type-xxx" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">PAR_POROSITY</span></code></p>
@@ -290,9 +291,7 @@ Note: When combined with a binding model, components that compete for the same b
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">HAS_FILM_DIFFUSION</span></code></p>
 <blockquote>
-<div><blockquote>
 <div><p>Specifies whether transport into the particles is limited by film diffusion kinetics.</p>
-</div></blockquote>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -317,7 +316,7 @@ Note: When combined with a binding model, components that compete for the same b
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">FILM_DIFFUSION_MULTIPLEX</span></code></p>
 <blockquote>
-<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION}\)</span> is treated as component-, type-, and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION}\)</span>.  Valid modes are:</p>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION}\)</span> is treated as component-, type-, and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION}\)</span>. Valid modes are:</p>
 <ol class="arabic simple" start="0">
 <li><p>Component-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span></p></li>
 <li><p>Component-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{FILM_DIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
@@ -333,9 +332,7 @@ Note: When combined with a binding model, components that compete for the same b
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">HAS_PORE_DIFFUSION</span></code></p>
 <blockquote>
-<div><blockquote>
 <div><p>Specifies whether radial transport within the particle pores is limited by pore diffusion kinetics. Optional, defaults to <span class="math notranslate nohighlight">\(0\)</span>.</p>
-</div></blockquote>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -402,7 +399,7 @@ Optional, defaults to all 0 <span class="math notranslate nohighlight">\(\mathrm
 </tbody>
 </table>
 </div></blockquote>
-<dl>
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SURFACE_DIFFUSION_MULTIPLEX</span></code></dt><dd><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION}\)</span> is treated as component-, type-, and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION}\)</span>. Valid modes are:</p>
 <ol class="arabic simple" start="0">
 <li><p>Component-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NBOUND}\)</span></p></li>
@@ -490,13 +487,11 @@ If <span class="math notranslate nohighlight">\(\texttt{BINDING_PARTYPE_DEPENDEN
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">PARAMNAME_PARTYPE_DEPENDENT</span></code></p>
 <blockquote>
-<div><blockquote>
 <div><p>Only required for parameter sensitivities of the respective parameter, defaults to 1.
-Specifies whether or not a parameter (parameter name substitutes the <cite>PARAMNAME</cite> prefix of field name) is the same across particle types or ‘dependent’ on the particle type.
+Specifies whether or not a parameter (parameter name substitutes the <code class="docutils literal notranslate"><span class="pre">PARAMNAME</span></code> prefix of field name) is the same across particle types or ‘dependent’ on the particle type.
 In the first case, the parameter sensitivity should be computed jointly across particle types, by specifying this field as 0.
-Can be specified for any of the above parameters except <cite>NCOMP</cite> and <cite>NBOUND</cite>.
+Can be specified for any of the above parameters except <code class="docutils literal notranslate"><span class="pre">NCOMP</span></code> and <code class="docutils literal notranslate"><span class="pre">NBOUND</span></code>.
 For more information on parameter sensitivities, see <a class="reference internal" href="../sensitivities.html#sensitivity"><span class="std std-ref">Parameter Sensitivities</span></a>.</p>
-</div></blockquote>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -518,7 +513,7 @@ For more information on parameter sensitivities, see <a class="reference interna
 </tbody>
 </table>
 </div></blockquote>
-<dl>
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">NREAC_SOLID</span></code></dt><dd><p>Number of solid phase reaction models (optional, only if solid reactions are present).</p>
 <table class="docutils align-default">
 <tbody>
@@ -543,7 +538,7 @@ For more information on parameter sensitivities, see <a class="reference interna
 </section>
 <section id="group-input-model-unit-xxx-phase-reaction-yyy">
 <h2>Group /input/model/unit_XXX/phase_reaction_YYY<a class="headerlink" href="#group-input-model-unit-xxx-phase-reaction-yyy" title="Link to this heading">¶</a></h2>
-<p>Each reaction is specified in another subgroup <cite>phase_reaction_YYY</cite>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.</p>
+<p>Each reaction is specified in another subgroup <code class="docutils literal notranslate"><span class="pre">phase_reaction_YYY</span></code>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.</p>
 </section>
 <section id="group-input-model-unit-xxx-particle-type-xxx-discretization">
 <h2>Group /input/model/unit_XXX/particle_type_XXX/discretization<a class="headerlink" href="#group-input-model-unit-xxx-particle-type-xxx-discretization" title="Link to this heading">¶</a></h2>
@@ -664,10 +659,10 @@ For the same number of discrete points, DG will generally be slower but often mo
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">OPTIMIZE_PAR_BANDWIDTH</span></code></p>
 <blockquote>
-<div><p>Only available if both particle and bulk spatial methods are FV, and specified in the unit operation’s discretization group, i.e. in <cite>/input/model/unit_XXX/discretization</cite>.
+<div><p>Only available if both particle and bulk spatial methods are FV, and specified in the unit operation’s discretization group, i.e. in <code class="docutils literal notranslate"><span class="pre">/input/model/unit_XXX/discretization</span></code>.
 Determines whether the surface diffusion parameters <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION}\)</span> are fixed if the parameters are zero.
 If the parameters are fixed to zero (<span class="math notranslate nohighlight">\(\texttt{OPTIMIZE_PAR_BANDWIDTH} = 1\)</span>, <span class="math notranslate nohighlight">\(\texttt{SURFACE_DIFFUSION} = 0\)</span>), the parameters must not become non-zero during this or subsequent simulation runs.
-The internal data structures are optimized for a more efficient simulation.  This field is optional and defaults to <span class="math notranslate nohighlight">\(1\)</span> (optimization enabled).</p>
+The internal data structures are optimized for a more efficient simulation. This field is optional and defaults to <span class="math notranslate nohighlight">\(1\)</span> (optimization enabled).</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -694,7 +689,7 @@ For further discretization parameters, see also <a class="reference internal" hr
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/unit_operations/particle_config.rst.txt"
+      <a href="../../_sources/interface/unit_operations/particle_config.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

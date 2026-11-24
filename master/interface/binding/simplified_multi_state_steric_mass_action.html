@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/binding/simplified_multi_state_steric_mass_action.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,11 +217,11 @@
 
 
 
-  <section id="simplified-multi-state-steric-mass-action">
-<span id="simplified-multi-state-steric-mass-action-config"></span><h1>Simplified Multi-State Steric Mass Action<a class="headerlink" href="#simplified-multi-state-steric-mass-action" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="simplified-multi-state-steric-mass-action-config">
+<span id="simplified-multi-state-steric-mass-action"></span><h1>Simplified Multi-State Steric Mass Action<a class="headerlink" href="#simplified-multi-state-steric-mass-action-config" title="Link to this heading">¶</a></h1>
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption – ADSORPTION_MODEL = SIMPLIFIED_MULTISTATE_STERIC_MASS_ACTION</strong></p>
 <p>For information on model equations, refer to <a class="reference internal" href="../../modelling/binding/simplified_multi_state_steric_mass_action.html#simplified-multi-state-steric-mass-action-model"><span class="std std-ref">Simplified Multi-State Steric Mass Action</span></a>.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></dt><dd><p>Selects kinetic or quasi-stationary adsorption mode: 1 = kinetic, 0 =
 quasi-stationary. If a single value is given, the mode is set for all
 bound states. Otherwise, the adsorption mode is set for each bound
@@ -235,7 +236,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_LAMBDA</span></code></dt><dd><p>Stationary phase capacity (monovalent salt counterions); The total
 number of binding sites available on the resin surface</p>
 </dd>
@@ -249,7 +250,7 @@ number of binding sites available on the resin surface</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_KA</span></code></dt><dd><p>Adsorption rate constants of the components to the different bound
 states in component-major ordering</p>
 </dd>
@@ -263,7 +264,7 @@ states in component-major ordering</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_KD</span></code></dt><dd><p>Desorption rate constants of the components to the different bound
 states in component-major ordering</p>
 </dd>
@@ -277,7 +278,7 @@ states in component-major ordering</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_NU_MIN</span></code></dt><dd><p>Characteristic charges of the components in the first (weakest) bound
 state</p>
 </dd>
@@ -291,7 +292,7 @@ state</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_NU_MAX</span></code></dt><dd><p>Characteristic charges of the components in the last (strongest)
 bound state</p>
 </dd>
@@ -304,7 +305,7 @@ bound state</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_NU_QUAD</span></code></dt><dd><p>Quadratic modifiers of the characteristic charges of the different
 components depending on the index of the bound state</p>
 </dd>
@@ -317,7 +318,7 @@ components depending on the index of the bound state</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_SIGMA_MIN</span></code></dt><dd><p>Steric factors of the components in the first (weakest) bound state</p>
 </dd>
 </dl>
@@ -329,7 +330,7 @@ components depending on the index of the bound state</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_SIGMA_MAX</span></code></dt><dd><p>Steric factors of the components in the last (strongest) bound state</p>
 </dd>
 </dl>
@@ -341,7 +342,7 @@ components depending on the index of the bound state</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_SIGMA_QUAD</span></code></dt><dd><p>Quadratic modifiers of steric factors of the different components
 depending on the index of the bound state</p>
 </dd>
@@ -354,7 +355,7 @@ depending on the index of the bound state</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_KWS</span></code></dt><dd><p>Exchange rates from a weakly bound state to the next stronger bound
 state</p>
 </dd>
@@ -368,7 +369,7 @@ state</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_KWS_LIN</span></code></dt><dd><p>Linear exchange rate coefficients from a weakly bound state to the
 next stronger bound state</p>
 </dd>
@@ -382,7 +383,7 @@ next stronger bound state</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_KWS_QUAD</span></code></dt><dd><p>Quadratic exchange rate coefficients from a weakly bound state to the
 next stronger bound state</p>
 </dd>
@@ -396,7 +397,7 @@ next stronger bound state</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_KSW</span></code></dt><dd><p>Exchange rates from a strongly bound state to the next weaker bound
 state</p>
 </dd>
@@ -410,7 +411,7 @@ state</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_KSW_LIN</span></code></dt><dd><p>Linear exchange rate coefficients from a strongly bound state to the
 next weaker bound state</p>
 </dd>
@@ -424,7 +425,7 @@ next weaker bound state</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_KSW_QUAD</span></code></dt><dd><p>Quadratic exchange rate coefficients from a strongly bound state to
 the next weaker bound state</p>
 </dd>
@@ -438,7 +439,7 @@ the next weaker bound state</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_NU_SALT</span></code></dt><dd><p>Characteristic charge of the salt component (optional, defaults to
 <span class="math notranslate nohighlight">\(1.0\)</span>)</p>
 </dd>
@@ -452,7 +453,7 @@ the next weaker bound state</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_REFC0</span></code></dt><dd><p>Reference liquid phase concentration (optional, defaults to
 <span class="math notranslate nohighlight">\(1.0\)</span>)</p>
 </dd>
@@ -466,7 +467,7 @@ the next weaker bound state</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SMSSMA_REFQ</span></code></dt><dd><p>Reference solid phase concentration (optional, defaults to
 <span class="math notranslate nohighlight">\(1.0\)</span>)</p>
 </dd>
@@ -494,7 +495,7 @@ the next weaker bound state</p>
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/binding/simplified_multi_state_steric_mass_action.rst.txt"
+      <a href="../../_sources/interface/binding/simplified_multi_state_steric_mass_action.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

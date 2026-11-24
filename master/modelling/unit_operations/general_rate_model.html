@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/unit_operations/general_rate_model.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -47,7 +48,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Unit operation models</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">General rate model (GRM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#column-geometry">Column Geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#muopgrmcolumngeometry">Column Geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_without_pores.html">Lumped rate model without pores (LRM)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_with_pores.html">Lumped rate model with pores (LRMP)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="2d_general_rate_model.html">Two Dimensional General rate model (GRM2D)</a></li>
@@ -215,8 +216,8 @@
 
 
 
-  <section id="general-rate-model-grm">
-<span id="general-rate-model-model"></span><h1>General rate model (GRM)<a class="headerlink" href="#general-rate-model-grm" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="general-rate-model-model">
+<span id="general-rate-model-grm"></span><h1>General rate model (GRM)<a class="headerlink" href="#general-rate-model-model" title="Link to this heading">¶</a></h1>
 <p>The general rate model is the most comprehensive model of mass transfer in column liquid chromatography, when only the axial coordinate in the column and the radial coordinate in the beads are considered <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../../zbibliography.html#id44" title="Eugene Kučera. Contribution to the theory of chromatography. Journal of Chromatography, 19:237–248, 1965-01. URL: http://linkinghub.elsevier.com/retrieve/pii/S0021967301994579, doi:10.1016/S0021-9673(01)99457-9.">1</a>, <a class="reference internal" href="../../zbibliography.html#id22" title="Tingyue Gu. Mathematical Modeling and Scale-up of Liquid Chromatography. Springer Berlin Heidelberg, 1995. ISBN 978-3-642-79543-5. URL: http://link.springer.com/10.1007/978-3-642-79541-1, doi:10.1007/978-3-642-79541-1.">2</a>, <a class="reference internal" href="../../zbibliography.html#id23" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>, <a class="reference internal" href="../../zbibliography.html#id25" title="A. Felinger and G. Guiochon. Comparison of the Kinetic Models of Linear Chromatography. Chromatographia, 60(S1):175–180, 2004-05. URL: http://springerlink.metapress.com/openurl.asp?genre=article{\&amp;}id=doi:10.1365/s10337-004-0288-7, doi:10.1365/s10337-004-0288-7.">4</a>]</span>.</p>
 <p>The main assumptions are:</p>
 <ul class="simple">
@@ -227,11 +228,6 @@ Therefore, the beads can be seen as continuously distributed inside the column (
 </ul>
 <span id="table-features"></span><table class="docutils align-default" id="id10">
 <caption><span class="caption-number">Table 2 </span><span class="caption-text">Variables and unknowns</span><a class="headerlink" href="#id10" title="Link to this table">¶</a></caption>
-<colgroup>
-<col style="width: 20.0%" />
-<col style="width: 30.0%" />
-<col style="width: 50.0%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Variable</p></th>
 <th class="head"><p>Domain</p></th>
@@ -354,7 +350,7 @@ Reaction terms in liquid and solid phase are collected in <span class="math notr
 </figcaption>
 </figure>
 <figure class="align-default" id="id13">
-<span id="modelgrmstates"></span><a class="reference internal image-reference" href="../../_images/multiple_bound_states.png"><img alt="../../_images/multiple_bound_states.png" src="../../_images/multiple_bound_states.png" style="width: 340.0px; height: 268.0px;" />
+<span id="modelgrmstates"></span><a class="reference internal image-reference" href="../../_images/multiple_bound_states.png"><img alt="../../_images/multiple_bound_states.png" src="../../_images/multiple_bound_states.png" style="width: 50%;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 4 </span><span class="caption-text">Binding with multiple bound states</span><a class="headerlink" href="#id13" title="Link to this image">¶</a></p>
@@ -362,12 +358,12 @@ Reaction terms in liquid and solid phase are collected in <span class="math notr
 </figure>
 <p>This model follows the unified and composable modeling framework presented in <span class="bibtex-citation" id="id4">[<a class="reference internal" href="../../zbibliography.html#id2" title="Jan Michael Breuer, Samuel Leweke, Johannes Schmölder, Antonia Berger, Gregor J. Gassner, and Eric von Lieres. A unified and composable framework for modeling packed-bed liquid chromatography. arXiv preprint arXiv:2610.33269, 2026. arXiv:2610.33269, doi:10.48550/arXiv.2610.33269.">9</a>]</span>.</p>
 <p>See Table <a class="reference internal" href="../../interface/unit_operations/axial_flow_column_1D_config.html#axial-flow-column-1d-config"><span class="std std-ref">Axial Flow Column 1D</span></a> and <a class="reference internal" href="../../interface/unit_operations/particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
-<section id="multiple-particle-types">
-<span id="muopgrmmultiparticletypes"></span><h2>Multiple particle types<a class="headerlink" href="#multiple-particle-types" title="Link to this heading">¶</a></h2>
+<section id="muopgrmmultiparticletypes">
+<span id="multiple-particle-types"></span><h2>Multiple particle types<a class="headerlink" href="#muopgrmmultiparticletypes" title="Link to this heading">¶</a></h2>
 <p>A particle type has its own set of mass transfer parameters <span class="math notranslate nohighlight">\(\varepsilon_{p,j}\)</span>, <span class="math notranslate nohighlight">\(D_{p,j}\)</span>, <span class="math notranslate nohighlight">\(D_{s,j}\)</span>, etc. (see Eq. <a class="reference internal" href="#equation-modelbead">4</a>) and its own binding model <span class="math notranslate nohighlight">\(f_{\mathrm{ads}}\)</span> (including a possibly differing number of bound states).
 This allows, for example, modeling of particle size distributions or potential applications with differently functionalized beads (e.g., immobilized enzymes).</p>
 <p>The distribution of the particle types is governed by their volume fractions <span class="math notranslate nohighlight">\(d_j\)</span> in Eq.
- <a class="reference internal" href="#equation-modelcolumn">1</a>. The volume fractions have to sum to <span class="math notranslate nohighlight">\(1\)</span>:</p>
+<a class="reference internal" href="#equation-modelcolumn">1</a>. The volume fractions have to sum to <span class="math notranslate nohighlight">\(1\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
     \sum_{j=0}^{N_{\text{partype}} - 1} d_j = 1.
@@ -376,8 +372,8 @@ This allows, for example, modeling of particle size distributions or potential a
 In the latter case, the user can specify a set of volume fractions for each discretized finite volume cell.
 This allows, for example, the placement of smaller particles near the frits.</p>
 </section>
-<section id="particle-geometry">
-<span id="muopgrmparticlegeometry"></span><h2>Particle Geometry<a class="headerlink" href="#particle-geometry" title="Link to this heading">¶</a></h2>
+<section id="muopgrmparticlegeometry">
+<span id="particle-geometry"></span><h2>Particle Geometry<a class="headerlink" href="#muopgrmparticlegeometry" title="Link to this heading">¶</a></h2>
 <p>In the model above, spherical particles are considered.
 Other supported particle forms are cylinders and slabs.
 For cylinders, it is assumed that molecules can only enter through the lateral surface (i.e., the caps are sealed).
@@ -402,8 +398,8 @@ See <a class="reference internal" href="#modelgrmparticlegeometries"><span class
     \left[\frac{\partial^2}{\partial r^2} + \frac{2}{r} \frac{\partial }{\partial r} \right] \quad \rightarrow \quad \frac{\partial^2}{\partial r^2}.
 \end{aligned}\]</div>
 </section>
-<section id="size-exclusion-chromatography">
-<span id="muopgrmsizeexclusion"></span><h2>Size exclusion chromatography<a class="headerlink" href="#size-exclusion-chromatography" title="Link to this heading">¶</a></h2>
+<section id="muopgrmsizeexclusion">
+<span id="size-exclusion-chromatography"></span><h2>Size exclusion chromatography<a class="headerlink" href="#muopgrmsizeexclusion" title="Link to this heading">¶</a></h2>
 <p>The general rate model can be used to simulate size exclusion chromatography (SEC) <span class="bibtex-citation" id="id5">[<a class="reference internal" href="../../zbibliography.html#id22" title="Tingyue Gu. Mathematical Modeling and Scale-up of Liquid Chromatography. Springer Berlin Heidelberg, 1995. ISBN 978-3-642-79543-5. URL: http://link.springer.com/10.1007/978-3-642-79541-1, doi:10.1007/978-3-642-79541-1.">2</a>]</span>.
 The particle porosity <span class="math notranslate nohighlight">\(\varepsilon_{p,j}\)</span> on the mobile phase side of the transport equations is replaced by a component-dependent accessible porosity</p>
 <div class="math notranslate nohighlight">
@@ -424,8 +420,8 @@ Binding models should therefore only be combined with the pore accessibility fac
 In order to simulate pure SEC, binding is disabled by setting <span class="math notranslate nohighlight">\(N_{\text{bnd},i} = 0\)</span> for all components <span class="math notranslate nohighlight">\(i\)</span> and applying no binding model.</p>
 <p>Note that multiple particle types can also be used to aid in modeling size exclusion effects, see Section <a class="reference internal" href="#muopgrmmultiparticletypes"><span class="std std-ref">Multiple particle types</span></a>.</p>
 </section>
-<section id="specification-of-flow-rate-velocity-and-direction">
-<span id="muopgrmflow"></span><h2>Specification of flow rate / velocity and direction<a class="headerlink" href="#specification-of-flow-rate-velocity-and-direction" title="Link to this heading">¶</a></h2>
+<section id="muopgrmflow">
+<span id="specification-of-flow-rate-velocity-and-direction"></span><h2>Specification of flow rate / velocity and direction<a class="headerlink" href="#muopgrmflow" title="Link to this heading">¶</a></h2>
 <p>Since volumetric flow rates are specified for each network connection, the unit operation always infers its interstitial velocity via</p>
 <div class="math notranslate nohighlight">
 \[\begin{aligned}
@@ -434,12 +430,12 @@ In order to simulate pure SEC, binding is disabled by setting <span class="math 
 <p>where <span class="math notranslate nohighlight">\(F_{\text{in}}\)</span> denotes the volumetric flow rate and <span class="math notranslate nohighlight">\(A\)</span> the cross section area.
 Note that without the bulk porosity <span class="math notranslate nohighlight">\(\varepsilon_c\)</span>, the superficial velocity would be obtained.</p>
 <p>The direction of flow inside the unit operation is governed by the field <code class="docutils literal notranslate"><span class="pre">FORWARD_FLOW</span></code>, where the value <span class="math notranslate nohighlight">\(1\)</span> means flow from the larger towards the smaller radius for the radial flow and frustum geometries.
-Note that in case of reversed flow, the chromatogram is returned at the unit operation’s <cite>INLET</cite>, which may not be returned from simulation by default.</p>
+Note that in case of reversed flow, the chromatogram is returned at the unit operation’s <code class="docutils literal notranslate"><span class="pre">INLET</span></code>, which may not be returned from simulation by default.</p>
 <p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/axial_flow_column_1D_config.html#axial-flow-column-1d-config"><span class="std std-ref">Axial Flow Column 1D</span></a> and <a class="reference internal" href="../../interface/unit_operations/particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
 </section>
 </section>
-<section id="column-geometry">
-<span id="muopgrmcolumngeometry"></span><h1>Column Geometry<a class="headerlink" href="#column-geometry" title="Link to this heading">¶</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="muopgrmcolumngeometry">
+<span id="column-geometry"></span><h1>Column Geometry<a class="headerlink" href="#muopgrmcolumngeometry" title="Link to this heading">¶</a></h1>
 <p>In the model above, a cylindrical axial flow column is considered, see figure <a class="reference internal" href="#geometrygrmaxialcolumn"><span class="std std-numref">Fig. 6</span></a>.
 Other geometries are being used, and CADET-Core additionally supports cylindrical radial flow columns, frustum columns, and columns whose cross section area varies smoothly along the flow path and is prescribed by the user.</p>
 <figure class="align-default" id="id15">
@@ -448,8 +444,8 @@ Other geometries are being used, and CADET-Core additionally supports cylindrica
 <p><span class="caption-number">Fig. 6 </span><span class="caption-text">Axial flow cylindrical column geometry</span><a class="headerlink" href="#id15" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<section id="radial-flow-grm">
-<span id="muopgrmradialflow"></span><h2>Radial flow GRM<a class="headerlink" href="#radial-flow-grm" title="Link to this heading">¶</a></h2>
+<section id="muopgrmradialflow">
+<span id="radial-flow-grm"></span><h2>Radial flow GRM<a class="headerlink" href="#muopgrmradialflow" title="Link to this heading">¶</a></h2>
 <p>The radial flow GRM describes transport of solute molecules through the interstitial column volume by radial convective flow, band broadening caused by radial dispersion, mass transfer resistance through a stagnant film around the beads, pore (and surface) diffusion in the porous beads <span class="bibtex-citation" id="id6">[<a class="reference internal" href="../../zbibliography.html#id41" title="Z. Ma, R. D. Whitley, and N.-H. L. Wang. Pore and surface diffusion in multicomponent adsorption and liquid chromatography systems. AIChE Journal, 42(5):1244–1262, 1996-05. URL: http://doi.wiley.com/10.1002/aic.690420507, doi:10.1002/aic.690420507.">5</a>, <a class="reference internal" href="../../zbibliography.html#id40" title="Petr Schneider and J. M. Smith. Chromatographic study of surface diffusion. AIChE Journal, 14(6):886–895, 1968-11. URL: http://doi.wiley.com/10.1002/aic.690140613, doi:10.1002/aic.690140613.">6</a>, <a class="reference internal" href="../../zbibliography.html#id42" title="Kanji Miyabe. Surface diffusion in reversed-phase liquid chromatography using silica gel stationary phases of different C1 and C18 ligand densities. Journal of Chromatography A, 1167(2):161–70, 2007-10. URL: http://www.ncbi.nlm.nih.gov/pubmed/17825832, doi:10.1016/j.chroma.2007.08.045.">7</a>]</span>, and adsorption to the inner bead surfaces.
 Figure <a class="reference internal" href="#geometrygrmradialcolumn"><span class="std std-numref">Fig. 7</span></a> shows the geometry of the radial flow column.</p>
 <figure class="align-default" id="id16">
@@ -542,8 +538,8 @@ Note that the outlet boundary condition Eq. <a class="reference internal" href=
 <p>The complementing mass transport and binding equations for the liquid and solid phases of the porous beads are described by the same equations as for the axial GRM.</p>
 <p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/frustum_flow_column_1D_config.html#frustum-flow-column-1d-config"><span class="std std-ref">Frustum Flow Column 1D</span></a> and <a class="reference internal" href="../../interface/unit_operations/particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
 </section>
-<section id="smoothly-varying-cross-section-grm">
-<span id="muopgrmsmoothlyvarying"></span><h2>Smoothly varying cross section GRM<a class="headerlink" href="#smoothly-varying-cross-section-grm" title="Link to this heading">¶</a></h2>
+<section id="muopgrmsmoothlyvarying">
+<span id="smoothly-varying-cross-section-grm"></span><h2>Smoothly varying cross section GRM<a class="headerlink" href="#muopgrmsmoothlyvarying" title="Link to this heading">¶</a></h2>
 <p>The radial flow and frustum geometries both prescribe the cross section area <span class="math notranslate nohighlight">\(A(x)\)</span> through a small number of geometric parameters, namely the end radii and, for the radial flow column, the cylinder height.
 The smoothly varying cross section GRM instead lets the user prescribe <span class="math notranslate nohighlight">\(A(x)\)</span> directly, which covers columns and devices whose shape is neither a cylinder shell nor a frustum.</p>
 <p>We consider axial flow along the coordinate <span class="math notranslate nohighlight">\(x \in (0, H)\)</span>, with a cross section area <span class="math notranslate nohighlight">\(A \colon [0, H] \to \mathbb{R}^{&gt;0}\)</span> that is smooth and strictly positive, and a constant volumetric flow rate <span class="math notranslate nohighlight">\(Q\)</span>.
@@ -564,8 +560,8 @@ For a smooth area profile, the interpolation error is of the same order as the d
 Since the representation is tied to the DG grid, this geometry is only available for the DG spatial discretization, and the field has to be recomputed whenever the discretization is refined.</p>
 <p>For information on model parameters see <a class="reference internal" href="../../interface/unit_operations/smoothly_varying_column_1D_config.html#smoothly-varying-column-1d-config"><span class="std std-ref">Smoothly Varying Cross Section Column 1D</span></a> and <a class="reference internal" href="../../interface/unit_operations/particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
 </section>
-<section id="axially-varying-bulk-porosity">
-<span id="muopgrmvaryingporosity"></span><h2>Axially varying bulk porosity<a class="headerlink" href="#axially-varying-bulk-porosity" title="Link to this heading">¶</a></h2>
+<section id="muopgrmvaryingporosity">
+<span id="axially-varying-bulk-porosity"></span><h2>Axially varying bulk porosity<a class="headerlink" href="#muopgrmvaryingporosity" title="Link to this heading">¶</a></h2>
 <p>A packing whose density varies along the flow path, <span class="math notranslate nohighlight">\(\varepsilon_c = \varepsilon_c(x)\)</span>, is independent of the column geometry: a cylinder, a cylinder shell, a frustum and a user prescribed cross section may each be packed non-uniformly.
 The structure of the mass balance is preserved in either case.
 Convection and dispersion both act on the pore space rather than on the geometric cross section, so both fluxes carry the weight <span class="math notranslate nohighlight">\(\varepsilon_c A\)</span> in place of <span class="math notranslate nohighlight">\(A\)</span>.
@@ -621,7 +617,7 @@ And it routes the unit to the variable coefficient operator, so <code class="doc
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/modelling/unit_operations/general_rate_model.rst.txt"
+      <a href="../../_sources/modelling/unit_operations/general_rate_model.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

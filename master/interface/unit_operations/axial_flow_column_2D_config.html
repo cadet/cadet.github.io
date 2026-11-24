@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/unit_operations/axial_flow_column_2D_config.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,8 +217,8 @@
 
 
 
-  <section id="axial-flow-column-2d">
-<span id="axial-flow-column-2d-config"></span><h1>Axial Flow Column 2D<a class="headerlink" href="#axial-flow-column-2d" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="axial-flow-column-2d-config">
+<span id="axial-flow-column-2d"></span><h1>Axial Flow Column 2D<a class="headerlink" href="#axial-flow-column-2d-config" title="Link to this heading">¶</a></h1>
 <section id="group-input-model-unit-xxx-unit-type-column-model-2d">
 <h2>Group /input/model/unit_XXX - UNIT_TYPE - COLUMN_MODEL_2D<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-column-model-2d" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">UNIT_TYPE</span></code></p>
@@ -311,7 +312,7 @@ In case of a spatially inhomogeneous setting, the <span class="math notranslate 
 <p><code class="docutils literal notranslate"><span class="pre">PAR_TYPE_VOLFRAC</span></code></p>
 <blockquote>
 <div><p>Volume fractions of the particle types. The volume fractions can be set homogeneous or individually along both axes. For each cell, the volume fractions have to sum to 1.
-In case of a spatially inhomogeneous setting, the <span class="math notranslate nohighlight">\(\texttt{SENS_SECTION}\)</span> field is used for indexing the axial cell and the <span class="math notranslate nohighlight">\(\texttt{SENS_REACTION}\)</span> field is used for indexing the radial cell when specifying parameter sensitivities.  This field is optional in case of only one particle type.</p>
+In case of a spatially inhomogeneous setting, the <span class="math notranslate nohighlight">\(\texttt{SENS_SECTION}\)</span> field is used for indexing the axial cell and the <span class="math notranslate nohighlight">\(\texttt{SENS_REACTION}\)</span> field is used for indexing the radial cell when specifying parameter sensitivities. This field is optional in case of only one particle type.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -323,18 +324,15 @@ In case of a spatially inhomogeneous setting, the <span class="math notranslate 
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">PAR_TYPE_VOLFRAC_MULTIPLEX</span></code></p>
 <blockquote>
-<div><blockquote>
 <div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{PAR_TYPE_VOLFRAC}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{PAR_TYPE_VOLFRAC}\)</span> is treated as radial- and/or section-independent.
-This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{PAR_TYPE_VOLFRAC}\)</span>.  Valid modes are:</p>
-</div></blockquote>
+This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{PAR_TYPE_VOLFRAC}\)</span>. Valid modes are:</p>
 <ol class="arabic simple" start="0">
 <li><p>Radial-independent, axial-independent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_TYPE_VOLFRAC}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NPARTYPE}\)</span></p></li>
 <li><p>Radial-dependent, axial-independent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_TYPE_VOLFRAC}\)</span> is <span class="math notranslate nohighlight">\(\texttt{RAD_NELEM} \cdot \texttt{NPARTYPE}\)</span>; ordering is radial-major</p></li>
 <li><p>Axial-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_TYPE_VOLFRAC}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOL} \cdot \texttt{NPARTYPE}\)</span>; ordering is axial-major</p></li>
 <li><p>Radial-dependent, axial-dependent; length of <span class="math notranslate nohighlight">\(\texttt{PAR_TYPE_VOLFRAC}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOL} \cdot \texttt{RAD_NELEM} \cdot \texttt{NPARTYPE}\)</span>; ordering is axial-radial-major</p></li>
 </ol>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 3 \}\)</span></p></td>
@@ -343,10 +341,9 @@ This field is optional. When left out, multiplexing behavior is inferred from th
 </tbody>
 </table>
 </div></blockquote>
-</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
 <blockquote>
-<div><p>Interstitial velocity and flow direction in each radial zone (forward if value is positive, backward if value is negative), see Section <a class="reference internal" href="../../modelling/unit_operations/2d_general_rate_model.html#muopgrmflow2d"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>. Optional; if left out, the velocity is inferred from the volumetric flow rates of the network connections.  In case of a spatially inhomogeneous setting, the <span class="math notranslate nohighlight">\(\texttt{SENS_PARTYPE}\)</span> field is used for indexing the radial cell when specifying parameter sensitivities.</p>
+<div><p>Interstitial velocity and flow direction in each radial zone (forward if value is positive, backward if value is negative), see Section <a class="reference internal" href="../../modelling/unit_operations/2d_general_rate_model.html#muopgrmflow2d"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>. Optional; if left out, the velocity is inferred from the volumetric flow rates of the network connections. In case of a spatially inhomogeneous setting, the <span class="math notranslate nohighlight">\(\texttt{SENS_PARTYPE}\)</span> field is used for indexing the radial cell when specifying parameter sensitivities.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -358,17 +355,14 @@ This field is optional. When left out, multiplexing behavior is inferred from th
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">VELOCITY_MULTIPLEX</span></code></p>
 <blockquote>
-<div><blockquote>
-<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is treated as radial- and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span>.  Valid modes are:</p>
-</div></blockquote>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is treated as radial- and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span>. Valid modes are:</p>
 <ol class="arabic simple" start="0">
 <li><p>Radial-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is 1</p></li>
 <li><p>Radial-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{RAD_NELEM}\)</span></p></li>
 <li><p>Section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NSEC}\)</span></p></li>
 <li><p>Radial-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{RAD_NELEM} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
 </ol>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 3 \}\)</span></p></td>
@@ -376,7 +370,6 @@ This field is optional. When left out, multiplexing behavior is inferred from th
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_AXIAL</span></code></p>
 <blockquote>
@@ -393,9 +386,7 @@ This field is optional. When left out, multiplexing behavior is inferred from th
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_AXIAL_MULTIPLEX</span></code></p>
 <blockquote>
-<div><blockquote>
-<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is treated as component-, radial-, and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span>.  Valid modes are:</p>
-</div></blockquote>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is treated as component-, radial-, and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span>. Valid modes are:</p>
 <ol class="arabic simple" start="0">
 <li><p>Component-independent, radial-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is 1</p></li>
 <li><p>Component-independent, radial-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{RAD_NELEM}\)</span></p></li>
@@ -406,8 +397,7 @@ This field is optional. When left out, multiplexing behavior is inferred from th
 <li><p>Component-dependent, radial-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
 <li><p>Component-dependent, radial-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_AXIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{RAD_NELEM} \cdot \texttt{NSEC}\)</span>; ordering is section-radial-major</p></li>
 </ol>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 7 \}\)</span></p></td>
@@ -416,10 +406,9 @@ This field is optional. When left out, multiplexing behavior is inferred from th
 </tbody>
 </table>
 </div></blockquote>
-</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_RADIAL</span></code></p>
 <blockquote>
-<div><p>Radial dispersion coefficient.  In case of a spatially inhomogeneous setting, the <span class="math notranslate nohighlight">\(\texttt{SENS_PARTYPE}\)</span> field is used for indexing the radial zone when specifying parameter sensitivities.</p>
+<div><p>Radial dispersion coefficient. In case of a spatially inhomogeneous setting, the <span class="math notranslate nohighlight">\(\texttt{SENS_PARTYPE}\)</span> field is used for indexing the radial zone when specifying parameter sensitivities.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}_{\mathrm{IV}}^{2}\,\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
 <tbody>
@@ -432,9 +421,7 @@ This field is optional. When left out, multiplexing behavior is inferred from th
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_RADIAL_MULTIPLEX</span></code></p>
 <blockquote>
-<div><blockquote>
-<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is treated as component-, radial-, and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span>.  Valid modes are:</p>
-</div></blockquote>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is treated as component-, radial-, and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span>. Valid modes are:</p>
 <ol class="arabic simple" start="0">
 <li><p>Component-independent, radial-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is 1</p></li>
 <li><p>Component-independent, radial-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{RAD_NELEM}\)</span></p></li>
@@ -445,8 +432,7 @@ This field is optional. When left out, multiplexing behavior is inferred from th
 <li><p>Component-dependent, radial-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
 <li><p>Component-dependent, radial-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION_RADIAL}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{RAD_NELEM} \cdot \texttt{NSEC}\)</span>; ordering is section-radial-major</p></li>
 </ol>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 7 \}\)</span></p></td>
@@ -454,7 +440,6 @@ This field is optional. When left out, multiplexing behavior is inferred from th
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_C</span></code></p>
 <blockquote>
@@ -498,11 +483,11 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </section>
 <section id="group-input-model-unit-xxx-liquid-reaction-yyy">
 <h2>Group /input/model/unit_XXX/liquid_reaction_YYY<a class="headerlink" href="#group-input-model-unit-xxx-liquid-reaction-yyy" title="Link to this heading">¶</a></h2>
-<p>Each reaction is specified in another subgroup <cite>liquid_reaction_YYY</cite>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.</p>
+<p>Each reaction is specified in another subgroup <code class="docutils literal notranslate"><span class="pre">liquid_reaction_YYY</span></code>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.</p>
 </section>
 <section id="group-input-model-unit-xxx-particle-type-xxx">
 <h2>Group /input/model/unit_XXX/particle_type_XXX<a class="headerlink" href="#group-input-model-unit-xxx-particle-type-xxx" title="Link to this heading">¶</a></h2>
-<p>Each particle type is specified in another subgroup <cite>particle_type_XXX</cite>, see <a class="reference internal" href="particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
+<p>Each particle type is specified in another subgroup <code class="docutils literal notranslate"><span class="pre">particle_type_XXX</span></code>, see <a class="reference internal" href="particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
 </section>
 <section id="group-input-model-unit-xxx-discretization-unit-type-column-model-2d">
 <h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE - COLUMN_MODEL_2D<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-column-model-2d" title="Link to this heading">¶</a></h2>
@@ -661,16 +646,13 @@ Replaces the <code class="docutils literal notranslate"><span class="pre">RAD_NE
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">LINEAR_SOLVER_BULK</span></code></p>
 <blockquote>
-<div><blockquote>
-<div><p>Linear solver used for the sparse column bulk block. This field is optional, the best available method is selected (i.e., sparse direct solver if possible).  Valid values are:</p>
-</div></blockquote>
+<div><p>Linear solver used for the sparse column bulk block. This field is optional, the best available method is selected (i.e., sparse direct solver if possible). Valid values are:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\texttt{DENSE}\)</span> Converts the sparse matrix into a banded matrix and uses regular LAPACK. Slow and memory intensive, but always available.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\texttt{UMFPACK}\)</span> Uses the UMFPACK sparse direct solver (LU decomposition) from SuiteSparse. Fast, but has to be enabled when compiling and requires UMFPACK library.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\texttt{SUPERLU}\)</span> Uses the SuperLU sparse direct solver (LU decomposition). Fast, but has to be enabled when compiling and requires SuperLU library.</p></li>
 </ul>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{\texttt{DENSE},\texttt{UMFPACK},\texttt{SUPERLU}\}\)</span></p></td>
@@ -678,7 +660,6 @@ Replaces the <code class="docutils literal notranslate"><span class="pre">RAD_NE
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">RECONSTRUCTION</span></code></p>
 <blockquote>
@@ -760,7 +741,7 @@ identically named fields in <a class="reference internal" href="../system.html#f
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/unit_operations/axial_flow_column_2D_config.rst.txt"
+      <a href="../../_sources/interface/unit_operations/axial_flow_column_2D_config.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

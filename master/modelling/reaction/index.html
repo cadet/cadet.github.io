@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/reaction/index.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -50,7 +51,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Reaction models</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#cross-phase-reaction-models">Cross phase reaction models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#application-examples">Application examples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dependence-on-external-function">Dependence on external function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dependence-on-external-function-react">Dependence on external function</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
@@ -209,7 +210,7 @@
 
 
 
-  <section id="reaction-models">
+  <section class="tex2jax_ignore mathjax_ignore" id="reaction-models">
 <span id="id1"></span><h1>Reaction models<a class="headerlink" href="#reaction-models" title="Link to this heading">¶</a></h1>
 <p>Reaction models describe the (net) fluxes <span class="math notranslate nohighlight">\(f_{\mathrm{react}}(c)\)</span> of a
 reaction mechanism.</p>
@@ -246,8 +247,8 @@ as a function of the concentrations in the respective phases, and the reaction i
 </ul>
 </div></blockquote>
 </section>
-<section id="dependence-on-external-function">
-<span id="dependence-on-external-function-react"></span><h2>Dependence on external function<a class="headerlink" href="#dependence-on-external-function" title="Link to this heading">¶</a></h2>
+<section id="dependence-on-external-function-react">
+<span id="dependence-on-external-function"></span><h2>Dependence on external function<a class="headerlink" href="#dependence-on-external-function-react" title="Link to this heading">¶</a></h2>
 <p>A reaction model may depend on an external function or profile <span class="math notranslate nohighlight">\(T\colon \left[ 0, T_{\mathrm{end}}\right] \times [0, L] \to \mathbb{R}\)</span>, where <span class="math notranslate nohighlight">\(L\)</span> denotes the physical length of the unit operation, or <span class="math notranslate nohighlight">\(T\colon \left[0, T_{\mathrm{end}}\right] \to \mathbb{R}\)</span> if the unit operation model has no axial length.
 By using an external profile, it is possible to account for effects that are not directly modeled in CADET (e.g., temperature).
 The dependence of each parameter is modeled by a polynomial of third degree.
@@ -282,7 +283,7 @@ The ordering of the parameters in <code class="docutils literal notranslate"><sp
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/modelling/reaction/index.rst.txt"
+      <a href="../../_sources/modelling/reaction/index.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

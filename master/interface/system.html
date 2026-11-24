@@ -11,7 +11,8 @@
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/system.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -216,8 +217,8 @@
 
 
 
-  <section id="system-of-unit-operations">
-<span id="ffmodelsystem"></span><h1>System of unit operations<a class="headerlink" href="#system-of-unit-operations" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ffmodelsystem">
+<span id="system-of-unit-operations"></span><h1>System of unit operations<a class="headerlink" href="#ffmodelsystem" title="Link to this heading">¶</a></h1>
 <section id="group-input-model">
 <h2>Group /input/model<a class="headerlink" href="#group-input-model" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_STATE_Y</span></code></p>
@@ -265,8 +266,8 @@
 </table>
 </div></blockquote>
 </section>
-<section id="group-input-model-connections">
-<span id="ffmodelsystemconnections"></span><h2>Group /input/model/connections<a class="headerlink" href="#group-input-model-connections" title="Link to this heading">¶</a></h2>
+<section id="ffmodelsystemconnections">
+<span id="group-input-model-connections"></span><h2>Group /input/model/connections<a class="headerlink" href="#ffmodelsystemconnections" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NSWITCHES</span></code></p>
 <blockquote>
 <div><p>Number of valve switches</p>
@@ -304,8 +305,8 @@
 </table>
 </div></blockquote>
 </section>
-<section id="group-input-model-connections-switch-xxx">
-<span id="ffmodelconnectionswitch"></span><h2>Group /input/model/connections/switch_XXX<a class="headerlink" href="#group-input-model-connections-switch-xxx" title="Link to this heading">¶</a></h2>
+<section id="ffmodelconnectionswitch">
+<span id="group-input-model-connections-switch-xxx"></span><h2>Group /input/model/connections/switch_XXX<a class="headerlink" href="#ffmodelconnectionswitch" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">SECTION</span></code></p>
 <blockquote>
 <div><p>Index of the section that activates this connection set</p>
@@ -320,7 +321,6 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">CONNECTIONS</span></code></p>
 <blockquote>
-<div><blockquote>
 <div><p>Matrix with list of connections in row-major storage. Columns are <em>UnitOpID from</em>, <em>UnitOpID to</em>, <em>Port from</em>, <em>Port to</em>, <em>Component from</em>, <em>Component to</em>, <em>volumetric flow rate</em>, <em>linear flow rate coefficient</em>, <em>quadratic flow rate coefficient</em>, <em>cubic flow rate coefficient</em>.
 If both port indices are <span class="math notranslate nohighlight">\(-1\)</span>, all ports are connected.
 If both component indices are <span class="math notranslate nohighlight">\(-1\)</span>, all components are connected.</p>
@@ -332,7 +332,6 @@ If both component indices are <span class="math notranslate nohighlight">\(-1\)<
 <p>The last three flow rate coefficients are left out if <span class="math notranslate nohighlight">\(\texttt{CONNECTIONS_INCLUDE_DYNAMIC_FLOW}\)</span> is set to <span class="math notranslate nohighlight">\(0\)</span>.
 Contrary to the constant coefficient, which has the parameter name <span class="math notranslate nohighlight">\(\texttt{CONNECTION}\)</span>, the other coefficients are named <span class="math notranslate nohighlight">\(\texttt{CONNECTION_LIN}\)</span>, <span class="math notranslate nohighlight">\(\texttt{CONNECTION_QUAD}\)</span>, and <span class="math notranslate nohighlight">\(\texttt{CONNECTION_CUB}\)</span>, respectively.</p>
 <p>For addressing the flow rates as a parameter sensitivity, the mapping is as follows:</p>
-</div></blockquote>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\texttt{SENS_UNIT}\)</span> Unused, always set to <span class="math notranslate nohighlight">\(-1\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\texttt{SENS_BOUNDPHASE}\)</span> <em>UnitOpID from</em></p></li>
@@ -341,8 +340,7 @@ Contrary to the constant coefficient, which has the parameter name <span class="
 <li><p><span class="math notranslate nohighlight">\(\texttt{SENS_PARTYPE}\)</span> <em>Port to</em></p></li>
 <li><p><span class="math notranslate nohighlight">\(\texttt{SENS_SECTION}\)</span> <span class="math notranslate nohighlight">\(\texttt{SECTION}\)</span> that activates the valve switch</p></li>
 </ul>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq -1\)</span></p></td>
@@ -351,10 +349,9 @@ Contrary to the constant coefficient, which has the parameter name <span class="
 </tbody>
 </table>
 </div></blockquote>
-</div></blockquote>
 </section>
-<section id="group-input-model-external-source-xxx-extfun-type-linear-interp-data">
-<span id="ffmodelexternalsourcelininterp"></span><h2>Group /input/model/external/source_XXX - EXTFUN_TYPE = LINEAR_INTERP_DATA<a class="headerlink" href="#group-input-model-external-source-xxx-extfun-type-linear-interp-data" title="Link to this heading">¶</a></h2>
+<section id="ffmodelexternalsourcelininterp">
+<span id="group-input-model-external-source-xxx-extfun-type-linear-interp-data"></span><h2>Group /input/model/external/source_XXX - EXTFUN_TYPE = LINEAR_INTERP_DATA<a class="headerlink" href="#ffmodelexternalsourcelininterp" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
 <blockquote>
 <div><p>Velocity of the external profile in positive column axial direction.
@@ -385,7 +382,7 @@ The value must not be <span class="math notranslate nohighlight">\(0\)</span>, s
 </tbody>
 </table>
 </div></blockquote>
-<dl>
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">TIME</span></code></dt><dd><p>Time of the data points</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}\)</span></p>
 <table class="docutils align-default">
@@ -399,8 +396,8 @@ The value must not be <span class="math notranslate nohighlight">\(0\)</span>, s
 </dd>
 </dl>
 </section>
-<section id="group-input-model-external-source-xxx-extfun-type-piecewise-cubic-poly">
-<span id="ffmodelexternalsourcepiececubicpoly"></span><h2>Group /input/model/external/source_XXX - EXTFUN_TYPE = PIECEWISE_CUBIC_POLY<a class="headerlink" href="#group-input-model-external-source-xxx-extfun-type-piecewise-cubic-poly" title="Link to this heading">¶</a></h2>
+<section id="ffmodelexternalsourcepiececubicpoly">
+<span id="group-input-model-external-source-xxx-extfun-type-piecewise-cubic-poly"></span><h2>Group /input/model/external/source_XXX - EXTFUN_TYPE = PIECEWISE_CUBIC_POLY<a class="headerlink" href="#ffmodelexternalsourcepiececubicpoly" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">VELOCITY</span></code></p>
 <blockquote>
 <div><p>Velocity of the external profile in positive column axial direction.
@@ -484,8 +481,8 @@ The value must not be <span class="math notranslate nohighlight">\(0\)</span>, s
 </table>
 </div></blockquote>
 </section>
-<section id="group-input-model-solver">
-<span id="ffmodelsolver"></span><h2>Group /input/model/solver<a class="headerlink" href="#group-input-model-solver" title="Link to this heading">¶</a></h2>
+<section id="ffmodelsolver">
+<span id="group-input-model-solver"></span><h2>Group /input/model/solver<a class="headerlink" href="#ffmodelsolver" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">GS_TYPE</span></code></p>
 <blockquote>
 <div><p>Type of Gram-Schmidt orthogonalization, see IDAS guide Section 4.5.7.3, p. 41f. A value of <span class="math notranslate nohighlight">\(0\)</span> enables classical Gram-Schmidt, a value of 1 uses modified Gram-Schmidt.</p>
@@ -565,7 +562,7 @@ unit operations that have an inlet (0: <span class="math notranslate nohighlight
       &#169;2008-2026.
       
       |
-      <a href="../_sources/interface/system.rst.txt"
+      <a href="../_sources/interface/system.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -205,10 +205,10 @@
 
 
 
-  <section id="cadet-core-debugging">
-<span id="debugging"></span><h1>CADET-Core debugging<a class="headerlink" href="#cadet-core-debugging" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="debugging">
+<span id="cadet-core-debugging"></span><h1>CADET-Core debugging<a class="headerlink" href="#debugging" title="Link to this heading">¶</a></h1>
 <p>We advise using an IDE like MS Visual Studio to debug CADET-Core.</p>
-<p>If the debugger does not stop at a breakpoint even though it is set in the correct source file, this might be because a corresponding libcadet file was built and is being run. You can find these files under <cite>build/src/libcadet</cite>. Alternatively, you can set a breakpoint in an early stage, e.g. in the driver file and manually step through the code.</p>
+<p>If the debugger does not stop at a breakpoint even though it is set in the correct source file, this might be because a corresponding libcadet file was built and is being run. You can find these files under <code class="docutils literal notranslate"><span class="pre">build/src/libcadet</span></code>. Alternatively, you can set a breakpoint in an early stage, e.g. in the driver file and manually step through the code.</p>
 <p>To run a specific simulation with the Visual Studio debugger, you can add the launch.vs.json file provided here to the .vs folder</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2.1"</span><span class="p">,</span>
@@ -227,7 +227,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>To debug memory related issues, you can compile the code with the address sanitizer ASAN and the undefined behaviour sanitizer UBSAN by enabling the cmake arguments <cite>DENABLE_ASAN</cite> and <cite>DENABLE_UBSAN</cite>.</p>
+<p>To debug memory related issues, you can compile the code with the address sanitizer ASAN and the undefined behaviour sanitizer UBSAN by enabling the cmake arguments <code class="docutils literal notranslate"><span class="pre">DENABLE_ASAN</span></code> and <code class="docutils literal notranslate"><span class="pre">DENABLE_UBSAN</span></code>.</p>
 </section>
 
 
@@ -242,7 +242,7 @@
       &#169;2008-2026.
       
       |
-      <a href="../_sources/developer_guide/debugging.rst.txt"
+      <a href="../_sources/developer_guide/debugging.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

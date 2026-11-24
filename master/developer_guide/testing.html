@@ -211,13 +211,13 @@
 
 
 
-  <section id="cadet-core-testing">
-<span id="testing"></span><h1>CADET-Core testing<a class="headerlink" href="#cadet-core-testing" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="testing">
+<span id="cadet-core-testing"></span><h1>CADET-Core testing<a class="headerlink" href="#testing" title="Link to this heading">¶</a></h1>
 <section id="run-the-tests">
 <h2>Run the tests<a class="headerlink" href="#run-the-tests" title="Link to this heading">¶</a></h2>
-<p>If you want to run tests in CADET-Core you need to ensure that in the <cite>CMakeSettings.json</cite> file:</p>
+<p>If you want to run tests in CADET-Core you need to ensure that in the <code class="docutils literal notranslate"><span class="pre">CMakeSettings.json</span></code> file:</p>
 <ol class="arabic">
-<li><dl class="simple">
+<li><dl class="simple myst">
 <dt>The <code class="docutils literal notranslate"><span class="pre">cmakeCommandArgs</span></code> contain:</dt><dd><ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-DENABLE_TESTS=ON</span></code> to enable building the test runner</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-DENABLE_STATIC_LINK_LAPACK=ON</span> <span class="pre">-DENABLE_STATIC_LINK_DEPS=ON</span></code> to create statically linked dependencies</p></li>
@@ -225,8 +225,8 @@
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>The <cite>variables</cite> field contains:</dt><dd><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<li><dl class="simple myst">
+<dt>The <code class="docutils literal notranslate"><span class="pre">variables</span></code> field contains:</dt><dd><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HDF5_USE_STATIC_LIBRARIES"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
@@ -258,8 +258,8 @@
 </pre></div>
 </div>
 <p>Select the testRunner.exe in the startup item dropdown menu and you can start debugging tests with the specified flag.
-To see the options, run <cite>testrunner –help</cite>. To get the available test flags for instance, execute the testrunner with the corresponding option, i.e. <cite>testrunner -t</cite>.
-You can provide multiple arguments like <cite>“[testHere][testHere2]”</cite> to run all tests that have both flags, or with comma separation <cite>“[testHere],[testHere2]”</cite> to run all tests with the first and/or the second flag.</p>
+To see the options, run <code class="docutils literal notranslate"><span class="pre">testrunner</span> <span class="pre">--help</span></code>. To get the available test flags for instance, execute the testrunner with the corresponding option, i.e. <code class="docutils literal notranslate"><span class="pre">testrunner</span> <span class="pre">-t</span></code>.
+You can provide multiple arguments like <code class="docutils literal notranslate"><span class="pre">&quot;[testHere][testHere2]&quot;</span></code> to run all tests that have both flags, or with comma separation <code class="docutils literal notranslate"><span class="pre">&quot;[testHere],[testHere2]&quot;</span></code> to run all tests with the first and/or the second flag.</p>
 </section>
 <section id="adding-tests-for-your-model">
 <h2>Adding tests for your model<a class="headerlink" href="#adding-tests-for-your-model" title="Link to this heading">¶</a></h2>
@@ -270,7 +270,7 @@ Here, we distinguish between unit tests and numerical reference tests.</p>
 <p>Unit tests are designed to verify the correctness of individual units or components of code in isolation.
 Unit tests in CADET-Core typically encompass tests for the Jacobian implementation and consistent initialization of the model, which can be adapted from corresponding existing tests.
 Testing the Jacobian typically involves comparing the analytical Jacobian to the AD Jacobian to verify that the residual implementation is consistent to the analytical Jacobian.
-To this end, it might be necessary to increase the maximum number of AD directions for your test case, which can be done via the cmake argument <cite>NUM_MAX_AD_DIRS</cite>, as described in the <a class="reference internal" href="build_options.html#build-options"><span class="std std-ref">CADET-Core build options</span></a>.</p>
+To this end, it might be necessary to increase the maximum number of AD directions for your test case, which can be done via the cmake argument <code class="docutils literal notranslate"><span class="pre">NUM_MAX_AD_DIRS</span></code>, as described in the <a class="reference internal" href="build_options.html#build-options"><span class="std std-ref">CADET-Core build options</span></a>.</p>
 </section>
 <section id="numerical-reference-tests">
 <h3>Numerical reference tests<a class="headerlink" href="#numerical-reference-tests" title="Link to this heading">¶</a></h3>
@@ -288,7 +288,7 @@ For numerical additions to the code, please add tests that verify these methods,
 Use the code added to CADET-Verification and generate reference solutions to the benchmark cases.
 Then, add numerical reference tests (refer to those already implemented), comparing a newly computed solution to the stored reference solution.
 Use low discretization criteria for this, so that the test executes quickly.
-Add these tests to the CI workflow by adding a <cite>[CI]</cite> flag.</p>
+Add these tests to the CI workflow by adding a <code class="docutils literal notranslate"><span class="pre">[CI]</span></code> flag.</p>
 </section>
 <section id="manufactured-solution">
 <h3>Manufactured solution<a class="headerlink" href="#manufactured-solution" title="Link to this heading">¶</a></h3>
@@ -318,7 +318,7 @@ Tests marked with the <code class="docutils literal notranslate"><span class="pr
 The goal is to maintain complete test coverage by ensuring every new functionality or code change includes corresponding tests executed with Codecov.
 The file <code class="docutils literal notranslate"><span class="pre">.codecov.yml</span></code> defines a target coverage percentage. If the coverage falls below that, the workflow fails.
 This percentage should be updated as we continuously expand our test coverage.
-Further, the file defines ignored paths, such as the <cite>ThirdParty</cite> directory as we don’t consider test coverage of third party software.</p>
+Further, the file defines ignored paths, such as the <code class="docutils literal notranslate"><span class="pre">ThirdParty</span></code> directory as we don’t consider test coverage of third party software.</p>
 </section>
 </section>
 
@@ -334,7 +334,7 @@ Further, the file defines ignored paths, such as the <cite>ThirdParty</cite> dir
       &#169;2008-2026.
       
       |
-      <a href="../_sources/developer_guide/testing.rst.txt"
+      <a href="../_sources/developer_guide/testing.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

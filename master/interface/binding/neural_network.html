@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/binding/neural_network.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,11 +217,11 @@
 
 
 
-  <section id="neural-network-binding">
-<span id="neural-network-config"></span><h1>Neural Network Binding<a class="headerlink" href="#neural-network-binding" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="neural-network-config">
+<span id="neural-network-binding"></span><h1>Neural Network Binding<a class="headerlink" href="#neural-network-config" title="Link to this heading">¶</a></h1>
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption - ADSORPTION_MODEL = NEURAL_NETWORK</strong></p>
 <p>For information on model equations, refer to <a class="reference internal" href="../../modelling/binding/neural_network.html#neural-network"><span class="std std-ref">Neural Network Binding</span></a>.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></dt><dd><p>Selects kinetic or quasi-stationary adsorption mode: 1 = kinetic, 0 =
 quasi-stationary. If a single value is given, the mode is set for all
 bound states. Otherwise, the adsorption mode is set for each bound
@@ -235,7 +236,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">NN_KKIN</span></code></dt><dd><p>Linear-driving-force coefficients in component-major ordering.
 Controls the rate at which the solid-phase loading approaches the
 neural network-predicted equilibrium.</p>
@@ -250,7 +251,7 @@ neural network-predicted equilibrium.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">NLAYERS</span></code></dt><dd><p>Number of hidden layers <span class="math notranslate nohighlight">\(N\)</span> in the neural network architecture.</p>
 </dd>
 </dl>
@@ -262,7 +263,7 @@ neural network-predicted equilibrium.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">NNODES</span></code></dt><dd><p>Number of nodes per hidden layer.
 All hidden layers share the same width.</p>
 </dd>
@@ -276,7 +277,7 @@ All hidden layers share the same width.</p>
 </tbody>
 </table>
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_XXX</strong></p>
-<dl>
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">NORM_FACTOR</span></code></dt><dd><p>Normalization factors applied element-wise to the pore-phase concentration
 vector before it is fed into the neural network, i.e. the network is
 evaluated on <span class="math notranslate nohighlight">\(x = c^p \odot \alpha_{\mathrm{norm}}\)</span>. Each factor is
@@ -296,7 +297,7 @@ network is trained independently.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">POROSITY_FACTOR</span></code></dt><dd><p>Optional scaling factor applied to the neural network prediction. This can
 be used to account for porosity differences or unit conversions between
 training data and simulation conditions. Defaults to 1.0 if not given.</p>
@@ -317,7 +318,7 @@ For each bound state, there are <code class="docutils literal notranslate"><span
 column-major (Fortran) order.</p>
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_XXX/layer_0</strong></p>
 <p>First hidden layer parameters. Always present.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code></dt><dd><p>Weight matrix <span class="math notranslate nohighlight">\(W_1\)</span> connecting the input to the first hidden layer.
 Shape: (NNODES x NCOMP). Stored in column-major order.</p>
 </dd>
@@ -330,7 +331,7 @@ Shape: (NNODES x NCOMP). Stored in column-major order.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">BIAS</span></code></dt><dd><p>Bias vector <span class="math notranslate nohighlight">\(b_1\)</span> for the first hidden layer.</p>
 </dd>
 </dl>
@@ -346,7 +347,7 @@ Shape: (NNODES x NCOMP). Stored in column-major order.</p>
 <strong>(for l = 1, …, NLAYERS-1)</strong></p>
 <p>Intermediate hidden layer parameters. Present only when <code class="docutils literal notranslate"><span class="pre">NLAYERS</span> <span class="pre">&gt;=</span> <span class="pre">2</span></code>.
 Layer <code class="docutils literal notranslate"><span class="pre">layer_l</span></code> connects hidden layer <span class="math notranslate nohighlight">\(l\)</span> to hidden layer <span class="math notranslate nohighlight">\(l+1\)</span>.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code></dt><dd><p>Weight matrix <span class="math notranslate nohighlight">\(W_{l+1}\)</span> of shape (NNODES x NNODES). Stored in column-major order.</p>
 </dd>
 </dl>
@@ -358,7 +359,7 @@ Layer <code class="docutils literal notranslate"><span class="pre">layer_l</span
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">BIAS</span></code></dt><dd><p>Bias vector <span class="math notranslate nohighlight">\(b_{l+1}\)</span> for hidden layer <span class="math notranslate nohighlight">\(l+1\)</span>.</p>
 </dd>
 </dl>
@@ -372,7 +373,7 @@ Layer <code class="docutils literal notranslate"><span class="pre">layer_l</span
 </table>
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption/bound_state_XXX/layer_NLAYERS</strong></p>
 <p>Output layer parameters. Always present. Index equals <code class="docutils literal notranslate"><span class="pre">NLAYERS</span></code>.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code></dt><dd><p>Weight matrix <span class="math notranslate nohighlight">\(W_{N+1}\)</span> connecting the last hidden layer to the scalar output.
 Shape: (1 x NNODES). Stored in column-major order.</p>
 </dd>
@@ -385,7 +386,7 @@ Shape: (1 x NNODES). Stored in column-major order.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">BIAS</span></code></dt><dd><p>Bias scalar <span class="math notranslate nohighlight">\(b_{N+1}\)</span> for the output layer.</p>
 </dd>
 </dl>
@@ -411,7 +412,7 @@ Shape: (1 x NNODES). Stored in column-major order.</p>
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/binding/neural_network.rst.txt"
+      <a href="../../_sources/interface/binding/neural_network.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

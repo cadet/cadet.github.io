@@ -215,17 +215,17 @@
 
 
 
-  <section id="input-group">
-<span id="ffinput"></span><h1>Input Group<a class="headerlink" href="#input-group" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ffinput">
+<span id="input-group"></span><h1>Input Group<a class="headerlink" href="#ffinput" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="system.html">System of unit operations</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="system.html#group-input-model">Group /input/model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="system.html#group-input-model-connections">Group /input/model/connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="system.html#group-input-model-connections-switch-xxx">Group /input/model/connections/switch_XXX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="system.html#group-input-model-external-source-xxx-extfun-type-linear-interp-data">Group /input/model/external/source_XXX - EXTFUN_TYPE = LINEAR_INTERP_DATA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="system.html#group-input-model-external-source-xxx-extfun-type-piecewise-cubic-poly">Group /input/model/external/source_XXX - EXTFUN_TYPE = PIECEWISE_CUBIC_POLY</a></li>
-<li class="toctree-l2"><a class="reference internal" href="system.html#group-input-model-solver">Group /input/model/solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#ffmodelsystemconnections">Group /input/model/connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#ffmodelconnectionswitch">Group /input/model/connections/switch_XXX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#ffmodelexternalsourcelininterp">Group /input/model/external/source_XXX - EXTFUN_TYPE = LINEAR_INTERP_DATA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#ffmodelexternalsourcepiececubicpoly">Group /input/model/external/source_XXX - EXTFUN_TYPE = PIECEWISE_CUBIC_POLY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system.html#ffmodelsolver">Group /input/model/solver</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="unit_operations/index.html">Unit Operations</a><ul>
@@ -312,7 +312,7 @@
 <li class="toctree-l1"><a class="reference internal" href="binding/index.html">Binding models</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="binding/index.html#externally-dependent-binding-models">Externally dependent binding models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="binding/index.html#non-binding-components">Non-binding components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="binding/index.html#multiple-particle-types">Multiple particle types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="binding/index.html#multiple-particle-types-binding">Multiple particle types</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="binding/linear.html">Linear</a></li>
 <li class="toctree-l3"><a class="reference internal" href="binding/multi_component_langmuir.html">Multi Component Langmuir</a></li>
 <li class="toctree-l3"><a class="reference internal" href="binding/multi_component_langmuir_ldf.html">Multi Component Langmuir LDF</a></li>
@@ -358,7 +358,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reaction/index.html">Reaction models</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="reaction/index.html#single-phase-reactions">Single Phase Reactions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reaction/index.html#reaction-dynamics">Reaction dynamics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reaction/index.html#ffreactioniskinetic">Reaction dynamics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="reaction/mass_action_law.html">Mass Action Law</a></li>
 <li class="toctree-l3"><a class="reference internal" href="reaction/michaelis_menten_kinetics.html">Michaelis Menten kinetics</a></li>
 </ul>
@@ -387,15 +387,15 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="sensitivities.html">Parameter Sensitivities</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sensitivities.html#group-input-sensitivity">Group /input/sensitivity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sensitivities.html#group-input-sensitivity-param-xxx">Group /input/sensitivity/param_XXX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensitivities.html#ffsensitivity">Group /input/sensitivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sensitivities.html#ffsensitivityparam">Group /input/sensitivity/param_XXX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sensitivities.html#unsupported-sensitivities">Unsupported sensitivities</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="solver.html">Solver Configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="solver.html#group-input-solver">Group /input/solver</a></li>
-<li class="toctree-l2"><a class="reference internal" href="solver.html#group-input-solver-time-integrator">Group /input/solver/time_integrator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="solver.html#group-input-solver-sections">Group /input/solver/sections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solver.html#ffsolvertime">Group /input/solver/time_integrator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="solver.html#ffsolversections">Group /input/solver/sections</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="parameter_dependencies_config.html">Parameter Dependencies</a><ul>
@@ -438,7 +438,7 @@
       &#169;2008-2026.
       
       |
-      <a href="../_sources/interface/input_group.rst.txt"
+      <a href="../_sources/interface/input_group.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -11,7 +11,8 @@
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/developer_guide/cadet_python.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -205,12 +206,12 @@
 
 
 
-  <section id="cadet-python-introduction">
-<span id="cadet-python"></span><h1>CADET-Python Introduction<a class="headerlink" href="#cadet-python-introduction" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="cadet-python">
+<span id="cadet-python-introduction"></span><h1>CADET-Python Introduction<a class="headerlink" href="#cadet-python" title="Link to this heading">¶</a></h1>
 <p>The CADET-Python API can be very useful for developers as it allows creating an arbitrary input configuration for CADET-Core.
 This is especially useful when new methods and models are added, which are not (yet) supported by the CADET-Process frontend.
 To demonstrate the use of CADET-Python, we set up a simulation in the following.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt>Performing a forward simulation comprises several steps:</dt><dd><ul class="simple">
 <li><p>Setting up the model including all parameters and discretization options</p></li>
 <li><p>Defining sections and switches</p></li>
@@ -248,7 +249,7 @@ It is located in the <code class="docutils literal notranslate"><span class="pre
 </div>
 <p>To create the model and specify its parameters, we create an instance of the <code class="docutils literal notranslate"><span class="pre">Cadet</span></code> class.
 In the <code class="docutils literal notranslate"><span class="pre">root</span></code> attribute of this object, the parameter structure is defined as described in the <a class="reference internal" href="../interface/introduction.html#ffintroduction"><span class="std std-ref">file format reference</span></a>.
-It is implemented as a <code class="docutils literal notranslate"><span class="pre">Dict</span></code> of the <a class="reference external" href="https://github.com/mewwts/addict"><code class="docutils literal notranslate"><span class="pre">addict</span></code> package</a>.
+It is implemented as a <code class="docutils literal notranslate"><span class="pre">Dict</span></code> of the <a class="reference external" href="https://github.com/mewwts/addict">addict package</a>.
 This allows for creating arbitrary nested dictionaries using dot-notation.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -549,7 +550,7 @@ Finally, we plot the concentration signal at the outlet of the column.</p>
       &#169;2008-2026.
       
       |
-      <a href="../_sources/developer_guide/cadet_python.rst.txt"
+      <a href="../_sources/developer_guide/cadet_python.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

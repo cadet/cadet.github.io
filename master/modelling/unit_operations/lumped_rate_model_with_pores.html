@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/unit_operations/lumped_rate_model_with_pores.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -47,7 +48,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Unit operation models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="general_rate_model.html">General rate model (GRM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="general_rate_model.html#column-geometry">Column Geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="general_rate_model.html#muopgrmcolumngeometry">Column Geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_without_pores.html">Lumped rate model without pores (LRM)</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Lumped rate model with pores (LRMP)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="2d_general_rate_model.html">Two Dimensional General rate model (GRM2D)</a></li>
@@ -215,8 +216,8 @@
 
 
 
-  <section id="lumped-rate-model-with-pores-lrmp">
-<span id="lumped-rate-model-with-pores-model"></span><h1>Lumped rate model with pores (LRMP)<a class="headerlink" href="#lumped-rate-model-with-pores-lrmp" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lumped-rate-model-with-pores-model">
+<span id="lumped-rate-model-with-pores-lrmp"></span><h1>Lumped rate model with pores (LRMP)<a class="headerlink" href="#lumped-rate-model-with-pores-model" title="Link to this heading">¶</a></h1>
 <p>The lumped rate model with pores <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../../zbibliography.html#id23" title="Georges Guiochon, Attila Felinger, Dean G. Shirazi, and Anita M. Katti. Fundamentals of Preparative and Nonlinear Chromatography. Elsevier Academic Press, 2nd edition, 2006. ISBN 978-0-12-370537-2.">3</a>, <a class="reference internal" href="../../zbibliography.html#id25" title="A. Felinger and G. Guiochon. Comparison of the Kinetic Models of Linear Chromatography. Chromatographia, 60(S1):175–180, 2004-05. URL: http://springerlink.metapress.com/openurl.asp?genre=article{\&amp;}id=doi:10.1365/s10337-004-0288-7, doi:10.1365/s10337-004-0288-7.">4</a>]</span> deviates from the general rate model (see Section <a class="reference internal" href="general_rate_model.html#general-rate-model-model"><span class="std std-ref">General rate model (GRM)</span></a>) by neglecting pore diffusion.
 The particle phase <span class="math notranslate nohighlight">\(c^p_j\)</span> is still there, but no mass transfer happens except for binding and film diffusion.
 Hence, the model equations are given by</p>
@@ -292,7 +293,7 @@ That is, the volumetric flow rate at the inner and outer column radius are the s
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/modelling/unit_operations/lumped_rate_model_with_pores.rst.txt"
+      <a href="../../_sources/modelling/unit_operations/lumped_rate_model_with_pores.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

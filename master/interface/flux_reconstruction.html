@@ -11,7 +11,8 @@
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/flux_reconstruction.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -216,13 +217,12 @@
 
 
 
-  <section id="flux-reconstruction-methods">
+  <section class="tex2jax_ignore mathjax_ignore" id="flux-reconstruction-methods">
 <span id="id1"></span><h1>Flux reconstruction methods<a class="headerlink" href="#flux-reconstruction-methods" title="Link to this heading">¶</a></h1>
 <section id="group-input-model-unit-xxx-discretization">
 <h2>Group /input/model/unit_XXX/discretization<a class="headerlink" href="#group-input-model-unit-xxx-discretization" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">GRID_FACES</span></code></p>
 <blockquote>
-<div><blockquote>
 <div><p>Optional, required only for non-equidistant grids.
 An array specifying the coordinates of all grid faces, which are used for reconstruction.
 The array length must equal the number of grid faces, i.e., number of grid cells plus one, and the column boundaries must be included.</p>
@@ -234,7 +234,6 @@ The array length must equal the number of grid faces, i.e., number of grid cells
 <li><p>Avoid large ratios <span class="math notranslate nohighlight">\(\Delta x_{\max} / \Delta x_{\min}\)</span>, which <strong>might</strong> cause stiff ODE systems and thus slow, unstable time integration.</p></li>
 </ul>
 </div>
-</div></blockquote>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -324,7 +323,7 @@ A default value <span class="math notranslate nohighlight">\(1e-10\)</span> ofte
       &#169;2008-2026.
       
       |
-      <a href="../_sources/interface/flux_reconstruction.rst.txt"
+      <a href="../_sources/interface/flux_reconstruction.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/reaction/index.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,8 +217,8 @@
 
 
 
-  <section id="reaction-models">
-<span id="ffreaction"></span><h1>Reaction models<a class="headerlink" href="#reaction-models" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ffreaction">
+<span id="reaction-models"></span><h1>Reaction models<a class="headerlink" href="#ffreaction" title="Link to this heading">¶</a></h1>
 <p>Reactions can take place on different phases in the model. The interface specification depends on the phase(s) for which the reaction takes place.</p>
 <p>A reaction can be located in:</p>
 <ul class="simple">
@@ -237,8 +238,8 @@
 </div></blockquote>
 <p>The input group for parameters of single reactions is given by <code class="docutils literal notranslate"><span class="pre">phase_reaction_YYY</span></code> where <code class="docutils literal notranslate"><span class="pre">phase</span></code> is one of <code class="docutils literal notranslate"><span class="pre">liquid</span></code> or <code class="docutils literal notranslate"><span class="pre">solid</span></code> and <code class="docutils literal notranslate"><span class="pre">YYY</span></code> is a 0-based index for the reaction group.</p>
 </section>
-<section id="reaction-dynamics">
-<span id="ffreactioniskinetic"></span><h2>Reaction dynamics<a class="headerlink" href="#reaction-dynamics" title="Link to this heading">¶</a></h2>
+<section id="ffreactioniskinetic">
+<span id="reaction-dynamics"></span><h2>Reaction dynamics<a class="headerlink" href="#ffreactioniskinetic" title="Link to this heading">¶</a></h2>
 <p>Every single phase reaction model accepts the following optional field in its input group, which selects whether a reaction is integrated in time or treated as being in rapid equilibrium.
 A rapid-equilibrium reaction is not integrated in time; its rate is fixed by the condition that the net flux vanishes, and the balance equations of the participating components are reformulated in terms of conserved moieties.</p>
 <p><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></p>
@@ -269,7 +270,7 @@ Note that rapid-equilibrium reactions change the initial state: consistent initi
 <section id="cross-phase-reactions">
 <h2>Cross Phase Reactions<a class="headerlink" href="#cross-phase-reactions" title="Link to this heading">¶</a></h2>
 <p>Cross phase reactions take place between a liquid phase and a solid phase.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt>To specify the number of reaction models, use the parameter at the column or particle level:</dt><dd><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">NREAC_CROSS_PHASE</span></code> for cross-phase reactions i.e. <code class="docutils literal notranslate"><span class="pre">unit_XXX/NREAC_CROSS_PHASE</span></code> or <code class="docutils literal notranslate"><span class="pre">particle_type_XXX/NREAC_CROSS_PHASE</span></code>.</p></li>
 </ul>
@@ -335,7 +336,7 @@ This is caused by not taking into account the derivative of the external profile
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/reaction/index.rst.txt"
+      <a href="../../_sources/interface/reaction/index.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

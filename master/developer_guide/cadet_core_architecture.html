@@ -11,7 +11,8 @@
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/developer_guide/cadet_core_architecture.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -210,8 +211,8 @@
 
 
 
-  <section id="software-architecture">
-<span id="cadet-core-architecture"></span><h1>Software Architecture<a class="headerlink" href="#software-architecture" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="cadet-core-architecture">
+<span id="software-architecture"></span><h1>Software Architecture<a class="headerlink" href="#cadet-core-architecture" title="Link to this heading">¶</a></h1>
 <p>This section gives a general overview of the object-oriented C++ implementation of CADET-Core and is based on the Software Architecture chapter 3.2 in Samuel Leweke’s PhD thesis <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../zbibliography.html#id17" title="Samuel Leweke. Unified modeling and efficient simulation of chromatographic separation processes. Dissertation, Rheinisch-Westfälische Technische Hochschule Aachen, Aachen, 2021. URL: https://publications.rwth-aachen.de/record/840314, doi:10.18154/RWTH-2022-01184.">42</a>]</span>.</p>
 <p>The CADET-Core software is designed to be modular, extendable, maintainable and computationally efficient and robust.
 To promote these goals, CADET-Core is implemented in C++, a highly performant, object-oriented language that supports cross-platform compatibility.</p>
@@ -234,19 +235,12 @@ Additionally, IDAS supports the forward computation of parameter sensitivities, 
 <section id="implementation-details">
 <h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">¶</a></h2>
 <p>Classes and relationships</p>
-<figure class="align-default" id="id7">
+<figure class="align-default" id="id5">
 <span id="libcadetclasses"></span><img alt="../_images/architecture_libcadet_classes.png" src="../_images/architecture_libcadet_classes.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Selected relationships of classes in <code class="docutils literal notranslate"><span class="pre">libcadet</span></code> <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Selected relationships of classes in <code class="docutils literal notranslate"><span class="pre">libcadet</span></code> <a class="footnote-reference brackets" href="#footnote-1" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id5" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id3" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id4">2</a>)</span>
-<p>Samuel Leweke’s PhD thesis, available at: <a class="reference external" href="https://publications.rwth-aachen.de/record/840314">https://publications.rwth-aachen.de/record/840314</a></p>
-</aside>
-</aside>
 <p>In the following, we briefly describe the purpose of some of the items in the figure above:</p>
 <p>Classes with capital letter <code class="docutils literal notranslate"><span class="pre">I</span></code> as prefix are abstract classes that define the interface for the derived classes.</p>
 <p><code class="docutils literal notranslate"><span class="pre">ISimulator</span></code>
@@ -282,15 +276,15 @@ If supported, binding model parameters may have a <a class="reference internal" 
 <p><code class="docutils literal notranslate"><span class="pre">IDynamicReactionModel</span></code>
 Defines functions for evaluating the reaction rates <span class="math notranslate nohighlight">\(f_\text{react,i}\left( c \right)\)</span> (as used in, e.g., the <a class="reference internal" href="../modelling/unit_operations/general_rate_model.html#general-rate-model-model"><span class="std std-ref">General rate model (GRM)</span></a>), according to some <a class="reference internal" href="../modelling/reaction/index.html#reaction-models"><span class="std std-ref">Reaction models</span></a>.
 If supported, reaction model parameters may have a <a class="reference internal" href="../modelling/reaction/index.html#dependence-on-external-function-react"><span class="std std-ref">Dependence on external function</span></a>.</p>
-<section id="unit-operation-submodel-assumption">
-<span id="unitoperationassumption"></span><h3>Unit Operation submodel assumption<a class="headerlink" href="#unit-operation-submodel-assumption" title="Link to this heading">¶</a></h3>
+<section id="unitoperationassumption">
+<span id="unit-operation-submodel-assumption"></span><h3>Unit Operation submodel assumption<a class="headerlink" href="#unitoperationassumption" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Each submodel has <span class="math notranslate nohighlight">\(N_{c,n} \in \mathbb{N}\)</span> components, <span class="math notranslate nohighlight">\(N_{in, n} \in \mathbb{N}\)</span> inlet ports and <span class="math notranslate nohighlight">\(N_{out, n} \in \mathbb{N}\)</span> outlet ports.</p></li>
 <li><p>The dynamics of each submodel n are described by a fully implicit equation (e.g., PDE, PDAE, DAE, ODE) of the form</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\mathcal{F}_n \left(t, \mathbf{q}_{in,n}, \mathbf{q}_{out,n}, \mathbf{y}_{in,n}, \mathbf{y}_{n}, \frac{\partial \mathbf{y}_{n}}{\partial t} \right),\]</div>
-<dl class="simple">
+<dl class="simple myst">
 <dt>where:</dt><dd><ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(t \in (0, T_\text{end})\)</span> denotes time,</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{q}_{in,n}, \mathbf{q}_{out,n} \in \mathbb{R}^{N_{in, n}}\)</span> are the inlet port and outlet port volumetric flow rates, respectively,</p></li>
@@ -303,40 +297,46 @@ If supported, reaction model parameters may have a <a class="reference internal"
 <li><p>The outlet concentration <span class="math notranslate nohighlight">\(\mathbf{c}_{out,n,j} \ \colon (0, T_\text{end}) \mapsto \mathbb{R}^{N_{c,n}}\)</span> of port <span class="math notranslate nohighlight">\(j\in\{1,\dots , N_{out,n}\}\)</span> of submodel <span class="math notranslate nohighlight">\(n\)</span> is a linear function of its state vector <span class="math notranslate nohighlight">\(\mathbf{y}_n\)</span>.</p></li>
 </ul>
 </section>
-<section id="unit-operation-state-vector-ordering">
-<span id="unitoperationstateordering"></span><h3>Unit Operation state vector ordering<a class="headerlink" href="#unit-operation-state-vector-ordering" title="Link to this heading">¶</a></h3>
+<section id="unitoperationstateordering">
+<span id="unit-operation-state-vector-ordering"></span><h3>Unit Operation state vector ordering<a class="headerlink" href="#unitoperationstateordering" title="Link to this heading">¶</a></h3>
 <p>We refer to the solution of the spatially semi-discretized unit operation model equations as <em>state</em>.
 The order of the state vector impacts performance of the solver and has to adhere to submodule interfaces, such as binding models.
 The specific order implemented for chromatography column units is given in the figures below</p>
-<figure class="align-default" id="id8">
+<figure class="align-default" id="id6">
 <span id="statevectororder2d"></span><img alt="../_images/state_vector_grm2D.png" src="../_images/state_vector_grm2D.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">State vector order of the two-dimensional general rate model, and two-dimensional lumped rate model with pores <span class="math notranslate nohighlight">\((N^{\mathrm{r}}=1)\)</span>.</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">State vector order of the two-dimensional general rate model, and two-dimensional lumped rate model with pores <span class="math notranslate nohighlight">\((N^{\mathrm{r}}=1)\)</span>.</span><a class="headerlink" href="#id6" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id9">
+<figure class="align-default" id="id7">
 <span id="statevectororder"></span><img alt="../_images/state_vector_grm.png" src="../_images/state_vector_grm.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">State vector order of the general rate model, lumped rate model with pores <span class="math notranslate nohighlight">\((N^{\mathrm{r}}=1)\)</span>, and the stirred tank <span class="math notranslate nohighlight">\((N^{\mathrm{z}}=1, N^{\mathrm{r}}=1)\)</span> <a class="footnote-reference brackets" href="#id3" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">State vector order of the general rate model, lumped rate model with pores <span class="math notranslate nohighlight">\((N^{\mathrm{r}}=1)\)</span>, and the stirred tank <span class="math notranslate nohighlight">\((N^{\mathrm{z}}=1, N^{\mathrm{r}}=1)\)</span> <a class="footnote-reference brackets" href="#footnote-1" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id7" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id10">
+<figure class="align-default" id="id8">
 <span id="statevectororderlrm"></span><img alt="../_images/state_vector_lrm.png" src="../_images/state_vector_lrm.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">State vector order of model variants with non-limiting film diffusion <span class="math notranslate nohighlight">\((k^\mathrm{f}_i \to \infty)\)</span>, such as the lumped rate model without pores <a class="footnote-reference brackets" href="#id6" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id10" title="Link to this image">¶</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">State vector order of model variants with non-limiting film diffusion <span class="math notranslate nohighlight">\((k^\mathrm{f}_i \to \infty)\)</span>, such as the lumped rate model without pores <a class="footnote-reference brackets" href="#footnote-2" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#id8" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id6" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">2</a><span class="fn-bracket">]</span></span>
-<p>Samuel Leweke’s PhD thesis, available at: <a class="reference external" href="https://publications.rwth-aachen.de/record/840314">https://publications.rwth-aachen.de/record/840314</a></p>
-</aside>
-</aside>
 <p>The stirred tank (CSTR, see <a class="reference internal" href="../modelling/unit_operations/cstr.html#cstr-model"><span class="std std-ref">Continuous stirred tank reactor model (CSTR)</span></a>) uses the same ordering with a single bulk point, <span class="math notranslate nohighlight">\(N^{\mathrm{z}} = 1\)</span>, and has an additional last entry that holds the liquid volume.
 A particle type in rapid equilibrium with the bulk liquid contributes bound states only, so its block holds no liquid phase.</p>
 </section>
 </section>
 </section>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footnote-1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
+<p>Samuel Leweke’s PhD thesis, available at: <a class="reference external" href="https://publications.rwth-aachen.de/record/840314">https://publications.rwth-aachen.de/record/840314</a></p>
+</aside>
+<aside class="footnote brackets" id="footnote-2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">2</a><span class="fn-bracket">]</span></span>
+<p>Samuel Leweke’s PhD thesis, available at: <a class="reference external" href="https://publications.rwth-aachen.de/record/840314">https://publications.rwth-aachen.de/record/840314</a></p>
+</aside>
+</aside>
 
 
 
@@ -350,7 +350,7 @@ A particle type in rapid equilibrium with the bulk liquid contributes bound stat
       &#169;2008-2026.
       
       |
-      <a href="../_sources/developer_guide/cadet_core_architecture.rst.txt"
+      <a href="../_sources/developer_guide/cadet_core_architecture.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

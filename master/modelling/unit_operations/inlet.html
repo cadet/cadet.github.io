@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/unit_operations/inlet.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -47,7 +48,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Unit operation models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="general_rate_model.html">General rate model (GRM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="general_rate_model.html#column-geometry">Column Geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="general_rate_model.html#muopgrmcolumngeometry">Column Geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_without_pores.html">Lumped rate model without pores (LRM)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_with_pores.html">Lumped rate model with pores (LRMP)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="2d_general_rate_model.html">Two Dimensional General rate model (GRM2D)</a></li>
@@ -215,8 +216,8 @@
 
 
 
-  <section id="inlet">
-<span id="inlet-model"></span><h1>Inlet<a class="headerlink" href="#inlet" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="inlet-model">
+<span id="inlet"></span><h1>Inlet<a class="headerlink" href="#inlet-model" title="Link to this heading">¶</a></h1>
 <p>A system inlet unit operation is a pseudo unit operation since there is no physical correspondence.
 The inlet serves as a mass source in the network of unit operations.
 Consequently, it only possesses an outlet port and no inlet port.
@@ -244,7 +245,7 @@ On each piece, the profile is given by a cubic (fourth order) polynomial shifted
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/modelling/unit_operations/inlet.rst.txt"
+      <a href="../../_sources/modelling/unit_operations/inlet.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

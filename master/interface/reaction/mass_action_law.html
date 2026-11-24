@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/reaction/mass_action_law.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,15 +217,15 @@
 
 
 
-  <section id="mass-action-law">
-<span id="mass-action-law-config"></span><h1>Mass Action Law<a class="headerlink" href="#mass-action-law" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="mass-action-law-config">
+<span id="mass-action-law"></span><h1>Mass Action Law<a class="headerlink" href="#mass-action-law-config" title="Link to this heading">¶</a></h1>
 <p><strong>Group /input/model/unit_XXX(/particle_type_YYY)/phase_reaction_ZZZ/ - TYPE = MASS_ACTION_LAW</strong></p>
 <p>For information on model equations, refer to <a class="reference internal" href="../../modelling/reaction/mass_action_law_model.html#mass-action-law-model"><span class="std std-ref">Mass Action Law</span></a>.</p>
 <section id="notes">
 <h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">phase_reaction_ZZZ</span></code> refers to one of the phase-specific reaction groups listed in <a class="reference internal" href="index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>, e.g., <code class="docutils literal notranslate"><span class="pre">liquid_reaction_ZZZ</span></code>, <code class="docutils literal notranslate"><span class="pre">solid_reaction_ZZZ</span></code>.</p></li>
-<li><dl class="simple">
+<li><dl class="simple myst">
 <dt>Some dimensions below depend on the hosting phase of this model instance:</dt><dd><ul>
 <li><p>Bulk phase or particle liquid phase: <code class="docutils literal notranslate"><span class="pre">NVAR</span> <span class="pre">=</span> <span class="pre">NCOMP</span></code></p></li>
 <li><p>Particle solid phase: <code class="docutils literal notranslate"><span class="pre">NVAR</span> <span class="pre">=</span> <span class="pre">NTOTALBOUND</span></code> (total number of bound states across all components)</p></li>
@@ -337,7 +338,7 @@ In addition to that the model includes:</p>
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/reaction/mass_action_law.rst.txt"
+      <a href="../../_sources/interface/reaction/mass_action_law.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

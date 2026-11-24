@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/binding/hic_constant_water_activity.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,11 +217,11 @@
 
 
 
-  <section id="hic-constant-water-activity">
-<span id="hic-constant-water-activity-config"></span><h1>HIC Constant Water Activity<a class="headerlink" href="#hic-constant-water-activity" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="hic-constant-water-activity-config">
+<span id="hic-constant-water-activity"></span><h1>HIC Constant Water Activity<a class="headerlink" href="#hic-constant-water-activity-config" title="Link to this heading">¶</a></h1>
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption – ADSORPTION_MODEL = HIC_CONSTANT_WATER_ACTIVITY</strong></p>
 <p>For information on model equations, refer to <a class="reference internal" href="../../modelling/binding/hic_constant_water_activity.html#hic-constant-water-activity-model"><span class="std std-ref">HIC Constant Water Activity</span></a>.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></dt><dd><p>Selects kinetic or quasi-stationary adsorption mode: 1 = kinetic, 0 =
 quasi-stationary. If a single value is given, the mode is set for all
 bound states. Otherwise, the adsorption mode is set for each bound
@@ -235,7 +236,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICCWA_KA</span></code></dt><dd><p>Adsorption rate constant</p>
 </dd>
 </dl>
@@ -248,7 +249,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICCWA_KD</span></code></dt><dd><p>Desorption rate constant</p>
 </dd>
 </dl>
@@ -261,7 +262,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICCWA_NU</span></code></dt><dd><p>Number of ligands per ligand-protein interaction</p>
 </dd>
 </dl>
@@ -274,7 +275,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICCWA_QMAX</span></code></dt><dd><p>Maximum binding capacity</p>
 </dd>
 </dl>
@@ -287,7 +288,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICCWA_BETA0</span></code></dt><dd><p>Parameters describing the number of highly ordered water molecules
 that stabilize the hydrophobic surfaces at infinitely diluted
 salt concentration</p>
@@ -302,7 +303,7 @@ salt concentration</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICCWA_BETA1</span></code></dt><dd><p>Parameters describing the change in the number of highly ordered
 water molecules that stabilize the hydrophobic surfaces with
 respect to changes in the salt concentration</p>
@@ -317,7 +318,7 @@ respect to changes in the salt concentration</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICCWA_WATER_ACTIVITY</span></code></dt><dd><p>Water activity of the bulk solution (optional, defaults to
 <span class="math notranslate nohighlight">\(0.1\)</span>)</p>
 </dd>
@@ -345,7 +346,7 @@ respect to changes in the salt concentration</p>
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/binding/hic_constant_water_activity.rst.txt"
+      <a href="../../_sources/interface/binding/hic_constant_water_activity.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

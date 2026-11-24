@@ -11,7 +11,8 @@
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/meta_group.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -205,8 +206,8 @@
 
 
 
-  <section id="meta-group">
-<span id="ffmeta"></span><h1>Meta Group<a class="headerlink" href="#meta-group" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ffmeta">
+<span id="meta-group"></span><h1>Meta Group<a class="headerlink" href="#ffmeta" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">FILE_FORMAT</span></code></p>
 <blockquote>
 <div><p>Version of the file format in the form Major.Minor.Patch.
@@ -309,8 +310,7 @@ In the following, <code class="docutils literal notranslate"><span class="pre">N
 <p><code class="docutils literal notranslate"><span class="pre">IDAS_BDF_ORDER</span></code></p>
 <blockquote>
 <div><p>Integration method order at corresponding time point</p>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
 <td><p><strong>Type:</strong> int</p></td>
@@ -318,13 +318,11 @@ In the following, <code class="docutils literal notranslate"><span class="pre">N
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">IDAS_KUMULATIVE_NTIMESTEPS</span></code></p>
 <blockquote>
 <div><p>Cumulative number of time steps taken by the IDAS at corresponding time point</p>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
 <td><p><strong>Type:</strong> int</p></td>
@@ -332,13 +330,11 @@ In the following, <code class="docutils literal notranslate"><span class="pre">N
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">IDAS_N_RESIDUAL_CALLS</span></code></p>
 <blockquote>
 <div><p>Number of calls to the user’s residual evaluation function at corresponding time point</p>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
 <td><p><strong>Type:</strong> int</p></td>
@@ -346,13 +342,11 @@ In the following, <code class="docutils literal notranslate"><span class="pre">N
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">IDAS_N_LINSOLVER_SETUP_CALLS</span></code></p>
 <blockquote>
 <div><p>Cumulative number of calls made to the linear solver’s setup function at corresponding time point</p>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
 <td><p><strong>Type:</strong> int</p></td>
@@ -360,13 +354,11 @@ In the following, <code class="docutils literal notranslate"><span class="pre">N
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">IDAS_N_LOCAL_ERROR_TEST_FAILURES</span></code></p>
 <blockquote>
 <div><p>Cumulative number of local error test failures that have occurred at corresponding time point</p>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
 <td><p><strong>Type:</strong> int</p></td>
@@ -375,12 +367,10 @@ In the following, <code class="docutils literal notranslate"><span class="pre">N
 </tbody>
 </table>
 </div></blockquote>
-</div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">IDAS_INTEGRATION_STEP_SIZE</span></code></p>
 <blockquote>
 <div><p>Integration step size taken on the last internal step at corresponding time point</p>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
 <td><p><strong>Type:</strong> double</p></td>
@@ -388,13 +378,11 @@ In the following, <code class="docutils literal notranslate"><span class="pre">N
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">IDAS_FIRST_INTEGRATION_STEP_SIZE</span></code></p>
 <blockquote>
 <div><p>Value of the integration step size used on the first step at corresponding time point</p>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>In/out:</strong> Out</p></td>
 <td><p><strong>Type:</strong> double</p></td>
@@ -402,7 +390,6 @@ In the following, <code class="docutils literal notranslate"><span class="pre">N
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </div></blockquote>
 </section>
 </section>
@@ -419,7 +406,7 @@ In the following, <code class="docutils literal notranslate"><span class="pre">N
       &#169;2008-2026.
       
       |
-      <a href="../_sources/interface/meta_group.rst.txt"
+      <a href="../_sources/interface/meta_group.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

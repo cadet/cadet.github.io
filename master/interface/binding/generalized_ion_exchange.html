@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/binding/generalized_ion_exchange.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,11 +217,11 @@
 
 
 
-  <section id="generalized-ion-exchange">
-<span id="generalized-ion-exchange-config"></span><h1>Generalized Ion Exchange<a class="headerlink" href="#generalized-ion-exchange" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="generalized-ion-exchange-config">
+<span id="generalized-ion-exchange"></span><h1>Generalized Ion Exchange<a class="headerlink" href="#generalized-ion-exchange-config" title="Link to this heading">¶</a></h1>
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption – ADSORPTION_MODEL = GENERALIZED_ION_EXCHANGE</strong></p>
 <p>For information on model equations, refer to <a class="reference internal" href="../../modelling/binding/generalized_ion_exchange.html#generalized-ion-exchange-model"><span class="std std-ref">Generalized Ion Exchange</span></a>.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></dt><dd><p>Selects kinetic or quasi-stationary adsorption mode: 1 = kinetic, 0 =
 quasi-stationary. If a single value is given, the mode is set for all
 bound states. Otherwise, the adsorption mode is set for each bound
@@ -235,7 +236,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_KA</span></code></dt><dd><p>Base value of adsorption rate constant</p>
 </dd>
 </dl>
@@ -248,7 +249,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_KA_LIN</span></code></dt><dd><p>Coefficient of linear dependence of adsorption rate constant on
 modifier component</p>
 </dd>
@@ -261,7 +262,7 @@ modifier component</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_KA_QUAD</span></code></dt><dd><p>Coefficient of quadratic dependence of adsorption rate constant on
 modifier component</p>
 </dd>
@@ -274,7 +275,7 @@ modifier component</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_KA_SALT</span></code></dt><dd><p>Salt coefficient of adsorption rate constants; difference of
 water-protein and salt-protein interactions</p>
 </dd>
@@ -286,7 +287,7 @@ water-protein and salt-protein interactions</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_KA_PROT</span></code></dt><dd><p>Protein coefficient of adsorption rate constants; difference of
 water-protein and protein-protein interactions</p>
 </dd>
@@ -299,7 +300,7 @@ water-protein and protein-protein interactions</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_KD</span></code></dt><dd><p>Base value of desorption rate constant</p>
 </dd>
 </dl>
@@ -312,7 +313,7 @@ water-protein and protein-protein interactions</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_KD_LIN</span></code></dt><dd><p>Coefficient of linear dependence of desorption rate constant on
 modifier component</p>
 </dd>
@@ -325,7 +326,7 @@ modifier component</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_KD_QUAD</span></code></dt><dd><p>Coefficient of quadratic dependence of desorption rate constant on
 modifier component</p>
 </dd>
@@ -338,7 +339,7 @@ modifier component</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_KD_SALT</span></code></dt><dd><p>Salt coefficient of desorption rate constants; difference of
 water-protein and salt-protein interactions</p>
 </dd>
@@ -350,7 +351,7 @@ water-protein and salt-protein interactions</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_KD_PROT</span></code></dt><dd><p>Protein coefficient of desorption rate constants; difference of
 water-protein and protein-protein interactions</p>
 </dd>
@@ -363,7 +364,7 @@ water-protein and protein-protein interactions</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_NU</span></code></dt><dd><p>Base value for characteristic charges of the protein; The number of
 sites <span class="math notranslate nohighlight">\(\nu\)</span> that the protein interacts with on the resin
 surface</p>
@@ -376,7 +377,7 @@ surface</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_NU_LIN</span></code></dt><dd><p>Coefficient of linear dependence of characteristic charge on modifier
 component</p>
 </dd>
@@ -389,7 +390,7 @@ component</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_NU_QUAD</span></code></dt><dd><p>Coefficient of quadratic dependence of characteristic charge on
 modifier component</p>
 </dd>
@@ -402,7 +403,7 @@ modifier component</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_SIGMA</span></code></dt><dd><p>Steric factors of the protein; The number of sites <span class="math notranslate nohighlight">\(\sigma\)</span> on
 the surface that are shielded by the protein and prevented from
 exchange with the salt counterions in solution</p>
@@ -416,7 +417,7 @@ exchange with the salt counterions in solution</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_LAMBDA</span></code></dt><dd><p>Stationary phase capacity (monovalent salt counterions); The total
 number of binding sites available on the resin surface</p>
 </dd>
@@ -430,7 +431,7 @@ number of binding sites available on the resin surface</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_REFC0</span></code></dt><dd><p>Reference liquid phase concentration (optional, defaults to
 <span class="math notranslate nohighlight">\(1.0\)</span>)</p>
 </dd>
@@ -444,7 +445,7 @@ number of binding sites available on the resin surface</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_REFQ</span></code></dt><dd><p>Reference solid phase concentration (optional, defaults to
 <span class="math notranslate nohighlight">\(1.0\)</span>)</p>
 </dd>
@@ -458,7 +459,7 @@ number of binding sites available on the resin surface</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_PHREFC0</span></code></dt><dd><p>Reference liquid phase concentration used for the pH dependent part
 of the characteristic charge (optional, only applied if
 <code class="docutils literal notranslate"><span class="pre">GIEX_PHREFQ</span></code> is given as well, defaults to <code class="docutils literal notranslate"><span class="pre">GIEX_REFC0</span></code>)</p>
@@ -473,7 +474,7 @@ of the characteristic charge (optional, only applied if
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GIEX_PHREFQ</span></code></dt><dd><p>Reference solid phase concentration used for the pH dependent part
 of the characteristic charge (optional, only applied if
 <code class="docutils literal notranslate"><span class="pre">GIEX_PHREFC0</span></code> is given as well, defaults to <code class="docutils literal notranslate"><span class="pre">GIEX_REFQ</span></code>)</p>
@@ -502,7 +503,7 @@ of the characteristic charge (optional, only applied if
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/binding/generalized_ion_exchange.rst.txt"
+      <a href="../../_sources/interface/binding/generalized_ion_exchange.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/binding/affinity_complex_titration.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,8 +217,8 @@
 
 
 
-  <section id="affinity-complex-titration">
-<span id="affinity-complex-titration-config"></span><h1>Affinity Complex Titration<a class="headerlink" href="#affinity-complex-titration" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="affinity-complex-titration-config">
+<span id="affinity-complex-titration"></span><h1>Affinity Complex Titration<a class="headerlink" href="#affinity-complex-titration-config" title="Link to this heading">¶</a></h1>
 <section id="general-remarks">
 <h2>General remarks<a class="headerlink" href="#general-remarks" title="Link to this heading">¶</a></h2>
 <ul class="simple">
@@ -226,7 +227,7 @@
 <li><p>The ACT implementation currently supports <strong>at most one bound state per component</strong>.</p></li>
 <li><p>The first component can be specified either as a negative logarithmic concentration
 (<span class="math notranslate nohighlight">\(\mathrm{pH}\)</span>, <span class="math notranslate nohighlight">\(\mathrm{pNa}\)</span>, …) or as a raw ion concentration.</p></li>
-<li><dl class="simple">
+<li><dl class="simple myst">
 <dt>To convert an existing ACT setup from <code class="docutils literal notranslate"><span class="pre">ACT_USE_ION_CONC</span> <span class="pre">=</span> <span class="pre">False</span></code> to <code class="docutils literal notranslate"><span class="pre">ACT_USE_ION_CONC</span> <span class="pre">=</span> <span class="pre">True</span></code> while keeping exactly the same model response:</dt><dd><ol class="arabic simple">
 <li><p>Replace the first component value <span class="math notranslate nohighlight">\(\mathrm{pIon}\)</span> by <span class="math notranslate nohighlight">\(c_{\mathrm{ion}} = 10^{-\mathrm{pIon}}\)</span>.</p></li>
 <li><p>Replace <code class="docutils literal notranslate"><span class="pre">ACT_PKAA</span></code> by <code class="docutils literal notranslate"><span class="pre">ACT_CMID_A</span> <span class="pre">=</span> <span class="pre">10^{-\mathrm{ACT\_PKAA}}</span></code>.</p></li>
@@ -239,7 +240,7 @@
 </ul>
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption – ADSORPTION_MODEL = AFFINITY_COMPLEX_TITRATION</strong></p>
 <p>For information on model equations, refer to <a class="reference internal" href="../../modelling/binding/affinity_complex_titration.html#affinity-complex-titration"><span class="std std-ref">Affinity Complex Titration</span></a>.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></dt><dd><p>Selects kinetic or quasi-stationary adsorption mode: 1 = kinetic, 0 = quasi-stationary.
 If a single value is given, the mode is set for all bound states. Otherwise, the adsorption
 mode is set for each bound state separately.</p>
@@ -253,7 +254,7 @@ mode is set for each bound state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl>
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">ACT_USE_ION_CONC</span></code></dt><dd><p>Selects how the mobile phase modulator concentration is interpreted.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">False</span></code>: the first component concentration is on a negative logarithmic axis, for example
@@ -265,8 +266,8 @@ Use <code class="docutils literal notranslate"><span class="pre">ACT_CMID_A</spa
 <p>Default is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <p>These two cases are equivalent when</p>
 <div class="math notranslate nohighlight">
-\[\mathrm{p}K_{a,A,i} = -\log_{10}(c_{\mathrm{mid},A,i}), \qquad
-\mathrm{p}K_{a,G,i} = -\log_{10}(c_{\mathrm{mid},G,i}).\]</div>
+\[  \mathrm{p}K_{a,A,i} = -\log_{10}(c_{\mathrm{mid},A,i}), \qquad
+  \mathrm{p}K_{a,G,i} = -\log_{10}(c_{\mathrm{mid},G,i}).\]</div>
 </dd>
 </dl>
 <table class="docutils align-default">
@@ -277,7 +278,7 @@ Use <code class="docutils literal notranslate"><span class="pre">ACT_CMID_A</spa
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">ACT_KA</span></code></dt><dd><p>Adsorption rate constants.</p>
 </dd>
 </dl>
@@ -290,7 +291,7 @@ Use <code class="docutils literal notranslate"><span class="pre">ACT_CMID_A</spa
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">ACT_KD</span></code></dt><dd><p>Desorption rate constants.</p>
 </dd>
 </dl>
@@ -303,7 +304,7 @@ Use <code class="docutils literal notranslate"><span class="pre">ACT_CMID_A</spa
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">ACT_QMAX</span></code></dt><dd><p>Maximum binding capacities before modulation by the ACT capacity gate.</p>
 </dd>
 </dl>
@@ -316,7 +317,7 @@ Use <code class="docutils literal notranslate"><span class="pre">ACT_CMID_A</spa
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">ACT_ETAA</span></code></dt><dd><p>Hill-type coefficients controlling how strongly the apparent binding capacity changes with the modulator concentration.</p>
 </dd>
 </dl>
@@ -329,7 +330,7 @@ Use <code class="docutils literal notranslate"><span class="pre">ACT_CMID_A</spa
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">ACT_ETAG</span></code></dt><dd><p>Hill-type coefficients controlling how strongly the apparent affinity changes with the modulator concentration.</p>
 </dd>
 </dl>
@@ -345,7 +346,7 @@ Use <code class="docutils literal notranslate"><span class="pre">ACT_CMID_A</spa
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption – ACT_USE_ION_CONC = False</strong></p>
 <p>Use these parameters only when the first component is given as <span class="math notranslate nohighlight">\(\mathrm{pIon}\)</span>
 (for example <span class="math notranslate nohighlight">\(\mathrm{pH}\)</span>).</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">ACT_PKAA</span></code></dt><dd><p>Midpoint of the binding capacity transition on the negative logarithmic ion axis.</p>
 </dd>
 </dl>
@@ -358,7 +359,7 @@ Use <code class="docutils literal notranslate"><span class="pre">ACT_CMID_A</spa
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">ACT_PKAG</span></code></dt><dd><p>Midpoint of the affinity (equilibrium constant) transition on the negative logarithmic ion axis.</p>
 </dd>
 </dl>
@@ -374,7 +375,7 @@ Use <code class="docutils literal notranslate"><span class="pre">ACT_CMID_A</spa
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption – ACT_USE_ION_CONC = True</strong></p>
 <p>Use these parameters only when the first component is given as a raw ion concentration.
 CADET internally converts them to the same negative logarithmic axis used by the <code class="docutils literal notranslate"><span class="pre">ACT_PKAA</span></code> / <code class="docutils literal notranslate"><span class="pre">ACT_PKAG</span></code> form.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">ACT_CMID_A</span></code></dt><dd><p>Midpoint ion concentration for the binding capacity transition.
 Must be non-negative and should use the same concentration unit as the first liquid-phase component.</p>
 </dd>
@@ -388,7 +389,7 @@ Must be non-negative and should use the same concentration unit as the first liq
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">ACT_CMID_G</span></code></dt><dd><p>Midpoint ion concentration for the affinity (equilibrium constant) transition.
 Must be non-negative and should use the same concentration unit as the first liquid-phase component.</p>
 </dd>
@@ -417,7 +418,7 @@ Must be non-negative and should use the same concentration unit as the first liq
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/binding/affinity_complex_titration.rst.txt"
+      <a href="../../_sources/interface/binding/affinity_complex_titration.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

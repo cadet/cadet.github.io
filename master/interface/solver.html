@@ -11,7 +11,8 @@
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/solver.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -216,8 +217,8 @@
 
 
 
-  <section id="solver-configuration">
-<span id="solver"></span><h1>Solver Configuration<a class="headerlink" href="#solver-configuration" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="solver">
+<span id="solver-configuration"></span><h1>Solver Configuration<a class="headerlink" href="#solver" title="Link to this heading">¶</a></h1>
 <section id="group-input-solver">
 <h2>Group /input/solver<a class="headerlink" href="#group-input-solver" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NTHREADS</span></code></p>
@@ -265,9 +266,7 @@ Optional: if not specified, the solution is evaluated and written according to <
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">CONSISTENT_INIT_MODE</span></code></p>
 <blockquote>
-<div><blockquote>
 <div><p>Consistent initialization mode (optional, defaults to <span class="math notranslate nohighlight">\(1\)</span>). Valid values are:</p>
-</div></blockquote>
 <ol class="arabic simple" start="0">
 <li><p>None</p></li>
 <li><p>Full</p></li>
@@ -278,8 +277,7 @@ Optional: if not specified, the solution is evaluated and written according to <
 <li><p>None once, then full</p></li>
 <li><p>None once, then lean</p></li>
 </ol>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{ 0, \dots, 7\}\)</span></p></td>
@@ -287,13 +285,10 @@ Optional: if not specified, the solution is evaluated and written according to <
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">CONSISTENT_INIT_MODE_SENS</span></code></p>
 <blockquote>
-<div><blockquote>
 <div><p>Consistent initialization mode for parameter sensitivities (optional, defaults to <span class="math notranslate nohighlight">\(1\)</span>). Valid values are:</p>
-</div></blockquote>
 <ol class="arabic simple" start="0">
 <li><p>None</p></li>
 <li><p>Full</p></li>
@@ -304,8 +299,7 @@ Optional: if not specified, the solution is evaluated and written according to <
 <li><p>None once, then full</p></li>
 <li><p>None once, then lean</p></li>
 </ol>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{ 0, \dots, 7\}\)</span></p></td>
@@ -313,7 +307,6 @@ Optional: if not specified, the solution is evaluated and written according to <
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">TIMEOUT</span></code></p>
 <blockquote>
@@ -329,8 +322,8 @@ Values less than or equal <span class="math notranslate nohighlight">\(0\)</span
 </table>
 </div></blockquote>
 </section>
-<section id="group-input-solver-time-integrator">
-<span id="ffsolvertime"></span><h2>Group /input/solver/time_integrator<a class="headerlink" href="#group-input-solver-time-integrator" title="Link to this heading">¶</a></h2>
+<section id="ffsolvertime">
+<span id="group-input-solver-time-integrator"></span><h2>Group /input/solver/time_integrator<a class="headerlink" href="#ffsolvertime" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">USE_MODIFIED_NEWTON</span></code></p>
 <blockquote>
 <div><p>Specifies whether modified or full Newton method should be used (optional, defaults to <span class="math notranslate nohighlight">\(0\)</span>)</p>
@@ -490,8 +483,8 @@ Values less than or equal <span class="math notranslate nohighlight">\(0\)</span
 </table>
 </div></blockquote>
 </section>
-<section id="group-input-solver-sections">
-<span id="ffsolversections"></span><h2>Group /input/solver/sections<a class="headerlink" href="#group-input-solver-sections" title="Link to this heading">¶</a></h2>
+<section id="ffsolversections">
+<span id="group-input-solver-sections"></span><h2>Group /input/solver/sections<a class="headerlink" href="#ffsolversections" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">SECTION_TIMES</span></code></p>
 <blockquote>
 <div><p>Simulation times at which the model changes or behaves discontinuously; including start and end times</p>
@@ -532,7 +525,7 @@ Values less than or equal <span class="math notranslate nohighlight">\(0\)</span
       &#169;2008-2026.
       
       |
-      <a href="../_sources/interface/solver.rst.txt"
+      <a href="../_sources/interface/solver.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/unit_operations/multi_channel_transport_model.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -47,7 +48,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Unit operation models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="general_rate_model.html">General rate model (GRM)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="general_rate_model.html#column-geometry">Column Geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="general_rate_model.html#muopgrmcolumngeometry">Column Geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_without_pores.html">Lumped rate model without pores (LRM)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lumped_rate_model_with_pores.html">Lumped rate model with pores (LRMP)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="2d_general_rate_model.html">Two Dimensional General rate model (GRM2D)</a></li>
@@ -215,8 +216,8 @@
 
 
 
-  <section id="multichannel-transport-model-mct-model">
-<span id="multi-channel-transport-model-model"></span><h1>Multichannel Transport model (MCT model)<a class="headerlink" href="#multichannel-transport-model-mct-model" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="multi-channel-transport-model-model">
+<span id="multichannel-transport-model-mct-model"></span><h1>Multichannel Transport model (MCT model)<a class="headerlink" href="#multi-channel-transport-model-model" title="Link to this heading">¶</a></h1>
 <p>The Multichannel Transport (MCT) model in CADET is based on a class of compartment models introduced by Jonas Bühler et al. <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../../zbibliography.html#id53" title="Jonas Bühler, Eric von Lieres, and Gregor Huber. A class of compartmental models for long-distance tracer transport in plants. Journal of Theoretical Biology, 341:131–142, 2014. URL: https://www.sciencedirect.com/science/article/pii/S0022519313004530, doi:https://doi.org/10.1016/j.jtbi.2013.09.023.">10</a>]</span>, which was originally developed in the field of plant sciences.
 There it is used to determine transport and storage parameters of radioactive labelled tracer molecules from positron emission tomography (PET) or magnetic resonance imaging (MRI) based experimental data.
 The model represents main functions of vascular transport pathways: axial transport of the tracer, diffusion in axial direction, lateral exchange between compartments and storage of tracer in compartments.
@@ -381,7 +382,7 @@ That is, we define <span class="math notranslate nohighlight">\(e_{12}^0 = k_a A
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/modelling/unit_operations/multi_channel_transport_model.rst.txt"
+      <a href="../../_sources/modelling/unit_operations/multi_channel_transport_model.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

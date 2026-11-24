@@ -11,7 +11,8 @@
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/networks.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -49,10 +50,10 @@
 <li class="toctree-l2"><a class="reference internal" href="binding/index.html">Binding models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reaction/index.html">Reaction models</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Networks of unit operations</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#specification-of-network-connections">Specification of network connections</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#valve-switches">Valve switches</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dynamic-flow-rates">Dynamic flow rates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#solution-of-the-linear-systems">Solution of the linear systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#muopnetworkconfig">Specification of network connections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#muopnetworkvalveswitches">Valve switches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#muopnetworkdynamicflowrates">Dynamic flow rates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#muopnetworklinearsolver">Solution of the linear systems</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="crystallization/index.html">Crystallization / Precipitation Models</a></li>
@@ -210,8 +211,8 @@
 
 
 
-  <section id="networks-of-unit-operations">
-<span id="networks"></span><h1>Networks of unit operations<a class="headerlink" href="#networks-of-unit-operations" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="networks">
+<span id="networks-of-unit-operations"></span><h1>Networks of unit operations<a class="headerlink" href="#networks" title="Link to this heading">¶</a></h1>
 <p>Unit operation models can be composed into a network or graph, in which a node represents a unit operation and an edge denotes a connection between two unit operations.
 When utilized to full extent, this allows the simulation of complicated setups and processes (e.g., SMB, MCSGP).
 A more simple use case is the addition of plug flows and stirred tanks up- and downstream of a column in order to account for dead volume and additional dispersion from the tubing.</p>
@@ -245,8 +246,8 @@ The connection variables <span class="math notranslate nohighlight">\(c_{\text{c
 \end{aligned}\end{split}\]</div>
 <p>Note that for each unit operation the number of inlet ports may be different from the number of outlet ports.
 Hence, the mass balance of a single unit operation is taken with respect to all its ports combined.</p>
-<section id="specification-of-network-connections">
-<span id="muopnetworkconfig"></span><h2>Specification of network connections<a class="headerlink" href="#specification-of-network-connections" title="Link to this heading">¶</a></h2>
+<section id="muopnetworkconfig">
+<span id="specification-of-network-connections"></span><h2>Specification of network connections<a class="headerlink" href="#muopnetworkconfig" title="Link to this heading">¶</a></h2>
 <p>The connections between the different unit operations in the network are specified by a table.
 There are two table formats:</p>
 <ul class="simple">
@@ -272,8 +273,8 @@ The same setting (i.e., setting both port indices to <span class="math notransla
 Consequently, there can only be one flow rate for a connection between two unit operations regardless of which components are connected.</p>
 <p>The connection table is expected in row-major storage format (i.e., the rows are appended to one long array).</p>
 </section>
-<section id="valve-switches">
-<span id="muopnetworkvalveswitches"></span><h2>Valve switches<a class="headerlink" href="#valve-switches" title="Link to this heading">¶</a></h2>
+<section id="muopnetworkvalveswitches">
+<span id="valve-switches"></span><h2>Valve switches<a class="headerlink" href="#muopnetworkvalveswitches" title="Link to this heading">¶</a></h2>
 <p>The connectivity of the network can only change on a discontinuous section transition.
 Such a transition with changing connectivity is referred to as valve switch and the connectivity itself as valve configuration.</p>
 <p>A list of valve configurations with at least one entry is required.
@@ -283,8 +284,8 @@ Hence, the one required (i.e., the first) entry must have a section index of <sp
 <p>Note that the section index has to be monotonically increasing throughout the list of valve configurations.
 See Tables <a class="reference internal" href="../interface/system.html#ffmodelsystemconnections"><span class="std std-ref">Group /input/model/connections</span></a> and <a class="reference internal" href="../interface/system.html#ffmodelconnectionswitch"><span class="std std-ref">Group /input/model/connections/switch_XXX</span></a>.</p>
 </section>
-<section id="dynamic-flow-rates">
-<span id="muopnetworkdynamicflowrates"></span><h2>Dynamic flow rates<a class="headerlink" href="#dynamic-flow-rates" title="Link to this heading">¶</a></h2>
+<section id="muopnetworkdynamicflowrates">
+<span id="dynamic-flow-rates"></span><h2>Dynamic flow rates<a class="headerlink" href="#muopnetworkdynamicflowrates" title="Link to this heading">¶</a></h2>
 <p>The volumetric flow rates may vary over time while the valve configuration is active.
 The rates are assumed to be cubic polynomials,</p>
 <div class="math notranslate nohighlight">
@@ -293,8 +294,8 @@ The rates are assumed to be cubic polynomials,</p>
 <p>Note that the denominator in Eq. <a class="reference internal" href="#equation-networkconnection">36</a> must always be positive.
 That is, the flow rate coefficients have to be chosen such that the flow into every connected inlet port is strictly positive at all times.</p>
 </section>
-<section id="solution-of-the-linear-systems">
-<span id="muopnetworklinearsolver"></span><h2>Solution of the linear systems<a class="headerlink" href="#solution-of-the-linear-systems" title="Link to this heading">¶</a></h2>
+<section id="muopnetworklinearsolver">
+<span id="solution-of-the-linear-systems"></span><h2>Solution of the linear systems<a class="headerlink" href="#muopnetworklinearsolver" title="Link to this heading">¶</a></h2>
 <p>Each time step in the simulation requires the solution of a nonlinear system Eq. <a class="reference internal" href="../simulation/index.html#equation-bdfnonlinsystem">45</a> (see Sec. <a class="reference internal" href="../simulation/index.html#simtimeintegration"><span class="std std-ref">Time stepping</span></a>).
 The nonlinear problem is solved by a Newton iteration, which, in turn, requires the solution of a linear system that essentially consists of the Jacobians of the unit operations and some coupling matrices from Eqs. <a class="reference internal" href="#equation-networkinletconnection">35</a> and <a class="reference internal" href="#equation-networkconnection">36</a>.</p>
 <p>These linear systems are either solved in parallel or sequentially. The parallel method first solves each unit operation (in parallel) to compute the solution at its outlet.
@@ -326,7 +327,7 @@ If some network configurations contain cycles, the parallel method is chosen for
       &#169;2008-2026.
       
       |
-      <a href="../_sources/modelling/networks.rst.txt"
+      <a href="../_sources/modelling/networks.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

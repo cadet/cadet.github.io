@@ -11,7 +11,8 @@
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/developer_guide/model_expansion.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -213,7 +214,7 @@
 
 
 
-  <section id="model-expansion">
+  <section class="tex2jax_ignore mathjax_ignore" id="model-expansion">
 <span id="id1"></span><h1>Model Expansion<a class="headerlink" href="#model-expansion" title="Link to this heading">¶</a></h1>
 <p>There are 7+ transport models and 20+ adsorption models implemented in CADET.
 Please make sure that the one you are interested in is not implemented.
@@ -314,9 +315,9 @@ Use <code class="docutils literal notranslate"><span class="pre">StateType</span
 <h2>Parameter sensitivities<a class="headerlink" href="#parameter-sensitivities" title="Link to this heading">¶</a></h2>
 <p>Parameter sensitivity estimation in CADET-Core leverages the capabilities provided by the time integrator module <a class="reference external" href="https://sundials.readthedocs.io/en/latest/idas/index.html">IDAS</a> to compute <a class="reference external" href="https://sundials.readthedocs.io/en/latest/idas/Mathematics_link.html#forward-sensitivity-analysis">forward sensitivities</a>, combined with our custom implementation for algorithmic differentiation, as described in our publication <a class="reference external" href="https://doi.org/10.1016/j.ces.2015.08.050">Püttmann et al. (2016)</a>.
 To enable a parameter sensitivity for you model, you only have to take care about calling and interfacing to the existing infrastructure, which is briefly described in the following steps:
-- The parameter must be defined as an <cite>active</cite> type
-- In the residual function, the parameter must be used as a <cite>ParamType</cite>
-- The parameter must be registered, i.e. added to the <cite>_parameters</cite> map, e.g. <code class="docutils literal notranslate"><span class="pre">_parameters[makeParamId(hashString(&quot;TOTAL_POROSITY&quot;),</span> <span class="pre">_unitOpIdx,</span> <span class="pre">CompIndep,</span> <span class="pre">ParTypeIndep,</span> <span class="pre">BoundStateIndep,</span> <span class="pre">ReactionIndep,</span> <span class="pre">SectionIndep)]</span> <span class="pre">=</span> <span class="pre">&amp;_totalPorosity;</span></code> which creates a unique parameter ID. Also, the dependencies of the parameter need to be specified here, e.g. if it depends on a particle type or component etc. This map is read by the model system to set up the sensitivity equations.
+- The parameter must be defined as an <code class="docutils literal notranslate"><span class="pre">active</span></code> type
+- In the residual function, the parameter must be used as a <code class="docutils literal notranslate"><span class="pre">ParamType</span></code>
+- The parameter must be registered, i.e. added to the <code class="docutils literal notranslate"><span class="pre">_parameters</span></code> map, e.g. <code class="docutils literal notranslate"><span class="pre">_parameters[makeParamId(hashString(&quot;TOTAL_POROSITY&quot;),</span> <span class="pre">_unitOpIdx,</span> <span class="pre">CompIndep,</span> <span class="pre">ParTypeIndep,</span> <span class="pre">BoundStateIndep,</span> <span class="pre">ReactionIndep,</span> <span class="pre">SectionIndep)]</span> <span class="pre">=</span> <span class="pre">&amp;_totalPorosity;</span></code> which creates a unique parameter ID. Also, the dependencies of the parameter need to be specified here, e.g. if it depends on a particle type or component etc. This map is read by the model system to set up the sensitivity equations.
 - If the parameter is vector valued, the sensitivities for each entry of the 1D or 2D vector can be computed. To this end, you need to call the corresponding registering function, e.g. <code class="docutils literal notranslate"><span class="pre">registerParam1DArray(_parameters,</span> <span class="pre">_initC,</span> <span class="pre">[=](bool</span> <span class="pre">multi,</span> <span class="pre">unsigned</span> <span class="pre">int</span> <span class="pre">comp)</span> <span class="pre">{</span> <span class="pre">return</span> <span class="pre">makeParamId(hashString(&quot;INIT_C&quot;),</span> <span class="pre">_unitOpIdx,</span> <span class="pre">comp,</span> <span class="pre">ParTypeIndep,</span> <span class="pre">BoundStateIndep,</span> <span class="pre">ReactionIndep,</span> <span class="pre">SectionIndep);</span> <span class="pre">});</span></code>
 - CADET-Core takes care of the rest.</p>
 </section>
@@ -334,7 +335,7 @@ To enable a parameter sensitivity for you model, you only have to take care abou
       &#169;2008-2026.
       
       |
-      <a href="../_sources/developer_guide/model_expansion.rst.txt"
+      <a href="../_sources/developer_guide/model_expansion.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

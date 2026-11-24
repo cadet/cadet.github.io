@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/binding/multi_component_colloidal.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -48,10 +49,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Binding models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="index.html#equilibrium-constants">Equilibrium constants</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#linear-driving-force-ldf">Linear Driving Force (LDF)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#ldf-model">Linear Driving Force (LDF)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#reference-concentrations">Reference concentrations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature-matrix">Binding model feature matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function-bind">Dependence on external function</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature">Binding model feature matrix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
@@ -211,23 +212,15 @@
 
 
 
-  <section id="multi-component-colloidal">
-<span id="multi-component-colloidal-model"></span><h1>Multi Component Colloidal<a class="headerlink" href="#multi-component-colloidal" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="multi-component-colloidal-model">
+<span id="multi-component-colloidal"></span><h1>Multi Component Colloidal<a class="headerlink" href="#multi-component-colloidal-model" title="Link to this heading">¶</a></h1>
 <p>The colloidal isotherm assumes that adsorbed protein molecules are evenly distributed in a hexagonal arrangement at equilibrium, with the coverage varying via adjustment of the lattice size <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../../zbibliography.html#id55" title="Xuankuo Xu and Abraham M. Lenhoff. Binary adsorption of globular proteins on ion-exchange media. Journal of Chromatography A, 1216(34):6177–6195, 2009. URL: https://www.sciencedirect.com/science/article/pii/S0021967309010103, doi:https://doi.org/10.1016/j.chroma.2009.06.082.">30</a>]</span>.
 Protein-surface interactions are captured in a parameter <span class="math notranslate nohighlight">\(K_{e}\)</span>.
 The surface coverage is modulated at higher coverage, described by a Yukawa potential.
 The Yukawa constant <span class="math notranslate nohighlight">\(b_{pp}\)</span> characterizes protein-protein interactions.
 Since these are long-ranged, they are assumed to be primarily electrostatic for ion-exchange chromatography, with the range of interactions determined by the Debye parameter, <span class="math notranslate nohighlight">\(\kappa\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{aligned}
-    \frac{{dq}_{i}}{dt} = &amp; k_{kin,i} \left( c_{p,i} -  c_{p,i}^\star \right)
-     \quad
-     i = 0, \dots, N_{comp} - 1,
-     \\
-    c_{p,i}^\star = &amp; q_{i} \exp  \Biggl[ \frac{n\left( 3 + \kappa R \right)}{4 q_{tot}} \sum_{j=0}^{N_{bound}} {q_{j} \sqrt{b_{pp,i} b_{pp,j}}} \frac{r_{i} + r_{j}}{2R}
-     \exp \bigl[ - \kappa \left( R - \left( r_{i} + r_{j} \right) \right) \bigr] \\
-     &amp;\phantom{q_{i} \exp  \Biggl[} - ln \left(K_{e,i} \right) \Biggr],
-\end{aligned}\end{split}\]</div>
+\[\begin{split}\begin{aligned}     \frac{{dq}_{i}}{dt} = &amp; k_{kin,i} \left( c_{p,i} -  c_{p,i}^\star \right)      \quad      i = 0, \dots, N_{comp} - 1,      \\     c_{p,i}^\star = &amp; q_{i} \exp  \Biggl[ \frac{n\left( 3 + \kappa R \right)}{4 q_{tot}} \sum_{j=0}^{N_{bound}} {q_{j} \sqrt{b_{pp,i} b_{pp,j}}} \frac{r_{i} + r_{j}}{2R}      \exp \bigl[ - \kappa \left( R - \left( r_{i} + r_{j} \right) \right) \bigr] \\      &amp;\phantom{q_{i} \exp  \Biggl[} - ln \left(K_{e,i} \right) \Biggr], \end{aligned}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(n\)</span> is the coordination number describing the two-dimensional lattice agreement of protein molecules on the resin surface (<span class="math notranslate nohighlight">\(n=6\)</span> for hexagonal arrangement).
 <span class="math notranslate nohighlight">\(r_{i}\)</span> is the radius of the protein, and <span class="math notranslate nohighlight">\(K_{kin}\)</span> is the kinetic rate of adsorption.</p>
 <p>For the surface coverage factor <span class="math notranslate nohighlight">\(R\)</span>, the following equation is used:</p>
@@ -270,7 +263,7 @@ b_{pp,i} &amp;= {c_{p,1}}^{b_{e,i}} \left( b_{a,i} {c_{p,0}}^{b_{b,i}} + b_{c,i}
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/modelling/binding/multi_component_colloidal.rst.txt"
+      <a href="../../_sources/modelling/binding/multi_component_colloidal.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/crystallization/aggregation.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -209,8 +210,8 @@
 
 
 
-  <section id="aggregation-models">
-<span id="aggregation"></span><h1>Aggregation Models<a class="headerlink" href="#aggregation-models" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="aggregation">
+<span id="aggregation-models"></span><h1>Aggregation Models<a class="headerlink" href="#aggregation" title="Link to this heading">¶</a></h1>
 <p>For detailed information on the crystallization models implemented in CADET, including aggregation, please refer to <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../../zbibliography.html#id6" title="Wendi Zhang, Todd Przybycien, Jan Michael Breuer, and Eric von Lieres. Solving crystallization/precipitation population balance models in cadet, part ii: size-based smoluchowski coagulation and fragmentation equations in batch and continuous modes. Computers &amp; Chemical Engineering, 192:108860, 2025. doi:10.1016/j.compchemeng.2024.108860.">37</a>]</span>.</p>
 <p>The aggregation model can be combined with <a class="reference internal" href="primary_particle_formation.html#primary-particle-formation"><span class="std std-ref">Primary Particle Formation</span></a> and/or <a class="reference internal" href="fragmentation.html#fragmentation"><span class="std std-ref">Fragmentation Models</span></a>.
 Further, it can be applied in any of the unit operations, specifically in a STR or DPFR.</p>
@@ -238,21 +239,21 @@ Here, we consider binary particle aggregation based on particle size <span class
 \end{aligned}\end{split}\]</div>
 <p>Here, <span class="math notranslate nohighlight">\([x_{c}, x_{\mathrm{end}}]\)</span> is the considered particle size interval, <span class="math notranslate nohighlight">\(\beta(x,\lambda)\)</span> is the aggregation kernel specific to the underlying aggregation mechanism of your system.</p>
 <p>Five kernels are already implemented in CADET. They include:</p>
-<dl>
+<dl class="simple myst">
 <dt>Constant kernel</dt><dd><div class="math notranslate nohighlight">
-\[\beta(x, \lambda) = \beta_0\]</div>
+\[  \beta(x, \lambda) = \beta_0\]</div>
 </dd>
 <dt>Brownian kernel</dt><dd><div class="math notranslate nohighlight">
-\[\beta(x, \lambda) = \beta_0 \frac{(x + \lambda)^2}{x \lambda}\]</div>
+\[  \beta(x, \lambda) = \beta_0 \frac{(x + \lambda)^2}{x \lambda}\]</div>
 </dd>
 <dt>Smoluchowski kernel</dt><dd><div class="math notranslate nohighlight">
-\[\beta(x, \lambda) = \beta_0 (x + \lambda)^3\]</div>
+\[  \beta(x, \lambda) = \beta_0 (x + \lambda)^3\]</div>
 </dd>
 <dt>Golovin kernel</dt><dd><div class="math notranslate nohighlight">
-\[\beta(x, \lambda) = \beta_0 (x^3 + \lambda^3)\]</div>
+\[  \beta(x, \lambda) = \beta_0 (x^3 + \lambda^3)\]</div>
 </dd>
 <dt>Differential force kernel</dt><dd><div class="math notranslate nohighlight">
-\[\beta(x, \lambda) = \beta_0 (x + \lambda)^2 (x^2 - \lambda^2)\]</div>
+\[  \beta(x, \lambda) = \beta_0 (x + \lambda)^2 (x^2 - \lambda^2)\]</div>
 </dd>
 </dl>
 <p>where <span class="math notranslate nohighlight">\(\beta_0 &gt; 0\)</span> is the aggregation rate constant. Please reach out to us for customized aggregation kernels.</p>
@@ -271,7 +272,7 @@ Here, we consider binary particle aggregation based on particle size <span class
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/modelling/crystallization/aggregation.rst.txt"
+      <a href="../../_sources/modelling/crystallization/aggregation.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/reaction/michaelis_menten_kinetics.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,15 +217,15 @@
 
 
 
-  <section id="michaelis-menten-kinetics">
-<span id="michaelis-menten-kinetics-config"></span><h1>Michaelis Menten kinetics<a class="headerlink" href="#michaelis-menten-kinetics" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="michaelis-menten-kinetics-config">
+<span id="michaelis-menten-kinetics"></span><h1>Michaelis Menten kinetics<a class="headerlink" href="#michaelis-menten-kinetics-config" title="Link to this heading">¶</a></h1>
 <p><strong>Group /input/model/unit_XXX(/particle_type_YYY)/phase_reaction_ZZZ/ - TYPE = MICHAELIS_MENTEN</strong></p>
 <p>For information on model equations, refer to <a class="reference internal" href="../../modelling/reaction/michaelis_menten_kinetics.html#michaelis-menten-kinetics-model"><span class="std std-ref">Michaelis Menten kinetics</span></a>.</p>
 <section id="notes">
 <h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">phase_reaction_ZZZ</span></code> refers to one of the phase-specific reaction groups listed in <a class="reference internal" href="index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>, e.g., <code class="docutils literal notranslate"><span class="pre">liquid_reaction_ZZZ</span></code>, <code class="docutils literal notranslate"><span class="pre">solid_reaction_ZZZ</span></code>.</p></li>
-<li><dl class="simple">
+<li><dl class="simple myst">
 <dt>Some dimensions below depend on the hosting phase of this model instance:</dt><dd><ul>
 <li><p>Bulk phase or particle liquid phase: <code class="docutils literal notranslate"><span class="pre">NVAR</span> <span class="pre">=</span> <span class="pre">NCOMP</span></code></p></li>
 <li><p>Particle solid phase: <code class="docutils literal notranslate"><span class="pre">NVAR</span> <span class="pre">=</span> <span class="pre">NTOTALBOUND</span></code> (total number of bound states across all components)</p></li>
@@ -233,7 +234,7 @@
 </dl>
 </li>
 </ul>
-<dl>
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">MM_STOICHIOMETRY</span></code></dt><dd><p>Stoichiometric matrix <span class="math notranslate nohighlight">\(S\)</span>.
 This matrix defines the quantitative relationships between reactants and products for each reaction in the system.
 Each entry <span class="math notranslate nohighlight">\(S_{i,j}\)</span> specifies the stoichiometric coefficient for component <span class="math notranslate nohighlight">\(i\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span>.
@@ -315,14 +316,14 @@ Input as reaction index major.</p>
 </table>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">MM_EXP</span></code></dt><dd><p>(Optional) Hill exponent <span class="math notranslate nohighlight">\(n_{i,j}\)</span> for substrate <span class="math notranslate nohighlight">\(i\)</span> in reaction <span class="math notranslate nohighlight">\(j\)</span>.
-Only :math:` neq 1` for substrate without competitive or uncompetitive inhibition.
+Only <span class="math notranslate nohighlight">\(\neq 1\)</span> for substrate without competitive or uncompetitive inhibition.
 Use <span class="math notranslate nohighlight">\(1\)</span> for substrates with competitive or uncompetitive inhibition.
 Input as reaction index major.</p>
 <p><strong>Unit:</strong> None</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
-<td><p><strong>Range:</strong> :math:` &gt; 0`</p></td>
+<td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
 <td><p><strong>Length:</strong> <span class="math notranslate nohighlight">\(\texttt{NREACT} \cdot \texttt{NVAR}\)</span></p></td>
 </tr>
 </tbody>
@@ -390,7 +391,7 @@ In addition to that the model includes:</p>
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/reaction/michaelis_menten_kinetics.rst.txt"
+      <a href="../../_sources/interface/reaction/michaelis_menten_kinetics.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

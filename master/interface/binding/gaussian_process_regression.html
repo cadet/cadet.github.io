@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/binding/gaussian_process_regression.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,11 +217,11 @@
 
 
 
-  <section id="gaussian-process-regression">
-<span id="gaussian-process-regression-config"></span><h1>Gaussian Process Regression<a class="headerlink" href="#gaussian-process-regression" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="gaussian-process-regression-config">
+<span id="gaussian-process-regression"></span><h1>Gaussian Process Regression<a class="headerlink" href="#gaussian-process-regression-config" title="Link to this heading">¶</a></h1>
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption – ADSORPTION_MODEL = GAUSSIAN_PROCESS_REGRESSION</strong></p>
 <p>For information on model equations, refer to <a class="reference internal" href="../../modelling/binding/gaussian_process_regression.html#gaussian-process-regression"><span class="std std-ref">Gaussian Process Regression</span></a>.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></dt><dd><p>Selects kinetic or quasi-stationary adsorption mode: 1 = kinetic, 0 =
 quasi-stationary. If a single value is given, the mode is set for all
 bound states. Otherwise, the adsorption mode is set for each bound
@@ -235,7 +236,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">CP_NDIM</span></code></dt><dd><p>Number of input dimensions per training point used in <code class="docutils literal notranslate"><span class="pre">CP_VALS</span></code>.
 Must equal number of components, user sanity check.</p>
 </dd>
@@ -248,7 +249,7 @@ Must equal number of components, user sanity check.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">CS_NDIM</span></code></dt><dd><p>Number of output dimensions per training point used in <code class="docutils literal notranslate"><span class="pre">CS_VALS</span></code>.
 Must equal total number of bound states, user sanity check.</p>
 </dd>
@@ -261,7 +262,7 @@ Must equal total number of bound states, user sanity check.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">CP_VALS</span></code></dt><dd><p>Flattened pore-phase concentration training inputs used by the Gaussian
 process regression model. The values represent the training input points
 <span class="math notranslate nohighlight">\(X\)</span> used to evaluate the kernel function. The array is interpreted
@@ -277,7 +278,7 @@ as an <code class="docutils literal notranslate"><span class="pre">NTRAIN</span>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">CS_VALS</span></code></dt><dd><p>Solid-phase training targets corresponding to <code class="docutils literal notranslate"><span class="pre">CP_VALS</span></code>.
 These values form the training output vector used to compute the GPR
 coefficient vector <span class="math notranslate nohighlight">\(\alpha = (K + \sigma_n^2 I)^{-1} y\)</span>.</p>
@@ -292,7 +293,7 @@ coefficient vector <span class="math notranslate nohighlight">\(\alpha = (K + \s
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GPR_KKIN</span></code></dt><dd><p>Linear-driving-force coefficients in component-major ordering.</p>
 </dd>
 </dl>
@@ -305,7 +306,7 @@ coefficient vector <span class="math notranslate nohighlight">\(\alpha = (K + \s
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code></dt><dd><p>Selects the kernel function used by the Gaussian process regression
 model. Supported values are <code class="docutils literal notranslate"><span class="pre">MLP</span></code>, <code class="docutils literal notranslate"><span class="pre">RBF</span></code>, <code class="docutils literal notranslate"><span class="pre">RBF_Linear</span></code>, and
 <code class="docutils literal notranslate"><span class="pre">MLP_Linear</span></code>.</p>
@@ -386,7 +387,7 @@ has 2 bound states and component 1 has 1 bound state, the indices are:</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">MLP_WEIGHT_VARIANCE_BND_XXX</span></code></dt><dd><p>Weight variance hyperparameter for the MLP (arc-cosine) kernel.
 Required for <code class="docutils literal notranslate"><span class="pre">MLP</span></code> and <code class="docutils literal notranslate"><span class="pre">MLP_Linear</span></code> kernels.</p>
 </dd>
@@ -399,7 +400,7 @@ Required for <code class="docutils literal notranslate"><span class="pre">MLP</s
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">MLP_BIAS_VARIANCE_BND_XXX</span></code></dt><dd><p>Bias variance hyperparameter for the MLP (arc-cosine) kernel.
 Required for <code class="docutils literal notranslate"><span class="pre">MLP</span></code> and <code class="docutils literal notranslate"><span class="pre">MLP_Linear</span></code> kernels.</p>
 </dd>
@@ -412,7 +413,7 @@ Required for <code class="docutils literal notranslate"><span class="pre">MLP</s
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">MLP_VARIANCE_BND_XXX</span></code></dt><dd><p>Output variance hyperparameter for the MLP (arc-cosine) kernel.
 Required for <code class="docutils literal notranslate"><span class="pre">MLP</span></code> and <code class="docutils literal notranslate"><span class="pre">MLP_Linear</span></code> kernels.</p>
 </dd>
@@ -425,7 +426,7 @@ Required for <code class="docutils literal notranslate"><span class="pre">MLP</s
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">RBF_VARIANCE_BND_XXX</span></code></dt><dd><p>Output variance hyperparameter for the RBF (squared exponential) kernel.
 Required for <code class="docutils literal notranslate"><span class="pre">RBF</span></code> and <code class="docutils literal notranslate"><span class="pre">RBF_Linear</span></code> kernels.</p>
 </dd>
@@ -438,7 +439,7 @@ Required for <code class="docutils literal notranslate"><span class="pre">RBF</s
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">RBF_LENGTHSCALE_BND_XXX</span></code></dt><dd><p>Lengthscale hyperparameter for the RBF kernel, expected as <span class="math notranslate nohighlight">\(\ell^2\)</span>
 (squared lengthscale as exported from scikit-learn).
 Required for <code class="docutils literal notranslate"><span class="pre">RBF</span></code> and <code class="docutils literal notranslate"><span class="pre">RBF_Linear</span></code> kernels.</p>
@@ -452,7 +453,7 @@ Required for <code class="docutils literal notranslate"><span class="pre">RBF</s
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">LINEAR_VARIANCE_BND_XXX</span></code></dt><dd><p>Variance hyperparameter for the linear kernel.
 Required for <code class="docutils literal notranslate"><span class="pre">RBF_Linear</span></code> and <code class="docutils literal notranslate"><span class="pre">MLP_Linear</span></code> kernels.</p>
 </dd>
@@ -465,7 +466,7 @@ Required for <code class="docutils literal notranslate"><span class="pre">RBF_Li
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">GAUSSIAN_NOISE_VARIANCE_BND_XXX</span></code></dt><dd><p>Noise variance hyperparameter <span class="math notranslate nohighlight">\(\sigma_n^2\)</span> added to the kernel
 diagonal for numerical stability and observation noise modeling.
 Required for all kernel types.</p>
@@ -479,7 +480,7 @@ Required for all kernel types.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">POROSITY_FACTOR</span></code></dt><dd><p>Optional scaling factor applied to the predicted equilibrium loading. This can be
 used to account for porosity differences or unit conversions between the training
 data and the simulation conditions. A single value is shared by all bound states;
@@ -510,7 +511,7 @@ Defaults to 1.0 if not present.</p>
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/binding/gaussian_process_regression.rst.txt"
+      <a href="../../_sources/interface/binding/gaussian_process_regression.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/binding/colloidal_particle_adsorption.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -48,10 +49,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Binding models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="index.html#equilibrium-constants">Equilibrium constants</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#linear-driving-force-ldf">Linear Driving Force (LDF)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#ldf-model">Linear Driving Force (LDF)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#reference-concentrations">Reference concentrations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature-matrix">Binding model feature matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#dependence-on-external-function-bind">Dependence on external function</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#binding-model-feature">Binding model feature matrix</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
@@ -211,8 +212,8 @@
 
 
 
-  <section id="colloidal-particle-adsorption">
-<span id="colloidal-particle-adsorption-model"></span><h1>Colloidal Particle Adsorption<a class="headerlink" href="#colloidal-particle-adsorption" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="colloidal-particle-adsorption-model">
+<span id="colloidal-particle-adsorption"></span><h1>Colloidal Particle Adsorption<a class="headerlink" href="#colloidal-particle-adsorption-model" title="Link to this heading">¶</a></h1>
 <p>The colloidal particle adsorption (CPA) model describes protein adsorption based on colloidal interaction theory.
 The model captures three key contributions to adsorption:</p>
 <ul class="simple">
@@ -238,21 +239,21 @@ The proton component must be non-binding.</p>
 <li><p><strong>Fixed parameter</strong> (default): <span class="math notranslate nohighlight">\(I_m\)</span> is read from <code class="docutils literal notranslate"><span class="pre">CPA_IONIC_STRENGTH</span></code> and the pH is computed directly from the proton component concentration.
 Since the standard definition of pH is based on concentration in mol/L, <span class="math notranslate nohighlight">\(\mathrm{mol}/\mathrm{m}^3\)</span> is converted to mol/L via the factor <span class="math notranslate nohighlight">\(10^{-3}\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\mathrm{pH} = -\log_{10}\!\left(c^p_{\mathrm{H}+} \cdot 10^{-3}\right).\]</div>
+\[  \mathrm{pH} = -\log_{10}\!\left(c^p_{\mathrm{H}+} \cdot 10^{-3}\right).\]</div>
 <p>This corresponds to the setting of <span class="bibtex-citation" id="id2">[<a class="reference internal" href="../../zbibliography.html#id61" title="Till Briskot, Tobias Hahn, Thiemo Huuk, and Jürgen Hubbuch. Protein adsorption on ion exchange adsorbers: a comparison of a stoichiometric and non-stoichiometric modeling approach. Journal of Chromatography A, 1653:462397, 2021. doi:10.1016/j.chroma.2021.462397.">14</a>]</span>, where pH and <span class="math notranslate nohighlight">\(I_m\)</span> are prescribed properties of the mobile phase.</p>
 </li>
 <li><p><strong>Computed from concentrations</strong>: if component charges <span class="math notranslate nohighlight">\(z_i\)</span> are provided via <code class="docutils literal notranslate"><span class="pre">CPA_IONIC_VALENCE</span></code>, the ionic strength is computed from the pore-phase concentrations at each time step, and the Davies activity correction is applied to the proton activity,</p>
 <div class="math notranslate nohighlight">
-\[I_m = \frac{1}{2} \sum_i z_i^2 \, c^p_i.\]</div>
+\[  I_m = \frac{1}{2} \sum_i z_i^2 \, c^p_i.\]</div>
 <p>Components that should not contribute to the ionic strength, should be assigned a charge of zero.
 This also switches off the activity correction for that component; in particular, assigning <span class="math notranslate nohighlight">\(z = 0\)</span> to the proton component reduces <span class="math notranslate nohighlight">\(\gamma_{\mathrm{H}^+}\)</span> to one.
 For the Davies model, this value is converted from <span class="math notranslate nohighlight">\(\mathrm{mol}/\mathrm{m}^3\)</span> to <span class="math notranslate nohighlight">\(\mathrm{mol\,/ L}\)</span> as <span class="math notranslate nohighlight">\(I_M = 10^{-3} I_m\)</span>. The activity correction is then</p>
 <div class="math notranslate nohighlight">
-\[\log_{10}\gamma_i = -0.509 \, z_i^2 \left( \frac{\sqrt{I_M}}{1 + \sqrt{I_M}} - 0.3 \, I_M \right),\]</div>
+\[  \log_{10}\gamma_i = -0.509 \, z_i^2 \left( \frac{\sqrt{I_M}}{1 + \sqrt{I_M}} - 0.3 \, I_M \right),\]</div>
 <p>so that</p>
 <div class="math notranslate nohighlight">
-\[\mathrm{pH} = -\log_{10}\!\left(\gamma_{\mathrm{H}^+} \, c^p_{\mathrm{H}+} \cdot 10^{-3}\right).\]</div>
-<p><strong>The constant 0.509 is the Debye–Hückel slope for water at 25 °C</strong>.  The factor <span class="math notranslate nohighlight">\(10^{-3}\)</span> converts the pore-phase concentration from <span class="math notranslate nohighlight">\(\mathrm{mol}/\mathrm{m}^3\)</span> to mol/L, as required by the pH definition.</p>
+\[  \mathrm{pH} = -\log_{10}\!\left(\gamma_{\mathrm{H}^+} \, c^p_{\mathrm{H}+} \cdot 10^{-3}\right).\]</div>
+<p><strong>The constant 0.509 is the Debye–Hückel slope for water at 25 °C</strong>. The factor <span class="math notranslate nohighlight">\(10^{-3}\)</span> converts the pore-phase concentration from <span class="math notranslate nohighlight">\(\mathrm{mol}/\mathrm{m}^3\)</span> to mol/L, as required by the pH definition.</p>
 </li>
 </ul>
 <p>In both cases, a proton activity less than or equal to <span class="math notranslate nohighlight">\(10^{-14}\mathrm{mol}/\mathrm{m}^3\)</span> is mapped to pH 14.</p>
@@ -404,7 +405,7 @@ The kinetic rate and <code class="docutils literal notranslate"><span class="pre
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/modelling/binding/colloidal_particle_adsorption.rst.txt"
+      <a href="../../_sources/modelling/binding/colloidal_particle_adsorption.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

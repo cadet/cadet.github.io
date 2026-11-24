@@ -11,7 +11,8 @@
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/sensitivities.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -216,10 +217,10 @@
 
 
 
-  <section id="parameter-sensitivities">
-<span id="sensitivity"></span><h1>Parameter Sensitivities<a class="headerlink" href="#parameter-sensitivities" title="Link to this heading">¶</a></h1>
-<section id="group-input-sensitivity">
-<span id="ffsensitivity"></span><h2>Group /input/sensitivity<a class="headerlink" href="#group-input-sensitivity" title="Link to this heading">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="sensitivity">
+<span id="parameter-sensitivities"></span><h1>Parameter Sensitivities<a class="headerlink" href="#sensitivity" title="Link to this heading">¶</a></h1>
+<section id="ffsensitivity">
+<span id="group-input-sensitivity"></span><h2>Group /input/sensitivity<a class="headerlink" href="#ffsensitivity" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NSENS</span></code></p>
 <blockquote>
 <div><p>Number of sensitivities to be computed</p>
@@ -245,8 +246,8 @@
 </table>
 </div></blockquote>
 </section>
-<section id="group-input-sensitivity-param-xxx">
-<span id="ffsensitivityparam"></span><h2>Group /input/sensitivity/param_XXX<a class="headerlink" href="#group-input-sensitivity-param-xxx" title="Link to this heading">¶</a></h2>
+<section id="ffsensitivityparam">
+<span id="group-input-sensitivity-param-xxx"></span><h2>Group /input/sensitivity/param_XXX<a class="headerlink" href="#ffsensitivityparam" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">SENS_UNIT</span></code></p>
 <blockquote>
 <div><p>Unit operation index</p>
@@ -272,7 +273,7 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">SENS_COMP</span></code></p>
 <blockquote>
-<div><p>Component index (<span class="math notranslate nohighlight">\(-1\)</span> if parameter is independent of components, see the multiplexing of the corresponding parameter, e.g. <cite>FILM_DIFFUSION_MULTIPLEX</cite>)</p>
+<div><p>Component index (<span class="math notranslate nohighlight">\(-1\)</span> if parameter is independent of components, see the multiplexing of the corresponding parameter, e.g. <code class="docutils literal notranslate"><span class="pre">FILM_DIFFUSION_MULTIPLEX</span></code>)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -284,7 +285,7 @@
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">SENS_PARTYPE</span></code></p>
 <blockquote>
-<div><p>Particle type index (<span class="math notranslate nohighlight">\(-1\)</span> if parameter is independent of particle types, see the multiplexing of the corresponding parameter, e.g. <cite>PORE_DIFFUSION_MULTIPLEX</cite>)</p>
+<div><p>Particle type index (<span class="math notranslate nohighlight">\(-1\)</span> if parameter is independent of particle types, see the multiplexing of the corresponding parameter, e.g. <code class="docutils literal notranslate"><span class="pre">PORE_DIFFUSION_MULTIPLEX</span></code>)</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
@@ -363,11 +364,6 @@ in double precision, where the derivative is lost. The second case cannot be ans
 is rejected with an error. The alternatives below are the ones that have been checked against
 central finite differences.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25.0%" />
-<col style="width: 30.0%" />
-<col style="width: 45.0%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Not available for</p></th>
@@ -422,7 +418,7 @@ central finite differences.</p>
       &#169;2008-2026.
       
       |
-      <a href="../_sources/interface/sensitivities.rst.txt"
+      <a href="../_sources/interface/sensitivities.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

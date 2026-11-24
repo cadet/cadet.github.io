@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/binding/spline_interpolation.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,11 +217,11 @@
 
 
 
-  <section id="spline-interpolation">
-<span id="spline-interpolation-config"></span><h1>Spline Interpolation<a class="headerlink" href="#spline-interpolation" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="spline-interpolation-config">
+<span id="spline-interpolation"></span><h1>Spline Interpolation<a class="headerlink" href="#spline-interpolation-config" title="Link to this heading">¶</a></h1>
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption – ADSORPTION_MODEL = SPLINE_INTERPOLATION</strong></p>
 <p>For information on model equations, refer to <a class="reference internal" href="../../modelling/binding/spline_interpolation.html#spline-interpolation"><span class="std std-ref">Spline Interpolation</span></a>.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></dt><dd><p>Selects kinetic or quasi-stationary adsorption mode: 1 = kinetic, 0 =
 quasi-stationary. If a single value is given, the mode is set for all
 bound states. Otherwise, the adsorption mode is set for each bound
@@ -235,7 +236,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">INTERPOLATION_MODE</span></code></dt><dd><p>Selects the interpolation mode:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">INDEPENDENT</span></code>: each component’s equilibrium loading is an independent
@@ -253,7 +254,7 @@ Cartesian-product grid (see <a class="reference internal" href="../../modelling/
 </tr>
 </tbody>
 </table>
-<dl>
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">CP_VALS_COMP_XXX</span></code></dt><dd><p>Pore-phase concentration support points for component <code class="docutils literal notranslate"><span class="pre">XXX</span></code>.</p>
 <p><em>INDEPENDENT mode</em>: the 1D spline knots in strictly ascending order.</p>
 <p><em>COMPETITIVE_REGULAR_GRID mode</em>: sample values whose distinct entries define the axis
@@ -271,7 +272,7 @@ every combination of distinct per-component values must appear exactly once).</p
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">CS_VALS_COMP_XXX_BND_YYY</span></code></dt><dd><p>Solid-phase equilibrium loadings corresponding to <code class="docutils literal notranslate"><span class="pre">CP_VALS_COMP_XXX</span></code> for bound state <code class="docutils literal notranslate"><span class="pre">YYY</span></code> of component <code class="docutils literal notranslate"><span class="pre">XXX</span></code>.</p>
 </dd>
 </dl>
@@ -284,7 +285,7 @@ every combination of distinct per-component values must appear exactly once).</p
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SPLINE_KKIN</span></code></dt><dd><p>Linear-driving-force coefficients in component-major ordering.</p>
 </dd>
 </dl>
@@ -297,7 +298,7 @@ every combination of distinct per-component values must appear exactly once).</p
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">POROSITY_FACTOR</span></code></dt><dd><p>Optional scaling factor applied to the predicted equilibrium loading. This can be
 used to account for porosity differences or unit conversions between the training
 data and the simulation conditions. A single value is shared by all bound states;
@@ -327,7 +328,7 @@ Defaults to 1.0 if not present.</p>
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/binding/spline_interpolation.rst.txt"
+      <a href="../../_sources/interface/binding/spline_interpolation.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

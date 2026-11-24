@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/unit_operations/cstr.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,8 +217,8 @@
 
 
 
-  <section id="continuous-stirred-tank-reactor-model">
-<span id="cstr-config"></span><h1>Continuous stirred tank reactor model<a class="headerlink" href="#continuous-stirred-tank-reactor-model" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="cstr-config">
+<span id="continuous-stirred-tank-reactor-model"></span><h1>Continuous stirred tank reactor model<a class="headerlink" href="#cstr-config" title="Link to this heading">¶</a></h1>
 <section id="group-input-model-unit-xxx-unit-type-cstr">
 <h2>Group /input/model/unit_XXX - UNIT_TYPE = CSTR<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-cstr" title="Link to this heading">¶</a></h2>
 <p>For information on model equations, refer to <a class="reference internal" href="../../modelling/unit_operations/cstr.html#cstr-model"><span class="std std-ref">Continuous stirred tank reactor model (CSTR)</span></a>.</p>
@@ -502,7 +503,7 @@ The spatial discretization of a general rate particle type is given in its own g
 </section>
 <section id="group-input-model-unit-xxx-liquid-reaction-yyy">
 <h2>Group /input/model/unit_XXX/liquid_reaction_YYY<a class="headerlink" href="#group-input-model-unit-xxx-liquid-reaction-yyy" title="Link to this heading">¶</a></h2>
-<p>Each bulk liquid phase reaction is specified in another subgroup <cite>liquid_reaction_YYY</cite>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.
+<p>Each bulk liquid phase reaction is specified in another subgroup <code class="docutils literal notranslate"><span class="pre">liquid_reaction_YYY</span></code>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.
 Solid phase and cross-phase reactions are placed in the group of the respective particle type.</p>
 </section>
 </section>
@@ -519,7 +520,7 @@ Solid phase and cross-phase reactions are placed in the group of the respective 
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/unit_operations/cstr.rst.txt"
+      <a href="../../_sources/interface/unit_operations/cstr.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

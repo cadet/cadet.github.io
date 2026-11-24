@@ -11,7 +11,8 @@
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/spatial_discretization_methods.html" />
     <link rel="icon" href="../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -216,7 +217,7 @@
 
 
 
-  <section id="spatial-discretization-methods">
+  <section class="tex2jax_ignore mathjax_ignore" id="spatial-discretization-methods">
 <span id="id1"></span><h1>Spatial discretization methods<a class="headerlink" href="#spatial-discretization-methods" title="Link to this heading">¶</a></h1>
 <section id="group-input-model-unit-xxx-discretization-spatial-method-details-on-the-methods">
 <h2>Group /input/model/unit_XXX/discretization/SPATIAL_METHOD - Details on the methods<a class="headerlink" href="#group-input-model-unit-xxx-discretization-spatial-method-details-on-the-methods" title="Link to this heading">¶</a></h2>
@@ -225,7 +226,7 @@ While both methods approximate the same solution to the underlying models, they 
 Generally, FV can perform better for small problem sizes and solutions with steep gradients, while DG excels for large problem sizes and smooth solutions.</p>
 <p>In the following, we give a brief introduction to the numerical theory w.r.t. the computational performance of the methods.
 Based on that theory and our experience, we give advice on which method to use in which scenario, how to identify the computationally best performing method, and how to specify discretization parameters.
-For a comprehensive description of the FV and DG variants that are implemented in CADET, we refer to our publications on <a class="reference external" href="https://doi.org/10.1016/j.compchemeng.2010.03.008">CADET-FV</a>  and <a class="reference external" href="https://doi.org/10.1016/j.compchemeng.2023.108340">CADET-DG</a>.</p>
+For a comprehensive description of the FV and DG variants that are implemented in CADET, we refer to our publications on <a class="reference external" href="https://doi.org/10.1016/j.compchemeng.2010.03.008">CADET-FV</a> and <a class="reference external" href="https://doi.org/10.1016/j.compchemeng.2023.108340">CADET-DG</a>.</p>
 </section>
 <section id="discrete-system-size">
 <h2>Discrete system size<a class="headerlink" href="#discrete-system-size" title="Link to this heading">¶</a></h2>
@@ -334,7 +335,7 @@ If the solution is desired on a different grid, element-wise polynomial interpol
       &#169;2008-2026.
       
       |
-      <a href="../_sources/interface/spatial_discretization_methods.rst.txt"
+      <a href="../_sources/interface/spatial_discretization_methods.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

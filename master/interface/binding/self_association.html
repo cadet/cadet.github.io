@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/binding/self_association.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,11 +217,11 @@
 
 
 
-  <section id="self-association">
-<span id="self-association-config"></span><h1>Self Association<a class="headerlink" href="#self-association" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="self-association-config">
+<span id="self-association"></span><h1>Self Association<a class="headerlink" href="#self-association-config" title="Link to this heading">¶</a></h1>
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption – ADSORPTION_MODEL = SELF_ASSOCIATION</strong></p>
 <p>For information on model equations, refer to <a class="reference internal" href="../../modelling/binding/self_association.html#self-association-model"><span class="std std-ref">Self Association</span></a>.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></dt><dd><p>Selects kinetic or quasi-stationary adsorption mode: 1 = kinetic, 0 =
 quasi-stationary. If a single value is given, the mode is set for all
 bound states. Otherwise, the adsorption mode is set for each bound
@@ -235,7 +236,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SAI_KA1</span></code></dt><dd><p>Adsorption rate constants</p>
 </dd>
 </dl>
@@ -248,7 +249,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SAI_KA2</span></code></dt><dd><p>Adsorption rate constants</p>
 </dd>
 </dl>
@@ -261,7 +262,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SAI_KD</span></code></dt><dd><p>Desorption rate constants</p>
 </dd>
 </dl>
@@ -274,7 +275,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SAI_NU</span></code></dt><dd><p>Characteristic charges <span class="math notranslate nohighlight">\(\nu\)</span> of the protein</p>
 </dd>
 </dl>
@@ -286,7 +287,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SAI_SIGMA</span></code></dt><dd><p>Steric factors <span class="math notranslate nohighlight">\(\sigma\)</span> of the protein</p>
 </dd>
 </dl>
@@ -298,7 +299,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SAI_LAMBDA</span></code></dt><dd><p>Stationary phase capacity (monovalent salt counterions); The total
 number of binding sites available on the resin surface</p>
 </dd>
@@ -312,7 +313,7 @@ number of binding sites available on the resin surface</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SAI_REFC0</span></code></dt><dd><p>Reference liquid phase concentration (optional, defaults to
 <span class="math notranslate nohighlight">\(1.0\)</span>)</p>
 </dd>
@@ -326,7 +327,7 @@ number of binding sites available on the resin surface</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SAI_REFQ</span></code></dt><dd><p>Reference solid phase concentration (optional, defaults to
 <span class="math notranslate nohighlight">\(1.0\)</span>)</p>
 </dd>
@@ -354,7 +355,7 @@ number of binding sites available on the resin surface</p>
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/binding/self_association.rst.txt"
+      <a href="../../_sources/interface/binding/self_association.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

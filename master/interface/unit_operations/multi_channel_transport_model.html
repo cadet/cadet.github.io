@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/unit_operations/multi_channel_transport_model.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,8 +217,8 @@
 
 
 
-  <section id="multichannel-transport-model-mct-model">
-<span id="multi-channel-transport-model-config"></span><h1>Multichannel Transport model (MCT model)<a class="headerlink" href="#multichannel-transport-model-mct-model" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="multi-channel-transport-model-config">
+<span id="multichannel-transport-model-mct-model"></span><h1>Multichannel Transport model (MCT model)<a class="headerlink" href="#multi-channel-transport-model-config" title="Link to this heading">¶</a></h1>
 <section id="group-input-model-unit-xxx-unit-type-multi-channel-transport">
 <h2>Group /input/model/unit_XXX - UNIT_TYPE = MULTI_CHANNEL_TRANSPORT<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-multi-channel-transport" title="Link to this heading">¶</a></h2>
 <p>For information on model equations, refer to <a class="reference internal" href="../../modelling/unit_operations/multi_channel_transport_model.html#multi-channel-transport-model-model"><span class="std std-ref">Multichannel Transport model (MCT model)</span></a>.</p>
@@ -286,7 +287,7 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION</span></code></p>
 <blockquote>
-<div><p>Axial dispersion coefficient.  In case of a spatially inhomogeneous setting, the <span class="math notranslate nohighlight">\(\texttt{SENS_PARTYPE}\)</span> field is used for indexing the channel when specifying parameter sensitivities.</p>
+<div><p>Axial dispersion coefficient. In case of a spatially inhomogeneous setting, the <span class="math notranslate nohighlight">\(\texttt{SENS_PARTYPE}\)</span> field is used for indexing the channel when specifying parameter sensitivities.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}^{2}\,\mathrm{s}^{-1}\)</span></p>
 <table class="docutils align-default">
 <tbody>
@@ -299,9 +300,7 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_MULTIPLEX</span></code></p>
 <blockquote>
-<div><blockquote>
-<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is treated as component-, channel-, and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span>.  Valid modes are:</p>
-</div></blockquote>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is treated as component-, channel-, and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span>. Valid modes are:</p>
 <ol class="arabic simple" start="0">
 <li><p>Component-independent, channel-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is 1</p></li>
 <li><p>Component-independent, channel-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCHANNEL}\)</span></p></li>
@@ -312,8 +311,7 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 <li><p>Component-dependent, channel-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
 <li><p>Component-dependent, channel-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NCHANNEL} \cdot \texttt{NSEC}\)</span>; ordering is section-channel-major</p></li>
 </ol>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 7 \}\)</span></p></td>
@@ -321,7 +319,6 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">BED_LENGTH</span></code></p>
 <blockquote>
@@ -340,7 +337,7 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 <blockquote>
 <div><p>Velocity</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\,\mathrm{s}^{-1}\)</span></p>
-<p>Optional; if left out, the velocity is inferred from the volumetric flow rates of the network connections. Indicates flow direction in each channel (forward if value is positive, backward if value is negative), see Section <a class="reference internal" href="../../modelling/unit_operations/2d_general_rate_model.html#muopgrmflow2d"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>.  In case of a spatially inhomogeneous setting, the <span class="math notranslate nohighlight">\(\texttt{SENS_PARTYPE}\)</span> field is used for indexing the channel when specifying parameter sensitivities.</p>
+<p>Optional; if left out, the velocity is inferred from the volumetric flow rates of the network connections. Indicates flow direction in each channel (forward if value is positive, backward if value is negative), see Section <a class="reference internal" href="../../modelling/unit_operations/2d_general_rate_model.html#muopgrmflow2d"><span class="std std-ref">Specification of flow rate / velocity and direction</span></a>. In case of a spatially inhomogeneous setting, the <span class="math notranslate nohighlight">\(\texttt{SENS_PARTYPE}\)</span> field is used for indexing the channel when specifying parameter sensitivities.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -352,17 +349,14 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">VELOCITY_MULTIPLEX</span></code></p>
 <blockquote>
-<div><blockquote>
-<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is treated as channel- and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span>.  Valid modes are:</p>
-</div></blockquote>
+<div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span>. Determines whether <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is treated as channel- and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span>. Valid modes are:</p>
 <ol class="arabic simple" start="0">
 <li><p>Channel-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is 1</p></li>
 <li><p>Channel-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCHANNEL}\)</span></p></li>
 <li><p>Section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NSEC}\)</span></p></li>
 <li><p>Channel-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{VELOCITY}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCHANNEL} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
 </ol>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 3 \}\)</span></p></td>
@@ -370,7 +364,6 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">EXCHANGE_MODEL</span></code></p>
 <blockquote>
@@ -391,7 +384,6 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">EXCHANGE_MATRIX</span></code></p>
 <blockquote>
-<div><blockquote>
 <div><p>Exchange matrix</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{s}^{-1}\)</span></p>
 <p>Ordered list containing all exchange rates <span class="math notranslate nohighlight">\(e^k_{ij}\)</span> for component <span class="math notranslate nohighlight">\(k\)</span> from compartment <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(j\)</span> based on the exchange matrix <span class="math notranslate nohighlight">\(E^k\)</span>. The vector ordering is source channel - destination channel - component (i.e. i-j-k) major.</p>
@@ -403,13 +395,11 @@ e^k_{21} &amp; \ddots &amp; &amp; \vdots\\
 e^k_{N1} &amp; \dots &amp; e^k_{N(N-1)} &amp; 0
 \end{bmatrix}\end{split}\]</div>
 <p>For addressing the exchange rates as a parameter sensitivity, the mapping is as follows:</p>
-</div></blockquote>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\texttt{SENS_BOUNDPHASE}\)</span> <em>Channel from</em></p></li>
 <li><p><span class="math notranslate nohighlight">\(\texttt{SENS_PARTYPE}\)</span> <em>Channel to</em></p></li>
 </ul>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -418,8 +408,7 @@ e^k_{N1} &amp; \dots &amp; e^k_{N(N-1)} &amp; 0
 </tbody>
 </table>
 </div></blockquote>
-</div></blockquote>
-<dl>
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">SATURATION_MATRIX</span></code></dt><dd><p>Maximum exchange saturation matrix (optional)
 Only when using the Langmuir Exchange model.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{channel}}^{-3}\)</span></p>
@@ -468,7 +457,7 @@ This parameter determines the saturation limit for the Langmuir-type exchange ki
 </section>
 <section id="group-input-model-unit-xxx-liquid-reaction-yyy">
 <h2>Group /input/model/unit_XXX/liquid_reaction_YYY<a class="headerlink" href="#group-input-model-unit-xxx-liquid-reaction-yyy" title="Link to this heading">¶</a></h2>
-<p>Each reaction is specified in another subgroup <cite>liquid_reaction_YYY</cite>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.</p>
+<p>Each reaction is specified in another subgroup <code class="docutils literal notranslate"><span class="pre">liquid_reaction_YYY</span></code>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.</p>
 </section>
 <section id="group-input-model-unit-xxx-discretization-unit-type-multi-channel-transport">
 <h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE = MULTI_CHANNEL_TRANSPORT<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-multi-channel-transport" title="Link to this heading">¶</a></h2>
@@ -498,16 +487,13 @@ This parameter determines the saturation limit for the Langmuir-type exchange ki
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">LINEAR_SOLVER_BULK</span></code></p>
 <blockquote>
-<div><blockquote>
-<div><p>Linear solver used for the sparse column bulk block. This field is optional, the best available method is selected (i.e., sparse direct solver if possible).  Valid values are:</p>
-</div></blockquote>
+<div><p>Linear solver used for the sparse column bulk block. This field is optional, the best available method is selected (i.e., sparse direct solver if possible). Valid values are:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\texttt{DENSE}\)</span> Converts the sparse matrix into a banded matrix and uses regular LAPACK. Slow and memory intensive, but always available.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\texttt{UMFPACK}\)</span> Uses the UMFPACK sparse direct solver (LU decomposition) from SuiteSparse. Fast, but has to be enabled when compiling and requires UMFPACK library.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\texttt{SUPERLU}\)</span> Uses the SuperLU sparse direct solver (LU decomposition). Fast, but has to be enabled when compiling and requires SuperLU library.</p></li>
 </ul>
-<blockquote>
-<div><table class="docutils align-default">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{\texttt{DENSE},\texttt{UMFPACK},\texttt{SUPERLU}\}\)</span></p></td>
@@ -515,7 +501,6 @@ This parameter determines the saturation limit for the Langmuir-type exchange ki
 </tr>
 </tbody>
 </table>
-</div></blockquote>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">RECONSTRUCTION</span></code></p>
 <blockquote>
@@ -545,7 +530,7 @@ This parameter determines the saturation limit for the Langmuir-type exchange ki
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/unit_operations/multi_channel_transport_model.rst.txt"
+      <a href="../../_sources/interface/unit_operations/multi_channel_transport_model.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

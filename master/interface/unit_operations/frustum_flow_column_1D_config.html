@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/unit_operations/frustum_flow_column_1D_config.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,8 +217,8 @@
 
 
 
-  <section id="frustum-flow-column-1d">
-<span id="frustum-flow-column-1d-config"></span><h1>Frustum Flow Column 1D<a class="headerlink" href="#frustum-flow-column-1d" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="frustum-flow-column-1d-config">
+<span id="frustum-flow-column-1d"></span><h1>Frustum Flow Column 1D<a class="headerlink" href="#frustum-flow-column-1d-config" title="Link to this heading">¶</a></h1>
 <section id="group-input-model-unit-xxx-unit-type-column-model-1d">
 <h2>Group /input/model/unit_XXX - UNIT_TYPE - COLUMN_MODEL_1D<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-column-model-1d" title="Link to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">UNIT_TYPE</span></code></p>
@@ -336,7 +337,7 @@ If set to 1, the flow is from the larger radius to the smaller radius.</p>
 <blockquote>
 <div><p>Volume fractions of the particle types.
 The volume fractions can be set for all axial cells together or for each individual axial cell.
-For each cell, the volume fractions have to sum to <span class="math notranslate nohighlight">\(1\)</span>. In case of a spatially inhomogeneous setting, the data is expected in cell-major ordering and the <span class="math notranslate nohighlight">\(\texttt{SENS_SECTION}\)</span> field is used for indexing the axial cell when specifying parameter sensitivities.  This field is optional in case of only one particle type.</p>
+For each cell, the volume fractions have to sum to <span class="math notranslate nohighlight">\(1\)</span>. In case of a spatially inhomogeneous setting, the data is expected in cell-major ordering and the <span class="math notranslate nohighlight">\(\texttt{SENS_SECTION}\)</span> field is used for indexing the axial cell when specifying parameter sensitivities. This field is optional in case of only one particle type.</p>
 <table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
@@ -362,7 +363,7 @@ For each cell, the volume fractions have to sum to <span class="math notranslate
 <p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_MULTIPLEX</span></code></p>
 <blockquote>
 <div><p>Multiplexing mode of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span>.
-Determines whether <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is treated as component- and/or section-independent.  This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span>.  Valid modes are:</p>
+Determines whether <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is treated as component- and/or section-independent. This field is optional. When left out, multiplexing behavior is inferred from the length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span>. Valid modes are:</p>
 <ol class="arabic simple" start="0">
 <li><p>Component-independent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(1\)</span></p></li>
 <li><p>Component-dependent, section-independent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP}\)</span></p></li>
@@ -420,11 +421,11 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </section>
 <section id="group-input-model-unit-xxx-liquid-reaction-yyy">
 <h2>Group /input/model/unit_XXX/liquid_reaction_YYY<a class="headerlink" href="#group-input-model-unit-xxx-liquid-reaction-yyy" title="Link to this heading">¶</a></h2>
-<p>Each reaction is specified in another subgroup <cite>liquid_reaction_YYY</cite>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.</p>
+<p>Each reaction is specified in another subgroup <code class="docutils literal notranslate"><span class="pre">liquid_reaction_YYY</span></code>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.</p>
 </section>
 <section id="group-input-model-unit-xxx-particle-type-xxx">
 <h2>Group /input/model/unit_XXX/particle_type_XXX<a class="headerlink" href="#group-input-model-unit-xxx-particle-type-xxx" title="Link to this heading">¶</a></h2>
-<p>Each particle type is specified in another subgroup <cite>particle_type_XXX</cite>, see <a class="reference internal" href="particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
+<p>Each particle type is specified in another subgroup <code class="docutils literal notranslate"><span class="pre">particle_type_XXX</span></code>, see <a class="reference internal" href="particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
 </section>
 <section id="group-input-model-unit-xxx-discretization-unit-type-column-model-1d">
 <h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE - COLUMN_MODEL_1D<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-column-model-1d" title="Link to this heading">¶</a></h2>
@@ -552,7 +553,7 @@ For further information on discretization parameters, see also <a class="referen
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/unit_operations/frustum_flow_column_1D_config.rst.txt"
+      <a href="../../_sources/interface/unit_operations/frustum_flow_column_1D_config.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

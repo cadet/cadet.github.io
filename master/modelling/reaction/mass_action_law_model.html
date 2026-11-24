@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/reaction/mass_action_law_model.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -50,7 +51,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Reaction models</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="index.html#cross-phase-reaction-models">Cross phase reaction models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="index.html#application-examples">Application examples</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html#dependence-on-external-function">Dependence on external function</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#dependence-on-external-function-react">Dependence on external function</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
@@ -209,8 +210,8 @@
 
 
 
-  <section id="mass-action-law">
-<span id="mass-action-law-model"></span><h1>Mass Action Law<a class="headerlink" href="#mass-action-law" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="mass-action-law-model">
+<span id="mass-action-law"></span><h1>Mass Action Law<a class="headerlink" href="#mass-action-law-model" title="Link to this heading">¶</a></h1>
 <p>The mass action law reaction model is suitable for broad range of reactions.
 Note that the concentrations are directly used for calculating the fluxes.
 Hence, the model only holds for dilute solutions under the assumption of a well-stirred reaction vessel.
@@ -238,7 +239,7 @@ The matrices <span class="math notranslate nohighlight">\(E_{\mathrm{fwd}} = (e_
 <p>This model applies to reactions occurring within a single phase (liquid, particle liquid, or solid phase) only.</p>
 <p>For reactions involving multiple phases, see <a class="reference internal" href="../../interface/reaction/mass_action_law.html#mass-action-law-config"><span class="std std-ref">Mass Action Law</span></a>.</p>
 </section>
-<section id="correlation-of-forward-and-backward-rate-constants">
+<section class="tex2jax_ignore mathjax_ignore" id="correlation-of-forward-and-backward-rate-constants">
 <h1>Correlation of forward- and backward rate constants<a class="headerlink" href="#correlation-of-forward-and-backward-rate-constants" title="Link to this heading">¶</a></h1>
 <p>Note that forward rate constant <span class="math notranslate nohighlight">\(k_{\mathrm{fwd},j}\)</span> and backward
 rate constant <span class="math notranslate nohighlight">\(k_{\mathrm{bwd},j}\)</span> of reaction <span class="math notranslate nohighlight">\(j\)</span> are
@@ -277,7 +278,7 @@ The parameters can be decoupled by reparameterization:</p>
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/modelling/reaction/mass_action_law_model.rst.txt"
+      <a href="../../_sources/modelling/reaction/mass_action_law_model.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

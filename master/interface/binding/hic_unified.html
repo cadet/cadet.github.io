@@ -11,7 +11,8 @@
     <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/binding/hic_unified.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -216,11 +217,11 @@
 
 
 
-  <section id="hic-unified">
-<span id="hic-unified-config"></span><h1>HIC Unified<a class="headerlink" href="#hic-unified" title="Link to this heading">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="hic-unified-config">
+<span id="hic-unified"></span><h1>HIC Unified<a class="headerlink" href="#hic-unified-config" title="Link to this heading">¶</a></h1>
 <p><strong>Group /input/model/unit_XXX/particle_type_ZZZ/adsorption – ADSORPTION_MODEL = HIC_UNIFIED</strong></p>
 <p>For information on model equations, refer to <a class="reference internal" href="../../modelling/binding/hic_unified.html#hic-unified-model"><span class="std std-ref">HIC Unified</span></a>.</p>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">IS_KINETIC</span></code></dt><dd><p>Selects kinetic or quasi-stationary adsorption mode: 1 = kinetic, 0 =
 quasi-stationary. If a single value is given, the mode is set for all
 bound states. Otherwise, the adsorption mode is set for each bound
@@ -235,7 +236,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICUNI_KA</span></code></dt><dd><p>Adsorption rate constant</p>
 </dd>
 </dl>
@@ -248,7 +249,7 @@ state separately.</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICUNI_KA_LIN</span></code></dt><dd><p>Coefficient of linear dependence of adsorption rate constant on
 modifier component</p>
 </dd>
@@ -261,7 +262,7 @@ modifier component</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICUNI_KD</span></code></dt><dd><p>Desorption rate constant</p>
 </dd>
 </dl>
@@ -274,7 +275,7 @@ modifier component</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICUNI_KS</span></code></dt><dd><p>Salt coefficient of adsorption; difference of
 water-protein and salt-protein interactions</p>
 </dd>
@@ -286,7 +287,7 @@ water-protein and salt-protein interactions</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICUNI_KP</span></code></dt><dd><p>Protein coefficient of adsorption; difference of
 water-protein and protein-protein interactions</p>
 </dd>
@@ -299,7 +300,7 @@ water-protein and protein-protein interactions</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICUNI_NU</span></code></dt><dd><p>Number of ligands per ligand-protein interaction</p>
 </dd>
 </dl>
@@ -312,7 +313,7 @@ water-protein and protein-protein interactions</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICUNI_NU_LIN</span></code></dt><dd><p>Coefficient of linear dependence of number of ligands per ligand-protein interaction
 on modifier component</p>
 </dd>
@@ -325,7 +326,7 @@ on modifier component</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICUNI_EPSILON</span></code></dt><dd><p>Empirical coefficient of interaction between bound molecules</p>
 </dd>
 </dl>
@@ -337,7 +338,7 @@ on modifier component</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICUNI_QMAX</span></code></dt><dd><p>Maximum binding capacity</p>
 </dd>
 </dl>
@@ -350,7 +351,7 @@ on modifier component</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICUNI_BETA0</span></code></dt><dd><p>Parameters describing the number of highly ordered water molecules
 that stabilize the hydrophobic surfaces at infinitely diluted
 salt concentration</p>
@@ -365,7 +366,7 @@ salt concentration</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICUNI_BETA1</span></code></dt><dd><p>Parameters describing the change in the number of highly ordered
 water molecules that stabilize the hydrophobic surfaces with
 respect to changes in the salt concentration</p>
@@ -380,7 +381,7 @@ respect to changes in the salt concentration</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICUNI_REFC1</span></code></dt><dd><p>Reference for component 1 (optional, defaults to <span class="math notranslate nohighlight">\(0.0\)</span>)</p>
 </dd>
 </dl>
@@ -392,7 +393,7 @@ respect to changes in the salt concentration</p>
 </tr>
 </tbody>
 </table>
-<dl class="simple">
+<dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">HICUNI_RHO</span></code></dt><dd><p>Osmotic effect of <span class="math notranslate nohighlight">\(c_0\)</span> on the water activity,
 calculated as osmotic_coefficient * molar_weight_of_water * ion_number
 (optional, defaults to <span class="math notranslate nohighlight">\(3.35 * 10^{-5}\)</span>)</p>
@@ -421,7 +422,7 @@ calculated as osmotic_coefficient * molar_weight_of_water * ion_number
       &#169;2008-2026.
       
       |
-      <a href="../../_sources/interface/binding/hic_unified.rst.txt"
+      <a href="../../_sources/interface/binding/hic_unified.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

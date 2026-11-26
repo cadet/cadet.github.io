@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Activated Sludge Model (ASM3h) &#8212; CADET</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://cadet.github.io/v5.1.X/modelling/reaction/activated_sludge_model.html" />
+    <link rel="icon" href="../../_static/cadet_icon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Mass Action Law" href="mass_action_law_model.html" />
+    <link rel="prev" title="Reaction models" href="index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+
+
+
+<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Modelling</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../unit_operations/index.html">Unit operation models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Reaction models</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#cross-phase-reaction-models">Cross phase reaction models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#application-examples">Application examples</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#dependence-on-external-function-react">Dependence on external function</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crystallization/index.html">Crystallization / Precipitation Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameter_dependencies.html">Parameter Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../interface/index.html">Interface specifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
+</ul>
+
+
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+<h3>Releases</h3>
+<ul>
+  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
+  <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
+  <li><a href="../../../v5.0.0/index.html">v5.0.0</a></li>
+  <li><a href="../../../v5.0.1/index.html">v5.0.1</a></li>
+  <li><a href="../../../v5.0.2/index.html">v5.0.2</a></li>
+  <li><a href="../../../v5.0.3/index.html">v5.0.3</a></li>
+  <li><a href="../../../v5.0.4/index.html">v5.0.4</a></li>
+  <li><a href="../../../v5.1.0/index.html">v5.1.0</a></li>
+  <li><a href="../../../v5.1.1/index.html">v5.1.1</a></li>
+  <li><a href="../../../v5.1.2/index.html">v5.1.2</a></li>
+  <li><a href="../../../v6.0.0a1/index.html">v6.0.0a1</a></li>
+  <li><a href="../../../v6.0.0a3/index.html">v6.0.0a3</a></li>
+  <li><a href="../../../v6.0.0a4/index.html">v6.0.0a4</a></li>
+  <li><a href="../../../v6.0.0a5/index.html">v6.0.0a5</a></li>
+</ul>
+<h3>Branches</h3>
+<ul>
+  <li><a href="activated_sludge_model.html">master</a></li>
+  <li><a href="../../../v5.1.X/index.html">v5.1.X</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+
+
+
+
+
+
+
+  
+    
+    
+  
+    
+    
+      
+      
+      
+        
+        
+        
+          
+          
+          
+        
+      
+    
+  
+
+
+
+
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><strong>
+  You're reading the documentation for a development version.
+  
+    For the latest stable documentation, please have a look at <a href="../../../v5.1.X/index.html">v5.1.X</a>.
+  
+  
+</strong></p>
+
+
+
+
+  <section class="tex2jax_ignore mathjax_ignore" id="activated-sludge-model">
+<span id="activated-sludge-model-asm3h"></span><h1>Activated Sludge Model (ASM3h)<a class="headerlink" href="#activated-sludge-model" title="Link to this heading">¶</a></h1>
+<p>The Activated Sludge Model 3 extended (ASM3h) is a comprehensive reaction model for simulating biological
+wastewater treatment processes. It belongs to the Activated Sludge Models (ASM) family, a set of standardized
+models developed by the International Water Association (IWA). The ASM3h model describes the fate of 13
+biochemical components in wastewater treatment systems.</p>
+<section id="model-components">
+<h2>Model Components<a class="headerlink" href="#model-components" title="Link to this heading">¶</a></h2>
+<p>The ASM3h model tracks 13 biochemical components representing species and compounds in wastewater:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Abbreviation</p></th>
+<th class="head"><p>Component</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(S_O\)</span></p></td>
+<td><p>Dissolved oxygen</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(S_S\)</span></p></td>
+<td><p>Readily biodegradable substrate</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(S_{NH}\)</span></p></td>
+<td><p>Ammonium</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(S_{NO}\)</span></p></td>
+<td><p>Nitrite and nitrate</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(S_{N2}\)</span></p></td>
+<td><p>Dinitrogen, released by denitrification</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(S_{ALK}\)</span></p></td>
+<td><p>Alkalinity, bicarbonate</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(S_I\)</span></p></td>
+<td><p>Soluble inert organic</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(X_I\)</span></p></td>
+<td><p>Inert Particulate organic</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(X_S\)</span></p></td>
+<td><p>Slowly biodegradable substrate</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(X_H\)</span></p></td>
+<td><p>Heterotrophic biomass</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(X_{STO}\)</span></p></td>
+<td><p>Organics stored by heterotrophs</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(X_A\)</span></p></td>
+<td><p>Autotrophic, nitrifying biomass</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(X_{MI}\)</span></p></td>
+<td><p>Mineral particulate matter from biomass</p></td>
+</tr>
+</tbody>
+</table>
+<p>For the reaction equations, <span class="math notranslate nohighlight">\(c_i^\kappa\)</span> denotes the concentration of component <span class="math notranslate nohighlight">\(i\)</span> in the bulk (<span class="math notranslate nohighlight">\(\kappa=b\)</span>) or particle liquid (<span class="math notranslate nohighlight">\(\kappa=p\)</span>) phase.
+With fractionation, <span class="math notranslate nohighlight">\(S_S\)</span> and <span class="math notranslate nohighlight">\(S_I\)</span> are each split into adsorbable and non-adsorbable components, denoted by <span class="math notranslate nohighlight">\(S_{S,\mathrm{ad}}\)</span>, <span class="math notranslate nohighlight">\(S_{S,\mathrm{non-ad}}\)</span>, <span class="math notranslate nohighlight">\(S_{I,\mathrm{ad}}\)</span>, and <span class="math notranslate nohighlight">\(S_{I,\mathrm{non-ad}}\)</span>.
+The configuration names <code class="docutils literal notranslate"><span class="pre">SS</span></code> and <code class="docutils literal notranslate"><span class="pre">SI</span></code> refer to the non-adsorbable components when fractionation is enabled; in the rate equations, <span class="math notranslate nohighlight">\(c_{S_S}^\kappa = c_{S_S,\mathrm{non-ad}}^\kappa\)</span> and <span class="math notranslate nohighlight">\(c_{S_I}^\kappa = c_{S_I,\mathrm{non-ad}}^\kappa\)</span> in this case.
+Their phase-specific totals are</p>
+<div class="math notranslate nohighlight">
+\[c_{S_S,\mathrm{tot}}^\kappa = c_{S_S,\mathrm{non-ad}}^\kappa + c_{S_S,\mathrm{ad}}^\kappa, \qquad
+c_{S_I,\mathrm{tot}}^\kappa = c_{S_I,\mathrm{non-ad}}^\kappa + c_{S_I,\mathrm{ad}}^\kappa.\]</div>
+<p>Without fractionation, <span class="math notranslate nohighlight">\(c_{S_S,\mathrm{tot}}^\kappa = c_{S_S}^\kappa\)</span> and <span class="math notranslate nohighlight">\(c_{S_I,\mathrm{tot}}^\kappa = c_{S_I}^\kappa\)</span>.</p>
+<p>The net flux for each component is computed using the stoichiometric matrix <span class="math notranslate nohighlight">\(S\)</span> and a reaction rate
+vector <span class="math notranslate nohighlight">\(\varphi_j(c)\)</span>, where subscript <span class="math notranslate nohighlight">\(j\)</span> denotes the reaction index.
+The ASM3h model comprises twelve biochemical reactions and an aeration term, so <span class="math notranslate nohighlight">\(S \in \mathbb{R}^{13 \times 13}\)</span>.
+With fractionation, two further storage reactions act on the adsorbable substrate and two further components are
+tracked, giving <span class="math notranslate nohighlight">\(S \in \mathbb{R}^{15 \times 15}\)</span>. All reactions are detailed below.</p>
+</section>
+<section id="biochemical-reaction-equations">
+<h2>Biochemical Reaction Equations<a class="headerlink" href="#biochemical-reaction-equations" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Reaction Number</p></th>
+<th class="head"><p>Reaction Description</p></th>
+<th class="head"><p>Rate Equation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(r_1\)</span></p></td>
+<td><p>Hydrolysis of organic structures</p></td>
+<td><p><span class="math notranslate nohighlight">\(k_{h,20} \cdot f_T^{0.04} \cdot \frac{c_{X_S}^\kappa/c_{X_H}^\kappa}{c_{X_S}^\kappa/c_{X_H}^\kappa + K_X} \cdot c_{X_H}^\kappa\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(r_2\)</span></p></td>
+<td><p>Aerobic storage of <span class="math notranslate nohighlight">\(S_S\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(k_{STO} \cdot \frac{c_{S_O}^\kappa}{c_{S_O}^\kappa + K_{h,O2}} \cdot \frac{c_{S_S}^\kappa}{c_{S_S,\mathrm{tot}}^\kappa + K_{h,SS}} \cdot c_{X_H}^\kappa\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(r_3\)</span></p></td>
+<td><p>Anoxic storage of <span class="math notranslate nohighlight">\(S_S\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(k_{STO} \cdot \eta_{h,NO3} \cdot \frac{K_{h,O2}}{c_{S_O}^\kappa + K_{h,O2}} \cdot \frac{c_{S_{NO}}^\kappa}{c_{S_{NO}}^\kappa + K_{h,NO3}} \cdot \frac{c_{S_S}^\kappa}{c_{S_S,\mathrm{tot}}^\kappa + K_{h,SS}} \cdot c_{X_H}^\kappa\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(r_4\)</span></p></td>
+<td><p>Aerobic growth of <span class="math notranslate nohighlight">\(X_H\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mu_H \cdot \frac{c_{S_O}^\kappa}{c_{S_O}^\kappa + K_{h,O2}} \cdot \frac{c_{X_{STO}}^\kappa/c_{X_H}^\kappa}{c_{X_{STO}}^\kappa/c_{X_H}^\kappa + K_{h,STO}} \cdot \frac{c_{S_{NH}}^\kappa}{c_{S_{NH}}^\kappa + K_{h,NH4}} \cdot \frac{c_{S_{ALK}}^\kappa}{c_{S_{ALK}}^\kappa + K_{h,ALK}} \cdot c_{X_H}^\kappa\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(r_5\)</span></p></td>
+<td><p>Anoxic growth of <span class="math notranslate nohighlight">\(X_H\)</span> (denitrification)</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mu_H \cdot \eta_{h,NO3} \cdot \frac{K_{h,O2}}{c_{S_O}^\kappa + K_{h,O2}} \cdot \frac{c_{S_{NO}}^\kappa}{c_{S_{NO}}^\kappa + K_{h,NO3}} \cdot \frac{c_{X_{STO}}^\kappa/c_{X_H}^\kappa}{c_{X_{STO}}^\kappa/c_{X_H}^\kappa + K_{h,STO}} \cdot \frac{c_{S_{NH}}^\kappa}{c_{S_{NH}}^\kappa + K_{h,NH4}} \cdot \frac{c_{S_{ALK}}^\kappa}{c_{S_{ALK}}^\kappa + K_{h,ALK}} \cdot c_{X_H}^\kappa\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(r_6\)</span></p></td>
+<td><p>Aerobic endogenous respiration of <span class="math notranslate nohighlight">\(X_H\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(b_H \cdot \frac{c_{S_O}^\kappa}{c_{S_O}^\kappa + K_{h,O2}} \cdot c_{X_H}^\kappa\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(r_7\)</span></p></td>
+<td><p>Anoxic endogenous respiration of <span class="math notranslate nohighlight">\(X_H\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(b_H \cdot \eta_{h,end} \cdot \frac{K_{h,O2}}{c_{S_O}^\kappa + K_{h,O2}} \cdot \frac{c_{S_{NO}}^\kappa}{c_{S_{NO}}^\kappa + K_{h,NO3}} \cdot c_{X_H}^\kappa\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(r_8\)</span></p></td>
+<td><p>Aerobic respiration of internal cell storage products</p></td>
+<td><p><span class="math notranslate nohighlight">\(b_H \cdot \frac{c_{S_O}^\kappa}{c_{S_O}^\kappa + K_{h,O2}} \cdot c_{X_{STO}}^\kappa\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(r_9\)</span></p></td>
+<td><p>Anoxic respiration of internal cell storage products</p></td>
+<td><p><span class="math notranslate nohighlight">\(b_H \cdot \eta_{h,end} \cdot \frac{K_{h,O2}}{c_{S_O}^\kappa + K_{h,O2}} \cdot \frac{c_{S_{NO}}^\kappa}{c_{S_{NO}}^\kappa + K_{h,NO3}} \cdot c_{X_{STO}}^\kappa\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(r_{10}\)</span></p></td>
+<td><p>Aerobic growth of <span class="math notranslate nohighlight">\(X_A\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mu_{AUT} \cdot \frac{c_{S_O}^\kappa}{c_{S_O}^\kappa + K_{N,O2}} \cdot \frac{c_{S_{NH}}^\kappa}{c_{S_{NH}}^\kappa + K_{N,NH4}} \cdot \frac{c_{S_{ALK}}^\kappa}{c_{S_{ALK}}^\kappa + K_{N,ALK}} \cdot c_{X_A}^\kappa\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(r_{11}\)</span></p></td>
+<td><p>Aerobic endogenous respiration of <span class="math notranslate nohighlight">\(X_A\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(b_{AUT} \cdot \frac{c_{S_O}^\kappa}{c_{S_O}^\kappa + K_{h,O2}} \cdot c_{X_A}^\kappa\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(r_{12}\)</span></p></td>
+<td><p>Anoxic endogenous respiration of <span class="math notranslate nohighlight">\(X_A\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(b_{AUT} \cdot \eta_{N,end} \cdot \frac{K_{h,O2}}{c_{S_O}^\kappa + K_{h,O2}} \cdot \frac{c_{S_{NO}}^\kappa}{c_{S_{NO}}^\kappa + K_{h,NO3}} \cdot c_{X_A}^\kappa\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(r_{13}\)</span></p></td>
+<td><p>Aeration</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{iO_2}{V}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(r_{14}\)</span></p></td>
+<td><p>Aerobic storage of <span class="math notranslate nohighlight">\(S_{S,\mathrm{ad}}\)</span> (optional)</p></td>
+<td><p><span class="math notranslate nohighlight">\(k_{STO} \cdot \frac{c_{S_O}^\kappa}{c_{S_O}^\kappa + K_{h,O2}} \cdot \frac{c_{S_S,\mathrm{ad}}^\kappa}{c_{S_S,\mathrm{tot}}^\kappa + K_{h,SS}} \cdot c_{X_H}^\kappa\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(r_{15}\)</span></p></td>
+<td><p>Anoxic storage of <span class="math notranslate nohighlight">\(S_{S,\mathrm{ad}}\)</span> (optional)</p></td>
+<td><p><span class="math notranslate nohighlight">\(k_{STO} \cdot \eta_{h,NO3} \cdot \frac{K_{h,O2}}{c_{S_O}^\kappa + K_{h,O2}} \cdot \frac{c_{S_S,\mathrm{ad}}^\kappa}{c_{S_S,\mathrm{tot}}^\kappa + K_{h,SS}} \cdot \frac{c_{S_{NO}}^\kappa}{c_{S_{NO}}^\kappa + K_{h,NO3}} \cdot c_{X_H}^\kappa\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Reactions <span class="math notranslate nohighlight">\(r_{14}\)</span> and <span class="math notranslate nohighlight">\(r_{15}\)</span> are only active when 15 components are defined (including <span class="math notranslate nohighlight">\(S_{S,\mathrm{ad}}\)</span> and <span class="math notranslate nohighlight">\(S_{I,\mathrm{ad}}\)</span>).</p>
+<p>Note that the endogenous respiration of the autotrophs, <span class="math notranslate nohighlight">\(r_{11}\)</span> and <span class="math notranslate nohighlight">\(r_{12}\)</span>, uses the oxygen
+saturation coefficient of the heterotrophs, <span class="math notranslate nohighlight">\(K_{h,O2}\)</span>, and not <span class="math notranslate nohighlight">\(K_{N,O2}\)</span>.</p>
+</section>
+<section id="stoichiometric-matrix">
+<h2>Stoichiometric Matrix<a class="headerlink" href="#stoichiometric-matrix" title="Link to this heading">¶</a></h2>
+<p>The stoichiometric matrix <span class="math notranslate nohighlight">\(S\)</span> encodes the mass balance coefficients for each biochemical reaction:
+When fractionation is enabled, the <span class="math notranslate nohighlight">\(S_S\)</span> and <span class="math notranslate nohighlight">\(S_I\)</span> rows denote <span class="math notranslate nohighlight">\(S_{S,\mathrm{non-ad}}\)</span> and <span class="math notranslate nohighlight">\(S_{I,\mathrm{non-ad}}\)</span>, respectively.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component\Reaction</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(r_1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(r_2\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(r_3\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(r_4\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(r_5\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(r_6\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(r_7\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(r_8\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(r_9\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(r_{10}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(r_{11}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(r_{12}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(r_{13}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(r_{14}^*\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(r_{15}^*\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(S_O\)</span></p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(Y_{STO,aer} - 1\)</span></p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(1 - 1/Y_{H,aer}\)</span></p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(f_{XI} - 1\)</span></p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(-(64/14) \cdot 1/Y_A + 1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(f_{XI} - 1\)</span></p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(Y_{STO,aer} - 1\)</span></p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(S_S\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((1 - f_{SI})(1 - f_{SS,ad})\)</span></p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(S_{S,\mathrm{ad}}^*\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((1 - f_{SI}) \cdot f_{SS,ad}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(S_{NH}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(i_{N,XS} - i_{N,SI} \cdot f_{SI} - (1 - f_{SI}) \cdot i_{N,SS}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(i_{N,SS}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(i_{N,SS}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-i_{N,BM}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-i_{N,BM}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(i_{N,BM} - f_{XI} \cdot i_{N,XI}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(i_{N,BM} - f_{XI} \cdot i_{N,XI}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(-1/Y_A - i_{N,BM}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(i_{N,BM} - f_{XI} \cdot i_{N,XI}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(i_{N,BM} - f_{XI} \cdot i_{N,XI}\)</span></p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(i_{N,SS}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(i_{N,SS}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(S_{NO}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\((Y_{STO,anox} - 1) / (40/14)\)</span></p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\((1 - 1/Y_{H,anox}) / (40/14)\)</span></p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\((f_{XI} - 1) / (40/14)\)</span></p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(-14/40\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1/Y_A\)</span></p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\((f_{XI} - 1) / (40/14)\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\((Y_{STO,anox} - 1) / (40/14)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(S_{N2}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\((1 - Y_{STO,anox}) / (40/14)\)</span></p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\((1/Y_{H,anox} - 1) / (40/14)\)</span></p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\((1 - f_{XI}) / (40/14)\)</span></p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(14/40\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\((1 - f_{XI}) / (40/14)\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\((1 - Y_{STO,anox}) / (40/14)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(S_{ALK}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((i_{N,XS} - i_{N,SI} \cdot f_{SI} - (1 - f_{SI}) \cdot i_{N,SS})/14\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(i_{N,SS} / 14\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(i_{N,SS} / 14 - (Y_{STO,anox} - 1) / 40\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-i_{N,BM} / 14\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-i_{N,BM} / 14 - (1 - 1/Y_{H,anox}) / 40\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((i_{N,BM} - f_{XI} \cdot i_{N,XI}) / 14\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((i_{N,BM} - f_{XI} \cdot i_{N,XI}) / 14 - (f_{XI} - 1) / 40\)</span></p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(1/40\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-(1/Y_A) \cdot 1/7 - i_{N,BM}/14\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((i_{N,BM} - f_{XI} \cdot i_{N,XI}) / 14\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((i_{N,BM} - f_{XI} \cdot i_{N,XI})/14 - (f_{XI} - 1) / 40\)</span></p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(i_{N,SS} / 14\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(i_{N,SS} / 14 - (Y_{STO,anox} - 1) / 40\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(S_I\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(f_{SI}(1 - f_{SI,ad})\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(S_{I,\mathrm{ad}}^*\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(f_{SI} \cdot f_{SI,ad}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(X_I\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(f_{XI}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(f_{XI}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(f_{XI}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(f_{XI}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(X_S\)</span></p></td>
+<td><p>-1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(X_H\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(X_{STO}\)</span></p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(Y_{STO,aer}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(Y_{STO,anox}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1/Y_{H,aer}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-1/Y_{H,anox}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(Y_{STO,aer}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(Y_{STO,anox}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(X_A\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>-1</p></td>
+<td><p>-1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(X_{MI}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(f_{XMI,BM}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(f_{XMI,BM}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(f_{XMI,BM}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(f_{XMI,BM}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p><sup>*</sup> Optional: only active when 15 components are defined (<span class="math notranslate nohighlight">\(S_{S,\mathrm{ad}}\)</span> and <span class="math notranslate nohighlight">\(S_{I,\mathrm{ad}}\)</span>).</p>
+<p><img alt="Network representation of the ASM3h model." src="../../_images/ASM3h%2B.png" /></p>
+<p>Network representation of the ASM3h model.</p>
+</section>
+<section id="model-parameters">
+<h2>Model Parameters<a class="headerlink" href="#model-parameters" title="Link to this heading">¶</a></h2>
+<p>ASM3h supports sensitivities for kinetic rate constants, anoxic reduction factors, saturation/inhibition coefficients and temperature (<code class="docutils literal notranslate"><span class="pre">ASM3_T</span></code>), plus <code class="docutils literal notranslate"><span class="pre">ASM3_IO2</span></code> and <code class="docutils literal notranslate"><span class="pre">ASM3_V</span></code> when aeration is enabled.</p>
+<section id="stoichiometric-parameters">
+<h3>Stoichiometric Parameters<a class="headerlink" href="#stoichiometric-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(i_{N,SI}\)</span></p></td>
+<td><p>Nitrogen content of soluble inert organics</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~N~(g~COD)^{-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(i_{N,SS}\)</span></p></td>
+<td><p>Nitrogen content of readily biodegradable substrate</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~N~(g~COD)^{-1}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(i_{N,XI}\)</span></p></td>
+<td><p>Nitrogen content of inert particulate organics</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~N~(g~COD)^{-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(i_{N,XS}\)</span></p></td>
+<td><p>Nitrogen content of slowly biodegradable substrate</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~N~(g~COD)^{-1}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(i_{N,BM}\)</span></p></td>
+<td><p>Nitrogen content of biomass</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~N~(g~COD)^{-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(i_{VSS,BM}\)</span></p></td>
+<td><p>VSS to COD ratio for biomass</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~VSS~(g~COD)^{-1}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(i_{TSS/VSS,BM}\)</span></p></td>
+<td><p>TSS to VSS ratio for biomass</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~TSS~(g~VSS)^{-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(f_{SI}\)</span></p></td>
+<td><p>Fraction of <span class="math notranslate nohighlight">\(S_I\)</span> from hydrolysis</p></td>
+<td><p>dimensionless</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(f_{XI}\)</span></p></td>
+<td><p>Fraction of <span class="math notranslate nohighlight">\(X_I\)</span> from endogenous respiration</p></td>
+<td><p>dimensionless</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(f_{ISS,BM,prod}\)</span></p></td>
+<td><p>Fraction of ISS from biomass production</p></td>
+<td><p>dimensionless</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Y_{H,aer}\)</span></p></td>
+<td><p>Aerobic yield of heterotrophs</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~COD~(g~COD)^{-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(Y_{H,anox}\)</span></p></td>
+<td><p>Anoxic yield of heterotrophs</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~COD~(g~COD)^{-1}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Y_{STO,aer}\)</span></p></td>
+<td><p>Aerobic yield of storage</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~COD~(g~COD)^{-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(Y_{STO,anox}\)</span></p></td>
+<td><p>Anoxic yield of storage</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~COD~(g~COD)^{-1}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(Y_A\)</span></p></td>
+<td><p>Yield of autotrophs</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~COD~(g~N)^{-1}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>The mineral matter released per unit of biomass respired is derived from these:</p>
+<div class="math notranslate nohighlight">
+\[f_{XMI,BM} = f_{ISS,BM,prod} \cdot f_{XI} \cdot i_{VSS,BM} \cdot \left(i_{TSS/VSS,BM} - 1\right)\]</div>
+</section>
+<section id="kinetic-parameters">
+<h3>Kinetic Parameters<a class="headerlink" href="#kinetic-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(k_H\)</span></p></td>
+<td><p>Hydrolysis rate constant (20 °C)</p></td>
+<td><p><span class="math notranslate nohighlight">\(d^{-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(K_{STO}\)</span></p></td>
+<td><p>Maximum storage rate (20 °C)</p></td>
+<td><p><span class="math notranslate nohighlight">\(d^{-1}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\mu_H\)</span></p></td>
+<td><p>Heterotrophic max. growth rate (20 °C)</p></td>
+<td><p><span class="math notranslate nohighlight">\(d^{-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(b_H\)</span></p></td>
+<td><p>Rate constant for lysis and decay (20 °C)</p></td>
+<td><p><span class="math notranslate nohighlight">\(d^{-1}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\mu_{AUT}\)</span></p></td>
+<td><p>Autotrophic max. growth rate (20 °C)</p></td>
+<td><p><span class="math notranslate nohighlight">\(d^{-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(b_{AUT}\)</span></p></td>
+<td><p>Rate constant for decay of autotrophs (20 °C)</p></td>
+<td><p><span class="math notranslate nohighlight">\(d^{-1}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="anoxic-reduction-factors">
+<h3>Anoxic Reduction Factors<a class="headerlink" href="#anoxic-reduction-factors" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\eta_{HNO_3}\)</span></p></td>
+<td><p>Anoxic reduction factor for heterotrophic growth</p></td>
+<td><p>dimensionless</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\eta_{H,end}\)</span></p></td>
+<td><p>Anoxic reduction factor for endogenous respiration of <span class="math notranslate nohighlight">\(X_H\)</span></p></td>
+<td><p>dimensionless</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\eta_{N,end}\)</span></p></td>
+<td><p>Anoxic reduction factor for endogenous respiration of <span class="math notranslate nohighlight">\(X_A\)</span></p></td>
+<td><p>dimensionless</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="saturation-inhibition-coefficients">
+<h3>Saturation/Inhibition Coefficients<a class="headerlink" href="#saturation-inhibition-coefficients" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(K_X\)</span></p></td>
+<td><p>Saturation coefficient for particulate COD</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~COD~(g~COD)^{-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(K_{H,O_2}\)</span></p></td>
+<td><p>Saturation coefficient for oxygen (heterotrophs)</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~O_2~m^{-3}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(K_{H,SS}\)</span></p></td>
+<td><p>Saturation coefficient for readily biodegradable substrates</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~COD~m^{-3}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(K_{H,NO_3}\)</span></p></td>
+<td><p>Saturation coefficient for nitrate (heterotrophs)</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~N~m^{-3}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(K_{H,NH_4}\)</span></p></td>
+<td><p>Saturation coefficient for ammonium (nutrient)</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~N~m^{-3}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(K_{H,ALK}\)</span></p></td>
+<td><p>Saturation coefficient for alkalinity (heterotrophs)</p></td>
+<td><p><span class="math notranslate nohighlight">\(mol~m^{-3}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(K_{H,STO}\)</span></p></td>
+<td><p>Saturation coefficient for storage products</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~COD~(g~COD)^{-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(K_{N,O_2}\)</span></p></td>
+<td><p>Saturation coefficient for oxygen (autotrophs)</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~O_2~m^{-3}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(K_{N,NH_4}\)</span></p></td>
+<td><p>Saturation coefficient for ammonium (substrate)</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~N~m^{-3}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(K_{N,ALK}\)</span></p></td>
+<td><p>Saturation coefficient for alkalinity (autotrophs)</p></td>
+<td><p><span class="math notranslate nohighlight">\(mol~m^{-3}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="temperature-dependence">
+<h3>Temperature Dependence<a class="headerlink" href="#temperature-dependence" title="Link to this heading">¶</a></h3>
+<p>Kinetic rates are corrected for temperature using Arrhenius-type expressions:</p>
+<div class="math notranslate nohighlight">
+\[k(T) = k_{20} \cdot \exp\left(-\theta \cdot (20 - T)\right)\]</div>
+<p>with temperature coefficients:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\theta = 0.04\)</span> for hydrolysis</p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta = 0.06952\)</span> for heterotrophic processes (<span class="math notranslate nohighlight">\(K_{STO}\)</span>, <span class="math notranslate nohighlight">\(\mu_H\)</span>, <span class="math notranslate nohighlight">\(b_H\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\theta = 0.105\)</span> for autotrophic processes (<span class="math notranslate nohighlight">\(\mu_{AUT}\)</span>, <span class="math notranslate nohighlight">\(b_{AUT}\)</span>)</p></li>
+</ul>
+</section>
+<section id="optional-parameters">
+<h3>Optional Parameters<a class="headerlink" href="#optional-parameters" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(f_{SI,ad}\)</span></p></td>
+<td><p>Fraction of adsorbable <span class="math notranslate nohighlight">\(S_I\)</span></p></td>
+<td><p>dimensionless</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(f_{SS,ad}\)</span></p></td>
+<td><p>Fraction of adsorbable <span class="math notranslate nohighlight">\(S_S\)</span></p></td>
+<td><p>dimensionless</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(iO_2\)</span></p></td>
+<td><p>Aeration oxygen input rate</p></td>
+<td><p><span class="math notranslate nohighlight">\(g~O_2~m^{-3}~d^{-1}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(V\)</span></p></td>
+<td><p>Reactor volume (for aeration)</p></td>
+<td><p><span class="math notranslate nohighlight">\(m^3\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="configuration-in-cadet">
+<h2>Configuration in CADET<a class="headerlink" href="#configuration-in-cadet" title="Link to this heading">¶</a></h2>
+<p>For configuration details, see <a class="reference internal" href="../../interface/reaction/activated_sludge_model.html"><span class="std std-doc">Activated Sludge Model (ASM3h)</span></a>.</p>
+<blockquote>
+<div><p><strong>Warning</strong></p>
+<p>When using ASM3h in the liquid phase of a CSTR, the bulk liquid volume must remain constant throughout the simulation.
+To prescribe this volume, set the CSTR parameter <code class="docutils literal notranslate"><span class="pre">LIQUID_VOLUME</span></code>. In every section, the inlet flow rate must equal the sum of the outlet and filter flow rates.</p>
+</div></blockquote>
+<section id="aeration-strategy">
+<h3>Aeration Strategy<a class="headerlink" href="#aeration-strategy" title="Link to this heading">¶</a></h3>
+<p>The ASM3h model includes an aeration reaction (<span class="math notranslate nohighlight">\(r_{13}\)</span>) that is activated when both <code class="docutils literal notranslate"><span class="pre">ASM3_IO2</span></code> and <code class="docutils literal notranslate"><span class="pre">ASM3_V</span></code> are set.
+The aeration rate is computed as <span class="math notranslate nohighlight">\(iO_2 / V\)</span>. To disable aeration, omit either parameter.
+For more flexible aeration handling, model oxygen input explicitly via the Inlet unit operation (see <a class="reference internal" href="../unit_operations/inlet.html"><span class="std std-doc">Inlet</span></a>).</p>
+</section>
+<section id="substrate-fractionation">
+<h3>Substrate Fractionation<a class="headerlink" href="#substrate-fractionation" title="Link to this heading">¶</a></h3>
+<p>The organic substrates can be fractionated into adsorbable and non-adsorbable components via <code class="docutils literal notranslate"><span class="pre">ASM3_FSI_AD</span></code> and <code class="docutils literal notranslate"><span class="pre">ASM3_FSS_AD</span></code>.
+This requires at least 15 components (including <code class="docutils literal notranslate"><span class="pre">SI_ad</span></code> and <code class="docutils literal notranslate"><span class="pre">SS_ad</span></code>, corresponding to <span class="math notranslate nohighlight">\(S_{I,\mathrm{ad}}\)</span> and <span class="math notranslate nohighlight">\(S_{S,\mathrm{ad}}\)</span>) and enables coupling with binding models for adsorptive interactions during biological treatment. If fewer than 15 components are defined, adsorbed components are disabled.</p>
+<p>When fractionation is enabled, reactions <span class="math notranslate nohighlight">\(r_{14}\)</span> and <span class="math notranslate nohighlight">\(r_{15}\)</span> become active for storage of adsorbable substrate <span class="math notranslate nohighlight">\(S_{S,\mathrm{ad}}\)</span>.</p>
+</section>
+<section id="implementation-notes">
+<h3>Implementation Notes<a class="headerlink" href="#implementation-notes" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Component indices can be customized via <code class="docutils literal notranslate"><span class="pre">ASM3_COMP_IDX</span></code> if components are ordered differently or offset.</p></li>
+<li><p>Some kinetic terms contain ratios of particulate substrate to biomass. A smooth lower bound on the biomass concentration is used to regularize these ratios:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[c_{X_H,\mathrm{lb}} = c_{X_H,\mathrm{min}} + \frac{1}{2}\left(c_{X_H} - c_{X_H,\mathrm{min}} + \sqrt{\left(c_{X_H} - c_{X_H,\mathrm{min}}\right)^2 + \varepsilon_X^2}\right)\]</div>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Gujer, W., Henze, M., Mino, T., van Loosdrecht, M. (1999): Activated Sludge Model No. 3.
+<em>Water Science and Technology</em> 39(1), 183-193. The model this variant is based on.</p></li>
+<li><p>Henze, M., Gujer, W., Mino, T., van Loosdrecht, M. (2000): Activated Sludge Models ASM1, ASM2,
+ASM2d and ASM3. IWA Scientific and Technical Report No. 9, IWA Publishing, London.
+The collected report of the IWA task group, including the component and parameter conventions
+used here.</p></li>
+<li><p>The ASM3h variant implemented here follows <a class="reference external" href="https://www.ifak.eu/en/produkte/simba">SIMBA#</a>,
+which extends ASM3 with the mineral fraction <span class="math notranslate nohighlight">\(X_{MI}\)</span> and the temperature correction above.</p></li>
+</ul>
+</section>
+</section>
+
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2008-2026.
+      
+      |
+      <a href="../../_sources/modelling/reaction/activated_sludge_model.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

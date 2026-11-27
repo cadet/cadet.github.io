@@ -1,60 +1,305 @@
+
 <!DOCTYPE html>
 
-<html lang="en" data-content_root="../../">
+
+<html lang="en" data-content_root="../../" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Radial Flow Column 1D &#8212; CADET</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=2bcfc6fe" />
-    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=4418a689" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'interface/unit_operations/radial_flow_column_1D_config';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="canonical" href="https://cadet.github.io/v5.1.X/interface/unit_operations/radial_flow_column_1D_config.html" />
     <link rel="icon" href="../../_static/cadet_icon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Frustum Flow Column 1D" href="frustum_flow_column_1D_config.html" />
     <link rel="prev" title="Axial Flow Column 1D" href="axial_flow_column_1D_config.html" />
-   
-  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   
-
-  
-  
-
-  </head><body>
-  <div class="document">
     
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../../index.html">CADET-Core</a></h1>
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
 
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
 
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
 
-<p class="blurb">CADET - An open platform for integrated process modelling and simulation</p>
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
 
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
 
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
+  
+    
+  
 
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/cadet_logo.png" class="logo__image only-light" alt="CADET - Home"/>
+    <img src="../../_static/cadet_logo.png" class="logo__image only-dark pst-js-only" alt="CADET - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../getting_started/index.html">Getting started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../getting_started/installation_core.html">CADET-Core Installation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../getting_started/build_linux.html">Build for Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../getting_started/build_windows.html">Build for MS Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../getting_started/build_osx.html">Build for OSX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/installation_frontend.html">Frontend Installation</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../getting_started/introduction.html">CADET Introduction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../getting_started/tutorials/breakthrough.html">CADET User-Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../developer_guide/cadet_python.html">CADET-Python Introduction</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modelling/index.html">Modelling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modelling/unit_operations/index.html">Unit operation models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/unit_operations/general_rate_model.html">General rate model (GRM)</a></li>
 
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/unit_operations/lumped_rate_model_without_pores.html">Lumped rate model without pores (LRM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/unit_operations/lumped_rate_model_with_pores.html">Lumped rate model with pores (LRMP)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/unit_operations/2d_general_rate_model.html">Two Dimensional General rate model (GRM2D)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/unit_operations/multi_channel_transport_model.html">Multichannel Transport model (MCT model)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/unit_operations/cstr.html">Continuous stirred tank reactor model (CSTR)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/unit_operations/inlet.html">Inlet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/unit_operations/outlet.html">Outlet</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modelling/binding/index.html">Binding models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/affinity_complex_titration.html">Affinity Complex Titration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/affinity_energy_distribution.html">Affinity Energy Distribuition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/bi_steric_mass_action.html">Bi Steric Mass Action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/extended_mobile_phase_modulator_langmuir.html">Extended Mobile Phase Modulator Langmuir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/freundlich_ldf.html">Freundlich LDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/gaussian_process_regression.html">Gaussian Process Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/generalized_ion_exchange.html">Generalized Ion Exchange</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/hic_constant_water_activity.html">HIC Constant Water Activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/hic_unified.html">HIC Unified</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/hic_water_on_hydrophobic_surfaces.html">HIC Water on Hydrophobic Surfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/linear.html">Linear</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/mobile_phase_modulator_langmuir.html">Mobile Phase Modulator Langmuir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/multi_component_anti_langmuir.html">Multi Component Anti-Langmuir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/multi_component_bi_langmuir.html">Multi Component Bi-Langmuir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/multi_component_bi_langmuir_ldf.html">Multi Component Bi-Langmuir LDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/multi_component_colloidal.html">Multi Component Colloidal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/multi_component_langmuir.html">Multi Component Langmuir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/multi_component_langmuir_ldf.html">Multi Component Langmuir LDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/multi_component_langmuir_ldf_liquid_phase.html">Multi Component Langmuir LDF Liquid Phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/multi_component_ldf_freundlich.html">Multi Component Linear Driving Force Freundlich</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/multi_component_sips.html">Multi Component Sips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/multi_component_spreading.html">Multi Component Spreading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/multi_state_steric_mass_action.html">Multi-State Steric Mass Action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/neural_network.html">Neural Network Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/saska.html">Saska</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/self_association.html">Self Association</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/simplified_multi_state_steric_mass_action.html">Simplified Multi-State Steric Mass Action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/spline_interpolation.html">Spline Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/binding/steric_mass_action.html">Steric Mass Action</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modelling/reaction/index.html">Reaction models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/reaction/mass_action_law_model.html">Mass Action Law</a></li>
 
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modelling/index.html">Modelling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/reaction/mass_action_law_model_cross_phase.html">Mass Action Law Cross Phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/reaction/michaelis_menten_kinetics.html">Michaelis Menten kinetics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/reaction/rate_constant_distribution_theory.html">Rate Constant Distribution Theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/reaction/thomas_model.html">Thomas Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modelling/networks.html">Networks of unit operations</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modelling/crystallization/index.html">Crystallization / Precipitation Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/crystallization/primary_particle_formation.html">Primary Particle Formation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/crystallization/aggregation.html">Aggregation Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modelling/crystallization/fragmentation.html">Fragmentation Models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modelling/parameter_dependencies.html">Parameter Dependencies</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Interface specifications</a><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Interface specifications</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../introduction.html">Introduction</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../input_group.html">Input Group</a><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../input_group.html">Input Group</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../system.html">System of unit operations</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">Unit Operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../binding/index.html">Binding models</a></li>
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="index.html">Unit Operations</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="inlet.html">Inlet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="outlet.html">Outlet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="particle_config.html">Particle Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="axial_flow_column_1D_config.html">Axial Flow Column 1D</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">Radial Flow Column 1D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="frustum_flow_column_1D_config.html">Frustum Flow Column 1D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="smoothly_varying_column_1D_config.html">Smoothly Varying Cross Section Column 1D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="axial_flow_column_2D_config.html">Axial Flow Column 2D</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cstr.html">Continuous stirred tank reactor model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="multi_channel_transport_model.html">Multichannel Transport model (MCT model)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../population_balance_model.html">Crystallization / Precipitation models</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../binding/index.html">Binding models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../binding/linear.html">Linear</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/multi_component_langmuir.html">Multi Component Langmuir</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/multi_component_langmuir_ldf.html">Multi Component Langmuir LDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/multi_component_langmuir_ldf_liquid_phase.html">Multi Component Langmuir LDF Liquid Phase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/mobile_phase_modulator_langmuir.html">Mobile Phase Modulator Langmuir</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/extended_mobile_phase_modulator_langmuir.html">Extended Mobile Phase Modulator Langmuir</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/multi_component_bi_langmuir.html">Multi Component Bi-Langmuir</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/multi_component_bi_langmuir_ldf.html">Multi Component Bi-Langmuir LDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/multi_component_anti_langmuir.html">Multi Component Anti-Langmuir</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/multi_component_spreading.html">Multi Component Spreading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/steric_mass_action.html">Steric Mass Action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/multi_state_steric_mass_action.html">Multi-State Steric Mass Action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/simplified_multi_state_steric_mass_action.html">Simplified Multi-State Steric Mass Action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/bi_steric_mass_action.html">Bi Steric Mass Action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/generalized_ion_exchange.html">Generalized Ion Exchange</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/saska.html">Saska</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/self_association.html">Self Association</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/freundlich_ldf.html">Freundlich LDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/multi_component_ldf_freundlich.html">Multi Component Linear Driving Force Freundlich</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/multi_component_sips.html">Multi Component Sips</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/hic_water_on_hydrophobic_surfaces.html">HIC Water on Hydrophobic Surfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/hic_constant_water_activity.html">HIC Constant Water Activity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/hic_unified.html">HIC Unified</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/multi_component_colloidal.html">Multi Component Colloidal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/affinity_complex_titration.html">Affinity Complex Titration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/spline_interpolation.html">Spline Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/gaussian_process_regression.html">Gaussian Process Regression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../binding/neural_network.html">Neural Network Binding</a></li>
+</ul>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="../population_balance_model.html">Crystallization / Precipitation models</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../reaction/index.html">Reaction models</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../reaction/index.html">Reaction models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../reaction/mass_action_law.html">Mass Action Law</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reaction/michaelis_menten_kinetics.html">Michaelis Menten kinetics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../reaction/mass_action_law_cross_phase.html">Mass Action Law Cross Phase</a></li>
+</ul>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="../flux_reconstruction.html">Flux reconstruction methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../consistent_initialization.html">Nonlinear solver for consistent initialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../return_data.html">Return data</a></li>
@@ -63,12 +308,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../parameter_dependencies_config.html">Parameter Dependencies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../spatial_discretization_methods.html">Spatial discretization methods</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="../output_group.html">Output Group</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../meta_group.html">Meta Group</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a></li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../developer_guide/index.html">Developer Guide</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide/cadet_python.html">CADET-Python Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide/cadet_core_architecture.html">Software Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide/build_options.html">CADET-Core build options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide/model_expansion.html">Model Expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide/debugging.html">CADET-Core debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide/testing.html">CADET-Core testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide/CAPI.html">Changing the CAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../developer_guide/release_strategy.html">Code development and release strategy</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference external" href="https://cadet.github.io/CADET-Match/master/index.html">CADET-Match</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../publications.html">Publications</a></li>
@@ -76,48 +331,249 @@
 <li class="toctree-l1"><a class="reference external" href="https://www.fz-juelich.de/en/legal-notice">Legal notice</a></li>
 </ul>
 
-
-<search id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
     </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-<h3>Releases</h3>
-<ul>
-  <li><a href="../../../v4.3.0/index.html">v4.3.0</a></li>
-  <li><a href="../../../v4.4.0/index.html">v4.4.0</a></li>
-  <li><a href="../../../v5.0.0/index.html">v5.0.0</a></li>
-  <li><a href="../../../v5.0.1/index.html">v5.0.1</a></li>
-  <li><a href="../../../v5.0.2/index.html">v5.0.2</a></li>
-  <li><a href="../../../v5.0.3/index.html">v5.0.3</a></li>
-  <li><a href="../../../v5.0.4/index.html">v5.0.4</a></li>
-  <li><a href="../../../v5.1.0/index.html">v5.1.0</a></li>
-  <li><a href="../../../v5.1.1/index.html">v5.1.1</a></li>
-  <li><a href="../../../v5.1.2/index.html">v5.1.2</a></li>
-  <li><a href="../../../v6.0.0a1/interface/unit_operations/radial_flow_column_1D_config.html">v6.0.0a1</a></li>
-  <li><a href="../../../v6.0.0a3/interface/unit_operations/radial_flow_column_1D_config.html">v6.0.0a3</a></li>
-  <li><a href="../../../v6.0.0a4/interface/unit_operations/radial_flow_column_1D_config.html">v6.0.0a4</a></li>
-  <li><a href="radial_flow_column_1D_config.html">v6.0.0a5</a></li>
-</ul>
-<h3>Branches</h3>
-<ul>
-  <li><a href="../../../master/interface/unit_operations/radial_flow_column_1D_config.html">master</a></li>
-  <li><a href="../../../v5.1.X/index.html">v5.1.X</a></li>
-</ul>
+</nav></div>
+        <div class="sidebar-primary-item">
+<nav class="bd-links" aria-label="Versions">
+  <p class="caption" role="heading"><span class="caption-text">Releases</span></p>
+  <ul class="nav bd-sidenav">
+    <li class="toctree-l1"><a class="reference" href="../../../v4.3.0/index.html">v4.3.0</a></li>
+    <li class="toctree-l1"><a class="reference" href="../../../v4.4.0/index.html">v4.4.0</a></li>
+    <li class="toctree-l1"><a class="reference" href="../../../v5.0.0/index.html">v5.0.0</a></li>
+    <li class="toctree-l1"><a class="reference" href="../../../v5.0.1/index.html">v5.0.1</a></li>
+    <li class="toctree-l1"><a class="reference" href="../../../v5.0.2/index.html">v5.0.2</a></li>
+    <li class="toctree-l1"><a class="reference" href="../../../v5.0.3/index.html">v5.0.3</a></li>
+    <li class="toctree-l1"><a class="reference" href="../../../v5.0.4/index.html">v5.0.4</a></li>
+    <li class="toctree-l1"><a class="reference" href="../../../v5.1.0/index.html">v5.1.0</a></li>
+    <li class="toctree-l1"><a class="reference" href="../../../v5.1.1/index.html">v5.1.1</a></li>
+    <li class="toctree-l1"><a class="reference" href="../../../v5.1.2/index.html">v5.1.2</a></li>
+    <li class="toctree-l1"><a class="reference" href="../../../v6.0.0a1/interface/unit_operations/radial_flow_column_1D_config.html">v6.0.0a1</a></li>
+    <li class="toctree-l1"><a class="reference" href="../../../v6.0.0a3/interface/unit_operations/radial_flow_column_1D_config.html">v6.0.0a3</a></li>
+    <li class="toctree-l1"><a class="reference" href="../../../v6.0.0a4/interface/unit_operations/radial_flow_column_1D_config.html">v6.0.0a4</a></li>
+    <li class="toctree-l1"><a class="reference" href="radial_flow_column_1D_config.html">v6.0.0a5</a></li>
+  </ul>
+  <p class="caption" role="heading"><span class="caption-text">Branches</span></p>
+  <ul class="nav bd-sidenav">
+    <li class="toctree-l1"><a class="reference" href="../../../master/interface/unit_operations/radial_flow_column_1D_config.html">master</a></li>
+    <li class="toctree-l1"><a class="reference" href="../../../v5.1.X/index.html">v5.1.X</a></li>
+  </ul>
+</nav>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
 
-        </div>
+
       </div>
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
 
-          <div class="body" role="main">
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cadet/CADET-Core" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cadet/CADET-Core/issues/new?title=Issue%20on%20page%20%2Finterface/unit_operations/radial_flow_column_1D_config.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/interface/unit_operations/radial_flow_column_1D_config.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Radial Flow Column 1D</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-input-model-unit-xxx-unit-type-radial-column-model-1d">Group /input/model/unit_XXX - UNIT_TYPE - RADIAL_COLUMN_MODEL_1D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-input-model-unit-xxx-liquid-reaction-yyy">Group /input/model/unit_XXX/liquid_reaction_YYY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-input-model-unit-xxx-particle-type-xxx">Group /input/model/unit_XXX/particle_type_XXX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-input-model-unit-xxx-discretization-unit-type-radial-column-model-1d">Group /input/model/unit_XXX/discretization - UNIT_TYPE - RADIAL_COLUMN_MODEL_1D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-discretization-numerical-methods">Spatial discretization - Numerical Methods</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discontinuous-galerkin">Discontinuous Galerkin</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-volumes">Finite Volumes</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
 
 
 
@@ -209,13 +665,13 @@
 
 
   <section id="radial-flow-column-1d">
-<span id="radial-flow-column-1d-config"></span><h1>Radial Flow Column 1D<a class="headerlink" href="#radial-flow-column-1d" title="Link to this heading">¶</a></h1>
+<span id="radial-flow-column-1d-config"></span><h1>Radial Flow Column 1D<a class="headerlink" href="#radial-flow-column-1d" title="Link to this heading">#</a></h1>
 <section id="group-input-model-unit-xxx-unit-type-radial-column-model-1d">
-<h2>Group /input/model/unit_XXX - UNIT_TYPE - RADIAL_COLUMN_MODEL_1D<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-radial-column-model-1d" title="Link to this heading">¶</a></h2>
+<h2>Group /input/model/unit_XXX - UNIT_TYPE - RADIAL_COLUMN_MODEL_1D<a class="headerlink" href="#group-input-model-unit-xxx-unit-type-radial-column-model-1d" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">UNIT_TYPE</span></code></p>
 <blockquote>
 <div><p>Specifies the type of unit operation model</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{RADIAL_COLUMN_MODEL_1D}\)</span></p></td>
@@ -223,11 +679,12 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">NCOMP</span></code></p>
 <blockquote>
 <div><p>Number of chemical components in the chromatographic medium</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -235,12 +692,13 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">CROSS_SECTION_AREA_INNER</span></code></p>
 <blockquote>
 <div><p>Cross section area of the inner column radius (optional, only triggers a geometry check against <code class="docutils literal notranslate"><span class="pre">CROSS_SECTION_AREA_OUTER</span></code>, <code class="docutils literal notranslate"><span class="pre">CYLINDER_HEIGHT</span></code>, and <code class="docutils literal notranslate"><span class="pre">BED_LENGTH</span></code>).</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
@@ -248,12 +706,13 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">CROSS_SECTION_AREA_OUTER</span></code></p>
 <blockquote>
 <div><p>Cross section area of the outer column radius</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
@@ -261,12 +720,13 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">BED_LENGTH</span></code></p>
 <blockquote>
 <div><p>Column length/height, i.e., outer minus inner column radius.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
@@ -274,12 +734,13 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">CYLINDER_HEIGHT</span></code></p>
 <blockquote>
 <div><p>Height of the cylinder. Note: not the bed length</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(&gt; 0\)</span></p></td>
@@ -287,12 +748,13 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">FORWARD_FLOW</span></code></p>
 <blockquote>
 <div><p>Flow direction of the column. If set to 1, the flow is from the outer radius to the inner radius.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}\)</span></p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> bool</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -300,11 +762,12 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COLUMN_GEOMETRY</span></code></p>
 <blockquote>
 <div><p>Optional, specifies whether the radial flow model is a full cylinder shell or a fraction, i.e. a wedge</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{CYLINDER_SHELL}, \texttt{WEDGE}\)</span></p></td>
@@ -312,11 +775,12 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">CIRCLE_FRACTION</span></code></p>
 <blockquote>
 <div><p>Optional, only required for wedge geometry. Specifies the cylinder shell fraction of the wedge</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\((0,1]\)</span></p></td>
@@ -324,11 +788,12 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_POROSITY</span></code></p>
 <blockquote>
 <div><p>Column porosity</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\((0,1]\)</span></p></td>
@@ -336,11 +801,12 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">NPARTYPE</span></code></p>
 <blockquote>
 <div><p>Number of particle types.</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -348,11 +814,12 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">PAR_TYPE_VOLFRAC</span></code></p>
 <blockquote>
 <div><p>Volume fractions of the particle types. The volume fractions can be set for all axial cells together or for each individual axial cell. For each cell, the volume fractions have to sum to <span class="math notranslate nohighlight">\(1\)</span>. In case of a spatially inhomogeneous setting, the data is expected in cell-major ordering and the <span class="math notranslate nohighlight">\(\texttt{SENS_SECTION}\)</span> field is used for indexing the axial cell when specifying parameter sensitivities.  This field is optional in case of only one particle type.</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\([0,1]\)</span></p></td>
@@ -360,12 +827,13 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION</span></code></p>
 <blockquote>
 <div><p>Axial dispersion coefficient</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{m}_{\mathrm{IV}}^{2}\,\mathrm{s}^{-1}\)</span></p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -373,6 +841,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">COL_DISPERSION_MULTIPLEX</span></code></p>
 <blockquote>
@@ -383,7 +852,7 @@
 <li><p>Component-independent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NSEC}\)</span></p></li>
 <li><p>Component-dependent, section-dependent; length of <span class="math notranslate nohighlight">\(\texttt{COL_DISPERSION}\)</span> is <span class="math notranslate nohighlight">\(\texttt{NCOMP} \cdot \texttt{NSEC}\)</span>; ordering is section-major</p></li>
 </ol>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, 3 \}\)</span></p></td>
@@ -391,11 +860,12 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">NREAC_LIQUID</span></code></p>
 <blockquote>
 <div><p>Number of liquid phase reaction models (optional, only if liquid reactions are present).</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -403,16 +873,17 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 </section>
 <section id="group-input-model-unit-xxx-liquid-reaction-yyy">
-<h2>Group /input/model/unit_XXX/liquid_reaction_YYY<a class="headerlink" href="#group-input-model-unit-xxx-liquid-reaction-yyy" title="Link to this heading">¶</a></h2>
+<h2>Group /input/model/unit_XXX/liquid_reaction_YYY<a class="headerlink" href="#group-input-model-unit-xxx-liquid-reaction-yyy" title="Link to this heading">#</a></h2>
 <p>Each reaction is specified in another subgroup <cite>liquid_reaction_YYY</cite>, see <a class="reference internal" href="../reaction/index.html#ffreaction"><span class="std std-ref">Reaction models</span></a>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_C</span></code></p>
 <blockquote>
 <div><p>Initial concentrations for each component in the bulk mobile phase</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(\mathrm{mol}\,\mathrm{m}_{\mathrm{IV}}^{-3}\)</span></p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -420,13 +891,14 @@
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">INIT_STATE</span></code></p>
 <blockquote>
 <div><p>Full state vector for initialization (optional, <span class="math notranslate nohighlight">\(\texttt{INIT_C}\)</span>, <span class="math notranslate nohighlight">\(\texttt{INIT_CP}\)</span>, and <span class="math notranslate nohighlight">\(\texttt{INIT_CS}\)</span> will be ignored; if length is <span class="math notranslate nohighlight">\(2\texttt{NDOF}\)</span>, then the second half is used for time derivatives).
 The ordering of the state vector is defined in <a class="reference internal" href="../../developer_guide/cadet_core_architecture.html#unitoperationstateordering"><span class="std std-ref">Unit Operation state vector ordering</span></a>.</p>
 <p><strong>Unit:</strong> <span class="math notranslate nohighlight">\(various\)</span></p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\mathbb{R}\)</span></p></td>
@@ -434,18 +906,19 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 </section>
 <section id="group-input-model-unit-xxx-particle-type-xxx">
-<h2>Group /input/model/unit_XXX/particle_type_XXX<a class="headerlink" href="#group-input-model-unit-xxx-particle-type-xxx" title="Link to this heading">¶</a></h2>
+<h2>Group /input/model/unit_XXX/particle_type_XXX<a class="headerlink" href="#group-input-model-unit-xxx-particle-type-xxx" title="Link to this heading">#</a></h2>
 <p>Each particle type is specified in another subgroup <cite>particle_type_XXX</cite>, see <a class="reference internal" href="particle_config.html#particle-model-config"><span class="std std-ref">Particle Model</span></a>.</p>
 </section>
 <section id="group-input-model-unit-xxx-discretization-unit-type-radial-column-model-1d">
-<h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE - RADIAL_COLUMN_MODEL_1D<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-radial-column-model-1d" title="Link to this heading">¶</a></h2>
+<h2>Group /input/model/unit_XXX/discretization - UNIT_TYPE - RADIAL_COLUMN_MODEL_1D<a class="headerlink" href="#group-input-model-unit-xxx-discretization-unit-type-radial-column-model-1d" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">USE_ANALYTIC_JACOBIAN</span></code></p>
 <blockquote>
 <div><p>Determines whether analytically computed Jacobian matrix (faster) is used (value is 1) instead of Jacobians generated by algorithmic differentiation (slower, value is 0)</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
@@ -453,17 +926,18 @@ The ordering of the state vector is defined in <a class="reference internal" hre
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 </section>
 <section id="spatial-discretization-numerical-methods">
-<h2>Spatial discretization - Numerical Methods<a class="headerlink" href="#spatial-discretization-numerical-methods" title="Link to this heading">¶</a></h2>
+<h2>Spatial discretization - Numerical Methods<a class="headerlink" href="#spatial-discretization-numerical-methods" title="Link to this heading">#</a></h2>
 <p>CADET offers two spatial discretization methods: Finite Volumes (FV) and Discontinuous Galerkin (DG). Each method has its own set of input fields.
 While both methods approximate the same solution to the same underlying model, they may differ in terms of computational performance.</p>
 <p>For further information on the choice of discretization methods and their parameters, see <a class="reference internal" href="../spatial_discretization_methods.html#spatial-discretization-methods"><span class="std std-ref">Spatial discretization methods</span></a>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">SPATIAL_METHOD</span></code></p>
 <blockquote>
 <div><p>Spatial discretization method</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{\texttt{FV}, \texttt{DG}\}\)</span></p></td>
@@ -471,13 +945,14 @@ While both methods approximate the same solution to the same underlying model, t
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <section id="discontinuous-galerkin">
-<h3>Discontinuous Galerkin<a class="headerlink" href="#discontinuous-galerkin" title="Link to this heading">¶</a></h3>
+<h3>Discontinuous Galerkin<a class="headerlink" href="#discontinuous-galerkin" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code></p>
 <blockquote>
 <div><p>DG polynomial degree. Optional, defaults to 4 and <span class="math notranslate nohighlight">\(N_d \in \{3, 4, 5\}\)</span> is recommended. The total number of radial discrete points is given by (<code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code> + 1 ) * <code class="docutils literal notranslate"><span class="pre">NELEM</span></code></p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -485,11 +960,12 @@ While both methods approximate the same solution to the same underlying model, t
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">NELEM</span></code></p>
 <blockquote>
 <div><p>Number of radial column discretization DG cells/elements. The total number of radial discrete points is given by (<code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code> + 1 ) * <code class="docutils literal notranslate"><span class="pre">NELEM</span></code></p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -497,11 +973,12 @@ While both methods approximate the same solution to the same underlying model, t
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">NCOL</span></code></p>
 <blockquote>
 <div><p>Number of radial discrete points. Optional and ignored if <code class="docutils literal notranslate"><span class="pre">NELEM</span></code> is defined. Otherwise, used to calculate <code class="docutils literal notranslate"><span class="pre">NELEM</span></code> = <span class="math notranslate nohighlight">\(\lfloor\)</span> <code class="docutils literal notranslate"><span class="pre">NCOL</span></code> / (<code class="docutils literal notranslate"><span class="pre">POLYDEG</span></code> + 1 ) <span class="math notranslate nohighlight">\(\rfloor\)</span></p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -509,11 +986,12 @@ While both methods approximate the same solution to the same underlying model, t
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">POLYNOMIAL_INTERPOLATION_NODES</span></code></p>
 <blockquote>
 <div><p>Specifies the interpolation nodes for the DG ansatz. Optional, defaults to <cite>LEGENDRE_GAUSS_LOBATTO</cite>.</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{\texttt{LEGENDRE_GAUSS_LOBATTO}, \texttt{CHEBYSHEV_GAUSS_LOBATTO}\}\)</span></p></td>
@@ -521,11 +999,12 @@ While both methods approximate the same solution to the same underlying model, t
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">LINEAR_SOLVER</span></code></p>
 <blockquote>
 <div><p>Specifies the linear solver variant used to factorize the semidiscretized system. Optional, defaults to <code class="docutils literal notranslate"><span class="pre">SparseLU</span></code>. For more information on these solvers, we refer to the <a class="reference external" href="https://eigen.tuxfamily.org/">Eigen documentation</a></p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{\texttt{SparseLU}, \texttt{SparseQR}, ..., \texttt{BiCGSTAB}\}\)</span></p></td>
@@ -533,15 +1012,16 @@ While both methods approximate the same solution to the same underlying model, t
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p>When using the DG method, we generally recommend specifying <code class="docutils literal notranslate"><span class="pre">USE_MODIFIED_NEWTON</span> <span class="pre">=</span> <span class="pre">1</span></code> in <a class="reference internal" href="../solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>, i.e. to use the modified Newton method to solve the linear system within the time integrator.</p>
 </section>
 <section id="finite-volumes">
-<h3>Finite Volumes<a class="headerlink" href="#finite-volumes" title="Link to this heading">¶</a></h3>
+<h3>Finite Volumes<a class="headerlink" href="#finite-volumes" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">NCELLS</span></code></p>
 <blockquote>
 <div><p>Number of radial column discretization points, i.e. FV cells</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 1\)</span></p></td>
@@ -549,11 +1029,12 @@ While both methods approximate the same solution to the same underlying model, t
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">RECONSTRUCTION</span></code></p>
 <blockquote>
 <div><p>Type of reconstruction method for fluxes</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> string</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\texttt{WENO, KOREN}\)</span></p></td>
@@ -561,13 +1042,14 @@ While both methods approximate the same solution to the same underlying model, t
 </tr>
 </tbody>
 </table>
+</div>
 <p>For further information on discretization parameters for reconstruction methods, see also <a class="reference internal" href="../flux_reconstruction.html#flux-reconstruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific).</p>
 </div></blockquote>
 <p>The following FV discretization parameters are only required if particles are present:</p>
 <p><code class="docutils literal notranslate"><span class="pre">GS_TYPE</span></code></p>
 <blockquote>
 <div><p>Type of Gram-Schmidt orthogonalization, see IDAS guide Section 4.5.7.3, p. 41f. A value of <span class="math notranslate nohighlight">\(0\)</span> enables classical Gram-Schmidt, a value of 1 uses modified Gram-Schmidt.</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, 1\}\)</span></p></td>
@@ -575,11 +1057,12 @@ While both methods approximate the same solution to the same underlying model, t
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">MAX_KRYLOV</span></code></p>
 <blockquote>
 <div><p>Defines the size of the Krylov subspace in the iterative linear GMRES solver (0: <span class="math notranslate nohighlight">\(\texttt{MAX_KRYLOV} = \texttt{NCOL} \cdot \texttt{NCOMP} \cdot \texttt{NPARTYPE}\)</span>)</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0, \dots, \texttt{NCOL} \cdot \texttt{NCOMP} \cdot \texttt{NPARTYPE} \}\)</span></p></td>
@@ -587,11 +1070,12 @@ While both methods approximate the same solution to the same underlying model, t
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">MAX_RESTARTS</span></code></p>
 <blockquote>
 <div><p>Maximum number of restarts in the GMRES algorithm. If lack of memory is not an issue, better use a larger Krylov space than restarts.</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -599,11 +1083,12 @@ While both methods approximate the same solution to the same underlying model, t
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">SCHUR_SAFETY</span></code></p>
 <blockquote>
 <div><p>Schur safety factor; Influences the tradeoff between linear iterations and nonlinear error control; see IDAS guide Section~2.1 and 5.</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> double</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\geq 0\)</span></p></td>
@@ -611,12 +1096,13 @@ While both methods approximate the same solution to the same underlying model, t
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">FV_ARROW_HEAD_OPTIMIZATION</span></code></p>
 <blockquote>
 <div><p>Optional, specifies whether an optimized Jacobian block structure is exploited by a custommized linear solver module for improved computational efficiency.
 Prohibits mix of particle types and mix of FV, DG discretizations for bulk and particles.</p>
-<table class="docutils align-default">
+<div class="pst-scrollable-table-container"><table class="table">
 <tbody>
 <tr class="row-odd"><td><p><strong>Type:</strong> int</p></td>
 <td><p><strong>Range:</strong> <span class="math notranslate nohighlight">\(\{0,1\}\)</span></p></td>
@@ -624,6 +1110,7 @@ Prohibits mix of particle types and mix of FV, DG discretizations for bulk and p
 </tr>
 </tbody>
 </table>
+</div>
 </div></blockquote>
 <p>When using the FV method, we generally recommend specifying <code class="docutils literal notranslate"><span class="pre">USE_MODIFIED_NEWTON</span> <span class="pre">=</span> <span class="pre">0</span></code> in <a class="reference internal" href="../solver.html#ffsolvertime"><span class="std std-ref">Group /solver/time_integrator</span></a>, i.e. to use the full Newton method to solve the linear system within the time integrator.
 For further information on discretization parameters, see also <a class="reference internal" href="../flux_reconstruction.html#flux-reconstruction-methods"><span class="std std-ref">Flux reconstruction methods</span></a> (FV specific), and <a class="reference internal" href="../consistent_initialization.html#non-consistency-solver-parameters"><span class="std std-ref">Nonlinear solver for consistent initialization</span></a>.</p>
@@ -633,22 +1120,113 @@ For further information on discretization parameters, see also <a class="referen
 
 
 
-          </div>
-          
-        </div>
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="axial_flow_column_1D_config.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Axial Flow Column 1D</p>
       </div>
-    <div class="clearer"></div>
+    </a>
+    <a class="right-next"
+       href="frustum_flow_column_1D_config.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Frustum Flow Column 1D</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
   </div>
-    <div class="footer">
-      &#169;2008-2026.
-      
-      |
-      <a href="../../_sources/interface/unit_operations/radial_flow_column_1D_config.rst.txt"
-          rel="nofollow">Page source</a>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-input-model-unit-xxx-unit-type-radial-column-model-1d">Group /input/model/unit_XXX - UNIT_TYPE - RADIAL_COLUMN_MODEL_1D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-input-model-unit-xxx-liquid-reaction-yyy">Group /input/model/unit_XXX/liquid_reaction_YYY</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-input-model-unit-xxx-particle-type-xxx">Group /input/model/unit_XXX/particle_type_XXX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-input-model-unit-xxx-discretization-unit-type-radial-column-model-1d">Group /input/model/unit_XXX/discretization - UNIT_TYPE - RADIAL_COLUMN_MODEL_1D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-discretization-numerical-methods">Spatial discretization - Numerical Methods</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discontinuous-galerkin">Discontinuous Galerkin</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-volumes">Finite Volumes</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By CADET-Core Authors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2008-2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
 
-    
-
-    
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
